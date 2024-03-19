@@ -4,9 +4,9 @@ namespace ePrijevozSarajevo.Services
 {
     public class RequestService : IRequestsService
     {
-        public List<Requests> RequestsList = new List<Requests>()
+        public List<Request> RequestsList = new List<Request>()
         {
-            new Requests()
+            new Request()
             {
                 RequestId = 1,
                 Active = true,
@@ -14,7 +14,7 @@ namespace ePrijevozSarajevo.Services
                 DocumentLink = "test"
             }
         };
-        public List<Requests> GetRequestsList()
+        public List<Request> GetRequestsList()
         {
             return RequestsList;
         }

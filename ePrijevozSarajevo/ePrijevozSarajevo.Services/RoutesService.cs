@@ -4,9 +4,9 @@ namespace ePrijevozSarajevo.Services
 {
     public class RoutesService : IRoutesService
     {
-        public List<Routes> RoutesList = new List<Routes>()
+        public List<Route> RoutesList = new List<Route>()
         {
-            new Routes ()
+            new Route ()
             {
                 RouteId = 1,
                 Date = DateTime.Now.Date,
@@ -18,7 +18,7 @@ namespace ePrijevozSarajevo.Services
             }
         };
 
-        public List<Routes> GetRoutesList()
+        public List<Route> GetRoutesList()
         {
             return RoutesList;
         }

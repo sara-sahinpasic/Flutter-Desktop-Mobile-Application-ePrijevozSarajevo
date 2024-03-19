@@ -4,6 +4,6 @@ namespace ePrijevozSarajevo.Services
 {
     public interface IRequestsService
     {
-        public List<Requests> GetRequestsList();
+        public List<Request> GetRequestsList();
     }
 }

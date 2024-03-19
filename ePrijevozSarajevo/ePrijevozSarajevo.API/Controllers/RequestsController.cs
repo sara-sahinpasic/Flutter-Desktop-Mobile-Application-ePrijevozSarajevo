@@ -15,7 +15,7 @@ namespace ePrijevozSarajevo.API.Controllers
             this._service = service;
         }
         [HttpGet]
-        public List<Requests> GetRequests()
+        public List<Request> GetRequests()
         {
             return _service.GetRequestsList();
         }

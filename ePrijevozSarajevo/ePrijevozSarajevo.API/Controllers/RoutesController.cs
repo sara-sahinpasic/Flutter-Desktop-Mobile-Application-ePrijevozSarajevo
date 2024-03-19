@@ -16,7 +16,7 @@ namespace ePrijevozSarajevo.API.Controllers
         }
 
         [HttpGet]
-        public List<Routes> GetRoutes()
+        public List<Model.Route> GetRoutes()
         {
             return _service.GetRoutesList();
         }

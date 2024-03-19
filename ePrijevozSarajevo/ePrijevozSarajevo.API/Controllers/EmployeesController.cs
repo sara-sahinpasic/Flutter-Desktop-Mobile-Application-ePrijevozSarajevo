@@ -1,4 +1,5 @@
 ﻿using ePrijevozSarajevo.Model;
+using ePrijevozSarajevo.Model.Requests;
 using ePrijevozSarajevo.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,9 +16,19 @@ namespace ePrijevozSarajevo.API.Controllers
             this._service = service;
         }
         [HttpGet]
-        public List<Employees> GetEmployees()
+        public List<User> GetEmployees()
         {
-            return _service.GetEmployeesList();
+            return _service.GetList();
+        }
+        [HttpPost]
+        public Model.User Insert(UserInseretRequest request)
+        {
+            return _service.Insert(request);
+        }
+        [HttpPut]
+        public Model.User Update(int id, UserUpdateRequest request)
+        {
+            return _service.Update(id, request);
         }
     }
 }

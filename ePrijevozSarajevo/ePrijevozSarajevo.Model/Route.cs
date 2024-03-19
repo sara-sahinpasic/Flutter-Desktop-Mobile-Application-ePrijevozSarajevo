@@ -1,6 +1,6 @@
 ﻿namespace ePrijevozSarajevo.Model
 {
-    public class Routes
+    public class Route
     {
         public int RouteId { get; set; }
         public DateTime Date { get; set; }

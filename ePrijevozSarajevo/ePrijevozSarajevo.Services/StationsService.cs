@@ -4,9 +4,9 @@ namespace ePrijevozSarajevo.Services
 {
     public class StationsService : IStationsService
     {
-        public List<Stations> StationsList = new List<Stations>()
+        public List<Station> StationsList = new List<Station>()
         {
-            new Stations()
+            new Station()
             {
                 StationId = 1,
                 Date = DateTime.Now.Date,
@@ -14,7 +14,7 @@ namespace ePrijevozSarajevo.Services
                 Name = "Otoka"
             }
         };
-        public List<Stations> GetStationsList()
+        public List<Station> GetStationsList()
         {
             return StationsList;
         }

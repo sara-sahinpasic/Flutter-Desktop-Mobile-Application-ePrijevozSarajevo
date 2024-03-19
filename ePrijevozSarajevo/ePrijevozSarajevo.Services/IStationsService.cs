@@ -4,6 +4,6 @@ namespace ePrijevozSarajevo.Services
 {
     public interface IStationsService
     {
-        public List<Stations> GetStationsList();
+        public List<Station> GetStationsList();
     }
 }

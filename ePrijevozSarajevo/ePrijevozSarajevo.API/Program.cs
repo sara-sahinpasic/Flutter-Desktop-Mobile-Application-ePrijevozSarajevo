@@ -1,4 +1,7 @@
 using ePrijevozSarajevo.Services;
+using ePrijevozSarajevo.Services.Database;
+using Mapster;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +13,20 @@ builder.Services.AddTransient<IVehiclesService, VehiclesService>();
 builder.Services.AddTransient<IRoutesService, RoutesService>();
 builder.Services.AddTransient<IStationsService, StationsService>();
 builder.Services.AddTransient<IRequestsService, RequestService>();
+
+//Connection string EF
+var connectionString = builder.Configuration.GetConnectionString("ePrijevozSarajevoConnection");
+//builder.Services.AddDbContext<DataContext>(options =>
+ //   options.UseSqlServer(connectionString));
+
+builder.Services.AddDbContext<DataContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ePrijevozSarajevoConnection"),
+        b => b.MigrationsAssembly("ePrijevozSarajevo.Services.Migrations"));
+});
+
+//Mapster
+builder.Services.AddMapster();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

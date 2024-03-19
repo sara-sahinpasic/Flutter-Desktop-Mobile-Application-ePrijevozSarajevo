@@ -4,6 +4,6 @@ namespace ePrijevozSarajevo.Services
 {
     public interface IRoutesService
     {
-        public List<Routes> GetRoutesList();
+        public List<Route> GetRoutesList();
     }
 }

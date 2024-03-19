@@ -1,6 +1,6 @@
 ﻿namespace ePrijevozSarajevo.Model
 {
-    public class Requests
+    public class Request
     {
         public int RequestId { get; set; }
         //public int UserId { get; set; }

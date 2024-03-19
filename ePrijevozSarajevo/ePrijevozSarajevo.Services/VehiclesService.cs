@@ -4,9 +4,9 @@ namespace ePrijevozSarajevo.Services
 {
     public class VehiclesService : IVehiclesService
     {
-        public List<Vehicles> VehiclesList = new List<Vehicles>()
+        public List<Vehicle> VehiclesList = new List<Vehicle>()
         {
-            new Vehicles()
+            new Vehicle()
             {
                 VehicleId = 1,
                 Number = 15,
@@ -15,7 +15,7 @@ namespace ePrijevozSarajevo.Services
                 BuildYear = 1998
             }
         };
-        public List<Vehicles> GetVehiclesList()
+        public List<Vehicle> GetVehiclesList()
         {
             return VehiclesList;
         }

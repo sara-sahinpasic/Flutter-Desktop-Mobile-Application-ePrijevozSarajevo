@@ -4,6 +4,6 @@ namespace ePrijevozSarajevo.Services
 {
     public interface IVehiclesService
     {
-        public List<Vehicles> GetVehiclesList();
+        public List<Vehicle> GetVehiclesList();
     }
 }

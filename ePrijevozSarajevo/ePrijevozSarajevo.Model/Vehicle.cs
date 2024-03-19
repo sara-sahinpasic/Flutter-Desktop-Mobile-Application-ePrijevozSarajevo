@@ -1,6 +1,6 @@
 ﻿namespace ePrijevozSarajevo.Model
 {
-    public class Vehicles
+    public class Vehicle
     {
         public int VehicleId { get; set; }
         public int Number { get; set; }

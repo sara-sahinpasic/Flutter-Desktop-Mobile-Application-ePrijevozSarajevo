@@ -15,7 +15,7 @@ namespace ePrijevozSarajevo.API.Controllers
             this._service = service;
         }
         [HttpGet]
-        public List<Vehicles> GetVehicles()
+        public List<Vehicle> GetVehicles()
         {
             return _service.GetVehiclesList();
         }
