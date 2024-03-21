@@ -46,7 +46,8 @@ namespace ePrijevozSarajevo.Services.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -148,7 +149,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Request",
+                name: "Requests",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -163,15 +164,15 @@ namespace ePrijevozSarajevo.Services.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Request", x => x.Id);
+                    table.PrimaryKey("PK_Requests", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Request_Statuses_UserStatusId",
+                        name: "FK_Requests_Statuses_UserStatusId",
                         column: x => x.UserStatusId,
                         principalTable: "Statuses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
-                        name: "FK_Request_Users_UserId",
+                        name: "FK_Requests_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -236,13 +237,13 @@ namespace ePrijevozSarajevo.Services.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Request_UserId",
-                table: "Request",
+                name: "IX_Requests_UserId",
+                table: "Requests",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Request_UserStatusId",
-                table: "Request",
+                name: "IX_Requests_UserStatusId",
+                table: "Requests",
                 column: "UserStatusId");
 
             migrationBuilder.CreateIndex(
@@ -299,7 +300,7 @@ namespace ePrijevozSarajevo.Services.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Request");
+                name: "Requests");
 
             migrationBuilder.DropTable(
                 name: "Routes");

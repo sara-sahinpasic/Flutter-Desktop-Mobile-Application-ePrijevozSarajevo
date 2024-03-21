@@ -16,6 +16,10 @@ namespace ePrijevozSarajevo.Services.Database
         public DbSet<Vehicle> Vehicles { get; set; } = null!;
         public DbSet<VehicleType> VehicleTypes { get; set; } = null!;
         public DbSet<Manufacturer> Manufacturers { get; set; } = null!;
+        //
+        public DbSet<Request> Requests { get; set; } = null!;
+        //
+
 
 
         public DataContext(DbContextOptions options) : base(options) { }

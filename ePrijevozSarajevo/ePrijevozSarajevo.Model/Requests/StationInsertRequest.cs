@@ -1,8 +1,7 @@
-﻿namespace ePrijevozSarajevo.Services.Database
+﻿namespace ePrijevozSarajevo.Model.Requests
 {
-    public class Station
+    public class StationInsertRequest
     {
-        public int Id { get; set; }
         public string? Name { get; set; }
         public DateTime DateCreated { get; set; } = DateTime.Now;
         public DateTime DateTime { get; set; } = DateTime.Now;

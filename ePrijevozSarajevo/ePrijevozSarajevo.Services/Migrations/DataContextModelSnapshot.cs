@@ -74,7 +74,7 @@ namespace ePrijevozSarajevo.Services.Migrations
 
                     b.HasIndex("UserStatusId");
 
-                    b.ToTable("Request");
+                    b.ToTable("Requests");
                 });
 
             modelBuilder.Entity("ePrijevozSarajevo.Services.Database.Role", b =>
@@ -158,6 +158,9 @@ namespace ePrijevozSarajevo.Services.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateTime")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
