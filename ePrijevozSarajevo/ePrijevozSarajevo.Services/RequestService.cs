@@ -14,9 +14,9 @@ namespace ePrijevozSarajevo.Services
                 DocumentLink = "test"
             }
         };
-        public List<Request> GetRequestsList()
+        public List<Request> GetList()
         {
             return RequestsList;
-        }
+        }               
     }
 };

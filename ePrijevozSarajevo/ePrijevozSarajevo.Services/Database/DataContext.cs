@@ -11,10 +11,8 @@ namespace ePrijevozSarajevo.Services.Database
         public DbSet<User> Users { get; set; } = null!;
         public DbSet<Status> Statuses { get; set; } = null!;
         public DbSet<Role> Roles { get; set; } = null!;
-
         public DbSet<Route> Routes { get; set; } = null!;
         public DbSet<Station> Stations { get; set; } = null!;
-
         public DbSet<Vehicle> Vehicles { get; set; } = null!;
         public DbSet<VehicleType> VehicleTypes { get; set; } = null!;
         public DbSet<Manufacturer> Manufacturers { get; set; } = null!;

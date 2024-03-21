@@ -1,4 +1,5 @@
 ﻿using ePrijevozSarajevo.Model;
+using ePrijevozSarajevo.Model.Requests;
 using ePrijevozSarajevo.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,7 +19,18 @@ namespace ePrijevozSarajevo.API.Controllers
         [HttpGet]
         public List<Model.Route> GetRoutes()
         {
-            return _service.GetRoutesList();
+            return _service.GetList();
         }
+        [HttpPost]
+        public Model.Route Insert(RouteInsertRequest request)
+        {
+            return _service.Insert(request);
+        }
+        [HttpPut]
+        public Model.Route Update(int id, RouteUpdateRequest request)
+        {
+            return _service.Update(id, request);
+        }
+
     }
 }
