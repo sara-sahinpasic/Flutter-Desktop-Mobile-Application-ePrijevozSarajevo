@@ -1,6 +1,6 @@
 ﻿namespace ePrijevozSarajevo.Model.Requests
 {
-    public class VehiclesUpdateRequest
+    public class VehicleUpdateRequest
     {
         public string? RegistrationNumber { get; set; }
         public int ManufacturerId { get; set; }

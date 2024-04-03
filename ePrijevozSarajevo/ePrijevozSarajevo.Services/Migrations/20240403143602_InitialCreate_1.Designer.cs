@@ -12,8 +12,8 @@ using ePrijevozSarajevo.Services.Database;
 namespace ePrijevozSarajevo.Services.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240321141656_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240403143602_InitialCreate_1")]
+    partial class InitialCreate_1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,27 +27,27 @@ namespace ePrijevozSarajevo.Services.Migrations
 
             modelBuilder.Entity("ePrijevozSarajevo.Services.Database.Manufacturer", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ManufacturerId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ManufacturerId"));
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("ManufacturerId");
 
                     b.ToTable("Manufacturers");
                 });
 
             modelBuilder.Entity("ePrijevozSarajevo.Services.Database.Request", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("RequestId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RequestId"));
 
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
@@ -71,7 +71,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.Property<int>("UserStatusId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("RequestId");
 
                     b.HasIndex("UserId");
 
@@ -82,40 +82,40 @@ namespace ePrijevozSarajevo.Services.Migrations
 
             modelBuilder.Entity("ePrijevozSarajevo.Services.Database.Role", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("RoleId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoleId"));
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("RoleId");
 
                     b.ToTable("Roles");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            RoleId = 1,
                             Name = "User"
                         },
                         new
                         {
-                            Id = 2,
+                            RoleId = 2,
                             Name = "Admin"
                         });
                 });
 
             modelBuilder.Entity("ePrijevozSarajevo.Services.Database.Route", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("RouteId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RouteId"));
 
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
@@ -141,7 +141,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.Property<int>("VehicleId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("RouteId");
 
                     b.HasIndex("EndStationId");
 
@@ -154,11 +154,11 @@ namespace ePrijevozSarajevo.Services.Migrations
 
             modelBuilder.Entity("ePrijevozSarajevo.Services.Database.Station", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("StationId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StationId"));
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
@@ -169,18 +169,18 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("StationId");
 
                     b.ToTable("Stations");
                 });
 
             modelBuilder.Entity("ePrijevozSarajevo.Services.Database.Status", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("StatusId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StatusId"));
 
                     b.Property<double>("Discount")
                         .HasPrecision(5, 2)
@@ -189,38 +189,38 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("StatusId");
 
                     b.ToTable("Statuses");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            StatusId = 1,
                             Discount = 0.40000000000000002,
                             Name = "Unemployed"
                         },
                         new
                         {
-                            Id = 2,
+                            StatusId = 2,
                             Discount = 0.14999999999999999,
                             Name = "Employed"
                         },
                         new
                         {
-                            Id = 3,
+                            StatusId = 3,
                             Discount = 0.29999999999999999,
                             Name = "Student"
                         },
                         new
                         {
-                            Id = 4,
+                            StatusId = 4,
                             Discount = 0.5,
                             Name = "Pensioner"
                         },
                         new
                         {
-                            Id = 5,
+                            StatusId = 5,
                             Discount = 0.0,
                             Name = "Tourist"
                         });
@@ -228,11 +228,11 @@ namespace ePrijevozSarajevo.Services.Migrations
 
             modelBuilder.Entity("ePrijevozSarajevo.Services.Database.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
 
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
@@ -279,7 +279,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.Property<int>("UserStatusId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("UserId");
 
                     b.HasIndex("Email")
                         .IsUnique()
@@ -290,15 +290,29 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.HasIndex("UserStatusId");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 1,
+                            Active = false,
+                            DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "",
+                            LastName = "",
+                            ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RegistrationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoleId = 1,
+                            UserStatusId = 1
+                        });
                 });
 
             modelBuilder.Entity("ePrijevozSarajevo.Services.Database.Vehicle", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("VehicleId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("VehicleId"));
 
                     b.Property<int>("BuildYear")
                         .HasColumnType("int");
@@ -312,7 +326,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.Property<int>("VehicleTypeId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("VehicleId");
 
                     b.HasIndex("ManufacturerId");
 
@@ -327,16 +341,16 @@ namespace ePrijevozSarajevo.Services.Migrations
 
             modelBuilder.Entity("ePrijevozSarajevo.Services.Database.VehicleType", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("VehicleTypeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("VehicleTypeId"));
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("VehicleTypeId");
 
                     b.ToTable("VehicleTypes");
                 });

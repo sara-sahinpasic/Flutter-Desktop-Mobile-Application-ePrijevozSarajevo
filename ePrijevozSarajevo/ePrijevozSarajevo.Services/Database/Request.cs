@@ -2,7 +2,7 @@
 {
     public class Request
     {
-        public int Id { get; set; }
+        public int RequestId { get; set; }
 
         public int UserStatusId { get; set; }
         public Status UserStatus { get; set; } = null!;

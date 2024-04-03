@@ -17,33 +17,33 @@ namespace ePrijevozSarajevo.Services.Migrations
                 name: "Manufacturers",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    ManufacturerId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Manufacturers", x => x.Id);
+                    table.PrimaryKey("PK_Manufacturers", x => x.ManufacturerId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Roles",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    RoleId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Roles", x => x.Id);
+                    table.PrimaryKey("PK_Roles", x => x.RoleId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Stations",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    StationId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -51,41 +51,41 @@ namespace ePrijevozSarajevo.Services.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Stations", x => x.Id);
+                    table.PrimaryKey("PK_Stations", x => x.StationId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Statuses",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    StatusId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Discount = table.Column<double>(type: "float(5)", precision: 5, scale: 2, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Statuses", x => x.Id);
+                    table.PrimaryKey("PK_Statuses", x => x.StatusId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "VehicleTypes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    VehicleTypeId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_VehicleTypes", x => x.Id);
+                    table.PrimaryKey("PK_VehicleTypes", x => x.VehicleTypeId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RoleId = table.Column<int>(type: "int", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -105,18 +105,18 @@ namespace ePrijevozSarajevo.Services.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Users", x => x.Id);
+                    table.PrimaryKey("PK_Users", x => x.UserId);
                     table.ForeignKey(
                         name: "FK_Users_Roles_RoleId",
                         column: x => x.RoleId,
                         principalTable: "Roles",
-                        principalColumn: "Id",
+                        principalColumn: "RoleId",
                         onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_Users_Statuses_UserStatusId",
                         column: x => x.UserStatusId,
                         principalTable: "Statuses",
-                        principalColumn: "Id",
+                        principalColumn: "StatusId",
                         onDelete: ReferentialAction.NoAction);
                 });
 
@@ -124,7 +124,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                 name: "Vehicles",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    VehicleId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RegistrationNumber = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     ManufacturerId = table.Column<int>(type: "int", nullable: false),
@@ -133,18 +133,18 @@ namespace ePrijevozSarajevo.Services.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Vehicles", x => x.Id);
+                    table.PrimaryKey("PK_Vehicles", x => x.VehicleId);
                     table.ForeignKey(
                         name: "FK_Vehicles_Manufacturers_ManufacturerId",
                         column: x => x.ManufacturerId,
                         principalTable: "Manufacturers",
-                        principalColumn: "Id",
+                        principalColumn: "ManufacturerId",
                         onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_Vehicles_VehicleTypes_VehicleTypeId",
                         column: x => x.VehicleTypeId,
                         principalTable: "VehicleTypes",
-                        principalColumn: "Id",
+                        principalColumn: "VehicleTypeId",
                         onDelete: ReferentialAction.NoAction);
                 });
 
@@ -152,7 +152,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                 name: "Requests",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    RequestId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserStatusId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
@@ -164,18 +164,18 @@ namespace ePrijevozSarajevo.Services.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Requests", x => x.Id);
+                    table.PrimaryKey("PK_Requests", x => x.RequestId);
                     table.ForeignKey(
                         name: "FK_Requests_Statuses_UserStatusId",
                         column: x => x.UserStatusId,
                         principalTable: "Statuses",
-                        principalColumn: "Id",
+                        principalColumn: "StatusId",
                         onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_Requests_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "Id",
+                        principalColumn: "UserId",
                         onDelete: ReferentialAction.NoAction);
                 });
 
@@ -183,7 +183,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                 name: "Routes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    RouteId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     StartStationId = table.Column<int>(type: "int", nullable: false),
                     EndStationId = table.Column<int>(type: "int", nullable: false),
@@ -196,28 +196,28 @@ namespace ePrijevozSarajevo.Services.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Routes", x => x.Id);
+                    table.PrimaryKey("PK_Routes", x => x.RouteId);
                     table.ForeignKey(
                         name: "FK_Routes_Stations_EndStationId",
                         column: x => x.EndStationId,
                         principalTable: "Stations",
-                        principalColumn: "Id");
+                        principalColumn: "StationId");
                     table.ForeignKey(
                         name: "FK_Routes_Stations_StartStationId",
                         column: x => x.StartStationId,
                         principalTable: "Stations",
-                        principalColumn: "Id");
+                        principalColumn: "StationId");
                     table.ForeignKey(
                         name: "FK_Routes_Vehicles_VehicleId",
                         column: x => x.VehicleId,
                         principalTable: "Vehicles",
-                        principalColumn: "Id",
+                        principalColumn: "VehicleId",
                         onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.InsertData(
                 table: "Roles",
-                columns: new[] { "Id", "Name" },
+                columns: new[] { "RoleId", "Name" },
                 values: new object[,]
                 {
                     { 1, "User" },
@@ -226,7 +226,7 @@ namespace ePrijevozSarajevo.Services.Migrations
 
             migrationBuilder.InsertData(
                 table: "Statuses",
-                columns: new[] { "Id", "Discount", "Name" },
+                columns: new[] { "StatusId", "Discount", "Name" },
                 values: new object[,]
                 {
                     { 1, 0.40000000000000002, "Unemployed" },

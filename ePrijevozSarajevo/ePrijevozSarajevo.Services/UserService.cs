@@ -1,5 +1,6 @@
 ﻿using ePrijevozSarajevo.Model;
 using ePrijevozSarajevo.Model.Requests;
+using ePrijevozSarajevo.Model.SearchObjects;
 using ePrijevozSarajevo.Services.Database;
 using MapsterMapper;
 using System.Security.Cryptography;
@@ -7,10 +8,10 @@ using System.Text;
 
 namespace ePrijevozSarajevo.Services
 {
-    public class EmployeesService : IEmployeesService
+    public class UserService : BaseService<Model.User, UserSearchObject, Database.User>, IUserService
     {
-        public DataContext _context;
-        public IMapper _mapper;
+        public DataContext context;
+        public IMapper mapper;
 
         /*public List<User> EmployeesList = new List<User>()
 { 
@@ -26,20 +27,55 @@ Address="Neka 1"
 }
 };*/
 
-        public EmployeesService(DataContext context, IMapper mapper)
-        {
-            this._context = context;
-            this._mapper = mapper;
-        }
-
-        public List<Model.User> GetList()
+        public UserService(DataContext context, IMapper mapper) : base(context, mapper) { }
+        /*{
+       this.context = context;
+       this.mapper = mapper;
+   }*/
+        /*public List<Model.User> GetList()
         {
             var result = new List<Model.User>();
             var list = _context.Users.ToList();
 
             result = _mapper.Map(list, result);
             return result;
+        }*/
+        /* public PagedResult<Model.User> GetList(UserSearchObject searchObject)
+        {
+            var result = new List<Model.User>();
+
+            var query = context.Users.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(searchObject?.FirstNameGTE))
+            {
+                query = query.Where(x => x.FirstName.StartsWith(searchObject.FirstNameGTE));
+            }
+
+            if (!string.IsNullOrWhiteSpace(searchObject?.LastNameGTE))
+            {
+                query = query.Where(x => x.LastName.StartsWith(searchObject.LastNameGTE));
+            }
+
+
+            if (searchObject.Page.HasValue == true && searchObject.PageSize.HasValue == true)
+            {
+                query = query.Skip(searchObject.Page.Value * searchObject.PageSize.Value)
+                             .Take(searchObject.PageSize.Value);
+            }
+
+            int count = query.Count();
+
+            var list = query.ToList();
+
+            var resultList = mapper.Map(list, result);
+            PagedResult<Model.User> response = new PagedResult<Model.User>();
+            response.ResultList = resultList;
+            response.Count = count;
+
+            return response;
         }
+       */
+
 
         public Model.User Insert(UserInseretRequest request)
         {
@@ -50,14 +86,15 @@ Address="Neka 1"
 
             var entity = new Database.User();
 
-            _mapper.Map(request, entity);
+            mapper.Map(request, entity);
+            entity.UserId = request.UserId;
             entity.PasswordSalt = GenerateSalt();
             entity.PasswordHash = GenerateHash(entity.PasswordSalt, request.Password);
 
-            _context.Add(entity);
-            _context.SaveChanges();
+            context.Add(entity);
+            context.SaveChanges();
 
-            return _mapper.Map<Model.User>(entity);
+            return mapper.Map<Model.User>(entity);
         }
 
         public static string GenerateSalt()
@@ -82,9 +119,9 @@ Address="Neka 1"
 
         public Model.User Update(int id, UserUpdateRequest request)
         {
-            var entity = _context.Users.Find(id);
+            var entity = context.Users.Find(id);
 
-            _mapper.Map(request, entity);
+            mapper.Map(request, entity);
 
             if (request.Password != request.PasswordConfirmation)
             {
@@ -94,9 +131,10 @@ Address="Neka 1"
             entity.PasswordSalt = GenerateSalt();
             entity.PasswordHash = GenerateHash(entity.PasswordSalt, request.Password);
 
-            _context.SaveChanges();
-            return _mapper.Map<Model.User>(entity);
+            context.SaveChanges();
+            return mapper.Map<Model.User>(entity);
 
         }
+
     }
 }

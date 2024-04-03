@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 //Dependency Injection
-builder.Services.AddTransient<IEmployeesService, EmployeesService>();
+builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IVehiclesService, VehiclesService>();
 builder.Services.AddTransient<IRoutesService, RoutesService>();
 builder.Services.AddTransient<IStationsService, StationsService>();

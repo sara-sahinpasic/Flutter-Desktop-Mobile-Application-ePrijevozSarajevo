@@ -5,7 +5,7 @@ namespace ePrijevozSarajevo.Services.Database
 {
     public class Route
     {
-        public int Id { get; set; }
+        public int RouteId { get; set; }
 
         public int StartStationId { get; set; }
         public Station? StartStation { get; set; }

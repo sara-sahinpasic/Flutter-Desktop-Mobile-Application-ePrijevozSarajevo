@@ -2,6 +2,7 @@
 {
     public class UserInseretRequest
     {
+        public int UserId { get; set; }
         public int RoleId { get; set; } = 1;
         public string? FirstName { get; set; }
         public string? LastName { get; set; }

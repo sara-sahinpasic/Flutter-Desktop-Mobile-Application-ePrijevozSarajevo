@@ -70,20 +70,37 @@ namespace ePrijevozSarajevo.Services.Database
 
             BuildUserRoles(modelBuilder);
             BuildUserStatus(modelBuilder);
+            BuildUser(modelBuilder);
         }
-
+        private static void BuildUser(ModelBuilder modelBuilder)
+        {
+            List<User> roles = new()
+        {
+            new()
+            {
+                UserId = 1,
+               FirstName="",
+               RoleId=1,
+               UserStatusId=1,
+               LastName=""
+               
+            }
+         };
+            modelBuilder.Entity<User>()
+                .HasData(roles);
+        }
         private static void BuildUserRoles(ModelBuilder modelBuilder)
         {
             List<Role> roles = new()
         {
             new()
             {
-                Id = 1,
+                RoleId = 1,
                 Name = "User"
             },
             new()
             {
-                Id = 2,
+                RoleId = 2,
                 Name = "Admin"
             }
         };
@@ -98,32 +115,32 @@ namespace ePrijevozSarajevo.Services.Database
 
             new()
             {
-                Id=1,
+                StatusId=1,
                 Name="Unemployed",
                 Discount=0.4
             },
             new()
             {
-                Id=2,
+                StatusId=2,
                 Name="Employed",
                 Discount=0.15
             },
             new()
             {
-                Id=3,
+                StatusId=3,
                 Name = "Student",
                 Discount=0.3
 
             },
             new()
             {
-                Id=4,
+                StatusId=4,
                 Name="Pensioner",
                 Discount=0.5
             },
             new()
             {
-                Id=5,
+                StatusId=5,
                 Name="Tourist",
                 Discount=0.0
             }
