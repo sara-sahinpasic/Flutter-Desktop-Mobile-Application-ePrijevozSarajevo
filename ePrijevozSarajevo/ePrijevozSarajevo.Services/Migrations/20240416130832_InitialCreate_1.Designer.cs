@@ -12,8 +12,8 @@ using ePrijevozSarajevo.Services.Database;
 namespace ePrijevozSarajevo.Services.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240402160559_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240416130832_InitialCreate_1")]
+    partial class InitialCreate_1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,43 @@ namespace ePrijevozSarajevo.Services.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("ePrijevozSarajevo.Services.Database.IssuedTicket", b =>
+                {
+                    b.Property<int>("IssuedTicketId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IssuedTicketId"));
+
+                    b.Property<DateTime>("IssuedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("RouteId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TicketId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ValidFrom")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("ValidTo")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("IssuedTicketId");
+
+                    b.HasIndex("RouteId");
+
+                    b.HasIndex("TicketId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("IssuedTickets");
+                });
 
             modelBuilder.Entity("ePrijevozSarajevo.Services.Database.Manufacturer", b =>
                 {
@@ -39,6 +76,35 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.HasKey("ManufacturerId");
 
                     b.ToTable("Manufacturers");
+                });
+
+            modelBuilder.Entity("ePrijevozSarajevo.Services.Database.PaymentMethod", b =>
+                {
+                    b.Property<int>("PaymentMethodId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PaymentMethodId"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PaymentMethodId");
+
+                    b.ToTable("PaymentOptions");
+
+                    b.HasData(
+                        new
+                        {
+                            PaymentMethodId = 1,
+                            Name = "PayPal"
+                        },
+                        new
+                        {
+                            PaymentMethodId = 2,
+                            Name = "Stripe"
+                        });
                 });
 
             modelBuilder.Entity("ePrijevozSarajevo.Services.Database.Request", b =>
@@ -100,12 +166,12 @@ namespace ePrijevozSarajevo.Services.Migrations
                         new
                         {
                             RoleId = 1,
-                            Name = "User"
+                            Name = "Admin"
                         },
                         new
                         {
                             RoleId = 2,
-                            Name = "Admin"
+                            Name = "User"
                         });
                 });
 
@@ -163,9 +229,6 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -197,32 +260,86 @@ namespace ePrijevozSarajevo.Services.Migrations
                         new
                         {
                             StatusId = 1,
-                            Discount = 0.40000000000000002,
-                            Name = "Unemployed"
-                        },
-                        new
-                        {
-                            StatusId = 2,
-                            Discount = 0.14999999999999999,
-                            Name = "Employed"
-                        },
-                        new
-                        {
-                            StatusId = 3,
                             Discount = 0.29999999999999999,
                             Name = "Student"
                         },
                         new
                         {
-                            StatusId = 4,
+                            StatusId = 2,
                             Discount = 0.5,
                             Name = "Pensioner"
                         },
                         new
                         {
-                            StatusId = 5,
-                            Discount = 0.0,
-                            Name = "Tourist"
+                            StatusId = 3,
+                            Discount = 0.14999999999999999,
+                            Name = "Employed"
+                        },
+                        new
+                        {
+                            StatusId = 4,
+                            Discount = 0.40000000000000002,
+                            Name = "Unemployed"
+                        });
+                });
+
+            modelBuilder.Entity("ePrijevozSarajevo.Services.Database.Ticket", b =>
+                {
+                    b.Property<int>("TicketId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TicketId"));
+
+                    b.Property<bool>("Active")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.HasKey("TicketId");
+
+                    b.ToTable("Tickets");
+
+                    b.HasData(
+                        new
+                        {
+                            TicketId = 1,
+                            Active = true,
+                            Name = "Jednosmjerna",
+                            Price = 1.8
+                        },
+                        new
+                        {
+                            TicketId = 2,
+                            Active = true,
+                            Name = "Povratna",
+                            Price = 3.2000000000000002
+                        },
+                        new
+                        {
+                            TicketId = 3,
+                            Active = true,
+                            Name = "Jednosmjerna dječija",
+                            Price = 0.80000000000000004
+                        },
+                        new
+                        {
+                            TicketId = 4,
+                            Active = true,
+                            Name = "Povratna dječija",
+                            Price = 1.2
+                        },
+                        new
+                        {
+                            TicketId = 5,
+                            Active = true,
+                            Name = "Mjesečna",
+                            Price = 75.0
                         });
                 });
 
@@ -244,24 +361,30 @@ namespace ePrijevozSarajevo.Services.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("PasswordHash")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PasswordSalt")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProfileImagePath")
@@ -276,14 +399,13 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.Property<DateTime?>("StatusExpirationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserStatusId")
+                    b.Property<int?>("UserStatusId")
                         .HasColumnType("int");
 
                     b.HasKey("UserId");
 
                     b.HasIndex("Email")
-                        .IsUnique()
-                        .HasFilter("[Email] IS NOT NULL");
+                        .IsUnique();
 
                     b.HasIndex("RoleId");
 
@@ -306,7 +428,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.Property<int>("ManufacturerId")
                         .HasColumnType("int");
 
+                    b.Property<int>("Number")
+                        .HasColumnType("int");
+
                     b.Property<string>("RegistrationNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("VehicleTypeId")
@@ -317,8 +443,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.HasIndex("ManufacturerId");
 
                     b.HasIndex("RegistrationNumber")
-                        .IsUnique()
-                        .HasFilter("[RegistrationNumber] IS NOT NULL");
+                        .IsUnique();
 
                     b.HasIndex("VehicleTypeId");
 
@@ -341,18 +466,45 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.ToTable("VehicleTypes");
                 });
 
+            modelBuilder.Entity("ePrijevozSarajevo.Services.Database.IssuedTicket", b =>
+                {
+                    b.HasOne("ePrijevozSarajevo.Services.Database.Route", "Route")
+                        .WithMany()
+                        .HasForeignKey("RouteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ePrijevozSarajevo.Services.Database.Ticket", "Ticket")
+                        .WithMany()
+                        .HasForeignKey("TicketId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ePrijevozSarajevo.Services.Database.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Route");
+
+                    b.Navigation("Ticket");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("ePrijevozSarajevo.Services.Database.Request", b =>
                 {
                     b.HasOne("ePrijevozSarajevo.Services.Database.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ePrijevozSarajevo.Services.Database.Status", "UserStatus")
                         .WithMany()
                         .HasForeignKey("UserStatusId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
@@ -377,7 +529,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.HasOne("ePrijevozSarajevo.Services.Database.Vehicle", "Vehicle")
                         .WithMany()
                         .HasForeignKey("VehicleId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("EndStation");
@@ -392,14 +544,12 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.HasOne("ePrijevozSarajevo.Services.Database.Role", "Role")
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ePrijevozSarajevo.Services.Database.Status", "UserStatus")
                         .WithMany()
-                        .HasForeignKey("UserStatusId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .HasForeignKey("UserStatusId");
 
                     b.Navigation("Role");
 
@@ -411,13 +561,13 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.HasOne("ePrijevozSarajevo.Services.Database.Manufacturer", "Manufacturer")
                         .WithMany()
                         .HasForeignKey("ManufacturerId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ePrijevozSarajevo.Services.Database.VehicleType", "VehicleType")
                         .WithMany()
                         .HasForeignKey("VehicleTypeId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Manufacturer");

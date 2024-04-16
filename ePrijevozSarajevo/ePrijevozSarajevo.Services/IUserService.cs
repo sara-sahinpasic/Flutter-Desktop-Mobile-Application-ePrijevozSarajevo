@@ -4,13 +4,7 @@ using ePrijevozSarajevo.Model.SearchObjects;
 
 namespace ePrijevozSarajevo.Services
 {
-    public interface IUserService : IService<Model.User, UserSearchObject>
+    public interface IUserService : ICRUDService<User, UserSearchObject, UserInseretRequest, UserUpdateRequest>
     {
-        /*
-         public List<User> GetList();
-        public PagedResult<User> GetList(UserSearchObject searchObject);
-        */
-        public User Insert(UserInseretRequest request);
-        public User Update(int id, UserUpdateRequest request);
     }
 }

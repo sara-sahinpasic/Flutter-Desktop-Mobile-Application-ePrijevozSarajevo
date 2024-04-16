@@ -2,38 +2,46 @@
 
 namespace ePrijevozSarajevo.Services.Database
 {
-    public class DataContext : DbContext
+    public sealed class DataContext : DbContext
     {
         public DataContext()
         {
-
+            
         }
+        public DataContext(DbContextOptions<DataContext> options) : base(options) { }
+
         public DbSet<User> Users { get; set; } = null!;
-        public DbSet<Status> Statuses { get; set; } = null!;
         public DbSet<Role> Roles { get; set; } = null!;
-        public DbSet<Route> Routes { get; set; } = null!;
+        public DbSet<Ticket> Tickets { get; set; } = null!;
+        public DbSet<PaymentMethod> PaymentOptions { get; set; } = null!;
+        public DbSet<Status> Statuses { get; set; } = null!;
+        public DbSet<IssuedTicket> IssuedTickets { get; set; } = null!;
         public DbSet<Station> Stations { get; set; } = null!;
         public DbSet<Vehicle> Vehicles { get; set; } = null!;
         public DbSet<VehicleType> VehicleTypes { get; set; } = null!;
         public DbSet<Manufacturer> Manufacturers { get; set; } = null!;
-        //
+        public DbSet<Route> Routes { get; set; } = null!;
         public DbSet<Request> Requests { get; set; } = null!;
-        //
 
-
-
-        public DataContext(DbContextOptions options) : base(options) { }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseSqlServer("Data Source=.; Initial Catalog=ePrijevozSarajevo;Trusted_Connection=True;TrustServerCertificate=True");
+        /*protected override void OnConfiguring(DbContextOptionsBuilder options)
+        {
+            if (!options.IsConfigured)
+            {
+                options.UseSqlServer("Server=.;Database=ePrijevozSarajevo;Trusted_Connection=True;Encrypt=False;");
+            }
+        }*/
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<User>()
-                .HasIndex(u => u.Email)
+            modelBuilder.Entity<Vehicle>()
+                .HasIndex(v => v.RegistrationNumber)
                 .IsUnique();
+
+            modelBuilder.Entity<User>()
+               .HasIndex(u => u.Email)
+               .IsUnique();
 
             modelBuilder.Entity<User>()
                 .HasOne(user => user.Role)
@@ -45,14 +53,14 @@ namespace ePrijevozSarajevo.Services.Database
                 .WithMany()
                 .HasForeignKey(user => user.UserStatusId);
 
-            modelBuilder.Entity<Status>()
-                .Property(p => p.Discount)
-                .HasPrecision(5, 2);
-
             modelBuilder.Entity<Request>()
                 .HasOne(request => request.UserStatus)
                 .WithMany()
                 .HasForeignKey(r => r.UserStatusId);
+
+            modelBuilder.Entity<Status>()
+                .Property(p => p.Discount)
+                .HasPrecision(5, 2);
 
             modelBuilder.Entity<Route>()
                 .HasOne(r => r.StartStation)
@@ -64,31 +72,32 @@ namespace ePrijevozSarajevo.Services.Database
                 .WithMany()
                 .OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<Vehicle>()
-                .HasIndex(v => v.RegistrationNumber)
-                .IsUnique();
-
+            BuildPaymentOptions(modelBuilder);
             BuildUserRoles(modelBuilder);
             BuildUserStatus(modelBuilder);
-            BuildUser(modelBuilder);
+            BuildTicketData(modelBuilder);
         }
-        private static void BuildUser(ModelBuilder modelBuilder)
+
+        private static void BuildPaymentOptions(ModelBuilder modelBuilder)
         {
-            List<User> roles = new()
+            List<PaymentMethod> paymentOptions = new()
         {
             new()
             {
-                UserId = 1,
-               FirstName="",
-               RoleId=1,
-               UserStatusId=1,
-               LastName=""
-               
+                PaymentMethodId = 1,
+                Name = "PayPal"
+            },
+            new()
+            {
+                PaymentMethodId = 2,
+                Name = "Stripe"
             }
-         };
-            modelBuilder.Entity<User>()
-                .HasData(roles);
+        };
+
+            modelBuilder.Entity<PaymentMethod>()
+                .HasData(paymentOptions);
         }
+
         private static void BuildUserRoles(ModelBuilder modelBuilder)
         {
             List<Role> roles = new()
@@ -96,18 +105,19 @@ namespace ePrijevozSarajevo.Services.Database
             new()
             {
                 RoleId = 1,
-                Name = "User"
+                Name = "Admin"
             },
             new()
             {
                 RoleId = 2,
-                Name = "Admin"
+                Name = "User"
             }
         };
 
             modelBuilder.Entity<Role>()
                 .HasData(roles);
         }
+
         private static void BuildUserStatus(ModelBuilder modelBuilder)
         {
             List<Status> statuses = new()
@@ -115,40 +125,78 @@ namespace ePrijevozSarajevo.Services.Database
 
             new()
             {
-                StatusId=1,
-                Name="Unemployed",
-                Discount=0.4
-            },
-            new()
-            {
-                StatusId=2,
-                Name="Employed",
-                Discount=0.15
-            },
-            new()
-            {
-                StatusId=3,
+                StatusId = 1,
                 Name = "Student",
-                Discount=0.3
+                Discount = 0.3
 
             },
             new()
             {
-                StatusId=4,
-                Name="Pensioner",
-                Discount=0.5
+                StatusId = 2,
+                Name = "Pensioner",
+                Discount = 0.5
             },
             new()
             {
-                StatusId=5,
-                Name="Tourist",
-                Discount=0.0
+                StatusId = 3,
+                Name = "Employed",
+                Discount = 0.15
+            },
+            new()
+            {
+                StatusId = 4,
+                Name = "Unemployed",
+                Discount = 0.4
             }
         };
 
             modelBuilder.Entity<Status>()
                 .HasData(statuses);
         }
-    }
 
+        private static void BuildTicketData(ModelBuilder modelBuilder)
+        {
+            List<Ticket> tickets = new()
+        {
+            new()
+            {
+                TicketId = 1,
+                Name = "Jednosmjerna",
+                Active = true,
+                Price = 1.80
+            },
+            new()
+            {
+                TicketId = 2,
+                Name = "Povratna",
+                Active = true,
+                Price = 3.20
+            },
+            new()
+            {
+                TicketId = 3,
+                Name = "Jednosmjerna dječija",
+                Active = true,
+                Price = 0.80
+            },
+            new()
+            {
+                TicketId = 4,
+                Name = "Povratna dječija",
+                Active = true,
+                Price = 1.20
+            },
+            new()
+            {
+                TicketId = 5,
+                Name = "Mjesečna",
+                Active = true,
+                Price = 75
+            }
+        };
+            modelBuilder.Entity<Ticket>()
+                 .HasData(tickets);
+
+        }
+    }
 }

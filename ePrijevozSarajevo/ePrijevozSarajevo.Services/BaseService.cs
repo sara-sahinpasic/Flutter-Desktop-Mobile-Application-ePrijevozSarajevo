@@ -2,13 +2,13 @@
 using ePrijevozSarajevo.Model.SearchObjects;
 using ePrijevozSarajevo.Services.Database;
 using MapsterMapper;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace ePrijevozSarajevo.Services
 {
-    public class BaseService<TModel, TSearch, TdbEntity> : IService<TModel, TSearch>
+    public class BaseService<TModel, TSearch, TDbEntity> 
+        : IService<TModel, TSearch>
         where TSearch : BaseSearchObject
-        where TdbEntity : class
+        where TDbEntity : class
         where TModel : class
     {
         public DataContext Context { get; set; }
@@ -35,30 +35,32 @@ namespace ePrijevozSarajevo.Services
 
         public PagedResult<TModel> GetPaged(TSearch search)
         {
-            var result = new List<TModel>();
-            var query = Context.Set<TdbEntity>().AsQueryable();
+            List<TModel> result = new List<TModel>();
+
+            var query = Context.Set<TDbEntity>().AsQueryable();
 
             query = AddFilter(search, query);
 
-            int count = query.Count();
 
-            if (search.Page.HasValue == true && search.PageSize.HasValue == true)
+            if (search?.Page.HasValue == true && search?.PageSize.HasValue == true)
             {
-                query = query.Skip(search.Page.Value * search.PageSize.Value)
-                    .Take(search.PageSize.Value);
+                query = query.Skip(search.Page.Value * search.PageSize.Value).Take(search.PageSize.Value);
             }
 
+            int count = query.Count();
+            
             var list = query.ToList();
-            var resultList = Mapper.Map(list, result);
 
-            PagedResult<TModel> response = new PagedResult<TModel>();
-            response.ResultList = resultList;
-            response.Count = count;
+            result = Mapper.Map(list, result);
 
-            return response;
+            PagedResult<TModel> pagedResult = new PagedResult<TModel>();
+            pagedResult.ResultList = result;
+            pagedResult.Count = count;
+
+            return pagedResult;
         }
 
-        private IQueryable<TdbEntity> AddFilter(TSearch search, IQueryable<TdbEntity> query)
+        public virtual IQueryable<TDbEntity> AddFilter(TSearch search, IQueryable<TDbEntity> query)
         {
             return query;
         }

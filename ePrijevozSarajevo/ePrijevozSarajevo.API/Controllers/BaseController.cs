@@ -17,17 +17,18 @@ namespace ePrijevozSarajevo.API.Controllers
             this._service = service;
         }
 
+        [HttpGet]
+        public PagedResult<TModel> GetList([FromQuery]TSearch searchObject)
+        {
+            return _service.GetPaged(searchObject);
+        }
+
         [HttpGet("{id}")]
         public TModel GetById(int id)
         {
             return _service.GetById(id);
         }
 
-        [HttpGet]
-        public PagedResult<TModel> GetList([FromQuery]TSearch search)
-        {
-            return _service.GetPaged(search);
-        }
 
     }
 }

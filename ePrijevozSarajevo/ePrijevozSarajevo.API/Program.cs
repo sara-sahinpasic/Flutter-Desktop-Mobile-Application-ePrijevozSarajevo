@@ -2,6 +2,7 @@ using ePrijevozSarajevo.Services;
 using ePrijevozSarajevo.Services.Database;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,15 +16,11 @@ builder.Services.AddTransient<IStationsService, StationsService>();
 builder.Services.AddTransient<IRequestsService, RequestService>();
 
 //Connection string EF
-var connectionString = builder.Configuration.GetConnectionString("ePrijevozSarajevoConnection");
-//builder.Services.AddDbContext<DataContext>(options =>
- //   options.UseSqlServer(connectionString));
-
 builder.Services.AddDbContext<DataContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("ePrijevozSarajevoConnection"),
-        b => b.MigrationsAssembly("ePrijevozSarajevo.Services.Migrations"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"));
 });
+
 
 //Mapster
 builder.Services.AddMapster();
