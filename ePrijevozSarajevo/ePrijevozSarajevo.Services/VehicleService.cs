@@ -2,6 +2,7 @@
 using ePrijevozSarajevo.Model.SearchObjects;
 using ePrijevozSarajevo.Services.Database;
 using MapsterMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace ePrijevozSarajevo.Services
 {
@@ -11,12 +12,21 @@ namespace ePrijevozSarajevo.Services
 
         public override IQueryable<Database.Vehicle> AddFilter(VehicleSearchObject search, IQueryable<Database.Vehicle> query)
         {
-            var filteredQuery = base.AddFilter(search, query);
+            query = base.AddFilter(search, query);
+           
             if (!string.IsNullOrWhiteSpace(search?.RegistrationNumberGTE))
             {
-                filteredQuery = filteredQuery.Where(x => x.RegistrationNumber.Contains(search.RegistrationNumberGTE));
+                query = query.Where(x => x.RegistrationNumber.Contains(search.RegistrationNumberGTE));
             }
-            return filteredQuery;
+            if (search?.IsVehicleTypeIncluded == true)
+            {
+                query = query.Include(x => x.VehicleType);
+            }
+            if (search?.IsManufacturerIncluded == true)
+            {
+                query = query.Include(x => x.Manufacturer);
+            }
+            return query;
         }
     }
 }

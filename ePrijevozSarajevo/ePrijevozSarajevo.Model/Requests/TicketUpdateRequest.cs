@@ -1,8 +1,7 @@
-﻿namespace ePrijevozSarajevo.Services.Database
+﻿namespace ePrijevozSarajevo.Model.Requests
 {
-    public class Ticket
+    public class TicketUpdateRequest
     {
-        public int TicketId { get; set; }
         public string Name { get; set; } = null!;
         public double Price { get; set; }
         public bool Active { get; set; }

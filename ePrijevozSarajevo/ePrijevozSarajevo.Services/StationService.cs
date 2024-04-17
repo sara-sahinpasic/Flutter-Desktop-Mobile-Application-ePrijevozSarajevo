@@ -19,10 +19,10 @@ namespace ePrijevozSarajevo.Services
                 query = query.Where(x => x.Name.StartsWith(search.NameGTE));
             }
 
-            if (!string.IsNullOrWhiteSpace(search.DateGTE.Date.ToString()))
+            /*if (!string.IsNullOrWhiteSpace(search.DateGTE.Date.ToString()))
             {
                 query = query.OrderBy(x => x.Date);
-            }
+            }*/
 
             return query;
         }

@@ -2,6 +2,7 @@
 using ePrijevozSarajevo.Model.SearchObjects;
 using ePrijevozSarajevo.Services.Database;
 using MapsterMapper;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -9,9 +10,6 @@ namespace ePrijevozSarajevo.Services
 {
     public class UserService : BaseCRUDService<Model.User, UserSearchObject, Database.User, UserInseretRequest, UserUpdateRequest>, IUserService
     {
-        /*public DataContext context;
-        public IMapper mapper;*/
-
         public UserService(DataContext context, IMapper mapper) : base(context, mapper) { }
 
         public override IQueryable<Database.User> AddFilter(UserSearchObject search, IQueryable<Database.User> query)
@@ -25,6 +23,14 @@ namespace ePrijevozSarajevo.Services
             if (!string.IsNullOrWhiteSpace(search?.LastNameGTE))
             {
                 query = query.Where(x => x.LastName.StartsWith(search.LastNameGTE));
+            }
+            if (search?.IsRoleIncluded == true)
+            {
+                query = query.Include(x => x.Role);
+            }
+            if (search?.IsUserStatusIncluded == true)
+            {
+                query = query.Include(x => x.UserStatus);
             }
             return query;
         }

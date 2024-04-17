@@ -1,4 +1,4 @@
-﻿namespace ePrijevozSarajevo.Services.Database
+﻿namespace ePrijevozSarajevo.Model
 {
     public class Ticket
     {

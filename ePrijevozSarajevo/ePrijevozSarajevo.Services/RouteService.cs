@@ -17,23 +17,14 @@ namespace ePrijevozSarajevo.Services
         {
             query = base.AddFilter(search, query);
 
-           /* if (!string.IsNullOrWhiteSpace(search?.StartStationGTE.ToString()))
+            /*if (!string.IsNullOrWhiteSpace(search?.StartStationIdGTE.ToString()))
             {
-                query = query.Where(x => x.StartStation.ToString().StartsWith(search.StartStationGTE.ToString()));
-            }
-
-            if (!string.IsNullOrWhiteSpace(search?.EndStationGTE.ToString()))
-            {
-                query = query.Where(x => x.EndStation.ToString().StartsWith(search.EndStationGTE.ToString()));
+                query = query.Where(x => x.StartStation.StationId.ToString().StartsWith(search.StartStationIdGTE.ToString()));
             }*/
 
-            if (search.IsStartStationIncluded == true)
+            if (search.IsStationIncluded == true)
             {
-                query = query.Include(x => x.StartStation).ThenInclude(x => x.Name);
-            }
-            if (search.IsEndStationIncluded == true)
-            {
-                query = query.Include(x => x.StartStation).ThenInclude(x => x.Name);
+                query = query.Include(x => x.StartStation);
             }
 
             return query;
