@@ -1,60 +1,44 @@
-﻿using ePrijevozSarajevo.Model;
-using ePrijevozSarajevo.Model.Requests;
+﻿using ePrijevozSarajevo.Model.Requests;
+using ePrijevozSarajevo.Model.SearchObjects;
 using ePrijevozSarajevo.Services.Database;
 using MapsterMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace ePrijevozSarajevo.Services
 {
-    public class RequestService : IRequestsService
+    public class RequestService : BaseCRUDService<Model.Request, RequestSearchObject, Database.Request, RequestInsertRequest, RequestUpdateRequest>, IRequestService
     {
-        public DataContext _context;
-        public IMapper _mapper;
-
-        public RequestService(DataContext context, IMapper mapper)
+        public RequestService(DataContext context, IMapper mapper) : base(context, mapper)
         {
-            this._context = context;
-            this._mapper = mapper;
         }
-        /*public List<Request> RequestsList = new List<Request>()
+
+        public override IQueryable<Request> AddFilter(RequestSearchObject search, IQueryable<Request> query)
         {
-            new Request()
+            query = base.AddFilter(search, query);
+
+            if (!string.IsNullOrWhiteSpace(search?.UserIdFTS.ToString()))
             {
-                RequestId = 1,
-                Active = true,
-                Approved = true,
-                DocumentLink = "test"
+                query = query.Where(x => x.UserId == search.UserIdFTS);
             }
-        };*/
-        public List<Model.Request> GetList()
-        {
-            var result = new List<Model.Request>();
-            var list = _context.Requests.ToList();
 
-            _mapper.Map(list, result);
-            return result;
-        }
+            if (!string.IsNullOrWhiteSpace(search?.UserStatusIdFTS.ToString()))
+            {
+                query = query.Where(x => x.UserStatusId == search.UserStatusIdFTS);
+            }
 
-        public Model.Request Insert(RequestInsertRequest request)
-        {
-            var entity = new Database.Request();
+            /*
+             if (!string.IsNullOrWhiteSpace(search?.UserStatusFTS.ToString()))
+            {
+                query = query.Where(x => x.UserStatus.ToString().StartsWith(search.UserStatusFTS.ToString()));
+            }
+            */
 
-            _mapper.Map(request, entity);
+            if (search?.IsUserIncluded == true)
+            {
+                query = query.Include(x => x.User).ThenInclude(x => x.UserStatus);
+            }
 
-            _context.Add(entity);
-            _context.SaveChanges();
-
-            return _mapper.Map<Model.Request>(entity);
-        }
-
-        public Model.Request Update(int id, RequestUpdateRequest request)
-        {
-            var entity = _context.Requests.Find(id);
-
-            _mapper.Map(request, entity);
-
-            _context.SaveChanges();
-
-            return _mapper.Map<Model.Request>(entity);
+            return query;
         }
     }
 };

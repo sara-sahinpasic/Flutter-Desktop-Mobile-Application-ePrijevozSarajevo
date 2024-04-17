@@ -1,5 +1,4 @@
-﻿using ePrijevozSarajevo.Model;
-using ePrijevozSarajevo.Model.Requests;
+﻿using ePrijevozSarajevo.Model.Requests;
 using ePrijevozSarajevo.Model.SearchObjects;
 using ePrijevozSarajevo.Services.Database;
 using MapsterMapper;
@@ -10,8 +9,8 @@ namespace ePrijevozSarajevo.Services
 {
     public class UserService : BaseCRUDService<Model.User, UserSearchObject, Database.User, UserInseretRequest, UserUpdateRequest>, IUserService
     {
-        public DataContext context;
-        public IMapper mapper;
+        /*public DataContext context;
+        public IMapper mapper;*/
 
         public UserService(DataContext context, IMapper mapper) : base(context, mapper) { }
 

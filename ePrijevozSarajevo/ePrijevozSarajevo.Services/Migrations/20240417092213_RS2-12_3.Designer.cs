@@ -12,8 +12,8 @@ using ePrijevozSarajevo.Services.Database;
 namespace ePrijevozSarajevo.Services.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240416130832_InitialCreate_1")]
-    partial class InitialCreate_1
+    [Migration("20240417092213_RS2-12_3")]
+    partial class RS212_3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -198,10 +198,10 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.Property<int>("StartStationId")
                         .HasColumnType("int");
 
-                    b.Property<TimeSpan>("TimeOfArrival")
+                    b.Property<TimeSpan?>("TimeOfArrival")
                         .HasColumnType("time");
 
-                    b.Property<TimeSpan>("TimeOfDeparture")
+                    b.Property<TimeSpan?>("TimeOfDeparture")
                         .HasColumnType("time");
 
                     b.Property<int>("VehicleId")
@@ -212,8 +212,6 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.HasIndex("EndStationId");
 
                     b.HasIndex("StartStationId");
-
-                    b.HasIndex("VehicleId");
 
                     b.ToTable("Routes");
                 });
@@ -226,11 +224,17 @@ namespace ePrijevozSarajevo.Services.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StationId"));
 
-                    b.Property<DateTime>("DateCreated")
+                    b.Property<DateTime?>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DateCreated")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<TimeSpan?>("Time")
+                        .HasColumnType("time");
 
                     b.HasKey("StationId");
 
@@ -526,17 +530,9 @@ namespace ePrijevozSarajevo.Services.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("ePrijevozSarajevo.Services.Database.Vehicle", "Vehicle")
-                        .WithMany()
-                        .HasForeignKey("VehicleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("EndStation");
 
                     b.Navigation("StartStation");
-
-                    b.Navigation("Vehicle");
                 });
 
             modelBuilder.Entity("ePrijevozSarajevo.Services.Database.User", b =>

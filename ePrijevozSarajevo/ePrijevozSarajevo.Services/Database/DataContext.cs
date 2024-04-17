@@ -23,13 +23,13 @@ namespace ePrijevozSarajevo.Services.Database
         public DbSet<Route> Routes { get; set; } = null!;
         public DbSet<Request> Requests { get; set; } = null!;
 
-        /*protected override void OnConfiguring(DbContextOptionsBuilder options)
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             if (!options.IsConfigured)
             {
-                options.UseSqlServer("Server=.;Database=ePrijevozSarajevo;Trusted_Connection=True;Encrypt=False;");
+                options.UseSqlServer("Server=.;Database=140261;Trusted_Connection=True;Encrypt=False;");
             }
-        }*/
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

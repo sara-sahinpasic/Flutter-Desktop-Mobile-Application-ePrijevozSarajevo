@@ -22,7 +22,7 @@ namespace ePrijevozSarajevo.Services
 
         public TModel GetById(int id)
         {
-            var entitiy = Context.Set<TModel>().Find(id);
+            var entitiy = Context.Set<TDbEntity>().Find(id);
             if (entitiy != null)
             {
                 return Mapper.Map<TModel>(entitiy);

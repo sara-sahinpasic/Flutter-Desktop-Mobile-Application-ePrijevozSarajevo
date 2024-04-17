@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ePrijevozSarajevo.Services.Database;
 
@@ -11,9 +12,11 @@ using ePrijevozSarajevo.Services.Database;
 namespace ePrijevozSarajevo.Services.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240417085101_RS2-12_1")]
+    partial class RS212_1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -195,10 +198,10 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.Property<int>("StartStationId")
                         .HasColumnType("int");
 
-                    b.Property<TimeSpan?>("TimeOfArrival")
+                    b.Property<TimeSpan>("TimeOfArrival")
                         .HasColumnType("time");
 
-                    b.Property<TimeSpan?>("TimeOfDeparture")
+                    b.Property<TimeSpan>("TimeOfDeparture")
                         .HasColumnType("time");
 
                     b.Property<int>("VehicleId")
@@ -209,6 +212,8 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.HasIndex("EndStationId");
 
                     b.HasIndex("StartStationId");
+
+                    b.HasIndex("VehicleId");
 
                     b.ToTable("Routes");
                 });
@@ -221,17 +226,17 @@ namespace ePrijevozSarajevo.Services.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StationId"));
 
-                    b.Property<DateTime?>("Date")
+                    b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("DateCreated")
+                    b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<TimeSpan?>("Time")
-                        .HasColumnType("time");
+                    b.Property<DateTime>("Time")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("StationId");
 
@@ -527,9 +532,17 @@ namespace ePrijevozSarajevo.Services.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
+                    b.HasOne("ePrijevozSarajevo.Services.Database.Vehicle", "Vehicle")
+                        .WithMany()
+                        .HasForeignKey("VehicleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("EndStation");
 
                     b.Navigation("StartStation");
+
+                    b.Navigation("Vehicle");
                 });
 
             modelBuilder.Entity("ePrijevozSarajevo.Services.Database.User", b =>

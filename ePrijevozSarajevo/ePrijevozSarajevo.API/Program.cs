@@ -2,7 +2,6 @@ using ePrijevozSarajevo.Services;
 using ePrijevozSarajevo.Services.Database;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,17 +9,20 @@ var builder = WebApplication.CreateBuilder(args);
 
 //Dependency Injection
 builder.Services.AddTransient<IUserService, UserService>();
-builder.Services.AddTransient<IVehiclesService, VehiclesService>();
-builder.Services.AddTransient<IRoutesService, RoutesService>();
-builder.Services.AddTransient<IStationsService, StationsService>();
-builder.Services.AddTransient<IRequestsService, RequestService>();
+builder.Services.AddTransient<IVehicleService, VehicleService>();
+builder.Services.AddTransient<IRouteService, RouteService>();
+builder.Services.AddTransient<IStationService, StationService>();
+builder.Services.AddTransient<IRequestService, RequestService>();
+
+builder.Services.AddTransient<IManufacturerService, ManufacturerService>();
+builder.Services.AddTransient<IVehicleTypeService, VehicleTypeService>();
+
 
 //Connection string EF
 builder.Services.AddDbContext<DataContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"));
 });
-
 
 //Mapster
 builder.Services.AddMapster();
