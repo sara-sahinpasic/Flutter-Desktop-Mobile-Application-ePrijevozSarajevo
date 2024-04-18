@@ -16,6 +16,8 @@ builder.Services.AddTransient<IRequestService, RequestService>();
 builder.Services.AddTransient<IManufacturerService, ManufacturerService>();
 builder.Services.AddTransient<IVehicleTypeService, VehicleTypeService>();
 builder.Services.AddTransient<ITicketService, TicketService>();
+builder.Services.AddTransient<IIssuedTicketService, IssuedTicketService>();
+
 
 //Connection string EF
 builder.Services.AddDbContext<DataContext>(options =>

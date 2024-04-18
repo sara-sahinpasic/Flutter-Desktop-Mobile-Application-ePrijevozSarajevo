@@ -2,6 +2,6 @@
 {
     public class VehicleTypeSearchObject : BaseSearchObject
     {
-        public string? Name { get; set; }
+        public string? NameGTE { get; set; }
     }
 }
