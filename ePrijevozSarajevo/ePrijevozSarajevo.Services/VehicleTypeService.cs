@@ -6,7 +6,7 @@ using MapsterMapper;
 namespace ePrijevozSarajevo.Services
 {
     public class VehicleTypeService : BaseCRUDService<Model.VehicleType,
-        VehicleTypeSearchObject, Database.VehicleType, VehicleTypeInsertRequest, VehicleTypeUpdateRequest>, IVehicleTypeService
+        VehicleTypeSearchObject, Database.VehicleType, VehicleTypeUpsertRequest, VehicleTypeUpsertRequest>, IVehicleTypeService
     {
         public VehicleTypeService(DataContext context, IMapper mapper) : base(context, mapper) { }
         public override IQueryable<VehicleType> AddFilter(VehicleTypeSearchObject search, IQueryable<VehicleType> query)

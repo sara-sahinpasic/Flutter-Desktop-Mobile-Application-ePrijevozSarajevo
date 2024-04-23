@@ -7,7 +7,7 @@ namespace ePrijevozSarajevo.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ManufacturerController : BaseCRUDController<Model.Manufacturer, ManufacturerSearchObject, ManufacturerInsertRequest, ManufacturerUpdateRequest>
+    public class ManufacturerController : BaseCRUDController<Model.Manufacturer, ManufacturerSearchObject, ManufacturerUpsertRequest, ManufacturerUpsertRequest>
     {
         public ManufacturerController(IManufacturerService service) : base(service)
         {

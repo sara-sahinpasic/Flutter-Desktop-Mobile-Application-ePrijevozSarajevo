@@ -1,6 +1,6 @@
 ﻿namespace ePrijevozSarajevo.Model.Requests
 {
-    public class ManufacturerUpdateRequest
+    public class ManufacturerUpsertRequest
     {
         public string? Name { get; set; }
     }

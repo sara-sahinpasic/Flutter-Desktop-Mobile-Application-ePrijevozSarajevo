@@ -1,7 +1,8 @@
 ﻿namespace ePrijevozSarajevo.Model.Requests
 {
-    public class VehicleTypeInsertRequest
+    public class VehicleTypeUpsertRequest
     {
         public string? Name { get; set; }
+
     }
 }

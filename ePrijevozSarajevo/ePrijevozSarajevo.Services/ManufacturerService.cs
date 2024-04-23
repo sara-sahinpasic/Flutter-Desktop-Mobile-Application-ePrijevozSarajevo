@@ -6,7 +6,7 @@ using MapsterMapper;
 namespace ePrijevozSarajevo.Services
 {
     public class ManufacturerService : BaseCRUDService<Model.Manufacturer, ManufacturerSearchObject, Database.Manufacturer,
-        ManufacturerInsertRequest, ManufacturerUpdateRequest>, IManufacturerService
+        ManufacturerUpsertRequest, ManufacturerUpsertRequest>, IManufacturerService
     {
         public ManufacturerService(DataContext context, IMapper mapper) : base(context, mapper)
         {

@@ -3,7 +3,7 @@ using ePrijevozSarajevo.Model.SearchObjects;
 
 namespace ePrijevozSarajevo.Services
 {
-    public interface IManufacturerService : ICRUDService<Model.Manufacturer, ManufacturerSearchObject, ManufacturerInsertRequest, ManufacturerUpdateRequest>
+    public interface IManufacturerService : ICRUDService<Model.Manufacturer, ManufacturerSearchObject, ManufacturerUpsertRequest, ManufacturerUpsertRequest>
     {
     }
 }
