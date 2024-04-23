@@ -13,5 +13,11 @@ namespace ePrijevozSarajevo.API.Controllers
         public TicketController(ITicketService service) : base(service)
         {
         }
+
+        [HttpPut("{id}/activate")]
+        public Ticket Activate(int id)
+        {
+            return (_service as ITicketService).Activate(id);
+        }
     }
 }

@@ -6,7 +6,7 @@ namespace ePrijevozSarajevo.Services.Database
     {
         public DataContext()
         {
-            
+
         }
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
@@ -162,35 +162,31 @@ namespace ePrijevozSarajevo.Services.Database
             {
                 TicketId = 1,
                 Name = "Jednosmjerna",
-                Active = true,
-                Price = 1.80
+                Price = 1.80,
+                StateMachine = null
             },
             new()
             {
                 TicketId = 2,
                 Name = "Povratna",
-                Active = true,
                 Price = 3.20
             },
             new()
             {
                 TicketId = 3,
                 Name = "Jednosmjerna dječija",
-                Active = true,
                 Price = 0.80
             },
             new()
             {
                 TicketId = 4,
                 Name = "Povratna dječija",
-                Active = true,
                 Price = 1.20
             },
             new()
             {
                 TicketId = 5,
                 Name = "Mjesečna",
-                Active = true,
                 Price = 75
             }
         };

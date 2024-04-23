@@ -1,5 +1,6 @@
 using ePrijevozSarajevo.Services;
 using ePrijevozSarajevo.Services.Database;
+using ePrijevozSarajevo.Services.TicketsStateMachine;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,6 +18,15 @@ builder.Services.AddTransient<IManufacturerService, ManufacturerService>();
 builder.Services.AddTransient<IVehicleTypeService, VehicleTypeService>();
 builder.Services.AddTransient<ITicketService, TicketService>();
 builder.Services.AddTransient<IIssuedTicketService, IssuedTicketService>();
+
+//State machine
+builder.Services.AddTransient<BaseTicketState>();
+builder.Services.AddTransient<InitialTicketState>();
+builder.Services.AddTransient<DraftTicketState>();
+builder.Services.AddTransient<ActiveTicketState>();
+
+
+
 
 
 //Connection string EF
