@@ -3,17 +3,17 @@ using MapsterMapper;
 
 namespace ePrijevozSarajevo.Services.TicketsStateMachine
 {
-    public class ActiveTicketState : BaseTicketState
+    public class HiddenTicketState : BaseTicketState
     {
-        public ActiveTicketState(DataContext context, IMapper mapper, IServiceProvider serviceProvider) : base(context, mapper, serviceProvider)
+        public HiddenTicketState(DataContext context, IMapper mapper, IServiceProvider serviceProvider) : base(context, mapper, serviceProvider)
         {
         }
-        public override Model.Ticket Hide(int id)
+        public override Model.Ticket Edit(int id)
         {
             var set = Context.Set<Database.Ticket>();
             var entity = set.Find(id);
 
-            entity.StateMachine = "hidden";
+            entity.StateMachine = "draft";
 
             Context.SaveChanges();
             return Mapper.Map<Model.Ticket>(entity);

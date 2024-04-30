@@ -45,5 +45,19 @@ namespace ePrijevozSarajevo.Services
             var state = TicketState.CreateState(entity.StateMachine);
             return state.Activate(id);
         }
+
+        public Model.Ticket Edit(int id)
+        {
+            var entity = GetById(id);
+            var state = TicketState.CreateState(entity.StateMachine);
+            return state.Edit(id);
+        }
+
+        public Model.Ticket Hide(int id)
+        {
+            var entity = GetById(id);
+            var state = TicketState.CreateState(entity.StateMachine);
+            return state.Hide(id);
+        }
     }
 }

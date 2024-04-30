@@ -31,5 +31,15 @@ namespace ePrijevozSarajevo.Services.TicketsStateMachine
             Context.SaveChanges();
             return Mapper.Map<Model.Ticket>(entity);
         }
+        public override Model.Ticket Hide(int id)
+        {
+            var set = Context.Set<Database.Ticket>();
+            var entity = set.Find(id);
+
+            entity.StateMachine = "hidden";
+
+            Context.SaveChanges();
+            return Mapper.Map<Model.Ticket>(entity);
+        }
     }
 }

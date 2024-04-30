@@ -33,6 +33,10 @@ namespace ePrijevozSarajevo.Services.TicketsStateMachine
         {
             throw new Exception("Method not allowed");
         }
+        public virtual Model.Ticket Edit(int id)
+        {
+            throw new Exception("Method not allowed");
+        }
 
         public BaseTicketState CreateState(string stateName)
         {
@@ -44,6 +48,8 @@ namespace ePrijevozSarajevo.Services.TicketsStateMachine
                     return ServiceProvider.GetService<DraftTicketState>();
                 case "active":
                     return ServiceProvider.GetService<ActiveTicketState>();
+                case "hidden":
+                    return ServiceProvider.GetService<HiddenTicketState>();
                 default: throw new Exception("State not recognized");
             }
         }

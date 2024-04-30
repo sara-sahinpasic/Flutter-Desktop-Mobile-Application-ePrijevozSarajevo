@@ -24,9 +24,7 @@ builder.Services.AddTransient<BaseTicketState>();
 builder.Services.AddTransient<InitialTicketState>();
 builder.Services.AddTransient<DraftTicketState>();
 builder.Services.AddTransient<ActiveTicketState>();
-
-
-
+builder.Services.AddTransient<HiddenTicketState>();
 
 
 //Connection string EF

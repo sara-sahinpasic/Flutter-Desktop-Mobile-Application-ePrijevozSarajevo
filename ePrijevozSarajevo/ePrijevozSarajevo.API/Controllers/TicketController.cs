@@ -14,10 +14,21 @@ namespace ePrijevozSarajevo.API.Controllers
         {
         }
 
+        //State machine
         [HttpPut("{id}/activate")]
         public Ticket Activate(int id)
         {
             return (_service as ITicketService).Activate(id);
+        }
+        [HttpPut("{id}/hide")]
+        public Ticket Hide(int id)
+        {
+            return (_service as ITicketService).Hide(id);
+        }
+        [HttpPut("{id}/edit")]
+        public Ticket Edit(int id)
+        {
+            return (_service as ITicketService).Edit(id);
         }
     }
 }
