@@ -37,6 +37,10 @@ namespace ePrijevozSarajevo.Services.TicketsStateMachine
         {
             throw new Exception("Method not allowed");
         }
+        public virtual List<string> AllowedActions(Ticket entity)
+        {
+            throw new Exception("Method not allowed");
+        }
 
         public BaseTicketState CreateState(string stateName)
         {

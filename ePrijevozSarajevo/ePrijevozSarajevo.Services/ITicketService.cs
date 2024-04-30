@@ -9,6 +9,6 @@ namespace ePrijevozSarajevo.Services
         public Ticket Activate(int id);
         public Ticket Edit(int id);
         public Ticket Hide(int id);
-
+        public List<string> AllowedActions(int id);
     }
 }

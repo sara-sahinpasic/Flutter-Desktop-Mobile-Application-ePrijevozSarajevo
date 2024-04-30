@@ -30,5 +30,10 @@ namespace ePrijevozSarajevo.API.Controllers
         {
             return (_service as ITicketService).Edit(id);
         }
+        [HttpGet("{id}/allowedActions")]
+        public List<string> AllowedActions(int id)
+        {
+            return (_service as ITicketService).AllowedActions(id);
+        }
     }
 }

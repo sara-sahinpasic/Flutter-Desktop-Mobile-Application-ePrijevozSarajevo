@@ -41,5 +41,9 @@ namespace ePrijevozSarajevo.Services.TicketsStateMachine
             Context.SaveChanges();
             return Mapper.Map<Model.Ticket>(entity);
         }
+        public override List<string> AllowedActions(Ticket entity)
+        {
+            return new List<string>() { nameof(Update), nameof(Activate), nameof(Hide) };
+        }
     }
 }
