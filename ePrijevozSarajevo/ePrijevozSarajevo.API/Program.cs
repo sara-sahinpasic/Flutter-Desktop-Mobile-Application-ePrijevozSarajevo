@@ -1,3 +1,4 @@
+using ePrijevozSarajevo.API.Filters;
 using ePrijevozSarajevo.Services;
 using ePrijevozSarajevo.Services.Database;
 using ePrijevozSarajevo.Services.TicketsStateMachine;
@@ -36,7 +37,11 @@ builder.Services.AddDbContext<DataContext>(options =>
 //Mapster
 builder.Services.AddMapster();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(x =>
+{
+    x.Filters.Add<ExceptionFilter>();
+});
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

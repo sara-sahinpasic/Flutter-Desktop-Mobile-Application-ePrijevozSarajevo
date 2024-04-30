@@ -1,4 +1,5 @@
-﻿using ePrijevozSarajevo.Model.Requests;
+﻿using ePrijevozSarajevo.Model;
+using ePrijevozSarajevo.Model.Requests;
 using ePrijevozSarajevo.Services.Database;
 using MapsterMapper;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,23 +24,23 @@ namespace ePrijevozSarajevo.Services.TicketsStateMachine
         }
         public virtual Model.Ticket Update(int id, TicketUpdateRequest request)
         {
-            throw new Exception("Method not allowed");
+            throw new UserException("Method not allowed");
         }
         public virtual Model.Ticket Activate(int id)
         {
-            throw new Exception("Method not allowed");
+            throw new UserException("Method not allowed");
         }
         public virtual Model.Ticket Hide(int id)
         {
-            throw new Exception("Method not allowed");
+            throw new UserException("Method not allowed");
         }
         public virtual Model.Ticket Edit(int id)
         {
-            throw new Exception("Method not allowed");
+            throw new UserException("Method not allowed");
         }
-        public virtual List<string> AllowedActions(Ticket entity)
+        public virtual List<string> AllowedActions(Database.Ticket entity)
         {
-            throw new Exception("Method not allowed");
+            throw new UserException("Method not allowed");
         }
 
         public BaseTicketState CreateState(string stateName)

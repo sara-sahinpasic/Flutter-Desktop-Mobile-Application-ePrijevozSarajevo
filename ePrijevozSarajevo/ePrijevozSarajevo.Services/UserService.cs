@@ -3,6 +3,7 @@ using ePrijevozSarajevo.Model.SearchObjects;
 using ePrijevozSarajevo.Services.Database;
 using MapsterMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -10,7 +11,12 @@ namespace ePrijevozSarajevo.Services
 {
     public class UserService : BaseCRUDService<Model.User, UserSearchObject, Database.User, UserInseretRequest, UserUpdateRequest>, IUserService
     {
-        public UserService(DataContext context, IMapper mapper) : base(context, mapper) { }
+        ILogger<UserService> _logger;
+
+        public UserService(DataContext context, IMapper mapper, ILogger<UserService> logger) : base(context, mapper)
+        {
+            this._logger = logger;
+        }
 
         public override IQueryable<Database.User> AddFilter(UserSearchObject search, IQueryable<Database.User> query)
         {
@@ -37,6 +43,8 @@ namespace ePrijevozSarajevo.Services
 
         public override void BeforeInsert(UserInseretRequest request, Database.User entity)
         {
+            _logger.LogInformation($"Adding user: {entity.FirstName} {entity.LastName}");
+
             if (request.Password != request.PasswordConfirmation)
             {
                 throw new Exception("Password and password confirmation must be the same.");

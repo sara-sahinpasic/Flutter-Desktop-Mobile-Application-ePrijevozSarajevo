@@ -3,15 +3,20 @@ using ePrijevozSarajevo.Model.SearchObjects;
 using ePrijevozSarajevo.Services.Database;
 using ePrijevozSarajevo.Services.TicketsStateMachine;
 using MapsterMapper;
+using Microsoft.Extensions.Logging;
 
 namespace ePrijevozSarajevo.Services
 {
     public class TicketService : BaseCRUDService<Model.Ticket, TicketSearchObject, Database.Ticket, TicketInsertRequest, TicketUpdateRequest>, ITicketService
     {
+        ILogger<TicketService> _logger;
+
         public BaseTicketState TicketState { get; set; }
-        public TicketService(DataContext context, IMapper mapper, BaseTicketState ticketState) : base(context, mapper)
+        public TicketService(DataContext context, IMapper mapper, BaseTicketState ticketState, ILogger<TicketService> logger)
+            : base(context, mapper)
         {
             TicketState = ticketState;
+            this._logger = logger;
         }
 
 
@@ -62,6 +67,9 @@ namespace ePrijevozSarajevo.Services
 
         public List<string> AllowedActions(int id)
         {
+            _logger.LogInformation($"Allowed actions for: {id}");
+
+
             if (id <= 0)
             {
                 var state = TicketState.CreateState("initial");
