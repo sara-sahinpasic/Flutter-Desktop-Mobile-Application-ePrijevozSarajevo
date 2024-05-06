@@ -91,5 +91,23 @@ namespace ePrijevozSarajevo.Services
             entity.PasswordSalt = GenerateSalt();
             entity.PasswordHash = GenerateHash(entity.PasswordSalt, request.Password);
         }
+
+        public Model.User Login(string username, string password)
+        {
+            var entity = Context.Users.FirstOrDefault(x => username == username);
+            if (entity == null)
+            {
+                return null;
+            }
+
+            var hash = GenerateHash(entity.PasswordSalt, password);
+
+            if (hash != entity.PasswordHash)
+            {
+                return null;
+            }
+
+            return Mapper.Map<Model.User>(entity);
+        }
     }
 }
