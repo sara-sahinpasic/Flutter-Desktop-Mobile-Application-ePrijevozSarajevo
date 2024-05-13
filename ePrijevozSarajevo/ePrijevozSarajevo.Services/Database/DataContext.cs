@@ -22,6 +22,7 @@ namespace ePrijevozSarajevo.Services.Database
         public DbSet<Manufacturer> Manufacturers { get; set; } = null!;
         public DbSet<Route> Routes { get; set; } = null!;
         public DbSet<Request> Requests { get; set; } = null!;
+        public DbSet<UserRole> UserRoles { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
@@ -43,10 +44,10 @@ namespace ePrijevozSarajevo.Services.Database
                .HasIndex(u => u.Email)
                .IsUnique();
 
-            modelBuilder.Entity<User>()
+            /*modelBuilder.Entity<User>()
                 .HasOne(user => user.Role)
                 .WithMany()
-                .HasForeignKey(r => r.RoleId);
+                .HasForeignKey(r => r.RoleId);*/
 
             modelBuilder.Entity<User>()
                 .HasOne(user => user.UserStatus)
@@ -72,12 +73,77 @@ namespace ePrijevozSarajevo.Services.Database
                 .WithMany()
                 .OnDelete(DeleteBehavior.NoAction);
 
+             //modelBuilder.Entity<UserRole>(entity =>
+             //{
+             //    entity.HasKey(e => e.UserRoleId);
+
+             //    entity.ToTable("KorisniciUloge");
+
+             //    entity.Property(e => e.UserRoleId).HasColumnName("UserRoleId");
+             //    entity.Property(e => e.ModificationDate).HasColumnType("datetime");
+             //    entity.Property(e => e.User).HasColumnName("UserId");
+             //    entity.Property(e => e.Role).HasColumnName("RoleId");
+
+             //    entity.HasOne(d => d.User).WithMany(p => p.UserRoles)
+             //        .HasForeignKey(d => d.UserId)
+             //        .OnDelete(DeleteBehavior.ClientSetNull)
+             //        .HasConstraintName("FK_UserRole_User");
+
+             //    entity.HasOne(d => d.Role).WithMany(p => p.UserRoles)
+             //        .HasForeignKey(d => d.RoleId)
+             //        .OnDelete(DeleteBehavior.ClientSetNull)
+             //        .HasConstraintName("FK_UserRole_Role");
+             //});
+
+            //BuildUserRoles(modelBuilder);
+            BuildRoles(modelBuilder);
             BuildPaymentOptions(modelBuilder);
-            BuildUserRoles(modelBuilder);
             BuildUserStatus(modelBuilder);
             BuildTicketData(modelBuilder);
         }
+        //private static void BuildUserRoles(ModelBuilder modelBuilder)
+        //{
+        //    List<UserRole> userRoles = new()
+        //{
+        //    new()
+        //    {
+        //        UserRoleId=1,
+        //        UserId=8,
+        //        RoleId = 1,
+        //        ModificationDate = DateTime.Now
+        //    },
+        //    new()
+        //    {
+        //        UserRoleId=2,
+        //        UserId=9,
+        //        RoleId = 2,
+        //        ModificationDate = DateTime.Now
+        //    }
+        //};
+        //    modelBuilder.Entity<UserRole>()
+        //            .HasData(userRoles);
+        //}
+        private static void BuildRoles(ModelBuilder modelBuilder)
+        {
+            List<Role> roles = new()
+        {
+            new()
+            {
+                RoleId = 1,
+                Name = "Admin"
+            },
+            new()
+            {
+                RoleId = 2,
+                Name = "User"
+            }
+        };
 
+            modelBuilder.Entity<Role>()
+                .HasData(roles);
+        }
+
+        //
         private static void BuildPaymentOptions(ModelBuilder modelBuilder)
         {
             List<PaymentMethod> paymentOptions = new()
@@ -98,25 +164,7 @@ namespace ePrijevozSarajevo.Services.Database
                 .HasData(paymentOptions);
         }
 
-        private static void BuildUserRoles(ModelBuilder modelBuilder)
-        {
-            List<Role> roles = new()
-        {
-            new()
-            {
-                RoleId = 1,
-                Name = "Admin"
-            },
-            new()
-            {
-                RoleId = 2,
-                Name = "User"
-            }
-        };
 
-            modelBuilder.Entity<Role>()
-                .HasData(roles);
-        }
 
         private static void BuildUserStatus(ModelBuilder modelBuilder)
         {

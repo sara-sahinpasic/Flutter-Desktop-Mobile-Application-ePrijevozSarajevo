@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ePrijevozSarajevo.Services.Database;
 
@@ -11,9 +12,11 @@ using ePrijevozSarajevo.Services.Database;
 namespace ePrijevozSarajevo.Services.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240512141949_RS2-37_2")]
+    partial class RS237_2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -431,6 +434,22 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("UserRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            UserRoleId = 1,
+                            ModificationDate = new DateTime(2024, 5, 12, 16, 19, 48, 962, DateTimeKind.Local).AddTicks(2617),
+                            RoleId = 1,
+                            UserId = 8
+                        },
+                        new
+                        {
+                            UserRoleId = 2,
+                            ModificationDate = new DateTime(2024, 5, 12, 16, 19, 48, 962, DateTimeKind.Local).AddTicks(2662),
+                            RoleId = 2,
+                            UserId = 9
+                        });
                 });
 
             modelBuilder.Entity("ePrijevozSarajevo.Services.Database.Vehicle", b =>

@@ -1,12 +1,14 @@
 ﻿using ePrijevozSarajevo.Model;
 using ePrijevozSarajevo.Model.SearchObjects;
 using ePrijevozSarajevo.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ePrijevozSarajevo.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class BaseController<TModel, TSearch> : ControllerBase
         where TSearch : BaseSearchObject
     {
@@ -18,13 +20,13 @@ namespace ePrijevozSarajevo.API.Controllers
         }
 
         [HttpGet]
-        public PagedResult<TModel> GetList([FromQuery]TSearch searchObject)
+        public virtual PagedResult<TModel> GetList([FromQuery]TSearch searchObject)
         {
             return _service.GetPaged(searchObject);
         }
 
         [HttpGet("{id}")]
-        public TModel GetById(int id)
+        public virtual TModel GetById(int id)
         {
             return _service.GetById(id);
         }

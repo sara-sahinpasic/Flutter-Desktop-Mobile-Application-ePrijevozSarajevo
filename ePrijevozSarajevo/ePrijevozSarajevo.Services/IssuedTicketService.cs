@@ -24,8 +24,9 @@ namespace ePrijevozSarajevo.Services
             if (search.IsUserIncluded == true)
             {
                 query = query
-                    .Include(x => x.User)
-                        .ThenInclude(x => x.Role)
+                    //ToDo
+                    //.Include(x => x.User)
+                      //  .ThenInclude(x => x.Role)
                     .Include(x => x.User)
                         .ThenInclude(x => x.UserStatus);
             }

@@ -29,10 +29,12 @@ namespace ePrijevozSarajevo.API
             var authHeader = AuthenticationHeaderValue.Parse(Request.Headers["Authorization"]);
             var credentialsBytes = Convert.FromBase64String(authHeader.Parameter);
             var credentials = Encoding.UTF8.GetString(credentialsBytes).Split(':');
+
             var username = credentials[0];
             var password = credentials[1];
 
             var user = _userService.Login(username, password);
+
             if (user == null)
             {
                 return AuthenticateResult.Fail("Auth faild");
@@ -43,15 +45,20 @@ namespace ePrijevozSarajevo.API
                 {
                     new Claim(ClaimTypes.Name, user.FirstName),
                     //new Claim(ClaimTypes.NameIdentifier, user.KorisnickoIme)
-                    new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString())
+                    new Claim(ClaimTypes.NameIdentifier, user.UserName)
+                    //new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString())
                 };
+
+                foreach (var role in user.UserRoles)
+                {
+                    claims.Add(new Claim(ClaimTypes.Role, role.Role.Name));
+                }
 
                 var identity = new ClaimsIdentity(claims, Scheme.Name);
 
                 var principal = new ClaimsPrincipal(identity);
 
                 var ticket = new AuthenticationTicket(principal, Scheme.Name);
-
                 return AuthenticateResult.Success(ticket);
             }
         }

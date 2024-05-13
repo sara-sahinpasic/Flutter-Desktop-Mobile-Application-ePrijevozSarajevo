@@ -22,6 +22,7 @@ builder.Services.AddTransient<IManufacturerService, ManufacturerService>();
 builder.Services.AddTransient<IVehicleTypeService, VehicleTypeService>();
 builder.Services.AddTransient<ITicketService, TicketService>();
 builder.Services.AddTransient<IIssuedTicketService, IssuedTicketService>();
+builder.Services.AddTransient<IUserRoleService, UserRoleService>();
 
 //State machine
 builder.Services.AddTransient<BaseTicketState>();
@@ -56,16 +57,17 @@ builder.Services.AddSwaggerGen(c =>
         Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
         Scheme = "basic"
     });
+
     c.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement()
     {
         {
             new OpenApiSecurityScheme
             {
-              Reference =new OpenApiReference{Type=ReferenceType.SecurityScheme, Id="basicAuth"}
+                Reference = new OpenApiReference{Type = ReferenceType.SecurityScheme, Id = "basicAuth"}
             },
-            new string[]{ }
-        }
-    });
+            new string[]{}
+    } });
+
 });
 //Basic Authentication
 builder.Services.AddAuthentication("BasicAuthentication")

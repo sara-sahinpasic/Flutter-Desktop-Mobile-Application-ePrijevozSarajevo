@@ -18,7 +18,7 @@ namespace ePrijevozSarajevo.Services
             this._logger = logger;
         }
 
-        public override IQueryable<Database.User> AddFilter(UserSearchObject search, IQueryable<Database.User> query)
+        public override IQueryable<Database.User> AddFilter(UserSearchObject search, IQueryable<User> query)
         {
             query = base.AddFilter(search, query);
 
@@ -30,10 +30,19 @@ namespace ePrijevozSarajevo.Services
             {
                 query = query.Where(x => x.LastName.StartsWith(search.LastNameGTE));
             }
+            //ToDo
+            //if (search.IsRoleIncluded == true)
+            //{
+            //    query = query.Include(x => x.UserRoles)
+            //        .ThenInclude(x => x.Role);
+            //}
             if (search?.IsRoleIncluded == true)
             {
-                query = query.Include(x => x.Role);
+                query = query
+                    .Include(x => x.UserRoles)        // Include UserRoles collection
+                        .ThenInclude(ur => ur.Role);  // Then include the Role entity within UserRoles
             }
+            //
             if (search?.IsUserStatusIncluded == true)
             {
                 query = query.Include(x => x.UserStatus);
@@ -94,12 +103,15 @@ namespace ePrijevozSarajevo.Services
 
         public Model.User Login(string username, string password)
         {
-            var entity = Context.Users.FirstOrDefault(x => username == username);
+            var entity = Context.Users
+                .Include(x => x.UserRoles)
+                .ThenInclude(y => y.Role)
+                .FirstOrDefault(x => x.UserName == username);
+
             if (entity == null)
             {
                 return null;
             }
-
             var hash = GenerateHash(entity.PasswordSalt, password);
 
             if (hash != entity.PasswordHash)

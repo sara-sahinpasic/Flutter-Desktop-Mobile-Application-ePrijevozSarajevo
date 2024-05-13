@@ -2,6 +2,7 @@
 using ePrijevozSarajevo.Model.Requests;
 using ePrijevozSarajevo.Model.SearchObjects;
 using ePrijevozSarajevo.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ePrijevozSarajevo.API.Controllers
@@ -13,6 +14,17 @@ namespace ePrijevozSarajevo.API.Controllers
         public VehicleController(IVehicleService service) : base(service)
         {
         }
-                
+
+        [AllowAnonymous]
+        public override PagedResult<Vehicle> GetList([FromQuery] VehicleSearchObject searchObject)
+        {
+            return base.GetList(searchObject);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public override Vehicle Insert(VehicleInsertRequest request)
+        {
+            return base.Insert(request);
+        }
     }
 }
