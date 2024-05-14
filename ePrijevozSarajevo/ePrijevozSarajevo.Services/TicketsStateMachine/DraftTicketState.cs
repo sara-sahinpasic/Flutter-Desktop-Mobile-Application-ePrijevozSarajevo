@@ -1,4 +1,6 @@
-﻿using ePrijevozSarajevo.Model.Requests;
+﻿using EasyNetQ;
+using ePrijevozSarajevo.Model.Messages;
+using ePrijevozSarajevo.Model.Requests;
 using ePrijevozSarajevo.Services.Database;
 using MapsterMapper;
 
@@ -29,7 +31,14 @@ namespace ePrijevozSarajevo.Services.TicketsStateMachine
             entity.StateMachine = "active";
 
             Context.SaveChanges();
-            return Mapper.Map<Model.Ticket>(entity);
+
+            var bus = RabbitHutch.CreateBus("host=localhost");
+
+            var mappedEntity = Mapper.Map<Model.Ticket>(entity);
+            TicketsActivated message = new TicketsActivated { Ticket = mappedEntity };
+            bus.PubSub.Publish(message);
+
+            return mappedEntity;
         }
         public override Model.Ticket Hide(int id)
         {
