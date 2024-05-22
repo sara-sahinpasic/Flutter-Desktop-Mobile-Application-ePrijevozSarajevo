@@ -1,0 +1,35 @@
+version: '3'
+services:
+  eprijevozsarajevo-sql:
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    restart: unless-stopped
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=ePrijevoz321!
+      - MSSQL_PID=Developer
+    ports:
+      - 1401:1433
+    expose:
+      - 1433
+    networks:
+      - eprijevozsarajevonet2024
+
+  eprijevozsarajevo-api:
+    restart: unless-stopped
+    build:
+      context: .
+    environment:
+      - ConnectionStrings:SqlServer=Server=eprijevozsarajevo-sql,1433;Database=140261;User=sa;Password=ePrijevoz321!;ConnectRetryCount=0; TrustServerCertificate=True
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - 5269:5269
+    networks:
+      - eprijevozsarajevonet2024
+    links:
+      - eprijevozsarajevo-sql
+    depends_on:
+      - eprijevozsarajevo-sql
+      
+networks:
+  eprijevozsarajevonet2024:
+    driver: bridge    

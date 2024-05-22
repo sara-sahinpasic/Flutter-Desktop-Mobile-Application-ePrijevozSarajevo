@@ -12,8 +12,8 @@ using ePrijevozSarajevo.Services.Database;
 namespace ePrijevozSarajevo.Services.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240512141949_RS2-37_2")]
-    partial class RS237_2
+    [Migration("20240522123151_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -93,18 +93,6 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.HasKey("PaymentMethodId");
 
                     b.ToTable("PaymentOptions");
-
-                    b.HasData(
-                        new
-                        {
-                            PaymentMethodId = 1,
-                            Name = "PayPal"
-                        },
-                        new
-                        {
-                            PaymentMethodId = 2,
-                            Name = "Stripe"
-                        });
                 });
 
             modelBuilder.Entity("ePrijevozSarajevo.Services.Database.Request", b =>
@@ -313,31 +301,36 @@ namespace ePrijevozSarajevo.Services.Migrations
                         {
                             TicketId = 1,
                             Name = "Jednosmjerna",
-                            Price = 1.8
+                            Price = 1.8,
+                            StateMachine = "draft"
                         },
                         new
                         {
                             TicketId = 2,
                             Name = "Povratna",
-                            Price = 3.2000000000000002
+                            Price = 3.2000000000000002,
+                            StateMachine = "draft"
                         },
                         new
                         {
                             TicketId = 3,
                             Name = "Jednosmjerna dječija",
-                            Price = 0.80000000000000004
+                            Price = 0.80000000000000004,
+                            StateMachine = "draft"
                         },
                         new
                         {
                             TicketId = 4,
                             Name = "Povratna dječija",
-                            Price = 1.2
+                            Price = 1.2,
+                            StateMachine = "draft"
                         },
                         new
                         {
                             TicketId = 5,
                             Name = "Mjesečna",
-                            Price = 75.0
+                            Price = 75.0,
+                            StateMachine = "draft"
                         });
                 });
 
@@ -408,6 +401,46 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.HasIndex("UserStatusId");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 1,
+                            Active = true,
+                            Address = "Adresa 11",
+                            DateOfBirth = new DateTime(1988, 9, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "admin@mail.ba",
+                            FirstName = "Neko",
+                            LastName = "Nekić",
+                            ModifiedDate = new DateTime(2024, 5, 22, 14, 31, 51, 350, DateTimeKind.Local).AddTicks(4786),
+                            PasswordHash = "CpgETFhuD/kSxKOD+01iGlIT7N0=",
+                            PasswordSalt = "I6E8SJEzgUJio4NO2ZY7gw==",
+                            PhoneNumber = "061222333",
+                            ProfileImagePath = "",
+                            RegistrationDate = new DateTime(2024, 5, 22, 14, 31, 51, 350, DateTimeKind.Local).AddTicks(4784),
+                            StatusExpirationDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UserName = "admin",
+                            UserStatusId = 3
+                        },
+                        new
+                        {
+                            UserId = 2,
+                            Active = true,
+                            Address = "Adresa 12",
+                            DateOfBirth = new DateTime(1988, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "user@mail.ba",
+                            FirstName = "Neka",
+                            LastName = "Nekić",
+                            ModifiedDate = new DateTime(2024, 5, 22, 14, 31, 51, 350, DateTimeKind.Local).AddTicks(4806),
+                            PasswordHash = "MkyltEKrWRd8z+y+GfKYfCXZn/g=",
+                            PasswordSalt = "JyN25Lf90fJx1wvOJH+xEw==",
+                            PhoneNumber = "061222444",
+                            ProfileImagePath = "",
+                            RegistrationDate = new DateTime(2024, 5, 22, 14, 31, 51, 350, DateTimeKind.Local).AddTicks(4805),
+                            StatusExpirationDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UserName = "user",
+                            UserStatusId = 3
+                        });
                 });
 
             modelBuilder.Entity("ePrijevozSarajevo.Services.Database.UserRole", b =>
@@ -439,16 +472,16 @@ namespace ePrijevozSarajevo.Services.Migrations
                         new
                         {
                             UserRoleId = 1,
-                            ModificationDate = new DateTime(2024, 5, 12, 16, 19, 48, 962, DateTimeKind.Local).AddTicks(2617),
+                            ModificationDate = new DateTime(2024, 5, 22, 14, 31, 51, 350, DateTimeKind.Local).AddTicks(4674),
                             RoleId = 1,
-                            UserId = 8
+                            UserId = 1
                         },
                         new
                         {
                             UserRoleId = 2,
-                            ModificationDate = new DateTime(2024, 5, 12, 16, 19, 48, 962, DateTimeKind.Local).AddTicks(2662),
+                            ModificationDate = new DateTime(2024, 5, 22, 14, 31, 51, 350, DateTimeKind.Local).AddTicks(4720),
                             RoleId = 2,
-                            UserId = 9
+                            UserId = 2
                         });
                 });
 

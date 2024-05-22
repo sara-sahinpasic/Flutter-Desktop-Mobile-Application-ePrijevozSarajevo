@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Net;
+using System;
 
 namespace ePrijevozSarajevo.Services.Database
 {
@@ -24,13 +26,27 @@ namespace ePrijevozSarajevo.Services.Database
         public DbSet<Request> Requests { get; set; } = null!;
         public DbSet<UserRole> UserRoles { get; set; } = null!;
 
+        //protected override void OnConfiguring(DbContextOptionsBuilder options)
+        //{
+        //    if (!options.IsConfigured)
+        //    {
+        //        options.UseSqlServer("Server=.;Database=140261;Trusted_Connection=True;Encrypt=False;");
+        //    }
+        //}
+
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             if (!options.IsConfigured)
             {
-                options.UseSqlServer("Server=.;Database=140261;Trusted_Connection=True;Encrypt=False;");
+                options.UseSqlServer("Data Source=localhost; Initial Catalog=140261; user=sa; Password=ePrijevoz123!;Trusted_Connection=True;TrustServerCertificate=True");
             }
         }
+
+      
+        //   protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        //=> optionsBuilder.UseSqlServer("Data Source=localhost; Initial Catalog=140261; user=sa; Password=QWEasd123!;" +
+        //    "Trusted_Connection=True;TrustServerCertificate=True");
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -73,56 +89,132 @@ namespace ePrijevozSarajevo.Services.Database
                 .WithMany()
                 .OnDelete(DeleteBehavior.NoAction);
 
-             //modelBuilder.Entity<UserRole>(entity =>
-             //{
-             //    entity.HasKey(e => e.UserRoleId);
+            /*modelBuilder.Entity<UserRole>(entity =>
+            {
+                entity.HasKey(e => e.UserRoleId);
 
-             //    entity.ToTable("KorisniciUloge");
+                entity.ToTable("KorisniciUloge");
 
-             //    entity.Property(e => e.UserRoleId).HasColumnName("UserRoleId");
-             //    entity.Property(e => e.ModificationDate).HasColumnType("datetime");
-             //    entity.Property(e => e.User).HasColumnName("UserId");
-             //    entity.Property(e => e.Role).HasColumnName("RoleId");
+                entity.Property(e => e.UserRoleId).HasColumnName("UserRoleId");
+                entity.Property(e => e.ModificationDate).HasColumnType("datetime");
+                entity.Property(e => e.User).HasColumnName("UserId");
+                entity.Property(e => e.Role).HasColumnName("RoleId");
 
-             //    entity.HasOne(d => d.User).WithMany(p => p.UserRoles)
-             //        .HasForeignKey(d => d.UserId)
-             //        .OnDelete(DeleteBehavior.ClientSetNull)
-             //        .HasConstraintName("FK_UserRole_User");
+                entity.HasOne(d => d.User).WithMany(p => p.UserRoles)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_UserRole_User");
 
-             //    entity.HasOne(d => d.Role).WithMany(p => p.UserRoles)
-             //        .HasForeignKey(d => d.RoleId)
-             //        .OnDelete(DeleteBehavior.ClientSetNull)
-             //        .HasConstraintName("FK_UserRole_Role");
-             //});
+                entity.HasOne(d => d.Role).WithMany(p => p.UserRoles)
+                    .HasForeignKey(d => d.RoleId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_UserRole_Role");
+            });*/
 
-            //BuildUserRoles(modelBuilder);
+            //BuildPaymentOptions(modelBuilder);
+
+            BuildUserRoles(modelBuilder);
+            BuildUsers(modelBuilder);
             BuildRoles(modelBuilder);
-            BuildPaymentOptions(modelBuilder);
             BuildUserStatus(modelBuilder);
             BuildTicketData(modelBuilder);
         }
-        //private static void BuildUserRoles(ModelBuilder modelBuilder)
-        //{
-        //    List<UserRole> userRoles = new()
-        //{
-        //    new()
-        //    {
-        //        UserRoleId=1,
-        //        UserId=8,
-        //        RoleId = 1,
-        //        ModificationDate = DateTime.Now
-        //    },
-        //    new()
-        //    {
-        //        UserRoleId=2,
-        //        UserId=9,
-        //        RoleId = 2,
-        //        ModificationDate = DateTime.Now
-        //    }
-        //};
-        //    modelBuilder.Entity<UserRole>()
-        //            .HasData(userRoles);
-        //}
+        /*private static void BuildPaymentOptions(ModelBuilder modelBuilder)
+        {
+            List<PaymentMethod> paymentOptions = new()
+        {
+            new()
+            {
+                PaymentMethodId = 1,
+                Name = "PayPal"
+            },
+            new()
+            {
+                PaymentMethodId = 2,
+                Name = "Stripe"
+            }
+        };
+
+            modelBuilder.Entity<PaymentMethod>()
+                .HasData(paymentOptions);
+        }*/
+        private static void BuildUserRoles(ModelBuilder modelBuilder)
+        {
+            List<UserRole> userRoles = new()
+        {
+            new()
+            {
+                UserRoleId=1,
+                UserId=1,
+                RoleId = 1,
+                ModificationDate = DateTime.Now
+            },
+            new()
+            {
+                UserRoleId=2,
+                UserId=2,
+                RoleId = 2,
+                ModificationDate = DateTime.Now
+            }
+        };
+            modelBuilder.Entity<UserRole>()
+                    .HasData(userRoles);
+        }
+        private const string DefaultUserPassword = "test";
+
+        private static void BuildUsers(ModelBuilder modelBuilder)
+        {
+            List<User> users = new()
+            {
+               new()
+               {
+                UserId = 1,
+                FirstName = "Neko",
+                LastName = "Nekić",
+                UserName = "admin",
+                Email = "admin@mail.ba",
+                //Password = DefaultUserPassword,
+                PasswordSalt = UserService.GenerateSalt(),
+                DateOfBirth = new DateTime(1988, 09, 25),
+                PhoneNumber = "061222333",
+                Address = "Adresa 11",
+                RegistrationDate = DateTime.Now,
+                ModifiedDate = DateTime.Now,
+                Active = true,
+                UserStatusId = 3,
+                ProfileImagePath = "",
+                StatusExpirationDate = new DateTime(2025, 12, 31)
+               },
+               new()
+               {
+                UserId = 2,
+                FirstName = "Neka",
+                LastName = "Nekić",
+                UserName = "user",
+                Email = "user@mail.ba",
+               // Password = DefaultUserPassword,
+                PasswordSalt = UserService.GenerateSalt(),
+                DateOfBirth = new DateTime(1988, 10, 26),
+                PhoneNumber = "061222444",
+                Address = "Adresa 12",
+                RegistrationDate = DateTime.Now,
+                ModifiedDate = DateTime.Now,
+                Active = true,
+                UserStatusId = 3,
+                ProfileImagePath = "",
+                StatusExpirationDate = new DateTime(2025, 12, 31)
+               },
+            };
+            foreach (var user in users)
+            {
+                user.PasswordHash = UserService.GenerateHash(user.PasswordSalt, DefaultUserPassword);
+
+            }
+            // users.PasswordHash = UserService.GenerateHash(users.PasswordSalt, users.Password);
+
+            modelBuilder.Entity<User>()
+                .HasData(users);
+        }
         private static void BuildRoles(ModelBuilder modelBuilder)
         {
             List<Role> roles = new()
@@ -143,28 +235,6 @@ namespace ePrijevozSarajevo.Services.Database
                 .HasData(roles);
         }
 
-        //
-        private static void BuildPaymentOptions(ModelBuilder modelBuilder)
-        {
-            List<PaymentMethod> paymentOptions = new()
-        {
-            new()
-            {
-                PaymentMethodId = 1,
-                Name = "PayPal"
-            },
-            new()
-            {
-                PaymentMethodId = 2,
-                Name = "Stripe"
-            }
-        };
-
-            modelBuilder.Entity<PaymentMethod>()
-                .HasData(paymentOptions);
-        }
-
-
 
         private static void BuildUserStatus(ModelBuilder modelBuilder)
         {
@@ -175,7 +245,7 @@ namespace ePrijevozSarajevo.Services.Database
             {
                 StatusId = 1,
                 Name = "Student",
-                Discount = 0.3
+                Discount = 0.3,
 
             },
             new()
@@ -211,31 +281,35 @@ namespace ePrijevozSarajevo.Services.Database
                 TicketId = 1,
                 Name = "Jednosmjerna",
                 Price = 1.80,
-                StateMachine = null
+                StateMachine = "draft"
             },
             new()
             {
                 TicketId = 2,
                 Name = "Povratna",
-                Price = 3.20
+                Price = 3.20,
+                StateMachine = "draft"
             },
             new()
             {
                 TicketId = 3,
                 Name = "Jednosmjerna dječija",
-                Price = 0.80
+                Price = 0.80,
+                StateMachine = "draft"
             },
             new()
             {
                 TicketId = 4,
                 Name = "Povratna dječija",
-                Price = 1.20
+                Price = 1.20,
+                StateMachine = "draft"
             },
             new()
             {
                 TicketId = 5,
                 Name = "Mjesečna",
-                Price = 75
+                Price = 75,
+                StateMachine = "draft"
             }
         };
             modelBuilder.Entity<Ticket>()

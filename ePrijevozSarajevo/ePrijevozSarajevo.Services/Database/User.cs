@@ -23,6 +23,7 @@
         public DateTime? StatusExpirationDate { get; set; }
         //
         public virtual ICollection<UserRole> UserRoles { get; set; } = new List<UserRole>();
+        //public string Password { get; set; }
 
     }
 }

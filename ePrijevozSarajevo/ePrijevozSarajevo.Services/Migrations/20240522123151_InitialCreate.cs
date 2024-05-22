@@ -59,7 +59,9 @@ namespace ePrijevozSarajevo.Services.Migrations
                     StationId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Time = table.Column<TimeSpan>(type: "time", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -88,7 +90,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<double>(type: "float", nullable: false),
-                    Active = table.Column<bool>(type: "bit", nullable: false)
+                    StateMachine = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -109,14 +111,44 @@ namespace ePrijevozSarajevo.Services.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Routes",
+                columns: table => new
+                {
+                    RouteId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    StartStationId = table.Column<int>(type: "int", nullable: false),
+                    EndStationId = table.Column<int>(type: "int", nullable: false),
+                    TimeOfDeparture = table.Column<TimeSpan>(type: "time", nullable: true),
+                    TimeOfArrival = table.Column<TimeSpan>(type: "time", nullable: true),
+                    VehicleId = table.Column<int>(type: "int", nullable: false),
+                    Active = table.Column<bool>(type: "bit", nullable: false),
+                    ActiveOnHolidays = table.Column<bool>(type: "bit", nullable: false),
+                    ActiveOnWeekends = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Routes", x => x.RouteId);
+                    table.ForeignKey(
+                        name: "FK_Routes_Stations_EndStationId",
+                        column: x => x.EndStationId,
+                        principalTable: "Stations",
+                        principalColumn: "StationId");
+                    table.ForeignKey(
+                        name: "FK_Routes_Stations_StartStationId",
+                        column: x => x.StartStationId,
+                        principalTable: "Stations",
+                        principalColumn: "StationId");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
                     UserId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RoleId = table.Column<int>(type: "int", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PasswordSalt = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -133,12 +165,6 @@ namespace ePrijevozSarajevo.Services.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.UserId);
-                    table.ForeignKey(
-                        name: "FK_Users_Roles_RoleId",
-                        column: x => x.RoleId,
-                        principalTable: "Roles",
-                        principalColumn: "RoleId",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Users_Statuses_UserStatusId",
                         column: x => x.UserStatusId,
@@ -172,73 +198,6 @@ namespace ePrijevozSarajevo.Services.Migrations
                         column: x => x.VehicleTypeId,
                         principalTable: "VehicleTypes",
                         principalColumn: "VehicleTypeId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Requests",
-                columns: table => new
-                {
-                    RequestId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserStatusId = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Approved = table.Column<bool>(type: "bit", nullable: false),
-                    DocumentLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RejectionReason = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Active = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Requests", x => x.RequestId);
-                    table.ForeignKey(
-                        name: "FK_Requests_Statuses_UserStatusId",
-                        column: x => x.UserStatusId,
-                        principalTable: "Statuses",
-                        principalColumn: "StatusId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Requests_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Routes",
-                columns: table => new
-                {
-                    RouteId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    StartStationId = table.Column<int>(type: "int", nullable: false),
-                    EndStationId = table.Column<int>(type: "int", nullable: false),
-                    TimeOfDeparture = table.Column<TimeSpan>(type: "time", nullable: false),
-                    TimeOfArrival = table.Column<TimeSpan>(type: "time", nullable: false),
-                    VehicleId = table.Column<int>(type: "int", nullable: false),
-                    Active = table.Column<bool>(type: "bit", nullable: false),
-                    ActiveOnHolidays = table.Column<bool>(type: "bit", nullable: false),
-                    ActiveOnWeekends = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Routes", x => x.RouteId);
-                    table.ForeignKey(
-                        name: "FK_Routes_Stations_EndStationId",
-                        column: x => x.EndStationId,
-                        principalTable: "Stations",
-                        principalColumn: "StationId");
-                    table.ForeignKey(
-                        name: "FK_Routes_Stations_StartStationId",
-                        column: x => x.StartStationId,
-                        principalTable: "Stations",
-                        principalColumn: "StationId");
-                    table.ForeignKey(
-                        name: "FK_Routes_Vehicles_VehicleId",
-                        column: x => x.VehicleId,
-                        principalTable: "Vehicles",
-                        principalColumn: "VehicleId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -278,13 +237,62 @@ namespace ePrijevozSarajevo.Services.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.InsertData(
-                table: "PaymentOptions",
-                columns: new[] { "PaymentMethodId", "Name" },
-                values: new object[,]
+            migrationBuilder.CreateTable(
+                name: "Requests",
+                columns: table => new
                 {
-                    { 1, "PayPal" },
-                    { 2, "Stripe" }
+                    RequestId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserStatusId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Approved = table.Column<bool>(type: "bit", nullable: false),
+                    DocumentLink = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RejectionReason = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Active = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Requests", x => x.RequestId);
+                    table.ForeignKey(
+                        name: "FK_Requests_Statuses_UserStatusId",
+                        column: x => x.UserStatusId,
+                        principalTable: "Statuses",
+                        principalColumn: "StatusId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Requests_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserRoles",
+                columns: table => new
+                {
+                    UserRoleId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    RoleId = table.Column<int>(type: "int", nullable: false),
+                    ModificationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserRoles", x => x.UserRoleId);
+                    table.ForeignKey(
+                        name: "FK_UserRoles_Roles_RoleId",
+                        column: x => x.RoleId,
+                        principalTable: "Roles",
+                        principalColumn: "RoleId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UserRoles_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -309,14 +317,32 @@ namespace ePrijevozSarajevo.Services.Migrations
 
             migrationBuilder.InsertData(
                 table: "Tickets",
-                columns: new[] { "TicketId", "Active", "Name", "Price" },
+                columns: new[] { "TicketId", "Name", "Price", "StateMachine" },
                 values: new object[,]
                 {
-                    { 1, true, "Jednosmjerna", 1.8 },
-                    { 2, true, "Povratna", 3.2000000000000002 },
-                    { 3, true, "Jednosmjerna dječija", 0.80000000000000004 },
-                    { 4, true, "Povratna dječija", 1.2 },
-                    { 5, true, "Mjesečna", 75.0 }
+                    { 1, "Jednosmjerna", 1.8, "draft" },
+                    { 2, "Povratna", 3.2000000000000002, "draft" },
+                    { 3, "Jednosmjerna dječija", 0.80000000000000004, "draft" },
+                    { 4, "Povratna dječija", 1.2, "draft" },
+                    { 5, "Mjesečna", 75.0, "draft" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "UserId", "Active", "Address", "DateOfBirth", "Email", "FirstName", "LastName", "ModifiedDate", "PasswordHash", "PasswordSalt", "PhoneNumber", "ProfileImagePath", "RegistrationDate", "StatusExpirationDate", "UserName", "UserStatusId" },
+                values: new object[,]
+                {
+                    { 1, true, "Adresa 11", new DateTime(1988, 9, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "admin@mail.ba", "Neko", "Nekić", new DateTime(2024, 5, 22, 14, 31, 51, 350, DateTimeKind.Local).AddTicks(4786), "CpgETFhuD/kSxKOD+01iGlIT7N0=", "I6E8SJEzgUJio4NO2ZY7gw==", "061222333", "", new DateTime(2024, 5, 22, 14, 31, 51, 350, DateTimeKind.Local).AddTicks(4784), new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "admin", 3 },
+                    { 2, true, "Adresa 12", new DateTime(1988, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), "user@mail.ba", "Neka", "Nekić", new DateTime(2024, 5, 22, 14, 31, 51, 350, DateTimeKind.Local).AddTicks(4806), "MkyltEKrWRd8z+y+GfKYfCXZn/g=", "JyN25Lf90fJx1wvOJH+xEw==", "061222444", "", new DateTime(2024, 5, 22, 14, 31, 51, 350, DateTimeKind.Local).AddTicks(4805), new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "user", 3 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "UserRoles",
+                columns: new[] { "UserRoleId", "ModificationDate", "RoleId", "UserId" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2024, 5, 22, 14, 31, 51, 350, DateTimeKind.Local).AddTicks(4674), 1, 1 },
+                    { 2, new DateTime(2024, 5, 22, 14, 31, 51, 350, DateTimeKind.Local).AddTicks(4720), 2, 2 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -355,20 +381,20 @@ namespace ePrijevozSarajevo.Services.Migrations
                 column: "StartStationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Routes_VehicleId",
-                table: "Routes",
-                column: "VehicleId");
+                name: "IX_UserRoles_RoleId",
+                table: "UserRoles",
+                column: "RoleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserRoles_UserId",
+                table: "UserRoles",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_Email",
                 table: "Users",
                 column: "Email",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Users_RoleId",
-                table: "Users",
-                column: "RoleId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_UserStatusId",
@@ -405,31 +431,34 @@ namespace ePrijevozSarajevo.Services.Migrations
                 name: "Requests");
 
             migrationBuilder.DropTable(
+                name: "UserRoles");
+
+            migrationBuilder.DropTable(
+                name: "Vehicles");
+
+            migrationBuilder.DropTable(
                 name: "Routes");
 
             migrationBuilder.DropTable(
                 name: "Tickets");
 
             migrationBuilder.DropTable(
-                name: "Users");
-
-            migrationBuilder.DropTable(
-                name: "Stations");
-
-            migrationBuilder.DropTable(
-                name: "Vehicles");
-
-            migrationBuilder.DropTable(
                 name: "Roles");
 
             migrationBuilder.DropTable(
-                name: "Statuses");
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Manufacturers");
 
             migrationBuilder.DropTable(
                 name: "VehicleTypes");
+
+            migrationBuilder.DropTable(
+                name: "Stations");
+
+            migrationBuilder.DropTable(
+                name: "Statuses");
         }
     }
 }
