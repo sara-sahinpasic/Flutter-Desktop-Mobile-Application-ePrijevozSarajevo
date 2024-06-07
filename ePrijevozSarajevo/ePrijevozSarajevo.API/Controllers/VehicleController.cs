@@ -15,7 +15,7 @@ namespace ePrijevozSarajevo.API.Controllers
         {
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public override PagedResult<Vehicle> GetList([FromQuery] VehicleSearchObject searchObject)
         {
             return base.GetList(searchObject);
