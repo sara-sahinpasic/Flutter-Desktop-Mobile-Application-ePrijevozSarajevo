@@ -20,7 +20,7 @@ class VehicleProvider {
       var data = jsonDecode(response.body);
       return data;
     } else {
-      throw new Exception("Unknow exception");
+      throw Exception("Unknow exception");
     }
   }
 
@@ -28,9 +28,9 @@ class VehicleProvider {
     if (response.statusCode < 299) {
       return true;
     } else if (response.statusCode == 401) {
-      throw new Exception("Unathorized");
+      throw Exception("Unathorized");
     } else {
-      throw new Exception("Something bad happeend, please try again!");
+      throw Exception("Something bad happeend, please try again!");
     }
   }
 

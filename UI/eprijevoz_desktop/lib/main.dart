@@ -28,8 +28,8 @@ class MyApp extends StatelessWidget {
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
 
-  TextEditingController _usernameController = new TextEditingController();
-  TextEditingController _passwordController = new TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -41,8 +41,8 @@ class LoginPage extends StatelessWidget {
         child: Center(
           child: Container(
             constraints: const BoxConstraints(
-              maxHeight: 550,
-              maxWidth: 550,
+              maxHeight: 500,
+              maxWidth: 500,
             ),
             child: Card(
               color: Colors.black,
@@ -100,7 +100,7 @@ class LoginPage extends StatelessWidget {
                     width: 250,
                     child: ElevatedButton(
                       onPressed: () async {
-                        VehicleProvider provider = new VehicleProvider();
+                        VehicleProvider provider = VehicleProvider();
                         print(
                             "credentials: ${_usernameController.text} : ${_passwordController.text}");
                         AuthProvider.username = _usernameController.text;
@@ -109,14 +109,13 @@ class LoginPage extends StatelessWidget {
                           var data = await provider.get();
                           print("Authorized");
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) =>
-                                  (const VehicleListScreen())));
+                              builder: (context) => (VehicleListScreen())));
                         } on Exception catch (e) {
                           print("Not authorized!");
                           showDialog(
                               context: context,
                               builder: (context) => AlertDialog(
-                                    title: Text("Error"),
+                                    title: const Text("Error"),
                                     titleTextStyle: const TextStyle(
                                         color: Colors.red,
                                         fontWeight: FontWeight.bold,
@@ -148,7 +147,7 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 13),
+                  const SizedBox(height: 5),
                   TextButton(
                     onPressed: () {},
                     child: const Text(
@@ -161,15 +160,15 @@ class LoginPage extends StatelessWidget {
                           decorationThickness: 1.0),
                     ),
                   ),
-                  const SizedBox(height: 5),
-                  TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      "New User? Create Account",
-                      style:
-                          TextStyle(fontSize: 11, fontWeight: FontWeight.w300),
-                    ),
-                  )
+                  //const SizedBox(height: 5),
+                  // TextButton(
+                  //   onPressed: () {},
+                  //   child: const Text(
+                  //     "New User? Create Account",
+                  //     style:
+                  //         TextStyle(fontSize: 11, fontWeight: FontWeight.w300),
+                  //   ),
+                  // )
                 ],
               ),
             ),
