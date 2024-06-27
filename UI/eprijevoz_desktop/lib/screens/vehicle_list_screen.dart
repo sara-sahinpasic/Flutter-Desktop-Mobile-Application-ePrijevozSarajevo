@@ -1,4 +1,5 @@
 import 'package:eprijevoz_desktop/layouts/master_screen.dart';
+import 'package:eprijevoz_desktop/models/vehicle.dart';
 import 'package:eprijevoz_desktop/providers/vehicle_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,8 +14,10 @@ class VehicleListScreen extends StatefulWidget {
 class _VehicleListScreenState extends State<VehicleListScreen> {
   VehicleProvider provider =
       VehicleProvider(); //ovako se instancira samo jednom, umjesto svaki put kada je unutar dijela : ElevatedButton(onPressed: () async {
-  dynamic
-      result; //omogućava da rez sa API snimimo unutar varijable, te da bi se forma mogla re-reandering
+
+  //dynamic result; //omogućava da rez sa API snimimo unutar varijable, te da bi se forma mogla re-reandering
+  List<Vehicle> result =
+      []; //tokom seriazable više ne vraćamo dynamic nego listu proizvoda
 
   @override
   Widget build(BuildContext context) {
@@ -66,45 +69,35 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
           onPressed: () async {
             //TODO: add call to API
 
-            //result = await provider.get();
-            //VehicleProvider provider = new VehicleProvider();
-
             result = await provider.get();
+            //print(result[0].registrationNumber); //ovo smo dobili serijalizacijom i mijenjenjem dynamic tipa u List<Vehicle> u get() metodi
+            setState(() {}); //omogućava dohvatanje podataka bez hot relading
 
-            // print(result);
             /*
+            Prijašnje print varijacije prije urađenog JonSeriazable:
+            print(result);
+            Ispis:
              {count: 1, resultList: 
+            
             print(result["resultList"]);
-            /*
+             Ispis:
              [{vehicleId: 1, number: 10, registrationNumber: 123, buildYear: 2000, vehicleType: null, manufacturer: null}]
-            */
              [{vehicleId: 1, number: 10, registrationNumber: 123, buildYear: 2000, vehicleType: null, manufacturer: null}]}
-            */
-
+            
             print(result["resultList"]);
-            /*
+            Ispis:
             [{vehicleId: 1, number: 10, registrationNumber: 123, buildYear: 2000, vehicleType: null, manufacturer: null}]
-            */
+            
             print(result["resultList"][0]["registrationNumber"]);
             print(result["resultList"][0]);
 
             if (result != null) {
-              var prvi = result["resultList"][0];
-              print("Ušao sam: $prvi");
+              var first = result["resultList"][0];
+              print("First element is: $first");
             } else {
-              print("MRS");
+              print("List is null");
             }
-            // Check if resultList is null
-            /*   if (result != null) {
-              // Access elements of resultList safely
-              var firstElement = result["resultList"][0];
-              print(firstElement);
-              print(result[firstElement]);
-            } else {
-              // Handle the null case appropriately
-              print("rsaraaaaaaaaaaaesultList is null");
-            }
-*/
+            */
           },
           style: ElevatedButton.styleFrom(
             backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
@@ -186,44 +179,48 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
               rows:
                   //[]
 
-                  result["resultList"]
-                      .map(
-                        (e) => DataRow(
-                          cells: [
-                            DataCell(Text(
-                              e['registrationNumber'],
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 17),
-                            )),
-                            DataCell(Text(
-                              e['buildYear'].toString(),
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 17),
-                            )),
-                            DataCell(Text(
-                              'ToDo :: vehicleType',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 17),
-                            )),
-                            DataCell(Text(
-                              'ToDo :: manufacturer',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 17),
-                            )),
-                            DataCell(IconButton(
-                              onPressed: () {
-                                //code
-                              },
-                              icon: const Icon(
-                                Icons.delete_forever_rounded,
-                                color: Colors.white,
-                              ),
-                            )),
-                          ],
-                        ),
-                      )
-                      .toList()
-                      .cast<DataRow>(),
+                  //result["resultList"]
+                  result
+                          .map(
+                            (e) => DataRow(
+                              cells: [
+                                DataCell(Text(
+                                  e.registrationNumber ?? "",
+                                  //e['registrationNumber'],
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 17),
+                                )),
+                                DataCell(Text(
+                                  e.buildYear.toString(),
+                                  //e['buildYear'].toString(),
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 17),
+                                )),
+                                DataCell(Text(
+                                  'ToDo :: vehicleType',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 17),
+                                )),
+                                DataCell(Text(
+                                  'ToDo :: manufacturer',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 17),
+                                )),
+                                DataCell(IconButton(
+                                  onPressed: () {
+                                    //code
+                                  },
+                                  icon: const Icon(
+                                    Icons.delete_forever_rounded,
+                                    color: Colors.white,
+                                  ),
+                                )),
+                              ],
+                            ),
+                          )
+                          .toList()
+                          .cast<DataRow>() ??
+                      [],
             ),
           ),
         ),

@@ -1,30 +1,19 @@
+import 'package:json_annotation/json_annotation.dart';
+part 'vehicle.g.dart';
+
+@JsonSerializable()
 class Vehicle {
-  final int vehicleId;
-  final String number;
-  final String registrationNumber;
-  final String buildYear;
-  //final int vehicleTypeId;
-  final String vehicleType;
-  //final int manufacturerId;
-  final String manufacturer;
+  int? vehicleId;
+  String? registrationNumber;
+  int? buildYear;
 
-  Vehicle({
-    required this.vehicleId,
-    required this.number,
-    required this.registrationNumber,
-    required this.buildYear,
-    required this.vehicleType,
-    required this.manufacturer,
-  });
+  Vehicle(
+      {this.vehicleId,
+      this.registrationNumber,
+      this.buildYear}); //kontruktor - moramo ga imati jer imamo factory metodu
 
-  factory Vehicle.fromJson(Map<String, dynamic> json) {
-    return Vehicle(
-      vehicleId: json['vehicleId'],
-      number: json['number'],
-      registrationNumber: json['registrationNumber'],
-      buildYear: json['buildYear'],
-      vehicleType: json['vehicleType'],
-      manufacturer: json['manufacturer'],
-    );
-  }
+  factory Vehicle.fromJson(Map<String, dynamic> json) =>
+      _$VehicleFromJson(json);
+
+  Map<String, dynamic> toJson() => _$VehicleToJson(this);
 }

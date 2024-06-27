@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:eprijevoz_desktop/models/vehicle.dart';
 import 'package:eprijevoz_desktop/providers/auth_provider.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
@@ -10,7 +11,8 @@ class VehicleProvider {
         defaultValue: "https://localhost:7292/");
   }
 
-  Future<dynamic> get() async {
+  //Future<dynamic> get() async {
+  Future<List<Vehicle>> get() async {
     var url = "${_baseUrl}Vehicle";
     var uri = Uri.parse(url);
     print("url:::::: $url");
@@ -18,7 +20,13 @@ class VehicleProvider {
 
     if (isValidResponse(response)) {
       var data = jsonDecode(response.body);
-      return data;
+      //konvertovanje elemenata
+      var result = data["resultList"]
+          .map((e) => Vehicle.fromJson(e))
+          .toList()
+          .cast<Vehicle>();
+      // return data;
+      return result;
     } else {
       throw Exception("Unknow exception");
     }
