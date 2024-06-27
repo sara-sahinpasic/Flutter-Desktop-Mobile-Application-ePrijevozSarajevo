@@ -1,8 +1,6 @@
 import 'package:eprijevoz_desktop/screens/user_list_screen.dart';
 import 'package:eprijevoz_desktop/screens/vehicle_list_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class MasterScreen extends StatefulWidget {
   MasterScreen(this.title, this.child, {super.key});
@@ -45,11 +43,11 @@ class _MasterScreenState extends State<MasterScreen> {
                 color: Colors.black,
                 child: ListView(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 80,
                     ),
                     Icon(Icons.person, color: Colors.green.shade800, size: 50),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Center(
@@ -62,7 +60,7 @@ class _MasterScreenState extends State<MasterScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 45,
                     ),
                     ListTile(
@@ -86,11 +84,11 @@ class _MasterScreenState extends State<MasterScreen> {
                         // );
                       },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 25,
                     ),
                     ListTile(
-                      leading: Icon(
+                      leading: const Icon(
                         Icons.people,
                         color: Colors.white,
                         size: 30,
@@ -107,11 +105,11 @@ class _MasterScreenState extends State<MasterScreen> {
                             builder: (context) => const UserListScreen()));
                       },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 25,
                     ),
                     ListTile(
-                      leading: Icon(
+                      leading: const Icon(
                         Icons.directions_car,
                         color: Colors.white,
                         size: 30,
@@ -128,11 +126,11 @@ class _MasterScreenState extends State<MasterScreen> {
                             builder: (context) => VehicleListScreen()));
                       },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 25,
                     ),
                     ListTile(
-                      leading: Icon(
+                      leading: const Icon(
                         Icons.directions,
                         color: Colors.white,
                         size: 30,
@@ -148,11 +146,11 @@ class _MasterScreenState extends State<MasterScreen> {
                         Navigator.pop(context);
                       },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 25,
                     ),
                     ListTile(
-                      leading: Icon(
+                      leading: const Icon(
                         Icons.request_page,
                         color: Colors.white,
                         size: 30,
@@ -168,11 +166,11 @@ class _MasterScreenState extends State<MasterScreen> {
                         Navigator.pop(context);
                       },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 25,
                     ),
                     ListTile(
-                      leading: Icon(
+                      leading: const Icon(
                         Icons.bar_chart,
                         color: Colors.white,
                         size: 30,
@@ -193,7 +191,7 @@ class _MasterScreenState extends State<MasterScreen> {
               )),
           Expanded(
               flex: 7,
-              child: Container(
+              child: SizedBox(
                   width: double.infinity,
                   //color: Colors.red,
                   child: Column(
@@ -201,7 +199,7 @@ class _MasterScreenState extends State<MasterScreen> {
                       Column(
                         children: [
                           Padding(
-                            padding: EdgeInsets.fromLTRB(35, 130, 0, 20),
+                            padding: const EdgeInsets.fromLTRB(35, 130, 0, 20),
                             child: Row(
                               children: [
                                 Text(
@@ -219,7 +217,7 @@ class _MasterScreenState extends State<MasterScreen> {
                       Column(
                         children: [
                           Padding(
-                            padding: EdgeInsets.fromLTRB(35, 10, 35, 0),
+                            padding: const EdgeInsets.fromLTRB(35, 10, 35, 0),
                             child: widget.child,
                           )
                         ],

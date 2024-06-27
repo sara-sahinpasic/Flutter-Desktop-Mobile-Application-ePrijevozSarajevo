@@ -1,8 +1,20 @@
 import 'package:eprijevoz_desktop/layouts/master_screen.dart';
+import 'package:eprijevoz_desktop/providers/vehicle_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-class VehicleListScreen extends StatelessWidget {
+class VehicleListScreen extends StatefulWidget {
   VehicleListScreen({super.key});
+
+  @override
+  State<VehicleListScreen> createState() => _VehicleListScreenState();
+}
+
+class _VehicleListScreenState extends State<VehicleListScreen> {
+  VehicleProvider provider =
+      VehicleProvider(); //ovako se instancira samo jednom, umjesto svaki put kada je unutar dijela : ElevatedButton(onPressed: () async {
+  dynamic
+      result; //omogućava da rez sa API snimimo unutar varijable, te da bi se forma mogla re-reandering
 
   @override
   Widget build(BuildContext context) {
@@ -16,45 +28,222 @@ class VehicleListScreen extends StatelessWidget {
   }
 
   TextEditingController inputController = TextEditingController();
+
   Widget _buildSearch() {
-    //return Placeholder();
     return Row(
       children: [
         const Text(
           "Registracijska oznaka:",
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
         ),
         const SizedBox(
-          width: 10,
+          width: 15,
         ),
-        const Expanded(
-          child: TextField(
-            decoration: InputDecoration(
-                contentPadding: EdgeInsets.symmetric(horizontal: 5),
-                labelText: "Unesite registracijsku oznaku u formatu: A12-K-123",
-                border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black, width: 5))),
+        Expanded(
+            child: TextFormField(
+          decoration: InputDecoration(
+            suffixText: "Unos registracijske oznake",
+            suffixStyle: TextStyle(color: Colors.green.shade800),
+            labelStyle: TextStyle(
+              color: Colors.green.shade800,
+            ),
+            enabledBorder: const OutlineInputBorder(
+              borderSide: BorderSide(
+                color: Colors.black,
+              ),
+            ),
           ),
-        ),
+          inputFormatters: [
+            LengthLimitingTextInputFormatter(9),
+            //FilteringTextInputFormatter.allow(
+            // RegExp('[A-Za-z]\d\d-[A-Za-z]-\d\d\d'))
+          ],
+        )),
         const SizedBox(
-          width: 10,
+          width: 15,
         ),
         ElevatedButton(
-            style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(2),
-                )),
-            onPressed: () async {
-              //TODO: add call to API
-            },
-            child: const Text("Pretraži"))
+          onPressed: () async {
+            //TODO: add call to API
+
+            //result = await provider.get();
+            //VehicleProvider provider = new VehicleProvider();
+
+            result = await provider.get();
+
+            // print(result);
+            /*
+             {count: 1, resultList: 
+            print(result["resultList"]);
+            /*
+             [{vehicleId: 1, number: 10, registrationNumber: 123, buildYear: 2000, vehicleType: null, manufacturer: null}]
+            */
+             [{vehicleId: 1, number: 10, registrationNumber: 123, buildYear: 2000, vehicleType: null, manufacturer: null}]}
+            */
+
+            print(result["resultList"]);
+            /*
+            [{vehicleId: 1, number: 10, registrationNumber: 123, buildYear: 2000, vehicleType: null, manufacturer: null}]
+            */
+            print(result["resultList"][0]["registrationNumber"]);
+            print(result["resultList"][0]);
+
+            if (result != null) {
+              var prvi = result["resultList"][0];
+              print("Ušao sam: $prvi");
+            } else {
+              print("MRS");
+            }
+            // Check if resultList is null
+            /*   if (result != null) {
+              // Access elements of resultList safely
+              var firstElement = result["resultList"][0];
+              print(firstElement);
+              print(result[firstElement]);
+            } else {
+              // Handle the null case appropriately
+              print("rsaraaaaaaaaaaaesultList is null");
+            }
+*/
+          },
+          style: ElevatedButton.styleFrom(
+            backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(2.0),
+            ),
+            minimumSize: const Size(100, 65),
+          ),
+          child: const Text("Pretraga", style: TextStyle(fontSize: 18)),
+        )
       ],
     );
-    //);
   }
 
   _buildResultView() {
-    return const Placeholder();
+    return Column(
+      children: [
+        const SizedBox(
+          height: 40,
+        ),
+        SingleChildScrollView(
+          child: Container(
+            color: Colors.black,
+            width: double.infinity,
+            child: DataTable(
+              columns: const <DataColumn>[
+                DataColumn(
+                  label: Expanded(
+                    child: Text(
+                      'Registracijska oznaka',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18),
+                    ),
+                  ),
+                ),
+                DataColumn(
+                  label: Expanded(
+                    child: Text(
+                      'Godina proizvodnje',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18),
+                    ),
+                  ),
+                ),
+                DataColumn(
+                  label: Expanded(
+                    child: Text(
+                      'Vrsta',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18),
+                    ),
+                  ),
+                ),
+                DataColumn(
+                  label: Expanded(
+                    child: Text(
+                      'Marka',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18),
+                    ),
+                  ),
+                ),
+                DataColumn(
+                  label: Expanded(
+                    child: Text(
+                      '',
+                    ),
+                  ),
+                ),
+              ],
+              rows:
+                  //[]
+
+                  result["resultList"]
+                      .map(
+                        (e) => DataRow(
+                          cells: [
+                            DataCell(Text(
+                              e['registrationNumber'],
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 17),
+                            )),
+                            DataCell(Text(
+                              e['buildYear'].toString(),
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 17),
+                            )),
+                            DataCell(Text(
+                              'ToDo :: vehicleType',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 17),
+                            )),
+                            DataCell(Text(
+                              'ToDo :: manufacturer',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 17),
+                            )),
+                            DataCell(IconButton(
+                              onPressed: () {
+                                //code
+                              },
+                              icon: const Icon(
+                                Icons.delete_forever_rounded,
+                                color: Colors.white,
+                              ),
+                            )),
+                          ],
+                        ),
+                      )
+                      .toList()
+                      .cast<DataRow>(),
+            ),
+          ),
+        ),
+        const SizedBox(
+          height: 15,
+        ),
+        ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(2.0),
+              ),
+              minimumSize: const Size(double.infinity, 65),
+            ),
+            child: const Text(
+              "Dodaj",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ))
+      ],
+    );
   }
 }
