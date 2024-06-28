@@ -2,9 +2,17 @@ import 'package:eprijevoz_desktop/providers/auth_provider.dart';
 import 'package:eprijevoz_desktop/providers/vehicle_provider.dart';
 import 'package:eprijevoz_desktop/screens/vehicle_list_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  //runApp(const MyApp());
+  //Provider:
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider<VehicleProvider>(create: (_) => VehicleProvider()),
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
