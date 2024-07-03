@@ -12,7 +12,7 @@ namespace ePrijevozSarajevo.Services
     {
         public UserRoleService(DataContext context, IMapper mapper) 
             : base(context, mapper) { }
-        public override IQueryable<UserRole> AddFilter(UserRoleSearchObjects search, IQueryable<UserRole> query)
+       /* public override IQueryable<UserRole> AddFilter(UserRoleSearchObjects search, IQueryable<UserRole> query)
         {
             query = base.AddFilter(search, query);
 
@@ -22,6 +22,6 @@ namespace ePrijevozSarajevo.Services
             }
 
             return query;
-        }
+        }*/
     }
 }

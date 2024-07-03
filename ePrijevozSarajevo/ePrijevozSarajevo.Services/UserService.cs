@@ -36,17 +36,16 @@ namespace ePrijevozSarajevo.Services
             //    query = query.Include(x => x.UserRoles)
             //        .ThenInclude(x => x.Role);
             //}
-            if (search?.IsRoleIncluded == true)
+            if (search.IsRoleIncluded == true)
             {
                 query = query
                     .Include(x => x.UserRoles)        // Include UserRoles collection
-                        .ThenInclude(ur => ur.Role);  // Then include the Role entity within UserRoles
+                        .ThenInclude(x => x.Role);  // Then include the Role entity within UserRoles
             }
-            //
-            if (search?.IsUserStatusIncluded == true)
+           /* if (search?.IsUserStatusIncluded == true)
             {
                 query = query.Include(x => x.UserStatus);
-            }
+            }*/
             return query;
         }
 

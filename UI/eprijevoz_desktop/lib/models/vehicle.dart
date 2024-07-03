@@ -1,11 +1,15 @@
+import 'package:eprijevoz_desktop/models/manufacturer.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'vehicle.g.dart';
 
 @JsonSerializable()
 class Vehicle {
   int? vehicleId;
+  int? number;
   String? registrationNumber;
   int? buildYear;
+  int? manufacturerId;
+  int? typeId;
 
   Vehicle(
       {this.vehicleId,

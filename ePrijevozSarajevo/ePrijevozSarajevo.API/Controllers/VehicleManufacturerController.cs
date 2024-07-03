@@ -8,9 +8,9 @@ namespace ePrijevozSarajevo.API.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class VehicleTypeController : BaseCRUDController<Model.VehicleType, VehicleTypeSearchObject, VehicleTypeUpsertRequest, VehicleTypeUpsertRequest>
+    public class VehicleManufacturerController : BaseCRUDController<Model.VehicleManufacturer, VehicleManufacturerSearchObject, VehicleManufacturerUpsertRequest, VehicleManufacturerUpsertRequest>
     {
-        public VehicleTypeController(IVehicleTypeService service) : base(service)
+        public VehicleManufacturerController(IVehicleManufacturerService service) : base(service)
         {
         }
 

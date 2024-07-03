@@ -98,16 +98,16 @@ namespace ePrijevozSarajevo.Services.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "VehicleTypes",
+                name: "Types",
                 columns: table => new
                 {
-                    VehicleTypeId = table.Column<int>(type: "int", nullable: false)
+                    TypeId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_VehicleTypes", x => x.VehicleTypeId);
+                    table.PrimaryKey("PK_Types", x => x.TypeId);
                 });
 
             migrationBuilder.CreateTable(
@@ -180,9 +180,9 @@ namespace ePrijevozSarajevo.Services.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Number = table.Column<int>(type: "int", nullable: false),
                     RegistrationNumber = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    BuildYear = table.Column<int>(type: "int", nullable: false),
                     ManufacturerId = table.Column<int>(type: "int", nullable: false),
-                    VehicleTypeId = table.Column<int>(type: "int", nullable: false),
-                    BuildYear = table.Column<int>(type: "int", nullable: false)
+                    TypeId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -194,10 +194,10 @@ namespace ePrijevozSarajevo.Services.Migrations
                         principalColumn: "ManufacturerId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Vehicles_VehicleTypes_VehicleTypeId",
-                        column: x => x.VehicleTypeId,
-                        principalTable: "VehicleTypes",
-                        principalColumn: "VehicleTypeId",
+                        name: "FK_Vehicles_Types_TypeId",
+                        column: x => x.TypeId,
+                        principalTable: "Types",
+                        principalColumn: "TypeId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -296,6 +296,15 @@ namespace ePrijevozSarajevo.Services.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Manufacturers",
+                columns: new[] { "ManufacturerId", "Name" },
+                values: new object[,]
+                {
+                    { 1, "MAN" },
+                    { 2, "VW" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Roles",
                 columns: new[] { "RoleId", "Name" },
                 values: new object[,]
@@ -328,12 +337,30 @@ namespace ePrijevozSarajevo.Services.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Types",
+                columns: new[] { "TypeId", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Bus" },
+                    { 2, "Tram" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "UserId", "Active", "Address", "DateOfBirth", "Email", "FirstName", "LastName", "ModifiedDate", "PasswordHash", "PasswordSalt", "PhoneNumber", "ProfileImagePath", "RegistrationDate", "StatusExpirationDate", "UserName", "UserStatusId" },
                 values: new object[,]
                 {
-                    { 1, true, "Adresa 11", new DateTime(1988, 9, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "admin@mail.ba", "Neko", "Nekić", new DateTime(2024, 5, 22, 14, 31, 51, 350, DateTimeKind.Local).AddTicks(4786), "CpgETFhuD/kSxKOD+01iGlIT7N0=", "I6E8SJEzgUJio4NO2ZY7gw==", "061222333", "", new DateTime(2024, 5, 22, 14, 31, 51, 350, DateTimeKind.Local).AddTicks(4784), new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "admin", 3 },
-                    { 2, true, "Adresa 12", new DateTime(1988, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), "user@mail.ba", "Neka", "Nekić", new DateTime(2024, 5, 22, 14, 31, 51, 350, DateTimeKind.Local).AddTicks(4806), "MkyltEKrWRd8z+y+GfKYfCXZn/g=", "JyN25Lf90fJx1wvOJH+xEw==", "061222444", "", new DateTime(2024, 5, 22, 14, 31, 51, 350, DateTimeKind.Local).AddTicks(4805), new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "user", 3 }
+                    { 1, true, "Adresa 11", new DateTime(1988, 9, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "admin@mail.ba", "Neko", "Nekić", new DateTime(2024, 7, 3, 19, 43, 38, 645, DateTimeKind.Local).AddTicks(5391), "c2Olfe7Nc9DE915412F5EKQqXGA=", "yNDwiypCJHbUykgqlKvfPg==", "061222333", "", new DateTime(2024, 7, 3, 19, 43, 38, 645, DateTimeKind.Local).AddTicks(5389), new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "admin", 3 },
+                    { 2, true, "Adresa 12", new DateTime(1988, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), "user@mail.ba", "Neka", "Nekić", new DateTime(2024, 7, 3, 19, 43, 38, 645, DateTimeKind.Local).AddTicks(5403), "/77iEe9sYgAaCzcqq+7jKysdTPc=", "mKkxiAlLD2pkunknSJBBKQ==", "061222444", "", new DateTime(2024, 7, 3, 19, 43, 38, 645, DateTimeKind.Local).AddTicks(5402), new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "user", 3 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Vehicles",
+                columns: new[] { "VehicleId", "BuildYear", "ManufacturerId", "Number", "RegistrationNumber", "TypeId" },
+                values: new object[,]
+                {
+                    { 1, 2005, 1, 15, "A10-B-123", 1 },
+                    { 2, 2015, 2, 20, "A11-C-124", 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -341,8 +368,8 @@ namespace ePrijevozSarajevo.Services.Migrations
                 columns: new[] { "UserRoleId", "ModificationDate", "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 5, 22, 14, 31, 51, 350, DateTimeKind.Local).AddTicks(4674), 1, 1 },
-                    { 2, new DateTime(2024, 5, 22, 14, 31, 51, 350, DateTimeKind.Local).AddTicks(4720), 2, 2 }
+                    { 1, new DateTime(2024, 7, 3, 19, 43, 38, 645, DateTimeKind.Local).AddTicks(5275), 1, 1 },
+                    { 2, new DateTime(2024, 7, 3, 19, 43, 38, 645, DateTimeKind.Local).AddTicks(5323), 2, 2 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -413,9 +440,9 @@ namespace ePrijevozSarajevo.Services.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Vehicles_VehicleTypeId",
+                name: "IX_Vehicles_TypeId",
                 table: "Vehicles",
-                column: "VehicleTypeId");
+                column: "TypeId");
         }
 
         /// <inheritdoc />
@@ -452,7 +479,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                 name: "Manufacturers");
 
             migrationBuilder.DropTable(
-                name: "VehicleTypes");
+                name: "Types");
 
             migrationBuilder.DropTable(
                 name: "Stations");

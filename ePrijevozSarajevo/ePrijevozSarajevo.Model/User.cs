@@ -14,7 +14,7 @@
         public DateTime ModifiedDate { get; set; }
         public bool Active { get; set; }
         public string? ProfileImagePath { get; set; }
-        public Status? UserStatus { get; set; }
+        //public Status? UserStatus { get; set; }
         public DateTime? StatusExpirationDate { get; set; }
         //
         public virtual ICollection<UserRole> UserRoles { get; set; } = new List<UserRole>();

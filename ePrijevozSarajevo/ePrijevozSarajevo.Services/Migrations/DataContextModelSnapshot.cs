@@ -73,6 +73,18 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.HasKey("ManufacturerId");
 
                     b.ToTable("Manufacturers");
+
+                    b.HasData(
+                        new
+                        {
+                            ManufacturerId = 1,
+                            Name = "MAN"
+                        },
+                        new
+                        {
+                            ManufacturerId = 2,
+                            Name = "VW"
+                        });
                 });
 
             modelBuilder.Entity("ePrijevozSarajevo.Services.Database.PaymentMethod", b =>
@@ -331,6 +343,34 @@ namespace ePrijevozSarajevo.Services.Migrations
                         });
                 });
 
+            modelBuilder.Entity("ePrijevozSarajevo.Services.Database.Type", b =>
+                {
+                    b.Property<int>("TypeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TypeId"));
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TypeId");
+
+                    b.ToTable("Types");
+
+                    b.HasData(
+                        new
+                        {
+                            TypeId = 1,
+                            Name = "Bus"
+                        },
+                        new
+                        {
+                            TypeId = 2,
+                            Name = "Tram"
+                        });
+                });
+
             modelBuilder.Entity("ePrijevozSarajevo.Services.Database.User", b =>
                 {
                     b.Property<int>("UserId")
@@ -409,12 +449,12 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Email = "admin@mail.ba",
                             FirstName = "Neko",
                             LastName = "Nekić",
-                            ModifiedDate = new DateTime(2024, 5, 22, 14, 31, 51, 350, DateTimeKind.Local).AddTicks(4786),
-                            PasswordHash = "CpgETFhuD/kSxKOD+01iGlIT7N0=",
-                            PasswordSalt = "I6E8SJEzgUJio4NO2ZY7gw==",
+                            ModifiedDate = new DateTime(2024, 7, 3, 19, 43, 38, 645, DateTimeKind.Local).AddTicks(5391),
+                            PasswordHash = "c2Olfe7Nc9DE915412F5EKQqXGA=",
+                            PasswordSalt = "yNDwiypCJHbUykgqlKvfPg==",
                             PhoneNumber = "061222333",
                             ProfileImagePath = "",
-                            RegistrationDate = new DateTime(2024, 5, 22, 14, 31, 51, 350, DateTimeKind.Local).AddTicks(4784),
+                            RegistrationDate = new DateTime(2024, 7, 3, 19, 43, 38, 645, DateTimeKind.Local).AddTicks(5389),
                             StatusExpirationDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserName = "admin",
                             UserStatusId = 3
@@ -428,12 +468,12 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Email = "user@mail.ba",
                             FirstName = "Neka",
                             LastName = "Nekić",
-                            ModifiedDate = new DateTime(2024, 5, 22, 14, 31, 51, 350, DateTimeKind.Local).AddTicks(4806),
-                            PasswordHash = "MkyltEKrWRd8z+y+GfKYfCXZn/g=",
-                            PasswordSalt = "JyN25Lf90fJx1wvOJH+xEw==",
+                            ModifiedDate = new DateTime(2024, 7, 3, 19, 43, 38, 645, DateTimeKind.Local).AddTicks(5403),
+                            PasswordHash = "/77iEe9sYgAaCzcqq+7jKysdTPc=",
+                            PasswordSalt = "mKkxiAlLD2pkunknSJBBKQ==",
                             PhoneNumber = "061222444",
                             ProfileImagePath = "",
-                            RegistrationDate = new DateTime(2024, 5, 22, 14, 31, 51, 350, DateTimeKind.Local).AddTicks(4805),
+                            RegistrationDate = new DateTime(2024, 7, 3, 19, 43, 38, 645, DateTimeKind.Local).AddTicks(5402),
                             StatusExpirationDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserName = "user",
                             UserStatusId = 3
@@ -469,14 +509,14 @@ namespace ePrijevozSarajevo.Services.Migrations
                         new
                         {
                             UserRoleId = 1,
-                            ModificationDate = new DateTime(2024, 5, 22, 14, 31, 51, 350, DateTimeKind.Local).AddTicks(4674),
+                            ModificationDate = new DateTime(2024, 7, 3, 19, 43, 38, 645, DateTimeKind.Local).AddTicks(5275),
                             RoleId = 1,
                             UserId = 1
                         },
                         new
                         {
                             UserRoleId = 2,
-                            ModificationDate = new DateTime(2024, 5, 22, 14, 31, 51, 350, DateTimeKind.Local).AddTicks(4720),
+                            ModificationDate = new DateTime(2024, 7, 3, 19, 43, 38, 645, DateTimeKind.Local).AddTicks(5323),
                             RoleId = 2,
                             UserId = 2
                         });
@@ -503,7 +543,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("VehicleTypeId")
+                    b.Property<int>("TypeId")
                         .HasColumnType("int");
 
                     b.HasKey("VehicleId");
@@ -513,25 +553,29 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.HasIndex("RegistrationNumber")
                         .IsUnique();
 
-                    b.HasIndex("VehicleTypeId");
+                    b.HasIndex("TypeId");
 
                     b.ToTable("Vehicles");
-                });
 
-            modelBuilder.Entity("ePrijevozSarajevo.Services.Database.VehicleType", b =>
-                {
-                    b.Property<int>("VehicleTypeId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("VehicleTypeId"));
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("VehicleTypeId");
-
-                    b.ToTable("VehicleTypes");
+                    b.HasData(
+                        new
+                        {
+                            VehicleId = 1,
+                            BuildYear = 2005,
+                            ManufacturerId = 1,
+                            Number = 15,
+                            RegistrationNumber = "A10-B-123",
+                            TypeId = 1
+                        },
+                        new
+                        {
+                            VehicleId = 2,
+                            BuildYear = 2015,
+                            ManufacturerId = 2,
+                            Number = 20,
+                            RegistrationNumber = "A11-C-124",
+                            TypeId = 2
+                        });
                 });
 
             modelBuilder.Entity("ePrijevozSarajevo.Services.Database.IssuedTicket", b =>
@@ -635,15 +679,15 @@ namespace ePrijevozSarajevo.Services.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ePrijevozSarajevo.Services.Database.VehicleType", "VehicleType")
+                    b.HasOne("ePrijevozSarajevo.Services.Database.Type", "Type")
                         .WithMany()
-                        .HasForeignKey("VehicleTypeId")
+                        .HasForeignKey("TypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Manufacturer");
 
-                    b.Navigation("VehicleType");
+                    b.Navigation("Type");
                 });
 
             modelBuilder.Entity("ePrijevozSarajevo.Services.Database.Role", b =>

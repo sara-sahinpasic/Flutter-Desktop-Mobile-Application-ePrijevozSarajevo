@@ -2,6 +2,7 @@
 {
     public class VehicleTypeSearchObject : BaseSearchObject
     {
-        public string? NameGTE { get; set; }
+        public bool? IsTypeIncluded { get; set; }
+
     }
 }

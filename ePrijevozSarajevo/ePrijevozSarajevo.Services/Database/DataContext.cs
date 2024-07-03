@@ -19,12 +19,16 @@ namespace ePrijevozSarajevo.Services.Database
         public DbSet<Status> Statuses { get; set; } = null!;
         public DbSet<IssuedTicket> IssuedTickets { get; set; } = null!;
         public DbSet<Station> Stations { get; set; } = null!;
-        public DbSet<Vehicle> Vehicles { get; set; } = null!;
-        public DbSet<VehicleType> VehicleTypes { get; set; } = null!;
-        public DbSet<Manufacturer> Manufacturers { get; set; } = null!;
         public DbSet<Route> Routes { get; set; } = null!;
         public DbSet<Request> Requests { get; set; } = null!;
         public DbSet<UserRole> UserRoles { get; set; } = null!;
+
+        public DbSet<Vehicle> Vehicles { get; set; } = null!;
+        public DbSet<Manufacturer> Manufacturers { get; set; } = null!;
+        public DbSet<Type> Types { get; set; } = null!;
+
+        //public DbSet<VehicleManufacturer> VehicleManufacturers { get; set; } = null!;
+        //public DbSet<VehicleType> VehicleTypes { get; set; } = null!;
 
         //protected override void OnConfiguring(DbContextOptionsBuilder options)
         //{
@@ -42,11 +46,11 @@ namespace ePrijevozSarajevo.Services.Database
             }
         }
 
-      
-        //   protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        //=> optionsBuilder.UseSqlServer("Data Source=localhost; Initial Catalog=140261; user=sa; Password=QWEasd123!;" +
-        //    "Trusted_Connection=True;TrustServerCertificate=True");
+
+//        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+//     => optionsBuilder.UseSqlServer("Data Source=localhost; Initial Catalog=140261; user=sa; Password=QWEasd123!;" +
+//         "Trusted_Connection=True;TrustServerCertificate=True");
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -112,7 +116,12 @@ namespace ePrijevozSarajevo.Services.Database
             });*/
 
             //BuildPaymentOptions(modelBuilder);
-
+            //BuildVehicleManufacturer(modelBuilder);
+            //BuildVehicleType(modelBuilder);
+            BuildVehicle(modelBuilder);
+            BuildManufacturer(modelBuilder);
+            BuildType(modelBuilder);
+            //
             BuildUserRoles(modelBuilder);
             BuildUsers(modelBuilder);
             BuildRoles(modelBuilder);
@@ -138,6 +147,117 @@ namespace ePrijevozSarajevo.Services.Database
             modelBuilder.Entity<PaymentMethod>()
                 .HasData(paymentOptions);
         }*/
+       /* private static void BuildVehicleManufacturer(ModelBuilder modelBuilder)
+        {
+            List<VehicleManufacturer> vehicleManufacturers = new()
+        {
+            new()
+            {
+                VehicleManufacturerId =1,
+                VehicleId = 1,
+                ManufacturerId = 1,
+            },
+            new()
+            {
+                VehicleManufacturerId =2,
+                VehicleId = 2,
+                ManufacturerId = 2,
+            },
+        };
+
+            modelBuilder.Entity<VehicleManufacturer>()
+                .HasData(vehicleManufacturers);
+        }*/
+        /*private static void BuildVehicleType(ModelBuilder modelBuilder)
+        {
+            List<VehicleType> vehicleTypes = new()
+        {
+            new()
+            {
+                VehicleTypeId =1,
+                VehicleId = 1,
+                TypeId = 1,
+            },
+            new()
+            {
+                VehicleTypeId =2,
+                VehicleId = 2,
+                TypeId = 2,
+            },
+        };
+
+            modelBuilder.Entity<VehicleType>()
+                .HasData(vehicleTypes);
+        }
+        */
+        private static void BuildVehicle(ModelBuilder modelBuilder)
+        {
+            List<Vehicle> vehicles = new()
+        {
+            new()
+            {
+                VehicleId = 1,
+                Number = 15,
+                RegistrationNumber="A10-B-123",
+                BuildYear=2005,
+                ManufacturerId=1,
+                TypeId=1,
+            },
+            new()
+            {
+                VehicleId = 2,
+                Number = 20,
+                RegistrationNumber="A11-C-124",
+                BuildYear=2015,
+                ManufacturerId=2,
+                TypeId=2,
+            },
+        };
+
+            modelBuilder.Entity<Vehicle>()
+                .HasData(vehicles);
+        }
+        private static void BuildManufacturer(ModelBuilder modelBuilder)
+        {
+            List<Manufacturer> manufacturers = new()
+        {
+            new()
+            {
+                ManufacturerId = 1,
+                Name = "MAN"
+            },
+            new()
+            {
+                ManufacturerId = 2,
+                Name = "VW"
+            }
+        };
+
+            modelBuilder.Entity<Manufacturer>()
+                .HasData(manufacturers);
+        }
+        private static void BuildType(ModelBuilder modelBuilder)
+        {
+            List<Type> types = new()
+        {
+            new()
+            {
+                TypeId = 1,
+                Name = "Bus"
+            },
+            new()
+            {
+                TypeId = 2,
+                Name = "Tram"
+            }
+        };
+
+            modelBuilder.Entity<Type>()
+                .HasData(types);
+        }
+
+
+        //
         private static void BuildUserRoles(ModelBuilder modelBuilder)
         {
             List<UserRole> userRoles = new()

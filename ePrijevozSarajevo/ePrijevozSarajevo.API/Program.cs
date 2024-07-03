@@ -14,15 +14,20 @@ var builder = WebApplication.CreateBuilder(args);
 
 //Dependency Injection
 builder.Services.AddTransient<IUserService, UserService>();
-builder.Services.AddTransient<IVehicleService, VehicleService>();
 builder.Services.AddTransient<IRouteService, RouteService>();
 builder.Services.AddTransient<IStationService, StationService>();
 builder.Services.AddTransient<IRequestService, RequestService>();
-builder.Services.AddTransient<IManufacturerService, ManufacturerService>();
-builder.Services.AddTransient<IVehicleTypeService, VehicleTypeService>();
 builder.Services.AddTransient<ITicketService, TicketService>();
 builder.Services.AddTransient<IIssuedTicketService, IssuedTicketService>();
 builder.Services.AddTransient<IUserRoleService, UserRoleService>();
+
+builder.Services.AddTransient<IVehicleService, VehicleService>();
+builder.Services.AddTransient<IManufacturerService, ManufacturerService>();
+builder.Services.AddTransient<ITypeService, TypeService>();
+//sbuilder.Services.AddTransient<IVehicleManufacturerService, VehicleManufacturerService>();
+//builder.Services.AddTransient<IVehicleTypeService, VehicleTypeService>();
+
+
 
 //State machine
 builder.Services.AddTransient<BaseTicketState>();
