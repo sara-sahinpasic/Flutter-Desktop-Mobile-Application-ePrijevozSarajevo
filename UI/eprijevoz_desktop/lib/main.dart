@@ -1,6 +1,7 @@
 import 'package:eprijevoz_desktop/providers/auth_provider.dart';
 import 'package:eprijevoz_desktop/providers/manufacturer_provider.dart';
 import 'package:eprijevoz_desktop/providers/type_provider.dart';
+import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:eprijevoz_desktop/providers/vehicle_provider.dart';
 
 import 'package:eprijevoz_desktop/screens/vehicle_list_screen.dart';
@@ -16,6 +17,7 @@ void main() {
       ChangeNotifierProvider<ManufacturerProvider>(
           create: (_) => ManufacturerProvider()),
       ChangeNotifierProvider<TypeProvider>(create: (_) => TypeProvider()),
+      ChangeNotifierProvider<UserProvider>(create: (_) => UserProvider()),
     ],
     child: const MyApp(),
   ));
