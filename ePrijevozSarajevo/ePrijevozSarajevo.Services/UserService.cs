@@ -22,30 +22,21 @@ namespace ePrijevozSarajevo.Services
         {
             query = base.AddFilter(search, query);
 
-            if (!string.IsNullOrWhiteSpace(search?.FirstNameGTE))
+            if ((!string.IsNullOrWhiteSpace(search?.FirstNameGTE)) || (!string.IsNullOrWhiteSpace(search?.LastNameGTE)))
             {
-                query = query.Where(x => x.FirstName.StartsWith(search.FirstNameGTE));
+                query = query.Where((x => x.FirstName.StartsWith(search.FirstNameGTE) || x.LastName.StartsWith(search.LastNameGTE)));
             }
-            if (!string.IsNullOrWhiteSpace(search?.LastNameGTE))
-            {
-                query = query.Where(x => x.LastName.StartsWith(search.LastNameGTE));
-            }
-            //ToDo
-            //if (search.IsRoleIncluded == true)
-            //{
-            //    query = query.Include(x => x.UserRoles)
-            //        .ThenInclude(x => x.Role);
-            //}
+                     
             if (search.IsRoleIncluded == true)
             {
                 query = query
                     .Include(x => x.UserRoles)        // Include UserRoles collection
                         .ThenInclude(x => x.Role);  // Then include the Role entity within UserRoles
             }
-           /* if (search?.IsUserStatusIncluded == true)
-            {
-                query = query.Include(x => x.UserStatus);
-            }*/
+            /* if (search?.IsUserStatusIncluded == true)
+             {
+                 query = query.Include(x => x.UserStatus);
+             }*/
             return query;
         }
 

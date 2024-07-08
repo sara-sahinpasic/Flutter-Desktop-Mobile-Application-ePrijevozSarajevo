@@ -149,7 +149,7 @@ class _MasterScreenState extends State<MasterScreen> {
                     ),
                     ListTile(
                       leading: const Icon(
-                        Icons.directions,
+                        Icons.sync,
                         color: Colors.white,
                         size: 30,
                       ),

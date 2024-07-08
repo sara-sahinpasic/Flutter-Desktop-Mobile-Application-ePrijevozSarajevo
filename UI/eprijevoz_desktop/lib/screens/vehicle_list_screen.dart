@@ -86,7 +86,8 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
   }
 
 //Search
-  TextEditingController _ftsEditingController = TextEditingController();
+  TextEditingController _ftsRegistrationMarkController =
+      TextEditingController();
 
   Widget _buildSearch() {
     return Container(
@@ -103,7 +104,7 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
           Expanded(
               child: TextFormField(
             //Search
-            controller: _ftsEditingController,
+            controller: _ftsRegistrationMarkController,
             cursorColor: Colors.green.shade800,
             decoration: InputDecoration(
               suffixText: "Pretraga po registracijskoj oznaci.",
@@ -137,7 +138,7 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
               //Search:
               var filter = {
                 //RegistrationNumberGTE -  naziv property-ja sa API
-                'RegistrationNumberGTE': _ftsEditingController.text,
+                'RegistrationNumberGTE': _ftsRegistrationMarkController.text,
               };
               //result = await provider.get();
               result = await vehicleProvider.get(filter: filter);
@@ -170,7 +171,7 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
                 print("List is null");
               }
               */
-              _ftsEditingController.clear();
+              _ftsRegistrationMarkController.clear();
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color.fromRGBO(72, 156, 118, 100),

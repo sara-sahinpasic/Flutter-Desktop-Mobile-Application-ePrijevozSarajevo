@@ -52,7 +52,6 @@ class _UserListScreenState extends State<UserListScreen> {
   @override
   Widget build(BuildContext context) {
     return MasterScreen(
-        //"Korisnici", Placeholder()
         "Korisnici",
         SingleChildScrollView(
           child: Container(
@@ -63,15 +62,14 @@ class _UserListScreenState extends State<UserListScreen> {
         ));
   }
 
-  TextEditingController _ftsFirstNameController = TextEditingController();
-  TextEditingController _ftsLastNameController = TextEditingController();
+  TextEditingController _ftsFirstLastNameController = TextEditingController();
   Widget _buildSearch() {
     return Container(
       //color: Colors.red,
       child: Row(
         children: [
           const Text(
-            "Ime:",
+            "Ime prezime:",
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
           ),
           const SizedBox(
@@ -79,10 +77,10 @@ class _UserListScreenState extends State<UserListScreen> {
           ),
           Expanded(
             child: TextFormField(
-              controller: _ftsFirstNameController,
+              controller: _ftsFirstLastNameController,
               cursorColor: Colors.green.shade800,
               decoration: InputDecoration(
-                suffixText: 'Pretraga po imenu.',
+                suffixText: 'Pretraga po imenu ili prezimenu.',
                 suffixStyle: TextStyle(color: Colors.green.shade800),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black),
@@ -98,32 +96,6 @@ class _UserListScreenState extends State<UserListScreen> {
           ),
           const SizedBox(
             width: 15,
-          ),
-          const Text(
-            "Prezime:",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-          ),
-          const SizedBox(
-            width: 15,
-          ),
-          Expanded(
-            child: TextFormField(
-              controller: _ftsLastNameController,
-              cursorColor: Colors.green.shade800,
-              decoration: InputDecoration(
-                suffixText: 'Pretraga po prezimenu.',
-                suffixStyle: TextStyle(color: Colors.green.shade800),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black),
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    topRight: Radius.circular(10),
-                    bottomLeft: Radius.circular(10),
-                    bottomRight: Radius.circular(10),
-                  ),
-                ),
-              ),
-            ),
           ),
           const SizedBox(
             width: 15,
@@ -132,14 +104,14 @@ class _UserListScreenState extends State<UserListScreen> {
             onPressed: () async {
               //Search:
               var filter = {
-                'FirstNameGTE': _ftsFirstNameController.text,
-                'LastNameGTE': _ftsLastNameController.text,
+                'FirstNameGTE': _ftsFirstLastNameController.text,
+                'LastNameGTE': _ftsFirstLastNameController.text,
               };
               userResult = await userProvider.get(filter: filter);
               setState(() {});
 
-              _ftsFirstNameController.clear();
-              _ftsLastNameController.clear();
+              _ftsFirstLastNameController.clear();
+              // _ftsLastNameController.clear();
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
