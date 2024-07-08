@@ -22,6 +22,46 @@ namespace ePrijevozSarajevo.Services.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("ePrijevozSarajevo.Services.Database.Holiday", b =>
+                {
+                    b.Property<int>("HolidayId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HolidayId"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("HolidayId");
+
+                    b.ToTable("Holidays");
+
+                    b.HasData(
+                        new
+                        {
+                            HolidayId = 1,
+                            Date = new DateTime(2024, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Bajram"
+                        },
+                        new
+                        {
+                            HolidayId = 2,
+                            Date = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Nova godina"
+                        },
+                        new
+                        {
+                            HolidayId = 3,
+                            Date = new DateTime(2024, 12, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Božić"
+                        });
+                });
+
             modelBuilder.Entity("ePrijevozSarajevo.Services.Database.IssuedTicket", b =>
                 {
                     b.Property<int>("IssuedTicketId")
@@ -83,7 +123,17 @@ namespace ePrijevozSarajevo.Services.Migrations
                         new
                         {
                             ManufacturerId = 2,
-                            Name = "VW"
+                            Name = "Solaris"
+                        },
+                        new
+                        {
+                            ManufacturerId = 3,
+                            Name = "Volvo"
+                        },
+                        new
+                        {
+                            ManufacturerId = 4,
+                            Name = "Mercedes"
                         });
                 });
 
@@ -209,7 +259,131 @@ namespace ePrijevozSarajevo.Services.Migrations
 
                     b.HasIndex("StartStationId");
 
+                    b.HasIndex("VehicleId");
+
                     b.ToTable("Routes");
+
+                    b.HasData(
+                        new
+                        {
+                            RouteId = 1,
+                            Active = true,
+                            ActiveOnHolidays = true,
+                            ActiveOnWeekends = true,
+                            EndStationId = 6,
+                            StartStationId = 1,
+                            TimeOfArrival = new TimeSpan(0, 18, 30, 0, 0),
+                            TimeOfDeparture = new TimeSpan(0, 18, 0, 0, 0),
+                            VehicleId = 2
+                        },
+                        new
+                        {
+                            RouteId = 2,
+                            Active = true,
+                            ActiveOnHolidays = true,
+                            ActiveOnWeekends = true,
+                            EndStationId = 8,
+                            StartStationId = 1,
+                            TimeOfArrival = new TimeSpan(0, 18, 30, 0, 0),
+                            TimeOfDeparture = new TimeSpan(0, 18, 0, 0, 0),
+                            VehicleId = 4
+                        },
+                        new
+                        {
+                            RouteId = 3,
+                            Active = true,
+                            ActiveOnHolidays = true,
+                            ActiveOnWeekends = true,
+                            EndStationId = 6,
+                            StartStationId = 1,
+                            TimeOfArrival = new TimeSpan(0, 18, 30, 0, 0),
+                            TimeOfDeparture = new TimeSpan(0, 18, 0, 0, 0),
+                            VehicleId = 6
+                        },
+                        new
+                        {
+                            RouteId = 4,
+                            Active = true,
+                            ActiveOnHolidays = true,
+                            ActiveOnWeekends = true,
+                            EndStationId = 7,
+                            StartStationId = 2,
+                            TimeOfArrival = new TimeSpan(0, 18, 30, 0, 0),
+                            TimeOfDeparture = new TimeSpan(0, 18, 0, 0, 0),
+                            VehicleId = 4
+                        },
+                        new
+                        {
+                            RouteId = 5,
+                            Active = true,
+                            ActiveOnHolidays = true,
+                            ActiveOnWeekends = true,
+                            EndStationId = 3,
+                            StartStationId = 7,
+                            TimeOfArrival = new TimeSpan(0, 18, 30, 0, 0),
+                            TimeOfDeparture = new TimeSpan(0, 18, 0, 0, 0),
+                            VehicleId = 2
+                        },
+                        new
+                        {
+                            RouteId = 6,
+                            Active = true,
+                            ActiveOnHolidays = true,
+                            ActiveOnWeekends = true,
+                            EndStationId = 1,
+                            StartStationId = 8,
+                            TimeOfArrival = new TimeSpan(0, 18, 30, 0, 0),
+                            TimeOfDeparture = new TimeSpan(0, 18, 0, 0, 0),
+                            VehicleId = 6
+                        },
+                        new
+                        {
+                            RouteId = 7,
+                            Active = true,
+                            ActiveOnHolidays = true,
+                            ActiveOnWeekends = true,
+                            EndStationId = 15,
+                            StartStationId = 9,
+                            TimeOfArrival = new TimeSpan(0, 18, 30, 0, 0),
+                            TimeOfDeparture = new TimeSpan(0, 18, 0, 0, 0),
+                            VehicleId = 1
+                        },
+                        new
+                        {
+                            RouteId = 8,
+                            Active = true,
+                            ActiveOnHolidays = true,
+                            ActiveOnWeekends = true,
+                            EndStationId = 8,
+                            StartStationId = 11,
+                            TimeOfArrival = new TimeSpan(0, 18, 30, 0, 0),
+                            TimeOfDeparture = new TimeSpan(0, 18, 0, 0, 0),
+                            VehicleId = 3
+                        },
+                        new
+                        {
+                            RouteId = 9,
+                            Active = true,
+                            ActiveOnHolidays = true,
+                            ActiveOnWeekends = true,
+                            EndStationId = 14,
+                            StartStationId = 10,
+                            TimeOfArrival = new TimeSpan(0, 18, 30, 0, 0),
+                            TimeOfDeparture = new TimeSpan(0, 18, 0, 0, 0),
+                            VehicleId = 5
+                        },
+                        new
+                        {
+                            RouteId = 10,
+                            Active = true,
+                            ActiveOnHolidays = true,
+                            ActiveOnWeekends = true,
+                            EndStationId = 7,
+                            StartStationId = 13,
+                            TimeOfArrival = new TimeSpan(0, 18, 30, 0, 0),
+                            TimeOfDeparture = new TimeSpan(0, 18, 0, 0, 0),
+                            VehicleId = 1
+                        });
                 });
 
             modelBuilder.Entity("ePrijevozSarajevo.Services.Database.Station", b =>
@@ -220,21 +394,89 @@ namespace ePrijevozSarajevo.Services.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StationId"));
 
-                    b.Property<DateTime?>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DateCreated")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<TimeSpan?>("Time")
-                        .HasColumnType("time");
 
                     b.HasKey("StationId");
 
                     b.ToTable("Stations");
+
+                    b.HasData(
+                        new
+                        {
+                            StationId = 1,
+                            Name = "Ilidža"
+                        },
+                        new
+                        {
+                            StationId = 2,
+                            Name = "Stup"
+                        },
+                        new
+                        {
+                            StationId = 3,
+                            Name = "Nedžarići"
+                        },
+                        new
+                        {
+                            StationId = 4,
+                            Name = "Socijalno"
+                        },
+                        new
+                        {
+                            StationId = 5,
+                            Name = "Malta"
+                        },
+                        new
+                        {
+                            StationId = 6,
+                            Name = "Baščaršija"
+                        },
+                        new
+                        {
+                            StationId = 7,
+                            Name = "Otoka"
+                        },
+                        new
+                        {
+                            StationId = 8,
+                            Name = "Skenderija"
+                        },
+                        new
+                        {
+                            StationId = 9,
+                            Name = "Drvenija"
+                        },
+                        new
+                        {
+                            StationId = 10,
+                            Name = "Dobrinja"
+                        },
+                        new
+                        {
+                            StationId = 11,
+                            Name = "Grbavica"
+                        },
+                        new
+                        {
+                            StationId = 12,
+                            Name = "Hrasno"
+                        },
+                        new
+                        {
+                            StationId = 13,
+                            Name = "Aneks"
+                        },
+                        new
+                        {
+                            StationId = 14,
+                            Name = "Alipašino polje"
+                        },
+                        new
+                        {
+                            StationId = 15,
+                            Name = "Švrakino selo"
+                        });
                 });
 
             modelBuilder.Entity("ePrijevozSarajevo.Services.Database.Status", b =>
@@ -362,7 +604,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                         new
                         {
                             TypeId = 1,
-                            Name = "Bus"
+                            Name = "Trolleybus"
                         },
                         new
                         {
@@ -445,18 +687,18 @@ namespace ePrijevozSarajevo.Services.Migrations
                             UserId = 1,
                             Active = true,
                             Address = "Adresa 11",
-                            DateOfBirth = new DateTime(1988, 9, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "admin@mail.ba",
-                            FirstName = "Neko",
-                            LastName = "Nekić",
-                            ModifiedDate = new DateTime(2024, 7, 3, 19, 43, 38, 645, DateTimeKind.Local).AddTicks(5391),
-                            PasswordHash = "c2Olfe7Nc9DE915412F5EKQqXGA=",
-                            PasswordSalt = "yNDwiypCJHbUykgqlKvfPg==",
+                            DateOfBirth = new DateTime(1998, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "sara.sahinpasic@edu.fit.ba",
+                            FirstName = "Sara",
+                            LastName = "Šahinpašić",
+                            ModifiedDate = new DateTime(2024, 7, 8, 14, 51, 23, 172, DateTimeKind.Local).AddTicks(9140),
+                            PasswordHash = "ZmwcO1xPmhSqMMuz6PVoLvG3OsI=",
+                            PasswordSalt = "ZGdKdUWDEzNeXWavTQXOTQ==",
                             PhoneNumber = "061222333",
                             ProfileImagePath = "",
-                            RegistrationDate = new DateTime(2024, 7, 3, 19, 43, 38, 645, DateTimeKind.Local).AddTicks(5389),
+                            RegistrationDate = new DateTime(2024, 7, 8, 14, 51, 23, 172, DateTimeKind.Local).AddTicks(9102),
                             StatusExpirationDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UserName = "admin",
+                            UserName = "desktop",
                             UserStatusId = 3
                         },
                         new
@@ -465,17 +707,17 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Active = true,
                             Address = "Adresa 12",
                             DateOfBirth = new DateTime(1988, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "user@mail.ba",
-                            FirstName = "Neka",
-                            LastName = "Nekić",
-                            ModifiedDate = new DateTime(2024, 7, 3, 19, 43, 38, 645, DateTimeKind.Local).AddTicks(5403),
-                            PasswordHash = "/77iEe9sYgAaCzcqq+7jKysdTPc=",
-                            PasswordSalt = "mKkxiAlLD2pkunknSJBBKQ==",
+                            Email = "sara.sahinpasic@hotmail.com",
+                            FirstName = "Senada",
+                            LastName = "Šahinpašić",
+                            ModifiedDate = new DateTime(2024, 7, 8, 14, 51, 23, 172, DateTimeKind.Local).AddTicks(9152),
+                            PasswordHash = "MsaSRQbSHvmX9MUZEKRV6K09akk=",
+                            PasswordSalt = "Zn8+3x3ECd5KBcnIXKU7wQ==",
                             PhoneNumber = "061222444",
                             ProfileImagePath = "",
-                            RegistrationDate = new DateTime(2024, 7, 3, 19, 43, 38, 645, DateTimeKind.Local).AddTicks(5402),
+                            RegistrationDate = new DateTime(2024, 7, 8, 14, 51, 23, 172, DateTimeKind.Local).AddTicks(9151),
                             StatusExpirationDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UserName = "user",
+                            UserName = "mobile",
                             UserStatusId = 3
                         });
                 });
@@ -509,14 +751,14 @@ namespace ePrijevozSarajevo.Services.Migrations
                         new
                         {
                             UserRoleId = 1,
-                            ModificationDate = new DateTime(2024, 7, 3, 19, 43, 38, 645, DateTimeKind.Local).AddTicks(5275),
+                            ModificationDate = new DateTime(2024, 7, 8, 14, 51, 23, 172, DateTimeKind.Local).AddTicks(9571),
                             RoleId = 1,
                             UserId = 1
                         },
                         new
                         {
                             UserRoleId = 2,
-                            ModificationDate = new DateTime(2024, 7, 3, 19, 43, 38, 645, DateTimeKind.Local).AddTicks(5323),
+                            ModificationDate = new DateTime(2024, 7, 8, 14, 51, 23, 172, DateTimeKind.Local).AddTicks(9574),
                             RoleId = 2,
                             UserId = 2
                         });
@@ -574,6 +816,42 @@ namespace ePrijevozSarajevo.Services.Migrations
                             ManufacturerId = 2,
                             Number = 20,
                             RegistrationNumber = "A11-C-124",
+                            TypeId = 2
+                        },
+                        new
+                        {
+                            VehicleId = 3,
+                            BuildYear = 2010,
+                            ManufacturerId = 3,
+                            Number = 25,
+                            RegistrationNumber = "A12-D-154",
+                            TypeId = 1
+                        },
+                        new
+                        {
+                            VehicleId = 4,
+                            BuildYear = 2007,
+                            ManufacturerId = 4,
+                            Number = 30,
+                            RegistrationNumber = "A14-E-174",
+                            TypeId = 2
+                        },
+                        new
+                        {
+                            VehicleId = 5,
+                            BuildYear = 2014,
+                            ManufacturerId = 4,
+                            Number = 35,
+                            RegistrationNumber = "A15-F-183",
+                            TypeId = 1
+                        },
+                        new
+                        {
+                            VehicleId = 6,
+                            BuildYear = 2011,
+                            ManufacturerId = 3,
+                            Number = 35,
+                            RegistrationNumber = "A16-G-195",
                             TypeId = 2
                         });
                 });
@@ -638,9 +916,17 @@ namespace ePrijevozSarajevo.Services.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
+                    b.HasOne("ePrijevozSarajevo.Services.Database.Vehicle", "Vehicle")
+                        .WithMany()
+                        .HasForeignKey("VehicleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("EndStation");
 
                     b.Navigation("StartStation");
+
+                    b.Navigation("Vehicle");
                 });
 
             modelBuilder.Entity("ePrijevozSarajevo.Services.Database.User", b =>
