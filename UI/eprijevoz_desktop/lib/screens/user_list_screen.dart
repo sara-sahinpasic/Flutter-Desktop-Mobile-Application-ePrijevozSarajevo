@@ -52,14 +52,11 @@ class _UserListScreenState extends State<UserListScreen> {
   @override
   Widget build(BuildContext context) {
     return MasterScreen(
-        "Korisnici",
-        SingleChildScrollView(
-          child: Container(
-            child: Column(
-              children: [_buildSearch(), _buildResultView()],
-            ),
-          ),
-        ));
+      "Korisnici",
+      Column(
+        children: [_buildSearch(), _buildResultView()],
+      ),
+    );
   }
 
   TextEditingController _ftsFirstLastNameController = TextEditingController();
@@ -111,7 +108,6 @@ class _UserListScreenState extends State<UserListScreen> {
               setState(() {});
 
               _ftsFirstLastNameController.clear();
-              // _ftsLastNameController.clear();
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
@@ -128,157 +124,141 @@ class _UserListScreenState extends State<UserListScreen> {
   }
 
   Widget _buildResultView() {
-    return FormBuilder(
-        key: _formKey,
-        initialValue: _initialValue,
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 40,
-            ),
-            SingleChildScrollView(
-              child: Column(
-                children: [
-                  Container(
-                    color: Colors.black,
-                    width: double.infinity,
-                    child: DataTable(
-                      columns: const <DataColumn>[
-                        DataColumn(
-                          label: Expanded(
-                            child: Text(
-                              'Ime prezime',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
+    return Expanded(
+      child: SingleChildScrollView(
+        child: FormBuilder(
+            key: _formKey,
+            initialValue: _initialValue,
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 40,
+                ),
+                Column(
+                  children: [
+                    Container(
+                      color: Colors.black,
+                      width: double.infinity,
+                      child: DataTable(
+                        columns: const <DataColumn>[
+                          DataColumn(
+                            label: Expanded(
+                              child: Text(
+                                'Ime prezime',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),
+                              ),
                             ),
                           ),
-                        ),
-                        DataColumn(
-                          label: Expanded(
-                            child: Text(
-                              'Korisničko ime',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
+                          DataColumn(
+                            label: Expanded(
+                              child: Text(
+                                'Korisničko ime',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),
+                              ),
                             ),
                           ),
-                        ),
-                        DataColumn(
-                          label: Expanded(
-                            child: Text(
-                              'Datum rođenja',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
+                          DataColumn(
+                            label: Expanded(
+                              child: Text(
+                                'Datum rođenja',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),
+                              ),
                             ),
                           ),
-                        ),
-                        /*DataColumn(
-                          label: Expanded(
-                            child: Fotografija(
-                              'Marka',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
+                          DataColumn(
+                            label: Expanded(
+                              child: Text(
+                                '',
+                              ),
                             ),
                           ),
-                        ),*/
-                        DataColumn(
-                          label: Expanded(
-                            child: Text(
-                              '',
+                          DataColumn(
+                            label: Expanded(
+                              child: Text(
+                                '',
+                              ),
                             ),
                           ),
-                        ),
-                        DataColumn(
-                          label: Expanded(
-                            child: Text(
-                              '',
-                            ),
-                          ),
-                        ),
-                      ],
-                      rows: userResult?.result
-                              .map(
-                                (e) => DataRow(
-                                  cells: [
-                                    DataCell(Text(
-                                      '${e.firstName} ${e.lastName}' ?? "",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 17),
-                                    )),
-                                    DataCell(Text(
-                                      e.userName.toString() ?? "",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 17),
-                                    )),
-                                    DataCell(Text(
-                                      formatDate(e.dateOfBirth) ?? "",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 17),
-                                    )),
-
-                                    /* DataCell(Text(
-                                      //fotografija
-                                          "",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 17),
-                                    )),*/
-
-                                    DataCell(IconButton(
-                                      onPressed: () {
-                                        //code
-                                      },
-                                      icon: const Icon(
-                                        Icons.tips_and_updates_rounded,
-                                        color: Colors.white,
-                                      ),
-                                    )),
-                                    DataCell(IconButton(
-                                      onPressed: () {
-                                        //code
-                                      },
-                                      icon: const Icon(
-                                        Icons.delete_forever_rounded,
-                                        color: Colors.white,
-                                      ),
-                                    )),
-                                  ],
-                                ),
-                              )
-                              .toList()
-                              .cast<DataRow>() ??
-                          [],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            const Color.fromRGBO(72, 156, 118, 100),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(2.0),
-                        ),
-                        minimumSize: const Size(double.infinity, 65),
+                        ],
+                        rows: userResult?.result
+                                .map(
+                                  (e) => DataRow(
+                                    cells: [
+                                      DataCell(Text(
+                                        '${e.firstName} ${e.lastName}' ?? "",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 17),
+                                      )),
+                                      DataCell(Text(
+                                        e.userName.toString() ?? "",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 17),
+                                      )),
+                                      DataCell(Text(
+                                        formatDate(e.dateOfBirth) ?? "",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 17),
+                                      )),
+                                      DataCell(IconButton(
+                                        onPressed: () {
+                                          //code
+                                        },
+                                        icon: const Icon(
+                                          Icons.tips_and_updates_rounded,
+                                          color: Colors.white,
+                                        ),
+                                      )),
+                                      DataCell(IconButton(
+                                        onPressed: () {
+                                          //code
+                                        },
+                                        icon: const Icon(
+                                          Icons.delete_forever_rounded,
+                                          color: Colors.white,
+                                        ),
+                                      )),
+                                    ],
+                                  ),
+                                )
+                                .toList()
+                                .cast<DataRow>() ??
+                            [],
                       ),
-                      child: const Text(
-                        "Dodaj",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
-                      ))
-                ],
-              ),
-            ),
-            //),
-          ],
-        ));
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              const Color.fromRGBO(72, 156, 118, 100),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(2.0),
+                          ),
+                          minimumSize: const Size(double.infinity, 65),
+                        ),
+                        child: const Text(
+                          "Dodaj",
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ))
+                  ],
+                  //),
+                ),
+                //),
+              ],
+            )),
+      ),
+    );
   }
 }

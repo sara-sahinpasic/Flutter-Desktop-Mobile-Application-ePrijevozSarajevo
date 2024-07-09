@@ -272,8 +272,8 @@ namespace ePrijevozSarajevo.Services.Migrations
                             ActiveOnWeekends = true,
                             EndStationId = 6,
                             StartStationId = 1,
-                            TimeOfArrival = new TimeSpan(0, 18, 30, 0, 0),
-                            TimeOfDeparture = new TimeSpan(0, 18, 0, 0, 0),
+                            TimeOfArrival = new TimeSpan(0, 2, 30, 0, 0),
+                            TimeOfDeparture = new TimeSpan(0, 2, 0, 0, 0),
                             VehicleId = 2
                         },
                         new
@@ -284,8 +284,8 @@ namespace ePrijevozSarajevo.Services.Migrations
                             ActiveOnWeekends = true,
                             EndStationId = 8,
                             StartStationId = 1,
-                            TimeOfArrival = new TimeSpan(0, 18, 30, 0, 0),
-                            TimeOfDeparture = new TimeSpan(0, 18, 0, 0, 0),
+                            TimeOfArrival = new TimeSpan(0, 7, 30, 0, 0),
+                            TimeOfDeparture = new TimeSpan(0, 7, 0, 0, 0),
                             VehicleId = 4
                         },
                         new
@@ -296,8 +296,8 @@ namespace ePrijevozSarajevo.Services.Migrations
                             ActiveOnWeekends = true,
                             EndStationId = 6,
                             StartStationId = 1,
-                            TimeOfArrival = new TimeSpan(0, 18, 30, 0, 0),
-                            TimeOfDeparture = new TimeSpan(0, 18, 0, 0, 0),
+                            TimeOfArrival = new TimeSpan(0, 22, 30, 0, 0),
+                            TimeOfDeparture = new TimeSpan(0, 22, 0, 0, 0),
                             VehicleId = 6
                         },
                         new
@@ -308,8 +308,8 @@ namespace ePrijevozSarajevo.Services.Migrations
                             ActiveOnWeekends = true,
                             EndStationId = 7,
                             StartStationId = 2,
-                            TimeOfArrival = new TimeSpan(0, 18, 30, 0, 0),
-                            TimeOfDeparture = new TimeSpan(0, 18, 0, 0, 0),
+                            TimeOfArrival = new TimeSpan(0, 1, 30, 0, 0),
+                            TimeOfDeparture = new TimeSpan(0, 1, 0, 0, 0),
                             VehicleId = 4
                         },
                         new
@@ -320,8 +320,8 @@ namespace ePrijevozSarajevo.Services.Migrations
                             ActiveOnWeekends = true,
                             EndStationId = 3,
                             StartStationId = 7,
-                            TimeOfArrival = new TimeSpan(0, 18, 30, 0, 0),
-                            TimeOfDeparture = new TimeSpan(0, 18, 0, 0, 0),
+                            TimeOfArrival = new TimeSpan(0, 20, 30, 0, 0),
+                            TimeOfDeparture = new TimeSpan(0, 20, 0, 0, 0),
                             VehicleId = 2
                         },
                         new
@@ -332,8 +332,8 @@ namespace ePrijevozSarajevo.Services.Migrations
                             ActiveOnWeekends = true,
                             EndStationId = 1,
                             StartStationId = 8,
-                            TimeOfArrival = new TimeSpan(0, 18, 30, 0, 0),
-                            TimeOfDeparture = new TimeSpan(0, 18, 0, 0, 0),
+                            TimeOfArrival = new TimeSpan(0, 14, 30, 0, 0),
+                            TimeOfDeparture = new TimeSpan(0, 14, 0, 0, 0),
                             VehicleId = 6
                         },
                         new
@@ -344,8 +344,8 @@ namespace ePrijevozSarajevo.Services.Migrations
                             ActiveOnWeekends = true,
                             EndStationId = 15,
                             StartStationId = 9,
-                            TimeOfArrival = new TimeSpan(0, 18, 30, 0, 0),
-                            TimeOfDeparture = new TimeSpan(0, 18, 0, 0, 0),
+                            TimeOfArrival = new TimeSpan(0, 14, 30, 0, 0),
+                            TimeOfDeparture = new TimeSpan(0, 14, 0, 0, 0),
                             VehicleId = 1
                         },
                         new
@@ -356,8 +356,8 @@ namespace ePrijevozSarajevo.Services.Migrations
                             ActiveOnWeekends = true,
                             EndStationId = 8,
                             StartStationId = 11,
-                            TimeOfArrival = new TimeSpan(0, 18, 30, 0, 0),
-                            TimeOfDeparture = new TimeSpan(0, 18, 0, 0, 0),
+                            TimeOfArrival = new TimeSpan(0, 7, 30, 0, 0),
+                            TimeOfDeparture = new TimeSpan(0, 7, 0, 0, 0),
                             VehicleId = 3
                         },
                         new
@@ -368,8 +368,8 @@ namespace ePrijevozSarajevo.Services.Migrations
                             ActiveOnWeekends = true,
                             EndStationId = 14,
                             StartStationId = 10,
-                            TimeOfArrival = new TimeSpan(0, 18, 30, 0, 0),
-                            TimeOfDeparture = new TimeSpan(0, 18, 0, 0, 0),
+                            TimeOfArrival = new TimeSpan(0, 9, 30, 0, 0),
+                            TimeOfDeparture = new TimeSpan(0, 9, 0, 0, 0),
                             VehicleId = 5
                         },
                         new
@@ -380,8 +380,8 @@ namespace ePrijevozSarajevo.Services.Migrations
                             ActiveOnWeekends = true,
                             EndStationId = 7,
                             StartStationId = 13,
-                            TimeOfArrival = new TimeSpan(0, 18, 30, 0, 0),
-                            TimeOfDeparture = new TimeSpan(0, 18, 0, 0, 0),
+                            TimeOfArrival = new TimeSpan(0, 10, 30, 0, 0),
+                            TimeOfDeparture = new TimeSpan(0, 10, 0, 0, 0),
                             VehicleId = 1
                         });
                 });
@@ -691,12 +691,12 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Email = "sara.sahinpasic@edu.fit.ba",
                             FirstName = "Sara",
                             LastName = "Šahinpašić",
-                            ModifiedDate = new DateTime(2024, 7, 8, 14, 51, 23, 172, DateTimeKind.Local).AddTicks(9140),
-                            PasswordHash = "ZmwcO1xPmhSqMMuz6PVoLvG3OsI=",
-                            PasswordSalt = "ZGdKdUWDEzNeXWavTQXOTQ==",
+                            ModifiedDate = new DateTime(2024, 7, 9, 13, 54, 13, 90, DateTimeKind.Local).AddTicks(6057),
+                            PasswordHash = "F09vSkvhluS56pu5yjetSqW5QRs=",
+                            PasswordSalt = "9UuUiDRoUpna/WWH/2aurA==",
                             PhoneNumber = "061222333",
                             ProfileImagePath = "",
-                            RegistrationDate = new DateTime(2024, 7, 8, 14, 51, 23, 172, DateTimeKind.Local).AddTicks(9102),
+                            RegistrationDate = new DateTime(2024, 7, 9, 13, 54, 13, 90, DateTimeKind.Local).AddTicks(6019),
                             StatusExpirationDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserName = "desktop",
                             UserStatusId = 3
@@ -710,12 +710,12 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Email = "sara.sahinpasic@hotmail.com",
                             FirstName = "Senada",
                             LastName = "Šahinpašić",
-                            ModifiedDate = new DateTime(2024, 7, 8, 14, 51, 23, 172, DateTimeKind.Local).AddTicks(9152),
-                            PasswordHash = "MsaSRQbSHvmX9MUZEKRV6K09akk=",
-                            PasswordSalt = "Zn8+3x3ECd5KBcnIXKU7wQ==",
+                            ModifiedDate = new DateTime(2024, 7, 9, 13, 54, 13, 90, DateTimeKind.Local).AddTicks(6071),
+                            PasswordHash = "fOtBcZ5o/u0bXTMQnmmfcZym0yU=",
+                            PasswordSalt = "ZIlvdvjIqiPbLlNwubz37g==",
                             PhoneNumber = "061222444",
                             ProfileImagePath = "",
-                            RegistrationDate = new DateTime(2024, 7, 8, 14, 51, 23, 172, DateTimeKind.Local).AddTicks(9151),
+                            RegistrationDate = new DateTime(2024, 7, 9, 13, 54, 13, 90, DateTimeKind.Local).AddTicks(6070),
                             StatusExpirationDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserName = "mobile",
                             UserStatusId = 3
@@ -751,14 +751,14 @@ namespace ePrijevozSarajevo.Services.Migrations
                         new
                         {
                             UserRoleId = 1,
-                            ModificationDate = new DateTime(2024, 7, 8, 14, 51, 23, 172, DateTimeKind.Local).AddTicks(9571),
+                            ModificationDate = new DateTime(2024, 7, 9, 13, 54, 13, 90, DateTimeKind.Local).AddTicks(6469),
                             RoleId = 1,
                             UserId = 1
                         },
                         new
                         {
                             UserRoleId = 2,
-                            ModificationDate = new DateTime(2024, 7, 8, 14, 51, 23, 172, DateTimeKind.Local).AddTicks(9574),
+                            ModificationDate = new DateTime(2024, 7, 9, 13, 54, 13, 90, DateTimeKind.Local).AddTicks(6472),
                             RoleId = 2,
                             UserId = 2
                         });

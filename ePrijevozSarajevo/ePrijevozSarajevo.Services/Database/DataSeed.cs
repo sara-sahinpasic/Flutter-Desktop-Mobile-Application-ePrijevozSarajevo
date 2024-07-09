@@ -7,7 +7,7 @@ namespace ePrijevozSarajevo.Services.Database
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder)
         {
 
-            modelBuilder.Entity<Station>().HasData
+            modelBuilder.Entity<Station>().HasData //1
             (
                 new Station()
                 {
@@ -88,7 +88,7 @@ namespace ePrijevozSarajevo.Services.Database
                      Name = "Švrakino selo"
                  }
             );
-            modelBuilder.Entity<Holiday>().HasData
+            modelBuilder.Entity<Holiday>().HasData //2
             (
                 new Holiday()
                 {
@@ -109,7 +109,7 @@ namespace ePrijevozSarajevo.Services.Database
                     Date = new DateTime(2024, 12, 25)
                 }
             );
-            modelBuilder.Entity<Vehicle>().HasData
+            modelBuilder.Entity<Vehicle>().HasData //3
             (
                 new Vehicle()
                 {
@@ -166,7 +166,7 @@ namespace ePrijevozSarajevo.Services.Database
                     TypeId = 2,
                 }
             );
-            modelBuilder.Entity<Manufacturer>().HasData
+            modelBuilder.Entity<Manufacturer>().HasData //4
             (
                 new Manufacturer()
                 {
@@ -189,7 +189,7 @@ namespace ePrijevozSarajevo.Services.Database
                     Name = "Mercedes"
                 }
             );
-            modelBuilder.Entity<Type>().HasData
+            modelBuilder.Entity<Type>().HasData //5
             (
                 new Type()
                 {
@@ -202,7 +202,7 @@ namespace ePrijevozSarajevo.Services.Database
                     Name = "Tram"
                 }
             );
-            modelBuilder.Entity<UserRole>().HasData
+            modelBuilder.Entity<UserRole>().HasData //6 nereferentna
             (
                 new UserRole()
                 {
@@ -219,7 +219,7 @@ namespace ePrijevozSarajevo.Services.Database
                     ModificationDate = DateTime.Now
                 }
             );
-            modelBuilder.Entity<Role>().HasData
+            modelBuilder.Entity<Role>().HasData //7
             (
                  new Role()
                  {
@@ -232,7 +232,7 @@ namespace ePrijevozSarajevo.Services.Database
                     Name = "User"
                 }
             );
-            modelBuilder.Entity<Status>().HasData
+            modelBuilder.Entity<Status>().HasData //8
             (
                  new Status()
                  {
@@ -260,7 +260,7 @@ namespace ePrijevozSarajevo.Services.Database
                      Discount = 0.4
                  }
             );
-            modelBuilder.Entity<Ticket>().HasData 
+            modelBuilder.Entity<Ticket>().HasData //9
             (
                  new Ticket()
                  {

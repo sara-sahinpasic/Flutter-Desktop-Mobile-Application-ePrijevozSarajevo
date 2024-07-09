@@ -5,6 +5,7 @@ import 'package:eprijevoz_desktop/models/vehicle.dart';
 import 'package:eprijevoz_desktop/providers/manufacturer_provider.dart';
 import 'package:eprijevoz_desktop/providers/type_provider.dart';
 import 'package:eprijevoz_desktop/providers/vehicle_provider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
@@ -21,6 +22,7 @@ class VehicleListScreen extends StatefulWidget {
 }
 
 class _VehicleListScreenState extends State<VehicleListScreen> {
+  //VehicleProvider provider =  VehicleProvider(); //ovako se instancira samo jednom, umjesto svaki put kada je unutar dijela : ElevatedButton(onPressed: () async {
 //late Provider:
   late VehicleProvider vehicleProvider;
   late ManufacturerProvider manufacturerProvider;
@@ -67,12 +69,11 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
   @override
   Widget build(BuildContext context) {
     return MasterScreen(
-        "Vozila",
-        Container(
-          child: Column(
-            children: [_buildSearch(), _buildResultView()],
-          ),
-        ));
+      "Vozila",
+      Column(
+        children: [_buildSearch(), _buildResultView()],
+      ),
+    );
   }
 
 //Search
@@ -150,147 +151,148 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
   }
 
   _buildResultView() {
-    return FormBuilder(
-        key: _formKey,
-        initialValue: _initialValue,
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 40,
-            ),
-            Column(
+    return Expanded(
+      child: SingleChildScrollView(
+        child: FormBuilder(
+            key: _formKey,
+            initialValue: _initialValue,
+            child: Column(
               children: [
-                Container(
-                  color: Colors.black,
-                  width: double.infinity,
-                  child: DataTable(
-                    columns: const <DataColumn>[
-                      DataColumn(
-                        label: Expanded(
-                          child: Text(
-                            'Registracijska oznaka',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18),
-                          ),
-                        ),
-                      ),
-                      DataColumn(
-                        label: Expanded(
-                          child: Text(
-                            'Godina proizvodnje',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18),
-                          ),
-                        ),
-                      ),
-                      DataColumn(
-                        label: Expanded(
-                          child: Text(
-                            'Vrsta',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18),
-                          ),
-                        ),
-                      ),
-                      DataColumn(
-                        label: Expanded(
-                          child: Text(
-                            'Marka',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18),
-                          ),
-                        ),
-                      ),
-                      DataColumn(
-                        label: Expanded(
-                          child: Text(
-                            '',
-                          ),
-                        ),
-                      ),
-                    ],
-                    rows: result?.result
-                            .map(
-                              (e) => DataRow(
-                                cells: [
-                                  DataCell(Text(
-                                    e.registrationNumber ?? "",
-                                    //e['registrationNumber'],
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 17),
-                                  )),
-                                  DataCell(Text(
-                                    e.buildYear.toString(),
-                                    //e['buildYear'].toString(),
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 17),
-                                  )),
-                                  DataCell(Text(
-                                    typeResult?.result
-                                            .firstWhere((element) =>
-                                                element.typeId == e.typeId)
-                                            .name ??
-                                        "",
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 17),
-                                  )),
-                                  //Jasko dodao
-                                  DataCell(Text(
-                                    manufacturerResult?.result
-                                            .firstWhere((element) =>
-                                                element.manufacturerId ==
-                                                e.manufacturerId)
-                                            .name ??
-                                        "",
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 17),
-                                  )),
-
-                                  DataCell(IconButton(
-                                    onPressed: () {
-                                      //code
-                                    },
-                                    icon: const Icon(
-                                      Icons.delete_forever_rounded,
-                                      color: Colors.white,
-                                    ),
-                                  )),
-                                ],
-                              ),
-                            )
-                            .toList()
-                            .cast<DataRow>() ??
-                        [],
-                  ),
-                ),
                 const SizedBox(
-                  height: 15,
+                  height: 40,
                 ),
-                ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(2.0),
+                Column(
+                  children: [
+                    Container(
+                      color: Colors.black,
+                      width: double.infinity,
+                      child: DataTable(
+                        columns: const <DataColumn>[
+                          DataColumn(
+                            label: Expanded(
+                              child: Text(
+                                'Registracijska oznaka',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),
+                              ),
+                            ),
+                          ),
+                          DataColumn(
+                            label: Expanded(
+                              child: Text(
+                                'Godina proizvodnje',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),
+                              ),
+                            ),
+                          ),
+                          DataColumn(
+                            label: Expanded(
+                              child: Text(
+                                'Vrsta',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),
+                              ),
+                            ),
+                          ),
+                          DataColumn(
+                            label: Expanded(
+                              child: Text(
+                                'Marka',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),
+                              ),
+                            ),
+                          ),
+                          DataColumn(
+                            label: Expanded(
+                              child: Text(
+                                '',
+                              ),
+                            ),
+                          ),
+                        ],
+                        rows: result?.result
+                                .map(
+                                  (e) => DataRow(
+                                    cells: [
+                                      DataCell(Text(
+                                        e.registrationNumber ?? "",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 17),
+                                      )),
+                                      DataCell(Text(
+                                        e.buildYear.toString(),
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 17),
+                                      )),
+                                      DataCell(Text(
+                                        typeResult?.result
+                                                .firstWhere((element) =>
+                                                    element.typeId == e.typeId)
+                                                .name ??
+                                            "",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 17),
+                                      )),
+                                      DataCell(Text(
+                                        manufacturerResult?.result
+                                                .firstWhere((element) =>
+                                                    element.manufacturerId ==
+                                                    e.manufacturerId)
+                                                .name ??
+                                            "",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 17),
+                                      )),
+                                      DataCell(IconButton(
+                                        onPressed: () {
+                                          //code
+                                        },
+                                        icon: const Icon(
+                                          Icons.delete_forever_rounded,
+                                          color: Colors.white,
+                                        ),
+                                      )),
+                                    ],
+                                  ),
+                                )
+                                .toList()
+                                .cast<DataRow>() ??
+                            [],
                       ),
-                      minimumSize: const Size(double.infinity, 65),
                     ),
-                    child: const Text(
-                      "Dodaj",
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    ))
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              const Color.fromRGBO(72, 156, 118, 100),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(2.0),
+                          ),
+                          minimumSize: const Size(double.infinity, 65),
+                        ),
+                        child: const Text(
+                          "Dodaj",
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ))
+                  ],
+                ),
               ],
-            ),
-          ],
-        ));
+            )),
+      ),
+    );
   }
 }

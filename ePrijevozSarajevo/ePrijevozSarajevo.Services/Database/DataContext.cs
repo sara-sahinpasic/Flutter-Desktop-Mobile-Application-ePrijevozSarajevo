@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Net;
 using System;
+using ePrijevozSarajevo.Model;
 
 namespace ePrijevozSarajevo.Services.Database
 {
@@ -49,7 +50,7 @@ namespace ePrijevozSarajevo.Services.Database
          "Trusted_Connection=True;TrustServerCertificate=True");
         */
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder) //10
         {
             base.OnModelCreating(modelBuilder);
 
@@ -115,7 +116,7 @@ namespace ePrijevozSarajevo.Services.Database
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
         private const string DefaultUserPassword = "test";
-        private static void BuildUsers(ModelBuilder modelBuilder)
+        private static void BuildUsers(ModelBuilder modelBuilder) //11
         {
             List<User> users = new()
             {
@@ -168,9 +169,10 @@ namespace ePrijevozSarajevo.Services.Database
         }
 
 
-        private static void BuildRoutes(ModelBuilder modelBuilder)
+        private static void BuildRoutes(ModelBuilder modelBuilder) //4
         {
-            TimeSpan timeOfDeparture = TimeSpan.FromHours(Random.Shared.Next(0, 24));
+            //TimeSpan timeOfDeparture = TimeSpan.FromHours(Random.Shared.Next(0, 24));
+            //TimeSpan timeOfDeparture=null;
             List<Route> routes = new()
             {
                 new Route()
@@ -179,8 +181,8 @@ namespace ePrijevozSarajevo.Services.Database
                     StartStationId = 1,
                     EndStationId = 6,
                     VehicleId = 2,
-                    TimeOfArrival=timeOfDeparture.Add(TimeSpan.FromMinutes(30)),
-                    TimeOfDeparture=timeOfDeparture,
+                    //TimeOfArrival=timeOfDeparture.Add(TimeSpan.FromMinutes(30)),
+                    //TimeOfDeparture=timeOfDeparture,
                     Active=true,
                     ActiveOnHolidays=true,
                     ActiveOnWeekends=true,
@@ -191,8 +193,8 @@ namespace ePrijevozSarajevo.Services.Database
                     StartStationId = 1,
                     EndStationId = 8,
                     VehicleId = 4,
-                    TimeOfArrival=timeOfDeparture.Add(TimeSpan.FromMinutes(30)),
-                    TimeOfDeparture=timeOfDeparture,
+                    //TimeOfArrival=timeOfDeparture.Add(TimeSpan.FromMinutes(30)),
+                    //TimeOfDeparture=timeOfDeparture,
                     Active=true,
                     ActiveOnHolidays=true,
                     ActiveOnWeekends=true,
@@ -203,8 +205,8 @@ namespace ePrijevozSarajevo.Services.Database
                     StartStationId = 1,
                     EndStationId = 6,
                     VehicleId = 6,
-                    TimeOfArrival=timeOfDeparture.Add(TimeSpan.FromMinutes(30)),
-                    TimeOfDeparture=timeOfDeparture,
+                    //TimeOfArrival=timeOfDeparture.Add(TimeSpan.FromMinutes(30)),
+                    //TimeOfDeparture=timeOfDeparture,
                     Active=true,
                     ActiveOnHolidays=true,
                     ActiveOnWeekends=true,
@@ -215,8 +217,8 @@ namespace ePrijevozSarajevo.Services.Database
                     StartStationId = 2,
                     EndStationId = 7,
                     VehicleId = 4,
-                    TimeOfArrival=timeOfDeparture.Add(TimeSpan.FromMinutes(30)),
-                    TimeOfDeparture=timeOfDeparture,
+                    //TimeOfArrival=timeOfDeparture.Add(TimeSpan.FromMinutes(30)),
+                    //TimeOfDeparture=timeOfDeparture,
                     Active=true,
                     ActiveOnHolidays=true,
                     ActiveOnWeekends=true,
@@ -227,8 +229,8 @@ namespace ePrijevozSarajevo.Services.Database
                     StartStationId = 7,
                     EndStationId = 3,
                     VehicleId = 2,
-                    TimeOfArrival=timeOfDeparture.Add(TimeSpan.FromMinutes(30)),
-                    TimeOfDeparture=timeOfDeparture,
+                    //TimeOfArrival=timeOfDeparture.Add(TimeSpan.FromMinutes(30)),
+                    //TimeOfDeparture=timeOfDeparture,
                     Active=true,
                     ActiveOnHolidays=true,
                     ActiveOnWeekends=true,
@@ -239,8 +241,8 @@ namespace ePrijevozSarajevo.Services.Database
                     StartStationId = 8,
                     EndStationId = 1,
                     VehicleId = 6,
-                    TimeOfArrival=timeOfDeparture.Add(TimeSpan.FromMinutes(30)),
-                    TimeOfDeparture=timeOfDeparture,
+                    //TimeOfArrival=timeOfDeparture.Add(TimeSpan.FromMinutes(30)),
+                    //TimeOfDeparture=timeOfDeparture,
                     Active=true,
                     ActiveOnHolidays=true,
                     ActiveOnWeekends=true,
@@ -251,8 +253,8 @@ namespace ePrijevozSarajevo.Services.Database
                     StartStationId = 9,
                     EndStationId = 15,
                     VehicleId = 1,
-                    TimeOfArrival=timeOfDeparture.Add(TimeSpan.FromMinutes(30)),
-                    TimeOfDeparture=timeOfDeparture,
+                    //TimeOfArrival=timeOfDeparture.Add(TimeSpan.FromMinutes(30)),
+                    //TimeOfDeparture=timeOfDeparture,
                     Active=true,
                     ActiveOnHolidays=true,
                     ActiveOnWeekends=true,
@@ -263,8 +265,8 @@ namespace ePrijevozSarajevo.Services.Database
                     StartStationId = 11,
                     EndStationId = 8,
                     VehicleId = 3,
-                    TimeOfArrival=timeOfDeparture.Add(TimeSpan.FromMinutes(30)),
-                    TimeOfDeparture=timeOfDeparture,
+                    //TimeOfArrival=timeOfDeparture.Add(TimeSpan.FromMinutes(30)),
+                    //TimeOfDeparture=timeOfDeparture,
                     Active=true,
                     ActiveOnHolidays=true,
                     ActiveOnWeekends=true,
@@ -275,8 +277,8 @@ namespace ePrijevozSarajevo.Services.Database
                     StartStationId = 10,
                     EndStationId = 14,
                     VehicleId = 5,
-                    TimeOfArrival=timeOfDeparture.Add(TimeSpan.FromMinutes(30)),
-                    TimeOfDeparture=timeOfDeparture,
+                    //TimeOfArrival=timeOfDeparture.Add(TimeSpan.FromMinutes(30)),
+                    //TimeOfDeparture=timeOfDeparture,
                     Active=true,
                     ActiveOnHolidays=true,
                     ActiveOnWeekends=true,
@@ -287,13 +289,22 @@ namespace ePrijevozSarajevo.Services.Database
                     StartStationId = 13,
                     EndStationId = 7,
                     VehicleId = 1,
-                    TimeOfArrival=timeOfDeparture.Add(TimeSpan.FromMinutes(30)),
-                    TimeOfDeparture=timeOfDeparture,
+                    //TimeOfArrival=timeOfDeparture.Add(TimeSpan.FromMinutes(30)),
+                    //TimeOfDeparture=timeOfDeparture,
                     Active=true,
                     ActiveOnHolidays=true,
                     ActiveOnWeekends=true,
                 },
-            };
+             };
+
+            //TimeSpan timeOfDeparture;
+            foreach (var route in routes)
+            {
+                TimeSpan timeOfDeparture = TimeSpan.FromHours(Random.Shared.Next(0, 24));
+                route.TimeOfArrival = timeOfDeparture.Add(TimeSpan.FromMinutes(30));
+                route.TimeOfDeparture = timeOfDeparture;
+            }
+
             modelBuilder.Entity<Route>()
                .HasData(routes);
         }
