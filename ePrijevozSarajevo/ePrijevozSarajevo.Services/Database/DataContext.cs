@@ -295,14 +295,93 @@ namespace ePrijevozSarajevo.Services.Database
                     ActiveOnHolidays=true,
                     ActiveOnWeekends=true,
                 },
+                new Route()
+                {
+                    RouteId=11,
+                    StartStationId = 7,
+                    EndStationId = 15,
+                    VehicleId = 1,
+                    Arrival=DateTime.Now,
+                    Departure=DateTime.Now,
+                    Active=true,
+                    ActiveOnHolidays=true,
+                    ActiveOnWeekends=true,
+                },
+                 new Route()
+                {
+                    RouteId=12,
+                    StartStationId = 8,
+                    EndStationId = 6,
+                    VehicleId = 2,
+                    Arrival=DateTime.Now,
+                    Departure=DateTime.Now,
+                    Active=true,
+                    ActiveOnHolidays=true,
+                    ActiveOnWeekends=true,
+                },
+                  new Route()
+                {
+                    RouteId=13,
+                    StartStationId = 7,
+                    EndStationId = 4,
+                    VehicleId = 5,
+                    Arrival=DateTime.Now,
+                    Departure=DateTime.Now,
+                    Active=true,
+                    ActiveOnHolidays=true,
+                    ActiveOnWeekends=true,
+                },
+                  new Route()
+                {
+                    RouteId=14,
+                    StartStationId = 8,
+                    EndStationId = 13,
+                    VehicleId = 3,
+                    Arrival=DateTime.Now,
+                    Departure=DateTime.Now,
+                    Active=true,
+                    ActiveOnHolidays=true,
+                    ActiveOnWeekends=true,
+                },
+                  new Route()
+                {
+                    RouteId=15,
+                    StartStationId = 7,
+                    EndStationId = 2,
+                    VehicleId = 4,
+                    Arrival=DateTime.Now,
+                    Departure=DateTime.Now,
+                    Active=true,
+                    ActiveOnHolidays=true,
+                    ActiveOnWeekends=true,
+                },
              };
 
-            //TimeSpan timeOfDeparture;
+            var random = new Random();
             foreach (var route in routes)
             {
-                TimeSpan timeOfDeparture = TimeSpan.FromHours(Random.Shared.Next(0, 24));
-                route.TimeOfArrival = timeOfDeparture.Add(TimeSpan.FromMinutes(30));
-                route.TimeOfDeparture = timeOfDeparture;
+                if (route.RouteId >= 11 && route.RouteId <= 15)
+                {
+                    route.Departure = DateTime.Now;
+                    route.Arrival = DateTime.Now;
+                }
+                else if (route.RouteId >= 1 && route.RouteId <= 10)
+                {
+                    DateTime startDate = new DateTime(2024, 01, 01);
+                    DateTime endDate = new DateTime(2024, 12, 31);
+
+                    int range = (endDate - startDate).Days;
+                    DateTime randomDate = startDate.AddDays(random.Next(range));
+
+                    int hour = random.Next(5, 24);
+                    int minute = random.Next(0, 60);
+                    DateTime timeOfDeparture = new DateTime(randomDate.Year, randomDate.Month, randomDate.Day, hour, minute, 0);
+
+                    DateTime timeOfArrival = timeOfDeparture.AddMinutes(random.Next(5, 50));
+
+                    route.Departure = timeOfDeparture;
+                    route.Arrival = timeOfArrival;
+                }
             }
 
             modelBuilder.Entity<Route>()

@@ -9,9 +9,8 @@
         public int EndStationId { get; set; }
         public Vehicle Vehicle { get; set; } = null!;
         public int VehicleId { get; set; }
-        public TimeSpan? TimeOfDeparture { get; set; }
-        public TimeSpan? TimeOfArrival { get; set; }
-       
+        public DateTime Departure { get; set; }
+        public DateTime Arrival { get; set; }
         public bool Active { get; set; }
         public bool ActiveOnHolidays { get; set; }
         public bool ActiveOnWeekends { get; set; }

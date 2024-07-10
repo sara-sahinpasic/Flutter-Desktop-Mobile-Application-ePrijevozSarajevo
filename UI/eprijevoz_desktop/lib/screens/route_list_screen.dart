@@ -1,0 +1,471 @@
+import 'dart:ffi';
+
+import 'package:eprijevoz_desktop/layouts/master_screen.dart';
+import 'package:eprijevoz_desktop/models/search_result.dart';
+import 'package:eprijevoz_desktop/models/station.dart';
+import 'package:eprijevoz_desktop/providers/route_provider.dart';
+import 'package:eprijevoz_desktop/providers/station_provider.dart';
+import 'package:eprijevoz_desktop/providers/utils.dart';
+import 'package:flutter/material.dart' hide Route;
+import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
+import 'package:eprijevoz_desktop/models/route.dart';
+
+class RouteListScreen extends StatefulWidget {
+  Station? station;
+  Route? route;
+
+  RouteListScreen({
+    super.key,
+    this.station,
+    this.route,
+  });
+
+  @override
+  State<RouteListScreen> createState() => _RouteListScreenState();
+}
+
+class _RouteListScreenState extends State<RouteListScreen> {
+  //late
+  late RouteProvider routeProvider;
+  late StationProvider stationProvider;
+  //SearchResult
+  SearchResult<Route>? routeResult;
+  SearchResult<Station>? stationResult;
+  SearchResult<Route>? routeResultForTime;
+
+  //Form
+  final _formKey = GlobalKey<FormBuilderState>();
+  Map<String, dynamic> _initialValue = {};
+
+  //selected
+  int _selectedStationId = 0;
+
+  bool isLoading = true;
+
+  DateTime selectedDate = DateTime.now();
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime(2015, 8),
+        lastDate: DateTime(2101));
+    if (picked != null && picked != selectedDate) {
+      // setState(() {
+      selectedDate = picked;
+      //});
+      setState(() {});
+    }
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+  }
+
+  @override
+  void initState() {
+    stationProvider = context.read<StationProvider>();
+    routeProvider = context.read<RouteProvider>();
+
+    super.initState();
+
+    _initialValue = {
+      'startStationId': widget?.route?.startStationId?.toString(),
+      'stationId': widget?.station?.stationId?.toString(),
+    };
+
+    initForm();
+  }
+
+  Future initForm() async {
+    stationResult = await stationProvider.get();
+    routeResult = await routeProvider.get();
+
+    if (routeResult?.result != null) {
+      routeResult!.result = filterDuplicates(routeResult!.result);
+    }
+
+    print("test: ${stationResult?.result.length}");
+    print("dan: ${stationResult?.result.map((e) => e.name)}");
+
+    print("noć: ${routeResult?.result.length}");
+    print(
+        "ludilo: ${routeResult?.result.map((e) => e.startStationId)} : ${routeResult?.result.map((e) => e.departure)}");
+
+    setState(() {
+      isLoading = false;
+    });
+  }
+
+  List<Route> filterDuplicates(List<Route> data) {
+    final seen = <int>{};
+    return data
+        .where((dataModel) => seen.add(dataModel.startStationId!))
+        .toList();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MasterScreen(
+        "Plan vožnje",
+        Column(
+          children: [
+            //isLoading ? Container() :
+            _buildSearch(),
+            _buildResultView()
+          ],
+        ));
+  }
+
+  TextEditingController _ftsStartStationController = TextEditingController();
+  TextEditingController _ftsArrivalController = TextEditingController();
+
+  Widget _buildSearch() {
+    return
+        //Placeholder();
+        Expanded(
+      child: SingleChildScrollView(
+        child: FormBuilder(
+            key: _formKey,
+            initialValue: _initialValue,
+            child: Row(children: [
+              Text(
+                "Startna stanica:",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              SizedBox(
+                width: 15,
+              ),
+              Expanded(
+                child: FormBuilderDropdown(
+                  name: "startStationId",
+                  decoration: InputDecoration(labelText: "Odabir stanice"),
+                  items: routeResult?.result
+                          .map((e) => DropdownMenuItem<String>(
+                              value: e.startStationId.toString(),
+                              child: Text(
+                                stationResult?.result
+                                        .firstWhere((element) =>
+                                            element.stationId ==
+                                            e.startStationId)
+                                        .name ??
+                                    "",
+                              )))
+                          .toList() ??
+                      [],
+                  onChanged: (value) {
+                    var station = stationResult?.result.firstWhere(
+                        ((station) => station.stationId.toString() == value));
+                    _selectedStationId = station?.stationId ?? 0;
+                  },
+                ),
+                /*stationResult?.result
+                            .map((item) => DropdownMenuItem(
+                                value: item.stationId.toString(),
+                                child: Text(item.name ?? "")))
+                            .toList() ??
+                        [],*/
+              ),
+              SizedBox(width: 255),
+              Text(
+                "Datum:",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              SizedBox(
+                width: 15,
+              ),
+              Expanded(
+                  child: Container(
+                //color: Colors.red,
+                child: Column(
+                  children: <Widget>[
+                    //Text("${selectedDate.toLocal()}".split(' ')[0]),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        shape: BeveledRectangleBorder(
+                            borderRadius: BorderRadius.circular(0.0),
+                            side: BorderSide(color: Colors.black)),
+                        /*minimumSize: Size(
+                                500,
+                                40,
+                              )*/
+                      ),
+                      onPressed: () => _selectDate(context),
+                      child: Text(
+                        '${formatDate(selectedDate)} ',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                  ],
+                ),
+              )),
+              const SizedBox(
+                width: 15,
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  print("StartStationIdGTE: ${_selectedStationId}");
+                  print("DateGTE: ${selectedDate}");
+
+                  //Search:
+                  var filter = {
+                    'StartStationIdGTE': _selectedStationId,
+                    'DateGTE': selectedDate
+                  };
+                  routeResultForTime = await routeProvider.get(filter: filter);
+                  print(
+                      "tetsni: ${routeResultForTime?.result.map((e) => e.startStationId)}");
+
+                  setState(() {});
+
+                  //_ftsRegistrationMarkController.clear();
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(2.0),
+                  ),
+                  //minimumSize: const Size(100, 65),
+                ),
+                child: const Text("Pretraga", style: TextStyle(fontSize: 18)),
+              ),
+            ])),
+      ),
+    );
+  }
+
+  Widget _buildResultView() {
+    //return
+
+    //Placeholder();
+
+    /* Expanded(
+      child: SingleChildScrollView(
+        child: FormBuilder(
+            key: _formKey,
+            initialValue: _initialValue,
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 40,
+                ),
+                Column(
+                  children: [
+                    Container(
+                      color: Colors.black,
+                      width: double.infinity,
+                      child: DataTable(
+                        columns: const <DataColumn>[
+                          DataColumn(
+                            label: Expanded(
+                              child: Text(
+                                'Datum',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),
+                              ),
+                            ),
+                          ),
+                          DataColumn(
+                            label: Expanded(
+                              child: Text(
+                                '',
+                              ),
+                            ),
+                          ),
+                          DataColumn(
+                            label: Expanded(
+                              child: Text(
+                                '',
+                              ),
+                            ),
+                          ),
+                        ],
+                        rows: routeResult?.result
+                                .map(
+                                  (e) => DataRow(
+                                    cells: [
+                                      DataCell(Text(
+                                        "test",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 17),
+                                      )),
+                                      /*DataCell(Text(
+                                        stationResult?.result
+                                                .firstWhere((element) =>
+                                                    element.stationId ==
+                                                    e.startStationId)
+                                                .name ??
+                                            "",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 17),
+                                      )),
+*/
+                                      /*DataCell(Text(
+                                        formatDate(e.departure) ?? "",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 17),
+                                      )),
+                                      */
+                                      DataCell(IconButton(
+                                        onPressed: () {
+                                          //code
+                                        },
+                                        icon: const Icon(
+                                          Icons.tips_and_updates_rounded,
+                                          color: Colors.white,
+                                        ),
+                                      )),
+                                      DataCell(IconButton(
+                                        onPressed: () {
+                                          //code
+                                        },
+                                        icon: const Icon(
+                                          Icons.delete_forever_rounded,
+                                          color: Colors.white,
+                                        ),
+                                      )),
+                                    ],
+                                  ),
+                                )
+                                .toList()
+                                .cast<DataRow>() ??
+                            [],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              const Color.fromRGBO(72, 156, 118, 100),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(2.0),
+                          ),
+                          //minimumSize: const Size(double.infinity, 65),
+                        ),
+                        child: const Text(
+                          "Dodaj",
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ))
+                  ],
+                  //),
+                ),
+                //),
+              ],
+            )),
+      ),
+    );*/
+
+    return Expanded(
+      child: SingleChildScrollView(
+        child: FormBuilder(
+            //key: _formKey,
+            //initialValue: _initialValue,
+            child: Column(
+          children: [
+            const SizedBox(
+              height: 40,
+            ),
+            Column(
+              children: [
+                Container(
+                  color: Colors.black,
+                  width: double.infinity,
+                  child: DataTable(
+                    columns: const <DataColumn>[
+                      DataColumn(
+                        label: Expanded(
+                          child: Text(
+                            'Ime prezime',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18),
+                          ),
+                        ),
+                      ),
+                      DataColumn(
+                        label: Expanded(
+                          child: Text(
+                            '',
+                          ),
+                        ),
+                      ),
+                      DataColumn(
+                        label: Expanded(
+                          child: Text(
+                            '',
+                          ),
+                        ),
+                      ),
+                    ],
+                    rows: routeResultForTime?.result
+                            .map(
+                              (e) => DataRow(
+                                cells: [
+                                  DataCell(Text(
+                                    formatTime(e.arrival) ?? "",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 17),
+                                  )),
+                                  DataCell(IconButton(
+                                    onPressed: () {
+                                      //code
+                                    },
+                                    icon: const Icon(
+                                      Icons.tips_and_updates_rounded,
+                                      color: Colors.white,
+                                    ),
+                                  )),
+                                  DataCell(IconButton(
+                                    onPressed: () {
+                                      //code
+                                    },
+                                    icon: const Icon(
+                                      Icons.delete_forever_rounded,
+                                      color: Colors.white,
+                                    ),
+                                  )),
+                                ],
+                              ),
+                            )
+                            .toList()
+                            .cast<DataRow>() ??
+                        [],
+                  ),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(2.0),
+                      ),
+                      //minimumSize: const Size(double.infinity, 65),
+                    ),
+                    child: const Text(
+                      "Dodaj",
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ))
+              ],
+              //),
+            ),
+            //),
+          ],
+        )),
+      ),
+    );
+  }
+}
