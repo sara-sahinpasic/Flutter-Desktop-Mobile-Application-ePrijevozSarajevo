@@ -54,7 +54,25 @@ class _UserListScreenState extends State<UserListScreen> {
     return MasterScreen(
       "Korisnici",
       Column(
-        children: [_buildSearch(), _buildResultView()],
+        children: [
+          SizedBox(
+            height: 5,
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "Za prikaz svih rezultata, neophodno je pritisnuti dugme "
+              '"Pretraga"'
+              ".",
+              style: TextStyle(fontWeight: FontWeight.w400),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          _buildSearch(),
+          _buildResultView()
+        ],
       ),
     );
   }
@@ -140,6 +158,8 @@ class _UserListScreenState extends State<UserListScreen> {
                       color: Colors.black,
                       width: double.infinity,
                       child: DataTable(
+                        headingRowColor: MaterialStateColor.resolveWith(
+                            (states) => Color.fromRGBO(72, 156, 118, 100)),
                         columns: const <DataColumn>[
                           DataColumn(
                             label: Expanded(
