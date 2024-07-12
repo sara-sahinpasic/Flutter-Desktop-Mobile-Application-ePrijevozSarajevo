@@ -1,6 +1,7 @@
 import 'package:eprijevoz_desktop/models/search_result.dart';
 import 'package:eprijevoz_desktop/models/user.dart';
 import 'package:eprijevoz_desktop/providers/user_provider.dart';
+import 'package:eprijevoz_desktop/screens/request_list_screen.dart';
 import 'package:eprijevoz_desktop/screens/route_list_screen.dart';
 import 'package:eprijevoz_desktop/screens/user_list_screen.dart';
 import 'package:eprijevoz_desktop/screens/vehicle_list_screen.dart';
@@ -182,7 +183,8 @@ class _MasterScreenState extends State<MasterScreen> {
                           fontSize: 25),
                     ),
                     onTap: () {
-                      Navigator.pop(context);
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => RequestListScreen()));
                     },
                   ),
                   const SizedBox(

@@ -117,7 +117,7 @@ class _RouteListScreenState extends State<RouteListScreen> {
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                "Za prikaz rezultata, neophodno je odabrati željenu stanicu i datum, te pritisnuti dugme "
+                "Za prikaz rezultata, neophodno je odabrati traženu stanicu i datum, te pritisnuti dugme "
                 '"Pretraga"'
                 ".",
                 style: TextStyle(fontWeight: FontWeight.w400),

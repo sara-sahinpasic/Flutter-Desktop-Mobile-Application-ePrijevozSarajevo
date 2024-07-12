@@ -23,7 +23,7 @@ namespace ePrijevozSarajevo.Services.Database
                 {
                     RequestId = 2,
                     UserId = 3,
-                    //UserStatusId = 1,
+                    UserStatusId = 1,
                     DateCreated = DateTime.Now,
                     Active = true,
                     DocumentLink = "",
@@ -34,7 +34,7 @@ namespace ePrijevozSarajevo.Services.Database
                 {
                     RequestId = 3,
                     UserId = 4,
-                    //UserStatusId = 2,
+                    UserStatusId = 2,
                     DateCreated = DateTime.Now,
                     Active = true,
                     DocumentLink = "",
@@ -45,7 +45,18 @@ namespace ePrijevozSarajevo.Services.Database
                 {
                     RequestId = 4,
                     UserId = 5,
-                    //UserStatusId = 4,
+                    UserStatusId = 4,
+                    DateCreated = DateTime.Now,
+                    Active = true,
+                    DocumentLink = "",
+                    Approved = false,
+                    RejectionReason = "",
+                },
+                new Request()
+                {
+                    RequestId = 5,
+                    UserId = 6,
+                    UserStatusId = 2,
                     DateCreated = DateTime.Now,
                     Active = true,
                     DocumentLink = "",

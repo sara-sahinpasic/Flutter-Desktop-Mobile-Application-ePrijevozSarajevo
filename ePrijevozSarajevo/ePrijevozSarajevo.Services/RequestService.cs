@@ -16,14 +16,19 @@ namespace ePrijevozSarajevo.Services
         {
             query = base.AddFilter(search, query);
 
-            if (search?.UserIdGTE > 0)
-            {
-                query = query.Where(x => x.UserId == search.UserIdGTE);
-            }
+            /* if (search?.UserIdGTE > 0)
+             {
+                 query = query.Where(x => x.UserId == search.UserIdGTE);
+             }
 
-            if (search?.UserStatusIdGTE > 0)
+             if (search?.UserStatusIdGTE > 0)
+             {
+                 query = query.Where(x => x.User.UserStatusId == search.UserStatusIdGTE);
+             }*/
+
+            if (search?.UserStatusIdGTE >= 0)
             {
-                query = query.Where(x => x.User.UserStatusId == search.UserStatusIdGTE);
+                query=query.Where(x=>x.UserStatusId==search.UserStatusIdGTE);
             }
 
             if (search?.IsUserIncluded == true)

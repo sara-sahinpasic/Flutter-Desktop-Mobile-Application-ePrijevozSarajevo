@@ -24,10 +24,7 @@ builder.Services.AddTransient<IUserRoleService, UserRoleService>();
 builder.Services.AddTransient<IVehicleService, VehicleService>();
 builder.Services.AddTransient<IManufacturerService, ManufacturerService>();
 builder.Services.AddTransient<ITypeService, TypeService>();
-//sbuilder.Services.AddTransient<IVehicleManufacturerService, VehicleManufacturerService>();
-//builder.Services.AddTransient<IVehicleTypeService, VehicleTypeService>();
-
-
+builder.Services.AddTransient<IStatusService, StatusService>();
 
 //State machine
 builder.Services.AddTransient<BaseTicketState>();
@@ -35,7 +32,6 @@ builder.Services.AddTransient<InitialTicketState>();
 builder.Services.AddTransient<DraftTicketState>();
 builder.Services.AddTransient<ActiveTicketState>();
 builder.Services.AddTransient<HiddenTicketState>();
-
 
 //Connection string EF
 builder.Services.AddDbContext<DataContext>(options =>

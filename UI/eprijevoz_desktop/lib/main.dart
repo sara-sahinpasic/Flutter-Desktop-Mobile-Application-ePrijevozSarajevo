@@ -1,7 +1,9 @@
 import 'package:eprijevoz_desktop/providers/auth_provider.dart';
 import 'package:eprijevoz_desktop/providers/manufacturer_provider.dart';
+import 'package:eprijevoz_desktop/providers/request_provider.dart';
 import 'package:eprijevoz_desktop/providers/route_provider.dart';
 import 'package:eprijevoz_desktop/providers/station_provider.dart';
+import 'package:eprijevoz_desktop/providers/status_provider.dart';
 import 'package:eprijevoz_desktop/providers/type_provider.dart';
 import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:eprijevoz_desktop/providers/vehicle_provider.dart';
@@ -22,6 +24,8 @@ void main() {
       ChangeNotifierProvider<UserProvider>(create: (_) => UserProvider()),
       ChangeNotifierProvider<RouteProvider>(create: (_) => RouteProvider()),
       ChangeNotifierProvider<StationProvider>(create: (_) => StationProvider()),
+      ChangeNotifierProvider<RequestProvider>(create: (_) => RequestProvider()),
+      ChangeNotifierProvider<StatusProvider>(create: (_) => StatusProvider()),
     ],
     child: const MyApp(),
   ));

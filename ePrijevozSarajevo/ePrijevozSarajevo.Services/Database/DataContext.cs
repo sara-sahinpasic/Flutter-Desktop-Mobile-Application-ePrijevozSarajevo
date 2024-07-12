@@ -210,6 +210,25 @@ namespace ePrijevozSarajevo.Services.Database
                 ProfileImagePath = "",
                 StatusExpirationDate = new DateTime(2025, 12, 31)
                },
+               new()
+               {
+                UserId = 6,
+                FirstName = "Probe",
+                LastName = "Probno",
+                //KORIGOVATI u: UserName = "mobile4",
+                UserName = "mobile3",
+                Email = "probe@mail.com",
+                PasswordSalt = UserService.GenerateSalt(),
+                DateOfBirth = new DateTime(1996, 02, 07),
+                PhoneNumber = "061222888",
+                Address = "Adresa 17",
+                RegistrationDate = DateTime.Now,
+                ModifiedDate = DateTime.Now,
+                Active = true,
+                //UserStatusId = 2,
+                ProfileImagePath = "",
+                StatusExpirationDate = new DateTime(2025, 12, 31)
+               },
             };
 
             foreach (var user in users)
