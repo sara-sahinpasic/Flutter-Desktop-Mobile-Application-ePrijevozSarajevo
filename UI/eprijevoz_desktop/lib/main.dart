@@ -184,15 +184,6 @@ class LoginPage extends StatelessWidget {
                           decorationThickness: 1.0),
                     ),
                   ),
-                  //const SizedBox(height: 5),
-                  // TextButton(
-                  //   onPressed: () {},
-                  //   child: const Text(
-                  //     "New User? Create Account",
-                  //     style:
-                  //         TextStyle(fontSize: 11, fontWeight: FontWeight.w300),
-                  //   ),
-                  // )
                 ],
               ),
             ),
