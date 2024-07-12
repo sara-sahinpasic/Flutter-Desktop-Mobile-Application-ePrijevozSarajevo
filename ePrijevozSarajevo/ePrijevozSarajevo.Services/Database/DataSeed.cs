@@ -6,13 +6,59 @@ namespace ePrijevozSarajevo.Services.Database
     {
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder)
         {
-
+            modelBuilder.Entity<Request>().HasData
+            (
+                new Request()
+                {
+                    RequestId = 1,
+                    UserId = 2,
+                    UserStatusId = 3,
+                    DateCreated = DateTime.Now,
+                    Active = true,
+                    DocumentLink = "",
+                    Approved = false,
+                    RejectionReason = "",
+                },
+                new Request()
+                {
+                    RequestId = 2,
+                    UserId = 3,
+                    //UserStatusId = 1,
+                    DateCreated = DateTime.Now,
+                    Active = true,
+                    DocumentLink = "",
+                    Approved = false,
+                    RejectionReason = "",
+                },
+                new Request()
+                {
+                    RequestId = 3,
+                    UserId = 4,
+                    //UserStatusId = 2,
+                    DateCreated = DateTime.Now,
+                    Active = true,
+                    DocumentLink = "",
+                    Approved = false,
+                    RejectionReason = "",
+                },
+                new Request()
+                {
+                    RequestId = 4,
+                    UserId = 5,
+                    //UserStatusId = 4,
+                    DateCreated = DateTime.Now,
+                    Active = true,
+                    DocumentLink = "",
+                    Approved = false,
+                    RejectionReason = "",
+                }
+             );
             modelBuilder.Entity<Station>().HasData //1
             (
                 new Station()
                 {
                     StationId = 1,
-                    Name="Ilidža"
+                    Name = "Ilidža"
                 },
                 new Station()
                 {
@@ -45,7 +91,7 @@ namespace ePrijevozSarajevo.Services.Database
                     StationId = 7,
                     Name = "Otoka"
                 },
-                
+
                 new Station()
                 {
                     StationId = 8,
@@ -243,9 +289,9 @@ namespace ePrijevozSarajevo.Services.Database
                  },
                 new Status()
                 {
-                   StatusId = 2,
-                   Name = "Pensioner",
-                   Discount = 0.5
+                    StatusId = 2,
+                    Name = "Pensioner",
+                    Discount = 0.5
                 },
                  new Status()
                  {
