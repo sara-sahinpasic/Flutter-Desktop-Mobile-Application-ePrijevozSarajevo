@@ -96,7 +96,7 @@ class _RequestListScreenState extends State<RequestListScreen> {
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                "Za prikaz svih rezultata, neophodno je odbrati traženu status, te pritisnuti dugme "
+                "Za prikaz svih rezultata, neophodno je odbrati traženi status, te pritisnuti dugme "
                 '"Pretraga"'
                 ".",
                 style: TextStyle(fontWeight: FontWeight.w400),

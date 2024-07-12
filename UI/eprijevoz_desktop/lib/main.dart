@@ -1,3 +1,5 @@
+import 'package:eprijevoz_desktop/models/search_result.dart';
+import 'package:eprijevoz_desktop/models/user.dart';
 import 'package:eprijevoz_desktop/providers/auth_provider.dart';
 import 'package:eprijevoz_desktop/providers/manufacturer_provider.dart';
 import 'package:eprijevoz_desktop/providers/request_provider.dart';

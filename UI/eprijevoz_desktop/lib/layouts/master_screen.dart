@@ -1,5 +1,6 @@
 import 'package:eprijevoz_desktop/models/search_result.dart';
 import 'package:eprijevoz_desktop/models/user.dart';
+import 'package:eprijevoz_desktop/providers/auth_provider.dart';
 import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:eprijevoz_desktop/screens/request_list_screen.dart';
 import 'package:eprijevoz_desktop/screens/route_list_screen.dart';
@@ -22,6 +23,7 @@ class MasterScreen extends StatefulWidget {
 class _MasterScreenState extends State<MasterScreen> {
 //late
   late UserProvider userProvider;
+  var userNameUI = "";
 //SearchResult
   SearchResult<User>? userResult;
 //Form
@@ -50,6 +52,18 @@ class _MasterScreenState extends State<MasterScreen> {
 
   Future initForm() async {
     userResult = await userProvider.get();
+
+    // izvuci sve usere iz base
+    // iterirati kroz njihan
+    var user = userResult?.result
+        .firstWhere((user) => user.userName == AuthProvider.username);
+    userNameUI = '${user?.firstName} ${user?.lastName}';
+    // matchati username ( da bi koncept radio potrebno da username polja budu unique )
+    print("user kolicina: ${userResult?.result.length}");
+    print("username spaseni: ${AuthProvider.username}");
+    print("lista username: ${userResult?.result.map((e) => e.userName)}");
+
+    setState(() {});
   }
 
   @override
@@ -71,7 +85,7 @@ class _MasterScreenState extends State<MasterScreen> {
                   ),
                   Center(
                     child: Text(
-                      "Zdravo, ",
+                      "Zdravo, ${userNameUI}",
                       style: TextStyle(
                         color: Colors.green.shade800,
                         fontWeight: FontWeight.bold,
