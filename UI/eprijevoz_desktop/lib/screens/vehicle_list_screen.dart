@@ -30,8 +30,10 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
   Map<String, dynamic> _initialValue = {};
 //SearchResult
   SearchResult<Manufacturer>? manufacturerResult;
-  SearchResult<Vehicle>? result;
+  SearchResult<Vehicle>? vehicleResult;
   SearchResult<Type>? typeResult;
+
+  bool isLoading = true;
 
   @override
   void didChangeDependencies() {
@@ -62,6 +64,13 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
     typeResult = await typeProvider.get();
     print("vr ${manufacturerResult?.result}");
     print("vrle ${manufacturerResult?.result.length}");
+  }
+
+  Future refreshTable() async {
+    vehicleResult = await vehicleProvider.get();
+    setState(() {
+      isLoading = false;
+    });
   }
 
   @override
@@ -146,7 +155,7 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
                 'RegistrationNumberGTE': _ftsRegistrationMarkController.text,
               };
               //result = await provider.get();
-              result = await vehicleProvider.get(filter: filter);
+              vehicleResult = await vehicleProvider.get(filter: filter);
 
               setState(() {}); //omogućava dohvatanje podataka bez hot relading
 
@@ -238,7 +247,7 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
                             ),
                           ),
                         ],
-                        rows: result?.result
+                        rows: vehicleResult?.result
                                 .map(
                                   (e) => DataRow(
                                     cells: [
@@ -273,7 +282,65 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
                                       )),
                                       DataCell(IconButton(
                                         onPressed: () {
-                                          //code
+                                          showDialog(
+                                              context: context,
+                                              builder: (context) => AlertDialog(
+                                                    title: Text("Delete"),
+                                                    content: Text(
+                                                        "Da li želite obrisati vozilo ${e.registrationNumber}?"),
+                                                    actions: [
+                                                      TextButton(
+                                                          child: Text(
+                                                            "OK",
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .green),
+                                                          ),
+                                                          onPressed: () async {
+                                                            Navigator.pop(
+                                                                context);
+                                                            bool success =
+                                                                await vehicleProvider
+                                                                    .delete(e
+                                                                        .vehicleId!);
+                                                            showDialog(
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (context) =>
+                                                                        AlertDialog(
+                                                                          title: Text(success
+                                                                              ? "Success"
+                                                                              : "Error"),
+                                                                          content: Text(success
+                                                                              ? "Vozilo: ${e.registrationNumber}, uspješno obrisano."
+                                                                              : "Vozilo: ${e.registrationNumber}, nije obrisano."),
+                                                                          actions: [
+                                                                            TextButton(
+                                                                              child: Text(
+                                                                                "OK",
+                                                                                style: TextStyle(color: Colors.green),
+                                                                              ),
+                                                                              onPressed: () {
+                                                                                refreshTable();
+                                                                                Navigator.pop(context);
+                                                                              },
+                                                                            )
+                                                                          ],
+                                                                        ));
+                                                          }),
+                                                      TextButton(
+                                                          child: Text(
+                                                            "Cancel",
+                                                            style: TextStyle(
+                                                                color:
+                                                                    Colors.red),
+                                                          ),
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  context))
+                                                    ],
+                                                  ));
                                         },
                                         icon: const Icon(
                                           Icons.delete_forever_rounded,

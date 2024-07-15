@@ -51,9 +51,7 @@ class _RouteListScreenState extends State<RouteListScreen> {
         lastDate: DateTime(2101));
 
     if (picked != null && picked != selectedDate) {
-      // setState(() {
       selectedDate = picked;
-      //});
       setState(() {});
     }
   }
@@ -105,6 +103,13 @@ class _RouteListScreenState extends State<RouteListScreen> {
         .toList();
   }
 
+  Future refreshTable() async {
+    routeResult = await routeProvider.get();
+    setState(() {
+      isLoading = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MasterScreen(
@@ -136,11 +141,7 @@ class _RouteListScreenState extends State<RouteListScreen> {
   TextEditingController _ftsArrivalController = TextEditingController();
 
   Widget _buildSearch() {
-    return
-        //Expanded(
-        //  child: SingleChildScrollView(
-        //  child:
-        FormBuilder(
+    return FormBuilder(
       key: _formKey,
       initialValue: _initialValue,
       child: Row(children: [
@@ -174,7 +175,7 @@ class _RouteListScreenState extends State<RouteListScreen> {
             },
           ),
         ),
-        SizedBox(width: 255),
+        SizedBox(width: 15),
         Text(
           "Datum:",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
@@ -182,31 +183,27 @@ class _RouteListScreenState extends State<RouteListScreen> {
         SizedBox(
           width: 15,
         ),
-        //Expanded(
-        //child:
-        Container(
-          color: Colors.red,
-          child: Column(
-            children: <Widget>[
-              //Text("${selectedDate.toLocal()}".split(' ')[0]),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  shape: BeveledRectangleBorder(
-                      borderRadius: BorderRadius.circular(0.0),
-                      side: BorderSide(color: Colors.black)),
-                  minimumSize: Size(250, 40),
-                ),
-                onPressed: () => _selectDate(context),
-                child: Text(
-                  '${formatDate(selectedDate)} ',
-                  style: TextStyle(color: Colors.black),
-                ),
+        Column(
+          children: <Widget>[
+            //Text("${selectedDate.toLocal()}".split(' ')[0]),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white,
+                shape: BeveledRectangleBorder(
+                    borderRadius: BorderRadius.circular(0.0),
+                    side: BorderSide(color: Colors.black)),
+                minimumSize: Size(250, 40),
               ),
-            ],
-          ),
-          //)
+              onPressed: () => _selectDate(context),
+              child: Text(
+                '${formatDate(selectedDate)} ',
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+          ],
         ),
+        //)
+        // ),
         const SizedBox(
           width: 15,
         ),
@@ -245,8 +242,6 @@ class _RouteListScreenState extends State<RouteListScreen> {
     return Expanded(
       child: SingleChildScrollView(
         child: FormBuilder(
-            //key: _formKey,
-            //initialValue: _initialValue,
             child: Column(
           children: [
             SizedBox(
@@ -305,7 +300,62 @@ class _RouteListScreenState extends State<RouteListScreen> {
                               )),
                               DataCell(IconButton(
                                 onPressed: () {
-                                  //code
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) => AlertDialog(
+                                            title: Text("Delete"),
+                                            content: Text(
+                                                "Da li želite obrisati odabranu stanicu, s polaskom u ${formatTime(e.departure)}?"),
+                                            actions: [
+                                              TextButton(
+                                                  child: Text(
+                                                    "OK",
+                                                    style: TextStyle(
+                                                        color: Colors.green),
+                                                  ),
+                                                  onPressed: () async {
+                                                    Navigator.pop(context);
+                                                    bool success =
+                                                        await routeProvider
+                                                            .delete(e.routeId!);
+                                                    showDialog(
+                                                        context: context,
+                                                        builder: (context) =>
+                                                            AlertDialog(
+                                                              title: Text(success
+                                                                  ? "Success"
+                                                                  : "Error"),
+                                                              content: Text(success
+                                                                  ? "Odabrana stanica s polaskom u ${formatTime(e.departure)}, uspješno obrisana."
+                                                                  : "Odabrana stanica s polaskom u ${formatTime(e.departure)}, nije obrisana."),
+                                                              actions: [
+                                                                TextButton(
+                                                                  child: Text(
+                                                                    "OK",
+                                                                    style: TextStyle(
+                                                                        color: Colors
+                                                                            .green),
+                                                                  ),
+                                                                  onPressed:
+                                                                      () {
+                                                                    refreshTable();
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                  },
+                                                                )
+                                                              ],
+                                                            ));
+                                                  }),
+                                              TextButton(
+                                                  child: Text(
+                                                    "Cancel",
+                                                    style: TextStyle(
+                                                        color: Colors.red),
+                                                  ),
+                                                  onPressed: () =>
+                                                      Navigator.pop(context))
+                                            ],
+                                          ));
                                 },
                                 icon: const Icon(
                                   Icons.delete_forever_rounded,

@@ -14,6 +14,8 @@
         public string? ProfileImagePath { get; set; }
         public string? Password { get; set; } = null!;
         public string? PasswordConfirmation { get; set; } = null!;
-        public int? UserStatusId { get; set; } = 1;
+        public int? UserStatusId { get; set; }
+        public string? UserName { get; set; }
+
     }
 }

@@ -8,5 +8,7 @@ namespace ePrijevozSarajevo.Services
     {
         public TModel Insert(TInsert request);
         public TModel Update(int id, TUpdate request);
+        public Task Delete(int id);
+
     }
 }

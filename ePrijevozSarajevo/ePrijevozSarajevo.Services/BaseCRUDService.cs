@@ -43,5 +43,17 @@ namespace ePrijevozSarajevo.Services
         public virtual void BeforeUpdate(TUpdate? request, TDbEntity? entity)
         {
         }
+        public virtual async Task /*<TModel> */ Delete(int id)
+        {
+            var entity = await Context.Set<TDbEntity>().FindAsync(id);
+            
+            //if (entity == null)
+            //{
+            //    throw new Exception("");
+            //}
+            Context.Set<TDbEntity>().Remove(entity);
+
+           await Context.SaveChangesAsync();
+        }
     }
 }

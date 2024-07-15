@@ -24,5 +24,10 @@ namespace ePrijevozSarajevo.API.Controllers
         {
             return _service.Update(id, request);
         }
+        [HttpDelete("{id}")]
+        public virtual async Task Delete(int id)
+        {
+            await _service.Delete(id);
+        }
     }
 }

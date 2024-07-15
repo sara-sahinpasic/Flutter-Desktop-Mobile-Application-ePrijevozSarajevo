@@ -20,6 +20,9 @@ class _UserListScreenState extends State<UserListScreen> {
   late UserProvider userProvider;
 //SearchResult
   SearchResult<User>? userResult;
+
+  bool isLoading = true;
+
 //Form
   final _formKey = GlobalKey<FormBuilderState>();
   Map<String, dynamic> _initialValue = {};
@@ -47,6 +50,13 @@ class _UserListScreenState extends State<UserListScreen> {
 
   Future initForm() async {
     userResult = await userProvider.get();
+  }
+
+  Future refreshTable() async {
+    userResult = await userProvider.get();
+    setState(() {
+      isLoading = false;
+    });
   }
 
   @override
@@ -229,17 +239,105 @@ class _UserListScreenState extends State<UserListScreen> {
                                             color: Colors.white, fontSize: 17),
                                       )),
                                       DataCell(IconButton(
+                                        //update
                                         onPressed: () {
                                           //code
+                                          showDialog(
+                                              context: context,
+                                              builder: (context) => AlertDialog(
+                                                    title: Text("Update"),
+                                                    content: Text("Neki tekst"),
+                                                    actions: [
+                                                      TextButton(
+                                                          child: Text(
+                                                            "OK",
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .green),
+                                                          ),
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  context)),
+                                                      TextButton(
+                                                          child: Text(
+                                                            "Cancel",
+                                                            style: TextStyle(
+                                                                color:
+                                                                    Colors.red),
+                                                          ),
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  context))
+                                                    ],
+                                                  ));
                                         },
                                         icon: const Icon(
                                           Icons.tips_and_updates_rounded,
                                           color: Colors.white,
                                         ),
                                       )),
+                                      //delete:
                                       DataCell(IconButton(
                                         onPressed: () {
-                                          //code
+                                          showDialog(
+                                              context: context,
+                                              builder: (context) => AlertDialog(
+                                                    title: Text("Delete"),
+                                                    content: Text(
+                                                        "Da li želite obrisati korisnika ${e.firstName} ${e.lastName}?"),
+                                                    actions: [
+                                                      TextButton(
+                                                          child: Text(
+                                                            "OK",
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .green),
+                                                          ),
+                                                          onPressed: () async {
+                                                            Navigator.pop(
+                                                                context);
+                                                            bool success =
+                                                                await userProvider
+                                                                    .delete(e
+                                                                        .userId!);
+                                                            showDialog(
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (context) =>
+                                                                        AlertDialog(
+                                                                          title: Text(success
+                                                                              ? "Success"
+                                                                              : "Error"),
+                                                                          content: Text(success
+                                                                              ? "Korisnik: ${e.firstName} ${e.lastName}, uspješno obrisan."
+                                                                              : "Korisnik: ${e.firstName} ${e.lastName}, nije obrisan."),
+                                                                          actions: [
+                                                                            TextButton(
+                                                                              child: Text(
+                                                                                "OK",
+                                                                                style: TextStyle(color: Colors.green),
+                                                                              ),
+                                                                              onPressed: () {
+                                                                                refreshTable();
+                                                                                Navigator.pop(context);
+                                                                              },
+                                                                            )
+                                                                          ],
+                                                                        ));
+                                                          }),
+                                                      TextButton(
+                                                          child: Text(
+                                                            "Cancel",
+                                                            style: TextStyle(
+                                                                color:
+                                                                    Colors.red),
+                                                          ),
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  context))
+                                                    ],
+                                                  ));
                                         },
                                         icon: const Icon(
                                           Icons.delete_forever_rounded,
