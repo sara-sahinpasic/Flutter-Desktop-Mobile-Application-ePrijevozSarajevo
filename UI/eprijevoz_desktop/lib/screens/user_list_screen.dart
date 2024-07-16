@@ -3,6 +3,7 @@ import 'package:eprijevoz_desktop/models/search_result.dart';
 import 'package:eprijevoz_desktop/models/user.dart';
 import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:eprijevoz_desktop/providers/utils.dart';
+import 'package:eprijevoz_desktop/screens/update_user_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
@@ -238,37 +239,16 @@ class _UserListScreenState extends State<UserListScreen> {
                                         style: TextStyle(
                                             color: Colors.white, fontSize: 17),
                                       )),
+                                      //update
                                       DataCell(IconButton(
-                                        //update
                                         onPressed: () {
-                                          //code
                                           showDialog(
                                               context: context,
-                                              builder: (context) => AlertDialog(
-                                                    title: Text("Update"),
-                                                    content: Text("Neki tekst"),
-                                                    actions: [
-                                                      TextButton(
-                                                          child: Text(
-                                                            "OK",
-                                                            style: TextStyle(
-                                                                color: Colors
-                                                                    .green),
-                                                          ),
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  context)),
-                                                      TextButton(
-                                                          child: Text(
-                                                            "Cancel",
-                                                            style: TextStyle(
-                                                                color:
-                                                                    Colors.red),
-                                                          ),
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  context))
-                                                    ],
+                                              builder: (BuildContext context) =>
+                                                  UpdateUserDialog(
+                                                    //user: e,
+                                                    user: e,
+                                                    onUpdate: refreshTable,
                                                   ));
                                         },
                                         icon: const Icon(
@@ -304,7 +284,7 @@ class _UserListScreenState extends State<UserListScreen> {
                                                                 context:
                                                                     context,
                                                                 builder:
-                                                                    (context) =>
+                                                                    (dialogDeleteContext) =>
                                                                         AlertDialog(
                                                                           title: Text(success
                                                                               ? "Success"
@@ -320,7 +300,7 @@ class _UserListScreenState extends State<UserListScreen> {
                                                                               ),
                                                                               onPressed: () {
                                                                                 refreshTable();
-                                                                                Navigator.pop(context);
+                                                                                Navigator.pop(dialogDeleteContext);
                                                                               },
                                                                             )
                                                                           ],

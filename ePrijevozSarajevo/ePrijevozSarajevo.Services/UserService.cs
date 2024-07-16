@@ -61,7 +61,7 @@ namespace ePrijevozSarajevo.Services
 
             return Convert.ToBase64String(byteArray);
         }
-        public static string GenerateHash(string salt, string password)
+        public static string GenerateHash(string? salt, string? password)
         {
             byte[] src = Convert.FromBase64String(salt);
             byte[] bytes = Encoding.Unicode.GetBytes(password);
@@ -77,18 +77,18 @@ namespace ePrijevozSarajevo.Services
 
         public override void BeforeUpdate(UserUpdateRequest? request, Database.User? entity)
         {
-            base.BeforeUpdate(request, entity);
+            //base.BeforeUpdate(request, entity);
 
-            if (request.Password != null)
-            {
-                if (request.Password != request.PasswordConfirmation)
-                {
-                    throw new Exception("Password and password confirmation must be the same.");
-                }
-            }
+            //if (request.Password != null)
+            //{
+            //    if (request.Password != request.PasswordConfirmation)
+            //    {
+            //        throw new Exception("Password and password confirmation must be the same.");
+            //    }
+            //}
 
-            entity.PasswordSalt = GenerateSalt();
-            entity.PasswordHash = GenerateHash(entity.PasswordSalt, request.Password);
+            //entity.PasswordSalt = GenerateSalt();
+            //entity.PasswordHash = GenerateHash(entity.PasswordSalt, request.Password);
         }
 
         public Model.User Login(string username, string password)

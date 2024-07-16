@@ -15,6 +15,9 @@ class User {
   DateTime? modifiedDate;
   bool? active;
   String? userName;
+  int? userStatusId;
+  String? password;
+  String? passwordConfirmation;
   //String? profileImagePath;
   //Status? UserStatus { get; set; }
   //DateTime? statusExpirationDate;
@@ -31,7 +34,10 @@ class User {
       this.registrationDate,
       this.modifiedDate,
       this.active,
-      this.userName});
+      this.userName,
+      this.userStatusId,
+      this.password,
+      this.passwordConfirmation});
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 

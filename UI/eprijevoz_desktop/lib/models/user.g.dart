@@ -24,6 +24,9 @@ User _$UserFromJson(Map<String, dynamic> json) => User(
           : DateTime.parse(json['modifiedDate'] as String),
       active: json['active'] as bool?,
       userName: json['userName'] as String?,
+      userStatusId: (json['userStatusId'] as num?)?.toInt(),
+      password: json['password'] as String?,
+      passwordConfirmation: json['passwordConfirmation'] as String?,
     );
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
@@ -38,4 +41,7 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'modifiedDate': instance.modifiedDate?.toIso8601String(),
       'active': instance.active,
       'userName': instance.userName,
+      'userStatusId': instance.userStatusId,
+      'password': instance.password,
+      'passwordConfirmation': instance.passwordConfirmation,
     };
