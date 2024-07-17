@@ -2,6 +2,7 @@ import 'package:eprijevoz_desktop/models/search_result.dart';
 import 'package:eprijevoz_desktop/models/user.dart';
 import 'package:eprijevoz_desktop/providers/auth_provider.dart';
 import 'package:eprijevoz_desktop/providers/user_provider.dart';
+import 'package:eprijevoz_desktop/screens/home_screen.dart';
 import 'package:eprijevoz_desktop/screens/request_list_screen.dart';
 import 'package:eprijevoz_desktop/screens/route_list_screen.dart';
 import 'package:eprijevoz_desktop/screens/user_list_screen.dart';
@@ -108,8 +109,10 @@ class _MasterScreenState extends State<MasterScreen> {
                             fontWeight: FontWeight.w400,
                             fontSize: 25)),
                     onTap: () {
-                      Navigator.pop(context);
-                      Navigator.pop(context);
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => HomePage()));
+                      // Navigator.pop(context);
+                      //Navigator.pop(context);
                       // Navigator.pushAndRemoveUntil(
                       //   context,
                       //   MaterialPageRoute(builder: (context) => UserListScreen()),

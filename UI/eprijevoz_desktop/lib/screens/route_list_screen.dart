@@ -105,6 +105,14 @@ class _RouteListScreenState extends State<RouteListScreen> {
 
   Future refreshTable() async {
     routeResult = await routeProvider.get();
+    routeResult?.result = filterDuplicates(routeResult!.result);
+
+    //pretrazi ponovo rute za odabranu stanicu i datum
+    var filter = {
+      'StartStationIdGTE': _selectedStationId,
+      'DateGTE': selectedDate
+    };
+    routeResultForTime = await routeProvider.get(filter: filter);
     setState(() {
       isLoading = false;
     });
@@ -320,31 +328,33 @@ class _RouteListScreenState extends State<RouteListScreen> {
                                                             .delete(e.routeId!);
                                                     showDialog(
                                                         context: context,
-                                                        builder: (context) =>
-                                                            AlertDialog(
-                                                              title: Text(success
-                                                                  ? "Success"
-                                                                  : "Error"),
-                                                              content: Text(success
-                                                                  ? "Odabrana stanica s polaskom u ${formatTime(e.departure)}, uspješno obrisana."
-                                                                  : "Odabrana stanica s polaskom u ${formatTime(e.departure)}, nije obrisana."),
-                                                              actions: [
-                                                                TextButton(
-                                                                  child: Text(
-                                                                    "OK",
-                                                                    style: TextStyle(
-                                                                        color: Colors
-                                                                            .green),
-                                                                  ),
-                                                                  onPressed:
-                                                                      () {
-                                                                    refreshTable();
-                                                                    Navigator.pop(
-                                                                        context);
-                                                                  },
-                                                                )
-                                                              ],
-                                                            ));
+                                                        builder:
+                                                            (deleteDialogContext) =>
+                                                                AlertDialog(
+                                                                  title: Text(success
+                                                                      ? "Success"
+                                                                      : "Error"),
+                                                                  content: Text(success
+                                                                      ? "Odabrana stanica s polaskom u ${formatTime(e.departure)}, uspješno obrisana."
+                                                                      : "Odabrana stanica s polaskom u ${formatTime(e.departure)}, nije obrisana."),
+                                                                  actions: [
+                                                                    TextButton(
+                                                                      child:
+                                                                          Text(
+                                                                        "OK",
+                                                                        style: TextStyle(
+                                                                            color:
+                                                                                Colors.green),
+                                                                      ),
+                                                                      onPressed:
+                                                                          () {
+                                                                        Navigator.pop(
+                                                                            deleteDialogContext);
+                                                                        refreshTable();
+                                                                      },
+                                                                    )
+                                                                  ],
+                                                                ));
                                                   }),
                                               TextButton(
                                                   child: Text(

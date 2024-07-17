@@ -11,9 +11,11 @@ import 'package:provider/provider.dart';
 
 class UpdateUserDialog extends StatefulWidget {
   Status? status;
-  User? user;
+  User user;
   final VoidCallback onUpdate;
-  UpdateUserDialog({super.key, this.status, this.user, required this.onUpdate});
+
+  UpdateUserDialog(
+      {required this.user, required this.onUpdate, this.status, super.key});
 
   @override
   State<UpdateUserDialog> createState() => _UpdateUserDialogState();
@@ -36,9 +38,14 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
 
   @override
   void initState() {
+    super.initState();
     userProvider = context.read<UserProvider>();
     statusProvider = context.read<StatusProvider>();
-    super.initState();
+
+    _ftsFirstNameController.text = widget?.user?.firstName ?? '';
+    _ftsLastNameController.text = widget?.user?.lastName ?? '';
+    _ftsAddressController.text = widget?.user?.address ?? '';
+    _ftsPhoneController.text = widget?.user?.phoneNumber ?? '';
 
     _initialValue = {
       'firstName': widget?.user?.firstName,
@@ -63,6 +70,7 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
 
     setState(() {
       isLoading = false;
+      _selectedStatusId = widget?.user?.userStatusId ?? 0;
     });
   }
 
@@ -202,12 +210,8 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
                 Expanded(
                   child: FormBuilderDropdown(
                     name: "statusId",
-                    items: statusResult?.result
-                            .map((item) => DropdownMenuItem(
-                                value: item.statusId.toString(),
-                                child: Text(item.name ?? "")))
-                            .toList() ??
-                        [],
+                    items: getItems(),
+                    // initialValue: getInititalStatus(),
                     onChanged: (value) {
                       setState(() {
                         _selectedStatusId = int.parse(value as String);
@@ -229,6 +233,10 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
                     var request = Map.from(_formKey.currentState!.value);
                     // Update userStatusId with the selected statusId
                     request['userStatusId'] = _selectedStatusId;
+
+                    // if (request['firstName'] == "AAA") {
+                    //   request['firstName'] = "BBB";
+                    // }
 
                     if (widget.user != null) {
                       await userProvider.update(widget.user!.userId!, request);
@@ -279,5 +287,38 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
             )),
       ],
     );
+  }
+
+  /* getInititalStatus() {
+    if (getItems() != null && getItems().length > 0) {
+      return getItems()[widget.user.userStatusId ?? 0];
+    } else {
+      return null;
+    }
+  }
+
+  getItems() {
+    return statusResult?.result
+            .map((item) => DropdownMenuItem(
+                value: item.statusId.toString(), child: Text(item.name ?? "")))
+            .toList() ??
+        [];
+  }*/
+  DropdownMenuItem<int> getInititalStatus() {
+    final status = statusResult?.result.firstWhere(
+        (status) => status.statusId == widget.user.userStatusId,
+        orElse: () => Status(statusId: -1, name: 'No Status'));
+    return DropdownMenuItem(
+        value: status?.statusId ?? -1, child: Text(status?.name ?? ""));
+  }
+
+  List<DropdownMenuItem<String>> getItems() {
+    var list = statusResult?.result
+            .map((item) => DropdownMenuItem(
+                value: item.statusId.toString(), child: Text(item.name ?? "")))
+            .toList() ??
+        [];
+    // list.add((DropdownMenuItem(value: -1, child: Text('No Status'))));
+    return list;
   }
 }

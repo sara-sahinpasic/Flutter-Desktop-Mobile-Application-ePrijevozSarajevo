@@ -26,7 +26,7 @@ namespace ePrijevozSarajevo.Services
             {
                 query = query.Where((x => x.FirstName.StartsWith(search.FirstNameGTE) || x.LastName.StartsWith(search.LastNameGTE)));
             }
-                     
+
             if (search.IsRoleIncluded == true)
             {
                 query = query
@@ -77,18 +77,18 @@ namespace ePrijevozSarajevo.Services
 
         public override void BeforeUpdate(UserUpdateRequest? request, Database.User? entity)
         {
-            //base.BeforeUpdate(request, entity);
+            base.BeforeUpdate(request, entity);
 
-            //if (request.Password != null)
-            //{
-            //    if (request.Password != request.PasswordConfirmation)
-            //    {
-            //        throw new Exception("Password and password confirmation must be the same.");
-            //    }
-            //}
+            if (request.Password != null)
+            {
+                if (request.Password != request.PasswordConfirmation)
+                {
+                    throw new Exception("Password and password confirmation must be the same.");
+                }
+                entity.PasswordSalt = GenerateSalt();
+                entity.PasswordHash = GenerateHash(entity.PasswordSalt, request.Password);
+            }
 
-            //entity.PasswordSalt = GenerateSalt();
-            //entity.PasswordHash = GenerateHash(entity.PasswordSalt, request.Password);
         }
 
         public Model.User Login(string username, string password)

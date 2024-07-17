@@ -246,7 +246,6 @@ class _UserListScreenState extends State<UserListScreen> {
                                               context: context,
                                               builder: (BuildContext context) =>
                                                   UpdateUserDialog(
-                                                    //user: e,
                                                     user: e,
                                                     onUpdate: refreshTable,
                                                   ));
