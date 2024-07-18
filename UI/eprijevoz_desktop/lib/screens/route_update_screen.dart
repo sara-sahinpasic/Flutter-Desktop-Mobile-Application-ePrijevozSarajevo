@@ -20,6 +20,8 @@ class _UpdateRouteDialogState extends State<UpdateRouteDialog> {
   Map<String, dynamic> _initialValue = {};
 
   DateTime selectedDate = DateTime.now();
+  TimeOfDay selectedTime = TimeOfDay.now();
+
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
         context: context,
@@ -33,21 +35,24 @@ class _UpdateRouteDialogState extends State<UpdateRouteDialog> {
     }
   }
 
-  TimeOfDay selectedTime = TimeOfDay.now();
+  @override
+  void initState() {
+    selectedTime = TimeOfDay.fromDateTime(widget.route!.departure!);
+    super.initState();
+  }
 
   Future<void> _selectTime(BuildContext context) async {
     final TimeOfDay? pickedTime = await showTimePicker(
         context: context,
         initialTime: selectedTime,
         builder: (BuildContext context, Widget? child) {
-          // Make child optional (Widget? child)
           return MediaQuery(
-            data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: false),
+            data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: true),
             child: child!,
           );
         });
 
-    if (pickedTime != null && pickedTime != selectedTime) {
+    if (pickedTime != null) {
       selectedTime = pickedTime;
       setState(() {});
     }
@@ -80,18 +85,7 @@ class _UpdateRouteDialogState extends State<UpdateRouteDialog> {
                   width: 80,
                 ),
                 Expanded(
-                    child:
-                        /*FormBuilderTextField(
-                    name: 'firstName',
-                    controller: _ftsArrivalController,
-                    cursorColor: Colors.green.shade800,
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black),
-                      ),
-                    ),
-                  ),*/
-                        Column(
+                    child: Column(
                   children: [
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
@@ -103,11 +97,11 @@ class _UpdateRouteDialogState extends State<UpdateRouteDialog> {
                       ),
                       onPressed: () async {
                         _selectTime(context);
-                        print("Selektovano vrijeme: ${selectedTime}");
-                        setState(() {});
+                        //print("Selektovano vrijeme: ${}");
+                        //setState(() {});
                       },
                       child: Text(
-                        '${formatTime(selectedDate)} ',
+                        '${selectedTime.hour}:${selectedTime.minute}',
                         style: TextStyle(color: Colors.black),
                       ),
                     ),
