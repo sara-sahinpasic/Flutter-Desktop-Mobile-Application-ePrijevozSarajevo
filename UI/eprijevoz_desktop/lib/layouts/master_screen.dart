@@ -54,12 +54,9 @@ class _MasterScreenState extends State<MasterScreen> {
   Future initForm() async {
     userResult = await userProvider.get();
 
-    // izvuci sve usere iz base
-    // iterirati kroz njihan
     var user = userResult?.result
         .firstWhere((user) => user.userName == AuthProvider.username);
     userNameUI = '${user?.firstName} ${user?.lastName}';
-    // matchati username ( da bi koncept radio potrebno da username polja budu unique )
     print("user kolicina: ${userResult?.result.length}");
     print("username spaseni: ${AuthProvider.username}");
     print("lista username: ${userResult?.result.map((e) => e.userName)}");

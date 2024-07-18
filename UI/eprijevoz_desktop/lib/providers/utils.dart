@@ -4,7 +4,7 @@ String formatDate(DateTime? date) {
   if (date == null) {
     return '';
   }
-  return DateFormat('MM/dd/yyyy').format(date);
+  return DateFormat('dd.MM.yyyy').format(date);
 }
 
 String formatTime(DateTime? date) {

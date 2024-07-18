@@ -4,8 +4,9 @@ import 'package:eprijevoz_desktop/models/search_result.dart';
 import 'package:eprijevoz_desktop/models/user.dart';
 import 'package:eprijevoz_desktop/providers/auth_provider.dart';
 import 'package:eprijevoz_desktop/providers/user_provider.dart';
+import 'package:eprijevoz_desktop/providers/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:analog_clock/analog_clock.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -48,51 +49,114 @@ class _HomePageState extends State<HomePage> {
     setState(() {});
   }
 
+  String weekdays() {
+    DateTime now = DateTime.now();
+    List<String> weekdays = [
+      'Ponedjeljak',
+      'Utorak',
+      'Srijeda',
+      'Četvrtak',
+      'Petak',
+      'Subota',
+      'Nedjelja'
+    ];
+    String currentDay = weekdays[now.weekday - 1];
+    return "${currentDay}, ${formatDate(now)} ";
+  }
+
   @override
   Widget build(BuildContext context) {
     return MasterScreen(
-        "Početna",
-        Column(
-          children: [
-            SizedBox(
-              height: 5,
-            ),
-            _buildResultVIew(),
-          ],
+        "",
+        Container(
+          color: Colors.black,
+          child: Column(
+            children: [
+              _buildResultVIew(),
+            ],
+          ),
         ));
   }
 
   Widget _buildResultVIew() {
     return Expanded(
-        child: SingleChildScrollView(
-      child: Row(
-        children: [
-          SizedBox(
-            height: 15,
+        child: Center(
+      child: SingleChildScrollView(
+        child: Container(
+          color: Colors.black,
+          width: 1000,
+          height: 500,
+          child: Card(
+            color: Colors.black,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 40, bottom: 25),
+                  child: Center(
+                    child: SizedBox(
+                        width: 200,
+                        height: 140,
+                        child: Image.asset("assets/images/logo.png",
+                            height: 100, width: 100)),
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 35, vertical: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Dobro došli, ${userNameUI}!",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 30),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 35, vertical: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "${weekdays()}",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 35, vertical: 0),
+                  child: Row(children: [
+                    Spacer(),
+                    TextButton(
+                        child: Text(
+                          "Odjava",
+                          style: TextStyle(
+                              decoration: TextDecoration.underline,
+                              decorationColor: Colors.red,
+                              color: Colors.red,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20),
+                        ),
+                        onPressed: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => LoginPage()))),
+                  ]),
+                ),
+              ],
+            ),
           ),
-          Text(
-            "Dobro došli, ${userNameUI}!",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-          ),
-          Spacer(),
-          TextButton(
-              child: Text(
-                "Odjava",
-                style: TextStyle(
-                    decoration: TextDecoration.underline,
-                    decorationColor: Colors.red,
-                    color: Colors.red,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30),
-              ),
-              onPressed: () => Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => LoginPage()))),
-          SizedBox(
-            height: 15,
-          ),
-
-          //ANALOG CLOCK
-        ],
+        ),
       ),
     ));
   }

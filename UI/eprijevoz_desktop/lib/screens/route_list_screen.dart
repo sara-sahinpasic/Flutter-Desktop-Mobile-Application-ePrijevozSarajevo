@@ -1,10 +1,10 @@
-//import 'dart:ffi';
 import 'package:eprijevoz_desktop/layouts/master_screen.dart';
 import 'package:eprijevoz_desktop/models/search_result.dart';
 import 'package:eprijevoz_desktop/models/station.dart';
 import 'package:eprijevoz_desktop/providers/route_provider.dart';
 import 'package:eprijevoz_desktop/providers/station_provider.dart';
 import 'package:eprijevoz_desktop/providers/utils.dart';
+import 'package:eprijevoz_desktop/screens/route_update_screen.dart';
 import 'package:flutter/material.dart' hide Route;
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
@@ -16,8 +16,8 @@ class RouteListScreen extends StatefulWidget {
 
   RouteListScreen({
     super.key,
-    this.station,
     this.route,
+    this.station,
   });
 
   @override
@@ -71,6 +71,7 @@ class _RouteListScreenState extends State<RouteListScreen> {
     _initialValue = {
       'startStationId': widget?.route?.startStationId?.toString(),
       'stationId': widget?.station?.stationId?.toString(),
+      'departure': widget?.route?.departure?.toString(),
     };
 
     initForm();
@@ -93,6 +94,7 @@ class _RouteListScreenState extends State<RouteListScreen> {
 
     setState(() {
       isLoading = false;
+      _selectedStationId = widget?.route?.startStationId ?? 0;
     });
   }
 
@@ -297,15 +299,23 @@ class _RouteListScreenState extends State<RouteListScreen> {
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 17),
                               )),
+                              //update
                               DataCell(IconButton(
                                 onPressed: () {
-                                  //code
+                                  showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) =>
+                                          UpdateRouteDialog(
+                                              //user: e,
+                                              //onUpdate: refreshTable,
+                                              e));
                                 },
                                 icon: const Icon(
                                   Icons.tips_and_updates_rounded,
                                   color: Colors.white,
                                 ),
                               )),
+                              //delete
                               DataCell(IconButton(
                                 onPressed: () {
                                   showDialog(
@@ -397,8 +407,6 @@ class _RouteListScreenState extends State<RouteListScreen> {
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ))
           ],
-          //),
-          //],
         )),
       ),
     );
