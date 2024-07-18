@@ -121,13 +121,14 @@ class LoginPage extends StatelessWidget {
                     width: 250,
                     child: ElevatedButton(
                       onPressed: () async {
+                        UserProvider provider = UserProvider();
                         print(
                             "credentials: ${_usernameController.text} : ${_passwordController.text}");
                         AuthProvider.username = _usernameController.text;
                         AuthProvider.password = _passwordController.text;
                         try {
 //bool isAuthorized=await Provider.of<BaseProvider>(context, listen: false).isValidResponse(response)
-
+                          var data = await provider.get();
                           print("Authorized");
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => (HomePage())));

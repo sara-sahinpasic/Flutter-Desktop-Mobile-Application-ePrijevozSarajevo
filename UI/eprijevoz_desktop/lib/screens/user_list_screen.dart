@@ -4,13 +4,17 @@ import 'package:eprijevoz_desktop/models/user.dart';
 import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:eprijevoz_desktop/providers/utils.dart';
 import 'package:eprijevoz_desktop/screens/update_user_screen.dart';
+//import 'package:eprijevoz_desktop/screens/user_update_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
 
 class UserListScreen extends StatefulWidget {
   User? user;
-  UserListScreen({super.key, this.user});
+  //final VoidCallback onUpdate;
+  UserListScreen({super.key, this.user
+      //required this.onUpdate
+      });
 
   @override
   State<UserListScreen> createState() => _UserListScreenState();
@@ -247,7 +251,8 @@ class _UserListScreenState extends State<UserListScreen> {
                                               builder: (BuildContext context) =>
                                                   UpdateUserDialog(
                                                     user: e,
-                                                    onUpdate: refreshTable,
+                                                    //onUpdate:
+                                                    //widget.onUpdate
                                                   ));
                                         },
                                         icon: const Icon(

@@ -12,10 +12,13 @@ import 'package:provider/provider.dart';
 class UpdateUserDialog extends StatefulWidget {
   Status? status;
   User user;
-  final VoidCallback onUpdate;
+  //final VoidCallback onUpdate;
 
   UpdateUserDialog(
-      {required this.user, required this.onUpdate, this.status, super.key});
+      {required this.user,
+      //required this.onUpdate,
+      this.status,
+      super.key});
 
   @override
   State<UpdateUserDialog> createState() => _UpdateUserDialogState();
@@ -244,7 +247,7 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
                     }
 
                     print("Testtt: ${widget.user!.userId!}, ${request}}");
-                    widget.onUpdate();
+                    // widget.onUpdate();
 
                     showDialog(
                         context: context,

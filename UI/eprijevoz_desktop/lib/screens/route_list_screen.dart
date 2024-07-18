@@ -4,6 +4,7 @@ import 'package:eprijevoz_desktop/models/station.dart';
 import 'package:eprijevoz_desktop/providers/route_provider.dart';
 import 'package:eprijevoz_desktop/providers/station_provider.dart';
 import 'package:eprijevoz_desktop/providers/utils.dart';
+import 'package:eprijevoz_desktop/screens/route_add_screen.dart';
 import 'package:eprijevoz_desktop/screens/route_update_screen.dart';
 import 'package:flutter/material.dart' hide Route;
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -394,7 +395,12 @@ class _RouteListScreenState extends State<RouteListScreen> {
               height: 15,
             ),
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (dialogDeleteContext) => RouteAddDialog(),
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
                   shape: RoundedRectangleBorder(
