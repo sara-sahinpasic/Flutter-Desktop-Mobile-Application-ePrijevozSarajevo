@@ -4,17 +4,16 @@ import 'package:eprijevoz_desktop/models/user.dart';
 import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:eprijevoz_desktop/providers/utils.dart';
 import 'package:eprijevoz_desktop/screens/update_user_screen.dart';
-//import 'package:eprijevoz_desktop/screens/user_update_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
 
 class UserListScreen extends StatefulWidget {
   User? user;
-  //final VoidCallback onUpdate;
-  UserListScreen({super.key, this.user
-      //required this.onUpdate
-      });
+  UserListScreen({
+    super.key,
+    this.user,
+  });
 
   @override
   State<UserListScreen> createState() => _UserListScreenState();
@@ -35,13 +34,13 @@ class _UserListScreenState extends State<UserListScreen> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    refreshTable();
   }
 
   @override
   void initState() {
-    userProvider = context.read<UserProvider>();
-
     super.initState();
+    userProvider = context.read<UserProvider>();
 
     _initialValue = {
       'firstName': widget?.user?.firstName,
@@ -55,10 +54,14 @@ class _UserListScreenState extends State<UserListScreen> {
 
   Future initForm() async {
     userResult = await userProvider.get();
+    setState(() {
+      isLoading = false;
+    });
   }
 
   Future refreshTable() async {
-    userResult = await userProvider.get();
+    var request = Map.from(_formKey.currentState?.value ?? {});
+    userResult = await userProvider.get(filter: request);
     setState(() {
       isLoading = false;
     });
@@ -246,14 +249,17 @@ class _UserListScreenState extends State<UserListScreen> {
                                       //update
                                       DataCell(IconButton(
                                         onPressed: () {
-                                          showDialog(
+                                          final result = showDialog(
                                               context: context,
                                               builder: (BuildContext context) =>
                                                   UpdateUserDialog(
                                                     user: e,
-                                                    //onUpdate:
-                                                    //widget.onUpdate
+                                                    onUserUpdated:
+                                                        refreshTable, //refresh table with new data
                                                   ));
+
+                                          if (result == true)
+                                            refreshTable(); //refresh table with new data
                                         },
                                         icon: const Icon(
                                           Icons.tips_and_updates_rounded,
@@ -303,7 +309,7 @@ class _UserListScreenState extends State<UserListScreen> {
                                                                                 style: TextStyle(color: Colors.green),
                                                                               ),
                                                                               onPressed: () {
-                                                                                refreshTable();
+                                                                                refreshTable(); //refresh table with new data
                                                                                 Navigator.pop(dialogDeleteContext);
                                                                               },
                                                                             )
@@ -355,9 +361,7 @@ class _UserListScreenState extends State<UserListScreen> {
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ))
                   ],
-                  //),
                 ),
-                //),
               ],
             )),
       ),

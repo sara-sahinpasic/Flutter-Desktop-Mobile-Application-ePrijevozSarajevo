@@ -12,13 +12,14 @@ import 'package:provider/provider.dart';
 class UpdateUserDialog extends StatefulWidget {
   Status? status;
   User user;
-  //final VoidCallback onUpdate;
+  VoidCallback onUserUpdated; //refresh table with new data
 
-  UpdateUserDialog(
-      {required this.user,
-      //required this.onUpdate,
-      this.status,
-      super.key});
+  UpdateUserDialog({
+    required this.user,
+    required this.onUserUpdated,
+    this.status,
+    super.key,
+  });
 
   @override
   State<UpdateUserDialog> createState() => _UpdateUserDialogState();
@@ -242,12 +243,13 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
                     // }
 
                     if (widget.user != null) {
-                      await userProvider.update(widget.user!.userId!, request);
-                      Navigator.pop(context);
+                      var updatedUser = await userProvider.update(
+                          widget.user!.userId!, request);
+                      widget.onUserUpdated(); //refresh table with new data
+                      Navigator.pop(context, true);
                     }
 
                     print("Testtt: ${widget.user!.userId!}, ${request}}");
-                    // widget.onUpdate();
 
                     showDialog(
                         context: context,
@@ -283,7 +285,7 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
       ),
       actions: [
         TextButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () => Navigator.pop(context, false),
             child: Text(
               "Cancel",
               style: TextStyle(color: Colors.red, fontSize: 18),
