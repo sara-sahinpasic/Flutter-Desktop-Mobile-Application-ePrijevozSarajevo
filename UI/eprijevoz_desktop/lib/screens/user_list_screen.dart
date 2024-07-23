@@ -34,12 +34,10 @@ class _UserListScreenState extends State<UserListScreen> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    refreshTable();
   }
 
   @override
   void initState() {
-    super.initState();
     userProvider = context.read<UserProvider>();
 
     _initialValue = {
@@ -48,15 +46,6 @@ class _UserListScreenState extends State<UserListScreen> {
       'userName': widget?.user?.userId,
       'dateOfBirth': widget?.user?.dateOfBirth?.toString(),
     };
-
-    initForm();
-  }
-
-  Future initForm() async {
-    userResult = await userProvider.get();
-    setState(() {
-      isLoading = false;
-    });
   }
 
   Future refreshTable() async {
