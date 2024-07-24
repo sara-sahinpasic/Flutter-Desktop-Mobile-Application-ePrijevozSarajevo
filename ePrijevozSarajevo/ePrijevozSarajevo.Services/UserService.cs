@@ -61,7 +61,8 @@ namespace ePrijevozSarajevo.Services
 
             return Convert.ToBase64String(byteArray);
         }
-        public static string GenerateHash(string? salt, string? password)
+        public static string GenerateHash(string? salt, string?
+            password)
         {
             byte[] src = Convert.FromBase64String(salt);
             byte[] bytes = Encoding.Unicode.GetBytes(password);

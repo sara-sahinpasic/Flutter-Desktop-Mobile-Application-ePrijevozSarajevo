@@ -4,6 +4,7 @@ import 'package:eprijevoz_desktop/models/user.dart';
 import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:eprijevoz_desktop/providers/utils.dart';
 import 'package:eprijevoz_desktop/screens/update_user_screen.dart';
+import 'package:eprijevoz_desktop/screens/user_add_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
@@ -335,7 +336,28 @@ class _UserListScreenState extends State<UserListScreen> {
                       height: 15,
                     ),
                     ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (dialogAddContext) => UserAddDialog(),
+
+                            /*
+                            
+                             final result = showDialog(
+                                              context: context,
+                                              builder: (BuildContext context) =>
+                                                  UpdateUserDialog(
+                                                    user: e,
+                                                    onUserUpdated:
+                                                        refreshTable, //refresh table with new data
+                                                  ));
+
+                                          if (result == true)
+                                            refreshTable(); //refresh table with new data
+                            
+                            */
+                          );
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor:
                               const Color.fromRGBO(72, 156, 118, 100),

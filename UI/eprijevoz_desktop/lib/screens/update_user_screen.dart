@@ -33,7 +33,6 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
   SearchResult<User>? userResultForStatus;
 
   int _selectedStatusId = 0;
-  String? initialStatusId;
 
   bool isLoading = true;
 
@@ -92,6 +91,9 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
   final TextEditingController _ftsPhoneController = TextEditingController();
   final TextEditingController _ftsAddressController = TextEditingController();
 
+  String? initialStatusId;
+  Status? _currentStatus;
+
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -100,207 +102,197 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
         // color: Colors.red,
         width: 500,
         height: 450,
-        child: isLoading
-            ? Center(child: CircularProgressIndicator())
-            : FormBuilder(
-                key: _formKey,
-                initialValue: _initialValue,
-                child: Column(children: [
-                  SizedBox(
-                    height: 15,
+        child: FormBuilder(
+          key: _formKey,
+          initialValue: _initialValue,
+          child: Column(children: [
+            SizedBox(
+              height: 15,
+            ),
+            Row(
+              children: [
+                const Text(
+                  "Ime:",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                ),
+                const SizedBox(
+                  width: 80,
+                ),
+                Expanded(
+                  child: FormBuilderTextField(
+                    name: 'firstName',
+                    controller: _ftsFirstNameController,
+                    cursorColor: Colors.green.shade800,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black),
+                      ),
+                    ),
                   ),
-                  Row(
-                    children: [
-                      const Text(
-                        "Ime:",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 15),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Row(
+              children: [
+                const Text(
+                  "Prezime:",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                ),
+                const SizedBox(
+                  width: 50,
+                ),
+                Expanded(
+                  child: FormBuilderTextField(
+                    name: 'lastName',
+                    controller: _ftsLastNameController,
+                    cursorColor: Colors.green.shade800,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black),
                       ),
-                      const SizedBox(
-                        width: 80,
-                      ),
-                      Expanded(
-                        child: FormBuilderTextField(
-                          name: 'firstName',
-                          controller: _ftsFirstNameController,
-                          cursorColor: Colors.green.shade800,
-                          decoration: InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                  SizedBox(
-                    height: 15,
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Row(
+              children: [
+                const Text(
+                  "Broj telefona:",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                ),
+                const SizedBox(
+                  width: 15,
+                ),
+                Expanded(
+                  child: FormBuilderTextField(
+                    name: 'phoneNumber',
+                    controller: _ftsPhoneController,
+                    cursorColor: Colors.green.shade800,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black),
+                      ),
+                    ),
                   ),
-                  Row(
-                    children: [
-                      const Text(
-                        "Prezime:",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 15),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Row(
+              children: [
+                const Text(
+                  "Adresa:",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                ),
+                const SizedBox(
+                  width: 60,
+                ),
+                Expanded(
+                  child: FormBuilderTextField(
+                    name: 'address',
+                    controller: _ftsAddressController,
+                    cursorColor: Colors.green.shade800,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black),
                       ),
-                      const SizedBox(
-                        width: 50,
-                      ),
-                      Expanded(
-                        child: FormBuilderTextField(
-                          name: 'lastName',
-                          controller: _ftsLastNameController,
-                          cursorColor: Colors.green.shade800,
-                          decoration: InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                  SizedBox(
-                    height: 15,
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Row(
+              children: [
+                const Text(
+                  "Status:",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                ),
+                const SizedBox(
+                  width: 60,
+                ),
+                Expanded(
+                  child: FormBuilderDropdown(
+                    name: "userStatusId",
+                    items: getItems(),
+                    initialValue: widget.user.userStatusId?.toString(),
+                    onChanged: (value) {
+                      setState(() {
+                        _selectedStatusId = int.parse(value as String);
+                      });
+                    },
                   ),
-                  Row(
-                    children: [
-                      const Text(
-                        "Broj telefona:",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 15),
-                      ),
-                      const SizedBox(
-                        width: 15,
-                      ),
-                      Expanded(
-                        child: FormBuilderTextField(
-                          name: 'phoneNumber',
-                          controller: _ftsPhoneController,
-                          cursorColor: Colors.green.shade800,
-                          decoration: InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Row(
-                    children: [
-                      const Text(
-                        "Adresa:",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 15),
-                      ),
-                      const SizedBox(
-                        width: 60,
-                      ),
-                      Expanded(
-                        child: FormBuilderTextField(
-                          name: 'address',
-                          controller: _ftsAddressController,
-                          cursorColor: Colors.green.shade800,
-                          decoration: InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Row(
-                    children: [
-                      const Text(
-                        "Status:",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 15),
-                      ),
-                      const SizedBox(
-                        width: 60,
-                      ),
-                      Expanded(
-                        child: FormBuilderDropdown(
-                          name: "userStatusId",
-                          items: getItems(),
-                          initialValue: widget.user.userStatusId?.toString(),
-                          onChanged: (value) {
-                            setState(() {
-                              _selectedStatusId = int.parse(value as String);
-                            });
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 35,
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                          child: ElevatedButton(
-                        onPressed: () async {
-                          _formKey.currentState?.saveAndValidate();
-                          var request = Map.from(_formKey.currentState!.value);
-                          // Update userStatusId with the selected statusId
-                          request['userStatusId'] = _selectedStatusId;
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 35,
+            ),
+            Row(
+              children: [
+                Expanded(
+                    child: ElevatedButton(
+                  onPressed: () async {
+                    _formKey.currentState?.saveAndValidate();
+                    var request = Map.from(_formKey.currentState!.value);
+                    // Update userStatusId with the selected statusId
+                    request['userStatusId'] = _selectedStatusId;
 
-                          // if (request['firstName'] == "AAA") {
-                          //   request['firstName'] = "BBB";
-                          // }
+                    // if (request['firstName'] == "AAA") {
+                    //   request['firstName'] = "BBB";
+                    // }
 
-                          if (widget.user != null) {
-                            var updatedUser = await userProvider.update(
-                                widget.user!.userId!, request);
-                            widget
-                                .onUserUpdated(); //refresh table with new data
-                            Navigator.pop(context, true);
-                          }
+                    if (widget.user != null) {
+                      var updatedUser = await userProvider.update(
+                          widget.user!.userId!, request);
+                      widget.onUserUpdated(); //refresh table with new data
+                      Navigator.pop(context, true);
+                    }
 
-                          print("Testtt: ${widget.user!.userId!}, ${request}}");
+                    print("Testtt: ${widget.user!.userId!}, ${request}}");
 
-                          showDialog(
-                              context: context,
-                              builder: (context) => AlertDialog(
-                                    title: Text("Update"),
-                                    content: Text("Korisnik je ažuriran"),
-                                    actions: [
-                                      TextButton(
-                                        child: Text(
-                                          "OK",
-                                          style: TextStyle(color: Colors.green),
-                                        ),
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                      )
-                                    ],
-                                  ));
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              const Color.fromRGBO(72, 156, 118, 100),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(2.0),
-                          ),
-                          minimumSize: const Size(100, 65),
-                        ),
-                        child: const Text("Ažuriraj",
-                            style: TextStyle(fontSize: 18)),
-                      )),
-                    ],
+                    showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                              title: Text("Update"),
+                              content: Text("Korisnik je ažuriran"),
+                              actions: [
+                                TextButton(
+                                  child: Text(
+                                    "OK",
+                                    style: TextStyle(color: Colors.green),
+                                  ),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                )
+                              ],
+                            ));
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(2.0),
+                    ),
+                    minimumSize: const Size(100, 65),
                   ),
-                ]),
-              ),
+                  child: const Text("Ažuriraj", style: TextStyle(fontSize: 18)),
+                )),
+              ],
+            ),
+          ]),
+        ),
       ),
       actions: [
         TextButton(
