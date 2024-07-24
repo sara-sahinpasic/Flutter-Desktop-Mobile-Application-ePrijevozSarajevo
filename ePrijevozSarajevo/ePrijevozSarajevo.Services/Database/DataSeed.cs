@@ -291,28 +291,35 @@ namespace ePrijevozSarajevo.Services.Database
             );
             modelBuilder.Entity<Status>().HasData //8
             (
+                  new Status()
+                  {
+                      StatusId = 1,
+                      Name = "Default",
+                      Discount = 0.0,
+
+                  },
                  new Status()
                  {
-                     StatusId = 1,
+                     StatusId = 2,
                      Name = "Student",
                      Discount = 0.3,
 
                  },
                 new Status()
                 {
-                    StatusId = 2,
+                    StatusId = 3,
                     Name = "Pensioner",
                     Discount = 0.5
                 },
                  new Status()
                  {
-                     StatusId = 3,
+                     StatusId = 4,
                      Name = "Employed",
                      Discount = 0.15
                  },
                  new Status()
                  {
-                     StatusId = 4,
+                     StatusId = 5,
                      Name = "Unemployed",
                      Discount = 0.4
                  }

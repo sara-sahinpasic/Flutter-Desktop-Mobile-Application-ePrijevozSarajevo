@@ -107,12 +107,14 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        "Dobro došli, ${userNameUI}!",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 30),
+                      Expanded(
+                        child: Text(
+                          "Dobro došli, ${userNameUI}!",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30),
+                        ),
                       ),
                     ],
                   ),

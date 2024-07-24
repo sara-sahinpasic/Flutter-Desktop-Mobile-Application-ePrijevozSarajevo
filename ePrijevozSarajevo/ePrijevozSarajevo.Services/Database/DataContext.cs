@@ -134,7 +134,7 @@ namespace ePrijevozSarajevo.Services.Database
                 RegistrationDate = DateTime.Now,
                 ModifiedDate = DateTime.Now,
                 Active = true,
-                UserStatusId = 3,
+                UserStatusId = 4,
                 ProfileImagePath = "",
                 StatusExpirationDate = new DateTime(2025, 12, 31)
                },
@@ -152,7 +152,7 @@ namespace ePrijevozSarajevo.Services.Database
                 RegistrationDate = DateTime.Now,
                 ModifiedDate = DateTime.Now,
                 Active = true,
-                UserStatusId = 3,
+                UserStatusId = 4,
                 ProfileImagePath = "",
                 StatusExpirationDate = new DateTime(2025, 12, 31)
                },
@@ -170,7 +170,7 @@ namespace ePrijevozSarajevo.Services.Database
                 RegistrationDate = DateTime.Now,
                 ModifiedDate = DateTime.Now,
                 Active = true,
-                //UserStatusId = 1,
+                UserStatusId = 1,
                 ProfileImagePath = "",
                 StatusExpirationDate = new DateTime(2025, 12, 31)
                },
@@ -188,7 +188,7 @@ namespace ePrijevozSarajevo.Services.Database
                 RegistrationDate = DateTime.Now,
                 ModifiedDate = DateTime.Now,
                 Active = true,
-                //UserStatusId = 2,
+                UserStatusId = 1,
                 ProfileImagePath = "",
                 StatusExpirationDate = new DateTime(2025, 12, 31)
                },
@@ -206,7 +206,7 @@ namespace ePrijevozSarajevo.Services.Database
                 RegistrationDate = DateTime.Now,
                 ModifiedDate = DateTime.Now,
                 Active = true,
-                //UserStatusId = 4,
+                UserStatusId = 1,
                 ProfileImagePath = "",
                 StatusExpirationDate = new DateTime(2025, 12, 31)
                },
@@ -225,7 +225,7 @@ namespace ePrijevozSarajevo.Services.Database
                 RegistrationDate = DateTime.Now,
                 ModifiedDate = DateTime.Now,
                 Active = true,
-                //UserStatusId = 2,
+                UserStatusId = 1,
                 ProfileImagePath = "",
                 StatusExpirationDate = new DateTime(2025, 12, 31)
                },
