@@ -32,7 +32,7 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
   SearchResult<Status>? statusResult;
   SearchResult<User>? userResultForStatus;
 
-  int _selectedStatusId = 0;
+  int? _selectedStatusId;
 
   bool isLoading = true;
 
@@ -51,7 +51,7 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
     _ftsAddressController.text = widget?.user?.address ?? '';
     _ftsPhoneController.text = widget?.user?.phoneNumber ?? '';
 
-    _initialValue = {
+    /*_initialValue = {
       'firstName': widget?.user?.firstName,
       'lastName': widget?.user?.lastName,
       'userName': widget?.user?.userId,
@@ -60,12 +60,12 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
       'address': widget?.user?.address,
       'userStatusId': widget?.user?.userStatusId?.toString(),
       'statusId': widget?.status?.statusId?.toString(),
-    };
+    };*/
 
     initForm();
   }
 
-  Future initForm() async {
+  /*Future initForm() async {
     userResult = await userProvider.get();
     statusResult = await statusProvider.get();
 
@@ -83,6 +83,29 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
       isLoading = false;
       _selectedStatusId = widget?.user?.userStatusId ?? 0;
       //initialStatusId = _selectedStatusId.toString();
+    });
+  }*/
+  Future initForm() async {
+    userResult = await userProvider.get();
+    statusResult = await statusProvider.get();
+
+    setState(() {
+      isLoading = false;
+      _selectedStatusId = widget?.user?.userStatusId ??
+          (statusResult?.result.isNotEmpty ?? false
+              ? statusResult!.result.first.statusId
+              : null);
+
+      _initialValue = {
+        'firstName': widget?.user?.firstName,
+        'lastName': widget?.user?.lastName,
+        'userName': widget?.user?.userId,
+        'dateOfBirth': widget?.user?.dateOfBirth?.toString(),
+        'phoneNumber': widget?.user?.phoneNumber,
+        'address': widget?.user?.address,
+        'userStatusId': _selectedStatusId?.toString(),
+        'statusId': widget?.status?.statusId?.toString(),
+      };
     });
   }
 
@@ -226,7 +249,8 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
                   child: FormBuilderDropdown(
                     name: "userStatusId",
                     items: getItems(),
-                    initialValue: widget.user.userStatusId?.toString(),
+                    // initialValue: widget.user.userStatusId?.toString(),
+                    initialValue: _selectedStatusId?.toString(),
                     onChanged: (value) {
                       setState(() {
                         _selectedStatusId = int.parse(value as String);

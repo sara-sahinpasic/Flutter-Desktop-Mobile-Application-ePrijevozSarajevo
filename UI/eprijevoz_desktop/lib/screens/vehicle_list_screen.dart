@@ -5,6 +5,7 @@ import 'package:eprijevoz_desktop/models/vehicle.dart';
 import 'package:eprijevoz_desktop/providers/manufacturer_provider.dart';
 import 'package:eprijevoz_desktop/providers/type_provider.dart';
 import 'package:eprijevoz_desktop/providers/vehicle_provider.dart';
+import 'package:eprijevoz_desktop/screens/vehicle_add_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -359,7 +360,11 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
                       height: 15,
                     ),
                     ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          showDialog(
+                              context: context,
+                              builder: (context) => VehicleAddDialog());
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor:
                               const Color.fromRGBO(72, 156, 118, 100),

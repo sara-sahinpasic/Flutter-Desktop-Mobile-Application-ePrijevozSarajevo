@@ -3,7 +3,7 @@ import 'package:eprijevoz_desktop/models/search_result.dart';
 import 'package:eprijevoz_desktop/models/user.dart';
 import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:eprijevoz_desktop/providers/utils.dart';
-import 'package:eprijevoz_desktop/screens/update_user_screen.dart';
+import 'package:eprijevoz_desktop/screens/user_update_screen.dart';
 import 'package:eprijevoz_desktop/screens/user_add_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -340,7 +340,6 @@ class _UserListScreenState extends State<UserListScreen> {
                           showDialog(
                             context: context,
                             builder: (dialogAddContext) => UserAddDialog(),
-
                             /*
                             
                              final result = showDialog(

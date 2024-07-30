@@ -46,7 +46,7 @@ class _UserAddDialogState extends State<UserAddDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text("Dodavanje"),
+      title: Text("Novi korisnik"),
       content: Container(
         width: 800,
         height: 400,

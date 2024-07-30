@@ -295,8 +295,8 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
                     showDialog(
                         context: context,
                         builder: (context) => AlertDialog(
-                              title: Text("Update"),
-                              content: Text("Korisnik je ažuriran"),
+                              title: Text("Nova ruta"),
+                              content: Text("Nova ruta je dodana!"),
                               actions: [
                                 TextButton(
                                   child: Text(
