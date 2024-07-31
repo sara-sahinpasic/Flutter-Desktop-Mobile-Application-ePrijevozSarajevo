@@ -13,3 +13,8 @@ String formatTime(DateTime? date) {
   }
   return DateFormat('HH:mm').format(date);
 }
+
+String formatDateTime(DateTime dateTime) {
+  final DateFormat formatter = DateFormat('yyyy-MM-ddTHH:mm:ss');
+  return formatter.format(dateTime);
+}

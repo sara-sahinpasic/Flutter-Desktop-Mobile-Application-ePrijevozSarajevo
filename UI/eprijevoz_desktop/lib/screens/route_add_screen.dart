@@ -14,7 +14,9 @@ import 'package:eprijevoz_desktop/models/type.dart';
 
 class RouteAddDialog extends StatefulWidget {
   Station? station;
-  RouteAddDialog({this.station, super.key});
+  Vehicle? vehicle;
+  Route? route;
+  RouteAddDialog({this.station, this.vehicle, this.route, super.key});
 
   @override
   State<RouteAddDialog> createState() => _RouteAddDialogState();
@@ -35,14 +37,18 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
   late VehicleProvider vehicleProvider;
   late TypeProvider typeProvider;
 
-  int _selectedStartStationId = 0;
-  int _selectedEndStationId = 0;
-  int _selectedVehicleId = 0;
+  int? _selectedStartStationId;
+  int? _selectedEndStationId;
+  int? _selectedVehicleId;
   bool? isChecked = true;
+
+  DateTime selectedDepartureDate = DateTime.now();
+  TimeOfDay selectedTime = TimeOfDay.now();
+  //
+  DateTime selectedArrivalDate = DateTime.now();
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     stationProvider = context.read<StationProvider>();
     routeProvider = context.read<RouteProvider>();
@@ -54,22 +60,42 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
 
   Future initForm() async {
     stationResult = await stationProvider.get();
-    routeResult = await routeProvider.get();
     vehicleResult = await vehicleProvider.get();
     typeResult = await typeProvider.get();
 
     setState(() {
-      // _selectedStartStationId = widget?.user?.userStatusId ?? 0;
+      _selectedStartStationId = widget?.route?.startStationId ??
+          (stationResult?.result.isNotEmpty ?? false
+              ? stationResult!.result.first.stationId
+              : null);
+
+      _selectedEndStationId = widget?.route?.endStationId ??
+          (stationResult?.result.isNotEmpty ?? false
+              ? stationResult!.result.first.stationId
+              : null);
+
+      _selectedVehicleId = widget?.route?.vehicleId ??
+          (vehicleResult?.result.isNotEmpty ?? false
+              ? vehicleResult!.result.first.vehicleId
+              : null);
+
+      _initialValue = {
+        'startStationId': widget?.route?.startStationId,
+        'endStationId': widget?.route?.endStationId,
+        'vehicleId': widget?.route?.vehicleId,
+        'arrival': widget?.route?.arrival,
+        'departure': widget?.route?.departure
+      };
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text("Dodavanje"),
+      title: Text("Nova ruta"),
       content: Container(
         width: 500,
-        height: 510,
+        height: 410,
         child: FormBuilder(
           key: _formKey,
           initialValue: _initialValue,
@@ -90,7 +116,7 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
                   child: FormBuilderDropdown(
                     name: "startStationId",
                     items: getStation(),
-                    // initialValue: getInititalStatus(),
+                    initialValue: _selectedStartStationId?.toString(),
                     onChanged: (value) {
                       setState(() {
                         _selectedStartStationId = int.parse(value as String);
@@ -116,7 +142,7 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
                   child: FormBuilderDropdown(
                     name: "endStationId",
                     items: getStation(),
-                    // initialValue: getInititalStatus(),
+                    initialValue: _selectedEndStationId?.toString(),
                     onChanged: (value) {
                       setState(() {
                         _selectedEndStationId = int.parse(value as String);
@@ -142,7 +168,7 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
                   child: FormBuilderDropdown(
                     name: "vehicleId",
                     items: getVehicle(),
-                    // initialValue: getInititalStatus(),
+                    initialValue: _selectedVehicleId?.toString(),
                     onChanged: (value) {
                       setState(() {
                         _selectedVehicleId = int.parse(value as String);
@@ -176,12 +202,17 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
                         minimumSize: Size(250, 40),
                       ),
                       onPressed: () async {
-                        _selectTime(context);
+                        /* _selectTime(context);
                         print("Selektovano vrijeme: ${selectedTime}");
+                        setState(() {});*/
+                        await _selectDepartureDateTime(context);
+                        print("Selected DateTime: ${selectedDepartureDate}");
                         setState(() {});
                       },
                       child: Text(
-                        '${formatTime(selectedDate)} ',
+                        /* '${formatTime(selectedDate)} ',
+                        style: TextStyle(color: Colors.black),*/
+                        '${formatDateTime(selectedDepartureDate)} ',
                         style: TextStyle(color: Colors.black),
                       ),
                     ),
@@ -213,12 +244,17 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
                         minimumSize: Size(250, 40),
                       ),
                       onPressed: () async {
-                        _selectTime(context);
+                        /* _selectTime(context);
                         print("Selektovano vrijeme: ${selectedTime}");
+                        setState(() {});*/
+                        await _selectArrivalDateTime(context);
+                        print("Selected DateTime: ${selectedArrivalDate}");
                         setState(() {});
                       },
                       child: Text(
-                        '${formatTime(selectedDate)} ',
+                        /*'${formatTime(selectedDate)} ',
+                        style: TextStyle(color: Colors.black),*/
+                        '${formatDateTime(selectedArrivalDate)} ',
                         style: TextStyle(color: Colors.black),
                       ),
                     ),
@@ -229,7 +265,7 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
             SizedBox(
               height: 15,
             ),
-            Row(
+            /* Row(
               children: [
                 Expanded(
                     child: CheckboxListTile(
@@ -263,52 +299,63 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
                       ListTileControlAffinity.leading, //  <-- leading Checkbox
                 )),
               ],
-            ),
+            ),*/
             SizedBox(
               height: 25,
             ),
-            // SizedBox(
-            //   height: 20,
-            // ),
             Row(
               children: [
                 Expanded(
                     child: ElevatedButton(
                   onPressed: () async {
-                    _formKey.currentState?.saveAndValidate();
-                    var request = Map.from(_formKey.currentState!.value);
-                    /* // Update userStatusId with the selected statusId
-                    // request['userStatusId'] = _selectedStatusId;
+                    if (_formKey.currentState?.saveAndValidate() ?? false) {
+                      var request = {
+                        'startStationId': _selectedStartStationId,
+                        'endStationId': _selectedEndStationId,
+                        'vehicleId': _selectedVehicleId,
+                        'arrival': formatDateTime(selectedArrivalDate),
+                        'departure': formatDateTime(selectedDepartureDate),
+                      };
 
-                    // if (request['firstName'] == "AAA") {
-                    //   request['firstName'] = "BBB";
-                    // }
-
-                    // if (widget.user != null) {
-                    //   await userProvider.update(widget.user!.userId!, request);
-                    //   Navigator.pop(context);
-                    // }
-
-                    // print("Testtt: ${widget.user!.userId!}, ${request}}");
-                    // widget.onUpdate();*/
-
-                    showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                              title: Text("Nova ruta"),
-                              content: Text("Nova ruta je dodana!"),
-                              actions: [
-                                TextButton(
-                                  child: Text(
-                                    "OK",
-                                    style: TextStyle(color: Colors.green),
-                                  ),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                )
-                              ],
-                            ));
+                      try {
+                        await routeProvider.insert(request);
+                        showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            title: Text("Success"),
+                            content: Text("Ruta je uspješno dodana."),
+                            actions: [
+                              TextButton(
+                                child: Text("OK",
+                                    style: TextStyle(color: Colors.green)),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                  Navigator.pop(context,
+                                      true); // Close the dialog and return success
+                                },
+                              ),
+                            ],
+                          ),
+                        );
+                      } catch (error) {
+                        showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            title: Text("Error"),
+                            content: Text("Greška prilikom dodavanja rute."),
+                            actions: [
+                              TextButton(
+                                child: Text("OK",
+                                    style: TextStyle(color: Colors.red)),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                              ),
+                            ],
+                          ),
+                        );
+                      }
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
@@ -335,6 +382,72 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
     );
   }
 
+  Future<void> _selectDepartureDateTime(BuildContext context) async {
+    final DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: selectedDepartureDate,
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2101),
+    );
+
+    if (pickedDate != null) {
+      final TimeOfDay? pickedTime = await showTimePicker(
+        context: context,
+        initialTime: selectedTime,
+      );
+
+      if (pickedTime != null) {
+        final DateTime fullPickedDateTime = DateTime(
+          pickedDate.year,
+          pickedDate.month,
+          pickedDate.day,
+          pickedTime.hour,
+          pickedTime.minute,
+        );
+
+        setState(() {
+          selectedDepartureDate = fullPickedDateTime;
+        });
+      }
+    }
+  }
+
+  Future<void> _selectArrivalDateTime(BuildContext context) async {
+    final DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: selectedArrivalDate,
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2101),
+    );
+
+    if (pickedDate != null) {
+      final TimeOfDay? pickedTime = await showTimePicker(
+        context: context,
+        initialTime: selectedTime,
+      );
+
+      if (pickedTime != null) {
+        final DateTime fullPickedDateTime = DateTime(
+          pickedDate.year,
+          pickedDate.month,
+          pickedDate.day,
+          pickedTime.hour,
+          pickedTime.minute,
+        );
+
+        setState(() {
+          selectedArrivalDate = fullPickedDateTime;
+        });
+      }
+    }
+  }
+
+  // String formatDateTime(DateTime dateTime) {
+  //   return "${dateTime.year}-${dateTime.month.toString().padLeft(2, '0')}-${dateTime.day.toString().padLeft(2, '0')} ${dateTime.hour.toString().padLeft(2, '0')}:${dateTime.minute.toString().padLeft(2, '0')}";
+  // }
+
+  //
+
   List<DropdownMenuItem<String>> getStation() {
     var list = stationResult?.result
             .map((item) => DropdownMenuItem(
@@ -351,39 +464,5 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
             .toList() ??
         [];
     return list;
-  }
-
-  DateTime selectedDate = DateTime.now();
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-        context: context,
-        initialDate: selectedDate,
-        firstDate: DateTime(2015, 8),
-        lastDate: DateTime(2101));
-
-    if (picked != null && picked != selectedDate) {
-      selectedDate = picked;
-      setState(() {});
-    }
-  }
-
-  TimeOfDay selectedTime = TimeOfDay.now();
-
-  Future<void> _selectTime(BuildContext context) async {
-    final TimeOfDay? pickedTime = await showTimePicker(
-        context: context,
-        initialTime: selectedTime,
-        builder: (BuildContext context, Widget? child) {
-          // Make child optional (Widget? child)
-          return MediaQuery(
-            data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: false),
-            child: child!,
-          );
-        });
-
-    if (pickedTime != null && pickedTime != selectedTime) {
-      selectedTime = pickedTime;
-      setState(() {});
-    }
   }
 }
