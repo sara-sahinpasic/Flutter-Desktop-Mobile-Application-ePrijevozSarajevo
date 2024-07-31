@@ -21,7 +21,7 @@ namespace ePrijevozSarajevo.API.Controllers
             return base.GetList(searchObject);
         }
 
-        [Authorize(Roles = "Admin")]
+       // [Authorize(Roles = "Admin")]
         public override Vehicle Insert(VehicleInsertRequest request)
         {
             return base.Insert(request);

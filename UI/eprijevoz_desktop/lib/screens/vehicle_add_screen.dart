@@ -18,16 +18,22 @@ class VehicleAddDialog extends StatefulWidget {
 }
 
 class _VehicleAddDialogState extends State<VehicleAddDialog> {
-  //Form
+  // Form
   final _formKey = GlobalKey<FormBuilderState>();
   Map<String, dynamic> _initialValue = {};
 
-  SearchResult<Vehicle>? vehicleResult;
   late VehicleProvider vehicleProvider;
   SearchResult<Manufacturer>? manufacturerResult;
   late ManufacturerProvider manufacturerProvider;
   SearchResult<Type>? typeResult;
   late TypeProvider typeProvider;
+
+  TextEditingController _ftsNumberController = TextEditingController();
+  TextEditingController _ftsRegistrationNumberController =
+      TextEditingController();
+  TextEditingController _ftsBuildYearController = TextEditingController();
+  int? _selectedManufacturerId;
+  int? _selectedTypeId;
 
   @override
   void initState() {
@@ -37,31 +43,13 @@ class _VehicleAddDialogState extends State<VehicleAddDialog> {
     typeProvider = context.read<TypeProvider>();
 
     initForm();
-
-    /*  _initialValue = {
-      'number': widget?.vehicle?.number,
-      'registrationNumber': widget?.vehicle?.registrationNumber,
-      'buildYear': widget?.vehicle?.buildYear,
-      //'manufacturerId': widget?.vehicle?.manufacturerId,
-       'manufacturerId':_selectedManufacturerId,
-      'typeId': widget?.vehicle?.typeId
-    };*/
   }
-
-  /* Future initForm() async {
-    //vehicleResult = await vehicleProvider.get();
-    manufacturerResult = await manufacturerProvider.get();
-    typeResult = await typeProvider.get();
-
-    setState(() {
-      // _selectedStartStationId = widget?.user?.userStatusId ?? 0;
-    });
-  }*/
 
   Future initForm() async {
     manufacturerResult = await manufacturerProvider.get();
     typeResult = await typeProvider.get();
 
+    // Prepare values for dropdown button:
     setState(() {
       _selectedManufacturerId = widget?.vehicle?.manufacturerId ??
           (manufacturerResult?.result.isNotEmpty ?? false
@@ -72,7 +60,7 @@ class _VehicleAddDialogState extends State<VehicleAddDialog> {
               ? typeResult!.result.first.typeId
               : null);
 
-      // Update _initialValue to reflect the fetched data
+      // Update _initialValue to reflect the fetched data for dropdown button
       _initialValue = {
         'number': widget?.vehicle?.number,
         'registrationNumber': widget?.vehicle?.registrationNumber,
@@ -82,13 +70,6 @@ class _VehicleAddDialogState extends State<VehicleAddDialog> {
       };
     });
   }
-
-  TextEditingController _ftsNumberController = TextEditingController();
-  TextEditingController _ftsRegistrationNumberController =
-      TextEditingController();
-  TextEditingController _ftsBuildYearController = TextEditingController();
-  int? _selectedManufacturerId;
-  int? _selectedTypeId;
 
   @override
   Widget build(BuildContext context) {
@@ -208,7 +189,6 @@ class _VehicleAddDialogState extends State<VehicleAddDialog> {
                     child: FormBuilderDropdown(
                       name: "manufacturerId",
                       items: getManufacturer(),
-                      //initialValue: 1,
                       initialValue: _selectedManufacturerId?.toString(),
                       onChanged: (value) {
                         setState(() {
@@ -254,26 +234,56 @@ class _VehicleAddDialogState extends State<VehicleAddDialog> {
                   Expanded(
                       child: ElevatedButton(
                     onPressed: () async {
-                      _formKey.currentState?.saveAndValidate();
-                      var request = Map.from(_formKey.currentState!.value);
+                      if (_formKey.currentState?.saveAndValidate() ?? false) {
+                        var request = {
+                          'number': _ftsNumberController.text,
+                          'registrationNumber':
+                              _ftsRegistrationNumberController.text,
+                          'buildYear': _ftsBuildYearController.text,
+                          'manufacturerId': _selectedManufacturerId,
+                          'typeId': _selectedTypeId
+                        };
 
-                      showDialog(
-                          context: context,
-                          builder: (context) => AlertDialog(
-                                title: Text("Novo vozilo"),
-                                content: Text("Vozilo je dodano!"),
-                                actions: [
-                                  TextButton(
-                                    child: Text(
-                                      "OK",
-                                      style: TextStyle(color: Colors.green),
-                                    ),
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                  )
-                                ],
-                              ));
+                        try {
+                          await vehicleProvider.insert(request);
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: Text("Success"),
+                              content: Text("Vozilo je uspješno dodano."),
+                              actions: [
+                                TextButton(
+                                  child: Text("OK",
+                                      style: TextStyle(color: Colors.green)),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    Navigator.pop(context,
+                                        true); // Close the dialog and return success
+                                  },
+                                ),
+                              ],
+                            ),
+                          );
+                        } catch (error) {
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: Text("Error"),
+                              content:
+                                  Text("Greška prilikom dodavanja vozila."),
+                              actions: [
+                                TextButton(
+                                  child: Text("OK",
+                                      style: TextStyle(color: Colors.red)),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                ),
+                              ],
+                            ),
+                          );
+                        }
+                      }
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
