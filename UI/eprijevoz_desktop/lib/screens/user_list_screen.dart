@@ -48,7 +48,7 @@ class _UserListScreenState extends State<UserListScreen> {
       'dateOfBirth': widget?.user?.dateOfBirth?.toString(),
     };
 
-    refreshTable();
+    //refreshTable();
   }
 
   Future refreshTable() async {

@@ -360,10 +360,15 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
                       height: 15,
                     ),
                     ElevatedButton(
-                        onPressed: () {
-                          showDialog(
+                        onPressed: () async {
+                          final result = await showDialog(
                               context: context,
-                              builder: (context) => VehicleAddDialog());
+                              builder: (dialogAddContext) =>
+                                  VehicleAddDialog());
+
+                          if (result == true) {
+                            await refreshTable();
+                          }
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor:
