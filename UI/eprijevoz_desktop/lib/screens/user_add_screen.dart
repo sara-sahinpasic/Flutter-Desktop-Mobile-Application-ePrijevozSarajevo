@@ -321,7 +321,7 @@ class _UserAddDialogState extends State<UserAddDialog> {
                                     onPressed: () {
                                       Navigator.pop(context);
                                       Navigator.pop(context,
-                                          true); // Close the dialog and return success
+                                          true); // Close the dialog and return success if adding is successful => true
                                     },
                                   ),
                                 ],
@@ -339,7 +339,8 @@ class _UserAddDialogState extends State<UserAddDialog> {
                                     child: Text("OK",
                                         style: TextStyle(color: Colors.red)),
                                     onPressed: () {
-                                      Navigator.pop(context);
+                                      Navigator.pop(context,
+                                          false); // adding is not successful => false
                                     },
                                   ),
                                 ],
@@ -369,6 +370,7 @@ class _UserAddDialogState extends State<UserAddDialog> {
       actions: [
         TextButton(
             onPressed: () => Navigator.pop(context),
+            //onPressed: () => Navigator.of(context).pop(false),
             child: Text(
               "Cancel",
               style: TextStyle(color: Colors.red, fontSize: 18),

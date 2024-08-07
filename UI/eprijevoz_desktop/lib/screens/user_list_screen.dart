@@ -47,6 +47,8 @@ class _UserListScreenState extends State<UserListScreen> {
       'userName': widget?.user?.userId,
       'dateOfBirth': widget?.user?.dateOfBirth?.toString(),
     };
+
+    refreshTable();
   }
 
   Future refreshTable() async {
@@ -380,8 +382,8 @@ class _UserListScreenState extends State<UserListScreen> {
                       height: 15,
                     ),
                     ElevatedButton(
-                        onPressed: () {
-                          showDialog(
+                        onPressed: () async {
+                          final result = await showDialog(
                             context: context,
                             builder: (dialogAddContext) => UserAddDialog(),
                             /*
@@ -400,6 +402,9 @@ class _UserListScreenState extends State<UserListScreen> {
                             
                             */
                           );
+                          if (result == true) {
+                            await refreshTable(); // refresh table after a new user is added
+                          }
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor:
