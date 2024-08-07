@@ -258,29 +258,33 @@ class _UserListScreenState extends State<UserListScreen> {
                                       )),
                                       //delete:
                                       DataCell(IconButton(
-                                        onPressed: () {
-                                          showDialog(
-                                              context: context,
-                                              builder: (context) => AlertDialog(
-                                                    title: Text("Delete"),
-                                                    content: Text(
-                                                        "Da li želite obrisati korisnika ${e.firstName} ${e.lastName}?"),
-                                                    actions: [
-                                                      TextButton(
-                                                          child: Text(
-                                                            "OK",
-                                                            style: TextStyle(
-                                                                color: Colors
-                                                                    .green),
-                                                          ),
-                                                          onPressed: () async {
-                                                            Navigator.pop(
-                                                                context);
-                                                            bool success =
+                                        onPressed: () async {
+                                          final bool userConfirmedDeletion =
+                                              await showDialog(
+                                                  context: context,
+                                                  builder: (dialogContext) =>
+                                                      AlertDialog(
+                                                        title: Text("Delete"),
+                                                        content: Text(
+                                                            "Da li želite obrisati korisnika ${e.firstName} ${e.lastName}?"),
+                                                        actions: [
+                                                          TextButton(
+                                                              child: Text(
+                                                                "OK",
+                                                                style: TextStyle(
+                                                                    color: Colors
+                                                                        .green),
+                                                              ),
+                                                              onPressed:
+                                                                  () async {
+                                                                Navigator.pop(
+                                                                    dialogContext,
+                                                                    true);
+                                                                /*bool success =
                                                                 await userProvider
                                                                     .delete(e
-                                                                        .userId!);
-                                                            showDialog(
+                                                                        .userId!);*/
+                                                                /*showDialog(
                                                                 context:
                                                                     context,
                                                                 builder:
@@ -304,20 +308,60 @@ class _UserListScreenState extends State<UserListScreen> {
                                                                               },
                                                                             )
                                                                           ],
-                                                                        ));
-                                                          }),
-                                                      TextButton(
-                                                          child: Text(
-                                                            "Cancel",
-                                                            style: TextStyle(
-                                                                color:
-                                                                    Colors.red),
-                                                          ),
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  context))
-                                                    ],
-                                                  ));
+                                                                        )
+                                                                        
+                                                                        );*/
+                                                              }),
+                                                          TextButton(
+                                                              child: Text(
+                                                                "Cancel",
+                                                                style: TextStyle(
+                                                                    color: Colors
+                                                                        .red),
+                                                              ),
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      dialogContext,
+                                                                      false))
+                                                        ],
+                                                      ));
+
+                                          if (userConfirmedDeletion) {
+                                            bool success = await userProvider
+                                                .delete(e.userId!);
+                                            //}
+
+                                            if (mounted) {
+                                              await showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (dialogDeleteContext) =>
+                                                          AlertDialog(
+                                                            title: Text(success
+                                                                ? "Success"
+                                                                : "Error"),
+                                                            content: Text(success
+                                                                ? "Korisnik: ${e.firstName} ${e.lastName}, uspješno obrisan."
+                                                                : "Korisnik: ${e.firstName} ${e.lastName}, nije obrisan."),
+                                                            actions: [
+                                                              TextButton(
+                                                                child: Text(
+                                                                  "OK",
+                                                                  style: TextStyle(
+                                                                      color: Colors
+                                                                          .green),
+                                                                ),
+                                                                onPressed: () {
+                                                                  refreshTable(); //refresh table with new data
+                                                                  Navigator.pop(
+                                                                      dialogDeleteContext);
+                                                                },
+                                                              )
+                                                            ],
+                                                          ));
+                                              await refreshTable();
+                                            }
+                                          }
                                         },
                                         icon: const Icon(
                                           Icons.delete_forever_rounded,
