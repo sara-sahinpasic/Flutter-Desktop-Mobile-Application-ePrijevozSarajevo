@@ -86,28 +86,30 @@ class _RouteListScreenState extends State<RouteListScreen> {
       routeResult!.result = filterDuplicates(routeResult!.result);
     }
 
-    print("test: ${stationResult?.result.length}");
+    /* print("test: ${stationResult?.result.length}");
     print("dan: ${stationResult?.result.map((e) => e.name)}");
 
     print("noć: ${routeResult?.result.length}");
     print(
         "ludilo: ${routeResult?.result.map((e) => e.startStationId)} : ${routeResult?.result.map((e) => e.departure)}");
-
+*/
     setState(() {
       isLoading = false;
       _selectedStationId = widget?.route?.startStationId ?? 0;
     });
   }
 
-  List<Route> filterDuplicates(List<Route> data) {
-    final seen = <int>{};
-    return data
-        .where((dataModel) => seen.add(dataModel.startStationId!))
-        .toList();
-  }
-
   Future refreshTable() async {
+    // var request = Map.from(_formKey.currentState?.value ?? {});
+
+    stationResult = await stationProvider.get();
     routeResult = await routeProvider.get();
+
+    if (routeResult?.result != null) {
+      routeResult!.result = filterDuplicates(routeResult!.result);
+    }
+
+    //routeResult = await routeProvider.get();
     routeResult?.result = filterDuplicates(routeResult!.result);
 
     //pretrazi ponovo rute za odabranu stanicu i datum
@@ -119,6 +121,13 @@ class _RouteListScreenState extends State<RouteListScreen> {
     setState(() {
       isLoading = false;
     });
+  }
+
+  List<Route> filterDuplicates(List<Route> data) {
+    final seen = <int>{};
+    return data
+        .where((dataModel) => seen.add(dataModel.startStationId!))
+        .toList();
   }
 
   @override
@@ -395,11 +404,14 @@ class _RouteListScreenState extends State<RouteListScreen> {
               height: 15,
             ),
             ElevatedButton(
-                onPressed: () {
-                  showDialog(
+                onPressed: () async {
+                  final result = await showDialog(
                     context: context,
-                    builder: (dialogDeleteContext) => RouteAddDialog(),
+                    builder: (dialogAddContext) => RouteAddDialog(),
                   );
+                  if (result == true) {
+                    await refreshTable();
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
