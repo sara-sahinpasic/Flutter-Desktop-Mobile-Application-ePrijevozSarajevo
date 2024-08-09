@@ -1,125 +1,180 @@
+import 'package:eprijevoz_mobile/layouts/master_screen.dart';
+import 'package:eprijevoz_mobile/providers/auth_provider.dart';
+import 'package:eprijevoz_mobile/providers/user_provider.dart';
+import 'package:eprijevoz_mobile/screens/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  //runApp(const MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider<UserProvider>(create: (_) => UserProvider()),
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.white, primary: Colors.white),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: LoginPage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
+class LoginPage extends StatelessWidget {
+  LoginPage({super.key});
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
+    return
+        //Placeholder();
+        Scaffold(
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+        child: SingleChildScrollView(
+          child: Container(
+            constraints: const BoxConstraints(
+              maxHeight: 500,
+              maxWidth: 500,
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            child: Card(
+              color: Colors.black,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 40, bottom: 25),
+                    child: Center(
+                      child: SizedBox(
+                          width: 200,
+                          height: 140,
+                          child: Image.asset("assets/images/logo.png",
+                              height: 100, width: 100)),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 35, vertical: 20),
+                    child: TextField(
+                      controller: _usernameController,
+                      style: const TextStyle(color: Colors.white),
+                      decoration: InputDecoration(
+                          border: const OutlineInputBorder(),
+                          labelText: "Email",
+                          labelStyle: TextStyle(color: Colors.grey.shade300),
+                          prefixIcon: const Icon(Icons.email_rounded),
+                          prefixIconColor: Colors.grey.shade300,
+                          hintText: "Enter valid email id as mail@gmail.com",
+                          hintStyle: TextStyle(color: Colors.grey.shade800)),
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 35, vertical: 0),
+                    child: TextField(
+                      controller: _passwordController,
+                      style: const TextStyle(color: Colors.white),
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        border: const OutlineInputBorder(),
+                        labelText: "Password",
+                        labelStyle: TextStyle(color: Colors.grey.shade300),
+                        prefixIcon: const Icon(Icons.password),
+                        prefixIconColor: Colors.grey.shade300,
+                        hintText: "Enter your password",
+                        hintStyle: TextStyle(color: Colors.grey.shade800),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  SizedBox(
+                    height: 40,
+                    width: 250,
+                    child: ElevatedButton(
+                      onPressed: () async {
+                        UserProvider provider = UserProvider();
+                        print(
+                            "credentials: ${_usernameController.text} : ${_passwordController.text}");
+                        AuthProvider.username = _usernameController.text;
+                        AuthProvider.password = _passwordController.text;
+                        try {
+                          var data = await provider.get();
+                          print("Authorized");
+                          // Navigator.of(context).push(MaterialPageRoute(
+                          //     builder: (context) => (HomePage())));
+                          // Navigator.of(context);
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      MasterScreen("Home", HomePage())));
+                        } on Exception catch (e) {
+                          print("Not authorized!");
+                          showDialog(
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                    title: const Text("Error"),
+                                    titleTextStyle: const TextStyle(
+                                        color: Colors.red,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 24),
+                                    actions: [
+                                      TextButton(
+                                          onPressed: () =>
+                                              (Navigator.pop(context)),
+                                          child: const Text(
+                                            "OK",
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ))
+                                    ],
+                                    content: Text(e.toString()),
+                                  ));
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor:
+                            const Color.fromRGBO(72, 156, 118, 100),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(2.0),
+                        ),
+                      ),
+                      child: const Text(
+                        "Login",
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      "Forgot Password",
+                      style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w100,
+                          decoration: TextDecoration.underline,
+                          decorationColor: Colors.white,
+                          decorationThickness: 1.0),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ],
+          ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

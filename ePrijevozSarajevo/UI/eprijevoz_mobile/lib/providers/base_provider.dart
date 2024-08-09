@@ -1,13 +1,16 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:eprijevoz_desktop/models/search_result.dart';
-import 'package:eprijevoz_desktop/providers/auth_provider.dart';
-
+import 'package:eprijevoz_mobile/providers/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:http/io_client.dart';
+
+import 'dart:convert';
+
+import 'package:eprijevoz_mobile/models/search_result.dart';
+import 'package:flutter/material.dart';
 
 abstract class BaseProvider<T> with ChangeNotifier {
   static String? _baseUrl;
@@ -16,8 +19,8 @@ abstract class BaseProvider<T> with ChangeNotifier {
   BaseProvider(String endpoint) {
     _endpoint = endpoint;
     _baseUrl = const String.fromEnvironment("baseUrl",
-        defaultValue: "http://localhost:7292/");
-    //defaultValue: "http://10.0.2.2:7292/");
+        //defaultValue: "http://localhost:7292/");
+        defaultValue: "http://10.0.2.2:7292/");
   }
 
   Future<SearchResult<T>> get({dynamic filter}) async {
