@@ -1,12 +1,10 @@
 import 'package:eprijevoz_mobile/layouts/master_screen.dart';
 import 'package:eprijevoz_mobile/providers/auth_provider.dart';
 import 'package:eprijevoz_mobile/providers/user_provider.dart';
-import 'package:eprijevoz_mobile/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  //runApp(const MyApp());
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider<UserProvider>(create: (_) => UserProvider()),
@@ -112,13 +110,9 @@ class LoginPage extends StatelessWidget {
                         try {
                           var data = await provider.get();
                           print("Authorized");
-                          // Navigator.of(context).push(MaterialPageRoute(
-                          //     builder: (context) => (HomePage())));
-                          // Navigator.of(context);
                           Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      MasterScreen("Home", HomePage())));
+                                  builder: (context) => MasterScreen()));
                         } on Exception catch (e) {
                           print("Not authorized!");
                           showDialog(

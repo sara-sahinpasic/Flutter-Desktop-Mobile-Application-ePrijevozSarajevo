@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class RouteScreen extends StatefulWidget {
+  const RouteScreen({super.key});
+
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<RouteScreen> createState() => _RouteScreenState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _RouteScreenState extends State<RouteScreen> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   Widget _buildResultVIew() {
     return Expanded(
       child: Center(
-        child: Text("Home Page Content"),
+        child: Text("Route Page Content"),
       ),
     );
   }
