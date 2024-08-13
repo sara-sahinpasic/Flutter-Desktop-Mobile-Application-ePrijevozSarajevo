@@ -1,5 +1,7 @@
 import 'package:eprijevoz_mobile/layouts/master_screen.dart';
 import 'package:eprijevoz_mobile/providers/auth_provider.dart';
+import 'package:eprijevoz_mobile/providers/route_provider.dart';
+import 'package:eprijevoz_mobile/providers/station_provider.dart';
 import 'package:eprijevoz_mobile/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -8,6 +10,8 @@ void main() {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider<UserProvider>(create: (_) => UserProvider()),
+      ChangeNotifierProvider<RouteProvider>(create: (_) => RouteProvider()),
+      ChangeNotifierProvider<StationProvider>(create: (_) => StationProvider()),
     ],
     child: const MyApp(),
   ));
@@ -36,9 +40,7 @@ class LoginPage extends StatelessWidget {
   final TextEditingController _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return
-        //Placeholder();
-        Scaffold(
+    return Scaffold(
       body: Center(
         child: SingleChildScrollView(
           child: Container(
