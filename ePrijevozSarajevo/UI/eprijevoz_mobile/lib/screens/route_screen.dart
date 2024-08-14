@@ -22,12 +22,15 @@ class _RouteScreenState extends State<RouteScreen> {
   late StationProvider stationProvider;
   SearchResult<Station>? stationResult;
 
-  //Form
+  // Form
   final _formKey = GlobalKey<FormBuilderState>();
   Map<String, dynamic> _initialValue = {};
 
   int? _selectedStartStationId;
   int? _selectedEndStationId;
+
+  List<Station> uniqueStartStations = [];
+  List<Station> endStations = [];
 
   @override
   void initState() {
@@ -38,9 +41,8 @@ class _RouteScreenState extends State<RouteScreen> {
 
     _initialValue = {
       'startStationId': widget?.route?.startStationId?.toString(),
-      'endStationId': widget?.route?.startStationId?.toString(),
+      'endStationId': widget?.route?.endStationId?.toString(),
       'stationId': widget?.station?.stationId?.toString(),
-      //'departure': widget?.route?.departure?.toString(),
     };
 
     initForm();
@@ -55,10 +57,42 @@ class _RouteScreenState extends State<RouteScreen> {
     }
 
     setState(() {
-      //isLoading = false;
-      _selectedStartStationId = widget?.route?.startStationId ?? 0;
-      _selectedEndStationId = widget?.route?.endStationId ?? 0;
+      // Filter unique start stations
+      uniqueStartStations =
+          getUniqueStartStations(routeResult!.result, stationResult!.result);
+
+      // Populate end stations based on the selected start station if any
+      if (widget.route?.startStationId != null &&
+          widget.route!.startStationId! > 0) {
+        _selectedStartStationId = widget.route!.startStationId!;
+        endStations =
+            getEndStationsForSelectedStartStation(_selectedStartStationId!);
+      } else {
+        _selectedStartStationId = null;
+        _selectedEndStationId = null;
+      }
     });
+  }
+
+  List<Station> getUniqueStartStations(
+      List<Route> routes, List<Station> stations) {
+    final seenStationIds = <int>{};
+    return routes
+        .where((route) => seenStationIds.add(route.startStationId!))
+        .map((route) => stations
+            .firstWhere((station) => station.stationId == route.startStationId))
+        .toList();
+  }
+
+  List<Station> getEndStationsForSelectedStartStation(int startStationId) {
+    return routeResult?.result
+            ?.where((route) => route.startStationId == startStationId)
+            .map((route) => stationResult?.result.firstWhere(
+                (station) => station.stationId == route.endStationId))
+            .where((station) => station != null)
+            .cast<Station>()
+            .toList() ??
+        [];
   }
 
   List<Route> filterDuplicates(List<Route> data) {
@@ -75,14 +109,14 @@ class _RouteScreenState extends State<RouteScreen> {
       child: Container(
         child: Column(
           children: [
-            _buildResultVIew(),
+            _buildResultView(),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildResultVIew() {
+  Widget _buildResultView() {
     return FormBuilder(
       key: _formKey,
       initialValue: _initialValue,
@@ -109,24 +143,23 @@ class _RouteScreenState extends State<RouteScreen> {
                     decoration: InputDecoration(
                       label: Text("Polazna stanica"),
                     ),
-                    items: routeResult?.result
-                            .map((e) => DropdownMenuItem<String>(
-                                value: e.startStationId.toString(),
-                                child: Text(
-                                  stationResult?.result
-                                          .firstWhere((element) =>
-                                              element.stationId ==
-                                              e.startStationId)
-                                          .name ??
-                                      "",
-                                )))
-                            .toList() ??
-                        [],
+                    items: uniqueStartStations
+                        .map((station) => DropdownMenuItem<String>(
+                            value: station.stationId.toString(),
+                            child: Text(station.name ?? "")))
+                        .toList(),
                     onChanged: (value) {
-                      var station = stationResult?.result.firstWhere(
-                          ((station) => station.stationId.toString() == value));
-                      _selectedStartStationId = station?.stationId ?? 0;
+                      setState(() {
+                        _selectedStartStationId =
+                            int.tryParse(value.toString()) ?? null;
+                        endStations = _selectedStartStationId != null
+                            ? getEndStationsForSelectedStartStation(
+                                _selectedStartStationId!)
+                            : [];
+                        _selectedEndStationId = null; // Reset end station
+                      });
                     },
+                    initialValue: _selectedStartStationId?.toString(),
                   ),
                 ),
               ),
@@ -143,32 +176,22 @@ class _RouteScreenState extends State<RouteScreen> {
                     decoration: InputDecoration(
                       label: Text("Cilj"),
                     ),
-                    items: routeResult?.result
-                            .map((e) => DropdownMenuItem<String>(
-                                value: e.endStationId.toString(),
-                                child: Text(
-                                  stationResult?.result
-                                          .firstWhere((element) =>
-                                              element.stationId ==
-                                              e.endStationId)
-                                          .name ??
-                                      "",
-                                )))
-                            .toList() ??
-                        [],
+                    items: endStations
+                        .map((station) => DropdownMenuItem<String>(
+                            value: station.stationId.toString(),
+                            child: Text(station.name ?? "")))
+                        .toList(),
                     onChanged: (value) {
                       var station = stationResult?.result.firstWhere(
                           ((station) => station.stationId.toString() == value));
                       _selectedEndStationId = station?.stationId ?? 0;
                     },
+                    initialValue: _selectedEndStationId?.toString(),
                   ),
                 ),
               ),
             ],
           ),
-          Row(
-            children: [],
-          )
         ],
       ),
     );
