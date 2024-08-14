@@ -3,6 +3,7 @@ import 'package:eprijevoz_mobile/models/search_result.dart';
 import 'package:eprijevoz_mobile/models/station.dart';
 import 'package:eprijevoz_mobile/providers/route_provider.dart';
 import 'package:eprijevoz_mobile/providers/station_provider.dart';
+import 'package:eprijevoz_mobile/providers/utils.dart';
 import 'package:flutter/material.dart' hide Route;
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
@@ -31,6 +32,9 @@ class _RouteScreenState extends State<RouteScreen> {
 
   List<Station> uniqueStartStations = [];
   List<Station> endStations = [];
+
+  DateTime selectedDepartureDate = DateTime.now();
+  TimeOfDay selectedTime = TimeOfDay.now();
 
   @override
   void initState() {
@@ -103,6 +107,36 @@ class _RouteScreenState extends State<RouteScreen> {
         .toList();
   }
 
+  Future<void> _selectDepartureDateTime(BuildContext context) async {
+    final DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: selectedDepartureDate,
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2101),
+    );
+
+    if (pickedDate != null) {
+      final TimeOfDay? pickedTime = await showTimePicker(
+        context: context,
+        initialTime: selectedTime,
+      );
+
+      if (pickedTime != null) {
+        final DateTime fullPickedDateTime = DateTime(
+          pickedDate.year,
+          pickedDate.month,
+          pickedDate.day,
+          pickedTime.hour,
+          pickedTime.minute,
+        );
+
+        setState(() {
+          selectedDepartureDate = fullPickedDateTime;
+        });
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -123,7 +157,7 @@ class _RouteScreenState extends State<RouteScreen> {
       child: Column(
         children: [
           const SizedBox(
-            height: 50,
+            height: 20,
           ),
           Center(
             child: SizedBox(
@@ -137,7 +171,7 @@ class _RouteScreenState extends State<RouteScreen> {
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(
-                      30.0, 30.0, 30.0, 0.0), // left, top, right, bottom
+                      20.0, 15.0, 20.0, 0.0), // left, top, right, bottom
                   child: FormBuilderDropdown(
                     name: "startStationId",
                     decoration: InputDecoration(
@@ -170,7 +204,7 @@ class _RouteScreenState extends State<RouteScreen> {
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(
-                      30.0, 30.0, 30.0, 0.0), // left, top, right, bottom
+                      20.0, 10.0, 20.0, 0.0), // left, top, right, bottom
                   child: FormBuilderDropdown(
                     name: "endStationId",
                     decoration: InputDecoration(
@@ -192,6 +226,59 @@ class _RouteScreenState extends State<RouteScreen> {
               ),
             ],
           ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(
+                20.0, 30.0, 20.0, 0.0), // left, top, right, bottom
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 370,
+                  height: 50,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      shape: BeveledRectangleBorder(
+                          borderRadius: BorderRadius.circular(0.0),
+                          side: BorderSide(color: Colors.black)),
+                      minimumSize: Size(250, 40),
+                    ),
+                    onPressed: () async {
+                      await _selectDepartureDateTime(context);
+                      print("Selected DateTime: ${selectedDepartureDate}");
+                      setState(() {});
+                    },
+                    child: Text(
+                      '${formatDateTime(selectedDepartureDate)} ',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(
+                20.0, 20.0, 20.0, 0.0), // left, top, right, bottom
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 370,
+                  height: 50,
+                  child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.black,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(2.0)),
+                      ),
+                      child: Text(
+                        "Pretraži",
+                        style: TextStyle(fontSize: 19),
+                      )),
+                )
+              ],
+            ),
+          )
         ],
       ),
     );
