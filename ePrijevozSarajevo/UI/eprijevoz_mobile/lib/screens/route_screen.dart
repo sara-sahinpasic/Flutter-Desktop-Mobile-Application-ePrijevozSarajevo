@@ -265,7 +265,34 @@ class _RouteScreenState extends State<RouteScreen> {
                   width: 370,
                   height: 50,
                   child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        print("StartStationIdGTE: ${_selectedStartStationId}");
+                        print("EndStationIdGTE: ${_selectedEndStationId}");
+                        print("DateGTE: ${selectedDepartureDate}");
+
+                        var filter = {
+                          'StartStationIdGTE': _selectedStartStationId,
+                          'EndStationIdGTE': _selectedEndStationId,
+                          'DateGTE': selectedDepartureDate
+                        };
+                        routeResult = await routeProvider.get(filter: filter);
+                        //
+
+                        //
+                        print(
+                            "ruta vrijeme: ${routeResult?.result.map((e) => e.departure)}");
+                        print(
+                            "ruta start: ${routeResult?.result.map((e) => e.startStationId)}");
+                        print(
+                            "ruta cilj: ${routeResult?.result.map((e) => e.endStationId)}");
+                        print(
+                            "ruta: ${routeResult?.result.map((e) => e.routeId)}");
+                        //
+
+                        //
+
+                        setState(() {});
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black,
                         shape: RoundedRectangleBorder(
@@ -301,4 +328,15 @@ class Tuple<T1, T2> {
 
   @override
   int get hashCode => item1.hashCode ^ item2.hashCode;
+}
+
+void showFilteredRoutes(List<Route> routes) {
+  // For now, just print the filtered routes
+  print("Filtered Routes: ${routes.length}");
+  for (var route in routes) {
+    print(
+        "Route from ${route.startStationId} to ${route.endStationId} at ${route.departure}");
+  }
+
+  // Update UI here to display the filtered routes (e.g., in a ListView)
 }

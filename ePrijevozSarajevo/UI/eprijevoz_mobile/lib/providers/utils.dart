@@ -15,6 +15,6 @@ String formatTime(DateTime? date) {
 }
 
 String formatDateTime(DateTime dateTime) {
-  final DateFormat formatter = DateFormat('yyyy-MM-ddTHH:mm:ss');
+  final DateFormat formatter = DateFormat('dd-MM-yyyy HH:mm');
   return formatter.format(dateTime);
 }
