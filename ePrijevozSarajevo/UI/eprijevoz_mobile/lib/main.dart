@@ -2,6 +2,7 @@ import 'package:eprijevoz_mobile/layouts/master_screen.dart';
 import 'package:eprijevoz_mobile/providers/auth_provider.dart';
 import 'package:eprijevoz_mobile/providers/route_provider.dart';
 import 'package:eprijevoz_mobile/providers/station_provider.dart';
+import 'package:eprijevoz_mobile/providers/status_provider.dart';
 import 'package:eprijevoz_mobile/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,6 +13,7 @@ void main() {
       ChangeNotifierProvider<UserProvider>(create: (_) => UserProvider()),
       ChangeNotifierProvider<RouteProvider>(create: (_) => RouteProvider()),
       ChangeNotifierProvider<StationProvider>(create: (_) => StationProvider()),
+      ChangeNotifierProvider<StatusProvider>(create: (_) => StatusProvider()),
     ],
     child: const MyApp(),
   ));
