@@ -18,28 +18,28 @@ namespace ePrijevozSarajevo.Services
             query = base.AddFilter(search, query);
 
             // search.DateGTE.Year > 1 cause default value is 01/01/0001
-            if ((search?.StartStationIdGTE >= 0) && (search.DateGTE.Year > 1))
-            {
-                var date = search.DateGTE.Date;
-                query = query.Where(x => x.StartStationId == search.StartStationIdGTE)
-                             .Where(x => x.Departure.Date.Equals(date));
-            }
+            /* if ((search?.StartStationIdGTE >= 0) && (search.DateGTE.Year > 1))
+             {
+                 var date = search.DateGTE.Date;
+                 query = query.Where(x => x.StartStationId == search.StartStationIdGTE)
+                              .Where(x => x.Departure.Date.Equals(date));
+             }*/
 
-            /*
-            FOR MOBILE ROUTE_SCREEN
+
+            //FOR MOBILE ROUTE_SCREEN
             if ((search?.StartStationIdGTE >= 0) && (search.DateGTE.Year > 1))
             {
-                var date = search.DateGTE.Date;
-                //
                 //var date = search.DateGTE.Date;
-                //var time = search.DateGTE.TimeOfDay; // Assuming DateGTE has a TimeOfDay component or equivalent
+                //
+                var date = search.DateGTE.Date;
+                var time = search.DateGTE.TimeOfDay; // Assuming DateGTE has a TimeOfDay component or equivalent
 
                 query = query.Where(x => x.StartStationId == search.StartStationIdGTE)
-                             .Where(x => x.EndStationId == search.EndStationIdGTE)
-                             .Where(x => x.Departure.Date.Equals(date));
-                             //.Where(x => x.Departure.Date == date && x.Departure.TimeOfDay >= time);
+                             .Where(x => x.Departure.Date.Equals(date))
+                             //mobile: 
+                             .Where(x => x.Departure.Date == date && x.Departure.TimeOfDay >= time);
             }
-             */
+
 
             //2024-07-10 17:36:06.4220079
             //{7/10/2024 5:36:06 PM}

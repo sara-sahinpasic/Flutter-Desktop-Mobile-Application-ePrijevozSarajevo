@@ -287,7 +287,6 @@ class _RouteScreenState extends State<RouteScreen> {
                             "ruta cilj: ${routeResult?.result.map((e) => e.endStationId)}");
                         print(
                             "ruta: ${routeResult?.result.map((e) => e.routeId)}");
-                        //
 
                         //
 
