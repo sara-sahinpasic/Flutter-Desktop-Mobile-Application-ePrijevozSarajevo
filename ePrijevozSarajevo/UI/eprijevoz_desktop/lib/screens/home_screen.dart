@@ -5,6 +5,7 @@ import 'package:eprijevoz_desktop/models/user.dart';
 import 'package:eprijevoz_desktop/providers/auth_provider.dart';
 import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:eprijevoz_desktop/providers/utils.dart';
+import 'package:eprijevoz_desktop/screens/user_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -66,98 +67,130 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return MasterScreen(
-        "",
-        Container(
+    return Scaffold(
+        body: Center(
+      child: Container(
+        constraints: const BoxConstraints(
+          maxHeight: 500,
+          maxWidth: 500,
+        ),
+        child: Card(
           color: Colors.black,
           child: Column(
             children: [
               _buildResultVIew(),
             ],
           ),
-        ));
+        ),
+      ),
+    ));
+
+    //)
+
+    // MasterScreen(
+    //     "",
+    //     Center(
+    //       child: Container(
+    //         constraints: const BoxConstraints(
+    //           maxHeight: 500,
+    //           maxWidth: 500,
+    //         ),
+    //         child: Card(
+    //           color: Colors.black,
+    //           child: Column(
+    //             children: [
+    //               _buildResultVIew(),
+    //             ],
+    //           ),
+    //         ),
+    //       ),
+    //     ));
   }
 
   Widget _buildResultVIew() {
     return Expanded(
         child: Center(
       child: SingleChildScrollView(
-        child: Container(
-          color: Colors.black,
-          width: 1000,
-          height: 500,
-          child: Card(
-            color: Colors.black,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 40, bottom: 25),
-                  child: Center(
-                    child: SizedBox(
-                        width: 200,
-                        height: 140,
-                        child: Image.asset("assets/images/logo.png",
-                            height: 100, width: 100)),
-                  ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 35, vertical: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: Text(
-                          "Dobro došli, ${userNameUI}!",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 35, vertical: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "${weekdays()}",
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 40, bottom: 25),
+              child: Center(
+                child: SizedBox(
+                    width: 200,
+                    height: 140,
+                    child: Image.asset("assets/images/logo.png",
+                        height: 100, width: 100)),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Center(
+                      child: Text(
+                        "Dobro došli, ${userNameUI}!",
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
-                            fontSize: 25),
+                            fontSize: 27),
                       ),
-                    ],
+                    ),
                   ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 35, vertical: 0),
-                  child: Row(children: [
-                    Spacer(),
-                    TextButton(
-                        child: Text(
-                          "Odjava",
-                          style: TextStyle(
-                              decoration: TextDecoration.underline,
-                              decorationColor: Colors.red,
-                              color: Colors.red,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20),
-                        ),
-                        onPressed: () => Navigator.of(context).push(
-                            MaterialPageRoute(
-                                builder: (context) => LoginPage()))),
-                  ]),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "${weekdays()}",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 0),
+              child: Row(children: [
+                TextButton(
+                    child: Text(
+                      "Start",
+                      style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          decorationColor: Colors.green.shade800,
+                          color: Colors.green.shade800,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30),
+                    ),
+                    onPressed: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (context) => UserListScreen()))),
+                Spacer(),
+                TextButton(
+                    child: Text(
+                      "Odjava",
+                      style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          decorationColor: Colors.red,
+                          color: Color.fromARGB(255, 212, 16, 2),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 27),
+                    ),
+                    onPressed: () => Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => LoginPage()))),
+              ]),
+            ),
+            //
+          ],
         ),
       ),
     ));
