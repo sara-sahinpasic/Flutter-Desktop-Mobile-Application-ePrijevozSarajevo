@@ -17,7 +17,6 @@ class UserListScreen extends StatefulWidget {
     super.key,
     this.user,
   });
-
   @override
   State<UserListScreen> createState() => _UserListScreenState();
 }
@@ -27,13 +26,10 @@ class _UserListScreenState extends State<UserListScreen> {
   late UserProvider userProvider;
 //SearchResult
   SearchResult<User>? userResult;
-
   bool isLoading = true;
-
 //Form
   final _formKey = GlobalKey<FormBuilderState>();
   Map<String, dynamic> _initialValue = {};
-
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -42,14 +38,12 @@ class _UserListScreenState extends State<UserListScreen> {
   @override
   void initState() {
     userProvider = context.read<UserProvider>();
-
     _initialValue = {
       'firstName': widget?.user?.firstName,
       'lastName': widget?.user?.lastName,
       'userName': widget?.user?.userId,
       'dateOfBirth': widget?.user?.dateOfBirth?.toString(),
     };
-
     //refreshTable();
   }
 
@@ -136,7 +130,6 @@ class _UserListScreenState extends State<UserListScreen> {
               };
               userResult = await userProvider.get(filter: filter);
               setState(() {});
-
               _ftsFirstLastNameController.clear();
             },
             style: ElevatedButton.styleFrom(
@@ -257,7 +250,6 @@ class _UserListScreenState extends State<UserListScreen> {
                                                     onUserUpdated:
                                                         refreshTable, //refresh table with new data
                                                   ));
-
                                           if (result == true)
                                             refreshTable(); //refresh table with new data
                                         },
@@ -319,7 +311,6 @@ class _UserListScreenState extends State<UserListScreen> {
                                                                             )
                                                                           ],
                                                                         )
-                                                                        
                                                                         );*/
                                                               }),
                                                           TextButton(
@@ -335,12 +326,10 @@ class _UserListScreenState extends State<UserListScreen> {
                                                                       false))
                                                         ],
                                                       ));
-
                                           if (userConfirmedDeletion) {
                                             bool success = await userProvider
                                                 .delete(e.userId!);
                                             //}
-
                                             if (mounted) {
                                               await showDialog(
                                                   context: context,
@@ -395,7 +384,6 @@ class _UserListScreenState extends State<UserListScreen> {
                             context: context,
                             builder: (dialogAddContext) => UserAddDialog(),
                             /*
-                            
                              final result = showDialog(
                                               context: context,
                                               builder: (BuildContext context) =>
@@ -404,10 +392,8 @@ class _UserListScreenState extends State<UserListScreen> {
                                                     onUserUpdated:
                                                         refreshTable, //refresh table with new data
                                                   ));
-
                                           if (result == true)
                                             refreshTable(); //refresh table with new data
-                            
                             */
                           );
                           if (result == true) {
