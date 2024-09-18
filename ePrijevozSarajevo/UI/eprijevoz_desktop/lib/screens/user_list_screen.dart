@@ -5,7 +5,9 @@ import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:eprijevoz_desktop/providers/utils.dart';
 import 'package:eprijevoz_desktop/screens/user_update_screen.dart';
 import 'package:eprijevoz_desktop/screens/user_add_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
 
@@ -170,11 +172,13 @@ class _UserListScreenState extends State<UserListScreen> {
                       child: DataTable(
                         headingRowColor: MaterialStateColor.resolveWith(
                             (states) => Color.fromRGBO(72, 156, 118, 100)),
-                        columns: const <DataColumn>[
+                        columns: <DataColumn>[
                           DataColumn(
-                            label: Expanded(
+                            label: Flexible(
                               child: Text(
                                 'Ime prezime',
+                                softWrap: true,
+                                overflow: TextOverflow.visible,
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
@@ -183,9 +187,11 @@ class _UserListScreenState extends State<UserListScreen> {
                             ),
                           ),
                           DataColumn(
-                            label: Expanded(
+                            label: Flexible(
                               child: Text(
                                 'Korisničko ime',
+                                softWrap: true,
+                                overflow: TextOverflow.visible,
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
@@ -194,9 +200,11 @@ class _UserListScreenState extends State<UserListScreen> {
                             ),
                           ),
                           DataColumn(
-                            label: Expanded(
+                            label: Flexible(
                               child: Text(
                                 'Datum rođenja',
+                                softWrap: true,
+                                overflow: TextOverflow.visible,
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
