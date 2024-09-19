@@ -195,11 +195,13 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
                       child: DataTable(
                         headingRowColor: MaterialStateColor.resolveWith(
                             (states) => Color.fromRGBO(72, 156, 118, 100)),
-                        columns: const <DataColumn>[
+                        columns: <DataColumn>[
                           DataColumn(
-                            label: Expanded(
+                            label: Flexible(
                               child: Text(
                                 'Registracijska oznaka',
+                                softWrap: true,
+                                overflow: TextOverflow.visible,
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
@@ -208,9 +210,11 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
                             ),
                           ),
                           DataColumn(
-                            label: Expanded(
+                            label: Flexible(
                               child: Text(
                                 'Godina proizvodnje',
+                                softWrap: true,
+                                overflow: TextOverflow.visible,
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
