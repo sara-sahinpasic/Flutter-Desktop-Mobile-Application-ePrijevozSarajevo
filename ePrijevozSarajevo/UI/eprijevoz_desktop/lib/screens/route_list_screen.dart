@@ -161,100 +161,106 @@ class _RouteListScreenState extends State<RouteListScreen> {
   TextEditingController _ftsArrivalController = TextEditingController();
 
   Widget _buildSearch() {
-    return FormBuilder(
-      key: _formKey,
-      initialValue: _initialValue,
-      child: Row(children: [
-        Text(
-          "Startna stanica:",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-        ),
-        SizedBox(
-          width: 15,
-        ),
-        Expanded(
-          child: FormBuilderDropdown(
-            name: "startStationId",
-            //decoration: InputDecoration(labelText: "Odabir stanice"),
-            items: routeResult?.result
-                    .map((e) => DropdownMenuItem<String>(
-                        value: e.startStationId.toString(),
-                        child: Text(
-                          stationResult?.result
-                                  .firstWhere((element) =>
-                                      element.stationId == e.startStationId)
-                                  .name ??
-                              "",
-                        )))
-                    .toList() ??
-                [],
-            onChanged: (value) {
-              var station = stationResult?.result.firstWhere(
-                  ((station) => station.stationId.toString() == value));
-              _selectedStationId = station?.stationId ?? 0;
-            },
+    return Container(
+      child: FormBuilder(
+        key: _formKey,
+        initialValue: _initialValue,
+        child: Row(children: [
+          Flexible(
+            child: Text(
+              "Startna stanica:",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            ),
           ),
-        ),
-        SizedBox(width: 15),
-        Text(
-          "Datum:",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-        ),
-        SizedBox(
-          width: 15,
-        ),
-        Column(
-          children: <Widget>[
-            //Text("${selectedDate.toLocal()}".split(' ')[0]),
-            ElevatedButton(
+          SizedBox(
+            width: 15,
+          ),
+          Expanded(
+            child: FormBuilderDropdown(
+              name: "startStationId",
+              //decoration: InputDecoration(labelText: "Odabir stanice"),
+              items: routeResult?.result
+                      .map((e) => DropdownMenuItem<String>(
+                          value: e.startStationId.toString(),
+                          child: Text(
+                            stationResult?.result
+                                    .firstWhere((element) =>
+                                        element.stationId == e.startStationId)
+                                    .name ??
+                                "",
+                          )))
+                      .toList() ??
+                  [],
+              onChanged: (value) {
+                var station = stationResult?.result.firstWhere(
+                    ((station) => station.stationId.toString() == value));
+                _selectedStationId = station?.stationId ?? 0;
+              },
+            ),
+          ),
+          SizedBox(width: 15),
+          Text(
+            "Datum:",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          ),
+          SizedBox(
+            width: 15,
+          ),
+          Column(
+            children: <Widget>[
+              //Text("${selectedDate.toLocal()}".split(' ')[0]),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  shape: BeveledRectangleBorder(
+                      borderRadius: BorderRadius.circular(0.0),
+                      side: BorderSide(color: Colors.black)),
+                  minimumSize: Size(250, 40),
+                ),
+                onPressed: () => _selectDate(context),
+                child: Text(
+                  '${formatDate(selectedDate)} ',
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+            ],
+          ),
+          //)
+          // ),
+          const SizedBox(
+            width: 15,
+          ),
+          Flexible(
+            child: ElevatedButton(
+              onPressed: () async {
+                print("StartStationIdGTE: ${_selectedStationId}");
+                print("DateGTE: ${selectedDate}");
+
+                //Search:
+                var filter = {
+                  'StartStationIdGTE': _selectedStationId,
+                  'DateGTE': selectedDate
+                };
+                routeResultForTime = await routeProvider.get(filter: filter);
+                print(
+                    "tetsni: ${routeResultForTime?.result.map((e) => e.startStationId)}");
+
+                setState(() {});
+
+                //_ftsRegistrationMarkController.clear();
+              },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.white,
-                shape: BeveledRectangleBorder(
-                    borderRadius: BorderRadius.circular(0.0),
-                    side: BorderSide(color: Colors.black)),
-                minimumSize: Size(250, 40),
+                backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(2.0),
+                ),
+                minimumSize: const Size(100, 65),
               ),
-              onPressed: () => _selectDate(context),
-              child: Text(
-                '${formatDate(selectedDate)} ',
-                style: TextStyle(color: Colors.black),
-              ),
+              child: const Text("Pretraga", style: TextStyle(fontSize: 18)),
             ),
-          ],
-        ),
-        //)
-        // ),
-        const SizedBox(
-          width: 15,
-        ),
-        ElevatedButton(
-          onPressed: () async {
-            print("StartStationIdGTE: ${_selectedStationId}");
-            print("DateGTE: ${selectedDate}");
-
-            //Search:
-            var filter = {
-              'StartStationIdGTE': _selectedStationId,
-              'DateGTE': selectedDate
-            };
-            routeResultForTime = await routeProvider.get(filter: filter);
-            print(
-                "tetsni: ${routeResultForTime?.result.map((e) => e.startStationId)}");
-
-            setState(() {});
-
-            //_ftsRegistrationMarkController.clear();
-          },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(2.0),
-            ),
-            minimumSize: const Size(100, 65),
           ),
-          child: const Text("Pretraga", style: TextStyle(fontSize: 18)),
-        ),
-      ]),
+        ]),
+      ),
     );
   }
 

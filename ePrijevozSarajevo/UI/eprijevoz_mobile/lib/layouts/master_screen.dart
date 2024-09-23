@@ -46,24 +46,19 @@ class _MasterScreenState extends State<MasterScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                      0.0, 25.0, 0.0, 0.0), // left, top, right, bottom
-                  child: Container(
-                    color: Colors.green.shade800,
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding:
-                            const EdgeInsets.fromLTRB(50.0, 20.0, 0.0, 20.0),
-                        child: Text(
-                          _titles[
-                              _currentIndex], // Use the title corresponding to the selected tab
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 40,
-                            color: Colors.white,
-                          ),
+                Container(
+                  color: Colors.green.shade800,
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(50.0, 35.0, 0.0, 20.0),
+                      child: Text(
+                        _titles[
+                            _currentIndex], // Use the title corresponding to the selected tab
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 40,
+                          color: Colors.white,
                         ),
                       ),
                     ),
@@ -77,6 +72,7 @@ class _MasterScreenState extends State<MasterScreen> {
           ),
         ],
       ),
+      //footer
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
           canvasColor: Colors.green.shade800,
