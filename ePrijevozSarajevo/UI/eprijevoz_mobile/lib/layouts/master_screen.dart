@@ -1,6 +1,6 @@
 import 'package:eprijevoz_mobile/screens/home_screen.dart';
 import 'package:eprijevoz_mobile/screens/profile_screen.dart';
-import 'package:eprijevoz_mobile/screens/route_screen.dart';
+import 'package:eprijevoz_mobile/screens/route_search_screen.dart';
 import 'package:eprijevoz_mobile/screens/ticket_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -24,14 +24,14 @@ class _MasterScreenState extends State<MasterScreen> {
     // Initialize the pages and corresponding titles
     _pages = [
       HomePage(),
-      RouteScreen(),
+      RouteSearchScreen(),
       TicketScreen(),
       ProfileScreen(),
     ];
 
     _titles = [
       "Početna",
-      "Rute",
+      "Pretraga",
       "Karte",
       "Profil",
     ];

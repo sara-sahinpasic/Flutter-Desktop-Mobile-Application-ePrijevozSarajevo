@@ -4,20 +4,21 @@ import 'package:eprijevoz_mobile/models/station.dart';
 import 'package:eprijevoz_mobile/providers/route_provider.dart';
 import 'package:eprijevoz_mobile/providers/station_provider.dart';
 import 'package:eprijevoz_mobile/providers/utils.dart';
+import 'package:eprijevoz_mobile/screens/route_options_screen.dart';
 import 'package:flutter/material.dart' hide Route;
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
 
-class RouteScreen extends StatefulWidget {
+class RouteSearchScreen extends StatefulWidget {
   Station? station;
   Route? route;
-  RouteScreen({super.key, this.station, this.route});
+  RouteSearchScreen({super.key, this.station, this.route});
 
   @override
-  State<RouteScreen> createState() => _RouteScreenState();
+  State<RouteSearchScreen> createState() => _RouteSearchScreenState();
 }
 
-class _RouteScreenState extends State<RouteScreen> {
+class _RouteSearchScreenState extends State<RouteSearchScreen> {
   late RouteProvider routeProvider;
   SearchResult<Route>? routeResult;
   late StationProvider stationProvider;
@@ -270,27 +271,43 @@ class _RouteScreenState extends State<RouteScreen> {
                         print("EndStationIdGTE: ${_selectedEndStationId}");
                         print("DateGTE: ${selectedDepartureDate}");
 
+                        // Filter parameters for the route search
                         var filter = {
                           'StartStationIdGTE': _selectedStartStationId,
                           'EndStationIdGTE': _selectedEndStationId,
                           'DateGTE': selectedDepartureDate
                         };
+
+                        // Fetch filtered routes
                         routeResult = await routeProvider.get(filter: filter);
-                        //
 
-                        //
-                        print(
-                            "ruta vrijeme: ${routeResult?.result.map((e) => e.departure)}");
-                        print(
-                            "ruta start: ${routeResult?.result.map((e) => e.startStationId)}");
-                        print(
-                            "ruta cilj: ${routeResult?.result.map((e) => e.endStationId)}");
-                        print(
-                            "ruta: ${routeResult?.result.map((e) => e.routeId)}");
-
-                        //
-
-                        setState(() {});
+                        if (routeResult != null &&
+                            routeResult!.result.isNotEmpty) {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => RouteOptionsScreen(
+                                  routes: routeResult!
+                                      .result))); //pošalji nađene rute na dr. screen
+                        } else {
+                          // Show a dialog if no routes are found
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text("No Routes Found"),
+                                content: Text(
+                                    "Please try different search criteria."),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Text("OK"),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        }
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black,
