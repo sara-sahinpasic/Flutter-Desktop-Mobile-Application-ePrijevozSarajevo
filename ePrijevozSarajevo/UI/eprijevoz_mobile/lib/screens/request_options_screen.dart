@@ -183,7 +183,7 @@ class _RequestOptionsScreenState extends State<RequestOptionsScreen> {
                                     fontSize: 17, fontWeight: FontWeight.bold),
                               ),
                               content: Text(
-                                "Da li želite da zatražite status?",
+                                "Da li želite da zatražite status kojim je moguće ostvariti povlasticu?",
                                 style: TextStyle(
                                     fontSize: 15, fontWeight: FontWeight.w500),
                               ),
