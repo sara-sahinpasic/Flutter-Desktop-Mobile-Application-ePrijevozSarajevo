@@ -1,10 +1,10 @@
-import 'package:eprijevoz_mobile/layouts/master_screen.dart';
 import 'package:eprijevoz_mobile/models/route.dart';
 import 'package:eprijevoz_mobile/models/search_result.dart';
 import 'package:eprijevoz_mobile/models/station.dart';
+import 'package:eprijevoz_mobile/providers/route_provider.dart';
 import 'package:eprijevoz_mobile/providers/station_provider.dart';
 import 'package:eprijevoz_mobile/providers/utils.dart';
-import 'package:eprijevoz_mobile/screens/ticket_choose.dart';
+import 'package:eprijevoz_mobile/screens/ticket_choose_screen.dart';
 import 'package:flutter/material.dart' hide Route;
 import 'package:provider/provider.dart';
 
@@ -19,16 +19,22 @@ class RouteOptionsScreen extends StatefulWidget {
 class _RouteOptionsScreenState extends State<RouteOptionsScreen> {
   late StationProvider stationProvider;
   SearchResult<Station>? stationResult;
+  //
+  late RouteProvider routeProvider;
+  SearchResult<Route>? routeResult;
 
   @override
   void initState() {
     // TODO: implement initState
     stationProvider = context.read<StationProvider>();
+    routeProvider = context.read<RouteProvider>();
     initForm();
   }
 
   Future initForm() async {
     stationResult = await stationProvider.get();
+    //
+    routeResult = await routeProvider.get();
     setState(() {});
   }
 
@@ -81,19 +87,19 @@ class _RouteOptionsScreenState extends State<RouteOptionsScreen> {
             child: ListView.builder(
                 itemCount: widget.routes.length,
                 itemBuilder: (context, index) {
-                  final route = widget.routes[index];
-                  final timeDeparture = route.departure;
-                  final timeArrival = route.arrival;
+                  final routeFromList = widget.routes[index];
+                  final timeDeparture = routeFromList.departure;
+                  final timeArrival = routeFromList.arrival;
 
                   final startStationName = stationResult?.result
                           .firstWhere((element) =>
-                              element.stationId == route.startStationId)
+                              element.stationId == routeFromList.startStationId)
                           .name ??
                       "";
 
                   final endStationName = stationResult?.result
                           .firstWhere((element) =>
-                              element.stationId == route.endStationId)
+                              element.stationId == routeFromList.endStationId)
                           .name ??
                       "";
 
@@ -147,9 +153,17 @@ class _RouteOptionsScreenState extends State<RouteOptionsScreen> {
                         ),
                       ),
                     ),
-                    onTap: () {
+                    onTap: () async {
+                      //idi na naredni screen i ovako šalješ sve rute:
+                      // Navigator.of(context).push(MaterialPageRoute(
+                      //     builder: (context) =>
+                      //         TicketChooseScreen(routes: routeResult!.result)));
+
+                      // Pass only the selected route to the next screen - ovako šaljem samo jednu odabranu rutu
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => TicketChooseScreen()));
+                        builder: (context) =>
+                            TicketChooseScreen(route: routeFromList),
+                      ));
                     },
                   );
                 }),

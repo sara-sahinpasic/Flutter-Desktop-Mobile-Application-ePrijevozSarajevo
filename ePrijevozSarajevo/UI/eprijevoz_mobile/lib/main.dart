@@ -4,6 +4,7 @@ import 'package:eprijevoz_mobile/providers/request_provider.dart';
 import 'package:eprijevoz_mobile/providers/route_provider.dart';
 import 'package:eprijevoz_mobile/providers/station_provider.dart';
 import 'package:eprijevoz_mobile/providers/status_provider.dart';
+import 'package:eprijevoz_mobile/providers/ticket_provider.dart';
 import 'package:eprijevoz_mobile/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -16,6 +17,7 @@ void main() {
       ChangeNotifierProvider<StationProvider>(create: (_) => StationProvider()),
       ChangeNotifierProvider<StatusProvider>(create: (_) => StatusProvider()),
       ChangeNotifierProvider<RequestProvider>(create: (_) => RequestProvider()),
+      ChangeNotifierProvider<TicketProvider>(create: (_) => TicketProvider()),
     ],
     child: const MyApp(),
   ));
