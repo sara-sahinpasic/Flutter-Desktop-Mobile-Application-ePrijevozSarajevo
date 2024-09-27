@@ -10,6 +10,7 @@ import 'package:eprijevoz_mobile/providers/status_provider.dart';
 import 'package:eprijevoz_mobile/providers/ticket_provider.dart';
 import 'package:eprijevoz_mobile/providers/user_provider.dart';
 import 'package:eprijevoz_mobile/providers/utils.dart';
+import 'package:eprijevoz_mobile/screens/ticket_info_screen.dart';
 import 'package:flutter/material.dart' hide Route;
 import 'package:provider/provider.dart';
 
@@ -32,6 +33,7 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
   SearchResult<User>? userResult;
 
   int? _selectedTicketTypeId;
+  double? _selectedTicketPrice;
   int? _selectedStatusDiscountTypeId;
   int? _userStatusId;
 
@@ -49,6 +51,7 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
     statusResult = await statusProvider.get();
     ticketResult = await ticketProvider.get();
     userResult = await userProvider.get();
+
     setState(() {}); // Trigger a rebuild after fetching the data
   }
 
@@ -88,6 +91,62 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
     }
   }
 
+  List<ListTile> generateTicketList() {
+    if (ticketResult == null) {
+      return List<ListTile>.empty();
+    }
+    Ticket? mjesecnaKarta;
+
+    var currentUser = userResult?.result
+        .firstWhere((user) => user.userName == AuthProvider.username);
+
+    var basicTicketList = ticketResult!.result.map((ticket) {
+      //magic number 5 means mjesecna
+      if (ticket.ticketId == 5) {
+        mjesecnaKarta = ticket;
+      }
+      return ListTile(
+        title: Text("${ticket.name} karta ------- ${ticket.price} KM",
+            style: const TextStyle(fontSize: 16)),
+        leading: Radio<double>(
+            value: ticket.price!,
+            groupValue: _selectedTicketPrice,
+            activeColor: Colors.green,
+            onChanged: (double? value) {
+              setState(() {
+                _selectedTicketPrice = value;
+              });
+            }),
+      );
+    }).toList();
+
+    var extraTicketList = statusResult!.result
+        .where((element) => !element.name!.contains("Default"))
+        .map((status) {
+      var reducedPrice = mjesecnaKarta!.price! * status.discount!;
+      var enabled = currentUser!.userStatusId! == status.statusId!;
+      return ListTile(
+        title: Text(
+            "${mjesecnaKarta?.name} karta - ${status.name} ------- $reducedPrice KM",
+            style: const TextStyle(fontSize: 16)),
+        leading: Radio<double>(
+            value: reducedPrice,
+            groupValue: _selectedTicketPrice,
+            activeColor: Colors.green,
+            onChanged: enabled
+                ? (double? value) {
+                    setState(() {
+                      _selectedTicketPrice = value;
+                    });
+                  }
+                : null),
+        enabled: enabled,
+      );
+    }).toList();
+
+    return basicTicketList + extraTicketList;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -123,7 +182,7 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
           Row(
             children: const [
               Padding(
-                padding: EdgeInsets.fromLTRB(150.0, 50.0, 0.0, 20.0),
+                padding: EdgeInsets.fromLTRB(150.0, 20.0, 0.0, 20.0),
                 child: Icon(
                   Icons.location_on,
                   size: 100,
@@ -158,68 +217,30 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
             ),
           ),
           Expanded(
-            child: ListView(
-              children: [
-                if (ticketResult != null)
-                  ...ticketResult!.result.map((ticket) {
-                    return ListTile(
-                      title: Text(
-                        "${ticket.name} karta ------- ${ticket.price} KM",
-                        style: const TextStyle(fontSize: 16),
-                      ),
-                      leading: Radio<int>(
-                        value: ticket.ticketId!,
-                        groupValue: _selectedTicketTypeId,
-                        activeColor: Colors.green,
-                        onChanged: (int? value) {
-                          setState(() {
-                            if (_selectedStatusDiscountTypeId == null) {
-                              //  _selectedStatusDiscountTypeId = 0;
-
-                              _selectedTicketTypeId = value;
-                            }
-                          });
-                        },
-                      ),
-                    );
-                  }).toList(),
-                if (statusResult != null)
-                  ...statusResult!.result
-                      .where((status) => !status.name!.contains("Default"))
-                      .map((status) {
-                    bool disabled = disableTickets(status);
-
-                    print("Disabled: $disabled");
-
-                    return ListTile(
-                      title: Text(
-                        "Mjesečna karta - ${status.name}",
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: disabled ? Colors.grey : Colors.black,
-                        ),
-                      ),
-                      leading: Radio<int>(
-                        value: status.statusId!,
-                        groupValue: _selectedStatusDiscountTypeId,
-                        activeColor: Colors.green,
-                        onChanged: disabled
-                            ? null // Disable selection if necessary
-                            : (int? value) {
-                                setState(() {
-                                  if (_selectedTicketTypeId == null) {
-                                    //_selectedTicketTypeId = 0;
-
-                                    _selectedStatusDiscountTypeId = value;
-                                  }
-                                });
-                              },
-                      ),
-                    );
-                  }).toList(),
-                const SizedBox(height: 50),
-              ],
+            child: ListView(children: generateTicketList()),
+          ),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => TicketInfoScreen()));
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.black,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+              ),
+              child: const Text(
+                "Dodaj",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              ),
             ),
+          ),
+          SizedBox(
+            height: 20,
           ),
         ],
       ),
