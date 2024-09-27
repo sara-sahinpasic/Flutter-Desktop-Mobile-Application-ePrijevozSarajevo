@@ -33,10 +33,12 @@ namespace ePrijevozSarajevo.Services
                     .Include(x => x.UserRoles)        // Include UserRoles collection
                         .ThenInclude(x => x.Role);  // Then include the Role entity within UserRoles
             }
-            /* if (search?.IsUserStatusIncluded == true)
+          
+             if (search?.IsUserStatusIncluded == true)
              {
                  query = query.Include(x => x.UserStatus);
-             }*/
+             }
+            
             return query;
         }
 
