@@ -32,10 +32,9 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
   SearchResult<Ticket>? ticketResult;
   SearchResult<User>? userResult;
 
-  int? _selectedTicketTypeId;
   double? _selectedTicketPrice;
-  int? _selectedStatusDiscountTypeId;
   int? _userStatusId;
+  var _loggedUser;
 
   @override
   void initState() {
@@ -51,6 +50,11 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
     statusResult = await statusProvider.get();
     ticketResult = await ticketProvider.get();
     userResult = await userProvider.get();
+
+    _loggedUser = userResult?.result
+        .firstWhere((user) => user.userName == AuthProvider.username);
+
+    print("user: ${_loggedUser?.toJson()}");
 
     setState(() {});
   }
@@ -81,7 +85,7 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
     }
 
     print("poslije if userStatus je:: ${_userStatusId}");
-    if (_userStatusId == 1) //default = disable
+    if (_userStatusId == 1) //default == disable
     {
       print("true uslov / disabled...");
       return true;
@@ -90,66 +94,6 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
       return false;
     }
   }
-
-/*
-  List<ListTile> generateTicketList() {
-    if (ticketResult == null) {
-      return List<ListTile>.empty();
-    }
-    Ticket? mjesecnaKarta;
-
-    var currentUser = userResult?.result
-        .firstWhere((user) => user.userName == AuthProvider.username);
-
-    var basicTicketList = ticketResult!.result.map((ticket) {
-      //magic number 5 means mjesecna
-      if (ticket.ticketId == 5) {
-        mjesecnaKarta = ticket;
-      }
-      return ListTile(
-        title: Text("${ticket.name} karta - ${formatPrice(ticket.price!)}",
-            style: const TextStyle(fontSize: 16)),
-        leading: Radio<double>(
-            value: ticket.price!,
-            groupValue: _selectedTicketPrice,
-            activeColor: Colors.green,
-            onChanged: (double? value) {
-              setState(() {
-                _selectedTicketPrice = value;
-              });
-            }),
-      );
-    }).toList();
-
-    var extraTicketList = statusResult!.result
-        .where((element) => !element.name!.contains("Default"))
-        .map((status) {
-      var reducedPrice =
-          mjesecnaKarta!.price! - (mjesecnaKarta!.price! * status.discount!);
-      var enabled = currentUser!.userStatusId! == status.statusId!;
-      return ListTile(
-        title: Text(
-            "${mjesecnaKarta?.name} karta - ${status.name} - ${formatPrice(reducedPrice)}",
-            style: const TextStyle(fontSize: 16)),
-        leading: Radio<double>(
-            value: reducedPrice,
-            groupValue: _selectedTicketPrice,
-            activeColor: Colors.green,
-            onChanged: enabled
-                ? (double? value) {
-                    setState(() {
-                      _selectedTicketPrice = value;
-                    });
-                  }
-                : null),
-        enabled: enabled,
-      );
-    }).toList();
-
-    return basicTicketList + extraTicketList;
-  }
-
-  */
 
   List<ListTile> generateTicketList() {
     if (ticketResult == null) {
@@ -266,6 +210,7 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
                 child: Icon(
                   Icons.location_on,
                   size: 100,
+                  color: Colors.black,
                 ),
               ),
             ],
@@ -306,10 +251,18 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => TicketInfoScreen()));
-              },
+              onPressed: _selectedTicketPrice != null
+                  ? () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => TicketInfoScreen(
+                            selectedTicketPrice: _selectedTicketPrice!,
+                            user: _loggedUser,
+                          ),
+                        ),
+                      );
+                    }
+                  : null, // Disable the button if no price is selected
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.black,
                 shape: RoundedRectangleBorder(

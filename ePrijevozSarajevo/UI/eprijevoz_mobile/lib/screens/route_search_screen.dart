@@ -161,12 +161,23 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
             height: 20,
           ),
           Center(
-            child: SizedBox(
-                width: 200,
-                height: 140,
-                child: Image.asset("assets/images/location_logo.png",
-                    height: 100, width: 100)),
-          ),
+              child: SizedBox(
+            width: 200,
+            height: 140,
+            child:
+                /*Image.asset("assets/images/location_logo.png",
+                    height: 100, width: 100)),*/
+                IconButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              icon: const Icon(
+                Icons.location_on,
+                color: Colors.black,
+                size: 100,
+              ),
+            ),
+          )),
           Row(
             children: [
               Expanded(
