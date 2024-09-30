@@ -1,7 +1,10 @@
 import 'package:eprijevoz_mobile/models/search_result.dart';
+import 'package:eprijevoz_mobile/models/status.dart';
+import 'package:eprijevoz_mobile/models/ticket.dart';
 import 'package:eprijevoz_mobile/models/user.dart';
 import 'package:eprijevoz_mobile/providers/user_provider.dart';
 import 'package:eprijevoz_mobile/providers/utils.dart';
+import 'package:eprijevoz_mobile/screens/payment_choose_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
@@ -10,9 +13,15 @@ import 'package:input_quantity/input_quantity.dart';
 class TicketInfoScreen extends StatefulWidget {
   final double? selectedTicketPrice;
   final User? user;
+  final Ticket? ticket;
+  final Status? status;
 
   const TicketInfoScreen(
-      {required this.selectedTicketPrice, this.user, super.key});
+      {required this.selectedTicketPrice,
+      this.user,
+      this.ticket,
+      this.status,
+      super.key});
 
   @override
   State<TicketInfoScreen> createState() => _TicketInfoScreenState();
@@ -26,9 +35,13 @@ class _TicketInfoScreenState extends State<TicketInfoScreen> {
   final TextEditingController _ftsLastNameController = TextEditingController();
   final TextEditingController _ftsDateOfBirthController =
       TextEditingController();
+
   DateTime? _dateOfBirth;
   int? _countNumberOfTickets = 1;
   double? _finalTicketPrice;
+  Ticket? _choosenTicket;
+  Status? _userTicketStatus;
+  User? _currentUser;
 
   @override
   void initState() {
@@ -44,6 +57,9 @@ class _TicketInfoScreenState extends State<TicketInfoScreen> {
       _dateOfBirth = widget.user?.dateOfBirth;
     }
 
+    _choosenTicket = widget?.ticket;
+    _userTicketStatus = widget?.status;
+    _currentUser = widget?.user;
     initForm();
   }
 
@@ -175,6 +191,8 @@ class _TicketInfoScreenState extends State<TicketInfoScreen> {
                 ],
               ),
             ),
+            //Text("Karta: ${widget.ticket?.name}"),
+            //Text("StatusnaKarta: ${widget.status?.name}"),
             const SizedBox(height: 10),
             Row(
               children: [
@@ -203,7 +221,15 @@ class _TicketInfoScreenState extends State<TicketInfoScreen> {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () async {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => PaymentChooseScreen(
+                            ticket: _choosenTicket,
+                            status: _userTicketStatus,
+                            selectedTicketPrice: _finalTicketPrice,
+                            user: _currentUser,
+                          )));
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black,
                   shape: RoundedRectangleBorder(

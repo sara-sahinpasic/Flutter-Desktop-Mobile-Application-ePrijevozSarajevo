@@ -35,6 +35,8 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
   double? _selectedTicketPrice;
   int? _userStatusId;
   var _loggedUser;
+  Ticket? _basicTicket;
+  Status? _extraStatusTicket;
 
   @override
   void initState() {
@@ -128,7 +130,9 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
           onChanged: (double? value) {
             setState(() {
               _selectedTicketPrice = value;
+              _basicTicket = ticket;
             });
+            //print("odabrana karta: ${_choosenTicket}");
           },
         ),
       );
@@ -160,6 +164,7 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
               ? (double? value) {
                   setState(() {
                     _selectedTicketPrice = value;
+                    _extraStatusTicket = status;
                   });
                 }
               : null,
@@ -258,6 +263,8 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
                           builder: (context) => TicketInfoScreen(
                             selectedTicketPrice: _selectedTicketPrice!,
                             user: _loggedUser,
+                            ticket: _basicTicket,
+                            status: _extraStatusTicket,
                           ),
                         ),
                       );
