@@ -3,6 +3,7 @@ import 'package:eprijevoz_mobile/models/ticket.dart';
 import 'package:eprijevoz_mobile/models/user.dart';
 import 'package:eprijevoz_mobile/providers/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class PaymentChooseScreen extends StatefulWidget {
   final double? selectedTicketPrice;
@@ -57,7 +58,7 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
             const Row(
               children: [
                 Padding(
-                  padding: EdgeInsets.fromLTRB(150.0, 40.0, 0.0, 20.0),
+                  padding: EdgeInsets.fromLTRB(150.0, 20.0, 0.0, 20.0),
                   child: Icon(
                     Icons.payment,
                     size: 100,
@@ -81,21 +82,156 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
               public int RouteId { get; set; }
               public Route Route { get; set; } = null!;
               */
-            /*
-              if(widget.status?!=null)
-                //show widget.status?
-              else
-                //show widget.ticket?                
-            */
-            Text("Karta: ${widget.ticket?.name} karta "),
-            Text("StatusnaKarta: ${widget.status?.name} karta "), //toDo
-            Text("cijena: ${widget.selectedTicketPrice} "),
-            Text(
-                "korisnik: ${widget.user?.firstName}-${widget?.user?.lastName} "),
-            Text("korisnik: ${widget.user?.userId} "),
-            Text("korisnik: ${formatDate(widget?.user?.dateOfBirth)} "),
-            //Datum važenja OD-DO
 
+            Container(
+              decoration: BoxDecoration(
+                  color: Colors.grey.shade300,
+                  border: Border(
+                      top: BorderSide(color: Colors.black, width: 2),
+                      bottom: BorderSide(color: Colors.black, width: 2))),
+              width: 500,
+              height: 260,
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(30.0, 30.0, 30.0, 30.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    (widget.ticket?.name != null)
+                        ? Text(
+                            "${widget.ticket?.name} karta",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 21),
+                          )
+                        : Text(
+                            "Mjesečna karta - ${widget.status?.name}",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 21),
+                          ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    //
+                    Text(
+                      "Korisnik: ${widget.user?.firstName} ${widget?.user?.lastName} ",
+                      style:
+                          TextStyle(fontWeight: FontWeight.w500, fontSize: 17),
+                    ),
+                    Text(
+                      "Datum rođenja: ${formatDate(widget?.user?.dateOfBirth)} ",
+                      style:
+                          TextStyle(fontWeight: FontWeight.w500, fontSize: 17),
+                    ),
+                    Text(
+                      "Broj korisnika: 2024${widget.user?.userId} ",
+                      style:
+                          TextStyle(fontWeight: FontWeight.w500, fontSize: 17),
+                    ),
+
+                    SizedBox(
+                      height: 30.0,
+                      child: Center(
+                        child: Container(
+                          margin:
+                              EdgeInsetsDirectional.only(start: 1.0, end: 1.0),
+                          height: 2.0,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+
+                    Text(
+                      "Datum važenja: ", //Datum važenja OD-DO
+                      style:
+                          TextStyle(fontWeight: FontWeight.w500, fontSize: 17),
+                    ),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        "Cijena: ${formatPrice(widget.selectedTicketPrice!)} ",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500, fontSize: 17),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                // Card or summary content goes here, I will leave it blank for now
+                // Payment Buttons
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 10.0, horizontal: 30.0),
+                  child: Column(
+                    children: [
+                      // PayPal Button
+                      ElevatedButton(
+                        onPressed: () {
+                          // Add PayPal payment logic here
+                        },
+                        style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 15.0, horizontal: 30.0),
+                          backgroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          side: BorderSide(color: Colors.grey.shade300),
+                          elevation: 5,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SvgPicture.network(
+                              'https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg', // PayPal Logo SVG
+                              height: 30,
+                            ),
+                            SizedBox(width: 10),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      // Stripe Button
+                      ElevatedButton(
+                        onPressed: () {
+                          // Add Stripe payment logic here
+                        },
+                        style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 15.0, horizontal: 30.0),
+                          backgroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          side: BorderSide(color: Colors.grey.shade300),
+                          elevation: 5,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SvgPicture.network(
+                              'https://www.vectorlogo.zone/logos/stripe/stripe-ar21.svg', // Stripe Logo SVG
+                              height: 30,
+                            ),
+                            SizedBox(width: 10),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+
+            SizedBox(
+              height: 20,
+            ),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
@@ -108,12 +244,12 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
                   padding: const EdgeInsets.symmetric(vertical: 10.0),
                 ),
                 child: const Text(
-                  "Kupi",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  "Plati",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
                 ),
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 25),
           ],
         ),
       ),

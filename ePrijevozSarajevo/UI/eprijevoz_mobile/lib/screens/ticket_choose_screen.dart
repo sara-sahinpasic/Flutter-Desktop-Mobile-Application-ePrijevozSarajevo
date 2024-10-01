@@ -48,6 +48,11 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
   }
 
   Future initForm() async {
+    // // Reset the state before fetching new data
+    // _selectedTicketPrice = null;
+    // _basicTicket = null;
+    // _extraStatusTicket = null;
+
     stationResult = await stationProvider.get();
     statusResult = await statusProvider.get();
     ticketResult = await ticketProvider.get();
@@ -258,7 +263,8 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
             child: ElevatedButton(
               onPressed: _selectedTicketPrice != null
                   ? () {
-                      Navigator.of(context).push(
+                      Navigator.of(context)
+                          .push(
                         MaterialPageRoute(
                           builder: (context) => TicketInfoScreen(
                             selectedTicketPrice: _selectedTicketPrice!,
@@ -267,7 +273,15 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
                             status: _extraStatusTicket,
                           ),
                         ),
-                      );
+                      )
+                          .then((_) {
+                        setState(() {
+                          // Reset the state only after returning to this page
+                          _selectedTicketPrice = null;
+                          _basicTicket = null;
+                          _extraStatusTicket = null;
+                        });
+                      });
                     }
                   : null, // Disable the button if no price is selected
               style: ElevatedButton.styleFrom(
