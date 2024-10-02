@@ -1,9 +1,11 @@
+import 'package:eprijevoz_mobile/layouts/master_screen.dart';
 import 'package:eprijevoz_mobile/models/issuedTicket.dart';
 import 'package:eprijevoz_mobile/models/status.dart';
 import 'package:eprijevoz_mobile/models/ticket.dart';
 import 'package:eprijevoz_mobile/models/user.dart';
 import 'package:eprijevoz_mobile/providers/issuedTicket_provider.dart';
 import 'package:eprijevoz_mobile/providers/utils.dart';
+import 'package:eprijevoz_mobile/screens/ticket_screen.dart';
 import 'package:flutter/material.dart' hide Route;
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
@@ -13,12 +15,17 @@ class PaymentChooseScreen extends StatefulWidget {
   final User? user;
   final Ticket? ticket;
   final Status? status;
+  //
+  final DateTime? validFrom;
+  final DateTime? validTo;
 
   const PaymentChooseScreen(
       {this.selectedTicketPrice,
       this.user,
       this.ticket,
       this.status,
+      this.validFrom,
+      this.validTo,
       super.key});
 
   @override
@@ -30,17 +37,18 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
 
   DateTime? _validFrom;
   DateTime? _validTo;
-  int? _userId;
-  int? _ticketId;
+  User? _currentUser;
+  Ticket? _choosenTicket;
   DateTime? _issuedDate;
+  Status? _userTicketStatus;
 
   @override
   void initState() {
     super.initState();
     issuedTicketProvider = context.read<IssuedTicketProvider>();
 
-    _userId = widget?.user?.userId;
-    _ticketId = widget?.ticket?.ticketId;
+    _currentUser = widget?.user; //?.userId;
+    _choosenTicket = widget?.ticket; //?.ticketId;
     _issuedDate = DateTime.now();
   }
 
@@ -269,15 +277,15 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () async {
-                  if (_userId != null &&
-                      _ticketId != null &&
+                  if (_currentUser != null &&
+                      _choosenTicket != null &&
                       _issuedDate != null &&
                       _validFrom != null &&
                       _validTo != null) {
                     // Create an IssuedTicket object
                     IssuedTicket newTicket = IssuedTicket(
-                      userId: _userId!,
-                      ticketId: _ticketId!,
+                      userId: _currentUser?.userId!,
+                      ticketId: _choosenTicket?.ticketId!,
                       validFrom: _validFrom!,
                       validTo: _validTo!,
                       issuedDate: _issuedDate!,
@@ -290,27 +298,21 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
                     print("New request ticket: $newRequest");
                     try {
                       await issuedTicketProvider.insert(newRequest);
-
-                      // Success feedback
-                      showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                          title: Text("Success"),
-                          content: Text("Karta je izdana."),
-                          actions: [
-                            TextButton(
-                              child: Text(
-                                "OK",
-                                style: TextStyle(color: Colors.green),
-                              ),
-                              onPressed: () {
-                                Navigator.pop(context);
-                                Navigator.pop(context, true); // Return success
-                              },
-                            ),
-                          ],
-                        ),
-                      );
+                      // Navigator.push(
+                      //   context,
+                      //   //SKONTATI KAKO SE NAVIGIRATI NA SCREEN TICKET SA LAYOUT-OM OD MASTER_SCREEN
+                      //   MaterialPageRoute(
+                      //     builder: (context) => TicketScreen(
+                      //       user: _currentUser,
+                      //       ticket: _choosenTicket,
+                      //       status: _userTicketStatus,
+                      //       validFrom: _validFrom,
+                      //       validTo: _validTo,
+                      //     ),
+                      //   ),
+                      // );
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => MasterScreen()));
                     } catch (error) {
                       // Error feedback
                       showDialog(
