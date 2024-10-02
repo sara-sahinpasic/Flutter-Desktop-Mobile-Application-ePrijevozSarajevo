@@ -308,19 +308,19 @@ namespace ePrijevozSarajevo.Services.Database
                 new Status()
                 {
                     StatusId = 3,
-                    Name = "Pensioner",
+                    Name = "Penzioner",
                     Discount = 0.5
                 },
                  new Status()
                  {
                      StatusId = 4,
-                     Name = "Employed",
+                     Name = "Zaposlenik",
                      Discount = 0.15
                  },
                  new Status()
                  {
                      StatusId = 5,
-                     Name = "Unemployed",
+                     Name = "Nezaposlen",
                      Discount = 0.4
                  }
             );

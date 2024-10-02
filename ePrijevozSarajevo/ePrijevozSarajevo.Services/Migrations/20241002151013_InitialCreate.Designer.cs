@@ -12,7 +12,7 @@ using ePrijevozSarajevo.Services.Database;
 namespace ePrijevozSarajevo.Services.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240731120824_InitialCreate")]
+    [Migration("20241002151013_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -76,13 +76,10 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.Property<DateTime>("IssuedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("RouteId")
+                    b.Property<int?>("TicketId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TicketId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("ValidFrom")
@@ -92,8 +89,6 @@ namespace ePrijevozSarajevo.Services.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("IssuedTicketId");
-
-                    b.HasIndex("RouteId");
 
                     b.HasIndex("TicketId");
 
@@ -200,7 +195,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             RequestId = 1,
                             Active = true,
                             Approved = false,
-                            DateCreated = new DateTime(2024, 7, 31, 14, 8, 24, 208, DateTimeKind.Local).AddTicks(1224),
+                            DateCreated = new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(4288),
                             DocumentLink = "",
                             RejectionReason = "",
                             UserId = 2,
@@ -211,7 +206,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             RequestId = 2,
                             Active = true,
                             Approved = false,
-                            DateCreated = new DateTime(2024, 7, 31, 14, 8, 24, 208, DateTimeKind.Local).AddTicks(1233),
+                            DateCreated = new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(4292),
                             DocumentLink = "",
                             RejectionReason = "",
                             UserId = 3,
@@ -222,7 +217,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             RequestId = 3,
                             Active = true,
                             Approved = false,
-                            DateCreated = new DateTime(2024, 7, 31, 14, 8, 24, 208, DateTimeKind.Local).AddTicks(1238),
+                            DateCreated = new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(4294),
                             DocumentLink = "",
                             RejectionReason = "",
                             UserId = 4,
@@ -233,7 +228,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             RequestId = 4,
                             Active = true,
                             Approved = false,
-                            DateCreated = new DateTime(2024, 7, 31, 14, 8, 24, 208, DateTimeKind.Local).AddTicks(1243),
+                            DateCreated = new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(4296),
                             DocumentLink = "",
                             RejectionReason = "",
                             UserId = 5,
@@ -244,7 +239,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             RequestId = 5,
                             Active = true,
                             Approved = false,
-                            DateCreated = new DateTime(2024, 7, 31, 14, 8, 24, 208, DateTimeKind.Local).AddTicks(1247),
+                            DateCreated = new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(4299),
                             DocumentLink = "",
                             RejectionReason = "",
                             UserId = 6,
@@ -330,8 +325,8 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Active = true,
                             ActiveOnHolidays = true,
                             ActiveOnWeekends = true,
-                            Arrival = new DateTime(2024, 3, 3, 13, 11, 0, 0, DateTimeKind.Unspecified),
-                            Departure = new DateTime(2024, 3, 3, 12, 42, 0, 0, DateTimeKind.Unspecified),
+                            Arrival = new DateTime(2024, 11, 13, 21, 47, 0, 0, DateTimeKind.Unspecified),
+                            Departure = new DateTime(2024, 11, 13, 21, 10, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 1,
                             VehicleId = 2
@@ -342,8 +337,8 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Active = true,
                             ActiveOnHolidays = true,
                             ActiveOnWeekends = true,
-                            Arrival = new DateTime(2024, 12, 16, 9, 57, 0, 0, DateTimeKind.Unspecified),
-                            Departure = new DateTime(2024, 12, 16, 9, 10, 0, 0, DateTimeKind.Unspecified),
+                            Arrival = new DateTime(2024, 7, 17, 9, 7, 0, 0, DateTimeKind.Unspecified),
+                            Departure = new DateTime(2024, 7, 17, 8, 40, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 1,
                             VehicleId = 4
@@ -354,8 +349,8 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Active = true,
                             ActiveOnHolidays = true,
                             ActiveOnWeekends = true,
-                            Arrival = new DateTime(2024, 12, 20, 17, 22, 0, 0, DateTimeKind.Unspecified),
-                            Departure = new DateTime(2024, 12, 20, 16, 53, 0, 0, DateTimeKind.Unspecified),
+                            Arrival = new DateTime(2024, 5, 2, 23, 59, 0, 0, DateTimeKind.Unspecified),
+                            Departure = new DateTime(2024, 5, 2, 23, 41, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 1,
                             VehicleId = 6
@@ -366,8 +361,8 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Active = true,
                             ActiveOnHolidays = true,
                             ActiveOnWeekends = true,
-                            Arrival = new DateTime(2024, 11, 9, 6, 33, 0, 0, DateTimeKind.Unspecified),
-                            Departure = new DateTime(2024, 11, 9, 6, 24, 0, 0, DateTimeKind.Unspecified),
+                            Arrival = new DateTime(2024, 2, 8, 7, 39, 0, 0, DateTimeKind.Unspecified),
+                            Departure = new DateTime(2024, 2, 8, 7, 20, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 2,
                             VehicleId = 4
@@ -378,8 +373,8 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Active = true,
                             ActiveOnHolidays = true,
                             ActiveOnWeekends = true,
-                            Arrival = new DateTime(2024, 4, 21, 16, 19, 0, 0, DateTimeKind.Unspecified),
-                            Departure = new DateTime(2024, 4, 21, 15, 45, 0, 0, DateTimeKind.Unspecified),
+                            Arrival = new DateTime(2024, 1, 8, 6, 17, 0, 0, DateTimeKind.Unspecified),
+                            Departure = new DateTime(2024, 1, 8, 5, 31, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 7,
                             VehicleId = 2
@@ -390,8 +385,8 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Active = true,
                             ActiveOnHolidays = true,
                             ActiveOnWeekends = true,
-                            Arrival = new DateTime(2024, 7, 10, 17, 13, 0, 0, DateTimeKind.Unspecified),
-                            Departure = new DateTime(2024, 7, 10, 16, 34, 0, 0, DateTimeKind.Unspecified),
+                            Arrival = new DateTime(2024, 11, 3, 0, 13, 0, 0, DateTimeKind.Unspecified),
+                            Departure = new DateTime(2024, 11, 2, 23, 31, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 8,
                             VehicleId = 6
@@ -402,8 +397,8 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Active = true,
                             ActiveOnHolidays = true,
                             ActiveOnWeekends = true,
-                            Arrival = new DateTime(2024, 1, 8, 6, 9, 0, 0, DateTimeKind.Unspecified),
-                            Departure = new DateTime(2024, 1, 8, 5, 45, 0, 0, DateTimeKind.Unspecified),
+                            Arrival = new DateTime(2024, 12, 19, 10, 55, 0, 0, DateTimeKind.Unspecified),
+                            Departure = new DateTime(2024, 12, 19, 10, 13, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 15,
                             StartStationId = 9,
                             VehicleId = 1
@@ -414,8 +409,8 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Active = true,
                             ActiveOnHolidays = true,
                             ActiveOnWeekends = true,
-                            Arrival = new DateTime(2024, 3, 15, 22, 14, 0, 0, DateTimeKind.Unspecified),
-                            Departure = new DateTime(2024, 3, 15, 21, 55, 0, 0, DateTimeKind.Unspecified),
+                            Arrival = new DateTime(2024, 8, 23, 15, 32, 0, 0, DateTimeKind.Unspecified),
+                            Departure = new DateTime(2024, 8, 23, 15, 14, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 11,
                             VehicleId = 3
@@ -426,8 +421,8 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Active = true,
                             ActiveOnHolidays = true,
                             ActiveOnWeekends = true,
-                            Arrival = new DateTime(2024, 2, 8, 20, 18, 0, 0, DateTimeKind.Unspecified),
-                            Departure = new DateTime(2024, 2, 8, 19, 46, 0, 0, DateTimeKind.Unspecified),
+                            Arrival = new DateTime(2024, 3, 31, 23, 11, 0, 0, DateTimeKind.Unspecified),
+                            Departure = new DateTime(2024, 3, 31, 22, 55, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 14,
                             StartStationId = 10,
                             VehicleId = 5
@@ -438,8 +433,8 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Active = true,
                             ActiveOnHolidays = true,
                             ActiveOnWeekends = true,
-                            Arrival = new DateTime(2024, 4, 20, 23, 39, 0, 0, DateTimeKind.Unspecified),
-                            Departure = new DateTime(2024, 4, 20, 23, 31, 0, 0, DateTimeKind.Unspecified),
+                            Arrival = new DateTime(2024, 3, 28, 18, 33, 0, 0, DateTimeKind.Unspecified),
+                            Departure = new DateTime(2024, 3, 28, 18, 18, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 13,
                             VehicleId = 1
@@ -450,8 +445,8 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Active = true,
                             ActiveOnHolidays = true,
                             ActiveOnWeekends = true,
-                            Arrival = new DateTime(2024, 7, 31, 14, 8, 24, 208, DateTimeKind.Local).AddTicks(609),
-                            Departure = new DateTime(2024, 7, 31, 14, 8, 24, 208, DateTimeKind.Local).AddTicks(607),
+                            Arrival = new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3872),
+                            Departure = new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3871),
                             EndStationId = 15,
                             StartStationId = 7,
                             VehicleId = 1
@@ -462,8 +457,8 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Active = true,
                             ActiveOnHolidays = true,
                             ActiveOnWeekends = true,
-                            Arrival = new DateTime(2024, 7, 31, 14, 8, 24, 208, DateTimeKind.Local).AddTicks(612),
-                            Departure = new DateTime(2024, 7, 31, 14, 8, 24, 208, DateTimeKind.Local).AddTicks(611),
+                            Arrival = new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3874),
+                            Departure = new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3874),
                             EndStationId = 6,
                             StartStationId = 8,
                             VehicleId = 2
@@ -474,8 +469,8 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Active = true,
                             ActiveOnHolidays = true,
                             ActiveOnWeekends = true,
-                            Arrival = new DateTime(2024, 7, 31, 14, 8, 24, 208, DateTimeKind.Local).AddTicks(616),
-                            Departure = new DateTime(2024, 7, 31, 14, 8, 24, 208, DateTimeKind.Local).AddTicks(614),
+                            Arrival = new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3876),
+                            Departure = new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3875),
                             EndStationId = 4,
                             StartStationId = 7,
                             VehicleId = 5
@@ -486,8 +481,8 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Active = true,
                             ActiveOnHolidays = true,
                             ActiveOnWeekends = true,
-                            Arrival = new DateTime(2024, 7, 31, 14, 8, 24, 208, DateTimeKind.Local).AddTicks(619),
-                            Departure = new DateTime(2024, 7, 31, 14, 8, 24, 208, DateTimeKind.Local).AddTicks(617),
+                            Arrival = new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3877),
+                            Departure = new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3877),
                             EndStationId = 13,
                             StartStationId = 8,
                             VehicleId = 3
@@ -498,8 +493,8 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Active = true,
                             ActiveOnHolidays = true,
                             ActiveOnWeekends = true,
-                            Arrival = new DateTime(2024, 7, 31, 14, 8, 24, 208, DateTimeKind.Local).AddTicks(622),
-                            Departure = new DateTime(2024, 7, 31, 14, 8, 24, 208, DateTimeKind.Local).AddTicks(620),
+                            Arrival = new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3879),
+                            Departure = new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3878),
                             EndStationId = 2,
                             StartStationId = 7,
                             VehicleId = 4
@@ -635,19 +630,19 @@ namespace ePrijevozSarajevo.Services.Migrations
                         {
                             StatusId = 3,
                             Discount = 0.5,
-                            Name = "Pensioner"
+                            Name = "Penzioner"
                         },
                         new
                         {
                             StatusId = 4,
                             Discount = 0.14999999999999999,
-                            Name = "Employed"
+                            Name = "Zaposlenik"
                         },
                         new
                         {
                             StatusId = 5,
                             Discount = 0.40000000000000002,
-                            Name = "Unemployed"
+                            Name = "Nezaposlen"
                         });
                 });
 
@@ -818,12 +813,12 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Email = "sara.sahinpasic@edu.fit.ba",
                             FirstName = "Sara",
                             LastName = "Šahinpašić",
-                            ModifiedDate = new DateTime(2024, 7, 31, 14, 8, 24, 208, DateTimeKind.Local).AddTicks(711),
-                            PasswordHash = "3PYE4RnAYRSkix8Iqvv+bAK2g8I=",
-                            PasswordSalt = "j2jNUIYwJt7a9EJfPKJzNw==",
+                            ModifiedDate = new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3946),
+                            PasswordHash = "lFKl5mikGguSug4F6VEyhSRh4IY=",
+                            PasswordSalt = "dN07kQseALJvOsmoRaFAEw==",
                             PhoneNumber = "061222333",
                             ProfileImagePath = "",
-                            RegistrationDate = new DateTime(2024, 7, 31, 14, 8, 24, 208, DateTimeKind.Local).AddTicks(708),
+                            RegistrationDate = new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3945),
                             StatusExpirationDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserName = "desktop",
                             UserStatusId = 4
@@ -837,12 +832,12 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Email = "sara.sahinpasic@hotmail.com",
                             FirstName = "Senada",
                             LastName = "Šahinpašić",
-                            ModifiedDate = new DateTime(2024, 7, 31, 14, 8, 24, 208, DateTimeKind.Local).AddTicks(729),
-                            PasswordHash = "hVTLtBtjVKfFvbjGSrzFhA1VcMI=",
-                            PasswordSalt = "R3KPAD77IdDGwct/zyQWUQ==",
+                            ModifiedDate = new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3956),
+                            PasswordHash = "Ad0UbDw+DNVk7X+Z+xiPvh7Wvro=",
+                            PasswordSalt = "MMIe/Jd1w+hqC+pIHb4w3g==",
                             PhoneNumber = "061222444",
                             ProfileImagePath = "",
-                            RegistrationDate = new DateTime(2024, 7, 31, 14, 8, 24, 208, DateTimeKind.Local).AddTicks(727),
+                            RegistrationDate = new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3955),
                             StatusExpirationDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserName = "mobile",
                             UserStatusId = 4
@@ -856,12 +851,12 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Email = "neki@mail.com",
                             FirstName = "Test",
                             LastName = "Testni",
-                            ModifiedDate = new DateTime(2024, 7, 31, 14, 8, 24, 208, DateTimeKind.Local).AddTicks(742),
-                            PasswordHash = "UeNe1a8S4Uhy0Z8W/cQ32xEXvsQ=",
-                            PasswordSalt = "K33EMy1XR3RpYDGJazLSGw==",
+                            ModifiedDate = new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3970),
+                            PasswordHash = "jodolSf6OVfusIGhjiYY5g5CQ6I=",
+                            PasswordSalt = "oq3CuARH3bx4LcAPWgt+8Q==",
                             PhoneNumber = "061222555",
                             ProfileImagePath = "",
-                            RegistrationDate = new DateTime(2024, 7, 31, 14, 8, 24, 208, DateTimeKind.Local).AddTicks(739),
+                            RegistrationDate = new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3969),
                             StatusExpirationDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserName = "mobile1",
                             UserStatusId = 1
@@ -875,12 +870,12 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Email = "neko@mail.com",
                             FirstName = "Testni",
                             LastName = "Test",
-                            ModifiedDate = new DateTime(2024, 7, 31, 14, 8, 24, 208, DateTimeKind.Local).AddTicks(752),
-                            PasswordHash = "be5wh4N55IWnUwLGm1+ssJP8zFg=",
-                            PasswordSalt = "R53oRo80IKlQ1EL2wgK4xA==",
+                            ModifiedDate = new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3976),
+                            PasswordHash = "IA6/4yK78qaqtnc9m+JWDa7YnHw=",
+                            PasswordSalt = "CP/XH/uhKusgjKIbWTVpgQ==",
                             PhoneNumber = "061222666",
                             ProfileImagePath = "",
-                            RegistrationDate = new DateTime(2024, 7, 31, 14, 8, 24, 208, DateTimeKind.Local).AddTicks(750),
+                            RegistrationDate = new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3975),
                             StatusExpirationDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserName = "mobile2",
                             UserStatusId = 1
@@ -894,12 +889,12 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Email = "proba@mail.com",
                             FirstName = "Proba",
                             LastName = "Probni",
-                            ModifiedDate = new DateTime(2024, 7, 31, 14, 8, 24, 208, DateTimeKind.Local).AddTicks(762),
-                            PasswordHash = "25Lq2/wtIfpI/xF15AtDon/tYqQ=",
-                            PasswordSalt = "jXnguvIqAl3KJoZE2Y8gTg==",
+                            ModifiedDate = new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3981),
+                            PasswordHash = "w7nZSBqcMtckZJ78OEgqU0tiSHw=",
+                            PasswordSalt = "kg+ao6X4/5AnZMx7tIlkRw==",
                             PhoneNumber = "061222777",
                             ProfileImagePath = "",
-                            RegistrationDate = new DateTime(2024, 7, 31, 14, 8, 24, 208, DateTimeKind.Local).AddTicks(760),
+                            RegistrationDate = new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3980),
                             StatusExpirationDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserName = "mobile3",
                             UserStatusId = 1
@@ -913,12 +908,12 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Email = "probe@mail.com",
                             FirstName = "Probe",
                             LastName = "Probno",
-                            ModifiedDate = new DateTime(2024, 7, 31, 14, 8, 24, 208, DateTimeKind.Local).AddTicks(773),
-                            PasswordHash = "PMrLmd/2rlYLtxmbw1WuBJTr90c=",
-                            PasswordSalt = "q2NqjKQR5wqcyGMGDJUtVg==",
+                            ModifiedDate = new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3987),
+                            PasswordHash = "T6wLXfJvnQvYcG4k1EsGHDhPsj0=",
+                            PasswordSalt = "wSkHES70Zg8F1o/b8I2kNA==",
                             PhoneNumber = "061222888",
                             ProfileImagePath = "",
-                            RegistrationDate = new DateTime(2024, 7, 31, 14, 8, 24, 208, DateTimeKind.Local).AddTicks(772),
+                            RegistrationDate = new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3986),
                             StatusExpirationDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserName = "mobile3",
                             UserStatusId = 1
@@ -954,14 +949,14 @@ namespace ePrijevozSarajevo.Services.Migrations
                         new
                         {
                             UserRoleId = 1,
-                            ModificationDate = new DateTime(2024, 7, 31, 14, 8, 24, 208, DateTimeKind.Local).AddTicks(1557),
+                            ModificationDate = new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(4439),
                             RoleId = 1,
                             UserId = 1
                         },
                         new
                         {
                             UserRoleId = 2,
-                            ModificationDate = new DateTime(2024, 7, 31, 14, 8, 24, 208, DateTimeKind.Local).AddTicks(1561),
+                            ModificationDate = new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(4441),
                             RoleId = 2,
                             UserId = 2
                         });
@@ -1061,25 +1056,13 @@ namespace ePrijevozSarajevo.Services.Migrations
 
             modelBuilder.Entity("ePrijevozSarajevo.Services.Database.IssuedTicket", b =>
                 {
-                    b.HasOne("ePrijevozSarajevo.Services.Database.Route", "Route")
-                        .WithMany()
-                        .HasForeignKey("RouteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("ePrijevozSarajevo.Services.Database.Ticket", "Ticket")
                         .WithMany()
-                        .HasForeignKey("TicketId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TicketId");
 
                     b.HasOne("ePrijevozSarajevo.Services.Database.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Route");
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Ticket");
 

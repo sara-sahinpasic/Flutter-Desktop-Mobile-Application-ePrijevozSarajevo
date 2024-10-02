@@ -1,15 +1,19 @@
+import 'package:eprijevoz_mobile/models/issuedTicket.dart';
 import 'package:eprijevoz_mobile/models/status.dart';
 import 'package:eprijevoz_mobile/models/ticket.dart';
 import 'package:eprijevoz_mobile/models/user.dart';
+import 'package:eprijevoz_mobile/providers/issuedTicket_provider.dart';
 import 'package:eprijevoz_mobile/providers/utils.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Route;
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 class PaymentChooseScreen extends StatefulWidget {
   final double? selectedTicketPrice;
   final User? user;
   final Ticket? ticket;
   final Status? status;
+
   const PaymentChooseScreen(
       {this.selectedTicketPrice,
       this.user,
@@ -22,6 +26,54 @@ class PaymentChooseScreen extends StatefulWidget {
 }
 
 class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
+  late IssuedTicketProvider issuedTicketProvider;
+
+  DateTime? _validFrom;
+  DateTime? _validTo;
+  int? _userId;
+  int? _ticketId;
+  DateTime? _issuedDate;
+
+  @override
+  void initState() {
+    super.initState();
+    issuedTicketProvider = context.read<IssuedTicketProvider>();
+
+    _userId = widget?.user?.userId;
+    _ticketId = widget?.ticket?.ticketId;
+    _issuedDate = DateTime.now();
+  }
+
+  String? ValidFromTo() {
+    String? finalDate;
+
+    if (widget.ticket?.name != null &&
+            widget.ticket!.name!.contains("Mjesečna") ||
+        widget.status?.name != null) {
+      _validFrom = DateTime.now();
+      _validTo = _validFrom?.add(const Duration(days: 31));
+    } else if (widget.ticket?.name != null &&
+        widget.ticket!.name!.contains("Jednosmjerna")) {
+      _validFrom = DateTime.now();
+      _validTo = _validFrom?.add(const Duration(minutes: 60));
+    } else if (widget.ticket?.name != null &&
+        widget.ticket!.name!.contains("Povratna")) {
+      _validFrom = DateTime.now();
+      _validTo = _validFrom?.add(const Duration(minutes: 180));
+    } else if (widget.ticket?.name != null &&
+        widget.ticket!.name!.contains("Jednosmjerna dječija")) {
+      _validFrom = DateTime.now();
+      _validTo = _validFrom?.add(const Duration(minutes: 60));
+    } else if (widget.ticket?.name != null &&
+        widget.ticket!.name!.contains("Povratna dječija")) {
+      _validFrom = DateTime.now();
+      _validTo = _validFrom?.add(const Duration(minutes: 180));
+    }
+
+    return finalDate =
+        "${formatDateTime(_validFrom!)}\n${formatDateTime(_validTo!)}";
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,41 +108,22 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
               ),
             ),
             const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Padding(
-                  padding: EdgeInsets.fromLTRB(150.0, 20.0, 0.0, 20.0),
-                  child: Icon(
-                    Icons.payment,
-                    size: 100,
-                    color: Colors.black,
-                  ),
+                Icon(
+                  Icons.payment,
+                  size: 100,
+                  color: Colors.black,
                 ),
+                //),
               ],
             ),
-            //DATABASE Table: IssuedTicket
-            /*
-              public int IssuedTicketId { get; set; }
-              public int UserId { get; set; }
-              public User User { get; set; } = null!;
-              public int TicketId { get; set; }
-              public Ticket Ticket { get; set; } = null!;
-              public DateTime ValidFrom { get; set; }
-              public DateTime ValidTo { get; set; }
-              public DateTime IssuedDate { get; set; }
-              [NotMapped]
-              public int Amount { get; set; }
-              public int RouteId { get; set; }
-              public Route Route { get; set; } = null!;
-              */
-
             Container(
               decoration: BoxDecoration(
                   color: Colors.grey.shade300,
                   border: Border(
                       top: BorderSide(color: Colors.black, width: 2),
                       bottom: BorderSide(color: Colors.black, width: 2))),
-              width: 500,
-              height: 260,
               child: Padding(
                 padding: EdgeInsets.fromLTRB(30.0, 30.0, 30.0, 30.0),
                 child: Column(
@@ -140,9 +173,11 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
                     ),
 
                     Text(
-                      "Datum važenja: ", //Datum važenja OD-DO
-                      style:
-                          TextStyle(fontWeight: FontWeight.w500, fontSize: 17),
+                      "Važenje karte:\n${ValidFromTo()}",
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                     Align(
                       alignment: Alignment.centerRight,
@@ -219,7 +254,6 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
                               'https://www.vectorlogo.zone/logos/stripe/stripe-ar21.svg', // Stripe Logo SVG
                               height: 30,
                             ),
-                            SizedBox(width: 10),
                           ],
                         ),
                       ),
@@ -228,14 +262,78 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
                 ),
               ],
             ),
-
             SizedBox(
               height: 20,
             ),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () async {
+                  if (_userId != null &&
+                      _ticketId != null &&
+                      _issuedDate != null &&
+                      _validFrom != null &&
+                      _validTo != null) {
+                    // Create an IssuedTicket object
+                    IssuedTicket newTicket = IssuedTicket(
+                      userId: _userId!,
+                      ticketId: _ticketId!,
+                      validFrom: _validFrom!,
+                      validTo: _validTo!,
+                      issuedDate: _issuedDate!,
+                    );
+
+                    // Serialize to JSON
+                    Map<String, dynamic> newRequest = newTicket.toJson();
+
+                    // Send the request to the server
+                    print("New request ticket: $newRequest");
+                    try {
+                      await issuedTicketProvider.insert(newRequest);
+
+                      // Success feedback
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: Text("Success"),
+                          content: Text("Karta je izdana."),
+                          actions: [
+                            TextButton(
+                              child: Text(
+                                "OK",
+                                style: TextStyle(color: Colors.green),
+                              ),
+                              onPressed: () {
+                                Navigator.pop(context);
+                                Navigator.pop(context, true); // Return success
+                              },
+                            ),
+                          ],
+                        ),
+                      );
+                    } catch (error) {
+                      // Error feedback
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: Text("Error"),
+                          content: Text("Greška prilikom izdavanja karte."),
+                          actions: [
+                            TextButton(
+                              child: Text(
+                                "OK",
+                                style: TextStyle(color: Colors.red),
+                              ),
+                              onPressed: () {
+                                Navigator.pop(context, false); // Return failure
+                              },
+                            ),
+                          ],
+                        ),
+                      );
+                    }
+                  }
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black,
                   shape: RoundedRectangleBorder(

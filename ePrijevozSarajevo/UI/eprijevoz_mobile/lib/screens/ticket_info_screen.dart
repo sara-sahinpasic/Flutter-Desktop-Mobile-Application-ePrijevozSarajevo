@@ -1,3 +1,4 @@
+import 'package:eprijevoz_mobile/models/route.dart';
 import 'package:eprijevoz_mobile/models/search_result.dart';
 import 'package:eprijevoz_mobile/models/status.dart';
 import 'package:eprijevoz_mobile/models/ticket.dart';
@@ -5,7 +6,7 @@ import 'package:eprijevoz_mobile/models/user.dart';
 import 'package:eprijevoz_mobile/providers/user_provider.dart';
 import 'package:eprijevoz_mobile/providers/utils.dart';
 import 'package:eprijevoz_mobile/screens/payment_choose_screen.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Route;
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
 import 'package:input_quantity/input_quantity.dart';
@@ -15,12 +16,14 @@ class TicketInfoScreen extends StatefulWidget {
   final User? user;
   final Ticket? ticket;
   final Status? status;
+  final Route? route;
 
   const TicketInfoScreen(
       {required this.selectedTicketPrice,
       this.user,
       this.ticket,
       this.status,
+      this.route,
       super.key});
 
   @override
@@ -42,6 +45,7 @@ class _TicketInfoScreenState extends State<TicketInfoScreen> {
   Ticket? _choosenTicket;
   Status? _userTicketStatus;
   User? _currentUser;
+  Route? _currentRoute;
 
   @override
   void initState() {
@@ -60,6 +64,7 @@ class _TicketInfoScreenState extends State<TicketInfoScreen> {
     _choosenTicket = widget?.ticket;
     _userTicketStatus = widget?.status;
     _currentUser = widget?.user;
+    _currentRoute = widget?.route;
     initForm();
   }
 
@@ -228,6 +233,7 @@ class _TicketInfoScreenState extends State<TicketInfoScreen> {
                             status: _userTicketStatus,
                             selectedTicketPrice: _finalTicketPrice,
                             user: _currentUser,
+                            //route: _currentRoute,
                           )));
                 },
                 style: ElevatedButton.styleFrom(
