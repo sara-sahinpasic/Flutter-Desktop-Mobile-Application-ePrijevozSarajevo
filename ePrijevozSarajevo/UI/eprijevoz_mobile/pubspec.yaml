@@ -42,6 +42,8 @@ dependencies:
   flutter_form_builder: ^9.2.1
   input_quantity: ^2.3.2
   flutter_svg: ^2.0.10+1
+  flutter_paypal_payment: ^1.0.6
+  quickalert: ^1.1.0
 
 dev_dependencies:
   flutter_test:
