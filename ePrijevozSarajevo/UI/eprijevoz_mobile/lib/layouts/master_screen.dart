@@ -5,14 +5,17 @@ import 'package:eprijevoz_mobile/screens/ticket_screen.dart';
 import 'package:flutter/material.dart';
 
 class MasterScreen extends StatefulWidget {
-  MasterScreen({super.key});
+  final int initialIndex;
+
+  MasterScreen({Key? key, this.initialIndex = 0})
+      : super(key: key); // Default to 0 (Home) if no index is passed
 
   @override
   State<MasterScreen> createState() => _MasterScreenState();
 }
 
 class _MasterScreenState extends State<MasterScreen> {
-  int _currentIndex = 0;
+  late int _currentIndex;
 
   late List<Widget> _pages;
   late List<String> _titles;
@@ -20,6 +23,9 @@ class _MasterScreenState extends State<MasterScreen> {
   @override
   void initState() {
     super.initState();
+
+    // Initialize the index from the passed value
+    _currentIndex = widget.initialIndex;
 
     // Initialize the pages and corresponding titles
     _pages = [

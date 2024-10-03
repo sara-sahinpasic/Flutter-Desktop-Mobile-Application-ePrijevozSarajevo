@@ -5,148 +5,155 @@ import 'package:eprijevoz_mobile/models/ticket.dart';
 import 'package:eprijevoz_mobile/models/user.dart';
 import 'package:eprijevoz_mobile/providers/auth_provider.dart';
 import 'package:eprijevoz_mobile/providers/issuedTicket_provider.dart';
+import 'package:eprijevoz_mobile/providers/ticket_provider.dart';
 import 'package:eprijevoz_mobile/providers/user_provider.dart';
 import 'package:eprijevoz_mobile/providers/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
 
-//IZLISTATI ISSUED TICKET IZ BAZE ZA TRENUTNO LOGIRANOG KORISNIKA
 class TicketScreen extends StatefulWidget {
-  final User? user;
-  final Ticket? ticket;
-  final Status? status;
-  final DateTime? validFrom;
-  final DateTime? validTo;
-  const TicketScreen(
-      {this.user,
-      this.ticket,
-      this.status,
-      this.validFrom,
-      this.validTo,
-      super.key});
+  const TicketScreen({super.key});
 
   @override
   State<TicketScreen> createState() => _TicketScreenState();
 }
 
 class _TicketScreenState extends State<TicketScreen> {
-  // Form
-  final _formKey = GlobalKey<FormBuilderState>();
-  Map<String, dynamic> _initialValue = {};
-
   late UserProvider userProvider;
   late IssuedTicketProvider issuedTicketProvider;
+  late TicketProvider ticketProvider;
   SearchResult<User>? userResult;
   SearchResult<IssuedTicket>? issuedTicketResult;
-  int? userId;
+  SearchResult<Ticket>? ticketResult;
+  User? _user;
 
   @override
   void initState() {
     super.initState();
     userProvider = context.read<UserProvider>();
     issuedTicketProvider = context.read<IssuedTicketProvider>();
+    ticketProvider = context.read<TicketProvider>();
     initForm();
   }
 
   Future initForm() async {
     userResult = await userProvider.get();
     issuedTicketResult = await issuedTicketProvider.get();
+    ticketResult = await ticketProvider.get();
 
     var user = userResult?.result
         .firstWhere((user) => user.userName == AuthProvider.username);
+    _user = user;
+    print("treutni korisnik: ${_user?.toJson()}");
+    setState(() {});
+  }
 
-    userId = user?.userId;
+  final List<String>? _ticketsName = [];
+  List<String>? ticketName() {
+    var issuedTickets = issuedTicketResult?.result
+        .where((issuedTicket) => issuedTicket.userId == _user?.userId)
+        .toList();
 
-    print("User ima id: ${userId}");
+    if (issuedTickets != null && issuedTickets.isNotEmpty) {
+      for (var issuedTicket in issuedTickets) {
+        var ticket = ticketResult?.result.firstWhere(
+          (ticket) => ticket.ticketId == issuedTicket.ticketId,
+        );
+
+        if (ticket != null) {
+          print("Ime karte: ${ticket.name}");
+          _ticketsName?.add(ticket.name ?? "");
+        }
+      }
+    } else {
+      print("Korisnik nema izdatih karti.");
+    }
+    print("Rezultat: ${_ticketsName}");
+    return _ticketsName;
   }
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return Scaffold(
+      body: SingleChildScrollView(
         child: Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          _buildResultView(),
-          const SizedBox(height: 15),
-        ],
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildResultView(),
+              const SizedBox(height: 15),
+            ],
+          ),
+        ),
       ),
-    ));
+    );
   }
 
   Widget _buildResultView() {
-    return FormBuilder(
-      key: _formKey,
-      initialValue: _initialValue,
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(30.0, 0.0, 0.0, 0.0),
-        child: Column(children: [
-          Container(
-            decoration: BoxDecoration(
-                color: Colors.grey.shade300,
-                border: Border(
-                    top: BorderSide(color: Colors.black, width: 2),
-                    bottom: BorderSide(color: Colors.black, width: 2))),
-            child: Padding(
-              padding: EdgeInsets.fromLTRB(30.0, 30.0, 30.0, 30.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  (widget.ticket?.name != null)
-                      ? Text(
-                          "${widget.ticket?.name} karta",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 21),
-                        )
-                      : Text(
-                          "Mjesečna karta - ${widget.status?.name}",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 21),
-                        ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  //
-                  Text(
-                    "Korisnik: ${widget.user?.firstName} ${widget?.user?.lastName} ",
-                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 17),
-                  ),
-                  Text(
-                    "Datum rođenja: ${formatDate(widget?.user?.dateOfBirth)} ",
-                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 17),
-                  ),
-                  Text(
-                    "Broj korisnika: 2024${widget.user?.userId} ",
-                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 17),
-                  ),
+    var issuedTickets = issuedTicketResult?.result
+        .where((issuedTicket) => issuedTicket.userId == _user?.userId)
+        .toList();
 
-                  SizedBox(
-                    height: 30.0,
-                    child: Center(
-                      child: Container(
-                        margin:
-                            EdgeInsetsDirectional.only(start: 1.0, end: 1.0),
-                        height: 2.0,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
+    if (issuedTickets == null || issuedTickets.isEmpty) {
+      return Text("Korisnik nema izdatih karti.");
+    }
 
-                  Text(
-                    "Važenje karte:\n${widget.validFrom}-${widget.validTo}",
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ],
+    return Column(
+      children: issuedTickets.map((issuedTicket) {
+        var ticket = ticketResult?.result.firstWhere(
+          (ticket) => ticket.ticketId == issuedTicket.ticketId,
+        );
+
+        if (ticket == null) {
+          return Text("Karta nije pronađena.");
+        }
+
+        //PRIKAZI MJESEČNU KARTU KOJA JE KUPLJENA SA STATUSOM ZA POVLASTICU
+        Color cardColor = DateTime.now().isAfter(issuedTicket.validTo!)
+            ? Colors.red.shade300
+            : Colors.green.shade300;
+
+        return Container(
+          margin: EdgeInsets.symmetric(vertical: 10),
+          width: 400,
+          padding: EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: cardColor,
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 2,
+                blurRadius: 5,
+                offset: Offset(0, 3),
               ),
-            ),
+            ],
           ),
-        ]),
-      ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "${ticket.name} karta" ?? "",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 5),
+              Text("Broj korisnika: ${_user?.userId}"),
+              Text("Korisnik: ${_user?.firstName} ${_user?.lastName}"),
+              Text(
+                "Datum rođenja: ${formatDate(_user?.dateOfBirth)}",
+              ),
+              Divider(
+                color: Colors.black,
+              ),
+              Text("Datum važenja:"),
+              Text(
+                "${formatDateTime(issuedTicket.validFrom!)} <lll> ${formatDateTime(issuedTicket.validTo!)}",
+              ),
+            ],
+          ),
+        );
+      }).toList(),
     );
   }
 }

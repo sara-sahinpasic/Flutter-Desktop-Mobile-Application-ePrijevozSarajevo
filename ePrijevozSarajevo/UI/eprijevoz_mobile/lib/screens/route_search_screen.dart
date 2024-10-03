@@ -164,10 +164,7 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
               child: SizedBox(
             width: 200,
             height: 140,
-            child:
-                /*Image.asset("assets/images/location_logo.png",
-                    height: 100, width: 100)),*/
-                IconButton(
+            child: IconButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },

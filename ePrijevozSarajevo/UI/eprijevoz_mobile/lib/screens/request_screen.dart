@@ -28,7 +28,7 @@ class RequestScreen extends StatelessWidget {
                 IconButton(
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => MasterScreen()));
+                        builder: (context) => MasterScreen(initialIndex: 3)));
                   },
                   icon: const Icon(
                     Icons.cancel_outlined,

@@ -298,21 +298,9 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
                     print("New request ticket: $newRequest");
                     try {
                       await issuedTicketProvider.insert(newRequest);
-                      // Navigator.push(
-                      //   context,
-                      //   //SKONTATI KAKO SE NAVIGIRATI NA SCREEN TICKET SA LAYOUT-OM OD MASTER_SCREEN
-                      //   MaterialPageRoute(
-                      //     builder: (context) => TicketScreen(
-                      //       user: _currentUser,
-                      //       ticket: _choosenTicket,
-                      //       status: _userTicketStatus,
-                      //       validFrom: _validFrom,
-                      //       validTo: _validTo,
-                      //     ),
-                      //   ),
-                      // );
+
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => MasterScreen()));
+                          builder: (context) => MasterScreen(initialIndex: 2)));
                     } catch (error) {
                       // Error feedback
                       showDialog(

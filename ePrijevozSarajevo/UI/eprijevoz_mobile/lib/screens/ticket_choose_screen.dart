@@ -170,6 +170,7 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
                   setState(() {
                     _selectedTicketPrice = value;
                     _extraStatusTicket = status;
+                    _basicTicket = mjesecnaKarta;
                   });
                 }
               : null,

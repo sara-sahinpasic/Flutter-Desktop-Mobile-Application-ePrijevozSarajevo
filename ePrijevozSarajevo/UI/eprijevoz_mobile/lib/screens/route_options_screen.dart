@@ -128,21 +128,12 @@ class _RouteOptionsScreenState extends State<RouteOptionsScreen> {
                       height: 40,
                       decoration: const BoxDecoration(
                         color: Color.fromRGBO(158, 158, 158, 0.279),
-                        //color: Colors.red,
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(0),
                           topRight: Radius.circular(0),
                           bottomLeft: Radius.circular(10),
                           bottomRight: Radius.circular(10),
                         ),
-                        // boxShadow: [
-                        //   BoxShadow(
-                        //     color: Colors.grey,
-                        //     spreadRadius: 0.1,
-                        //     blurRadius: 40,
-                        //     offset: Offset(0, 30), // changes position of shadow
-                        //   ),
-                        // ],
                       ),
                       child: Align(
                         alignment: Alignment.center,
