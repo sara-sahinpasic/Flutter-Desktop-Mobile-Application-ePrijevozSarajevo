@@ -1,0 +1,80 @@
+import 'dart:convert';
+import 'package:eprijevoz_desktop/models/search_result.dart';
+import 'package:eprijevoz_desktop/models/vehicle.dart';
+import 'package:eprijevoz_desktop/providers/auth_provider.dart';
+import 'package:eprijevoz_desktop/providers/base_provider.dart';
+import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
+
+class VehicleProvider extends BaseProvider<Vehicle> {
+  VehicleProvider() : super("Vehicle");
+
+  @override
+  Vehicle fromJson(data) {
+    return Vehicle.fromJson(data);
+  }
+
+  /* Pošto sve ove metode sada imam unutar base_provider, one ovdje više ne trebaju:
+  static String? _baseUrl;
+  VehicleProvider() {
+    _baseUrl = const String.fromEnvironment("baseUrl",
+        defaultValue: "https://localhost:7292/");
+  }
+  */
+
+  //Future<dynamic> get() async {
+  //Future<List<Vehicle>> get() async {
+  /*Pošto sve ove metode sada imam unutar base_provider, one ovdje više ne trebaju:
+  Future<SearchResult<Vehicle>> get() async {
+    var url = "${_baseUrl}Vehicle";
+    var uri = Uri.parse(url);
+    print("url:::::: $url");
+    var response = await http.get(uri, headers: createHeaders());
+
+    if (isValidResponse(response)) {
+      var data = jsonDecode(response.body);
+
+      //konvertovanje elemenata
+      //var result
+      var items = data["resultList"]
+          .map((e) => Vehicle.fromJson(e))
+          .toList()
+          .cast<Vehicle>();
+
+      //Mogućnost da imamo i paginaciju sa servera
+      SearchResult<Vehicle> result = new SearchResult<Vehicle>();
+      result.result = items as List<Vehicle>;
+      result.count = data["count"];
+
+      // return data;
+      return result;
+    } else {
+      throw Exception("Unknow exception");
+    }
+  }
+
+  bool isValidResponse(Response response) {
+    if (response.statusCode < 299) {
+      return true;
+    } else if (response.statusCode == 401) {
+      throw Exception("Unathorized");
+    } else {
+      throw Exception("Something bad happeend, please try again!");
+    }
+  }
+
+  Map<String, String> createHeaders() {
+    String username = AuthProvider.username!;
+    String password = AuthProvider.password!;
+
+    String basicAuth =
+        "Basic ${base64Encode(utf8.encode('$username:$password'))}";
+
+    var headers = {
+      "Content-Type": "application/json",
+      "Authorization": basicAuth
+    };
+
+    return headers;
+  }*/
+}

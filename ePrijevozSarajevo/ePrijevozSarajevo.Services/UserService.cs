@@ -1,0 +1,118 @@
+﻿using ePrijevozSarajevo.Model.Requests;
+using ePrijevozSarajevo.Model.SearchObjects;
+using ePrijevozSarajevo.Services.Database;
+using MapsterMapper;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using System.Security.Cryptography;
+using System.Text;
+
+namespace ePrijevozSarajevo.Services
+{
+    public class UserService : BaseCRUDService<Model.User, UserSearchObject, Database.User, UserInseretRequest, UserUpdateRequest>, IUserService
+    {
+        ILogger<UserService> _logger;
+
+        public UserService(DataContext context, IMapper mapper, ILogger<UserService> logger) : base(context, mapper)
+        {
+            this._logger = logger;
+        }
+
+        public override IQueryable<Database.User> AddFilter(UserSearchObject search, IQueryable<User> query)
+        {
+            query = base.AddFilter(search, query);
+
+            if ((!string.IsNullOrWhiteSpace(search?.FirstNameGTE)) || (!string.IsNullOrWhiteSpace(search?.LastNameGTE)))
+            {
+                query = query.Where((x => x.FirstName.StartsWith(search.FirstNameGTE) || x.LastName.StartsWith(search.LastNameGTE)));
+            }
+
+            if (search.IsRoleIncluded == true)
+            {
+                query = query
+                    .Include(x => x.UserRoles)        // Include UserRoles collection
+                        .ThenInclude(x => x.Role);  // Then include the Role entity within UserRoles
+            }
+          
+             if (search?.IsUserStatusIncluded == true)
+             {
+                 query = query.Include(x => x.UserStatus);
+             }
+            
+            return query;
+        }
+
+        public override void BeforeInsert(UserInseretRequest request, Database.User entity)
+        {
+            _logger.LogInformation($"Adding user: {entity.FirstName} {entity.LastName}");
+
+            if (request.Password != request.PasswordConfirmation)
+            {
+                throw new Exception("Password and password confirmation must be the same.");
+            }
+
+            entity.PasswordSalt = GenerateSalt();
+            entity.PasswordHash = GenerateHash(entity.PasswordSalt, request.Password);
+
+            base.BeforeInsert(request, entity);
+        }
+
+        public static string GenerateSalt()
+        {
+            var byteArray = RNGCryptoServiceProvider.GetBytes(16);
+
+            return Convert.ToBase64String(byteArray);
+        }
+        public static string GenerateHash(string? salt, string?
+            password)
+        {
+            byte[] src = Convert.FromBase64String(salt);
+            byte[] bytes = Encoding.Unicode.GetBytes(password);
+            byte[] dst = new byte[src.Length + bytes.Length];
+
+            System.Buffer.BlockCopy(src, 0, dst, 0, src.Length);
+            System.Buffer.BlockCopy(bytes, 0, dst, src.Length, bytes.Length);
+
+            HashAlgorithm algorithm = HashAlgorithm.Create("SHA1");
+            byte[] inArray = algorithm.ComputeHash(dst);
+            return Convert.ToBase64String(inArray);
+        }
+
+        public override void BeforeUpdate(UserUpdateRequest? request, Database.User? entity)
+        {
+            base.BeforeUpdate(request, entity);
+
+            if (request.Password != null)
+            {
+                if (request.Password != request.PasswordConfirmation)
+                {
+                    throw new Exception("Password and password confirmation must be the same.");
+                }
+                entity.PasswordSalt = GenerateSalt();
+                entity.PasswordHash = GenerateHash(entity.PasswordSalt, request.Password);
+            }
+
+        }
+
+        public Model.User Login(string username, string password)
+        {
+            var entity = Context.Users
+                .Include(x => x.UserRoles)
+                .ThenInclude(y => y.Role)
+                .FirstOrDefault(x => x.UserName == username);
+
+            if (entity == null)
+            {
+                return null;
+            }
+            var hash = GenerateHash(entity.PasswordSalt, password);
+
+            if (hash != entity.PasswordHash)
+            {
+                return null;
+            }
+
+            return Mapper.Map<Model.User>(entity);
+        }
+    }
+}
