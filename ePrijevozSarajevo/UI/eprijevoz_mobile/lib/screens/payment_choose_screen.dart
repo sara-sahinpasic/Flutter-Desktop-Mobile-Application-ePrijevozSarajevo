@@ -9,6 +9,8 @@ import 'package:eprijevoz_mobile/screens/ticket_screen.dart';
 import 'package:flutter/material.dart' hide Route;
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
+import 'package:quickalert/quickalert.dart';
 
 class PaymentChooseScreen extends StatefulWidget {
   final double? selectedTicketPrice;
@@ -32,6 +34,8 @@ class PaymentChooseScreen extends StatefulWidget {
   State<PaymentChooseScreen> createState() => _PaymentChooseScreenState();
 }
 
+enum PaymentMethods { paypal, stripe }
+
 class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
   late IssuedTicketProvider issuedTicketProvider;
 
@@ -41,6 +45,7 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
   Ticket? _choosenTicket;
   DateTime? _issuedDate;
   Status? _userTicketStatus;
+  PaymentMethods? _selectedPaymentMethod;
 
   @override
   void initState() {
@@ -215,8 +220,11 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
                     children: [
                       // PayPal Button
                       ElevatedButton(
-                        onPressed: () {
+                        onPressed: () async {
                           // Add PayPal payment logic here
+                          // TODO: prikazati toast "Odabrani nacin placanja PayPal"
+                          // TODO: ofarbati button u zuto
+                          _selectedPaymentMethod = PaymentMethods.paypal;
                         },
                         style: ElevatedButton.styleFrom(
                           padding: EdgeInsets.symmetric(
@@ -276,52 +284,29 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () async {
-                  if (_currentUser != null &&
-                      _choosenTicket != null &&
-                      _issuedDate != null &&
-                      _validFrom != null &&
-                      _validTo != null) {
-                    // Create an IssuedTicket object
-                    IssuedTicket newTicket = IssuedTicket(
-                      userId: _currentUser?.userId!,
-                      ticketId: _choosenTicket?.ticketId!,
-                      validFrom: _validFrom!,
-                      validTo: _validTo!,
-                      issuedDate: _issuedDate!,
-                    );
-
-                    // Serialize to JSON
-                    Map<String, dynamic> newRequest = newTicket.toJson();
-
-                    // Send the request to the server
-                    print("New request ticket: $newRequest");
-                    try {
-                      await issuedTicketProvider.insert(newRequest);
-
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => MasterScreen(initialIndex: 2)));
-                    } catch (error) {
-                      // Error feedback
-                      showDialog(
+                onPressed: () {
+                  if (_selectedPaymentMethod == PaymentMethods.paypal) {
+                    processPayment();
+                  } else {
+                    showDialog(
                         context: context,
                         builder: (context) => AlertDialog(
-                          title: Text("Error"),
-                          content: Text("Greška prilikom izdavanja karte."),
-                          actions: [
-                            TextButton(
-                              child: Text(
-                                "OK",
-                                style: TextStyle(color: Colors.red),
-                              ),
-                              onPressed: () {
-                                Navigator.pop(context, false); // Return failure
-                              },
-                            ),
-                          ],
-                        ),
-                      );
-                    }
+                              title: Text("Error"),
+                              content: Text(
+                                  "Molimo prvo odaberite validan nacin placanja!"),
+                              titleTextStyle: const TextStyle(
+                                  color: Colors.red,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 24),
+                              actions: [
+                                TextButton(
+                                    onPressed: () => (Navigator.pop(context)),
+                                    child: const Text(
+                                      "OK",
+                                      style: TextStyle(color: Colors.black),
+                                    ))
+                              ],
+                            ));
                   }
                 },
                 style: ElevatedButton.styleFrom(
@@ -346,5 +331,96 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
         height: 20,
       ),
     );
+  }
+
+  void processPayment() {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (BuildContext context) => PaypalCheckoutView(
+        sandboxMode: true,
+        clientId:
+            "AYTBslLKVvc0yWmL_p7xuYFsbHzUW0vwDNvY4mxFnsZb8YDe7BCM5TJul8X-y02HhmmMtp5pKKIgSFEf",
+        secretKey:
+            "EGQDCKtMnPdbK5EvQwwPDo280-2_Na_UMe5YT4MU1B6LXW45atXupuoP_Cr-G6iSyXGE07XeOr5Ua6dJ",
+        transactions: const [
+          {
+            "amount": {
+              "total": '100',
+              "currency": "USD",
+              "details": {
+                "subtotal": '100',
+                "shipping": '0',
+                "shipping_discount": 0
+              }
+            },
+            "description": "The payment transaction description.",
+            // "payment_options": {
+            //   "allowed_payment_method":
+            //       "INSTANT_FUNDING_SOURCE"
+            // },
+            "item_list": {
+              "items": [
+                {
+                  "name": "Apple",
+                  "quantity": 4,
+                  "price": '10',
+                  "currency": "USD"
+                },
+                {
+                  "name": "Pineapple",
+                  "quantity": 5,
+                  "price": '12',
+                  "currency": "USD"
+                }
+              ],
+            }
+          }
+        ],
+        note: "Contact us for any questions on your order.",
+        onSuccess: (Map params) async {
+          print("onSuccess: $params");
+
+          addIssuedTicketToDatabase();
+
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => MasterScreen(initialIndex: 2)));
+          QuickAlert.show(
+              context: context,
+              type: QuickAlertType.success,
+              text: "Karta uspjesno kupljena");
+        },
+        onError: (error) {
+          print("onError: $error");
+          Navigator.pop(context);
+        },
+        onCancel: () {
+          print('cancelled:');
+          Navigator.pop(context);
+        },
+      ),
+    ));
+  }
+
+  void addIssuedTicketToDatabase() {
+    if (_currentUser != null &&
+        _choosenTicket != null &&
+        _issuedDate != null &&
+        _validFrom != null &&
+        _validTo != null) {
+      // Creates an IssuedTicket object
+      IssuedTicket newTicket = IssuedTicket(
+        userId: _currentUser?.userId!,
+        ticketId: _choosenTicket?.ticketId!,
+        validFrom: _validFrom!,
+        validTo: _validTo!,
+        issuedDate: _issuedDate!,
+      );
+
+      // Serialize to JSON
+      Map<String, dynamic> newRequest = newTicket.toJson();
+
+      // Send the request to the server
+      print("New request ticket: $newRequest");
+      issuedTicketProvider.insert(newRequest);
+    }
   }
 }
