@@ -1,11 +1,11 @@
 import 'package:eprijevoz_mobile/layouts/master_screen.dart';
 import 'package:eprijevoz_mobile/models/issuedTicket.dart';
+import 'package:eprijevoz_mobile/models/search_result.dart';
 import 'package:eprijevoz_mobile/models/status.dart';
 import 'package:eprijevoz_mobile/models/ticket.dart';
 import 'package:eprijevoz_mobile/models/user.dart';
 import 'package:eprijevoz_mobile/providers/issuedTicket_provider.dart';
 import 'package:eprijevoz_mobile/providers/utils.dart';
-import 'package:eprijevoz_mobile/screens/ticket_screen.dart';
 import 'package:flutter/material.dart' hide Route;
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
@@ -20,14 +20,16 @@ class PaymentChooseScreen extends StatefulWidget {
   //
   final DateTime? validFrom;
   final DateTime? validTo;
+  int? countNumberOfTickets;
 
-  const PaymentChooseScreen(
+  PaymentChooseScreen(
       {this.selectedTicketPrice,
       this.user,
       this.ticket,
       this.status,
       this.validFrom,
       this.validTo,
+      this.countNumberOfTickets,
       super.key});
 
   @override
@@ -38,14 +40,17 @@ enum PaymentMethods { paypal, stripe }
 
 class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
   late IssuedTicketProvider issuedTicketProvider;
-
+  SearchResult<IssuedTicket>? issuedTicketResult;
   DateTime? _validFrom;
   DateTime? _validTo;
   User? _currentUser;
   Ticket? _choosenTicket;
   DateTime? _issuedDate;
-  Status? _userTicketStatus;
   PaymentMethods? _selectedPaymentMethod;
+  bool? _isPayPalSelected = false;
+  bool? _isStripeSelected = false;
+  int? _countNumberOfTickets;
+  double? _selectedTicketPrice;
 
   @override
   void initState() {
@@ -55,7 +60,20 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
     _currentUser = widget?.user; //?.userId;
     _choosenTicket = widget?.ticket; //?.ticketId;
     _issuedDate = DateTime.now();
+    _countNumberOfTickets = widget?.countNumberOfTickets;
+    _selectedTicketPrice = widget?.selectedTicketPrice;
+    print("Br karti: ${_countNumberOfTickets}");
+    print("Karta: ${_choosenTicket?.name}");
+    print("Cijena: ${_selectedTicketPrice}");
+
+    //initForm();
   }
+
+  // Future initForm() async {
+  //   issuedTicketResult = await issuedTicketProvider.get();
+
+  //   setState(() {});
+  // }
 
   String? ValidFromTo() {
     String? finalDate;
@@ -211,7 +229,6 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                // Card or summary content goes here, I will leave it blank for now
                 // Payment Buttons
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -221,26 +238,37 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
                       // PayPal Button
                       ElevatedButton(
                         onPressed: () async {
-                          // Add PayPal payment logic here
-                          // TODO: prikazati toast "Odabrani nacin placanja PayPal"
-                          // TODO: ofarbati button u zuto
-                          _selectedPaymentMethod = PaymentMethods.paypal;
+                          setState(() {
+                            _selectedPaymentMethod = PaymentMethods.paypal;
+                            _isPayPalSelected = true;
+                          });
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                                content:
+                                    Text("Odabrani način plaćanja: PayPal!")),
+                          );
                         },
                         style: ElevatedButton.styleFrom(
                           padding: EdgeInsets.symmetric(
                               vertical: 15.0, horizontal: 30.0),
-                          backgroundColor: Colors.white,
+                          backgroundColor:
+                              _isPayPalSelected! ? Colors.yellow : Colors.white,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0),
                           ),
-                          side: BorderSide(color: Colors.grey.shade300),
+                          side: BorderSide(
+                            color: _isPayPalSelected!
+                                ? Colors.orange
+                                : Colors.grey
+                                    .shade300, // Change border color when selected
+                          ),
                           elevation: 5,
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             SvgPicture.network(
-                              'https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg', // PayPal Logo SVG
+                              'https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg',
                               height: 30,
                             ),
                             SizedBox(width: 10),
@@ -250,13 +278,26 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
                       SizedBox(height: 20),
                       // Stripe Button
                       ElevatedButton(
-                        onPressed: () {
-                          // Add Stripe payment logic here
-                        },
+                        onPressed: _isStripeSelected!
+                            ? null
+                            : () async {
+                                setState(() {
+                                  _selectedPaymentMethod =
+                                      PaymentMethods.stripe;
+                                  _isStripeSelected = true;
+                                });
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                      content: Text(
+                                          "Odabrani način plaćanja: Stripe, još uvijek nije podržan!")),
+                                );
+                              },
                         style: ElevatedButton.styleFrom(
                           padding: EdgeInsets.symmetric(
                               vertical: 15.0, horizontal: 30.0),
-                          backgroundColor: Colors.white,
+                          backgroundColor: _isStripeSelected!
+                              ? Colors.grey.shade300
+                              : Colors.white,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0),
                           ),
@@ -322,7 +363,7 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
                 ),
               ),
             ),
-            const SizedBox(height: 25),
+            const SizedBox(height: 50),
           ],
         ),
       ),
@@ -341,52 +382,61 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
             "AYTBslLKVvc0yWmL_p7xuYFsbHzUW0vwDNvY4mxFnsZb8YDe7BCM5TJul8X-y02HhmmMtp5pKKIgSFEf",
         secretKey:
             "EGQDCKtMnPdbK5EvQwwPDo280-2_Na_UMe5YT4MU1B6LXW45atXupuoP_Cr-G6iSyXGE07XeOr5Ua6dJ",
-        transactions: const [
+        transactions: /*const*/ [
           {
             "amount": {
-              "total": '100',
-              "currency": "USD",
+              "total": _selectedTicketPrice?.toStringAsFixed(2),
+              "currency": "EUR",
               "details": {
-                "subtotal": '100',
+                "subtotal": _selectedTicketPrice?.toStringAsFixed(2),
                 "shipping": '0',
                 "shipping_discount": 0
               }
             },
-            "description": "The payment transaction description.",
-            // "payment_options": {
-            //   "allowed_payment_method":
-            //       "INSTANT_FUNDING_SOURCE"
-            // },
+            "description": "Kupovina karte za prijevoz.",
             "item_list": {
               "items": [
                 {
-                  "name": "Apple",
-                  "quantity": 4,
-                  "price": '10',
-                  "currency": "USD"
+                  "name": _choosenTicket?.name ?? "",
+                  "quantity": _countNumberOfTickets?.toString() ?? '1',
+                  "price": (_selectedTicketPrice! / _countNumberOfTickets!)
+                      .toStringAsFixed(2),
+                  "currency": "EUR",
                 },
-                {
-                  "name": "Pineapple",
-                  "quantity": 5,
-                  "price": '12',
-                  "currency": "USD"
-                }
               ],
             }
           }
         ],
-        note: "Contact us for any questions on your order.",
+        note:
+            "Za bilo kakva pitanja vezana uz Vašu kupovinu, kontaktirajte nas.",
         onSuccess: (Map params) async {
           print("onSuccess: $params");
 
           addIssuedTicketToDatabase();
 
           Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => MasterScreen(initialIndex: 2)));
-          QuickAlert.show(
+              builder: (context) => MasterScreen(
+                    initialIndex: 2,
+                  )));
+
+          showDialog(
               context: context,
-              type: QuickAlertType.success,
-              text: "Karta uspjesno kupljena");
+              builder: (context) => AlertDialog(
+                    title: Text("Success"),
+                    content: Text("Karta je uspješno kupljena!"),
+                    titleTextStyle: const TextStyle(
+                        color: Colors.green,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 24),
+                    actions: [
+                      TextButton(
+                          onPressed: () => (Navigator.pop(context)),
+                          child: const Text(
+                            "OK",
+                            style: TextStyle(color: Colors.black),
+                          ))
+                    ],
+                  ));
         },
         onError: (error) {
           print("onError: $error");

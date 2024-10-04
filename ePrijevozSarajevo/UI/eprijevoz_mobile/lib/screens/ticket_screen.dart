@@ -109,7 +109,6 @@ class _TicketScreenState extends State<TicketScreen> {
           return Text("Karta nije pronađena.");
         }
 
-        //PRIKAZI MJESEČNU KARTU KOJA JE KUPLJENA SA STATUSOM ZA POVLASTICU
         Color cardColor = DateTime.now().isAfter(issuedTicket.validTo!)
             ? Colors.red.shade300
             : Colors.green.shade300;

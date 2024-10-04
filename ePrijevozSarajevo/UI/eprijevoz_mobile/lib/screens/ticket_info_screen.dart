@@ -233,6 +233,7 @@ class _TicketInfoScreenState extends State<TicketInfoScreen> {
                             status: _userTicketStatus,
                             selectedTicketPrice: _finalTicketPrice,
                             user: _currentUser,
+                            countNumberOfTickets: _countNumberOfTickets,
                             //route: _currentRoute,
                           )));
                 },
