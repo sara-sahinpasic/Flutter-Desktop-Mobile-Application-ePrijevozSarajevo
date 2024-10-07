@@ -1,5 +1,6 @@
 import 'package:eprijevoz_mobile/layouts/master_screen.dart';
 import 'package:eprijevoz_mobile/models/issuedTicket.dart';
+import 'package:eprijevoz_mobile/models/route.dart';
 import 'package:eprijevoz_mobile/models/search_result.dart';
 import 'package:eprijevoz_mobile/models/status.dart';
 import 'package:eprijevoz_mobile/models/ticket.dart';
@@ -10,26 +11,27 @@ import 'package:flutter/material.dart' hide Route;
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
-import 'package:quickalert/quickalert.dart';
+//import 'package:quickalert/quickalert.dart';
 
 class PaymentChooseScreen extends StatefulWidget {
   final double? selectedTicketPrice;
   final User? user;
   final Ticket? ticket;
   final Status? status;
-  //
   final DateTime? validFrom;
   final DateTime? validTo;
-  int? countNumberOfTickets;
+  final int? amount;
+  final Route? route;
 
-  PaymentChooseScreen(
+  const PaymentChooseScreen(
       {this.selectedTicketPrice,
       this.user,
       this.ticket,
       this.status,
       this.validFrom,
       this.validTo,
-      this.countNumberOfTickets,
+      this.amount,
+      this.route,
       super.key});
 
   @override
@@ -49,8 +51,9 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
   PaymentMethods? _selectedPaymentMethod;
   bool? _isPayPalSelected = false;
   bool? _isStripeSelected = false;
-  int? _countNumberOfTickets;
   double? _selectedTicketPrice;
+  int? _amount;
+  Route? _currentRoute;
 
   @override
   void initState() {
@@ -60,9 +63,14 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
     _currentUser = widget?.user; //?.userId;
     _choosenTicket = widget?.ticket; //?.ticketId;
     _issuedDate = DateTime.now();
-    _countNumberOfTickets = widget?.countNumberOfTickets;
+    _amount = widget?.amount;
     _selectedTicketPrice = widget?.selectedTicketPrice;
-    print("Br karti: ${_countNumberOfTickets}");
+    //_amount = widget?.amount;
+    _currentRoute = widget?.route;
+
+    print("4. Payment: ${_currentRoute?.toJson()} ++ Amount: ${_amount}");
+
+    print("Br karti: ${_amount}");
     print("Karta: ${_choosenTicket?.name}");
     print("Cijena: ${_selectedTicketPrice}");
 
@@ -162,7 +170,7 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
                   children: [
                     (widget.ticket?.name != null)
                         ? Text(
-                            "${widget.ticket?.name} karta",
+                            "${widget.ticket?.name} karta - ${_amount}X",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 21),
                           )
@@ -397,10 +405,10 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
             "item_list": {
               "items": [
                 {
-                  "name": _choosenTicket?.name ?? "",
-                  "quantity": _countNumberOfTickets?.toString() ?? '1',
-                  "price": (_selectedTicketPrice! / _countNumberOfTickets!)
-                      .toStringAsFixed(2),
+                  "name": "${_choosenTicket?.name} - ${_amount}X", //?? "",
+                  "quantity": _amount?.toString() ?? '1',
+                  "price":
+                      (_selectedTicketPrice! / _amount!).toStringAsFixed(2),
                   "currency": "EUR",
                 },
               ],
@@ -416,9 +424,10 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
 
           Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => MasterScreen(
+                    amount: _amount,
                     initialIndex: 2,
                   )));
-
+          setState(() {});
           showDialog(
               context: context,
               builder: (context) => AlertDialog(
@@ -458,12 +467,13 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
         _validTo != null) {
       // Creates an IssuedTicket object
       IssuedTicket newTicket = IssuedTicket(
-        userId: _currentUser?.userId!,
-        ticketId: _choosenTicket?.ticketId!,
-        validFrom: _validFrom!,
-        validTo: _validTo!,
-        issuedDate: _issuedDate!,
-      );
+          userId: _currentUser?.userId!,
+          ticketId: _choosenTicket?.ticketId!,
+          validFrom: _validFrom!,
+          validTo: _validTo!,
+          issuedDate: _issuedDate!,
+          amount: _amount!,
+          routeId: _currentRoute?.routeId!);
 
       // Serialize to JSON
       Map<String, dynamic> newRequest = newTicket.toJson();

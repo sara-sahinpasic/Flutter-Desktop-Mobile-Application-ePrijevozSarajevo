@@ -10,8 +10,9 @@
         public DateTime ValidFrom { get; set; }
         public DateTime ValidTo { get; set; }
         public DateTime IssuedDate { get; set; } = DateTime.Now;
-        //public Route Route { get; set; } = null!;
-        //public int RouteId { get; set; }
+        public int? Amount { get; set; }
+        public Route? Route { get; set; }
+        public int? RouteId { get; set; }
 
     }
 }

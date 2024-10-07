@@ -12,7 +12,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class TicketScreen extends StatefulWidget {
-  const TicketScreen({super.key});
+  //final int? amount;
+  const TicketScreen(
+      {
+      //this.amount,
+      super.key});
 
   @override
   State<TicketScreen> createState() => _TicketScreenState();
@@ -26,6 +30,7 @@ class _TicketScreenState extends State<TicketScreen> {
   SearchResult<IssuedTicket>? issuedTicketResult;
   SearchResult<Ticket>? ticketResult;
   User? _user;
+  int? _amount;
 
   @override
   void initState() {
@@ -33,6 +38,7 @@ class _TicketScreenState extends State<TicketScreen> {
     userProvider = context.read<UserProvider>();
     issuedTicketProvider = context.read<IssuedTicketProvider>();
     ticketProvider = context.read<TicketProvider>();
+
     initForm();
   }
 
@@ -44,7 +50,13 @@ class _TicketScreenState extends State<TicketScreen> {
     var user = userResult?.result
         .firstWhere((user) => user.userName == AuthProvider.username);
     _user = user;
-    print("treutni korisnik: ${_user?.toJson()}");
+
+    var issuedTicket = issuedTicketResult?.result
+        .firstWhere((ticketUser) => ticketUser.userId == _user?.userId);
+    if (issuedTicket != null) {
+      _amount = issuedTicket.amount;
+    }
+
     setState(() {});
   }
 
@@ -61,14 +73,12 @@ class _TicketScreenState extends State<TicketScreen> {
         );
 
         if (ticket != null) {
-          print("Ime karte: ${ticket.name}");
           _ticketsName?.add(ticket.name ?? "");
         }
       }
     } else {
       print("Korisnik nema izdatih karti.");
     }
-    print("Rezultat: ${_ticketsName}");
     return _ticketsName;
   }
 
@@ -133,7 +143,7 @@ class _TicketScreenState extends State<TicketScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "${ticket.name} karta" ?? "",
+                "${ticket.name} karta - ${issuedTicket.amount}X" ?? "",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 5),

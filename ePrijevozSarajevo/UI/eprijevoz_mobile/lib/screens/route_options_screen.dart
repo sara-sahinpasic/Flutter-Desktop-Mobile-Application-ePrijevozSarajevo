@@ -103,6 +103,8 @@ class _RouteOptionsScreenState extends State<RouteOptionsScreen> {
                           .name ??
                       "";
 
+                  print("2. Route options: ${routeFromList.toJson()}");
+
                   return ListTile(
                     title: Container(
                         height: 40,

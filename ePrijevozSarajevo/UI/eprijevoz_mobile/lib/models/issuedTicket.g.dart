@@ -19,6 +19,8 @@ IssuedTicket _$IssuedTicketFromJson(Map<String, dynamic> json) => IssuedTicket(
       issuedDate: json['issuedDate'] == null
           ? null
           : DateTime.parse(json['issuedDate'] as String),
+      amount: (json['amount'] as num?)?.toInt(),
+      routeId: (json['routeId'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$IssuedTicketToJson(IssuedTicket instance) =>
@@ -29,4 +31,6 @@ Map<String, dynamic> _$IssuedTicketToJson(IssuedTicket instance) =>
       'validFrom': instance.validFrom?.toIso8601String(),
       'validTo': instance.validTo?.toIso8601String(),
       'issuedDate': instance.issuedDate?.toIso8601String(),
+      'amount': instance.amount,
+      'routeId': instance.routeId,
     };

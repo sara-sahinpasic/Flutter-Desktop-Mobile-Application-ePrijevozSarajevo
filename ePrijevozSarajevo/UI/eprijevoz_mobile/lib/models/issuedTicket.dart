@@ -9,15 +9,18 @@ class IssuedTicket {
   DateTime? validFrom;
   DateTime? validTo;
   DateTime? issuedDate;
+  int? amount;
+  int? routeId;
 
-  IssuedTicket({
-    this.issuedTicketId,
-    this.userId,
-    this.ticketId,
-    this.validFrom,
-    this.validTo,
-    this.issuedDate,
-  });
+  IssuedTicket(
+      {this.issuedTicketId,
+      this.userId,
+      this.ticketId,
+      this.validFrom,
+      this.validTo,
+      this.issuedDate,
+      this.amount,
+      this.routeId});
 
   factory IssuedTicket.fromJson(Map<String, dynamic> json) =>
       _$IssuedTicketFromJson(json);

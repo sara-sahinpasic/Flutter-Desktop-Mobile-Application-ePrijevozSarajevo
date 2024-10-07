@@ -5,6 +5,7 @@ import 'package:eprijevoz_mobile/models/status.dart';
 import 'package:eprijevoz_mobile/models/ticket.dart';
 import 'package:eprijevoz_mobile/models/user.dart';
 import 'package:eprijevoz_mobile/providers/auth_provider.dart';
+import 'package:eprijevoz_mobile/providers/route_provider.dart';
 import 'package:eprijevoz_mobile/providers/station_provider.dart';
 import 'package:eprijevoz_mobile/providers/status_provider.dart';
 import 'package:eprijevoz_mobile/providers/ticket_provider.dart';
@@ -16,7 +17,7 @@ import 'package:provider/provider.dart';
 
 class TicketChooseScreen extends StatefulWidget {
   final Route route; // Accept only ONE route
-  TicketChooseScreen({required this.route, super.key});
+  const TicketChooseScreen({required this.route, super.key});
   @override
   State<TicketChooseScreen> createState() => _TicketChooseScreenState();
 }
@@ -26,17 +27,20 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
   late StatusProvider statusProvider;
   late TicketProvider ticketProvider;
   late UserProvider userProvider;
+  late RouteProvider routeProvider;
 
   SearchResult<Station>? stationResult;
   SearchResult<Status>? statusResult;
   SearchResult<Ticket>? ticketResult;
   SearchResult<User>? userResult;
+  SearchResult<Route>? routeResult;
 
   double? _selectedTicketPrice;
   int? _userStatusId;
   var _loggedUser;
   Ticket? _basicTicket;
   Status? _extraStatusTicket;
+  Route? _currentRoute;
 
   @override
   void initState() {
@@ -44,6 +48,7 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
     statusProvider = context.read<StatusProvider>();
     ticketProvider = context.read<TicketProvider>();
     userProvider = context.read<UserProvider>();
+    routeProvider = context.read<RouteProvider>();
     initForm();
   }
 
@@ -57,11 +62,15 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
     statusResult = await statusProvider.get();
     ticketResult = await ticketProvider.get();
     userResult = await userProvider.get();
+    routeResult = await routeProvider.get();
 
     _loggedUser = userResult?.result
         .firstWhere((user) => user.userName == AuthProvider.username);
 
-    print("user: ${_loggedUser?.toJson()}");
+    _currentRoute = widget?.route;
+
+    //print("user: ${_loggedUser?.toJson()}");
+    print("3. Ticket choose: ${_currentRoute?.toJson()}");
 
     setState(() {});
   }
@@ -272,6 +281,7 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
                             user: _loggedUser,
                             ticket: _basicTicket,
                             status: _extraStatusTicket,
+                            route: _currentRoute,
                           ),
                         ),
                       )
