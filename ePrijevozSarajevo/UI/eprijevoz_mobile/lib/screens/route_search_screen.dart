@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:eprijevoz_mobile/models/route.dart';
 import 'package:eprijevoz_mobile/models/search_result.dart';
 import 'package:eprijevoz_mobile/models/station.dart';
@@ -37,6 +39,8 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
   DateTime selectedDepartureDate = DateTime.now();
   TimeOfDay selectedTime = TimeOfDay.now();
 
+  Route? _currentRoute;
+
   @override
   void initState() {
     stationProvider = context.read<StationProvider>();
@@ -48,6 +52,7 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
       'startStationId': widget?.route?.startStationId?.toString(),
       'endStationId': widget?.route?.endStationId?.toString(),
       'stationId': widget?.station?.stationId?.toString(),
+      'routeId': widget?.route?.routeId.toString()
     };
 
     initForm();
@@ -277,7 +282,15 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
                       onPressed: () async {
                         print("StartStationIdGTE: ${_selectedStartStationId}");
                         print("EndStationIdGTE: ${_selectedEndStationId}");
-                        print("DateGTE: ${selectedDepartureDate}");
+                        print("DateGTE: ${selectedDepartureDate}"); //
+                        //print("1. Route search: ${routeResult?.result}");
+                        if (routeResult?.result != null) {
+                          String prettyJson = const JsonEncoder.withIndent('  ')
+                              .convert(routeResult!.result);
+                          print("1. Route search:\n$prettyJson");
+                        } else {
+                          print('result is null');
+                        }
 
                         // Filter parameters for the route search
                         var filter = {

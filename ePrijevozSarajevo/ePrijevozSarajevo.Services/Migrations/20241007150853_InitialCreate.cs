@@ -183,33 +183,6 @@ namespace ePrijevozSarajevo.Services.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "IssuedTickets",
-                columns: table => new
-                {
-                    IssuedTicketId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<int>(type: "int", nullable: true),
-                    TicketId = table.Column<int>(type: "int", nullable: true),
-                    ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ValidTo = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IssuedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_IssuedTickets", x => x.IssuedTicketId);
-                    table.ForeignKey(
-                        name: "FK_IssuedTickets_Tickets_TicketId",
-                        column: x => x.TicketId,
-                        principalTable: "Tickets",
-                        principalColumn: "TicketId");
-                    table.ForeignKey(
-                        name: "FK_IssuedTickets_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "UserId");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Requests",
                 columns: table => new
                 {
@@ -302,6 +275,40 @@ namespace ePrijevozSarajevo.Services.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "IssuedTickets",
+                columns: table => new
+                {
+                    IssuedTicketId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(type: "int", nullable: true),
+                    TicketId = table.Column<int>(type: "int", nullable: true),
+                    ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ValidTo = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IssuedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Amount = table.Column<int>(type: "int", nullable: true),
+                    RouteId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_IssuedTickets", x => x.IssuedTicketId);
+                    table.ForeignKey(
+                        name: "FK_IssuedTickets_Routes_RouteId",
+                        column: x => x.RouteId,
+                        principalTable: "Routes",
+                        principalColumn: "RouteId");
+                    table.ForeignKey(
+                        name: "FK_IssuedTickets_Tickets_TicketId",
+                        column: x => x.TicketId,
+                        principalTable: "Tickets",
+                        principalColumn: "TicketId");
+                    table.ForeignKey(
+                        name: "FK_IssuedTickets_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId");
+                });
+
             migrationBuilder.InsertData(
                 table: "Holidays",
                 columns: new[] { "HolidayId", "Date", "Name" },
@@ -392,12 +399,12 @@ namespace ePrijevozSarajevo.Services.Migrations
                 columns: new[] { "UserId", "Active", "Address", "DateOfBirth", "Email", "FirstName", "LastName", "ModifiedDate", "PasswordHash", "PasswordSalt", "PhoneNumber", "ProfileImagePath", "RegistrationDate", "StatusExpirationDate", "UserName", "UserStatusId" },
                 values: new object[,]
                 {
-                    { 1, true, "Adresa 11", new DateTime(1998, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "sara.sahinpasic@edu.fit.ba", "Sara", "Šahinpašić", new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3946), "lFKl5mikGguSug4F6VEyhSRh4IY=", "dN07kQseALJvOsmoRaFAEw==", "061222333", "", new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3945), new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "desktop", 4 },
-                    { 2, true, "Adresa 12", new DateTime(1988, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), "sara.sahinpasic@hotmail.com", "Senada", "Šahinpašić", new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3956), "Ad0UbDw+DNVk7X+Z+xiPvh7Wvro=", "MMIe/Jd1w+hqC+pIHb4w3g==", "061222444", "", new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3955), new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "mobile", 4 },
-                    { 3, true, "Adresa 14", new DateTime(1975, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), "neki@mail.com", "Test", "Testni", new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3970), "jodolSf6OVfusIGhjiYY5g5CQ6I=", "oq3CuARH3bx4LcAPWgt+8Q==", "061222555", "", new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3969), new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "mobile1", 1 },
-                    { 4, true, "Adresa 15", new DateTime(1965, 7, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), "neko@mail.com", "Testni", "Test", new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3976), "IA6/4yK78qaqtnc9m+JWDa7YnHw=", "CP/XH/uhKusgjKIbWTVpgQ==", "061222666", "", new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3975), new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "mobile2", 1 },
-                    { 5, true, "Adresa 16", new DateTime(1982, 4, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), "proba@mail.com", "Proba", "Probni", new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3981), "w7nZSBqcMtckZJ78OEgqU0tiSHw=", "kg+ao6X4/5AnZMx7tIlkRw==", "061222777", "", new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3980), new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "mobile3", 1 },
-                    { 6, true, "Adresa 17", new DateTime(1996, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), "probe@mail.com", "Probe", "Probno", new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3987), "T6wLXfJvnQvYcG4k1EsGHDhPsj0=", "wSkHES70Zg8F1o/b8I2kNA==", "061222888", "", new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3986), new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "mobile3", 1 }
+                    { 1, true, "Adresa 11", new DateTime(1998, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "sara.sahinpasic@edu.fit.ba", "Sara", "Šahinpašić", new DateTime(2024, 10, 7, 17, 8, 53, 20, DateTimeKind.Local).AddTicks(5920), "PGG3Y/IzCMnH9r/ud9RYmmH/W+Y=", "Gw0DQAHhta1GP+zW3YdtDg==", "061222333", "", new DateTime(2024, 10, 7, 17, 8, 53, 20, DateTimeKind.Local).AddTicks(5919), new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "desktop", 4 },
+                    { 2, true, "Adresa 12", new DateTime(1988, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), "sara.sahinpasic@hotmail.com", "Senada", "Šahinpašić", new DateTime(2024, 10, 7, 17, 8, 53, 20, DateTimeKind.Local).AddTicks(5931), "lDvdXeXkMgPnILQjGKc7fId9/p8=", "djGXhcqyLvakh2RmgpKoeg==", "061222444", "", new DateTime(2024, 10, 7, 17, 8, 53, 20, DateTimeKind.Local).AddTicks(5930), new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "mobile", 4 },
+                    { 3, true, "Adresa 14", new DateTime(1975, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), "neki@mail.com", "Test", "Testni", new DateTime(2024, 10, 7, 17, 8, 53, 20, DateTimeKind.Local).AddTicks(5946), "THZl+HmsBBFVniYyBW++1YNa23Y=", "2/ExG7UUC2Giko9F1/1+sQ==", "061222555", "", new DateTime(2024, 10, 7, 17, 8, 53, 20, DateTimeKind.Local).AddTicks(5945), new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "mobile1", 1 },
+                    { 4, true, "Adresa 15", new DateTime(1965, 7, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), "neko@mail.com", "Testni", "Test", new DateTime(2024, 10, 7, 17, 8, 53, 20, DateTimeKind.Local).AddTicks(5952), "5FVrdBtC0zzapkiKgf2WAbeteXg=", "7YkVukBKtA7ww/rE37zI+g==", "061222666", "", new DateTime(2024, 10, 7, 17, 8, 53, 20, DateTimeKind.Local).AddTicks(5951), new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "mobile2", 1 },
+                    { 5, true, "Adresa 16", new DateTime(1982, 4, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), "proba@mail.com", "Proba", "Probni", new DateTime(2024, 10, 7, 17, 8, 53, 20, DateTimeKind.Local).AddTicks(5961), "WAmE3twG2cFF7Y0P2ZLFVrsxUx4=", "16lIpqFUusODxk7eBwYgyQ==", "061222777", "", new DateTime(2024, 10, 7, 17, 8, 53, 20, DateTimeKind.Local).AddTicks(5960), new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "mobile3", 1 },
+                    { 6, true, "Adresa 17", new DateTime(1996, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), "probe@mail.com", "Probe", "Probno", new DateTime(2024, 10, 7, 17, 8, 53, 20, DateTimeKind.Local).AddTicks(5967), "tqOP4U+BgXeX9zewUwEZF7YjUmw=", "ZHw4jHL2cjo/kjb9Cswbng==", "061222888", "", new DateTime(2024, 10, 7, 17, 8, 53, 20, DateTimeKind.Local).AddTicks(5966), new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "mobile3", 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -418,11 +425,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                 columns: new[] { "RequestId", "Active", "Approved", "DateCreated", "DocumentLink", "RejectionReason", "UserId", "UserStatusId" },
                 values: new object[,]
                 {
-                    { 1, true, false, new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(4288), "", "", 2, 3 },
-                    { 2, true, false, new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(4292), "", "", 3, 1 },
-                    { 3, true, false, new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(4294), "", "", 4, 2 },
-                    { 4, true, false, new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(4296), "", "", 5, 4 },
-                    { 5, true, false, new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(4299), "", "", 6, 2 }
+                    { 1, true, false, new DateTime(2024, 10, 7, 17, 8, 53, 20, DateTimeKind.Local).AddTicks(6314), "", "", 2, 3 },
+                    { 2, true, false, new DateTime(2024, 10, 7, 17, 8, 53, 20, DateTimeKind.Local).AddTicks(6318), "", "", 3, 1 },
+                    { 3, true, false, new DateTime(2024, 10, 7, 17, 8, 53, 20, DateTimeKind.Local).AddTicks(6320), "", "", 4, 2 },
+                    { 4, true, false, new DateTime(2024, 10, 7, 17, 8, 53, 20, DateTimeKind.Local).AddTicks(6322), "", "", 5, 4 },
+                    { 5, true, false, new DateTime(2024, 10, 7, 17, 8, 53, 20, DateTimeKind.Local).AddTicks(6325), "", "", 6, 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -430,21 +437,21 @@ namespace ePrijevozSarajevo.Services.Migrations
                 columns: new[] { "RouteId", "Active", "ActiveOnHolidays", "ActiveOnWeekends", "Arrival", "Departure", "EndStationId", "StartStationId", "VehicleId" },
                 values: new object[,]
                 {
-                    { 1, true, true, true, new DateTime(2024, 11, 13, 21, 47, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 11, 13, 21, 10, 0, 0, DateTimeKind.Unspecified), 6, 1, 2 },
-                    { 2, true, true, true, new DateTime(2024, 7, 17, 9, 7, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 7, 17, 8, 40, 0, 0, DateTimeKind.Unspecified), 8, 1, 4 },
-                    { 3, true, true, true, new DateTime(2024, 5, 2, 23, 59, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 5, 2, 23, 41, 0, 0, DateTimeKind.Unspecified), 6, 1, 6 },
-                    { 4, true, true, true, new DateTime(2024, 2, 8, 7, 39, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 2, 8, 7, 20, 0, 0, DateTimeKind.Unspecified), 7, 2, 4 },
-                    { 5, true, true, true, new DateTime(2024, 1, 8, 6, 17, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 1, 8, 5, 31, 0, 0, DateTimeKind.Unspecified), 3, 7, 2 },
-                    { 6, true, true, true, new DateTime(2024, 11, 3, 0, 13, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 11, 2, 23, 31, 0, 0, DateTimeKind.Unspecified), 1, 8, 6 },
-                    { 7, true, true, true, new DateTime(2024, 12, 19, 10, 55, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 12, 19, 10, 13, 0, 0, DateTimeKind.Unspecified), 15, 9, 1 },
-                    { 8, true, true, true, new DateTime(2024, 8, 23, 15, 32, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 8, 23, 15, 14, 0, 0, DateTimeKind.Unspecified), 8, 11, 3 },
-                    { 9, true, true, true, new DateTime(2024, 3, 31, 23, 11, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 3, 31, 22, 55, 0, 0, DateTimeKind.Unspecified), 14, 10, 5 },
-                    { 10, true, true, true, new DateTime(2024, 3, 28, 18, 33, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 3, 28, 18, 18, 0, 0, DateTimeKind.Unspecified), 7, 13, 1 },
-                    { 11, true, true, true, new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3872), new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3871), 15, 7, 1 },
-                    { 12, true, true, true, new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3874), new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3874), 6, 8, 2 },
-                    { 13, true, true, true, new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3876), new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3875), 4, 7, 5 },
-                    { 14, true, true, true, new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3877), new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3877), 13, 8, 3 },
-                    { 15, true, true, true, new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3879), new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(3878), 2, 7, 4 }
+                    { 1, true, true, true, new DateTime(2024, 12, 14, 20, 24, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 12, 14, 20, 10, 0, 0, DateTimeKind.Unspecified), 6, 1, 2 },
+                    { 2, true, true, true, new DateTime(2024, 6, 6, 21, 23, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 6, 6, 21, 16, 0, 0, DateTimeKind.Unspecified), 8, 1, 4 },
+                    { 3, true, true, true, new DateTime(2024, 1, 9, 12, 19, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 1, 9, 11, 31, 0, 0, DateTimeKind.Unspecified), 6, 1, 6 },
+                    { 4, true, true, true, new DateTime(2024, 9, 8, 11, 19, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 9, 8, 11, 4, 0, 0, DateTimeKind.Unspecified), 7, 2, 4 },
+                    { 5, true, true, true, new DateTime(2024, 2, 27, 20, 46, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 2, 27, 19, 59, 0, 0, DateTimeKind.Unspecified), 3, 7, 2 },
+                    { 6, true, true, true, new DateTime(2024, 6, 8, 20, 52, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 6, 8, 20, 18, 0, 0, DateTimeKind.Unspecified), 1, 8, 6 },
+                    { 7, true, true, true, new DateTime(2024, 1, 5, 22, 37, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 1, 5, 22, 15, 0, 0, DateTimeKind.Unspecified), 15, 9, 1 },
+                    { 8, true, true, true, new DateTime(2024, 1, 3, 18, 30, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 1, 3, 17, 57, 0, 0, DateTimeKind.Unspecified), 8, 11, 3 },
+                    { 9, true, true, true, new DateTime(2024, 8, 31, 17, 1, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 8, 31, 16, 40, 0, 0, DateTimeKind.Unspecified), 14, 10, 5 },
+                    { 10, true, true, true, new DateTime(2024, 5, 31, 15, 30, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 5, 31, 15, 15, 0, 0, DateTimeKind.Unspecified), 7, 13, 1 },
+                    { 11, true, true, true, new DateTime(2024, 10, 7, 17, 8, 53, 20, DateTimeKind.Local).AddTicks(5859), new DateTime(2024, 10, 7, 17, 8, 53, 20, DateTimeKind.Local).AddTicks(5858), 15, 7, 1 },
+                    { 12, true, true, true, new DateTime(2024, 10, 7, 17, 8, 53, 20, DateTimeKind.Local).AddTicks(5860), new DateTime(2024, 10, 7, 17, 8, 53, 20, DateTimeKind.Local).AddTicks(5860), 6, 8, 2 },
+                    { 13, true, true, true, new DateTime(2024, 10, 7, 17, 8, 53, 20, DateTimeKind.Local).AddTicks(5862), new DateTime(2024, 10, 7, 17, 8, 53, 20, DateTimeKind.Local).AddTicks(5861), 4, 7, 5 },
+                    { 14, true, true, true, new DateTime(2024, 10, 7, 17, 8, 53, 20, DateTimeKind.Local).AddTicks(5864), new DateTime(2024, 10, 7, 17, 8, 53, 20, DateTimeKind.Local).AddTicks(5863), 13, 8, 3 },
+                    { 15, true, true, true, new DateTime(2024, 10, 7, 17, 8, 53, 20, DateTimeKind.Local).AddTicks(5865), new DateTime(2024, 10, 7, 17, 8, 53, 20, DateTimeKind.Local).AddTicks(5864), 2, 7, 4 }
                 });
 
             migrationBuilder.InsertData(
@@ -452,9 +459,14 @@ namespace ePrijevozSarajevo.Services.Migrations
                 columns: new[] { "UserRoleId", "ModificationDate", "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(4439), 1, 1 },
-                    { 2, new DateTime(2024, 10, 2, 17, 10, 13, 664, DateTimeKind.Local).AddTicks(4441), 2, 2 }
+                    { 1, new DateTime(2024, 10, 7, 17, 8, 53, 20, DateTimeKind.Local).AddTicks(6499), 1, 1 },
+                    { 2, new DateTime(2024, 10, 7, 17, 8, 53, 20, DateTimeKind.Local).AddTicks(6502), 2, 2 }
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_IssuedTickets_RouteId",
+                table: "IssuedTickets",
+                column: "RouteId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_IssuedTickets_TicketId",
@@ -545,19 +557,13 @@ namespace ePrijevozSarajevo.Services.Migrations
                 name: "Requests");
 
             migrationBuilder.DropTable(
-                name: "Routes");
-
-            migrationBuilder.DropTable(
                 name: "UserRoles");
 
             migrationBuilder.DropTable(
+                name: "Routes");
+
+            migrationBuilder.DropTable(
                 name: "Tickets");
-
-            migrationBuilder.DropTable(
-                name: "Stations");
-
-            migrationBuilder.DropTable(
-                name: "Vehicles");
 
             migrationBuilder.DropTable(
                 name: "Roles");
@@ -566,13 +572,19 @@ namespace ePrijevozSarajevo.Services.Migrations
                 name: "Users");
 
             migrationBuilder.DropTable(
+                name: "Stations");
+
+            migrationBuilder.DropTable(
+                name: "Vehicles");
+
+            migrationBuilder.DropTable(
+                name: "Statuses");
+
+            migrationBuilder.DropTable(
                 name: "Manufacturers");
 
             migrationBuilder.DropTable(
                 name: "Types");
-
-            migrationBuilder.DropTable(
-                name: "Statuses");
         }
     }
 }

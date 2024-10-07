@@ -3,6 +3,7 @@ import 'package:eprijevoz_mobile/models/search_result.dart';
 import 'package:eprijevoz_mobile/models/status.dart';
 import 'package:eprijevoz_mobile/models/ticket.dart';
 import 'package:eprijevoz_mobile/models/user.dart';
+import 'package:eprijevoz_mobile/providers/route_provider.dart';
 import 'package:eprijevoz_mobile/providers/user_provider.dart';
 import 'package:eprijevoz_mobile/providers/utils.dart';
 import 'package:eprijevoz_mobile/screens/payment_choose_screen.dart';
@@ -33,6 +34,8 @@ class TicketInfoScreen extends StatefulWidget {
 class _TicketInfoScreenState extends State<TicketInfoScreen> {
   late UserProvider userProvider;
   SearchResult<User>? userResult;
+  late RouteProvider routeProvider;
+  SearchResult<Route>? routeResult;
 
   final TextEditingController _ftsFirstNameController = TextEditingController();
   final TextEditingController _ftsLastNameController = TextEditingController();
@@ -52,6 +55,7 @@ class _TicketInfoScreenState extends State<TicketInfoScreen> {
     super.initState();
 
     userProvider = context.read<UserProvider>();
+    routeProvider = context.read<RouteProvider>();
 
     _ftsFirstNameController.text = widget.user?.firstName ?? '';
     _ftsLastNameController.text = widget.user?.lastName ?? '';
@@ -65,11 +69,15 @@ class _TicketInfoScreenState extends State<TicketInfoScreen> {
     _userTicketStatus = widget?.status;
     _currentUser = widget?.user;
     _currentRoute = widget?.route;
+
+    print("4. Ticket info: ${_currentRoute?.toJson()}");
+
     initForm();
   }
 
   Future initForm() async {
     userResult = await userProvider.get();
+    routeResult = await routeProvider.get();
   }
 
   Future<void> _selectDate(BuildContext context) async {
@@ -233,8 +241,8 @@ class _TicketInfoScreenState extends State<TicketInfoScreen> {
                             status: _userTicketStatus,
                             selectedTicketPrice: _finalTicketPrice,
                             user: _currentUser,
-                            countNumberOfTickets: _countNumberOfTickets,
-                            //route: _currentRoute,
+                            amount: _countNumberOfTickets,
+                            route: _currentRoute,
                           )));
                 },
                 style: ElevatedButton.styleFrom(

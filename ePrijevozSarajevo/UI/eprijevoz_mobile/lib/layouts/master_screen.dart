@@ -7,7 +7,9 @@ import 'package:flutter/material.dart';
 class MasterScreen extends StatefulWidget {
   final int initialIndex;
 
-  MasterScreen({Key? key, this.initialIndex = 0})
+  final int? amount;
+
+  MasterScreen({this.amount, Key? key, this.initialIndex = 0})
       : super(key: key); // Default to 0 (Home) if no index is passed
 
   @override
@@ -31,7 +33,9 @@ class _MasterScreenState extends State<MasterScreen> {
     _pages = [
       HomePage(),
       RouteSearchScreen(),
-      TicketScreen(),
+      TicketScreen(
+          //amount: widget?.amount,
+          ),
       ProfileScreen(),
     ];
 
