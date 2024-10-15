@@ -145,12 +145,14 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        child: Column(
-          children: [
-            _buildResultView(),
-          ],
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Container(
+          child: Column(
+            children: [
+              _buildResultView(),
+            ],
+          ),
         ),
       ),
     );
