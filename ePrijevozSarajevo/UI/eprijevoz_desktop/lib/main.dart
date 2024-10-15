@@ -1,5 +1,4 @@
 import 'package:eprijevoz_desktop/providers/auth_provider.dart';
-import 'package:eprijevoz_desktop/providers/base_provider.dart';
 import 'package:eprijevoz_desktop/providers/manufacturer_provider.dart';
 import 'package:eprijevoz_desktop/providers/request_provider.dart';
 import 'package:eprijevoz_desktop/providers/route_provider.dart';
@@ -9,9 +8,7 @@ import 'package:eprijevoz_desktop/providers/type_provider.dart';
 import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:eprijevoz_desktop/providers/vehicle_provider.dart';
 import 'package:eprijevoz_desktop/screens/home_screen.dart';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -49,11 +46,25 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   LoginPage({super.key});
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   final TextEditingController _usernameController = TextEditingController();
+
   final TextEditingController _passwordController = TextEditingController();
+
+  bool _passwordVisible = false;
+
+  @override
+  void initState() {
+    _passwordVisible = false;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,33 +94,47 @@ class LoginPage extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 35, vertical: 20),
                     child: TextField(
-                      controller: _usernameController,
-                      style: const TextStyle(color: Colors.white),
-                      decoration: InputDecoration(
-                          border: const OutlineInputBorder(),
-                          labelText: "Email",
-                          labelStyle: TextStyle(color: Colors.grey.shade300),
-                          prefixIcon: const Icon(Icons.email_rounded),
-                          prefixIconColor: Colors.grey.shade300,
-                          hintText: "Enter valid email id as mail@gmail.com",
-                          hintStyle: TextStyle(color: Colors.grey.shade800)),
-                    ),
+                        controller: _usernameController,
+                        style: const TextStyle(color: Colors.white),
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: "Username",
+                          labelStyle: TextStyle(color: Colors.white),
+                          hintText: "Unesite svoje korisničko ime (username)",
+                          hintStyle:
+                              TextStyle(color: Colors.white, fontSize: 13),
+                          prefixIcon: Icon(Icons.person),
+                          prefixIconColor: Colors.white,
+                        )),
                   ),
                   Padding(
                     padding:
                         const EdgeInsets.symmetric(horizontal: 35, vertical: 0),
                     child: TextField(
                       controller: _passwordController,
-                      style: const TextStyle(color: Colors.white),
-                      obscureText: true,
+                      style: const TextStyle(color: Colors.white, fontSize: 18),
+                      obscureText: !_passwordVisible,
                       decoration: InputDecoration(
                         border: const OutlineInputBorder(),
                         labelText: "Password",
-                        labelStyle: TextStyle(color: Colors.grey.shade300),
+                        labelStyle: const TextStyle(color: Colors.white),
+                        hintText: 'Unesite svoj password',
+                        hintStyle:
+                            const TextStyle(color: Colors.white, fontSize: 13),
                         prefixIcon: const Icon(Icons.password),
-                        prefixIconColor: Colors.grey.shade300,
-                        hintText: "Enter your password",
-                        hintStyle: TextStyle(color: Colors.grey.shade800),
+                        prefixIconColor: Colors.white,
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                              _passwordVisible
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: Colors.white),
+                          onPressed: () {
+                            setState(() {
+                              _passwordVisible = !_passwordVisible;
+                            });
+                          },
+                        ),
                       ),
                     ),
                   ),
@@ -127,11 +152,10 @@ class LoginPage extends StatelessWidget {
                         AuthProvider.username = _usernameController.text;
                         AuthProvider.password = _passwordController.text;
                         try {
-//bool isAuthorized=await Provider.of<BaseProvider>(context, listen: false).isValidResponse(response)
                           var data = await provider.get();
                           print("Authorized");
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => (HomePage())));
+                              builder: (context) => (const HomePage())));
                         } on Exception catch (e) {
                           print("Not authorized!");
                           showDialog(
@@ -175,11 +199,12 @@ class LoginPage extends StatelessWidget {
                     child: const Text(
                       "Forgot Password",
                       style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w100,
+                          color: Colors.red,
+                          fontSize: 15,
+                          fontWeight: FontWeight.normal,
                           decoration: TextDecoration.underline,
-                          decorationColor: Colors.white,
-                          decorationThickness: 1.0),
+                          decorationColor: Colors.red,
+                          decorationThickness: 1),
                     ),
                   ),
                 ],
