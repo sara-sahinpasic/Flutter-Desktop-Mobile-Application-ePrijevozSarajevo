@@ -6,8 +6,8 @@ namespace ePrijevozSarajevo.Services
         where TModel : class
         where TSearch : BaseSearchObject
     {
-        public TModel Insert(TInsert request);
-        public TModel Update(int id, TUpdate request);
+        public Task<TModel> Insert(TInsert request);
+        public Task <TModel> Update(int id, TUpdate request);
         public Task Delete(int id);
 
     }

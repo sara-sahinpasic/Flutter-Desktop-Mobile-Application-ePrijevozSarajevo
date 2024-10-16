@@ -15,14 +15,14 @@ namespace ePrijevozSarajevo.API.Controllers
         {
         }
         [AllowAnonymous]
-        public override PagedResult<Model.Type> GetList([FromQuery] TypeSearchObject searchObject)
+        public override Task<PagedResult<Model.Type>> GetList([FromQuery] TypeSearchObject searchObject)
         {
             return base.GetList(searchObject);
         }
         [Authorize(Roles = "Admin")]
-        public override Model.Type Insert(TypeUpsertRequest request)
+        public override async Task<Model.Type> Insert(TypeUpsertRequest request)
         {
-            return base.Insert(request);
+            return await base.Insert(request);
         }
     }
 }

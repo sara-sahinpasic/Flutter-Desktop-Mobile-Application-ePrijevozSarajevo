@@ -13,12 +13,11 @@ namespace ePrijevozSarajevo.API.Controllers
         public IssuedTicketController(IIssuedTicketService service) : base(service)
         {
         }
-        public override PagedResult<IssuedTicket> GetList([FromQuery] IssuedTicketSearchObject searchObject)
+        public override async Task<PagedResult<IssuedTicket>> GetList([FromQuery] IssuedTicketSearchObject searchObject)
         {
-            // return base.GetList(searchObject);
-            var result = base.GetList(searchObject);
+            var result = await base.GetList(searchObject);
 
-            result.ResultList = result.ResultList.OrderByDescending(issuedTicket=> issuedTicket.IssuedDate).ToList();
+            result.ResultList = result.ResultList.OrderByDescending(issuedTicket => issuedTicket.IssuedDate).ToList();
 
             return result;
         }

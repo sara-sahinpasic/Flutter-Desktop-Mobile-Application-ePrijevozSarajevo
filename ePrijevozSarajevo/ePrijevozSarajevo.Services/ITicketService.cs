@@ -6,9 +6,9 @@ namespace ePrijevozSarajevo.Services
 {
     public interface ITicketService : ICRUDService<Model.Ticket, TicketSearchObject, TicketInsertRequest, TicketUpdateRequest>
     {
-        public Ticket Activate(int id);
-        public Ticket Edit(int id);
-        public Ticket Hide(int id);
-        public List<string> AllowedActions(int id);
+        public Task<Ticket> Activate(int id);
+        public Task<Ticket> Edit(int id);
+        public Task<Ticket> Hide(int id);
+        public Task<List<string>> AllowedActions(int id);
     }
 }

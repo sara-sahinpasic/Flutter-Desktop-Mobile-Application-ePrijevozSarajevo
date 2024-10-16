@@ -16,24 +16,25 @@ namespace ePrijevozSarajevo.API.Controllers
 
         //State machine
         [HttpPut("{id}/activate")]
-        public Ticket Activate(int id)
+        public  async Task <Ticket> Activate(int id)
         {
-            return (_service as ITicketService).Activate(id);
+            return await (_service as ITicketService).Activate(id);
         }
         [HttpPut("{id}/hide")]
-        public Ticket Hide(int id)
+        public async Task <Ticket> Hide(int id)
         {
-            return (_service as ITicketService).Hide(id);
+            return await (_service as ITicketService).Hide(id);
         }
         [HttpPut("{id}/edit")]
-        public Ticket Edit(int id)
+        public async Task <Ticket> Edit(int id)
         {
-            return (_service as ITicketService).Edit(id);
+            return await (_service as ITicketService).Edit(id);
         }
+
         [HttpGet("{id}/allowedActions")]
-        public List<string> AllowedActions(int id)
+        public async Task <List<string>> AllowedActions(int id)
         {
-            return (_service as ITicketService).AllowedActions(id);
+            return await (_service as ITicketService).AllowedActions(id);
         }
     }
 }

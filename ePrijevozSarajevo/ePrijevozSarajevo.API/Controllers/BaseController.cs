@@ -20,15 +20,15 @@ namespace ePrijevozSarajevo.API.Controllers
         }
 
         [HttpGet]
-        public virtual PagedResult<TModel> GetList([FromQuery]TSearch searchObject)
+        public async virtual Task <PagedResult<TModel>> GetList([FromQuery]TSearch searchObject)
         {
-            return _service.GetPaged(searchObject);
+            return await _service.GetPaged(searchObject);
         }
 
         [HttpGet("{id}")]
-        public virtual TModel GetById(int id)
+        public async virtual Task <TModel> GetById(int id)
         {
-            return _service.GetById(id);
+            return await _service.GetById(id);
         }
 
 

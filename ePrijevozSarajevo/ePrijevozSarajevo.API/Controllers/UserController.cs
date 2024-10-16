@@ -15,9 +15,9 @@ namespace ePrijevozSarajevo.API.Controllers
 
         [HttpPost("login")]
         [AllowAnonymous]
-        public Model.User Login(string username, string password)
+        public async Task <Model.User> Login(string username, string password)
         {
-            return (_service as IUserService).Login(username, password);
+            return await (_service as IUserService).Login(username, password);
         }
     }
 }

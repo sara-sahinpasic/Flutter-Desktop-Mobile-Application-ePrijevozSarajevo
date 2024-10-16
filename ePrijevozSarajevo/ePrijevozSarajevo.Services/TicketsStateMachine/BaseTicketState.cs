@@ -8,33 +8,33 @@ namespace ePrijevozSarajevo.Services.TicketsStateMachine
 {
     public class BaseTicketState
     {
-        public DataContext Context { get; set; }
-        public IMapper Mapper { get; set; }
-        public IServiceProvider ServiceProvider { get; set; }
+        public DataContext _dataContext { get; set; }
+        public IMapper _mapper { get; set; }
+        public IServiceProvider _serviceProvider { get; set; }
         public BaseTicketState(DataContext context, IMapper mapper, IServiceProvider serviceProvider)
         {
-            Context = context;
-            Mapper = mapper;
-            ServiceProvider = serviceProvider;
+            _dataContext = context;
+            _mapper = mapper;
+            _serviceProvider = serviceProvider;
         }
 
-        public virtual Model.Ticket Insert(TicketInsertRequest request)
+        public async virtual Task <Model.Ticket> Insert(TicketInsertRequest request)
         {
             throw new Exception("Method not allowed");
         }
-        public virtual Model.Ticket Update(int id, TicketUpdateRequest request)
+        public async virtual Task <Model.Ticket> Update(int id, TicketUpdateRequest request)
         {
             throw new UserException("Method not allowed");
         }
-        public virtual Model.Ticket Activate(int id)
+        public async virtual Task <Model.Ticket> Activate(int id)
         {
             throw new UserException("Method not allowed");
         }
-        public virtual Model.Ticket Hide(int id)
+        public async virtual Task <Model.Ticket> Hide(int id)
         {
             throw new UserException("Method not allowed");
         }
-        public virtual Model.Ticket Edit(int id)
+        public async virtual Task <Model.Ticket> Edit(int id)
         {
             throw new UserException("Method not allowed");
         }
@@ -43,18 +43,18 @@ namespace ePrijevozSarajevo.Services.TicketsStateMachine
             throw new UserException("Method not allowed");
         }
 
-        public BaseTicketState CreateState(string stateName)
+        public async Task <BaseTicketState> CreateState(string stateName)
         {
             switch (stateName)
             {
                 case "initial":
-                    return ServiceProvider.GetService<InitialTicketState>();
+                    return _serviceProvider.GetService<InitialTicketState>();
                 case "draft":
-                    return ServiceProvider.GetService<DraftTicketState>();
+                    return _serviceProvider.GetService<DraftTicketState>();
                 case "active":
-                    return ServiceProvider.GetService<ActiveTicketState>();
+                    return _serviceProvider.GetService<ActiveTicketState>();
                 case "hidden":
-                    return ServiceProvider.GetService<HiddenTicketState>();
+                    return _serviceProvider.GetService<HiddenTicketState>();
                 default: throw new Exception("State not recognized");
             }
         }

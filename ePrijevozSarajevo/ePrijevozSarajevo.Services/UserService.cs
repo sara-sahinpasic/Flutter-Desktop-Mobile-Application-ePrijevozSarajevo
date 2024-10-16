@@ -30,19 +30,19 @@ namespace ePrijevozSarajevo.Services
             if (search.IsRoleIncluded == true)
             {
                 query = query
-                    .Include(x => x.UserRoles)        // Include UserRoles collection
-                        .ThenInclude(x => x.Role);  // Then include the Role entity within UserRoles
+                    .Include(x => x.UserRoles)
+                        .ThenInclude(x => x.Role);
             }
-          
-             if (search?.IsUserStatusIncluded == true)
-             {
-                 query = query.Include(x => x.UserStatus);
-             }
-            
+
+            if (search?.IsUserStatusIncluded == true)
+            {
+                query = query.Include(x => x.UserStatus);
+            }
+
             return query;
         }
 
-        public override void BeforeInsert(UserInseretRequest request, Database.User entity)
+        public override async Task BeforeInsert(UserInseretRequest request, User entity)
         {
             _logger.LogInformation($"Adding user: {entity.FirstName} {entity.LastName}");
 
@@ -78,7 +78,7 @@ namespace ePrijevozSarajevo.Services
             return Convert.ToBase64String(inArray);
         }
 
-        public override void BeforeUpdate(UserUpdateRequest? request, Database.User? entity)
+        public override async Task BeforeUpdate(UserUpdateRequest? request, User? entity)
         {
             base.BeforeUpdate(request, entity);
 
@@ -91,15 +91,13 @@ namespace ePrijevozSarajevo.Services
                 entity.PasswordSalt = GenerateSalt();
                 entity.PasswordHash = GenerateHash(entity.PasswordSalt, request.Password);
             }
-
         }
-
-        public Model.User Login(string username, string password)
+        public async Task<Model.User> Login(string username, string password)
         {
-            var entity = Context.Users
+            var entity = await _dataContext.Users
                 .Include(x => x.UserRoles)
                 .ThenInclude(y => y.Role)
-                .FirstOrDefault(x => x.UserName == username);
+                .FirstOrDefaultAsync(x => x.UserName == username);
 
             if (entity == null)
             {
@@ -112,7 +110,7 @@ namespace ePrijevozSarajevo.Services
                 return null;
             }
 
-            return Mapper.Map<Model.User>(entity);
+            return _mapper.Map<Model.User>(entity);
         }
     }
 }
