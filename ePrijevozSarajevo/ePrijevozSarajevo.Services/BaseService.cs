@@ -2,42 +2,30 @@
 using ePrijevozSarajevo.Model.SearchObjects;
 using ePrijevozSarajevo.Services.Database;
 using MapsterMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace ePrijevozSarajevo.Services
 {
-    public class BaseService<TModel, TSearch, TDbEntity> 
+    public class BaseService<TModel, TSearch, TDbEntity>
         : IService<TModel, TSearch>
         where TSearch : BaseSearchObject
         where TDbEntity : class
         where TModel : class
     {
-        public DataContext Context { get; set; }
-        public IMapper Mapper { get; set; }
+        public DataContext _dataContext { get; set; }
+        public IMapper _mapper { get; set; }
 
         public BaseService(DataContext context, IMapper mapper)
         {
-            Context = context;
-            Mapper = mapper;
+            _dataContext = context;
+            _mapper = mapper;
         }
 
-        public TModel GetById(int id)
-        {
-            var entitiy = Context.Set<TDbEntity>().Find(id);
-            if (entitiy != null)
-            {
-                return Mapper.Map<TModel>(entitiy);
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        public PagedResult<TModel> GetPaged(TSearch search)
+        public virtual async Task<PagedResult<TModel>> GetPaged(TSearch search)
         {
             List<TModel> result = new List<TModel>();
 
-            var query = Context.Set<TDbEntity>().AsQueryable();
+            var query = _dataContext.Set<TDbEntity>().AsQueryable();
 
             query = AddFilter(search, query);
 
@@ -47,11 +35,11 @@ namespace ePrijevozSarajevo.Services
                 query = query.Skip(search.Page.Value * search.PageSize.Value).Take(search.PageSize.Value);
             }
 
-            int count = query.Count();
-            
-            var list = query.ToList();
+            int count = await query.CountAsync();
 
-            result = Mapper.Map(list, result);
+            var list = await query.ToListAsync();
+
+            result = _mapper.Map(list, result);
 
             PagedResult<TModel> pagedResult = new PagedResult<TModel>();
             pagedResult.ResultList = result;
@@ -63,6 +51,13 @@ namespace ePrijevozSarajevo.Services
         public virtual IQueryable<TDbEntity> AddFilter(TSearch search, IQueryable<TDbEntity> query)
         {
             return query;
+        }
+
+        public virtual async Task<TModel> GetById(int id)
+        {
+            var entitiy = await _dataContext.Set<TDbEntity>().FindAsync(id);
+
+            return _mapper.Map<TModel>(entitiy);
         }
     }
 }

@@ -15,16 +15,16 @@ namespace ePrijevozSarajevo.API.Controllers
         {
         }
 
-        //[AllowAnonymous]
-        public override PagedResult<Vehicle> GetList([FromQuery] VehicleSearchObject searchObject)
+        [AllowAnonymous]
+        public override Task<PagedResult<Vehicle>> GetList([FromQuery] VehicleSearchObject searchObject)
         {
             return base.GetList(searchObject);
         }
 
-       // [Authorize(Roles = "Admin")]
-        public override Vehicle Insert(VehicleInsertRequest request)
+        [Authorize(Roles = "Admin")]
+        public override async Task<Vehicle> Insert(VehicleInsertRequest request)
         {
-            return base.Insert(request);
+            return await base.Insert(request);
         }
     }
 }

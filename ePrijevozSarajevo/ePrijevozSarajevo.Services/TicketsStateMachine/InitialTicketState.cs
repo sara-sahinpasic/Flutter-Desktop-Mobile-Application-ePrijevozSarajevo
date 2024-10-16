@@ -9,16 +9,16 @@ namespace ePrijevozSarajevo.Services.TicketsStateMachine
         public InitialTicketState(DataContext context, IMapper mapper, IServiceProvider serviceProvider) : base(context, mapper, serviceProvider)
         {
         }
-        public override Model.Ticket Insert(TicketInsertRequest request)
+        public override async Task<Model.Ticket> Insert(TicketInsertRequest request)
         {
-            var set = Context.Set<Database.Ticket>();
-            var entity = Mapper.Map<Database.Ticket>(request);
+            var set = _dataContext.Set<Database.Ticket>();
+            var entity = _mapper.Map<Database.Ticket>(request);
             entity.StateMachine = "draft";
 
-            set.Add(entity);
-            Context.SaveChanges();
+            await set.AddAsync(entity);
+            await _dataContext.SaveChangesAsync();
 
-            return Mapper.Map<Model.Ticket>(entity);
+            return _mapper.Map<Model.Ticket>(entity);
         }
         public override List<string> AllowedActions(Ticket entity)
         {

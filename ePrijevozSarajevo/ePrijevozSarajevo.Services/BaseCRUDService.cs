@@ -11,49 +11,45 @@ namespace ePrijevozSarajevo.Services
     {
         public BaseCRUDService(DataContext context, IMapper mapper) : base(context, mapper) { }
 
-        public virtual TModel Insert(TInsert request)
+        public virtual async Task<TModel> Insert(TInsert request)
         {
-            TDbEntity entity = Mapper.Map<TDbEntity>(request);
-            BeforeInsert(request, entity);
+            TDbEntity entity = _mapper.Map<TDbEntity>(request);
+            await BeforeInsert(request, entity);
 
-            Context.Add(entity);
-            Context.SaveChanges();
+            await _dataContext.AddAsync(entity);
+            await _dataContext.SaveChangesAsync();
 
-            return Mapper.Map<TModel>(entity);
+            return _mapper.Map<TModel>(entity);
         }
 
-        public virtual void BeforeInsert(TInsert request, TDbEntity entity)
+        public virtual async Task BeforeInsert(TInsert request, TDbEntity entity)
         {
         }
 
-        public virtual TModel Update(int id, TUpdate request)
+        public virtual async Task<TModel> Update(int id, TUpdate request)
         {
-            var set = Context.Set<TDbEntity>();
-            var entity = set.Find(id);
+            var set = _dataContext.Set<TDbEntity>();
+            var entity = await set.FindAsync(id);
 
-            Mapper.Map(request, entity);
+            _mapper.Map(request, entity);
 
-            BeforeUpdate(request, entity);
+            await BeforeUpdate(request, entity);
 
-            Context.SaveChanges();
+            await _dataContext.SaveChangesAsync();
 
-            return Mapper.Map<TModel>(entity);
+            return _mapper.Map<TModel>(entity);
         }
 
-        public virtual void BeforeUpdate(TUpdate? request, TDbEntity? entity)
+        public virtual async Task BeforeUpdate(TUpdate? request, TDbEntity? entity)
         {
         }
-        public virtual async Task /*<TModel> */ Delete(int id)
+        public virtual async Task Delete(int id)
         {
-            var entity = await Context.Set<TDbEntity>().FindAsync(id);
-            
-            //if (entity == null)
-            //{
-            //    throw new Exception("");
-            //}
-            Context.Set<TDbEntity>().Remove(entity);
+            var entity = await _dataContext.Set<TDbEntity>().FindAsync(id);
 
-           await Context.SaveChangesAsync();
+            _dataContext.Set<TDbEntity>().Remove(entity);
+
+            await _dataContext.SaveChangesAsync();
         }
     }
 }

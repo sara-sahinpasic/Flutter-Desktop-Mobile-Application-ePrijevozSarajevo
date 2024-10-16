@@ -8,15 +8,15 @@ namespace ePrijevozSarajevo.Services.TicketsStateMachine
         public ActiveTicketState(DataContext context, IMapper mapper, IServiceProvider serviceProvider) : base(context, mapper, serviceProvider)
         {
         }
-        public override Model.Ticket Hide(int id)
+        public override async Task<Model.Ticket> Hide(int id)
         {
-            var set = Context.Set<Database.Ticket>();
-            var entity = set.Find(id);
+            var set = _dataContext.Set<Database.Ticket>();
+            var entity = await set.FindAsync(id);
 
             entity.StateMachine = "hidden";
 
-            Context.SaveChanges();
-            return Mapper.Map<Model.Ticket>(entity);
+            await _dataContext.SaveChangesAsync();
+            return _mapper.Map<Model.Ticket>(entity);
         }
         public override List<string> AllowedActions(Ticket entity)
         {

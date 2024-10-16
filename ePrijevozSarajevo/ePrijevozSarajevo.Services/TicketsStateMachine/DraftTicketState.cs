@@ -12,43 +12,43 @@ namespace ePrijevozSarajevo.Services.TicketsStateMachine
         {
         }
 
-        public override Model.Ticket Update(int id, TicketUpdateRequest request)
+        public override async Task<Model.Ticket> Update(int id, TicketUpdateRequest request)
         {
-            var set = Context.Set<Database.Ticket>();
-            var entity = set.Find(id);
+            var set = _dataContext.Set<Database.Ticket>();
+            var entity = await set.FindAsync(id);
 
-            Mapper.Map(request, entity);
+            _mapper.Map(request, entity);
 
-            Context.SaveChanges();
-            return Mapper.Map<Model.Ticket>(entity);
+            await _dataContext.SaveChangesAsync();
+            return _mapper.Map<Model.Ticket>(entity);
         }
 
-        public override Model.Ticket Activate(int id)
+        public override async Task<Model.Ticket> Activate(int id)
         {
-            var set = Context.Set<Database.Ticket>();
-            var entity = set.Find(id);
+            var set = _dataContext.Set<Database.Ticket>();
+            var entity = await set.FindAsync(id);
 
             entity.StateMachine = "active";
 
-            Context.SaveChanges();
+            await _dataContext.SaveChangesAsync();
 
             var bus = RabbitHutch.CreateBus("host=localhost");
 
-            var mappedEntity = Mapper.Map<Model.Ticket>(entity);
+            var mappedEntity = _mapper.Map<Model.Ticket>(entity);
             TicketsActivated message = new TicketsActivated { Ticket = mappedEntity };
             bus.PubSub.Publish(message);
 
             return mappedEntity;
         }
-        public override Model.Ticket Hide(int id)
+        public override async Task<Model.Ticket> Hide(int id)
         {
-            var set = Context.Set<Database.Ticket>();
-            var entity = set.Find(id);
+            var set = _dataContext.Set<Database.Ticket>();
+            var entity = await set.FindAsync(id);
 
             entity.StateMachine = "hidden";
 
-            Context.SaveChanges();
-            return Mapper.Map<Model.Ticket>(entity);
+            await _dataContext.SaveChangesAsync();
+            return _mapper.Map<Model.Ticket>(entity);
         }
         public override List<string> AllowedActions(Ticket entity)
         {

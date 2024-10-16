@@ -16,15 +16,15 @@ namespace ePrijevozSarajevo.API.Controllers
         }
 
         [AllowAnonymous]
-        public override PagedResult<Manufacturer> GetList([FromQuery] ManufacturerSearchObject searchObject)
+        public override Task<PagedResult<Manufacturer>> GetList([FromQuery] ManufacturerSearchObject searchObject)
         {
             return base.GetList(searchObject);
         }
 
         [Authorize(Roles = "Admin")]
-        public override Manufacturer Insert(ManufacturerUpsertRequest request)
+        public override async Task<Manufacturer> Insert(ManufacturerUpsertRequest request)
         {
-            return base.Insert(request);
+            return await base.Insert(request);
         }
     }
 }

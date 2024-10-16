@@ -7,15 +7,17 @@ using Microsoft.Extensions.Logging;
 
 namespace ePrijevozSarajevo.Services
 {
-    public class TicketService : BaseCRUDService<Model.Ticket, TicketSearchObject, Database.Ticket, TicketInsertRequest, TicketUpdateRequest>, ITicketService
+    public class TicketService : BaseCRUDService<Model.Ticket, TicketSearchObject, Database.Ticket, TicketInsertRequest, TicketUpdateRequest>,
+        ITicketService
     {
         ILogger<TicketService> _logger;
+        public BaseTicketState _ticketState { get; set; }
 
-        public BaseTicketState TicketState { get; set; }
-        public TicketService(DataContext context, IMapper mapper, BaseTicketState ticketState, ILogger<TicketService> logger)
+        public TicketService(DataContext context, IMapper mapper, BaseTicketState ticketState,
+            ILogger<TicketService> logger)
             : base(context, mapper)
         {
-            TicketState = ticketState;
+            _ticketState = ticketState;
             this._logger = logger;
         }
 
@@ -31,55 +33,56 @@ namespace ePrijevozSarajevo.Services
 
             return query;
         }
-
-        //State machine
-        public override Model.Ticket Insert(TicketInsertRequest request)
+        public override async Task<Model.Ticket> Insert(TicketInsertRequest request)
         {
-            var state = TicketState.CreateState("initial");
-            return state.Insert(request);
+            var state = await _ticketState.CreateState("initial");
+            return await state.Insert(request);
         }
-        public override Model.Ticket Update(int id, TicketUpdateRequest request)
+        public override async Task<Model.Ticket> Update(int id, TicketUpdateRequest request)
         {
-            var entity = GetById(id);
-            var state = TicketState.CreateState(entity.StateMachine);
-            return state.Update(id, request);
-        }
-        public Model.Ticket Activate(int id)
-        {
-            var entity = GetById(id);
-            var state = TicketState.CreateState(entity.StateMachine);
-            return state.Activate(id);
+            var entity = await GetById(id);
+            var state = await _ticketState.CreateState(entity.StateMachine);
+            return await state.Update(id, request);
         }
 
-        public Model.Ticket Edit(int id)
+        //StateMachine
+        public async Task<Model.Ticket> Activate(int id)
         {
-            var entity = GetById(id);
-            var state = TicketState.CreateState(entity.StateMachine);
-            return state.Edit(id);
+            var entity = await GetById(id);
+            var state = await _ticketState.CreateState(entity.StateMachine);
+            return await state.Activate(id);
         }
 
-        public Model.Ticket Hide(int id)
+        public async Task<Model.Ticket> Edit(int id)
         {
-            var entity = GetById(id);
-            var state = TicketState.CreateState(entity.StateMachine);
-            return state.Hide(id);
+            var entity = await GetById(id);
+            var state = await _ticketState.CreateState(entity.StateMachine);
+            return await state.Edit(id);
         }
 
-        public List<string> AllowedActions(int id)
+        public async Task<Model.Ticket> Hide(int id)
+        {
+            var entity = await GetById(id);
+            var state = await _ticketState.CreateState(entity.StateMachine);
+            return await state.Hide(id);
+        }
+
+        public async Task<List<string>> AllowedActions(int id)
         {
             _logger.LogInformation($"Allowed actions for: {id}");
 
 
             if (id <= 0)
             {
-                var state = TicketState.CreateState("initial");
+                var state = await _ticketState.CreateState("initial");
                 return state.AllowedActions(null);
             }
             else
             {
-                var entity = Context.Tickets.Find(id);
-                var state = TicketState.CreateState(entity.StateMachine);
+                var entity = await _dataContext.Tickets.FindAsync(id);
+                var state = await _ticketState.CreateState(entity.StateMachine);
                 return state.AllowedActions(entity);
+
             }
         }
     }

@@ -1,7 +1,6 @@
 ﻿using ePrijevozSarajevo.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Options;
-using Microsoft.Identity.Client;
 using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Text;
@@ -33,7 +32,7 @@ namespace ePrijevozSarajevo.API
             var username = credentials[0];
             var password = credentials[1];
 
-            var user = _userService.Login(username, password);
+            var user = await _userService.Login(username, password);
 
             if (user == null)
             {
@@ -44,9 +43,7 @@ namespace ePrijevozSarajevo.API
                 var claims = new List<Claim>()
                 {
                     new Claim(ClaimTypes.Name, user.FirstName),
-                    //new Claim(ClaimTypes.NameIdentifier, user.KorisnickoIme)
                     new Claim(ClaimTypes.NameIdentifier, user.UserName)
-                    //new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString())
                 };
 
                 foreach (var role in user.UserRoles)
@@ -64,3 +61,4 @@ namespace ePrijevozSarajevo.API
         }
     }
 }
+

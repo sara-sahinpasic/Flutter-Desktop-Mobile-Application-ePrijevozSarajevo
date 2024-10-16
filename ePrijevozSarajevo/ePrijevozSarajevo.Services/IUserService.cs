@@ -6,6 +6,6 @@ namespace ePrijevozSarajevo.Services
 {
     public interface IUserService : ICRUDService<User, UserSearchObject, UserInseretRequest, UserUpdateRequest>
     {
-        User Login(string username, string password);
+       public Task <User> Login(string username, string password);
     }
 }
