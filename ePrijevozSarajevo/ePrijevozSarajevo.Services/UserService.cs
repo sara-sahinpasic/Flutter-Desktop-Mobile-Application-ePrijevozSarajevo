@@ -9,7 +9,8 @@ using System.Text;
 
 namespace ePrijevozSarajevo.Services
 {
-    public class UserService : BaseCRUDService<Model.User, UserSearchObject, Database.User, UserInseretRequest, UserUpdateRequest>, IUserService
+    public class UserService : BaseCRUDService<Model.User, UserSearchObject, Database.User, UserInseretRequest,
+        UserUpdateRequest>, IUserService
     {
         ILogger<UserService> _logger;
 
@@ -112,5 +113,26 @@ namespace ePrijevozSarajevo.Services
 
             return _mapper.Map<Model.User>(entity);
         }
+
+        public async Task ResetPassword(string username, string newPassword, string passwordConfirmation)
+        {
+            var user = await _dataContext.Users.FirstOrDefaultAsync(u => u.UserName == username);
+
+            if (user == null)
+            {
+                throw new Exception("User not found.");
+            }
+
+            if (newPassword != passwordConfirmation)
+            {
+                throw new Exception("Password and password confirmation must be the same.");
+            }
+
+            user.PasswordSalt = GenerateSalt();
+            user.PasswordHash = GenerateHash(user.PasswordSalt, newPassword);
+
+            await _dataContext.SaveChangesAsync();
+        }
+
     }
 }

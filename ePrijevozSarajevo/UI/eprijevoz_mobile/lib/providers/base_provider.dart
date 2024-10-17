@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:eprijevoz_mobile/providers/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -8,18 +7,21 @@ import 'package:http/http.dart';
 import 'package:eprijevoz_mobile/models/search_result.dart';
 
 abstract class BaseProvider<T> with ChangeNotifier {
-  static String? _baseUrl;
+  static String?
+      baseUrl; //from _baseUrl (private) to the baseUrl (protected) so it canbe acceddes in child classes (like UserProvider)
   String _endpoint = "";
 
   BaseProvider(String endpoint) {
     _endpoint = endpoint;
-    _baseUrl = const String.fromEnvironment("baseUrl",
-        //defaultValue: "http://localhost:7292/");
+    baseUrl = const String.fromEnvironment("baseUrl",
         defaultValue: "http://10.0.2.2:7292/");
   }
+// Add a getter for _endpoint
+  String get endpoint => _endpoint;
 
+//CRUD:
   Future<SearchResult<T>> get({dynamic filter}) async {
-    var url = "$_baseUrl$_endpoint";
+    var url = "$baseUrl$_endpoint";
 
     if (filter != null) {
       var queryString = getQueryString(filter);
@@ -49,7 +51,7 @@ abstract class BaseProvider<T> with ChangeNotifier {
   }
 
   Future<T> insert(dynamic request) async {
-    var url = "$_baseUrl$_endpoint";
+    var url = "$baseUrl$_endpoint";
     var uri = Uri.parse(url);
     var headers = createHeaders();
 
@@ -65,7 +67,7 @@ abstract class BaseProvider<T> with ChangeNotifier {
   }
 
   Future<T> update(int id, [dynamic request]) async {
-    var url = "$_baseUrl$_endpoint/$id";
+    var url = "$baseUrl$_endpoint/$id";
     var uri = Uri.parse(url);
     var headers = createHeaders();
 
@@ -80,9 +82,8 @@ abstract class BaseProvider<T> with ChangeNotifier {
     }
   }
 
-  //
   Future<T> getById(int id) async {
-    var url = "$_baseUrl$_endpoint/$id";
+    var url = "$baseUrl$_endpoint/$id";
     var uri = Uri.parse(url);
     var headers = createHeaders();
 
@@ -97,7 +98,7 @@ abstract class BaseProvider<T> with ChangeNotifier {
   }
 
   Future<bool> delete(int id) async {
-    var url = "$_baseUrl$_endpoint/$id";
+    var url = "$baseUrl$_endpoint/$id";
     var uri = Uri.parse(url);
     var headers = createHeaders();
 
@@ -107,7 +108,8 @@ abstract class BaseProvider<T> with ChangeNotifier {
     }
     return true;
   }
-  //
+
+//
 
   T fromJson(data) {
     throw Exception("Method not implemented");
