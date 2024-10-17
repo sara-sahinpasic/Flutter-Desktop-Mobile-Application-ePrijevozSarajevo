@@ -15,9 +15,25 @@ namespace ePrijevozSarajevo.API.Controllers
 
         [HttpPost("login")]
         [AllowAnonymous]
-        public async Task <Model.User> Login(string username, string password)
+        public async Task<Model.User> Login(string username, string password)
         {
             return await (_service as IUserService).Login(username, password);
         }
+
+        [HttpPost("reset-password")]
+        [AllowAnonymous]
+        public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordRequest request)
+        {
+            try
+            {
+                await (_service as IUserService).ResetPassword(request.Username, request.NewPassword, request.PasswordConfirmation);
+                return Ok(new { message = "Password reset successful" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
     }
 }

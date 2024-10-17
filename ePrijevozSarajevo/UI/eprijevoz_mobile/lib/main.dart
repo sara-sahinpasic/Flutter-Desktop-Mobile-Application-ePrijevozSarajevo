@@ -7,6 +7,7 @@ import 'package:eprijevoz_mobile/providers/station_provider.dart';
 import 'package:eprijevoz_mobile/providers/status_provider.dart';
 import 'package:eprijevoz_mobile/providers/ticket_provider.dart';
 import 'package:eprijevoz_mobile/providers/user_provider.dart';
+import 'package:eprijevoz_mobile/screens/forgot_password_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -184,7 +185,10 @@ class _LoginPageState extends State<LoginPage> {
               ),
               const SizedBox(height: 5),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ForgotPasswordScreen()));
+                },
                 child: const Text(
                   "Forgot Password",
                   style: TextStyle(
