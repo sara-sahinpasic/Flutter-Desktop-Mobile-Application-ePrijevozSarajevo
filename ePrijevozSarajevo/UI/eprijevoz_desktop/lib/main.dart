@@ -7,6 +7,7 @@ import 'package:eprijevoz_desktop/providers/status_provider.dart';
 import 'package:eprijevoz_desktop/providers/type_provider.dart';
 import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:eprijevoz_desktop/providers/vehicle_provider.dart';
+import 'package:eprijevoz_desktop/screens/forgot_password_screen.dart';
 import 'package:eprijevoz_desktop/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -98,9 +99,9 @@ class _LoginPageState extends State<LoginPage> {
                         style: const TextStyle(color: Colors.white),
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
-                          labelText: "Username",
+                          labelText: "Korisničko ime",
                           labelStyle: TextStyle(color: Colors.white),
-                          hintText: "Unesite svoje korisničko ime (username)",
+                          hintText: "Unesite korisničko ime",
                           hintStyle:
                               TextStyle(color: Colors.white, fontSize: 13),
                           prefixIcon: Icon(Icons.person),
@@ -116,9 +117,9 @@ class _LoginPageState extends State<LoginPage> {
                       obscureText: !_passwordVisible,
                       decoration: InputDecoration(
                         border: const OutlineInputBorder(),
-                        labelText: "Password",
+                        labelText: "Lozinka",
                         labelStyle: const TextStyle(color: Colors.white),
-                        hintText: 'Unesite svoj password',
+                        hintText: 'Unesite lozinku',
                         hintStyle:
                             const TextStyle(color: Colors.white, fontSize: 13),
                         prefixIcon: const Icon(Icons.password),
@@ -188,16 +189,19 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       child: const Text(
-                        "Login",
+                        "Prijava",
                         style: TextStyle(color: Colors.white, fontSize: 20),
                       ),
                     ),
                   ),
                   const SizedBox(height: 5),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => ForgotPasswordScreen()));
+                    },
                     child: const Text(
-                      "Forgot Password",
+                      "Promjena lozinke",
                       style: TextStyle(
                           color: Colors.red,
                           fontSize: 15,
