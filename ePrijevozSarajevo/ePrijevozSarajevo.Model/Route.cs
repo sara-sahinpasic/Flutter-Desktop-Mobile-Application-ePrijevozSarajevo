@@ -11,7 +11,7 @@
         public int VehicleId { get; set; }
         //public TimeSpan TimeOfArrival { get; set; }
         //public TimeSpan TimeOfDeparture { get; set; }
-        public DateTime Departure { get; set; }
+        public DateTime Departure { get; set; } = DateTime.Now;
         public DateTime Arrival { get; set; }
 
         public bool Active { get; set; }
