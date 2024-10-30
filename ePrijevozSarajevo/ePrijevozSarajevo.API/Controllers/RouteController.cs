@@ -12,6 +12,20 @@ namespace ePrijevozSarajevo.API.Controllers
     {
         public RouteController(IRouteService service) : base(service)
         {
+
+        }
+        [HttpDelete("{id}")]
+        public override async Task Delete(int id)
+        {
+            await (_service as IRouteService).DeleteRouteWithIssuedTickets(id);
+        }
+        public override async Task<PagedResult<Model.Route>> GetList([FromQuery] RouteSearchObject searchObject)
+        {
+            var result = await base.GetList(searchObject);
+
+            result.ResultList = result.ResultList.OrderByDescending(departure=> departure.Departure).ToList();
+
+            return result;
         }
     }
 }

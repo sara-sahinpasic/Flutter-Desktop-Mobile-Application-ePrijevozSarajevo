@@ -17,40 +17,41 @@ namespace ePrijevozSarajevo.Services
         {
             query = base.AddFilter(search, query);
 
-            // search.DateGTE.Year > 1 cause default value is 01/01/0001
-            /* if ((search?.StartStationIdGTE >= 0) && (search.DateGTE.Year > 1))
-             {
-                 var date = search.DateGTE.Date;
-                 query = query.Where(x => x.StartStationId == search.StartStationIdGTE)
-                              .Where(x => x.Departure.Date.Equals(date));
-             }*/
-
-
             //FOR MOBILE ROUTE_SCREEN
             if ((search?.StartStationIdGTE >= 0) && (search.DateGTE.Year > 1))
             {
-                //var date = search.DateGTE.Date;
-                //
+
                 var date = search.DateGTE.Date;
-                var time = search.DateGTE.TimeOfDay; // Assuming DateGTE has a TimeOfDay component or equivalent
+                var time = search.DateGTE.TimeOfDay;
 
                 query = query.Where(x => x.StartStationId == search.StartStationIdGTE)
                              .Where(x => x.Departure.Date.Equals(date))
                              //mobile: 
                              .Where(x => x.Departure.Date == date && x.Departure.TimeOfDay >= time);
+
+            }
+            /* if (search.IsStationIncluded == true)
+             {
+                 query = query.Include(x => x.StartStation);
+             }*/
+
+            return query;//.OrderByDescending(x=>x.Departure);
+        }
+
+        public async Task DeleteRouteWithIssuedTickets(int routeId)
+        {
+            // Find and delete issued tickets related to the route
+            var issuedTickets = _dataContext.IssuedTickets.Where(t => t.RouteId == routeId);
+            _dataContext.IssuedTickets.RemoveRange(issuedTickets);
+
+            // Find and delete the route
+            var route = await _dataContext.Routes.FindAsync(routeId);
+            if (route != null)
+            {
+                _dataContext.Routes.Remove(route);
             }
 
-
-            //2024-07-10 17:36:06.4220079
-            //{7/10/2024 5:36:06 PM}
-
-
-            //if (search.IsStationIncluded == true)
-            //{
-            //    query = query.Include(x => x.StartStation);
-            //}
-
-            return query;
+            await _dataContext.SaveChangesAsync();
         }
     }
 }

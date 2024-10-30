@@ -329,7 +329,8 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
                                 child: Text("OK",
                                     style: TextStyle(color: Colors.green)),
                                 onPressed: () {
-                                  Navigator.pop(context);
+                                  setState(() {});
+                                  //Navigator.pop(context);
                                   Navigator.pop(context,
                                       true); // Close the dialog and return success
                                 },

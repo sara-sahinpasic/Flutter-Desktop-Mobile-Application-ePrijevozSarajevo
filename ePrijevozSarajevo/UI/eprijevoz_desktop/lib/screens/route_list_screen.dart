@@ -33,17 +33,14 @@ class _RouteListScreenState extends State<RouteListScreen> {
   SearchResult<Route>? routeResult;
   SearchResult<Station>? stationResult;
   SearchResult<Route>? routeResultForTime;
-
   //Form
   final _formKey = GlobalKey<FormBuilderState>();
   Map<String, dynamic> _initialValue = {};
-
   //selected
   int _selectedStationId = 0;
-
   bool isLoading = true;
-
   DateTime selectedDate = DateTime.now();
+
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
         context: context,
@@ -64,10 +61,10 @@ class _RouteListScreenState extends State<RouteListScreen> {
 
   @override
   void initState() {
+    super.initState();
+
     stationProvider = context.read<StationProvider>();
     routeProvider = context.read<RouteProvider>();
-
-    super.initState();
 
     _initialValue = {
       'startStationId': widget?.route?.startStationId?.toString(),
@@ -85,8 +82,8 @@ class _RouteListScreenState extends State<RouteListScreen> {
     if (routeResult?.result != null) {
       routeResult!.result = filterDuplicates(routeResult!.result);
     }
-
-    /* print("test: ${stationResult?.result.length}");
+/*
+    print("test: ${stationResult?.result.length}");
     print("dan: ${stationResult?.result.map((e) => e.name)}");
 
     print("noć: ${routeResult?.result.length}");
@@ -99,9 +96,8 @@ class _RouteListScreenState extends State<RouteListScreen> {
     });
   }
 
+/*
   Future refreshTable() async {
-    // var request = Map.from(_formKey.currentState?.value ?? {});
-
     stationResult = await stationProvider.get();
     routeResult = await routeProvider.get();
 
@@ -109,20 +105,20 @@ class _RouteListScreenState extends State<RouteListScreen> {
       routeResult!.result = filterDuplicates(routeResult!.result);
     }
 
-    //routeResult = await routeProvider.get();
-    routeResult?.result = filterDuplicates(routeResult!.result);
-
-    //pretrazi ponovo rute za odabranu stanicu i datum
+    // Filter for routes from the selected date forward
     var filter = {
       'StartStationIdGTE': _selectedStationId,
-      'DateGTE': selectedDate
+      'DateGTE':
+          DateTime(selectedDate.year, selectedDate.month, selectedDate.day)
     };
+
     routeResultForTime = await routeProvider.get(filter: filter);
+
     setState(() {
       isLoading = false;
     });
   }
-
+*/
   List<Route> filterDuplicates(List<Route> data) {
     final seen = <int>{};
     return data
@@ -156,9 +152,6 @@ class _RouteListScreenState extends State<RouteListScreen> {
           ],
         ));
   }
-
-  TextEditingController _ftsStartStationController = TextEditingController();
-  TextEditingController _ftsArrivalController = TextEditingController();
 
   Widget _buildSearch() {
     return Container(
@@ -233,21 +226,15 @@ class _RouteListScreenState extends State<RouteListScreen> {
           Flexible(
             child: ElevatedButton(
               onPressed: () async {
-                print("StartStationIdGTE: ${_selectedStationId}");
-                print("DateGTE: ${selectedDate}");
-
                 //Search:
+                // Set the filter for a date range covering the entire selected day
                 var filter = {
                   'StartStationIdGTE': _selectedStationId,
-                  'DateGTE': selectedDate
+                  'DateGTE': DateTime(selectedDate.year, selectedDate.month,
+                      selectedDate.day), // Only date
                 };
                 routeResultForTime = await routeProvider.get(filter: filter);
-                print(
-                    "tetsni: ${routeResultForTime?.result.map((e) => e.startStationId)}");
-
                 setState(() {});
-
-                //_ftsRegistrationMarkController.clear();
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
@@ -283,7 +270,18 @@ class _RouteListScreenState extends State<RouteListScreen> {
                   DataColumn(
                     label: Expanded(
                       child: Text(
-                        'Vrijeme',
+                        'Vrijeme polaska',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18),
+                      ),
+                    ),
+                  ),
+                  DataColumn(
+                    label: Expanded(
+                      child: Text(
+                        'Cilj',
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -311,7 +309,16 @@ class _RouteListScreenState extends State<RouteListScreen> {
                           (e) => DataRow(
                             cells: [
                               DataCell(Text(
-                                formatTime(e.arrival) ?? "",
+                                formatTime(e.departure) ?? "",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 17),
+                              )),
+                              DataCell(Text(
+                                stationResult?.result
+                                        .firstWhere((element) =>
+                                            element.stationId == e.endStationId)
+                                        .name ??
+                                    "",
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 17),
                               )),
@@ -376,7 +383,7 @@ class _RouteListScreenState extends State<RouteListScreen> {
                                                                           () {
                                                                         Navigator.pop(
                                                                             deleteDialogContext);
-                                                                        refreshTable();
+                                                                        // refreshTable();
                                                                       },
                                                                     )
                                                                   ],
@@ -415,9 +422,9 @@ class _RouteListScreenState extends State<RouteListScreen> {
                     context: context,
                     builder: (dialogAddContext) => RouteAddDialog(),
                   );
-                  if (result == true) {
+                  /* if (result == true) {
                     await refreshTable();
-                  }
+                  }*/
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
