@@ -91,9 +91,9 @@ class _LoginPageState extends State<LoginPage> {
                   style: const TextStyle(color: Colors.white, fontSize: 18),
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: "Username",
+                    labelText: "Korisničko ime",
                     labelStyle: TextStyle(color: Colors.white),
-                    hintText: 'Unesite svoje korisničko ime (username)',
+                    hintText: 'Unesite korisničko ime',
                     hintStyle: TextStyle(color: Colors.white, fontSize: 13),
                     prefixIcon: Icon(Icons.person),
                     prefixIconColor: Colors.white,
@@ -109,9 +109,9 @@ class _LoginPageState extends State<LoginPage> {
                   obscureText: !_passwordVisible,
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(),
-                    labelText: "Password",
+                    labelText: "Lozinka",
                     labelStyle: const TextStyle(color: Colors.white),
-                    hintText: 'Unesite svoj password',
+                    hintText: 'Unesite lozinku',
                     hintStyle:
                         const TextStyle(color: Colors.white, fontSize: 13),
                     prefixIcon: const Icon(Icons.password),
@@ -178,7 +178,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   child: const Text(
-                    "Login",
+                    "Prijava",
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                 ),
@@ -190,7 +190,7 @@ class _LoginPageState extends State<LoginPage> {
                       builder: (context) => ForgotPasswordScreen()));
                 },
                 child: const Text(
-                  "Forgot Password",
+                  "Promjena lozinke",
                   style: TextStyle(
                       color: Colors.red,
                       fontSize: 15,
