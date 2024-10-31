@@ -16,7 +16,7 @@ class RouteAddDialog extends StatefulWidget {
   Station? station;
   Vehicle? vehicle;
   Route? route;
-  RouteAddDialog({this.station, this.vehicle, this.route, super.key});
+  RouteAddDialog({super.key, this.station, this.vehicle, this.route});
 
   @override
   State<RouteAddDialog> createState() => _RouteAddDialogState();
@@ -26,17 +26,14 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
   //Form
   final _formKey = GlobalKey<FormBuilderState>();
   Map<String, dynamic> _initialValue = {};
-
   SearchResult<Route>? routeResult;
   SearchResult<Station>? stationResult;
   SearchResult<Vehicle>? vehicleResult;
   SearchResult<Type>? typeResult;
-
   late StationProvider stationProvider;
   late RouteProvider routeProvider;
   late VehicleProvider vehicleProvider;
   late TypeProvider typeProvider;
-
   int? _selectedStartStationId;
   int? _selectedEndStationId;
   int? _selectedVehicleId;
@@ -44,7 +41,6 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
 
   DateTime selectedDepartureDate = DateTime.now();
   TimeOfDay selectedTime = TimeOfDay.now();
-  //
   DateTime selectedArrivalDate = DateTime.now();
 
   @override
@@ -92,7 +88,7 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text("Nova ruta"),
+      title: const Text("Nova ruta"),
       content: Container(
         width: 500,
         height: 410,
@@ -100,7 +96,7 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
           key: _formKey,
           initialValue: _initialValue,
           child: Column(children: [
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Row(
@@ -126,7 +122,7 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Row(
@@ -152,7 +148,7 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Row(
@@ -178,7 +174,7 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 35,
             ),
             Row(
@@ -198,29 +194,24 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
                         backgroundColor: Colors.white,
                         shape: BeveledRectangleBorder(
                             borderRadius: BorderRadius.circular(0.0),
-                            side: BorderSide(color: Colors.black)),
-                        minimumSize: Size(250, 40),
+                            side: const BorderSide(color: Colors.black)),
+                        minimumSize: const Size(250, 40),
                       ),
                       onPressed: () async {
-                        /* _selectTime(context);
-                        print("Selektovano vrijeme: ${selectedTime}");
-                        setState(() {});*/
                         await _selectDepartureDateTime(context);
                         print("Selected DateTime: ${selectedDepartureDate}");
                         setState(() {});
                       },
                       child: Text(
-                        /* '${formatTime(selectedDate)} ',
-                        style: TextStyle(color: Colors.black),*/
                         '${formatDateTime(selectedDepartureDate)} ',
-                        style: TextStyle(color: Colors.black),
+                        style: const TextStyle(color: Colors.black),
                       ),
                     ),
                   ],
                 )),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
             Row(
@@ -240,67 +231,27 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
                         backgroundColor: Colors.white,
                         shape: BeveledRectangleBorder(
                             borderRadius: BorderRadius.circular(0.0),
-                            side: BorderSide(color: Colors.black)),
-                        minimumSize: Size(250, 40),
+                            side: const BorderSide(color: Colors.black)),
+                        minimumSize: const Size(250, 40),
                       ),
                       onPressed: () async {
-                        /* _selectTime(context);
-                        print("Selektovano vrijeme: ${selectedTime}");
-                        setState(() {});*/
                         await _selectArrivalDateTime(context);
                         print("Selected DateTime: ${selectedArrivalDate}");
                         setState(() {});
                       },
                       child: Text(
-                        /*'${formatTime(selectedDate)} ',
-                        style: TextStyle(color: Colors.black),*/
                         '${formatDateTime(selectedArrivalDate)} ',
-                        style: TextStyle(color: Colors.black),
+                        style: const TextStyle(color: Colors.black),
                       ),
                     ),
                   ],
                 )),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
-            /* Row(
-              children: [
-                Expanded(
-                    child: CheckboxListTile(
-                  title: Text("Aktivna ruta vikendima?"),
-                  value: isChecked,
-                  onChanged: (newValue) {
-                    setState(() {
-                      isChecked = newValue;
-                    });
-                  },
-                  controlAffinity:
-                      ListTileControlAffinity.leading, //  <-- leading Checkbox
-                )),
-              ],
-            ),
-            // SizedBox(
-            //   height: 15,
-            // ),
-            Row(
-              children: [
-                Expanded(
-                    child: CheckboxListTile(
-                  title: Text("Aktivna ruta praznicima?"),
-                  value: isChecked,
-                  onChanged: (newValue) {
-                    setState(() {
-                      isChecked = newValue;
-                    });
-                  },
-                  controlAffinity:
-                      ListTileControlAffinity.leading, //  <-- leading Checkbox
-                )),
-              ],
-            ),*/
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
             Row(
@@ -319,20 +270,20 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
 
                       try {
                         await routeProvider.insert(request);
-                        showDialog(
+                        await showDialog(
                           context: context,
-                          builder: (context) => AlertDialog(
-                            title: Text("Success"),
-                            content: Text("Ruta je uspješno dodana."),
+                          builder: (dialogContext) => AlertDialog(
+                            title: const Text("Success"),
+                            content: const Text("Ruta je uspješno dodana."),
                             actions: [
                               TextButton(
-                                child: Text("OK",
+                                child: const Text("OK",
                                     style: TextStyle(color: Colors.green)),
                                 onPressed: () {
-                                  setState(() {});
-                                  //Navigator.pop(context);
-                                  Navigator.pop(context,
-                                      true); // Close the dialog and return success
+                                  Navigator.pop(
+                                      dialogContext); // Close the AlertDialog
+                                  Navigator.pop(dialogContext,
+                                      true); // Return true to indicate successful addition
                                 },
                               ),
                             ],
@@ -341,15 +292,17 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
                       } catch (error) {
                         showDialog(
                           context: context,
-                          builder: (context) => AlertDialog(
-                            title: Text("Error"),
-                            content: Text("Greška prilikom dodavanja rute."),
+                          builder: (dialogContext) => AlertDialog(
+                            title: const Text("Error"),
+                            content:
+                                const Text("Greška prilikom dodavanja rute."),
                             actions: [
                               TextButton(
-                                child: Text("OK",
+                                child: const Text("OK",
                                     style: TextStyle(color: Colors.red)),
                                 onPressed: () {
-                                  Navigator.pop(context);
+                                  Navigator.pop(dialogContext,
+                                      false); // adding is not successful => false
                                 },
                               ),
                             ],
@@ -375,7 +328,7 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
       actions: [
         TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text(
+            child: const Text(
               "Cancel",
               style: TextStyle(color: Colors.red, fontSize: 18),
             )),
@@ -442,12 +395,6 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
       }
     }
   }
-
-  // String formatDateTime(DateTime dateTime) {
-  //   return "${dateTime.year}-${dateTime.month.toString().padLeft(2, '0')}-${dateTime.day.toString().padLeft(2, '0')} ${dateTime.hour.toString().padLeft(2, '0')}:${dateTime.minute.toString().padLeft(2, '0')}";
-  // }
-
-  //
 
   List<DropdownMenuItem<String>> getStation() {
     var list = stationResult?.result
