@@ -40,18 +40,27 @@ namespace ePrijevozSarajevo.Services
 
         public async Task DeleteRouteWithIssuedTickets(int routeId)
         {
-            // Find and delete issued tickets related to the route
-            var issuedTickets = _dataContext.IssuedTickets.Where(t => t.RouteId == routeId);
-            _dataContext.IssuedTickets.RemoveRange(issuedTickets);
+            // Route from past
+            DateTime todayDate = DateTime.Now;
 
-            // Find and delete the route
             var route = await _dataContext.Routes.FindAsync(routeId);
-            if (route != null)
-            {
-                _dataContext.Routes.Remove(route);
-            }
+                      
+                if (route == null)
+                {
+                    throw new InvalidOperationException("Ruta nije pronađena.");
+                }
 
-            await _dataContext.SaveChangesAsync();
+                if (route.Departure <= todayDate)
+                {
+                    throw new InvalidOperationException("Nije moguće izbrisati rutu s prošlim datumom polaska.");
+                }
+
+                // Find and delete issued tickets related to the route
+                var issuedTickets = _dataContext.IssuedTickets.Where(t => t.RouteId == routeId);
+                _dataContext.IssuedTickets.RemoveRange(issuedTickets);
+
+                _dataContext.Routes.Remove(route);
+                await _dataContext.SaveChangesAsync();           
         }
     }
 }
