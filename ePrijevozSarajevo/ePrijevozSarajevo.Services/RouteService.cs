@@ -44,23 +44,59 @@ namespace ePrijevozSarajevo.Services
             DateTime todayDate = DateTime.Now;
 
             var route = await _dataContext.Routes.FindAsync(routeId);
-                      
-                if (route == null)
-                {
-                    throw new InvalidOperationException("Ruta nije pronađena.");
-                }
 
-                if (route.Departure <= todayDate)
-                {
-                    throw new InvalidOperationException("Nije moguće izbrisati rutu s prošlim datumom polaska.");
-                }
+            if (route == null)
+            {
+                throw new InvalidOperationException("Ruta nije pronađena.");
+            }
 
-                // Find and delete issued tickets related to the route
-                var issuedTickets = _dataContext.IssuedTickets.Where(t => t.RouteId == routeId);
-                _dataContext.IssuedTickets.RemoveRange(issuedTickets);
+            if (route.Departure <= todayDate)
+            {
+                throw new InvalidOperationException("Nije moguće izbrisati rutu s prošlim datumom polaska.");
+            }
 
-                _dataContext.Routes.Remove(route);
-                await _dataContext.SaveChangesAsync();           
+            // Find and delete issued tickets related to the route
+            var issuedTickets = _dataContext.IssuedTickets.Where(t => t.RouteId == routeId);
+            _dataContext.IssuedTickets.RemoveRange(issuedTickets);
+
+            _dataContext.Routes.Remove(route);
+            await _dataContext.SaveChangesAsync();
+        }
+
+        public async Task<Model.Route> InsertArrivalDeparture(RouteInsertRequest request)
+        {
+            Database.Route entity = _mapper.Map<Database.Route>(request);
+            await BeforeInsert(request, entity);
+
+            if (entity.Arrival < entity.Departure)
+            {
+                throw new InvalidOperationException("Vrijeme dolaska ne može biti biti manje od vremena polaska.");
+            }
+            else
+            {
+                await _dataContext.AddAsync(entity);
+                await _dataContext.SaveChangesAsync();
+            }
+            return _mapper.Map<Model.Route>(entity);
+
+        }
+
+        public async Task<Model.Route> UpdateArrivalDeparture(int id, RouteUpdateRequest request)
+        {
+            var set = _dataContext.Set<Database.Route>();
+            var entity = await set.FindAsync(id);
+
+            if (entity != null && request.Arrival < request.Departure)
+            {
+                throw new InvalidOperationException("Update:: Vrijeme dolaska ne može biti biti manje od vremena polaska.");
+            }
+            else
+            {
+                _mapper.Map(request, entity);
+                await BeforeUpdate(request, entity);
+                await _dataContext.SaveChangesAsync();
+            }
+            return _mapper.Map<Model.Route>(entity);
         }
     }
 }

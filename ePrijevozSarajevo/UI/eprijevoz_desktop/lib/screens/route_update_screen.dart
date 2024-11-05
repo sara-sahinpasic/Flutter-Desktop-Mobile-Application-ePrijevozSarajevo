@@ -16,8 +16,11 @@ class UpdateRouteDialog extends StatefulWidget {
 class _UpdateRouteDialogState extends State<UpdateRouteDialog> {
   final _formKey = GlobalKey<FormBuilderState>();
   Map<String, dynamic> _initialValue = {};
-  TimeOfDay selectedDepartureTime = TimeOfDay.now();
+
+  DateTime selectedDepartureDateTime = DateTime.now();
   TimeOfDay selectedArrivalTime = TimeOfDay.now();
+  TimeOfDay selectedDepartureTime = TimeOfDay.now();
+  DateTime selectedArrivalDateTime = DateTime.now();
 
   late RouteProvider routeProvider;
   SearchResult<Route>? routeResult;
@@ -27,10 +30,7 @@ class _UpdateRouteDialogState extends State<UpdateRouteDialog> {
     super.initState();
 
     routeProvider = context.read<RouteProvider>();
-    /*if (widget.route.departure != null && widget.route.arrival != null) {
-      selectedDepartureTime = TimeOfDay.fromDateTime(widget.route.departure!);
-      selectedArrivalTime = TimeOfDay.fromDateTime(widget.route.departure!);
-    }*/
+
     initForm();
   }
 
@@ -43,56 +43,80 @@ class _UpdateRouteDialogState extends State<UpdateRouteDialog> {
       };
 
       if (widget.route.departure != null) {
-        selectedDepartureTime = TimeOfDay.fromDateTime(widget.route.departure!);
+        selectedDepartureDateTime = widget.route.departure!;
       }
       if (widget.route.arrival != null) {
-        selectedArrivalTime = TimeOfDay.fromDateTime(widget.route.arrival!);
+        selectedArrivalDateTime = widget.route.arrival!;
       }
     });
   }
 
-  Future<void> _selectDepartureTime(BuildContext context) async {
-    final TimeOfDay? pickedTime = await showTimePicker(
+  Future<void> _selectDepartureDateTime(BuildContext context) async {
+    final DateTime? pickedDate = await showDatePicker(
       context: context,
-      initialTime: selectedDepartureTime,
-      builder: (BuildContext context, Widget? child) {
-        return MediaQuery(
-          data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: true),
-          child: child!,
-        );
-      },
+      initialDate: selectedDepartureDateTime,
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2101),
     );
 
-    if (pickedTime != null) {
-      setState(() {
-        selectedDepartureTime = pickedTime;
-      });
+    if (pickedDate != null) {
+      final TimeOfDay? pickedTime = await showTimePicker(
+          context: context,
+          initialTime: TimeOfDay.fromDateTime(selectedDepartureDateTime));
+
+      if (pickedTime != null) {
+        final DateTime fullPickedDateTime = DateTime(
+          pickedDate.year,
+          pickedDate.month,
+          pickedDate.day,
+          pickedTime.hour,
+          pickedTime.minute,
+        );
+
+        setState(() {
+          selectedDepartureDateTime = fullPickedDateTime;
+        });
+      }
     }
   }
 
-  Future<void> _selectArrivalTime(BuildContext context) async {
-    final TimeOfDay? pickedTime = await showTimePicker(
+  Future<void> _selectArrivalDateTime(BuildContext context) async {
+    final DateTime? pickedDate = await showDatePicker(
       context: context,
-      initialTime: selectedArrivalTime,
-      builder: (BuildContext context, Widget? child) {
-        return MediaQuery(
-          data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: true),
-          child: child!,
-        );
-      },
+      initialDate: selectedArrivalDateTime,
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2101),
     );
 
-    if (pickedTime != null) {
-      setState(() {
-        selectedArrivalTime = pickedTime;
-      });
+    if (pickedDate != null) {
+      final TimeOfDay? pickedTime = await showTimePicker(
+        context: context,
+        initialTime: TimeOfDay.fromDateTime(selectedArrivalDateTime),
+      );
+
+      if (pickedTime != null) {
+        final DateTime fullPickedDateTime = DateTime(
+          pickedDate.year,
+          pickedDate.month,
+          pickedDate.day,
+          pickedTime.hour,
+          pickedTime.minute,
+        );
+
+        setState(() {
+          selectedArrivalDateTime = fullPickedDateTime;
+        });
+      }
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text("Update"),
+      title: const Text(
+        "Update",
+        style: TextStyle(fontWeight: FontWeight.bold),
+      ),
       content: SizedBox(
         width: 500,
         height: 150,
@@ -121,10 +145,10 @@ class _UpdateRouteDialogState extends State<UpdateRouteDialog> {
                       minimumSize: const Size(450, 40),
                     ),
                     onPressed: () async {
-                      _selectDepartureTime(context);
+                      _selectDepartureDateTime(context);
                     },
                     child: Text(
-                      '${selectedDepartureTime.hour}:${selectedDepartureTime.minute}',
+                      '${selectedDepartureDateTime.hour}:${selectedDepartureDateTime.minute}',
                       style: const TextStyle(color: Colors.black),
                     ),
                   ),
@@ -150,17 +174,16 @@ class _UpdateRouteDialogState extends State<UpdateRouteDialog> {
                       minimumSize: const Size(450, 40),
                     ),
                     onPressed: () async {
-                      _selectArrivalTime(context);
+                      _selectArrivalDateTime(context);
                     },
                     child: Text(
-                      '${selectedArrivalTime.hour}:${selectedArrivalTime.minute}',
+                      '${selectedArrivalDateTime.hour}:${selectedArrivalDateTime.minute}',
                       style: const TextStyle(color: Colors.black),
                     ),
                   ),
                 ),
               ],
             ),
-            //
             const SizedBox(height: 25),
             Row(
               children: [
@@ -172,49 +195,81 @@ class _UpdateRouteDialogState extends State<UpdateRouteDialog> {
                       var request = Map.from(_formKey.currentState!.value);
 
                       DateTime departureDateTime = DateTime(
-                        widget.route.departure!.year,
-                        widget.route.departure!.month,
-                        widget.route.departure!.day,
-                        selectedDepartureTime.hour,
-                        selectedDepartureTime.minute,
+                        selectedDepartureDateTime.year,
+                        selectedDepartureDateTime.month,
+                        selectedDepartureDateTime.day,
+                        selectedDepartureDateTime.hour,
+                        selectedDepartureDateTime.minute,
                       );
 
                       DateTime arrivalDateTime = DateTime(
-                        widget.route.arrival!.year,
-                        widget.route.arrival!.month,
-                        widget.route.arrival!.day,
-                        selectedArrivalTime.hour,
-                        selectedArrivalTime.minute,
+                        selectedArrivalDateTime.year,
+                        selectedArrivalDateTime.month,
+                        selectedArrivalDateTime.day,
+                        selectedArrivalDateTime.hour,
+                        selectedArrivalDateTime.minute,
                       );
 
                       request['departure'] =
                           departureDateTime.toIso8601String();
                       request['arrival'] = arrivalDateTime.toIso8601String();
 
-                      if (widget.route != null) {
-                        await routeProvider.update(
-                            widget.route!.routeId!, request);
-                        Navigator.pop(context, true);
-                      }
-
-                      showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                          title: const Text("Update"),
-                          content: const Text("Vremena su ažurirana"),
-                          actions: [
-                            TextButton(
-                              child: const Text(
-                                "OK",
-                                style: TextStyle(color: Colors.green),
+                      try {
+                        if (widget.route != null) {
+                          await routeProvider.update(
+                              widget.route!.routeId!, request);
+                          await showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: const Text(
+                                "Success",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.green),
                               ),
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                            )
-                          ],
-                        ),
-                      );
+                              content:
+                                  const Text("Vremena uspješno ažurirana."),
+                              actions: [
+                                TextButton(
+                                  child: const Text(
+                                    "OK",
+                                    style: TextStyle(color: Colors.black),
+                                  ),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    Navigator.pop(context, true);
+                                  },
+                                ),
+                              ],
+                            ),
+                          );
+                        }
+                      } catch (error) {
+                        showDialog(
+                          context: context,
+                          builder: (dialogContext) => AlertDialog(
+                            title: const Text(
+                              "Error",
+                              style: TextStyle(
+                                  color: Colors.red,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            content:
+                                const Text("Greška prilikom ažuriranja rute."),
+                            actions: [
+                              TextButton(
+                                child: const Text(
+                                  "OK",
+                                  style: TextStyle(color: Colors.black),
+                                ),
+                                onPressed: () {
+                                  Navigator.pop(dialogContext, false);
+                                },
+                              ),
+                            ],
+                          ),
+                        );
+                      }
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromRGBO(72, 156, 118, 100),

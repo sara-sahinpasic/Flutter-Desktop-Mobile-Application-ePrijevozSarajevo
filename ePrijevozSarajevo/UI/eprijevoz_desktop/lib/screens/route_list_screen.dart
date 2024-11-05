@@ -341,15 +341,21 @@ class _RouteListScreenState extends State<RouteListScreen> {
                                             "Unknown";
 
                                         return AlertDialog(
-                                          title: const Text("Delete"),
+                                          title: const Text(
+                                            "Delete",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
                                           content: Text(
-                                            "Da li želite obrisati rutu: ${startStationName} - ${endStationName}, s polaskom u ${formatDateTime(e.departure!)}?",
+                                            "Da li želite obrisati rutu: $startStationName - $endStationName, s polaskom u ${formatDateTime(e.departure!)}?",
                                           ),
                                           actions: [
                                             TextButton(
-                                              child: const Text("OK",
-                                                  style: TextStyle(
-                                                      color: Colors.green)),
+                                              child: const Text(
+                                                "OK",
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              ),
                                               onPressed: () async {
                                                 Navigator.pop(dialogContext);
                                                 try {
@@ -363,12 +369,14 @@ class _RouteListScreenState extends State<RouteListScreen> {
                                                             AlertDialog(
                                                       title: const Text(
                                                         "Success",
-                                                        style: const TextStyle(
-                                                            color:
-                                                                Colors.green),
+                                                        style: TextStyle(
+                                                            color: Colors.green,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
                                                       ),
                                                       content: Text(
-                                                        "Ruta ${startStationName} - ${endStationName}, s polaskom u ${formatDateTime(e.departure!)} je uspješno obrisana.",
+                                                        "Ruta $startStationName - $endStationName, s polaskom u ${formatDateTime(e.departure!)} je uspješno obrisana.",
                                                       ),
                                                       actions: [
                                                         TextButton(
@@ -376,17 +384,18 @@ class _RouteListScreenState extends State<RouteListScreen> {
                                                               Navigator.pop(
                                                                   successDialogContext),
                                                           child: const Text(
-                                                              "OK",
-                                                              style: TextStyle(
-                                                                  color: Colors
-                                                                      .green)),
+                                                            "OK",
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .black),
+                                                          ),
                                                         ),
                                                       ],
                                                     ),
                                                   );
                                                 } catch (error) {
                                                   String errorMessage =
-                                                      "Ruta ${startStationName} - ${endStationName}, s polaskom u ${formatDateTime(e.departure!)} nije obrisana jer je datum polaska već prošao.";
+                                                      "Greška prilikom brisanja rute.";
 
                                                   await showDialog(
                                                     context: context,
@@ -395,8 +404,11 @@ class _RouteListScreenState extends State<RouteListScreen> {
                                                             AlertDialog(
                                                       title: const Text(
                                                         "Error",
-                                                        style: const TextStyle(
-                                                            color: Colors.red),
+                                                        style: TextStyle(
+                                                            color: Colors.red,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
                                                       ),
                                                       content: Text(
                                                         errorMessage,
@@ -407,10 +419,11 @@ class _RouteListScreenState extends State<RouteListScreen> {
                                                               Navigator.pop(
                                                                   errorDialogContext),
                                                           child: const Text(
-                                                              "OK",
-                                                              style: TextStyle(
-                                                                  color: Colors
-                                                                      .green)),
+                                                            "OK",
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .black),
+                                                          ),
                                                         ),
                                                       ],
                                                     ),

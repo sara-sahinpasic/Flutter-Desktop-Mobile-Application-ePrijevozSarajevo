@@ -23,7 +23,6 @@ class RouteAddDialog extends StatefulWidget {
 }
 
 class _RouteAddDialogState extends State<RouteAddDialog> {
-  //Form
   final _formKey = GlobalKey<FormBuilderState>();
   Map<String, dynamic> _initialValue = {};
   SearchResult<Route>? routeResult;
@@ -88,7 +87,10 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text("Nova ruta"),
+      title: const Text(
+        "Nova ruta",
+        style: TextStyle(fontWeight: FontWeight.bold),
+      ),
       content: Container(
         width: 500,
         height: 410,
@@ -199,7 +201,6 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
                       ),
                       onPressed: () async {
                         await _selectDepartureDateTime(context);
-                        print("Selected DateTime: ${selectedDepartureDate}");
                         setState(() {});
                       },
                       child: Text(
@@ -236,7 +237,6 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
                       ),
                       onPressed: () async {
                         await _selectArrivalDateTime(context);
-                        print("Selected DateTime: ${selectedArrivalDate}");
                         setState(() {});
                       },
                       child: Text(
@@ -273,17 +273,22 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
                         await showDialog(
                           context: context,
                           builder: (dialogContext) => AlertDialog(
-                            title: const Text("Success"),
+                            title: const Text(
+                              "Success",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.green),
+                            ),
                             content: const Text("Ruta je uspješno dodana."),
                             actions: [
                               TextButton(
-                                child: const Text("OK",
-                                    style: TextStyle(color: Colors.green)),
+                                child: const Text(
+                                  "OK",
+                                  style: TextStyle(color: Colors.black),
+                                ),
                                 onPressed: () {
-                                  Navigator.pop(
-                                      dialogContext); // Close the AlertDialog
-                                  Navigator.pop(dialogContext,
-                                      true); // Return true to indicate successful addition
+                                  Navigator.pop(dialogContext);
+                                  Navigator.pop(dialogContext, true);
                                 },
                               ),
                             ],
@@ -293,16 +298,22 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
                         showDialog(
                           context: context,
                           builder: (dialogContext) => AlertDialog(
-                            title: const Text("Error"),
+                            title: const Text(
+                              "Error",
+                              style: const TextStyle(
+                                  color: Colors.red,
+                                  fontWeight: FontWeight.bold),
+                            ),
                             content:
                                 const Text("Greška prilikom dodavanja rute."),
                             actions: [
                               TextButton(
-                                child: const Text("OK",
-                                    style: TextStyle(color: Colors.red)),
+                                child: const Text(
+                                  "OK",
+                                  style: TextStyle(color: Colors.black),
+                                ),
                                 onPressed: () {
-                                  Navigator.pop(dialogContext,
-                                      false); // adding is not successful => false
+                                  Navigator.pop(dialogContext, false);
                                 },
                               ),
                             ],
