@@ -27,5 +27,15 @@ namespace ePrijevozSarajevo.API.Controllers
 
             return result;
         }
+        [HttpPost]
+        public override async Task<Model.Route> Insert(RouteInsertRequest request)
+        {
+            return await(_service as IRouteService).InsertArrivalDeparture(request);
+        }
+        [HttpPut("{id}")]
+        public override async Task<Model.Route> Update(int id, RouteUpdateRequest request)
+        {
+            return await(_service as IRouteService).UpdateArrivalDeparture(id, request);
+        }
     }
 }
