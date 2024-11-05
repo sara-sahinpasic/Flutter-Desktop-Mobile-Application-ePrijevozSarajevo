@@ -319,91 +319,121 @@ class _RouteListScreenState extends State<RouteListScreen> {
                               )),
 
                               //delete
-                              DataCell(IconButton(
-                                onPressed: () async {
-                                  final bool routeConfirmedDeletion =
-                                      await showDialog(
-                                          context: context,
-                                          builder: (dialogContext) {
-                                            final startStationName =
-                                                stationResult?.result
-                                                        .firstWhere((station) =>
-                                                            station.stationId ==
-                                                            e.startStationId)
-                                                        .name ??
-                                                    "Unknown";
-                                            final endStationName = stationResult
-                                                    ?.result
-                                                    .firstWhere((station) =>
-                                                        station.stationId ==
-                                                        e.endStationId)
-                                                    .name ??
-                                                "Unknown";
+                              DataCell(
+                                IconButton(
+                                  onPressed: () async {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (dialogContext) {
+                                        final startStationName = stationResult
+                                                ?.result
+                                                .firstWhere((station) =>
+                                                    station.stationId ==
+                                                    e.startStationId)
+                                                .name ??
+                                            "Unknown";
+                                        final endStationName = stationResult
+                                                ?.result
+                                                .firstWhere((station) =>
+                                                    station.stationId ==
+                                                    e.endStationId)
+                                                .name ??
+                                            "Unknown";
 
-                                            return AlertDialog(
-                                              title: const Text("Delete"),
-                                              content: Text(
-                                                  "Da li želite obrisati rutu ${startStationName} - ${endStationName}, s polaskom u ${formatDateTime(e.departure!)}?"),
-                                              actions: [
-                                                TextButton(
-                                                    child: const Text(
-                                                      "OK",
-                                                      style: TextStyle(
-                                                          color: Colors.green),
+                                        return AlertDialog(
+                                          title: const Text("Delete"),
+                                          content: Text(
+                                            "Da li želite obrisati rutu: ${startStationName} - ${endStationName}, s polaskom u ${formatDateTime(e.departure!)}?",
+                                          ),
+                                          actions: [
+                                            TextButton(
+                                              child: const Text("OK",
+                                                  style: TextStyle(
+                                                      color: Colors.green)),
+                                              onPressed: () async {
+                                                Navigator.pop(dialogContext);
+                                                try {
+                                                  await routeProvider
+                                                      .delete(e.routeId!);
+
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (successDialogContext) =>
+                                                            AlertDialog(
+                                                      title: const Text(
+                                                        "Success",
+                                                        style: const TextStyle(
+                                                            color:
+                                                                Colors.green),
+                                                      ),
+                                                      content: Text(
+                                                        "Ruta ${startStationName} - ${endStationName}, s polaskom u ${formatDateTime(e.departure!)} je uspješno obrisana.",
+                                                      ),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  successDialogContext),
+                                                          child: const Text(
+                                                              "OK",
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .green)),
+                                                        ),
+                                                      ],
                                                     ),
-                                                    onPressed: () async {
-                                                      Navigator.pop(
-                                                          dialogContext, true);
-                                                    }),
-                                                TextButton(
-                                                  child: const Text(
-                                                    "Cancel",
-                                                    style: TextStyle(
-                                                        color: Colors.red),
-                                                  ),
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          dialogContext, false),
-                                                )
-                                              ],
-                                            );
-                                          });
-                                  if (routeConfirmedDeletion) {
-                                    bool success =
-                                        await routeProvider.delete(e.routeId!);
-                                    if (mounted) {
-                                      await showDialog(
-                                          context: context,
-                                          builder: (dialogDeleteContext) =>
-                                              AlertDialog(
-                                                title: Text(success
-                                                    ? "Success"
-                                                    : "Error"),
-                                                content: Text(success
-                                                    ? "Ruta, uspješno obrisana."
-                                                    : "Ruta, nije obrisana."),
-                                                actions: [
-                                                  TextButton(
-                                                    child: const Text(
-                                                      "OK",
-                                                      style: TextStyle(
-                                                          color: Colors.green),
+                                                  );
+                                                } catch (error) {
+                                                  String errorMessage =
+                                                      "Ruta ${startStationName} - ${endStationName}, s polaskom u ${formatDateTime(e.departure!)} nije obrisana jer je datum polaska već prošao.";
+
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (errorDialogContext) =>
+                                                            AlertDialog(
+                                                      title: const Text(
+                                                        "Error",
+                                                        style: const TextStyle(
+                                                            color: Colors.red),
+                                                      ),
+                                                      content: Text(
+                                                        errorMessage,
+                                                      ),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  errorDialogContext),
+                                                          child: const Text(
+                                                              "OK",
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .green)),
+                                                        ),
+                                                      ],
                                                     ),
-                                                    onPressed: () {
-                                                      Navigator.pop(
-                                                          dialogDeleteContext);
-                                                    },
-                                                  )
-                                                ],
-                                              ));
-                                    }
-                                  }
-                                },
-                                icon: const Icon(
-                                  Icons.delete_forever_rounded,
-                                  color: Colors.white,
+                                                  );
+                                                }
+                                              },
+                                            ),
+                                            TextButton(
+                                              child: const Text("Cancel",
+                                                  style: TextStyle(
+                                                      color: Colors.red)),
+                                              onPressed: () => Navigator.pop(
+                                                  dialogContext, false),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                  },
+                                  icon: const Icon(Icons.delete_forever_rounded,
+                                      color: Colors.white),
                                 ),
-                              )),
+                              )
                             ],
                           ),
                         )
