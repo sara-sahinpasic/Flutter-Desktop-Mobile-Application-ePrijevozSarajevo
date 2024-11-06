@@ -6,6 +6,7 @@ import 'package:eprijevoz_desktop/models/user.dart';
 import 'package:eprijevoz_desktop/providers/request_provider.dart';
 import 'package:eprijevoz_desktop/providers/status_provider.dart';
 import 'package:eprijevoz_desktop/providers/user_provider.dart';
+import 'package:eprijevoz_desktop/screens/request_approve_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
@@ -90,10 +91,10 @@ class _RequestListScreenState extends State<RequestListScreen> {
         "Zahtjevi",
         Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
-            Align(
+            const Align(
               alignment: Alignment.centerLeft,
               child: Text(
                 "Za prikaz svih rezultata, neophodno je odbrati traženi status, te pritisnuti dugme "
@@ -102,7 +103,7 @@ class _RequestListScreenState extends State<RequestListScreen> {
                 style: TextStyle(fontWeight: FontWeight.w400),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             isLoading ? Container() : _buildSearch(),
@@ -116,11 +117,11 @@ class _RequestListScreenState extends State<RequestListScreen> {
       key: _formKey,
       initialValue: _initialValue,
       child: Row(children: [
-        Text(
+        const Text(
           "Status: ",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
         ),
-        SizedBox(
+        const SizedBox(
           width: 15,
         ),
         Expanded(
@@ -145,7 +146,7 @@ class _RequestListScreenState extends State<RequestListScreen> {
             },
           ),
         ),
-        SizedBox(
+        const SizedBox(
           width: 15,
         ),
         ElevatedButton(
@@ -183,7 +184,7 @@ class _RequestListScreenState extends State<RequestListScreen> {
         child: FormBuilder(
             child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
             Container(
@@ -191,7 +192,7 @@ class _RequestListScreenState extends State<RequestListScreen> {
               width: double.infinity,
               child: DataTable(
                 headingRowColor: MaterialStateColor.resolveWith(
-                    (states) => Color.fromRGBO(72, 156, 118, 100)),
+                    (states) => const Color.fromRGBO(72, 156, 118, 100)),
                 columns: const <DataColumn>[
                   DataColumn(
                     label: Expanded(
@@ -240,36 +241,78 @@ class _RequestListScreenState extends State<RequestListScreen> {
                             cells: [
                               DataCell(Text(
                                 '${userResult?.result.firstWhere((element) => element.userId == e.userId).userId.toString() ?? ""}',
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: Colors.white, fontSize: 17),
                               )),
                               DataCell(Text(
                                 '${userResult?.result.firstWhere((element) => element.userId == e.userId).firstName ?? ""}'
                                 " "
                                 '${userResult?.result.firstWhere((element) => element.userId == e.userId).lastName ?? ""}',
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: Colors.white, fontSize: 17),
                               )),
                               DataCell(Text(
                                 "Mjesečna karta - "
                                 '${statusResult?.result.firstWhere((element) => element.statusId == e.userStatusId).name ?? ""}',
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: Colors.white, fontSize: 17),
                               )),
                               DataCell(Row(
                                 children: [
                                   ElevatedButton(
-                                      onPressed: () {},
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.black,
-                                      ),
-                                      child: Text(
-                                        "Prihvati",
-                                        style: TextStyle(
-                                            color: Colors.green,
-                                            fontWeight: FontWeight.bold),
-                                      )),
-                                  Text(
+                                    onPressed: () async {
+                                      try {
+                                        final result = await showDialog<bool>(
+                                          context: context,
+                                          builder: (successDialogContext) =>
+                                              RequestApproveDialog(
+                                            request: e,
+                                          ),
+                                        );
+
+                                        if (result == true) {
+                                          // refresh???
+                                        }
+                                      } catch (error) {
+                                        String errorMessage =
+                                            "Greška prilikom odobrenja zahtjeva.";
+                                        await showDialog(
+                                          context: context,
+                                          builder: (errorDialogContext) =>
+                                              AlertDialog(
+                                            title: const Text(
+                                              "Error",
+                                              style: TextStyle(
+                                                  color: Colors.red,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            content: Text(errorMessage),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    errorDialogContext),
+                                                child: const Text(
+                                                  "OK",
+                                                  style: TextStyle(
+                                                      color: Colors.black),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      }
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.black,
+                                    ),
+                                    child: const Text(
+                                      "Prihvati",
+                                      style: TextStyle(
+                                          color: Colors.green,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  const Text(
                                     "|",
                                     style: TextStyle(
                                         color: Colors.white,
@@ -280,7 +323,7 @@ class _RequestListScreenState extends State<RequestListScreen> {
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor: Colors.black,
                                       ),
-                                      child: Text(
+                                      child: const Text(
                                         "Odbaci",
                                         style: TextStyle(
                                             color: Colors.red,
