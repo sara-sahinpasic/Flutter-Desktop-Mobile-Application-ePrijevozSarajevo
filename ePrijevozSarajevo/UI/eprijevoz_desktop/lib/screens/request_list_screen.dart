@@ -236,6 +236,7 @@ class _RequestListScreenState extends State<RequestListScreen> {
                   ),
                 ],
                 rows: routeResultForStatus?.result
+                        .where((element) => element.active == true)
                         .map(
                           (e) => DataRow(
                             cells: [

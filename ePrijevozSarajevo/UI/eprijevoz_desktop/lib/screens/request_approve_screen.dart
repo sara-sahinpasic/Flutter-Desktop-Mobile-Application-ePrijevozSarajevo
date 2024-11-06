@@ -50,12 +50,10 @@ class _RequestApproveDialogState extends State<RequestApproveDialog> {
                 name: 'expirationDate',
                 initialEntryMode: DatePickerEntryMode.calendar,
                 inputType: InputType.date,
-                //format: DateFormat("yyyy-MM-dd"),
                 decoration: InputDecoration(
                   labelText: 'Odaberite datum',
                   border: OutlineInputBorder(),
                 ),
-                //validator: FormBuilderValidators.required(context),
               ),
               const SizedBox(height: 30),
               ElevatedButton(
