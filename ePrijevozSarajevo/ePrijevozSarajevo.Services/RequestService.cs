@@ -17,16 +17,6 @@ namespace ePrijevozSarajevo.Services
         {
             query = base.AddFilter(search, query);
 
-            /* if (search?.UserIdGTE > 0)
-             {
-                 query = query.Where(x => x.UserId == search.UserIdGTE);
-             }
-
-             if (search?.UserStatusIdGTE > 0)
-             {
-                 query = query.Where(x => x.User.UserStatusId == search.UserStatusIdGTE);
-             }*/
-
             if (search?.UserStatusIdGTE >= 0)
             {
                 query = query.Where(x => x.UserStatusId == search.UserStatusIdGTE);
@@ -34,49 +24,50 @@ namespace ePrijevozSarajevo.Services
 
             if (search?.IsUserIncluded == true)
             {
-                query = query
-                   .Include(x => x.User)
-                    .ThenInclude(x => x.UserRoles).ThenInclude(y => y.Role);
+                query = query.Include(x => x.User)
+                      .ThenInclude(u => u.UserRoles);
             }
-
-            //ToDo
-            //.Include(x => x.User)
-            //    .ThenInclude(x => x.UserStatus)
-            // .Include(x => x.User)
-            //     .ThenInclude(x => x.Role);
 
             return query;
         }
 
         public async Task ApproveRequest(int requestId, DateTime expirationDate)
         {
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+#pragma warning disable CS8600 
             Request request = await _dataContext.Requests
                  .Include(r => r.User)
                  .FirstOrDefaultAsync(r => r.RequestId == requestId);
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
-            User? user = request.User;
+            User? user = request?.User;
 
-            request.Active = false;
-            request.Approved = true;
+            if (user != null)
+            {
+                request.Active = false;
+                request.Approved = true;
+                user.UserStatusId = request.UserStatusId;
+                user.StatusExpirationDate = expirationDate;
 
-            user.UserStatusId = request.UserStatusId;
-            user.StatusExpirationDate = expirationDate;
+                if (user.StatusExpirationDate < DateTime.UtcNow || user.StatusExpirationDate == null && request.Active == false)
+                {
+                    user.UserStatusId = 1;
+                    user.StatusExpirationDate = null;
+                }
 
-            var userUpdate = _dataContext.Users.Update(user);
-            var requestUpdate = _dataContext.Requests.Update(request);
+                _dataContext.Users.Update(user);
+                _dataContext.Requests.Update(request);
 
-            await _dataContext.SaveChangesAsync();
+                await _dataContext.SaveChangesAsync();
+            }
         }
 
         public async Task<bool> RejectRequest(int requestId, string rejectionReason)
         {
-            #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+#pragma warning disable CS8600 
             Request request = await _dataContext.Requests
                 .Include(r => r.User)
                 .FirstOrDefaultAsync(r => r.RequestId == requestId);
-            #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
             if (request != null && request.Active == false)
             {
@@ -92,8 +83,8 @@ namespace ePrijevozSarajevo.Services
             user.UserStatusId = 1;
             user.StatusExpirationDate = null;
 
-            var userUpdate = _dataContext.Users.Update(user);
-            var requestUpdate = _dataContext.Requests.Update(request);
+            _dataContext.Users.Update(user);
+            _dataContext.Requests.Update(request);
 
             await _dataContext.SaveChangesAsync();
 

@@ -4,25 +4,21 @@ import 'package:eprijevoz_mobile/providers/auth_provider.dart';
 import 'package:eprijevoz_mobile/providers/request_provider.dart';
 import 'package:eprijevoz_mobile/providers/user_provider.dart';
 import 'package:eprijevoz_mobile/screens/profile_screen.dart';
-import 'package:eprijevoz_mobile/screens/request_screen.dart';
+import 'package:eprijevoz_mobile/screens/request/request_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../models/request.dart';
+import '../../models/request.dart';
 
 class RequestOptionsScreen extends StatefulWidget {
-  //User user;
-  RequestOptionsScreen(
-      {
-      //required this.user,
-      super.key});
+  const RequestOptionsScreen({super.key});
 
   @override
   State<RequestOptionsScreen> createState() => _RequestOptionsScreenState();
 }
 
 class _RequestOptionsScreenState extends State<RequestOptionsScreen> {
-  int? _selectedTicketTypeId; // Variable to store selected ticket type
+  int? _selectedTicketTypeId;
   late RequestProvider requestProvider;
   late UserProvider userProvider;
   SearchResult<Request>? requestResult;
@@ -44,8 +40,6 @@ class _RequestOptionsScreenState extends State<RequestOptionsScreen> {
         .firstWhere((user) => user.userName == AuthProvider.username);
 
     userId = user?.userId;
-
-    print("User ima id: ${userId}");
   }
 
   @override
@@ -54,13 +48,12 @@ class _RequestOptionsScreenState extends State<RequestOptionsScreen> {
       body: Column(
         children: [
           Container(
-            padding: EdgeInsets.fromLTRB(50.0, 35.0, 30.0, 20.0),
+            padding: const EdgeInsets.fromLTRB(50.0, 35.0, 30.0, 20.0),
             color: Colors.green.shade800,
             child: Row(
-              mainAxisAlignment:
-                  MainAxisAlignment.spaceBetween, // space between text and icon
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   "Zahtjev",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -73,7 +66,7 @@ class _RequestOptionsScreenState extends State<RequestOptionsScreen> {
                       Navigator.of(context).pop(MaterialPageRoute(
                           builder: (context) => ProfileScreen()));
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.cancel_outlined,
                       color: Colors.white,
                       size: 40,
@@ -154,7 +147,6 @@ class _RequestOptionsScreenState extends State<RequestOptionsScreen> {
               ],
             ),
           ),
-          //button
           SizedBox(
             width: double.infinity,
             height: 55,
@@ -177,19 +169,19 @@ class _RequestOptionsScreenState extends State<RequestOptionsScreen> {
                     await showDialog(
                         context: context,
                         builder: (dialogContext) => AlertDialog(
-                              title: Text(
+                              title: const Text(
                                 "Zahtjev za povlasticom na osnovu statusa",
                                 style: TextStyle(
                                     fontSize: 17, fontWeight: FontWeight.bold),
                               ),
-                              content: Text(
+                              content: const Text(
                                 "Da li želite da zatražite status kojim je moguće ostvariti povlasticu?",
                                 style: TextStyle(
                                     fontSize: 15, fontWeight: FontWeight.w500),
                               ),
                               actions: [
                                 TextButton(
-                                    child: Text(
+                                    child: const Text(
                                       "OK",
                                       style: TextStyle(color: Colors.green),
                                     ),
@@ -197,13 +189,12 @@ class _RequestOptionsScreenState extends State<RequestOptionsScreen> {
                                       Navigator.pop(dialogContext, true);
                                     }),
                                 TextButton(
-                                    child: Text(
+                                    child: const Text(
                                       "Cancel",
                                       style: TextStyle(color: Colors.red),
                                     ),
                                     onPressed: () =>
                                         Navigator.pop(context, false))
-                                //ToDo :: Gdje otići pritiskom na dugme Cancel
                               ],
                             ));
                   }
@@ -215,13 +206,12 @@ class _RequestOptionsScreenState extends State<RequestOptionsScreen> {
                   ),
                   padding: const EdgeInsets.symmetric(vertical: 10.0),
                 ),
-                child: Text("Pošalji zahtjev",
+                child: const Text("Pošalji zahtjev",
                     style:
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 20))),
           )
         ],
       ),
-      //footer
       bottomSheet: Container(
         color: Colors.green.shade800,
         height: 20,
