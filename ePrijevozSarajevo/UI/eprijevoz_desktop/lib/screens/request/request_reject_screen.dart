@@ -5,21 +5,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
 
-class RequestApproveDialog extends StatefulWidget {
+class RequestRejectDialog extends StatefulWidget {
   final Request? request;
-
-  RequestApproveDialog({this.request, Key? key}) : super(key: key);
+  const RequestRejectDialog({this.request, super.key});
 
   @override
-  State<RequestApproveDialog> createState() => _RequestApproveDialogState();
+  State<RequestRejectDialog> createState() => _RequestRejectDialogState();
 }
 
-class _RequestApproveDialogState extends State<RequestApproveDialog> {
+class _RequestRejectDialogState extends State<RequestRejectDialog> {
   final _formKey = GlobalKey<FormBuilderState>();
-  Map<String, dynamic> _initialValue = {};
+  final Map<String, dynamic> _initialValue = {};
 
   late RequestProvider requestProvider;
   late UserProvider userProvider;
+  final TextEditingController _ftsRejectReasonController =
+      TextEditingController();
 
   @override
   void initState() {
@@ -31,9 +32,13 @@ class _RequestApproveDialogState extends State<RequestApproveDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text("Odobri zahtjev"),
+      title: const Text(
+        "Odbij zahtjev",
+        style: TextStyle(fontWeight: FontWeight.bold),
+      ),
       content: SizedBox(
         width: 500,
+        height: 200,
         child: FormBuilder(
           key: _formKey,
           initialValue: _initialValue,
@@ -42,34 +47,42 @@ class _RequestApproveDialogState extends State<RequestApproveDialog> {
             children: [
               const SizedBox(height: 15),
               const Text(
-                "Datum istjecanja zahtjeva:",
+                "Razlog odbijanja traženog statusa:",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
               ),
               const SizedBox(height: 10),
-              FormBuilderDateTimePicker(
-                name: 'expirationDate',
-                initialEntryMode: DatePickerEntryMode.calendar,
-                inputType: InputType.date,
-                decoration: InputDecoration(
-                  labelText: 'Odaberite datum',
-                  border: OutlineInputBorder(),
+              Expanded(
+                child: TextFormField(
+                  controller: _ftsRejectReasonController,
+                  minLines: 3,
+                  maxLines: 6,
+                  keyboardType: TextInputType.multiline,
+                  cursorColor: Colors.green.shade800,
+                  decoration: const InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(10),
+                        topRight: Radius.circular(10),
+                        bottomLeft: Radius.circular(10),
+                        bottomRight: Radius.circular(10),
+                      ),
+                    ),
+                  ),
                 ),
               ),
-              const SizedBox(height: 30),
               ElevatedButton(
                 onPressed: () async {
                   if (_formKey.currentState?.saveAndValidate() ?? false) {
-                    DateTime expirationDate =
-                        _formKey.currentState?.value['expirationDate'];
+                    String? rejectionReason = _ftsRejectReasonController.text;
                     try {
-                      await requestProvider.approveRequest(
-                          widget.request!.requestId!, expirationDate);
-
+                      await requestProvider.rejectRequest(
+                          widget.request!.requestId!, rejectionReason);
                       showDialog(
                         context: context,
                         builder: (context) => AlertDialog(
                           title: const Text("Success"),
-                          content: const Text("Zahtjev uspješno odobren."),
+                          content: const Text("Zahtjev je odbijen."),
                           actions: [
                             TextButton(
                               child: const Text("OK",
@@ -88,7 +101,7 @@ class _RequestApproveDialogState extends State<RequestApproveDialog> {
                         builder: (context) => AlertDialog(
                           title: const Text("Error"),
                           content:
-                              const Text("Greška prilikom odobrenja zahtjeva."),
+                              const Text("Greška prilikom odbijanja zahtjeva."),
                           actions: [
                             TextButton(
                               child: const Text("OK",
@@ -105,9 +118,13 @@ class _RequestApproveDialogState extends State<RequestApproveDialog> {
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
-                  minimumSize: const Size(100, 45),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(2.0),
+                  ),
+                  minimumSize: const Size(double.infinity, 50),
                 ),
-                child: const Text("Odobri", style: TextStyle(fontSize: 18)),
+                child:
+                    const Text("Odbij zahtjev", style: TextStyle(fontSize: 18)),
               ),
             ],
           ),

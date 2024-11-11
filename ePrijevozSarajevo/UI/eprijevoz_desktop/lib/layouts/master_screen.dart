@@ -3,7 +3,7 @@ import 'package:eprijevoz_desktop/models/user.dart';
 import 'package:eprijevoz_desktop/providers/auth_provider.dart';
 import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:eprijevoz_desktop/screens/home_screen.dart';
-import 'package:eprijevoz_desktop/screens/request_list_screen.dart';
+import 'package:eprijevoz_desktop/screens/request/request_list_screen.dart';
 import 'package:eprijevoz_desktop/screens/route_list_screen.dart';
 import 'package:eprijevoz_desktop/screens/user_list_screen.dart';
 import 'package:eprijevoz_desktop/screens/vehicle_list_screen.dart';

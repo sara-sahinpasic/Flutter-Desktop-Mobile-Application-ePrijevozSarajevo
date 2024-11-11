@@ -1,6 +1,4 @@
 import 'package:eprijevoz_mobile/layouts/master_screen.dart';
-import 'package:eprijevoz_mobile/screens/profile_screen.dart';
-import 'package:eprijevoz_mobile/screens/request_options_screen.dart';
 import 'package:flutter/material.dart';
 
 class RequestScreen extends StatelessWidget {

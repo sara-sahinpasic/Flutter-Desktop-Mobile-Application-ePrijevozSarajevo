@@ -6,7 +6,8 @@ import 'package:eprijevoz_desktop/models/user.dart';
 import 'package:eprijevoz_desktop/providers/request_provider.dart';
 import 'package:eprijevoz_desktop/providers/status_provider.dart';
 import 'package:eprijevoz_desktop/providers/user_provider.dart';
-import 'package:eprijevoz_desktop/screens/request_approve_screen.dart';
+import 'package:eprijevoz_desktop/screens/request/request_approve_screen.dart';
+import 'package:eprijevoz_desktop/screens/request/request_reject_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
@@ -241,7 +242,12 @@ class _RequestListScreenState extends State<RequestListScreen> {
                           (e) => DataRow(
                             cells: [
                               DataCell(Text(
-                                '${userResult?.result.firstWhere((element) => element.userId == e.userId).userId.toString() ?? ""}',
+                                userResult?.result
+                                        .firstWhere((element) =>
+                                            element.userId == e.userId)
+                                        .userId
+                                        .toString() ??
+                                    "",
                                 style: const TextStyle(
                                     color: Colors.white, fontSize: 17),
                               )),
@@ -320,7 +326,50 @@ class _RequestListScreenState extends State<RequestListScreen> {
                                         fontWeight: FontWeight.bold),
                                   ),
                                   ElevatedButton(
-                                      onPressed: () {},
+                                      onPressed: () async {
+                                        try {
+                                          final result = await showDialog<bool>(
+                                            context: context,
+                                            builder: (successDialogContext) =>
+                                                RequestRejectDialog(
+                                              request: e,
+                                            ),
+                                          );
+
+                                          if (result == true) {
+                                            // refresh???
+                                          }
+                                        } catch (error) {
+                                          String errorMessage =
+                                              "Greška prilikom odobrenja zahtjeva.";
+                                          await showDialog(
+                                            context: context,
+                                            builder: (errorDialogContext) =>
+                                                AlertDialog(
+                                              title: const Text(
+                                                "Error",
+                                                style: TextStyle(
+                                                    color: Colors.red,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              content: Text(errorMessage),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          errorDialogContext),
+                                                  child: const Text(
+                                                    "OK",
+                                                    style: TextStyle(
+                                                        color: Colors.black),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          );
+                                        }
+                                      },
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor: Colors.black,
                                       ),

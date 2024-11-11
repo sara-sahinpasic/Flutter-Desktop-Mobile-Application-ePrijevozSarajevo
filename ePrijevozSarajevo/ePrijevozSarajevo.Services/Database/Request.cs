@@ -9,7 +9,6 @@
         public int? UserStatusId { get; set; }
         public DateTime? DateCreated { get; set; } 
         public bool? Active { get; set; } = true;
-        public string? DocumentLink { get; set; }
         public bool? Approved { get; set; } = false;
         public string? RejectionReason { get; set; }
     }

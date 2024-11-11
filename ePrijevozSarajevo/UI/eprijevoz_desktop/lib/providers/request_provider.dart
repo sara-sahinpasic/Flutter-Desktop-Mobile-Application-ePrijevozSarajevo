@@ -12,7 +12,6 @@ final _httpClient = http.Client();
 class RequestProvider extends BaseProvider<Request> {
   RequestProvider() : super("Request");
 
-  // get http => null;
   get http => _httpClient;
 
   @override
@@ -30,6 +29,29 @@ class RequestProvider extends BaseProvider<Request> {
       'expirationDate': formattedExpirationDate,
       if (rejectionReason != null)
         'rejectionReason': rejectionReason, // Optional parameter
+    };
+
+    var headers = createHeaders();
+    var jsonRequest = jsonEncode(body);
+
+    var uri = Uri.parse(url);
+    var response = await http.put(uri, headers: headers, body: jsonRequest);
+
+    if (isValidResponse(response)) {
+      return true;
+    } else {
+      throw Exception("Failed to approve request: ${response.body}");
+    }
+  }
+
+  Future<bool> rejectRequest(
+    int id,
+    String? rejectionReason,
+  ) async {
+    var url = "${BaseProvider.baseUrl}$endpoint/Reject/$id";
+
+    var body = {
+      'rejectionReason': rejectionReason,
     };
 
     var headers = createHeaders();

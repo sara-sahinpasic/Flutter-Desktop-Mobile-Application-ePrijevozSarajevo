@@ -7,7 +7,7 @@ import 'package:eprijevoz_mobile/providers/request_provider.dart';
 import 'package:eprijevoz_mobile/providers/status_provider.dart';
 import 'package:eprijevoz_mobile/providers/user_provider.dart';
 import 'package:eprijevoz_mobile/providers/utils.dart';
-import 'package:eprijevoz_mobile/screens/request_options_screen.dart';
+import 'package:eprijevoz_mobile/screens/request/request_options_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
