@@ -5,6 +5,7 @@ import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:eprijevoz_desktop/screens/home_screen.dart';
 import 'package:eprijevoz_desktop/screens/request/request_list_screen.dart';
 import 'package:eprijevoz_desktop/screens/route_list_screen.dart';
+import 'package:eprijevoz_desktop/screens/statistic_screen.dart';
 import 'package:eprijevoz_desktop/screens/user_list_screen.dart';
 import 'package:eprijevoz_desktop/screens/vehicle_list_screen.dart';
 import 'package:flutter/material.dart';
@@ -218,7 +219,8 @@ class _MasterScreenState extends State<MasterScreen> {
                           fontSize: 25),
                     ),
                     onTap: () {
-                      Navigator.pop(context);
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => StatisticScreen()));
                     },
                   )
                 ],
