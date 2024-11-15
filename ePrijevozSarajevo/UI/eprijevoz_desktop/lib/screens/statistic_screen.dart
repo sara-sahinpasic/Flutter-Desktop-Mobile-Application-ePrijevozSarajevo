@@ -16,7 +16,6 @@ class StatisticScreen extends StatefulWidget {
 class _StatisticScreenState extends State<StatisticScreen> {
   late IssuedTicketProvider issuedTicketProvider;
   SearchResult<IssuedTicket>? issuedTicketResult;
-
   final List<String> _yearList = [];
   late int selectedYearIndex;
   String selectedYear = "";
@@ -24,72 +23,65 @@ class _StatisticScreenState extends State<StatisticScreen> {
   late int startYear = 2020;
   late int currentYear = 2024;
   late int endYear = 2100;
-
-  Map<int, Map<int, int>>? ticketTypeData;
-  Map<int, Map<int, int>>? routeData;
+  late List<int> selectedMonths = [];
+  late List<IssuedTicket> ticketsForYearAndMonths = [];
+  late Map<int, int> ticketTypeAmounts = {};
+  var maxValue = 0;
 
   @override
   void initState() {
-    super.initState();
     issuedTicketProvider = context.read<IssuedTicketProvider>();
 
+    initForm();
+    super.initState();
+  }
+
+  Future<void> initForm() async {
     for (int i = startYear; i <= endYear; i++) {
       _yearList.add(i.toString());
     }
     selectedYearIndex = _yearList.indexOf(currentYear.toString());
-    selectedYear = _yearList[selectedYearIndex]; // Set a default selected year
+    selectedYear = _yearList[selectedYearIndex]; // default selected year
 
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      setState(() {
-        selectedYear = _yearList[selectedYearIndex];
-      });
-    });
-
-    initForm();
-  }
-
-  Future<void> initForm() async {
     issuedTicketResult = await issuedTicketProvider.get();
-    if (issuedTicketResult != null && issuedTicketResult!.result.isNotEmpty) {
-      var filteredTickets =
-          filterByYear(issuedTicketResult!.result, int.parse(selectedYear));
-      setState(() {
-        ticketTypeData = getTicketsByMonthAndType(filteredTickets);
-        routeData = getTicketsByMonthAndRoute(filteredTickets);
-      });
+    updateValues(issuedTicketResult);
+  }
+
+  void updateValues(SearchResult<IssuedTicket>? issuedTicketResult) {
+    // issued tickets per month
+    if (issuedTicketResult?.result != null) {
+      getIssuedTicketbyMonths(issuedTicketResult!.result);
+
+      // amount of issued tickets for year and month on that year
+      selectedMonths = getIssuedTicketbyMonths(issuedTicketResult.result
+          .where(
+              (element) => element.issuedDate?.year == int.parse(selectedYear))
+          .toList());
+
+      // tickets filtered by year and months
+      ticketsForYearAndMonths = getTicketsForYearAndMonths(
+          issuedTicketResult.result, int.parse(selectedYear), selectedMonths);
+
+      // calculate total amounts for each ticket type
+      ticketTypeAmounts = calculateTicketTypeAmounts(ticketsForYearAndMonths);
     }
   }
 
-  // Method to filter tickets by year
-  List<IssuedTicket> filterByYear(List<IssuedTicket> tickets, int year) {
-    return tickets.where((ticket) => ticket.issuedDate?.year == year).toList();
-  }
-
-  // Generate data for the Ticket Type chart
-  Map<int, Map<int, int>> getTicketsByMonthAndType(List<IssuedTicket> tickets) {
-    var groupedData = <int, Map<int, int>>{};
-    for (var ticket in tickets) {
-      int month = ticket.issuedDate!.month;
-
-      int typeId = ticket.ticketId!;
-      groupedData[month] ??= {};
-      groupedData[month]![typeId] = (groupedData[month]![typeId] ?? 0) + 1;
-    }
-    return groupedData;
-  }
-
-  // Generate data for the Route chart
-  Map<int, Map<int, int>> getTicketsByMonthAndRoute(
-      List<IssuedTicket> tickets) {
-    var groupedData = <int, Map<int, int>>{};
-    for (var ticket in tickets) {
-      int month = ticket.issuedDate!.month;
-      int routeId = ticket.routeId!;
-      groupedData[month] ??= {};
-      groupedData[month]![routeId] = (groupedData[month]![routeId] ?? 0) + 1;
-    }
-    return groupedData;
-  }
+  //Colors and legend for graph bars
+  final Map<int, Color> ticketTypeColors = {
+    1: Colors.purple, // Jednosmjerna
+    2: Colors.blue, // Povratna
+    3: Colors.orange, // Jednosmjerna dječija
+    4: Colors.green, // Povratna dječija
+    5: Colors.red, // Mjesečna
+  };
+  final Map<int, String> ticketTypeLabels = {
+    1: "Jednosmjerna",
+    2: "Povratna",
+    3: "Jednosmjerna dječija",
+    4: "Povratna dječija",
+    5: "Mjesečna",
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -102,15 +94,14 @@ class _StatisticScreenState extends State<StatisticScreen> {
             const Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                "Za prikaz svih rezultata, neophodno je pritisnuti dugme 'Pretraga'.",
+                "Za prikaz svih rezultata, neophodno je pritisnuti dugme 'Print'.",
                 style: TextStyle(fontWeight: FontWeight.w400),
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
             _buildSearch(),
-            const SizedBox(height: 20),
-            _buildTicketTypeChart(), // Display the first chart
-            const SizedBox(height: 20),
+            _buildTicketTypeChart(),
+            //const SizedBox(height: 20),
             //_buildRouteChart(), // Display the second chart
           ],
         ),
@@ -118,325 +109,283 @@ class _StatisticScreenState extends State<StatisticScreen> {
     );
   }
 
-  // Builds the search/filter UI and triggers data updates
   Widget _buildSearch() {
-    return Row(
-      children: [
-        const Text(
-          "Godina:",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-        ),
-        const SizedBox(width: 15),
-        Expanded(
-            child: DropdownButton(
-          items: _yearList
-              .map((e) => DropdownMenuItem(value: e, child: Text(e)))
-              .toList(),
-          value: selectedYear.isNotEmpty ? selectedYear : _yearList.first,
-          onChanged: (val) {
-            setState(() {
-              selectedYear =
-                  val ?? _yearList.first; // Fallback to a valid year if null
-            });
-          },
-        )),
-        const SizedBox(width: 15),
-        ElevatedButton(
-          onPressed: () async {
-            var filteredTickets = filterByYear(
-                issuedTicketResult?.result ?? [], int.parse(selectedYear));
-            setState(() {
-              ticketTypeData = getTicketsByMonthAndType(filteredTickets);
-              routeData = getTicketsByMonthAndRoute(filteredTickets);
-            });
-          },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(2.0)),
-            minimumSize: const Size(100, 65),
-          ),
-          child: const Text("Print", style: TextStyle(fontSize: 18)),
-        )
-      ],
-    );
-  }
-
-  //horizontally
-  Widget _buildTicketTypeChart() {
-    if (ticketTypeData == null) {
-      return const Center(child: Text("No data available for ticket types"));
-    }
-
-    // Define colors for each ticket type
-    final Map<int, Color> ticketTypeColors = {
-      1: Colors.purple, // Jednosmjerna
-      2: Colors.blue, // Povratna
-      3: Colors.orange, // Jednosmjerna dječija
-      4: Colors.green, // Povratna dječija
-      5: Colors.red, // Mjesečna
-    };
-
-    // Define labels for each ticket type for the legend
-    final Map<int, String> ticketTypeLabels = {
-      1: "Jednosmjerna",
-      2: "Povratna",
-      3: "Jednosmjerna dječija",
-      4: "Povratna dječija",
-      5: "Mjesečna",
-    };
-
     return Column(
       children: [
-        SizedBox(
-          height: 400,
-          child: BarChart(
-            BarChartData(
-              alignment: BarChartAlignment.spaceBetween,
-              barGroups: ticketTypeData!.entries.map((entry) {
-                final month = entry.key;
-                final values = entry.value;
-
-                return BarChartGroupData(
-                  x: month,
-                  barRods: values.entries.map((e) {
-                    return BarChartRodData(
-                      toY: e.value.toDouble(), // Ticket amount for each type
-                      color:
-                          ticketTypeColors[e.key], // Use color by ticket type
-                      width: 10,
-                      borderRadius: BorderRadius.circular(0),
-                    );
-                  }).toList(),
-                );
-              }).toList(),
-              titlesData: FlTitlesData(
-                bottomTitles: AxisTitles(
-                  sideTitles: SideTitles(
-                    showTitles: true,
-                    reservedSize: 40,
-                    getTitlesWidget: (value, meta) {
-                      return Text(
-                          value.toInt().toString()); // Display amount on x-axis
-                    },
-                  ),
-                ),
-                leftTitles: AxisTitles(
-                  sideTitles: SideTitles(
-                    showTitles: true,
-                    reservedSize: 40,
-                    getTitlesWidget: (value, meta) {
-                      // Map month number to name for y-axis
-                      final months = [
-                        "Jan",
-                        "Feb",
-                        "Mar",
-                        "Apr",
-                        "May",
-                        "Jun",
-                        "Jul",
-                        "Aug",
-                        "Sep",
-                        "Oct",
-                        "Nov",
-                        "Dec"
-                      ];
-
-                      int monthIndex = value.toInt() - 1;
-
-                      if (monthIndex >= 0 && monthIndex < months.length) {
-                        return Text(months[monthIndex]);
-                      } else {
-                        return const Text(""); // Return empty if out of range
-                      }
-                    },
-                  ),
-                ),
-              ),
-              gridData: FlGridData(show: true),
+        Row(
+          children: [
+            const Text(
+              "Godina:",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
-          ),
-        ),
-        const SizedBox(height: 20),
-        // Legend
-        Wrap(
-          spacing: 10,
-          children: ticketTypeColors.entries.map((entry) {
-            return Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
-                  width: 16,
-                  height: 16,
-                  color: entry.value,
-                ),
-                const SizedBox(width: 5),
-                Text(ticketTypeLabels[entry.key] ?? ""),
-              ],
-            );
-          }).toList(),
+            const SizedBox(width: 15),
+            Expanded(
+                child: DropdownButton(
+              items: _yearList
+                  .map((e) => DropdownMenuItem(value: e, child: Text(e)))
+                  .toList(),
+              value: selectedYear.isNotEmpty ? selectedYear : _yearList.first,
+              onChanged: (value) {
+                setState(() {
+                  selectedYear = value ?? _yearList.first;
+
+                  updateValues(issuedTicketResult);
+                });
+              },
+            )),
+            const SizedBox(width: 15),
+            ElevatedButton(
+              onPressed: () async {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(2.0)),
+                minimumSize: const Size(100, 65),
+              ),
+              child: const Text("Print", style: TextStyle(fontSize: 18)),
+            ),
+          ],
         ),
       ],
     );
   }
 
-//vertically
-  /*Widget _buildTicketTypeChart() {
-    if (ticketTypeData == null) {
-      return const Center(child: Text("No data available for ticket types"));
+  //-> Bottom titles == Issued ticket months
+  //**********************************************************************/
+  List<int> getIssuedTicketbyMonths(List<IssuedTicket> tickets) {
+    final Set<int> months = {};
+
+    for (var ticket in tickets) {
+      if (ticket.issuedDate != null) {
+        months.add(ticket.issuedDate!.month);
+      }
     }
+    return months.toList()..sort();
+  }
 
-    // Define colors for each ticket type
-    final Map<int, Color> ticketTypeColors = {
-      1: Colors.purple, // Unemployed
-      2: Colors.blue, // Employee
-      3: Colors.orange, // Pensioner
-      4: Colors.green, // Student
-      5: Colors.red, // Kids
-    };
+  List<IssuedTicket> getTicketsForYearAndMonths(
+      List<IssuedTicket> tickets, int year, List<int> months) {
+    return tickets
+        .where((ticket) =>
+            ticket.issuedDate != null &&
+            ticket.issuedDate!.year == year &&
+            months.contains(ticket.issuedDate!.month))
+        .toList();
+  }
 
-    // Define labels for each ticket type for the legend
-    final Map<int, String> ticketTypeLabels = {
-      1: "Unemployed",
-      2: "Employee",
-      3: "Pensioner",
-      4: "Student",
-      5: "Kids",
-    };
-
-    return Column(
-      children: [
-        SizedBox(
-          height: 400,
-          child: BarChart(
-            BarChartData(
-              alignment: BarChartAlignment.spaceAround,
-              barGroups: ticketTypeData!.entries.map((entry) {
-                final month = entry.key;
-                final values = entry.value;
-
-                return BarChartGroupData(
-                  x: month,
-                  barRods: values.entries.map((e) {
-                    return BarChartRodData(
-                      toY: e.value.toDouble(), // Ticket amount for each type
-                      color:
-                          ticketTypeColors[e.key], // Use color by ticket type
-                      width: 10,
-                      borderRadius: BorderRadius.circular(0),
-                    );
-                  }).toList(),
-                );
-              }).toList(),
-              titlesData: FlTitlesData(
-                leftTitles: AxisTitles(
-                  sideTitles: SideTitles(
-                    showTitles: true,
-                    reservedSize: 40,
-                    getTitlesWidget: (value, meta) {
-                      return Text(value
-                          .toInt()
-                          .toString()); // Display ticket amount on y-axis
-                    },
-                  ),
-                ),
-                bottomTitles: AxisTitles(
-                  sideTitles: SideTitles(
-                    showTitles: true,
-                    reservedSize: 40,
-                    getTitlesWidget: (value, meta) {
-                      // Map month number to name for x-axis
-                      final months = [
-                        "Jan",
-                        "Feb",
-                        "Mar",
-                        "Apr",
-                        "May",
-                        "Jun",
-                        "Jul",
-                        "Aug",
-                        "Sep",
-                        "Oct",
-                        "Nov",
-                        "Dec"
-                      ];
-
-                      int monthIndex = value.toInt() - 1;
-
-                      if (monthIndex >= 0 && monthIndex < months.length) {
-                        return Text(months[monthIndex]);
-                      } else {
-                        return const Text(""); // Return empty if out of range
-                      }
-                    },
-                  ),
-                ),
-              ),
-              gridData: FlGridData(show: true),
-            ),
-          ),
-        ),
-        const SizedBox(height: 20),
-        // Legend
-        Wrap(
-          spacing: 10,
-          children: ticketTypeColors.entries.map((entry) {
-            return Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
-                  width: 16,
-                  height: 16,
-                  color: entry.value,
-                ),
-                const SizedBox(width: 5),
-                Text(ticketTypeLabels[entry.key] ?? ""),
-              ],
-            );
-          }).toList(),
-        ),
-      ],
+  Widget bottomGraphTitles(double value, TitleMeta meta) {
+    const style = TextStyle(fontSize: 10);
+    String text;
+    switch (value.toInt()) {
+      case 1:
+        text = 'JAN';
+        break;
+      case 2:
+        text = 'FEB';
+        break;
+      case 3:
+        text = 'MAR';
+        break;
+      case 4:
+        text = 'APR';
+        break;
+      case 5:
+        text = 'MAY';
+        break;
+      case 6:
+        text = 'JUN';
+        break;
+      case 7:
+        text = 'JUL';
+        break;
+      case 8:
+        text = 'AUG';
+        break;
+      case 9:
+        text = 'SEP';
+        break;
+      case 10:
+        text = 'OCT';
+        break;
+      case 11:
+        text = 'NOV';
+        break;
+      case 12:
+        text = 'DEC';
+        break;
+      default:
+        text = '';
+    }
+    return SideTitleWidget(
+      axisSide: meta.axisSide,
+      child: Text(text, style: style),
     );
-  }*/
+  }
 
-/*
-  Widget _buildRouteChart() {
-    if (routeData == null || routeData!.isEmpty) {
-      return const Center(child: Text("No data available for routes"));
+  //-> Left titles == Issued ticket amount
+  //**********************************************************************/
+  Map<int, int> calculateTicketTypeAmounts(List<IssuedTicket> tickets) {
+    final Map<int, int> ticketTypeAmounts = {};
+
+    for (var ticket in tickets) {
+      if (ticket.ticketId != null && ticket.amount != null) {
+        ticketTypeAmounts[ticket.ticketId!] =
+            (ticketTypeAmounts[ticket.ticketId!] ?? 0) + ticket.amount!;
+      }
     }
-    return SizedBox(
-      height: 300,
-      child: BarChart(
-        BarChartData(
-          barGroups: routeData!.entries.map((entry) {
-            final month = entry.key;
-            final values = entry.value;
-            return BarChartGroupData(
-              x: month,
-              barRods: values.entries.map((e) {
-                return BarChartRodData(
-                  toY: e.value.toDouble(),
-                  width: 10, // Customize bar width
-                  color: Colors.green, // Customize color
-                );
-              }).toList(),
-            );
-          }).toList(),
-          titlesData: FlTitlesData(
-            bottomTitles: AxisTitles(
-              sideTitles: SideTitles(
-                showTitles: true,
-                getTitlesWidget: (value, meta) {
-                  return Text("M${value.toInt()}"); // Month labeling
-                },
+    return ticketTypeAmounts;
+  }
+
+  List<BarChartGroupData> getBarChartGroupData(
+      List<IssuedTicket> tickets, List<int> months) {
+    return months.map((month) {
+      final monthTickets =
+          tickets.where((ticket) => ticket.issuedDate?.month == month).toList();
+
+      // group tickets by ticket type
+      final Map<int, List<IssuedTicket>> groupedTickets = {};
+      for (var ticket in monthTickets) {
+        groupedTickets.putIfAbsent(ticket.ticketId!, () => []).add(ticket);
+      }
+
+      // create a list of BarChartRodData for each ticket type
+      final List<BarChartRodData> barRods = groupedTickets.entries.map((entry) {
+        final ticketTypeId = entry.key;
+        final ticketsForType = entry.value;
+
+        // total amount for this ticket type
+        final totalAmount =
+            ticketsForType.fold(0.0, (sum, ticket) => sum + ticket.amount!);
+
+        if (totalAmount > maxValue) {
+          maxValue = totalAmount.toInt();
+        }
+
+        return BarChartRodData(
+          toY: totalAmount,
+          color: ticketTypeColors[ticketTypeId],
+          width: 10,
+        );
+      }).toList();
+
+      return BarChartGroupData(
+        x: month,
+        barRods: barRods,
+      );
+    }).toList();
+  }
+
+  Widget buildLegend() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: ticketTypeColors.entries.map((entry) {
+        final ticketTypeId = entry.key;
+        final color = entry.value;
+        final label = ticketTypeLabels[ticketTypeId] ?? "Unknown";
+
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 4.0),
+          child: Row(
+            children: [
+              Container(
+                width: 16,
+                height: 16,
+                color: color,
               ),
-            ),
-            leftTitles: AxisTitles(
-              sideTitles: SideTitles(showTitles: true, reservedSize: 40),
-            ),
+              const SizedBox(width: 8),
+              Text(
+                label,
+                style: const TextStyle(fontSize: 14),
+              ),
+            ],
           ),
-        ),
+        );
+      }).toList(),
+    );
+  }
+
+  Widget leftGraphTitles(double value, TitleMeta meta, int maxTickets) {
+    if (value == meta.max) {
+      return Container();
+    }
+
+    const style = TextStyle(
+      fontSize: 10,
+      color: Colors.black,
+    );
+
+    // map the value back to its corresponding label
+    return SideTitleWidget(
+      axisSide: meta.axisSide,
+      child: Text(
+        value.round().toString(),
+        style: style,
       ),
     );
-  }*/
+  }
+
+  Widget _buildTicketTypeChart() {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: buildLegend(),
+        ),
+        AspectRatio(
+          aspectRatio: 5,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 16),
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                final barsSpace = 4.0 * constraints.maxWidth / 400;
+                final barsWidth = 8.0 * constraints.maxWidth / 400;
+
+                final barChartGroupData = getBarChartGroupData(
+                    ticketsForYearAndMonths, selectedMonths);
+
+                return BarChart(
+                  BarChartData(
+                    alignment: BarChartAlignment.center,
+                    maxY: (maxValue + 5).toDouble(),
+                    barTouchData: BarTouchData(
+                      enabled: false,
+                    ),
+                    titlesData: FlTitlesData(
+                      show: true,
+                      bottomTitles: AxisTitles(
+                        sideTitles: SideTitles(
+                            showTitles: true,
+                            reservedSize: 28,
+                            getTitlesWidget: bottomGraphTitles),
+                      ),
+                      leftTitles: AxisTitles(
+                        sideTitles: SideTitles(
+                          showTitles: true,
+                          reservedSize: 20.0,
+                          interval: 1,
+                          getTitlesWidget: (value, meta) =>
+                              leftGraphTitles(value, meta, 100),
+                        ),
+                      ),
+                      topTitles: const AxisTitles(
+                        sideTitles: SideTitles(showTitles: false),
+                      ),
+                      rightTitles: const AxisTitles(
+                        sideTitles: SideTitles(showTitles: false),
+                      ),
+                    ),
+                    // borderData: FlBorderData(
+                    //   show: false,
+                    // ),
+                    groupsSpace: barsSpace,
+                    barGroups: barChartGroupData,
+                  ),
+                );
+              },
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 }
