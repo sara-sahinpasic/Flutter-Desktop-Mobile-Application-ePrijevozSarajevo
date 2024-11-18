@@ -299,6 +299,15 @@ class _StatisticScreenState extends State<StatisticScreen> {
 
   List<BarChartGroupData> getBarChartGroupTicketData(
       List<IssuedTicket> tickets, List<int> months) {
+    if (months.isEmpty || tickets.isEmpty) {
+      return [
+        BarChartGroupData(
+          x: 0,
+          barRods: [BarChartRodData(toY: 0, color: Colors.grey)],
+        ),
+      ];
+    }
+
     return months.map((month) {
       final monthTickets =
           tickets.where((ticket) => ticket.issuedDate?.month == month).toList();
@@ -476,9 +485,17 @@ class _StatisticScreenState extends State<StatisticScreen> {
   }
 
 // -> RouteChart()
-
   List<BarChartGroupData> getBarChartGroupRouteData(
       List<IssuedTicket> tickets, List<int> months) {
+    if (months.isEmpty || tickets.isEmpty) {
+      return [
+        BarChartGroupData(
+          x: 0,
+          barRods: [BarChartRodData(toY: 0, color: Colors.grey)],
+        ),
+      ];
+    }
+
     return months.map((month) {
       final monthTickets =
           tickets.where((ticket) => ticket.issuedDate?.month == month).toList();
