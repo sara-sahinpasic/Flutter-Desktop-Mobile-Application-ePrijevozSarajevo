@@ -13,7 +13,6 @@ namespace ePrijevozSarajevo.Services.Database
         public DbSet<User> Users { get; set; } = null!;
         public DbSet<Role> Roles { get; set; } = null!;
         public DbSet<Ticket> Tickets { get; set; } = null!;
-        public DbSet<PaymentMethod> PaymentOptions { get; set; } = null!;
         public DbSet<Status> Statuses { get; set; } = null!;
         public DbSet<IssuedTicket> IssuedTickets { get; set; } = null!;
         public DbSet<Station> Stations { get; set; } = null!;
@@ -23,18 +22,7 @@ namespace ePrijevozSarajevo.Services.Database
         public DbSet<Vehicle> Vehicles { get; set; } = null!;
         public DbSet<Manufacturer> Manufacturers { get; set; } = null!;
         public DbSet<Type> Types { get; set; } = null!;
-        public DbSet<Holiday> Holidays { get; set; } = null!;
 
-
-
-        /* protected override void OnConfiguring(DbContextOptionsBuilder options)
-         {
-             if (!options.IsConfigured)
-             {
-                 options.UseSqlServer("Server=.;Database=140261;Trusted_Connection=True;Encrypt=False;");
-             }
-         }
-        */
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             if (!options.IsConfigured)
@@ -86,28 +74,7 @@ namespace ePrijevozSarajevo.Services.Database
                 .WithMany()
                 .OnDelete(DeleteBehavior.NoAction);
 
-            /*modelBuilder.Entity<UserRole>(entity =>
-            {
-                entity.HasKey(e => e.UserRoleId);
-
-                entity.ToTable("KorisniciUloge");
-
-                entity.Property(e => e.UserRoleId).HasColumnName("UserRoleId");
-                entity.Property(e => e.ModificationDate).HasColumnType("datetime");
-                entity.Property(e => e.User).HasColumnName("UserId");
-                entity.Property(e => e.Role).HasColumnName("RoleId");
-
-                entity.HasOne(d => d.User).WithMany(p => p.UserRoles)
-                    .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_UserRole_User");
-
-                entity.HasOne(d => d.Role).WithMany(p => p.UserRoles)
-                    .HasForeignKey(d => d.RoleId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_UserRole_Role");
-            });*/
-
+            BuildIssuedTickets(modelBuilder);
             BuildRoutes(modelBuilder);
             BuildUsers(modelBuilder);
             OnModelCreatingPartial(modelBuilder);
@@ -116,7 +83,7 @@ namespace ePrijevozSarajevo.Services.Database
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
         private const string DefaultUserPassword = "test";
-        private static void BuildUsers(ModelBuilder modelBuilder) //11
+        private static void BuildUsers(ModelBuilder modelBuilder)
         {
             List<User> users = new()
             {
@@ -135,7 +102,7 @@ namespace ePrijevozSarajevo.Services.Database
                 ModifiedDate = DateTime.Now,
                 Active = true,
                 UserStatusId = 4,
-                ProfileImagePath = "",
+                ProfileImage = null,
                 StatusExpirationDate = new DateTime(2025, 12, 31)
                },
                new()
@@ -153,7 +120,7 @@ namespace ePrijevozSarajevo.Services.Database
                 ModifiedDate = DateTime.Now,
                 Active = true,
                 UserStatusId = 4,
-                ProfileImagePath = "",
+                 ProfileImage = null,
                 StatusExpirationDate = new DateTime(2025, 12, 31)
                },
                new()
@@ -171,7 +138,7 @@ namespace ePrijevozSarajevo.Services.Database
                 ModifiedDate = DateTime.Now,
                 Active = true,
                 UserStatusId = 1,
-                ProfileImagePath = "",
+                ProfileImage = null,
                 StatusExpirationDate = new DateTime(2025, 12, 31)
                },
                new()
@@ -189,7 +156,7 @@ namespace ePrijevozSarajevo.Services.Database
                 ModifiedDate = DateTime.Now,
                 Active = true,
                 UserStatusId = 1,
-                ProfileImagePath = "",
+                ProfileImage = null,
                 StatusExpirationDate = new DateTime(2025, 12, 31)
                },
                new()
@@ -207,7 +174,7 @@ namespace ePrijevozSarajevo.Services.Database
                 ModifiedDate = DateTime.Now,
                 Active = true,
                 UserStatusId = 1,
-                ProfileImagePath = "",
+                ProfileImage = null,
                 StatusExpirationDate = new DateTime(2025, 12, 31)
                },
                new()
@@ -225,7 +192,7 @@ namespace ePrijevozSarajevo.Services.Database
                 ModifiedDate = DateTime.Now,
                 Active = true,
                 UserStatusId = 1,
-                ProfileImagePath = "",
+                ProfileImage = null,
                 StatusExpirationDate = new DateTime(2025, 12, 31)
                },
             };
@@ -238,204 +205,86 @@ namespace ePrijevozSarajevo.Services.Database
 
             modelBuilder.Entity<User>()
                 .HasData(users);
-        }
-
-
-        private static void BuildRoutes(ModelBuilder modelBuilder) //4
+        } //1
+        private static void BuildIssuedTickets(ModelBuilder modelBuilder)
         {
-            List<Route> routes = new()
-            {
-                new Route()
-                {
-                    RouteId=1,
-                    StartStationId = 1,
-                    EndStationId = 6,
-                    VehicleId = 2,
-                    Active=true,
-                    ActiveOnHolidays=true,
-                    ActiveOnWeekends=true,
-                },
-                new Route()
-                {
-                    RouteId=2,
-                    StartStationId = 1,
-                    EndStationId = 8,
-                    VehicleId = 4,
-                    Active=true,
-                    ActiveOnHolidays=true,
-                    ActiveOnWeekends=true,
-                },
-                new Route()
-                {
-                    RouteId=3,
-                    StartStationId = 1,
-                    EndStationId = 6,
-                    VehicleId = 6,
-                    Active=true,
-                    ActiveOnHolidays=true,
-                    ActiveOnWeekends=true,
-                },
-                new Route()
-                {
-                    RouteId=4,
-                    StartStationId = 2,
-                    EndStationId = 7,
-                    VehicleId = 4,
-                    Active=true,
-                    ActiveOnHolidays=true,
-                    ActiveOnWeekends=true,
-                },
-                new Route()
-                {
-                    RouteId=5,
-                    StartStationId = 7,
-                    EndStationId = 3,
-                    VehicleId = 2,
-                    Active=true,
-                    ActiveOnHolidays=true,
-                    ActiveOnWeekends=true,
-                },
-                new Route()
-                {
-                    RouteId=6,
-                    StartStationId = 8,
-                    EndStationId = 1,
-                    VehicleId = 6,
-                    Active=true,
-                    ActiveOnHolidays=true,
-                    ActiveOnWeekends=true,
-                },
-                new Route()
-                {
-                    RouteId=7,
-                    StartStationId = 9,
-                    EndStationId = 15,
-                    VehicleId = 1,
-                    Active=true,
-                    ActiveOnHolidays=true,
-                    ActiveOnWeekends=true,
-                },
-                new Route()
-                {
-                    RouteId=8,
-                    StartStationId = 11,
-                    EndStationId = 8,
-                    VehicleId = 3,
-                    Active=true,
-                    ActiveOnHolidays=true,
-                    ActiveOnWeekends=true,
-                },
-                new Route()
-                {
-                    RouteId=9,
-                    StartStationId = 10,
-                    EndStationId = 14,
-                    VehicleId = 5,
-                    Active=true,
-                    ActiveOnHolidays=true,
-                    ActiveOnWeekends=true,
-                },
-                new Route()
-                {
-                    RouteId=10,
-                    StartStationId = 13,
-                    EndStationId = 7,
-                    VehicleId = 1,
-                    Active=true,
-                    ActiveOnHolidays=true,
-                    ActiveOnWeekends=true,
-                },
-                new Route()
-                {
-                    RouteId=11,
-                    StartStationId = 7,
-                    EndStationId = 15,
-                    VehicleId = 1,
-                    Arrival=DateTime.Now,
-                    Departure=DateTime.Now,
-                    Active=true,
-                    ActiveOnHolidays=true,
-                    ActiveOnWeekends=true,
-                },
-                 new Route()
-                {
-                    RouteId=12,
-                    StartStationId = 8,
-                    EndStationId = 6,
-                    VehicleId = 2,
-                    Arrival=DateTime.Now,
-                    Departure=DateTime.Now,
-                    Active=true,
-                    ActiveOnHolidays=true,
-                    ActiveOnWeekends=true,
-                },
-                  new Route()
-                {
-                    RouteId=13,
-                    StartStationId = 7,
-                    EndStationId = 4,
-                    VehicleId = 5,
-                    Arrival=DateTime.Now,
-                    Departure=DateTime.Now,
-                    Active=true,
-                    ActiveOnHolidays=true,
-                    ActiveOnWeekends=true,
-                },
-                  new Route()
-                {
-                    RouteId=14,
-                    StartStationId = 8,
-                    EndStationId = 13,
-                    VehicleId = 3,
-                    Arrival=DateTime.Now,
-                    Departure=DateTime.Now,
-                    Active=true,
-                    ActiveOnHolidays=true,
-                    ActiveOnWeekends=true,
-                },
-                  new Route()
-                {
-                    RouteId=15,
-                    StartStationId = 7,
-                    EndStationId = 2,
-                    VehicleId = 4,
-                    Arrival=DateTime.Now,
-                    Departure=DateTime.Now,
-                    Active=true,
-                    ActiveOnHolidays=true,
-                    ActiveOnWeekends=true,
-                },
-             };
-
+            List<IssuedTicket> issuedTickets = new();
             var random = new Random();
-            foreach (var route in routes)
+            int totalIssuedTickets = 100; 
+            int maxUsers = 6; 
+            int maxTickets = 5; 
+            int maxRoutes = 100; 
+
+            for (int i = 1; i <= totalIssuedTickets; i++)
             {
-                if (route.RouteId >= 11 && route.RouteId <= 15)
+                int userId = random.Next(1, maxUsers + 1);
+                int ticketId = random.Next(1, maxTickets + 1);
+                int routeId = random.Next(1, maxRoutes + 1);
+
+                // Random year: Past year or current year
+                int year = DateTime.Now.Year - random.Next(0, 2); // current year or last year
+                int month = random.Next(1, 13);
+                int day = random.Next(1, DateTime.DaysInMonth(year, month) + 1);
+
+                DateTime issuedDate = new DateTime(year, month, day);
+                DateTime validFrom = issuedDate;
+                DateTime validTo = validFrom.AddHours(random.Next(60, 731)); // from 1 day to 1 month
+
+                issuedTickets.Add(new IssuedTicket()
                 {
-                    route.Departure = DateTime.Now;
-                    route.Arrival = DateTime.Now;
-                }
-                else if (route.RouteId >= 1 && route.RouteId <= 10)
-                {
-                    DateTime startDate = new DateTime(2024, 01, 01);
-                    DateTime endDate = new DateTime(2024, 12, 31);
-
-                    int range = (endDate - startDate).Days;
-                    DateTime randomDate = startDate.AddDays(random.Next(range));
-
-                    int hour = random.Next(5, 24);
-                    int minute = random.Next(0, 60);
-                    DateTime timeOfDeparture = new DateTime(randomDate.Year, randomDate.Month, randomDate.Day, hour, minute, 0);
-
-                    DateTime timeOfArrival = timeOfDeparture.AddMinutes(random.Next(5, 50));
-
-                    route.Departure = timeOfDeparture;
-                    route.Arrival = timeOfArrival;
-                }
+                    IssuedTicketId = i,
+                    UserId = userId,
+                    TicketId = ticketId,
+                    ValidFrom = validFrom,
+                    ValidTo = validTo,
+                    IssuedDate = issuedDate,
+                    Amount = random.Next(1, 20),
+                    RouteId = routeId
+                });
             }
+            modelBuilder.Entity<IssuedTicket>()
+              .HasData(issuedTickets);
+        } //2
+        private static void BuildRoutes(ModelBuilder modelBuilder)
+        {
+            List<Route> routes = new();
+            var random = new Random();
+            int totalRoutes = 100;
+            int totalStations = 15;
+            int totalVehicles = 6;
+            for (int i = 1; i <= totalRoutes; i++)
+            {
+                int startStationId = random.Next(1, totalStations + 1);
+                int endStationId;
+                do
+                {
+                    endStationId = random.Next(1, totalStations + 1);
+                } while (endStationId == startStationId);
 
+                DateTime startDate = new DateTime(2024, 01, 01);
+                DateTime endDate = new DateTime(2024, 12, 31);
+
+                int range = (endDate - startDate).Days;
+                DateTime randomDate = startDate.AddDays(random.Next(range));
+
+                int departureHour = random.Next(5, 24);
+                int departureMinute = random.Next(0, 60);
+                DateTime departure = new DateTime(randomDate.Year, randomDate.Month, randomDate.Day, departureHour, departureMinute, 0);
+
+                DateTime arrival = departure.AddMinutes(random.Next(10, 60)); // between 10 minutes and 1 hour after departure
+
+                routes.Add(new Route()
+                {
+                    RouteId = i,
+                    StartStationId = startStationId,
+                    EndStationId = endStationId,
+                    VehicleId = random.Next(1, totalVehicles + 1),
+                    Departure = departure,
+                    Arrival = arrival
+                });
+            }
             modelBuilder.Entity<Route>()
                .HasData(routes);
-        }
+        } //3
     }
 }

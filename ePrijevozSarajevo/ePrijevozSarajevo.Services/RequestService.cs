@@ -45,7 +45,7 @@ namespace ePrijevozSarajevo.Services
             {
                 request.Active = false;
                 request.Approved = true;
-                user.UserStatusId = request.UserStatusId;
+                user.UserStatusId = (int)request.UserStatusId;
                 user.StatusExpirationDate = expirationDate;
 
                 if (user.StatusExpirationDate < DateTime.UtcNow || user.StatusExpirationDate == null && request.Active == false)
