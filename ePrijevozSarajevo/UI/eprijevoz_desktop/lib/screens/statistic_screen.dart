@@ -6,7 +6,14 @@ import 'package:eprijevoz_desktop/providers/issuedTicket_provider.dart';
 import 'package:eprijevoz_desktop/providers/route_provider.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart' hide Route;
+import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
+//
+import 'dart:typed_data';
+import 'dart:ui' as ui;
+import 'package:pdf/widgets.dart' as pw;
+import 'dart:io';
+import 'package:file_picker/file_picker.dart';
 
 class StatisticScreen extends StatefulWidget {
   const StatisticScreen({super.key});
@@ -20,10 +27,14 @@ class _StatisticScreenState extends State<StatisticScreen> {
   late int selectedYearIndex;
   String selectedYear = "";
   late int currentYear = 2024;
+// Grpah hoover
   int touchedIndex = -1;
   bool isTouched = false;
+// Pdf
+  final GlobalKey _ticketChartKey = GlobalKey();
+  final GlobalKey _routeChartKey = GlobalKey();
 
-// issuedTicket
+// Ticket
   late IssuedTicketProvider issuedTicketProvider;
   SearchResult<IssuedTicket>? issuedTicketResult;
   late List<IssuedTicket> ticketsForYearAndMonths = [];
@@ -31,8 +42,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
   late List<int> selectedMonthsforTickets = [];
   var maxTicketValue = 0;
   var maxStationValue = 0;
-
-// station
+// Station
   late RouteProvider routeProvider;
   SearchResult<Route>? routeResult;
 
@@ -76,7 +86,85 @@ class _StatisticScreenState extends State<StatisticScreen> {
     }
   }
 
-  //Colors and legend for ticket graph bars
+// PDF
+  Future<Uint8List?> _capturePng(GlobalKey key) async {
+    try {
+      RenderRepaintBoundary boundary =
+          key.currentContext!.findRenderObject() as RenderRepaintBoundary;
+      ui.Image image = await boundary.toImage(pixelRatio: 3.0);
+      ByteData? byteData =
+          await image.toByteData(format: ui.ImageByteFormat.png);
+      return byteData?.buffer.asUint8List();
+    } catch (e) {
+      print(e);
+    }
+    return null;
+  }
+
+  Future<void> _generatePdf() async {
+    try {
+      // Capture the ticket type chart
+      Uint8List? ticketChartImage = await _capturePng(_ticketChartKey);
+      if (ticketChartImage == null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Failed to capture Ticket Chart')),
+        );
+        return;
+      }
+
+      // Capture the route chart
+      Uint8List? routeChartImage = await _capturePng(_routeChartKey);
+      if (routeChartImage == null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Failed to capture Route Chart')),
+        );
+        return;
+      }
+
+      // Create a PDF document
+      final pdf = pw.Document();
+      pdf.addPage(
+        pw.MultiPage(
+          build: (pw.Context context) => [
+            pw.Header(level: 0, text: 'Statistika'),
+            pw.Text('Statistika - Karte',
+                style: const pw.TextStyle(fontSize: 18)),
+            pw.SizedBox(height: 10),
+            pw.Image(pw.MemoryImage(ticketChartImage)),
+            pw.SizedBox(height: 20),
+            pw.Text('Statistika - Stanice',
+                style: const pw.TextStyle(fontSize: 18)),
+            pw.SizedBox(height: 10),
+            pw.Image(pw.MemoryImage(routeChartImage)),
+          ],
+        ),
+      );
+
+      // Save the PDF to bytes
+      Uint8List pdfBytes = await pdf.save();
+
+      // Use File Picker to select save location
+      String? selectedDirectory = await FilePicker.platform.getDirectoryPath();
+      if (selectedDirectory != null) {
+        final file = File('$selectedDirectory/Statistika.pdf');
+        await file.writeAsBytes(pdfBytes);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('PDF saved at: ${file.path}')),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Save operation cancelled')),
+        );
+      }
+    } catch (e) {
+      print('Error generating PDF: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Error generating PDF')),
+      );
+    }
+  }
+
+  // Colors and legend for ticket graph bars
   final Map<int, Color> ticketTypeColors = {
     1: Colors.purple, // Jednosmjerna
     2: Colors.blue, // Povratna
@@ -91,7 +179,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
     4: "Povratna dječija",
     5: "Mjesečna",
   };
-  //Colors and legend for stations graph bars
+  // Colors and legend for stations graph bars
   final Map<int, Color> stationColors = {
     1: Colors.purple, //Ilidža
     2: Colors.blue, //Stup
@@ -138,15 +226,15 @@ class _StatisticScreenState extends State<StatisticScreen> {
             const Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                "Za print grafova, neophodno je pritisnuti dugme 'Print'.",
+                "Za potrebe ispisa statistike, neophodno je pritisnuti dugme 'Print'.",
                 style: TextStyle(fontWeight: FontWeight.w400),
               ),
             ),
             const SizedBox(height: 10),
-            _buildSearch(),
-            _buildTicketTypeChart(), // issuedTickets
+            _buildSearch(), // Search
+            _buildTicketTypeChart(), // Tickets
             const SizedBox(height: 20),
-            _buildRouteChart(), // stations
+            _buildRouteChart(), // Stations
           ],
         ),
       ),
@@ -172,15 +260,16 @@ class _StatisticScreenState extends State<StatisticScreen> {
               onChanged: (value) {
                 setState(() {
                   selectedYear = value ?? _yearList.first;
-                  // updateTicketValues(issuedTicketResult); // issuedTicket
-                  // updateStationValues(routeResult); // station
                 });
-                updateTicketValues(issuedTicketResult); // issuedTicket
+                updateTicketValues(issuedTicketResult);
               },
             )),
             const SizedBox(width: 15),
             ElevatedButton(
-              onPressed: () async {},
+              onPressed: () async {
+                // pdf file
+                await _generatePdf();
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
                 shape: RoundedRectangleBorder(
@@ -195,6 +284,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
     );
   }
 
+// Months:
   Widget bottomGraphTitles(double value, TitleMeta meta) {
     const style = TextStyle(fontSize: 10);
     String text;
@@ -244,6 +334,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
     );
   }
 
+// Values:
   Widget leftGraphTitles(double value, TitleMeta meta, int maxTickets) {
     if (value == meta.max) {
       return Container();
@@ -263,7 +354,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
     );
   }
 
-  // -> TicketTypeChart()
+// TicketTypeChart()
   List<int> getIssuedTicketbyMonths(List<IssuedTicket> tickets) {
     final Set<int> months = {};
 
@@ -379,112 +470,108 @@ class _StatisticScreenState extends State<StatisticScreen> {
   }
 
   Widget _buildTicketTypeChart() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(
-          height: 15,
-        ),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-          child: Text(
-            "Statistika - Karte",
-            style: TextStyle(
-              fontSize: 18.0,
-              fontWeight: FontWeight.bold,
+    return RepaintBoundary(
+      key: _ticketChartKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(
+            height: 15,
+          ),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+            child: Text(
+              "Statistika - Karte",
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
-        ),
-        // Legend
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: buildTicketTypeLegend(),
-        ),
-        AspectRatio(
-          aspectRatio: 6,
-          child: Padding(
-            padding: const EdgeInsets.only(top: 16),
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                final barsSpace = 4.0 * constraints.maxWidth / 400;
-                final barsWidth = 8.0 * constraints.maxWidth / 400;
-
-                final barChartGroupData = getBarChartGroupTicketData(
-                    ticketsForYearAndMonths, selectedMonthsforTickets);
-
-                return BarChart(
-                  BarChartData(
-                    alignment: BarChartAlignment.center,
-                    maxY: (maxTicketValue + 5).toDouble(),
-                    barTouchData: BarTouchData(
-                      enabled: true,
-                      touchTooltipData: BarTouchTooltipData(
-                        tooltipRoundedRadius: 8,
-                        getTooltipItem: (group, groupIndex, rod, rodIndex) {
-                          final value = rod.toY.toInt();
-                          return BarTooltipItem(
-                            '$value',
-                            const TextStyle(color: Colors.white),
-                          );
+          // Legend
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: buildTicketTypeLegend(),
+          ),
+          AspectRatio(
+            aspectRatio: 4,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 16),
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  final barsSpace = 4.0 * constraints.maxWidth / 400;
+                  final barChartGroupData = getBarChartGroupTicketData(
+                      ticketsForYearAndMonths, selectedMonthsforTickets);
+                  return BarChart(
+                    BarChartData(
+                      alignment: BarChartAlignment.center,
+                      maxY: (maxTicketValue + 5).toDouble(),
+                      barTouchData: BarTouchData(
+                        enabled: true,
+                        touchTooltipData: BarTouchTooltipData(
+                          tooltipRoundedRadius: 8,
+                          getTooltipItem: (group, groupIndex, rod, rodIndex) {
+                            final value = rod.toY.toInt();
+                            return BarTooltipItem(
+                              '$value',
+                              const TextStyle(color: Colors.white),
+                            );
+                          },
+                        ),
+                        touchCallback: (event, response) {
+                          if (!event.isInterestedForInteractions ||
+                              response == null ||
+                              response.spot == null) {
+                            setState(() {
+                              touchedIndex = -1;
+                              isTouched = false;
+                            });
+                            return;
+                          }
+                          setState(() {
+                            touchedIndex = response.spot!.touchedBarGroupIndex;
+                            isTouched = true;
+                          });
                         },
                       ),
-                      touchCallback: (event, response) {
-                        if (!event.isInterestedForInteractions ||
-                            response == null ||
-                            response.spot == null) {
-                          setState(() {
-                            touchedIndex = -1;
-                            isTouched = false;
-                          });
-                          return;
-                        }
-
-                        setState(() {
-                          touchedIndex = response.spot!.touchedBarGroupIndex;
-                          isTouched = true;
-                        });
-                      },
-                    ),
-                    titlesData: FlTitlesData(
-                      show: true,
-                      bottomTitles: AxisTitles(
-                        sideTitles: SideTitles(
+                      titlesData: FlTitlesData(
+                        show: true,
+                        bottomTitles: AxisTitles(
+                          sideTitles: SideTitles(
+                              showTitles: true,
+                              reservedSize: 28,
+                              getTitlesWidget: bottomGraphTitles),
+                        ),
+                        leftTitles: AxisTitles(
+                          sideTitles: SideTitles(
                             showTitles: true,
-                            reservedSize: 28,
-                            getTitlesWidget: bottomGraphTitles),
-                      ),
-                      leftTitles: AxisTitles(
-                        sideTitles: SideTitles(
-                          showTitles: true,
-                          reservedSize: 20.0,
-                          interval: 1,
-                          getTitlesWidget: (value, meta) =>
-                              leftGraphTitles(value, meta, 100),
+                            reservedSize: 20.0,
+                            interval: 1,
+                            getTitlesWidget: (value, meta) =>
+                                leftGraphTitles(value, meta, 100),
+                          ),
+                        ),
+                        topTitles: const AxisTitles(
+                          sideTitles: SideTitles(showTitles: false),
+                        ),
+                        rightTitles: const AxisTitles(
+                          sideTitles: SideTitles(showTitles: false),
                         ),
                       ),
-                      topTitles: const AxisTitles(
-                        sideTitles: SideTitles(showTitles: false),
-                      ),
-                      rightTitles: const AxisTitles(
-                        sideTitles: SideTitles(showTitles: false),
-                      ),
+                      groupsSpace: barsSpace,
+                      barGroups: barChartGroupData,
                     ),
-                    // borderData: FlBorderData(
-                    //   show: false,
-                    // ),
-                    groupsSpace: barsSpace,
-                    barGroups: barChartGroupData,
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
-// -> RouteChart()
+// RouteChart()
   List<BarChartGroupData> getBarChartGroupRouteData(
       List<IssuedTicket> tickets, List<int> months) {
     if (months.isEmpty || tickets.isEmpty) {
@@ -576,108 +663,104 @@ class _StatisticScreenState extends State<StatisticScreen> {
   }
 
   Widget _buildRouteChart() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(
-          height: 15,
-        ),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-          child: Text(
-            "Statistika - Stanice",
-            style: TextStyle(
-              fontSize: 18.0,
-              fontWeight: FontWeight.bold,
+    return RepaintBoundary(
+      key: _routeChartKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(
+            height: 15,
+          ),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+            child: Text(
+              "Statistika - Stanice",
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
-        ),
-        // Legend
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: buildStationsLegend(), // +
-        ),
-        AspectRatio(
-          aspectRatio: 6,
-          child: Padding(
-            padding: const EdgeInsets.only(top: 16),
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                final barsSpace = 4.0 * constraints.maxWidth / 400;
-                final barsWidth = 8.0 * constraints.maxWidth / 400;
-
-                final barChartGroupData = getBarChartGroupRouteData(
-                    ticketsForYearAndMonths, selectedMonthsforTickets);
-
-                return BarChart(
-                  BarChartData(
-                    alignment: BarChartAlignment.center,
-                    maxY: (maxStationValue + 5).toDouble(), // +
-                    barTouchData: BarTouchData(
-                      enabled: true,
-                      touchTooltipData: BarTouchTooltipData(
-                        tooltipRoundedRadius: 8,
-                        getTooltipItem: (group, groupIndex, rod, rodIndex) {
-                          final value = rod.toY.toInt();
-                          return BarTooltipItem(
-                            '$value',
-                            const TextStyle(color: Colors.white),
-                          );
+          // Legend
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: buildStationsLegend(),
+          ),
+          AspectRatio(
+            aspectRatio: 4,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 16),
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  final barsSpace = 4.0 * constraints.maxWidth / 400;
+                  final barChartGroupData = getBarChartGroupRouteData(
+                      ticketsForYearAndMonths, selectedMonthsforTickets);
+                  return BarChart(
+                    BarChartData(
+                      alignment: BarChartAlignment.center,
+                      maxY: (maxStationValue + 5).toDouble(),
+                      barTouchData: BarTouchData(
+                        enabled: true,
+                        touchTooltipData: BarTouchTooltipData(
+                          tooltipRoundedRadius: 8,
+                          getTooltipItem: (group, groupIndex, rod, rodIndex) {
+                            final value = rod.toY.toInt();
+                            return BarTooltipItem(
+                              '$value',
+                              const TextStyle(color: Colors.white),
+                            );
+                          },
+                        ),
+                        touchCallback: (event, response) {
+                          if (!event.isInterestedForInteractions ||
+                              response == null ||
+                              response.spot == null) {
+                            setState(() {
+                              touchedIndex = -1;
+                              isTouched = false;
+                            });
+                            return;
+                          }
+                          setState(() {
+                            touchedIndex = response.spot!.touchedBarGroupIndex;
+                            isTouched = true;
+                          });
                         },
                       ),
-                      touchCallback: (event, response) {
-                        if (!event.isInterestedForInteractions ||
-                            response == null ||
-                            response.spot == null) {
-                          setState(() {
-                            touchedIndex = -1;
-                            isTouched = false;
-                          });
-                          return;
-                        }
-
-                        setState(() {
-                          touchedIndex = response.spot!.touchedBarGroupIndex;
-                          isTouched = true;
-                        });
-                      },
-                    ),
-                    titlesData: FlTitlesData(
-                      show: true,
-                      bottomTitles: AxisTitles(
-                        sideTitles: SideTitles(
+                      titlesData: FlTitlesData(
+                        show: true,
+                        bottomTitles: AxisTitles(
+                          sideTitles: SideTitles(
+                              showTitles: true,
+                              reservedSize: 28,
+                              getTitlesWidget: bottomGraphTitles),
+                        ),
+                        leftTitles: AxisTitles(
+                          sideTitles: SideTitles(
                             showTitles: true,
-                            reservedSize: 28,
-                            getTitlesWidget: bottomGraphTitles), //+
-                      ),
-                      leftTitles: AxisTitles(
-                        sideTitles: SideTitles(
-                          showTitles: true,
-                          reservedSize: 20.0,
-                          interval: 1,
-                          getTitlesWidget: (value, meta) =>
-                              leftGraphTitles(value, meta, 100), //+
+                            reservedSize: 20.0,
+                            interval: 1,
+                            getTitlesWidget: (value, meta) =>
+                                leftGraphTitles(value, meta, 100),
+                          ),
+                        ),
+                        topTitles: const AxisTitles(
+                          sideTitles: SideTitles(showTitles: false),
+                        ),
+                        rightTitles: const AxisTitles(
+                          sideTitles: SideTitles(showTitles: false),
                         ),
                       ),
-                      topTitles: const AxisTitles(
-                        sideTitles: SideTitles(showTitles: false),
-                      ),
-                      rightTitles: const AxisTitles(
-                        sideTitles: SideTitles(showTitles: false),
-                      ),
+                      groupsSpace: barsSpace,
+                      barGroups: barChartGroupData,
                     ),
-                    // borderData: FlBorderData(
-                    //   show: false,
-                    // ),
-                    groupsSpace: barsSpace,
-                    barGroups: barChartGroupData,
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
