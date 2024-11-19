@@ -146,7 +146,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
       // Use File Picker to select save location
       String? selectedDirectory = await FilePicker.platform.getDirectoryPath();
       if (selectedDirectory != null) {
-        final file = File('$selectedDirectory/Statistika.pdf');
+        final file = File('$selectedDirectory/Statistika_$selectedYear.pdf');
         await file.writeAsBytes(pdfBytes);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('PDF saved at: ${file.path}')),
