@@ -6,6 +6,7 @@ namespace ePrijevozSarajevo.Services.Database
     {
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder)
         {
+            
             modelBuilder.Entity<Request>().HasData
             (
                 new Request()
@@ -58,8 +59,8 @@ namespace ePrijevozSarajevo.Services.Database
                     Approved = false,
                     RejectionReason = "",
                 }
-             );
-            modelBuilder.Entity<Station>().HasData //1
+             ); //4
+            modelBuilder.Entity<Station>().HasData 
             (
                 new Station()
                 {
@@ -139,29 +140,8 @@ namespace ePrijevozSarajevo.Services.Database
                      StationId = 15,
                      Name = "Švrakino selo"
                  }
-            );
-            modelBuilder.Entity<Holiday>().HasData //2
-            (
-                new Holiday()
-                {
-                    HolidayId = 1,
-                    Name = "Bajram",
-                    Date = new DateTime(2024, 04, 10)
-                },
-                new Holiday()
-                {
-                    HolidayId = 2,
-                    Name = "Nova godina",
-                    Date = new DateTime(2024, 01, 01)
-                },
-                new Holiday()
-                {
-                    HolidayId = 3,
-                    Name = "Božić",
-                    Date = new DateTime(2024, 12, 25)
-                }
-            );
-            modelBuilder.Entity<Vehicle>().HasData //3
+            ); //5
+            modelBuilder.Entity<Vehicle>().HasData 
             (
                 new Vehicle()
                 {
@@ -217,8 +197,8 @@ namespace ePrijevozSarajevo.Services.Database
                     ManufacturerId = 3,
                     TypeId = 2,
                 }
-            );
-            modelBuilder.Entity<Manufacturer>().HasData //4
+            ); //6
+            modelBuilder.Entity<Manufacturer>().HasData 
             (
                 new Manufacturer()
                 {
@@ -240,8 +220,8 @@ namespace ePrijevozSarajevo.Services.Database
                     ManufacturerId = 4,
                     Name = "Mercedes"
                 }
-            );
-            modelBuilder.Entity<Type>().HasData //5
+            ); //7
+            modelBuilder.Entity<Type>().HasData  
             (
                 new Type()
                 {
@@ -253,25 +233,23 @@ namespace ePrijevozSarajevo.Services.Database
                     TypeId = 2,
                     Name = "Tram"
                 }
-            );
-            modelBuilder.Entity<UserRole>().HasData //6 nereferentna
+            ); //8
+            modelBuilder.Entity<UserRole>().HasData 
             (
                 new UserRole()
                 {
                     UserRoleId = 1,
                     UserId = 1,
                     RoleId = 1,
-                    ModificationDate = DateTime.Now
                 },
                 new UserRole()
                 {
                     UserRoleId = 2,
                     UserId = 2,
                     RoleId = 2,
-                    ModificationDate = DateTime.Now
                 }
-            );
-            modelBuilder.Entity<Role>().HasData //7
+            ); //9 nereferentna
+            modelBuilder.Entity<Role>().HasData 
             (
                  new Role()
                  {
@@ -283,8 +261,8 @@ namespace ePrijevozSarajevo.Services.Database
                     RoleId = 2,
                     Name = "User"
                 }
-            );
-            modelBuilder.Entity<Status>().HasData //8
+            ); //10
+            modelBuilder.Entity<Status>().HasData 
             (
                   new Status()
                   {
@@ -318,8 +296,8 @@ namespace ePrijevozSarajevo.Services.Database
                      Name = "Nezaposlen",
                      Discount = 0.4
                  }
-            );
-            modelBuilder.Entity<Ticket>().HasData //9
+            ); //11
+            modelBuilder.Entity<Ticket>().HasData 
             (
                  new Ticket()
                  {
@@ -356,7 +334,7 @@ namespace ePrijevozSarajevo.Services.Database
                     Price = 75,
                     StateMachine = "draft"
                 }
-            );
+            ); //12
 
         }
     }
