@@ -22,6 +22,7 @@ namespace ePrijevozSarajevo.Services.Database
         public DbSet<Vehicle> Vehicles { get; set; } = null!;
         public DbSet<Manufacturer> Manufacturers { get; set; } = null!;
         public DbSet<Type> Types { get; set; } = null!;
+        public DbSet<Country> Countries { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
@@ -51,6 +52,14 @@ namespace ePrijevozSarajevo.Services.Database
                .IsUnique();
 
             modelBuilder.Entity<User>()
+               .HasIndex(u => u.UserName)
+               .IsUnique();
+
+            modelBuilder.Entity<Status>()
+                .Property(p => p.Discount)
+                .HasPrecision(5, 2);
+
+            modelBuilder.Entity<User>()
                 .HasOne(user => user.UserStatus)
                 .WithMany()
                 .HasForeignKey(user => user.UserStatusId);
@@ -59,10 +68,6 @@ namespace ePrijevozSarajevo.Services.Database
                 .HasOne(request => request.UserStatus)
                 .WithMany()
                 .HasForeignKey(r => r.UserStatusId);
-
-            modelBuilder.Entity<Status>()
-                .Property(p => p.Discount)
-                .HasPrecision(5, 2);
 
             modelBuilder.Entity<Route>()
                 .HasOne(r => r.StartStation)
@@ -98,6 +103,9 @@ namespace ePrijevozSarajevo.Services.Database
                 DateOfBirth = new DateTime(1998, 03, 25),
                 PhoneNumber = "061222333",
                 Address = "Adresa 11",
+                ZipCode="71000",
+                City ="Sarajevo",
+                CountryId =1,
                 RegistrationDate = DateTime.Now,
                 ModifiedDate = DateTime.Now,
                 Active = true,
@@ -116,11 +124,14 @@ namespace ePrijevozSarajevo.Services.Database
                 DateOfBirth = new DateTime(1988, 10, 26),
                 PhoneNumber = "061222444",
                 Address = "Adresa 12",
+                ZipCode="72000",
+                City ="Zenica",
+                CountryId =1,
                 RegistrationDate = DateTime.Now,
                 ModifiedDate = DateTime.Now,
                 Active = true,
                 UserStatusId = 4,
-                 ProfileImage = null,
+                ProfileImage = null,
                 StatusExpirationDate = new DateTime(2025, 12, 31)
                },
                new()
@@ -134,6 +145,9 @@ namespace ePrijevozSarajevo.Services.Database
                 DateOfBirth = new DateTime(1975, 05, 06),
                 PhoneNumber = "061222555",
                 Address = "Adresa 14",
+                ZipCode="90408",
+                City ="Nürnberg",
+                CountryId =2,
                 RegistrationDate = DateTime.Now,
                 ModifiedDate = DateTime.Now,
                 Active = true,
@@ -152,6 +166,9 @@ namespace ePrijevozSarajevo.Services.Database
                 DateOfBirth = new DateTime(1965, 07, 14),
                 PhoneNumber = "061222666",
                 Address = "Adresa 15",
+                ZipCode="1010",
+                City ="Wien",
+                CountryId =3,
                 RegistrationDate = DateTime.Now,
                 ModifiedDate = DateTime.Now,
                 Active = true,
@@ -170,6 +187,9 @@ namespace ePrijevozSarajevo.Services.Database
                 DateOfBirth = new DateTime(1982, 04, 27),
                 PhoneNumber = "061222777",
                 Address = "Adresa 16",
+                ZipCode="1160",
+                City ="Wien",
+                CountryId =3,
                 RegistrationDate = DateTime.Now,
                 ModifiedDate = DateTime.Now,
                 Active = true,
@@ -188,6 +208,9 @@ namespace ePrijevozSarajevo.Services.Database
                 DateOfBirth = new DateTime(1996, 02, 07),
                 PhoneNumber = "061222888",
                 Address = "Adresa 17",
+                ZipCode="80331",
+                City ="Munich",
+                CountryId =2,
                 RegistrationDate = DateTime.Now,
                 ModifiedDate = DateTime.Now,
                 Active = true,
@@ -210,10 +233,10 @@ namespace ePrijevozSarajevo.Services.Database
         {
             List<IssuedTicket> issuedTickets = new();
             var random = new Random();
-            int totalIssuedTickets = 100; 
-            int maxUsers = 6; 
-            int maxTickets = 5; 
-            int maxRoutes = 100; 
+            int totalIssuedTickets = 100;
+            int maxUsers = 6;
+            int maxTickets = 5;
+            int maxRoutes = 100;
 
             for (int i = 1; i <= totalIssuedTickets; i++)
             {
@@ -228,8 +251,25 @@ namespace ePrijevozSarajevo.Services.Database
 
                 DateTime issuedDate = new DateTime(year, month, day);
                 DateTime validFrom = issuedDate;
-                DateTime validTo = validFrom.AddHours(random.Next(60, 731)); // from 1 day to 1 month
+                DateTime validTo;
 
+                switch (ticketId)
+                {
+                    case 1: // 60 minutes
+                    case 3: // 60 minutes
+                        validTo = validFrom.AddMinutes(60);
+                        break;
+                    case 2: // 180 minutes
+                    case 4: // 180 minutes
+                        validTo = validFrom.AddMinutes(180);
+                        break;
+                    case 5: // 1 month (31 days)
+                        validTo = validFrom.AddDays(31);
+                        break;
+                    default:
+                        validTo = validFrom.AddHours(random.Next(60, 731)); // default range: 1 day to 1 month
+                        break;
+                }
                 issuedTickets.Add(new IssuedTicket()
                 {
                     IssuedTicketId = i,
@@ -261,7 +301,7 @@ namespace ePrijevozSarajevo.Services.Database
                     endStationId = random.Next(1, totalStations + 1);
                 } while (endStationId == startStationId);
 
-                DateTime startDate = new DateTime(2024, 01, 01);
+                DateTime startDate = new DateTime(2024, 11, 01);
                 DateTime endDate = new DateTime(2024, 12, 31);
 
                 int range = (endDate - startDate).Days;

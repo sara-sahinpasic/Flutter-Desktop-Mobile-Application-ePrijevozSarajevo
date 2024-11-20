@@ -1,0 +1,8 @@
+﻿namespace ePrijevozSarajevo.Services.Database
+{
+    public class Country
+    {
+        public int CountryId { get; set; }
+        public string Name { get; set; } = null!;
+    }
+}

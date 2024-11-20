@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ePrijevozSarajevo.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace ePrijevozSarajevo.Services.Database
 {
@@ -6,7 +7,7 @@ namespace ePrijevozSarajevo.Services.Database
     {
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder)
         {
-            
+
             modelBuilder.Entity<Request>().HasData
             (
                 new Request()
@@ -60,7 +61,7 @@ namespace ePrijevozSarajevo.Services.Database
                     RejectionReason = "",
                 }
              ); //4
-            modelBuilder.Entity<Station>().HasData 
+            modelBuilder.Entity<Station>().HasData
             (
                 new Station()
                 {
@@ -141,7 +142,7 @@ namespace ePrijevozSarajevo.Services.Database
                      Name = "Švrakino selo"
                  }
             ); //5
-            modelBuilder.Entity<Vehicle>().HasData 
+            modelBuilder.Entity<Vehicle>().HasData
             (
                 new Vehicle()
                 {
@@ -198,7 +199,7 @@ namespace ePrijevozSarajevo.Services.Database
                     TypeId = 2,
                 }
             ); //6
-            modelBuilder.Entity<Manufacturer>().HasData 
+            modelBuilder.Entity<Manufacturer>().HasData
             (
                 new Manufacturer()
                 {
@@ -221,7 +222,7 @@ namespace ePrijevozSarajevo.Services.Database
                     Name = "Mercedes"
                 }
             ); //7
-            modelBuilder.Entity<Type>().HasData  
+            modelBuilder.Entity<Type>().HasData
             (
                 new Type()
                 {
@@ -234,7 +235,7 @@ namespace ePrijevozSarajevo.Services.Database
                     Name = "Tram"
                 }
             ); //8
-            modelBuilder.Entity<UserRole>().HasData 
+            modelBuilder.Entity<UserRole>().HasData
             (
                 new UserRole()
                 {
@@ -249,7 +250,7 @@ namespace ePrijevozSarajevo.Services.Database
                     RoleId = 2,
                 }
             ); //9 nereferentna
-            modelBuilder.Entity<Role>().HasData 
+            modelBuilder.Entity<Role>().HasData
             (
                  new Role()
                  {
@@ -262,7 +263,7 @@ namespace ePrijevozSarajevo.Services.Database
                     Name = "User"
                 }
             ); //10
-            modelBuilder.Entity<Status>().HasData 
+            modelBuilder.Entity<Status>().HasData
             (
                   new Status()
                   {
@@ -297,7 +298,7 @@ namespace ePrijevozSarajevo.Services.Database
                      Discount = 0.4
                  }
             ); //11
-            modelBuilder.Entity<Ticket>().HasData 
+            modelBuilder.Entity<Ticket>().HasData
             (
                  new Ticket()
                  {
@@ -335,6 +336,59 @@ namespace ePrijevozSarajevo.Services.Database
                     StateMachine = "draft"
                 }
             ); //12
+            modelBuilder.Entity<Country>().HasData
+            (
+               new Country()
+               {
+                   CountryId = 1,
+                   Name = "Bosnia and Herzegovina",
+               },
+               new Country()
+               {
+                    CountryId = 2,
+                    Name = "Germany",
+               },
+               new Country()
+               {
+                     CountryId = 3,
+                     Name = "Austria",
+               },
+               new Country()
+               {
+                     CountryId = 4,
+                     Name = "Croatia",
+               },
+               new Country()
+               {
+                     CountryId = 5,
+                     Name = "Serbia",
+               }, 
+               new Country()
+               {
+                    CountryId = 6,
+                    Name = "Slovenia",
+               },
+               new Country()
+               {
+                    CountryId = 7,
+                    Name = "Montenegro",
+               },
+               new Country()
+                {
+                    CountryId = 8,
+                    Name = "Albania",
+               },
+               new Country()
+               {
+                    CountryId = 9,
+                    Name = "China",
+               },
+               new Country()
+               {
+                    CountryId = 10,
+                    Name = "Japan",
+               }
+          ); //13
 
         }
     }

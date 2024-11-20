@@ -1,8 +1,11 @@
+import 'package:eprijevoz_mobile/main.dart';
+import 'package:eprijevoz_mobile/models/country.dart';
 import 'package:eprijevoz_mobile/models/request.dart';
 import 'package:eprijevoz_mobile/models/search_result.dart';
 import 'package:eprijevoz_mobile/models/status.dart';
 import 'package:eprijevoz_mobile/models/user.dart';
 import 'package:eprijevoz_mobile/providers/auth_provider.dart';
+import 'package:eprijevoz_mobile/providers/country_provider.dart';
 import 'package:eprijevoz_mobile/providers/request_provider.dart';
 import 'package:eprijevoz_mobile/providers/status_provider.dart';
 import 'package:eprijevoz_mobile/providers/user_provider.dart';
@@ -26,14 +29,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
   late StatusProvider statusProvider;
   SearchResult<User>? userResult;
   SearchResult<Status>? statusResult;
-
   late RequestProvider requestProvider;
   SearchResult<Request>? requestResult;
+
+  late CountryProvider countryProvider;
+  SearchResult<Country>? countryResult;
+
   bool? hasActiveRequest = false;
   bool? isButtonClicked = false;
   var userRequest;
+  String? userStatusName;
+  String? userCountryName;
 
-  // Form
   final _formKey = GlobalKey<FormBuilderState>();
   Map<String, dynamic> _initialValue = {};
 
@@ -43,29 +50,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
     userProvider = context.read<UserProvider>();
     statusProvider = context.read<StatusProvider>();
     requestProvider = context.read<RequestProvider>();
+    countryProvider = context.read<CountryProvider>();
     initForm();
   }
 
-  var userId;
+  int? userId;
   var userFirstName = "";
   var userLastName = "";
   var userBirthday = "";
   var userAddress = "";
   var userCity = "";
-  var userPLZ = "";
-  var userCountry = "";
-  var userStatus = "";
+  var userZipCode = "";
+  var userStatusId = "";
+  var userCountryId = "";
 
   Future initForm() async {
     userResult = await userProvider.get();
     statusResult = await statusProvider.get();
     requestResult = await requestProvider.get();
+    countryResult = await countryProvider.get();
 
     var user = userResult?.result
         .firstWhere((user) => user.userName == AuthProvider.username);
 
     userId = int.tryParse('${user?.userId}');
-
     userFirstName = '${user?.firstName}';
     userLastName = '${user?.lastName}';
     if (user?.dateOfBirth != null) {
@@ -74,17 +82,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
       userBirthday = '';
     }
     userAddress = '${user?.address}';
-    userCity = '';
-    userPLZ = '';
-    userCountry = '';
-    userStatus = '${user?.userStatusId}';
+    userCity = '${user?.city}';
+    userZipCode = '${user?.zipCode}';
+    userStatusId = '${user?.userStatusId}';
+    userCountryId = '${user?.countryId}';
+
+    userStatusName = statusResult?.result
+            .firstWhere((status) => status.statusId == user?.userStatusId)
+            .name ??
+        "";
+
+    userCountryName = countryResult?.result
+            .firstWhere((country) => country.countryId == user?.countryId)
+            .name ??
+        "";
     //Refresh UI
     setState(() {});
 
     userRequest = requestResult?.result.firstWhere(
-      (request) => request.userId == userId && request.active == true,
-      orElse: () => null!,
-    );
+        (request) => request.userId == userId && request.active == true);
 
     if (userRequest != null) {
       hasActiveRequest = true; //active
@@ -132,8 +148,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: [
                     Text(
                       "Korisnički broj: ",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      style: TextStyle(fontSize: 20),
                     ),
                   ],
                 ),
@@ -142,7 +157,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(25.0, 0.0, 0.0, 0.0),
                       child: Text(
-                        '2024${userId}',
+                        '$userId',
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
@@ -157,8 +172,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: [
                     Text(
                       "Ime: ",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      style: TextStyle(fontSize: 20),
                     ),
                   ],
                 ),
@@ -167,7 +181,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(124.0, 0.0, 0.0, 0.0),
                       child: Text(
-                        '${userFirstName}',
+                        userFirstName,
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
@@ -182,8 +196,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: [
                     Text(
                       "Prezime: ",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      style: TextStyle(fontSize: 20),
                     ),
                   ],
                 ),
@@ -192,7 +205,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(83.0, 0.0, 0.0, 0.0),
                       child: Text(
-                        '${userLastName}',
+                        userLastName,
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
@@ -207,8 +220,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: [
                     Text(
                       "Datum rođenja: ",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      style: TextStyle(fontSize: 20),
                     ),
                   ],
                 ),
@@ -219,7 +231,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: Text(
                         userBirthday.isNotEmpty
                             ? formatDate(DateTime.parse(userBirthday))
-                            : 'N/A',
+                            : "",
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
@@ -234,8 +246,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: [
                     Text(
                       "Adresa: ",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      style: TextStyle(fontSize: 20),
                     ),
                   ],
                 ),
@@ -244,32 +255,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(94.0, 0.0, 0.0, 0.0),
                       child: Text(
-                        '${userAddress}',
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
-                      ),
-                    ),
-                  ],
-                )
-              ],
-            ),
-            Row(
-              children: [
-                const Column(
-                  children: [
-                    Text(
-                      "Grad: ",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(116.0, 0.0, 0.0, 0.0),
-                      child: Text(
-                        '${userCity}',
+                        userAddress,
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
@@ -284,17 +270,40 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: [
                     Text(
                       "Poštanski broj: ",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      style: TextStyle(fontSize: 20),
                     ),
                   ],
                 ),
                 Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(27.0, 0.0, 0.0, 0.0),
+                      padding: const EdgeInsets.fromLTRB(28.0, 0.0, 0.0, 0.0),
                       child: Text(
-                        '${userPLZ}',
+                        userZipCode,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+            Row(
+              children: [
+                const Column(
+                  children: [
+                    Text(
+                      "Grad: ",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(116.0, 0.0, 0.0, 0.0),
+                      child: Text(
+                        userCity,
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
@@ -309,22 +318,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: [
                     Text(
                       "Država: ",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      style: TextStyle(fontSize: 20),
                     ),
                   ],
                 ),
-                Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(97.0, 0.0, 0.0, 0.0),
-                      child: Text(
-                        '${userCountry}',
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
-                      ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(97.0, 0.0, 0.0, 0.0),
+                    child: Text(
+                      '$userCountryName',
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 20),
+                      overflow: TextOverflow.ellipsis,
                     ),
-                  ],
+                  ),
                 )
               ],
             ),
@@ -334,17 +341,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: [
                     Text(
                       "Status: ",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      style: TextStyle(fontSize: 20),
                     ),
                   ],
                 ),
                 Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(101.0, 0.0, 0.0, 0.0),
+                      padding: const EdgeInsets.fromLTRB(100.0, 0.0, 0.0, 0.0),
                       child: Text(
-                        '${userStatus}',
+                        '$userStatusName',
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
@@ -379,7 +385,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => RequestOptionsScreen(),
+                    builder: (context) => const RequestOptionsScreen(),
                   ),
                 );
               }
@@ -424,7 +430,63 @@ class _ProfileScreenState extends State<ProfileScreen> {
         SizedBox(
           width: double.infinity,
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () async {
+              final bool userConfirmedDeletion = await showDialog(
+                  context: context,
+                  builder: (dialogContext) => AlertDialog(
+                          title: const Text("Delete"),
+                          content: const Text(
+                              "Da li želite obrisati korinički nalog?"),
+                          actions: [
+                            TextButton(
+                                child: const Text(
+                                  "OK",
+                                  style: TextStyle(color: Colors.green),
+                                ),
+                                onPressed: () async {
+                                  Navigator.pop(dialogContext, true);
+                                }),
+                            TextButton(
+                                child: const Text(
+                                  "Cancel",
+                                  style: TextStyle(color: Colors.red),
+                                ),
+                                onPressed: () =>
+                                    Navigator.pop(dialogContext, false))
+                          ]));
+              if (userConfirmedDeletion) {
+                bool success = await userProvider.delete(userId!);
+                if (mounted) {
+                  await showDialog(
+                    context: context,
+                    builder: (dialogDeleteContext) => AlertDialog(
+                      title: Text(success ? "Success" : "Error"),
+                      content: Text(
+                        success
+                            ? "Korisnički nalog uspješno obrisan."
+                            : "Korisnički nalog nije obrisan.",
+                      ),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(dialogDeleteContext)
+                                .pop(); // close the dialog
+                            if (success) {
+                              Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (context) => LoginPage()),
+                              );
+                            }
+                          },
+                          child: const Text("OK",
+                              style: TextStyle(color: Colors.green)),
+                        ),
+                      ],
+                    ),
+                  );
+                }
+              }
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.black,
               shape: RoundedRectangleBorder(

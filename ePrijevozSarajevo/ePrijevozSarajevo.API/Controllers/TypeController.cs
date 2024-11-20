@@ -9,7 +9,8 @@ namespace ePrijevozSarajevo.API.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class TypeController : BaseCRUDController<Model.Type, TypeSearchObject, TypeUpsertRequest, TypeUpsertRequest>
+    public class TypeController : BaseCRUDController<Model.Type, 
+        TypeSearchObject, TypeUpsertRequest, TypeUpsertRequest>
     {
         public TypeController(ITypeService service) : base(service)
         {
