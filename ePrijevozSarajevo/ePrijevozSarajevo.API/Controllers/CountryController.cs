@@ -8,11 +8,11 @@ namespace ePrijevozSarajevo.API.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class VehicleTypeController : BaseCRUDController<Model.VehicleType, VehicleTypeSearchObject, VehicleTypeUpsertRequest, VehicleTypeUpsertRequest>
+    public class CountryController : BaseCRUDController<Model.Country,
+        CountrySearchObject, CountryUpsertRequest, CountryUpsertRequest>
     {
-        public VehicleTypeController(IVehicleTypeService service) : base(service)
+        public CountryController(ICountryService service) : base(service)
         {
         }
-
     }
 }

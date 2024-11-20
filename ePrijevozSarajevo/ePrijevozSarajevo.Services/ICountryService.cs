@@ -3,8 +3,8 @@ using ePrijevozSarajevo.Model.SearchObjects;
 
 namespace ePrijevozSarajevo.Services
 {
-    public interface ITypeService : ICRUDService<Model.Type, 
-        TypeSearchObject, TypeUpsertRequest, TypeUpsertRequest>
+    public interface ICountryService : ICRUDService<Model.Country,
+        CountrySearchObject, CountryUpsertRequest, CountryUpsertRequest>
     {
     }
 }

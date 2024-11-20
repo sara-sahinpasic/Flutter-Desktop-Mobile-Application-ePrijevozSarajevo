@@ -1,5 +1,6 @@
 import 'package:eprijevoz_mobile/layouts/master_screen.dart';
 import 'package:eprijevoz_mobile/providers/auth_provider.dart';
+import 'package:eprijevoz_mobile/providers/country_provider.dart';
 import 'package:eprijevoz_mobile/providers/issuedTicket_provider.dart';
 import 'package:eprijevoz_mobile/providers/request_provider.dart';
 import 'package:eprijevoz_mobile/providers/route_provider.dart';
@@ -22,6 +23,7 @@ void main() {
       ChangeNotifierProvider<TicketProvider>(create: (_) => TicketProvider()),
       ChangeNotifierProvider<IssuedTicketProvider>(
           create: (_) => IssuedTicketProvider()),
+      ChangeNotifierProvider<CountryProvider>(create: (_) => CountryProvider()),
     ],
     child: const MyApp(),
   ));
