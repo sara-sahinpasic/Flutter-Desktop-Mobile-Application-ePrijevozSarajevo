@@ -17,7 +17,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatefulWidget {
-  ProfileScreen({
+  const ProfileScreen({
     super.key,
   });
 
@@ -32,16 +32,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
   SearchResult<Status>? statusResult;
   late RequestProvider requestProvider;
   SearchResult<Request>? requestResult;
-
   late CountryProvider countryProvider;
   SearchResult<Country>? countryResult;
-
   bool? hasActiveRequest = false;
   bool? isButtonClicked = false;
-  var userRequest;
+  Request? userRequest;
   String? userStatusName;
   String? userCountryName;
-
+  User? user;
   final _formKey = GlobalKey<FormBuilderState>();
   Map<String, dynamic> _initialValue = {};
 
@@ -59,6 +57,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   var userFirstName = "";
   var userLastName = "";
   var userBirthday = "";
+  var userPhoneNumber = "";
   var userAddress = "";
   var userCity = "";
   var userZipCode = "";
@@ -71,7 +70,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     requestResult = await requestProvider.get();
     countryResult = await countryProvider.get();
 
-    var user = userResult?.result
+    user = userResult?.result
         .firstWhere((user) => user.userName == AuthProvider.username);
 
     userId = int.tryParse('${user?.userId}');
@@ -82,6 +81,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     } else {
       userBirthday = '';
     }
+    userPhoneNumber = '${user?.phoneNumber}';
     userAddress = '${user?.address}';
     userCity = '${user?.city}';
     userZipCode = '${user?.zipCode}';
@@ -98,7 +98,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
             .name ??
         "";
     //Refresh UI
-    setState(() {});
+    setState(() {
+      _initialValue = {
+        'firstName': userFirstName,
+        'lastName': userLastName,
+        'phoneNumber': userPhoneNumber,
+        'address': userAddress,
+        'zipCode': userZipCode,
+        'city': userCity,
+        'country': userCountryId
+      };
+    });
 
     userRequest = requestResult?.result.firstWhere(
         (request) => request.userId == userId && request.active == true);
@@ -108,6 +118,41 @@ class _ProfileScreenState extends State<ProfileScreen> {
     } else {
       hasActiveRequest = false;
     }
+  }
+
+  /*Future refreshUserData() async {
+    var request = Map.from(_formKey.currentState?.value ?? {});
+    print("Request: ${request}");
+    userResult = await userProvider.get(filter: request);
+
+    if (userResult != null && userResult!.result.isNotEmpty) {
+      setState(() {
+        user = userResult?.result.first;
+      });
+    }
+  }*/
+  Future refreshUserData() async {
+    // Ensure the form state is saved
+    if (_formKey.currentState?.saveAndValidate() ?? false) {
+      // Retrieve the form values
+      var request = Map.from(_formKey.currentState!.value);
+
+      print("Request: $request");
+      userResult = await userProvider.get(filter: request);
+
+      if (userResult != null && userResult!.result.isNotEmpty) {
+        setState(() {
+          user = userResult?.result.first;
+        });
+      }
+    } else {
+      print("Form validation failed or form state is null.");
+    }
+  }
+
+  bool value = false;
+  void changeData() {
+    value = true;
   }
 
   @override
@@ -416,12 +461,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
           width: double.infinity,
           child: ElevatedButton(
             onPressed: () async {
-              Navigator.push(
+              User isUpdated = await Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const UpdateProfileScreen(),
+                  builder: (context) => UpdateProfileScreen(
+                    user: user,
+                    onUserUpdated: refreshUserData,
+                  ),
                 ),
               );
+
+              if (isUpdated != user) {
+                setState(() async {
+                  await refreshUserData(); // Refresh only if the profile was updated
+                });
+              }
+              //value ? refreshUserData() : const Text("Ništa");
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.black,
