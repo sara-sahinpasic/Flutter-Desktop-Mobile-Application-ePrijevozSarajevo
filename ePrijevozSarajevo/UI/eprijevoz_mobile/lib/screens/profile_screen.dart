@@ -10,6 +10,7 @@ import 'package:eprijevoz_mobile/providers/request_provider.dart';
 import 'package:eprijevoz_mobile/providers/status_provider.dart';
 import 'package:eprijevoz_mobile/providers/user_provider.dart';
 import 'package:eprijevoz_mobile/providers/utils.dart';
+import 'package:eprijevoz_mobile/screens/profile_screen_update.dart';
 import 'package:eprijevoz_mobile/screens/request/request_options_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -408,11 +409,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ),
         ),
+        // request
         const SizedBox(height: 10),
+        // update
         SizedBox(
           width: double.infinity,
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () async {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const UpdateProfileScreen(),
+                ),
+              );
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.black,
               shape: RoundedRectangleBorder(
@@ -427,6 +437,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ),
         const SizedBox(height: 10),
+        // delete
         SizedBox(
           width: double.infinity,
           child: ElevatedButton(
