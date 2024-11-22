@@ -5,12 +5,16 @@
         public string FirstName { get; set; } = null!;
         public string LastName { get; set; } = null!;
         public string PhoneNumber { get; set; } = null!;
-        public string? Address { get; set; }
-        public int? UserStatusId { get; set; }
+        public string Address { get; set; } = null!;
+        public string ZipCode { get; set; } = null!;
+        public string City { get; set; } = null!;
+        public Country? Country { get; set; }
+        public int CountryId { get; set; }
+        public byte[]? ProfileImage { get; set; }
         public DateTime ModifiedDate { get; set; } = DateTime.UtcNow;
-        public string? Password { get; set; }
-        public string? PasswordConfirmation { get; set; }
-
+        //public int? UserStatusId { get; set; }
+        //public string? Password { get; set; }
+        //public string? PasswordConfirmation { get; set; }
         // public bool Active { get; set; }
         // public DateTime? StatusExpirationDate { get; set; }
         //string Password { get; set; } = null!;
