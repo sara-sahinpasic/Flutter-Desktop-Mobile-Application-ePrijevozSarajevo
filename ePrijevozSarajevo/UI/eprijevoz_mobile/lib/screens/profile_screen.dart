@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'dart:io';
-
 import 'package:eprijevoz_mobile/main.dart';
 import 'package:eprijevoz_mobile/models/country.dart';
 import 'package:eprijevoz_mobile/models/request.dart';
@@ -66,7 +63,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   var userZipCode = "";
   var userStatusId = "";
   var userCountryId = "";
-  var userImage;
+  Widget? userImageWidget;
 
   Future initForm() async {
     userResult = await userProvider.get();
@@ -91,8 +88,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
     userZipCode = '${user?.zipCode}';
     userStatusId = '${user?.userStatusId}';
     userCountryId = '${user?.countryId}';
-    userImage = user?.profileImage != null
-        ? imageFromString('${user?.profileImage}')
+    userImageWidget = user?.profileImage != null
+        ? SizedBox(
+            width: 200,
+            height: 200,
+            child: imageFromString('${user?.profileImage}'),
+          )
         : const Icon(
             Icons.person,
             size: 100,
@@ -117,7 +118,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         'zipCode': userZipCode,
         'city': userCity,
         'country': userCountryId,
-        'profileImage': userImage
+        'profileImage': userImageWidget
       };
     });
 
@@ -188,23 +189,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: Padding(
         padding: const EdgeInsets.fromLTRB(30.0, 0.0, 0.0, 0.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Row(
-              children: [
-                Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(116.0, 0.0, 0.0, 0.0),
-                      child: userImage != null && userImage is! ImageProvider
-                          ? Image.asset(userImage, height: 100, width: 100)
-                          : const Icon(
-                              Icons.person,
-                              size: 100,
-                            ),
-                    ),
-                  ],
-                )
-              ],
+            Center(
+              child: userImageWidget,
             ),
             Row(
               children: [
