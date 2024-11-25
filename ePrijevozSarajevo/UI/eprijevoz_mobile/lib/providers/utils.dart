@@ -1,4 +1,6 @@
 import 'package:intl/intl.dart';
+import 'package:flutter/widgets.dart';
+import 'dart:convert';
 
 String formatDate(DateTime? date) {
   if (date == null) {
@@ -27,4 +29,8 @@ String formatPrice(double price) {
       decimalDigits: 2 // Ensures two decimal places
       );
   return formatter.format(price);
+}
+
+Image imageFromString(String input) {
+  return Image.memory(base64Decode(input));
 }

@@ -20,6 +20,7 @@ class User {
   int? userStatusId;
   String? password;
   String? passwordConfirmation;
+  String? profileImage;
 
   User(
       {this.userId,

@@ -47,6 +47,7 @@ dependencies:
   flutter_svg: ^2.0.10+1
   flutter_paypal_payment: ^1.0.6
   quickalert: ^1.1.0
+  file_picker: ^8.0.5
 
 dev_dependencies:
   flutter_test:

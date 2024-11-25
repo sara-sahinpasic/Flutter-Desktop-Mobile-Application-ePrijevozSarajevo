@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:eprijevoz_mobile/main.dart';
 import 'package:eprijevoz_mobile/models/country.dart';
 import 'package:eprijevoz_mobile/models/request.dart';
@@ -63,6 +66,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   var userZipCode = "";
   var userStatusId = "";
   var userCountryId = "";
+  var userImage;
 
   Future initForm() async {
     userResult = await userProvider.get();
@@ -87,6 +91,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
     userZipCode = '${user?.zipCode}';
     userStatusId = '${user?.userStatusId}';
     userCountryId = '${user?.countryId}';
+    userImage = user?.profileImage != null
+        ? imageFromString('${user?.profileImage}')
+        : const Icon(
+            Icons.person,
+            size: 100,
+          );
 
     userStatusName = statusResult?.result
             .firstWhere((status) => status.statusId == user?.userStatusId)
@@ -106,7 +116,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
         'address': userAddress,
         'zipCode': userZipCode,
         'city': userCity,
-        'country': userCountryId
+        'country': userCountryId,
+        'profileImage': userImage
       };
     });
 
@@ -145,8 +156,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
           user = userResult?.result.first;
         });
       }
-    } else {
-      print("Form validation failed or form state is null.");
     }
   }
 
@@ -155,6 +164,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     value = true;
   }
 
+//default_image.jpg
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -181,11 +191,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
           children: [
             Row(
               children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 10.0),
-                  child: Image.asset("assets/images/logo.png",
-                      height: 100, width: 100),
-                ),
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(116.0, 0.0, 0.0, 0.0),
+                      child: userImage != null && userImage is! ImageProvider
+                          ? Image.asset(userImage, height: 100, width: 100)
+                          : const Icon(
+                              Icons.person,
+                              size: 100,
+                            ),
+                    ),
+                  ],
+                )
               ],
             ),
             Row(
