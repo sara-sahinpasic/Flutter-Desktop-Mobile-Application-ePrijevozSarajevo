@@ -1,8 +1,12 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:eprijevoz_mobile/models/country.dart';
 import 'package:eprijevoz_mobile/models/search_result.dart';
 import 'package:eprijevoz_mobile/models/user.dart';
 import 'package:eprijevoz_mobile/providers/country_provider.dart';
 import 'package:eprijevoz_mobile/providers/user_provider.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
@@ -82,6 +86,17 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
             .toList() ??
         [];
     return list;
+  }
+
+  File? _image;
+  String? _base64Image;
+  void getImage() async {
+    var result = await FilePicker.platform.pickFiles(type: FileType.image);
+
+    if (result != null && result.files.single.path != null) {
+      _image = File(result.files.single.path!);
+      _base64Image = base64Encode(_image!.readAsBytesSync());
+    }
   }
 
   @override
@@ -246,6 +261,40 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                         ),
                       ),
                     ),
+                    Row(
+                      children: [
+                        const Column(
+                          children: [
+                            Text(
+                              "Slika: ",
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          ],
+                        ),
+                        Expanded(
+                          child: Padding(
+                              padding: const EdgeInsets.fromLTRB(
+                                  97.0, 0.0, 0.0, 0.0),
+                              child: FormBuilderField(
+                                name: "profileImage",
+                                builder: (field) {
+                                  return InputDecorator(
+                                    decoration: const InputDecoration(
+                                        labelText: "Odaberite sliku"),
+                                    child: ListTile(
+                                      leading: const Icon(Icons.image),
+                                      title: const Text("Slika"),
+                                      trailing: const Icon(
+                                        Icons.file_upload,
+                                      ),
+                                      onTap: getImage,
+                                    ),
+                                  );
+                                },
+                              )),
+                        )
+                      ],
+                    ),
                     SizedBox(
                       height: 60,
                       width: 350,
@@ -271,6 +320,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     _formKey.currentState?.saveAndValidate();
                     var request = Map.from(_formKey.currentState!.value);
                     request['countryId'] = _selectedCountryId;
+                    request['profileImage'] = _base64Image;
 
                     if (widget.user != null) {
                       User updatedUser = await userProvider.update(
