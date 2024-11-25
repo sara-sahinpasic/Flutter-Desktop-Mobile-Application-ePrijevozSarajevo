@@ -8,6 +8,7 @@ import 'package:eprijevoz_mobile/providers/country_provider.dart';
 import 'package:eprijevoz_mobile/providers/user_provider.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
 
@@ -261,43 +262,9 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                         ),
                       ),
                     ),
-                    Row(
-                      children: [
-                        const Column(
-                          children: [
-                            Text(
-                              "Slika: ",
-                              style: TextStyle(fontSize: 20),
-                            ),
-                          ],
-                        ),
-                        Expanded(
-                          child: Padding(
-                              padding: const EdgeInsets.fromLTRB(
-                                  97.0, 0.0, 0.0, 0.0),
-                              child: FormBuilderField(
-                                name: "profileImage",
-                                builder: (field) {
-                                  return InputDecorator(
-                                    decoration: const InputDecoration(
-                                        labelText: "Odaberite sliku"),
-                                    child: ListTile(
-                                      leading: const Icon(Icons.image),
-                                      title: const Text("Slika"),
-                                      trailing: const Icon(
-                                        Icons.file_upload,
-                                      ),
-                                      onTap: getImage,
-                                    ),
-                                  );
-                                },
-                              )),
-                        )
-                      ],
-                    ),
                     SizedBox(
                       height: 60,
-                      width: 350,
+                      width: 360,
                       child: FormBuilderDropdown(
                         name: "countryId",
                         items: getItems(),
@@ -309,6 +276,30 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                         },
                       ),
                     ),
+                    SizedBox(
+                      height: 60,
+                      width: 360,
+                      child: FormBuilderField(
+                        name: "profileImage",
+                        builder: (field) {
+                          return InputDecorator(
+                            decoration: const InputDecoration(
+                                labelText: "Odaberite sliku"),
+                            child: ListTile(
+                              leading: const Icon(Icons.image),
+                              title: const Text("Slika"),
+                              trailing: const Icon(
+                                Icons.file_upload,
+                              ),
+                              onTap: getImage,
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    )
                   ],
                 ),
               ),
