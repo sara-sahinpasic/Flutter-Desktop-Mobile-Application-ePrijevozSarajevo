@@ -16,6 +16,8 @@
         public string? Password { get; set; } = null!;
         public string? PasswordConfirmation { get; set; } = null!;
         public int? UserStatusId { get; set; } = 1;
+        public int? UserCountryId { get; set; } = 1;
+
         public string? UserName { get; set; }
         public DateTime? StatusExpirationDate { get; set; }
 

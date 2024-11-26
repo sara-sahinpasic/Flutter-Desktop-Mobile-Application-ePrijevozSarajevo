@@ -4,13 +4,15 @@ part 'user.g.dart';
 @JsonSerializable()
 class User {
   int? userId;
-  //public Role? Role { get; set; }
   String? firstName;
   String? lastName;
   String? email;
   DateTime? dateOfBirth;
   String? phoneNumber;
   String? address;
+  String? zipCode;
+  String? city;
+  int? userCountryId;
   DateTime? registrationDate;
   DateTime? modifiedDate;
   bool? active;
@@ -18,10 +20,7 @@ class User {
   int? userStatusId;
   String? password;
   String? passwordConfirmation;
-  //String? profileImagePath;
-  //Status? UserStatus { get; set; }
-  //DateTime? statusExpirationDate;
-  //virtual ICollection<UserRole> UserRoles { get; set; } = new List<UserRole>();
+  String? profileImage;
 
   User(
       {this.userId,
@@ -31,6 +30,9 @@ class User {
       this.dateOfBirth,
       this.phoneNumber,
       this.address,
+      this.zipCode,
+      this.city,
+      this.userCountryId,
       this.registrationDate,
       this.modifiedDate,
       this.active,

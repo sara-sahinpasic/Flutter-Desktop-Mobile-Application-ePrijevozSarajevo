@@ -52,7 +52,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     userResult = await userProvider.get();
 
     setState(() {
-      _selectedCountryId = widget?.user?.countryId ??
+      _selectedCountryId = widget?.user?.userCountryId ??
           (countryResult?.result.isNotEmpty ?? false
               ? countryResult!.result.first.countryId
               : null);

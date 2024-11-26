@@ -16,6 +16,9 @@ User _$UserFromJson(Map<String, dynamic> json) => User(
           : DateTime.parse(json['dateOfBirth'] as String),
       phoneNumber: json['phoneNumber'] as String?,
       address: json['address'] as String?,
+      zipCode: json['zipCode'] as String?,
+      city: json['city'] as String?,
+      userCountryId: (json['userCountryId'] as num?)?.toInt(),
       registrationDate: json['registrationDate'] == null
           ? null
           : DateTime.parse(json['registrationDate'] as String),
@@ -27,7 +30,7 @@ User _$UserFromJson(Map<String, dynamic> json) => User(
       userStatusId: (json['userStatusId'] as num?)?.toInt(),
       password: json['password'] as String?,
       passwordConfirmation: json['passwordConfirmation'] as String?,
-    );
+    )..profileImage = json['profileImage'] as String?;
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'userId': instance.userId,
@@ -37,6 +40,9 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'dateOfBirth': instance.dateOfBirth?.toIso8601String(),
       'phoneNumber': instance.phoneNumber,
       'address': instance.address,
+      'zipCode': instance.zipCode,
+      'city': instance.city,
+      'userCountryId': instance.userCountryId,
       'registrationDate': instance.registrationDate?.toIso8601String(),
       'modifiedDate': instance.modifiedDate?.toIso8601String(),
       'active': instance.active,
@@ -44,4 +50,5 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'userStatusId': instance.userStatusId,
       'password': instance.password,
       'passwordConfirmation': instance.passwordConfirmation,
+      'profileImage': instance.profileImage,
     };
