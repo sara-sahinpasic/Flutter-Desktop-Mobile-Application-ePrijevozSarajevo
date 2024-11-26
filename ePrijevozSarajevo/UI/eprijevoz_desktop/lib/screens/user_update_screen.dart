@@ -60,12 +60,17 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
 
     super.initState();
 
-    _ftsFirstNameController.text = widget.user.firstName ?? '';
-    _ftsLastNameController.text = widget.user.lastName ?? '';
-    _ftsPhoneController.text = widget.user.phoneNumber ?? '';
-    _ftsAddressController.text = widget.user.address ?? '';
-    _ftsCityController.text = widget.user.city ?? '';
-    _ftsZipCodeController.text = widget.user.zipCode ?? '';
+    _initialValue = {
+      'firstName': widget.user.firstName,
+      'lastName': widget.user.lastName,
+      'userName': widget.user.userId,
+      'dateOfBirth': widget.user.dateOfBirth?.toString(),
+      'phoneNumber': widget.user.phoneNumber,
+      'address': widget.user.address,
+      'city': widget.user.city,
+      'zipCode': widget.user.zipCode,
+      'countryId': widget.user.userCountryId?.toString(),
+    };
 
     initForm();
   }
@@ -80,27 +85,8 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
           (countryResult?.result.isNotEmpty ?? false
               ? countryResult!.result.first.countryId
               : null);
-
-      /*_initialValue = {
-        'firstName': widget.user.firstName,
-        'lastName': widget.user.lastName,
-        'userName': widget.user.userId,
-        'dateOfBirth': widget.user.dateOfBirth?.toString(),
-        'phoneNumber': widget.user.phoneNumber,
-        'address': widget.user.address,
-        'city': widget.user.city,
-        'zipCode': widget.user.zipCode,
-        'countryId': widget.country?.countryId?.toString(),
-      };*/
     });
   }
-
-  final TextEditingController _ftsFirstNameController = TextEditingController();
-  final TextEditingController _ftsLastNameController = TextEditingController();
-  final TextEditingController _ftsPhoneController = TextEditingController();
-  final TextEditingController _ftsAddressController = TextEditingController();
-  final TextEditingController _ftsCityController = TextEditingController();
-  final TextEditingController _ftsZipCodeController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +97,6 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
           width: 500,
           child: FormBuilder(
             key: _formKey,
-            //initialValue: _initialValue,
             child: Column(children: [
               const SizedBox(
                 height: 15,
@@ -128,7 +113,7 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
                   Expanded(
                     child: FormBuilderTextField(
                       name: 'firstName',
-                      controller: _ftsFirstNameController,
+                      initialValue: widget.user.firstName,
                       validator: FormBuilderValidators.compose([
                         FormBuilderValidators.required(
                             errorText: "Ovo polje ne može bit prazno."),
@@ -158,7 +143,37 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
                   Expanded(
                     child: FormBuilderTextField(
                       name: 'lastName',
-                      controller: _ftsLastNameController,
+                      initialValue: widget.user.lastName,
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(
+                            errorText: "Ovo polje ne može bit prazno."),
+                      ]),
+                      cursorColor: Colors.green.shade800,
+                      decoration: const InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Row(
+                children: [
+                  const Text(
+                    "Username:",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                  ),
+                  const SizedBox(
+                    width: 35,
+                  ),
+                  Expanded(
+                    child: FormBuilderTextField(
+                      name: 'userName',
+                      initialValue: widget.user.userName,
                       validator: FormBuilderValidators.compose([
                         FormBuilderValidators.required(
                             errorText: "Ovo polje ne može bit prazno."),
@@ -188,7 +203,7 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
                   Expanded(
                     child: FormBuilderTextField(
                       name: 'phoneNumber',
-                      controller: _ftsPhoneController,
+                      initialValue: widget.user.phoneNumber,
                       validator: FormBuilderValidators.compose([
                         FormBuilderValidators.required(
                             errorText: "Ovo polje ne može bit prazno."),
@@ -218,7 +233,7 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
                   Expanded(
                     child: FormBuilderTextField(
                       name: 'address',
-                      controller: _ftsAddressController,
+                      initialValue: widget.user.address,
                       validator: FormBuilderValidators.compose([
                         FormBuilderValidators.required(
                             errorText: "Ovo polje ne može bit prazno."),
@@ -248,7 +263,7 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
                   Expanded(
                     child: FormBuilderTextField(
                       name: 'city',
-                      controller: _ftsCityController,
+                      initialValue: widget.user.city,
                       validator: FormBuilderValidators.compose([
                         FormBuilderValidators.required(
                             errorText: "Ovo polje ne može bit prazno."),
@@ -278,7 +293,7 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
                   Expanded(
                     child: FormBuilderTextField(
                       name: 'zipCode',
-                      controller: _ftsZipCodeController,
+                      initialValue: widget.user.zipCode,
                       validator: FormBuilderValidators.compose([
                         FormBuilderValidators.required(
                             errorText: "Ovo polje ne može bit prazno."),
@@ -315,6 +330,10 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
                           _selectedCountryId = int.parse(value as String);
                         });
                       },
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(
+                            errorText: "Odaberite državu."),
+                      ]),
                     ),
                   ),
                 ],
@@ -327,34 +346,56 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
                   Expanded(
                       child: ElevatedButton(
                     onPressed: () async {
-                      _formKey.currentState?.saveAndValidate();
-                      var request = Map.from(_formKey.currentState!.value);
-                      request['userCountryId'] = _selectedCountryId;
+                      if (_formKey.currentState?.saveAndValidate() ?? false) {
+                        var request = Map.from(_formKey.currentState!.value);
+                        request['userCountryId'] = _selectedCountryId;
+                        try {
+                          await userProvider.update(
+                              widget.user.userId!, request);
+                          widget.onUserUpdated();
+                          Navigator.pop(context, true);
 
-                      if (widget.user != null) {
-                        _formKey.currentState?.saveAndValidate();
-                        await userProvider.update(widget.user.userId!, request);
-                        widget.onUserUpdated(); //refresh table with new data
-                        Navigator.pop(context, true);
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: const Text("Update"),
+                              content: const Text("Korisnik je ažuriran"),
+                              actions: [
+                                TextButton(
+                                  child: const Text("OK",
+                                      style: TextStyle(color: Colors.green)),
+                                  onPressed: () => Navigator.pop(context),
+                                )
+                              ],
+                            ),
+                          );
+                        } catch (error) {
+                          showDialog(
+                            context: context,
+                            builder: (dialogContext) => AlertDialog(
+                              title: const Text(
+                                "Error",
+                                style: TextStyle(
+                                    color: Colors.red,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              content: const Text(
+                                  "Korisničko ime mora biti jedinstveno."),
+                              actions: [
+                                TextButton(
+                                  child: const Text(
+                                    "OK",
+                                    style: TextStyle(color: Colors.black),
+                                  ),
+                                  onPressed: () {
+                                    Navigator.pop(dialogContext, false);
+                                  },
+                                ),
+                              ],
+                            ),
+                          );
+                        }
                       }
-
-                      showDialog(
-                          context: context,
-                          builder: (context) => AlertDialog(
-                                title: const Text("Update"),
-                                content: const Text("Korisnik je ažuriran"),
-                                actions: [
-                                  TextButton(
-                                    child: const Text(
-                                      "OK",
-                                      style: TextStyle(color: Colors.green),
-                                    ),
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                  )
-                                ],
-                              ));
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
