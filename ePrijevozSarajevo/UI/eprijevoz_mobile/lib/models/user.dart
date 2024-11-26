@@ -12,7 +12,7 @@ class User {
   String? address;
   String? zipCode;
   String? city;
-  int? countryId;
+  int? userCountryId;
   DateTime? registrationDate;
   DateTime? modifiedDate;
   bool? active;
@@ -32,7 +32,7 @@ class User {
       this.address,
       this.zipCode,
       this.city,
-      this.countryId,
+      this.userCountryId,
       this.registrationDate,
       this.modifiedDate,
       this.active,

@@ -14,8 +14,8 @@
         public string Address { get; set; } = null!;
         public string ZipCode { get; set; } = null!;
         public string City { get; set; } = null!;
-        public Country? Country { get; set; }
-        public int CountryId { get; set; }
+        public Country? UserCountry { get; set; }
+        public int UserCountryId { get; set; }
         public DateTime RegistrationDate { get; set; } 
         public DateTime ModifiedDate { get; set; } 
         public bool Active { get; set; }

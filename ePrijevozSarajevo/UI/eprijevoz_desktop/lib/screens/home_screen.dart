@@ -1,4 +1,3 @@
-import 'package:eprijevoz_desktop/layouts/master_screen.dart';
 import 'package:eprijevoz_desktop/main.dart';
 import 'package:eprijevoz_desktop/models/search_result.dart';
 import 'package:eprijevoz_desktop/models/user.dart';
@@ -7,7 +6,6 @@ import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:eprijevoz_desktop/providers/utils.dart';
 import 'package:eprijevoz_desktop/screens/user_list_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -21,21 +19,12 @@ class _HomePageState extends State<HomePage> {
   var userNameUI = "";
   late UserProvider userProvider;
   SearchResult<User>? userResult;
+  bool isLoading = true;
 
   @override
   void initState() {
-//    super.initState();
-
     userProvider = context.read<UserProvider>();
-
     super.initState();
-
-    // _initialValue = {
-    //   'firstName': widget?.user?.firstName,
-    //   'lastName': widget?.user?.lastName,
-    //   'userName': widget?.user?.userId,
-    // };
-
     initForm();
   }
 
@@ -47,7 +36,9 @@ class _HomePageState extends State<HomePage> {
 
     userNameUI = '${user?.firstName} ${user?.lastName}';
 
-    setState(() {});
+    setState(() {
+      isLoading = false;
+    });
   }
 
   String weekdays() {
@@ -62,7 +53,7 @@ class _HomePageState extends State<HomePage> {
       'Nedjelja'
     ];
     String currentDay = weekdays[now.weekday - 1];
-    return "${currentDay}, ${formatDate(now)} ";
+    return "$currentDay, ${formatDate(now)}";
   }
 
   @override
@@ -75,36 +66,16 @@ class _HomePageState extends State<HomePage> {
           maxWidth: 500,
         ),
         child: Card(
-          color: Colors.black,
-          child: Column(
-            children: [
-              _buildResultVIew(),
-            ],
-          ),
-        ),
+            color: Colors.black,
+            child: isLoading
+                ? Container()
+                : Column(
+                    children: [
+                      _buildResultVIew(),
+                    ],
+                  )),
       ),
     ));
-
-    //)
-
-    // MasterScreen(
-    //     "",
-    //     Center(
-    //       child: Container(
-    //         constraints: const BoxConstraints(
-    //           maxHeight: 500,
-    //           maxWidth: 500,
-    //         ),
-    //         child: Card(
-    //           color: Colors.black,
-    //           child: Column(
-    //             children: [
-    //               _buildResultVIew(),
-    //             ],
-    //           ),
-    //         ),
-    //       ),
-    //     ));
   }
 
   Widget _buildResultVIew() {
@@ -133,7 +104,7 @@ class _HomePageState extends State<HomePage> {
                     child: Center(
                       child: Text(
                         "Dobro došli, ${userNameUI}!",
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                             fontSize: 27),
@@ -149,8 +120,8 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "${weekdays()}",
-                    style: TextStyle(
+                    weekdays(),
+                    style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 25),
@@ -174,9 +145,9 @@ class _HomePageState extends State<HomePage> {
                     onPressed: () => Navigator.of(context).push(
                         MaterialPageRoute(
                             builder: (context) => UserListScreen()))),
-                Spacer(),
+                const Spacer(),
                 TextButton(
-                    child: Text(
+                    child: const Text(
                       "Odjava",
                       style: TextStyle(
                           decoration: TextDecoration.underline,
@@ -186,10 +157,10 @@ class _HomePageState extends State<HomePage> {
                           fontSize: 27),
                     ),
                     onPressed: () => Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => LoginPage()))),
+                        MaterialPageRoute(
+                            builder: (context) => const LoginPage()))),
               ]),
             ),
-            //
           ],
         ),
       ),

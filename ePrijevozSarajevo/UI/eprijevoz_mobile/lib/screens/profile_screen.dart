@@ -87,7 +87,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     userCity = '${user?.city}';
     userZipCode = '${user?.zipCode}';
     userStatusId = '${user?.userStatusId}';
-    userCountryId = '${user?.countryId}';
+    userCountryId = '${user?.userCountryId}';
     userImageWidget = user?.profileImage != null
         ? SizedBox(
             width: 200,
@@ -105,7 +105,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         "";
 
     userCountryName = countryResult?.result
-            .firstWhere((country) => country.countryId == user?.countryId)
+            .firstWhere((country) => country.countryId == user?.userCountryId)
             .name ??
         "";
     //Refresh UI

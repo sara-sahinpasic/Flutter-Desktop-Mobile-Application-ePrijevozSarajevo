@@ -1,6 +1,7 @@
 import 'package:eprijevoz_desktop/main.dart';
 import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:provider/provider.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
@@ -37,17 +38,13 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             const SnackBar(content: Text('Lozinka uspješno promijenjena!')),
           );
           Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => LoginPage()));
+              .push(MaterialPageRoute(builder: (context) => const LoginPage()));
         }
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
               content: Text('Greška u promijeni lozinke: ${e.toString()}!')),
         );
-      } finally {
-        setState(() {
-          _isLoading = false;
-        });
       }
     }
   }
@@ -55,31 +52,22 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      /*appBar: AppBar(
-        iconTheme: const IconThemeData(
-          color: Colors.white,
-        ),
-        title: const Text(
-          'Promjena lozinke',
-          style: TextStyle(color: Colors.white),
-        ),
-        backgroundColor: Colors.black,
-      ),*/
       backgroundColor: Colors.white,
       body: Center(
         child: SingleChildScrollView(
           child: Container(
-            constraints: const BoxConstraints(
-              maxHeight: 500,
+            constraints: BoxConstraints(
+              maxHeight: MediaQuery.of(context).size.height * 0.8,
               maxWidth: 500,
             ),
             child: Card(
               color: Colors.black,
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 35, vertical: 68),
+                        horizontal: 35, vertical: 50),
                     child: Form(
                       key: _formKey,
                       child: Column(
@@ -101,54 +89,50 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                                 _username = value;
                               });
                             },
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Unesite korisničko ime';
-                              }
-                              return null;
-                            },
+                            validator: FormBuilderValidators.compose([
+                              FormBuilderValidators.required(
+                                  errorText: "Unesite korisničko ime."),
+                            ]),
                           ),
                           const SizedBox(
                             height: 20,
                           ),
                           TextFormField(
-                            style: const TextStyle(color: Colors.white),
-                            obscureText: !_passwordVisible,
-                            decoration: InputDecoration(
-                              border: const OutlineInputBorder(),
-                              labelText: 'Nova loznika',
-                              labelStyle: const TextStyle(color: Colors.white),
-                              hintText: 'Unesite novu lozinku',
-                              hintStyle: const TextStyle(
-                                  color: Colors.white, fontSize: 13),
-                              prefixIcon: const Icon(Icons.password,
-                                  color: Colors.white),
-                              suffixIcon: IconButton(
-                                icon: Icon(
-                                  _passwordVisible
-                                      ? Icons.visibility
-                                      : Icons.visibility_off,
-                                  color: Colors.white,
+                              style: const TextStyle(color: Colors.white),
+                              obscureText: !_passwordVisible,
+                              decoration: InputDecoration(
+                                border: const OutlineInputBorder(),
+                                labelText: 'Nova loznika',
+                                labelStyle:
+                                    const TextStyle(color: Colors.white),
+                                hintText: 'Unesite novu lozinku',
+                                hintStyle: const TextStyle(
+                                    color: Colors.white, fontSize: 13),
+                                prefixIcon: const Icon(Icons.password,
+                                    color: Colors.white),
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    _passwordVisible
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
+                                    color: Colors.white,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      _passwordVisible = !_passwordVisible;
+                                    });
+                                  },
                                 ),
-                                onPressed: () {
-                                  setState(() {
-                                    _passwordVisible = !_passwordVisible;
-                                  });
-                                },
                               ),
-                            ),
-                            onChanged: (value) {
-                              setState(() {
-                                _newPassword = value;
-                              });
-                            },
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Unesite novu lozinku';
-                              }
-                              return null;
-                            },
-                          ),
+                              onChanged: (value) {
+                                setState(() {
+                                  _newPassword = value;
+                                });
+                              },
+                              validator: FormBuilderValidators.compose([
+                                FormBuilderValidators.required(
+                                    errorText: "Unesite novu lozinku."),
+                              ])),
                           const SizedBox(
                             height: 20,
                           ),
@@ -196,36 +180,41 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                           _isLoading
                               ? const CircularProgressIndicator()
                               : Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    SizedBox(
-                                      width: 250,
-                                      height: 45,
-                                      child: ElevatedButton(
-                                        onPressed: _resetPassword,
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor: const Color.fromRGBO(
-                                              72, 156, 118, 100),
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(2.0),
+                                    Expanded(
+                                      flex: 2,
+                                      child: SizedBox(
+                                        height: 45,
+                                        child: ElevatedButton(
+                                          onPressed: _resetPassword,
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor:
+                                                const Color.fromRGBO(
+                                                    72, 156, 118, 100),
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(2.0),
+                                            ),
                                           ),
-                                        ),
-                                        child: const Text(
-                                          'Promjena lozinke',
-                                          style: TextStyle(
-                                            fontSize: 17,
-                                            fontWeight: FontWeight.bold,
+                                          child: const Text(
+                                            'Promjena lozinke',
+                                            style: TextStyle(
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                    SizedBox(
-                                      width: 99,
+                                    const SizedBox(
+                                      width: 10,
                                     ),
                                     TextButton(
                                         onPressed: () =>
                                             Navigator.pop(context, false),
-                                        child: Text(
+                                        child: const Text(
                                           "Cancel",
                                           style: TextStyle(
                                               color: Colors.red, fontSize: 16),
