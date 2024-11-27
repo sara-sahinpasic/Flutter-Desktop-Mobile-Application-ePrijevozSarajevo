@@ -4,7 +4,8 @@ import 'package:eprijevoz_desktop/models/user.dart';
 import 'package:eprijevoz_desktop/providers/auth_provider.dart';
 import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:eprijevoz_desktop/providers/utils.dart';
-import 'package:eprijevoz_desktop/screens/user_list_screen.dart';
+import 'package:eprijevoz_desktop/screens/user/user_list_screen.dart';
+//import 'package:eprijevoz_desktop/screens/user_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   var userNameUI = "";
   late UserProvider userProvider;
   SearchResult<User>? userResult;
-  bool isLoading = true;
+  bool isLoading = false;
 
   @override
   void initState() {
@@ -29,16 +30,24 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future initForm() async {
-    userResult = await userProvider.get();
-
-    var user = userResult?.result
-        .firstWhere((user) => user.userName == AuthProvider.username);
-
-    userNameUI = '${user?.firstName} ${user?.lastName}';
-
     setState(() {
-      isLoading = false;
+      isLoading = true;
     });
+
+    try {
+      userResult = await userProvider.get();
+
+      var user = userResult?.result
+          .firstWhere((user) => user.userName == AuthProvider.username);
+
+      userNameUI = '${user?.firstName} ${user?.lastName}';
+    } catch (e) {
+      debugPrint("Error loading user data: $e");
+    } finally {
+      setState(() {
+        isLoading = false; // Stop loading
+      });
+    }
   }
 
   String weekdays() {
@@ -68,7 +77,7 @@ class _HomePageState extends State<HomePage> {
         child: Card(
             color: Colors.black,
             child: isLoading
-                ? Container()
+                ? const CircularProgressIndicator()
                 : Column(
                     children: [
                       _buildResultVIew(),
@@ -103,7 +112,7 @@ class _HomePageState extends State<HomePage> {
                   Expanded(
                     child: Center(
                       child: Text(
-                        "Dobro došli, ${userNameUI}!",
+                        "Dobro došli, $userNameUI!",
                         style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,

@@ -3,8 +3,8 @@ import 'package:eprijevoz_desktop/models/search_result.dart';
 import 'package:eprijevoz_desktop/models/user.dart';
 import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:eprijevoz_desktop/providers/utils.dart';
-import 'package:eprijevoz_desktop/screens/user_update_screen.dart';
-import 'package:eprijevoz_desktop/screens/user_add_screen.dart';
+import 'package:eprijevoz_desktop/screens/user/user_add_screen.dart';
+import 'package:eprijevoz_desktop/screens/user/user_update_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
@@ -22,7 +22,7 @@ class UserListScreen extends StatefulWidget {
 class _UserListScreenState extends State<UserListScreen> {
   late UserProvider userProvider;
   SearchResult<User>? userResult;
-  bool isLoading = true;
+  bool isLoading = false;
   final _formKey = GlobalKey<FormBuilderState>();
   Map<String, dynamic> _initialValue = {};
 
@@ -31,19 +31,29 @@ class _UserListScreenState extends State<UserListScreen> {
     userProvider = context.read<UserProvider>();
     super.initState();
     _initialValue = {
-      'firstName': widget?.user?.firstName,
-      'lastName': widget?.user?.lastName,
-      'userName': widget?.user?.userId,
-      'dateOfBirth': widget?.user?.dateOfBirth?.toString(),
+      'firstName': widget.user?.firstName,
+      'lastName': widget.user?.lastName,
+      'userName': widget.user?.userId,
+      'dateOfBirth': widget.user?.dateOfBirth?.toString(),
     };
   }
 
   Future refreshTable() async {
-    var request = Map.from(_formKey.currentState?.value ?? {});
-    userResult = await userProvider.get(filter: request);
+    //var request = Map.from(_formKey.currentState?.value ?? {});
+    //userResult = await userProvider.get(filter: request);
     setState(() {
-      isLoading = false;
+      isLoading = true;
     });
+    try {
+      var request = Map.from(_formKey.currentState?.value ?? {});
+      userResult = await userProvider.get(filter: request);
+    } catch (e) {
+      print('Error: $e');
+    } finally {
+      setState(() {
+        isLoading = false; // Hide the loading indicator after completion
+      });
+    }
   }
 
   @override
@@ -68,7 +78,9 @@ class _UserListScreenState extends State<UserListScreen> {
             height: 20,
           ),
           _buildSearch(),
-          _buildResultView()
+          isLoading
+              ? const Center(child: CircularProgressIndicator()) // Show loader
+              : _buildResultView(), // Show results when not loading
         ],
       ),
     );
@@ -111,13 +123,23 @@ class _UserListScreenState extends State<UserListScreen> {
         ),
         ElevatedButton(
           onPressed: () async {
+            setState(() {
+              isLoading = true; // Show the loading indicator
+            });
             //Search:
-            var filter = {
-              'FirstNameGTE': _ftsFirstLastNameController.text,
-              'LastNameGTE': _ftsFirstLastNameController.text,
-            };
-            userResult = await userProvider.get(filter: filter);
-            setState(() {});
+            try {
+              var filter = {
+                'FirstNameGTE': _ftsFirstLastNameController.text,
+                'LastNameGTE': _ftsFirstLastNameController.text,
+              };
+              userResult = await userProvider.get(filter: filter);
+            } catch (e) {
+              print('Error: $e');
+            } finally {
+              setState(() {
+                isLoading = false; // Hide the loading indicator
+              });
+            }
             _ftsFirstLastNameController.clear();
           },
           style: ElevatedButton.styleFrom(
@@ -228,7 +250,7 @@ class _UserListScreenState extends State<UserListScreen> {
                                             color: Colors.white, fontSize: 17),
                                       )),
 
-                                      //update
+                                      // update
                                       DataCell(IconButton(
                                         onPressed: () {
                                           final result = showDialog(
@@ -247,7 +269,7 @@ class _UserListScreenState extends State<UserListScreen> {
                                           color: Colors.white,
                                         ),
                                       )),
-                                      //delete:
+                                      // delete:
                                       DataCell(IconButton(
                                         onPressed: () async {
                                           final bool userConfirmedDeletion =
@@ -265,7 +287,7 @@ class _UserListScreenState extends State<UserListScreen> {
                                                                 "OK",
                                                                 style: TextStyle(
                                                                     color: Colors
-                                                                        .green),
+                                                                        .black),
                                                               ),
                                                               onPressed:
                                                                   () async {
@@ -289,7 +311,6 @@ class _UserListScreenState extends State<UserListScreen> {
                                           if (userConfirmedDeletion) {
                                             bool success = await userProvider
                                                 .delete(e.userId!);
-                                            //}
                                             if (mounted) {
                                               await showDialog(
                                                   context: context,
@@ -309,7 +330,7 @@ class _UserListScreenState extends State<UserListScreen> {
                                                                   "OK",
                                                                   style: TextStyle(
                                                                       color: Colors
-                                                                          .green),
+                                                                          .black),
                                                                 ),
                                                                 onPressed: () {
                                                                   refreshTable(); //refresh table with new data
