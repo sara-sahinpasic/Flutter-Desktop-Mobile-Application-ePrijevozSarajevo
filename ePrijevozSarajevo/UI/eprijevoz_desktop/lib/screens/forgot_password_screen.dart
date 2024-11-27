@@ -16,13 +16,13 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   String _username = '';
   String _newPassword = '';
   String _passwordConfirmation = '';
-  bool _isLoading = false;
   bool _passwordVisible = false;
+  bool isLoading = false;
 
   void _resetPassword() async {
     if (_formKey.currentState!.validate()) {
       setState(() {
-        _isLoading = true;
+        isLoading = true;
       });
 
       try {
@@ -42,9 +42,14 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         }
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-              content: Text('Greška u promijeni lozinke: ${e.toString()}!')),
+          const SnackBar(
+              content:
+                  Text('Korisnik s ovim korisničkim imenom nije pronađen.')),
         );
+      } finally {
+        setState(() {
+          isLoading = false;
+        });
       }
     }
   }
@@ -177,7 +182,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                             },
                           ),
                           const SizedBox(height: 30),
-                          _isLoading
+                          isLoading
                               ? const CircularProgressIndicator()
                               : Row(
                                   mainAxisAlignment:

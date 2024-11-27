@@ -21,25 +21,15 @@ class VehicleListScreen extends StatefulWidget {
 }
 
 class _VehicleListScreenState extends State<VehicleListScreen> {
-  //VehicleProvider provider =  VehicleProvider(); //ovako se instancira samo jednom, umjesto svaki put kada je unutar dijela : ElevatedButton(onPressed: () async {
-//late Provider:
   late VehicleProvider vehicleProvider;
   late ManufacturerProvider manufacturerProvider;
   late TypeProvider typeProvider;
-//Form
   final _formKey = GlobalKey<FormBuilderState>();
   Map<String, dynamic> _initialValue = {};
-//SearchResult
   SearchResult<Manufacturer>? manufacturerResult;
   SearchResult<Vehicle>? vehicleResult;
   SearchResult<Type>? typeResult;
-
-  bool isLoading = true;
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-  }
+  bool isLoading = false;
 
   @override
   void initState() {
@@ -50,11 +40,11 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
     super.initState();
 
     _initialValue = {
-      'number': widget?.vehicle?.number,
-      'registrationNumber': widget?.vehicle?.registrationNumber,
-      'buildYear': widget?.vehicle?.buildYear,
-      'manufacturerId': widget?.vehicle?.manufacturerId?.toString(),
-      'typeId': widget?.vehicle?.typeId?.toString()
+      'number': widget.vehicle?.number,
+      'registrationNumber': widget.vehicle?.registrationNumber,
+      'buildYear': widget.vehicle?.buildYear,
+      'manufacturerId': widget.vehicle?.manufacturerId?.toString(),
+      'typeId': widget.vehicle?.typeId?.toString()
     };
 
     initForm();
@@ -63,15 +53,22 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
   Future initForm() async {
     manufacturerResult = await manufacturerProvider.get();
     typeResult = await typeProvider.get();
-    print("vr ${manufacturerResult?.result}");
-    print("vrle ${manufacturerResult?.result.length}");
   }
 
   Future refreshTable() async {
-    vehicleResult = await vehicleProvider.get();
     setState(() {
-      isLoading = false;
+      isLoading = true;
     });
+    try {
+      var request = Map.from(_formKey.currentState?.value ?? {});
+      vehicleResult = await vehicleProvider.get(filter: request);
+    } catch (e) {
+      print('Error: $e');
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
   }
 
   @override
@@ -80,10 +77,10 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
       "Vozila",
       Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
-          Align(
+          const Align(
             alignment: Alignment.centerLeft,
             child: Text(
               "Za prikaz svih rezultata, neophodno je pritisnuti dugme "
@@ -92,87 +89,90 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
               style: TextStyle(fontWeight: FontWeight.w400),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           _buildSearch(),
-          _buildResultView()
+          isLoading
+              ? const Center(child: CircularProgressIndicator())
+              : _buildResultView()
         ],
       ),
     );
   }
 
-//Search
-  TextEditingController _ftsRegistrationMarkController =
+  final TextEditingController _ftsRegistrationMarkController =
       TextEditingController();
 
   Widget _buildSearch() {
-    return Container(
-      //color: Colors.blue,
-      child: Row(
-        children: [
-          const Text(
-            "Registracijska oznaka:",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-          ),
-          const SizedBox(
-            width: 15,
-          ),
-          Expanded(
-              child: TextFormField(
-            //Search
-            controller: _ftsRegistrationMarkController,
-            cursorColor: Colors.green.shade800,
-            decoration: InputDecoration(
-              suffixText: "Pretraga po registracijskoj oznaci.",
-              suffixStyle: TextStyle(color: Colors.green.shade800),
-              labelStyle: TextStyle(
-                color: Colors.green.shade800,
+    return Row(
+      children: [
+        const Text(
+          "Registracijska oznaka:",
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+        ),
+        const SizedBox(
+          width: 15,
+        ),
+        Expanded(
+            child: TextFormField(
+          controller: _ftsRegistrationMarkController,
+          cursorColor: Colors.green.shade800,
+          decoration: InputDecoration(
+            suffixText: "Pretraga po registracijskoj oznaci.",
+            suffixStyle: TextStyle(color: Colors.green.shade800),
+            labelStyle: TextStyle(
+              color: Colors.green.shade800,
+            ),
+            enabledBorder: const OutlineInputBorder(
+              borderSide: BorderSide(
+                color: Colors.black,
               ),
-              enabledBorder: const OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Colors.black,
-                ),
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10),
-                  topRight: Radius.circular(10),
-                  bottomLeft: Radius.circular(10),
-                  bottomRight: Radius.circular(10),
-                ),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10),
+                topRight: Radius.circular(10),
+                bottomLeft: Radius.circular(10),
+                bottomRight: Radius.circular(10),
               ),
             ),
-            inputFormatters: [
-              LengthLimitingTextInputFormatter(9),
-            ],
-          )),
-          const SizedBox(
-            width: 15,
           ),
-          ElevatedButton(
-            onPressed: () async {
+          inputFormatters: [
+            LengthLimitingTextInputFormatter(9),
+          ],
+        )),
+        const SizedBox(
+          width: 15,
+        ),
+        ElevatedButton(
+          onPressed: () async {
+            setState(() {
+              isLoading = true;
+            });
+            try {
               //Search:
               var filter = {
-                //RegistrationNumberGTE -  naziv property-ja sa API
                 'RegistrationNumberGTE': _ftsRegistrationMarkController.text,
               };
-              //result = await provider.get();
               vehicleResult = await vehicleProvider.get(filter: filter);
-
-              setState(() {}); //omogućava dohvatanje podataka bez hot relading
-
-              _ftsRegistrationMarkController.clear();
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(2.0),
-              ),
-              minimumSize: const Size(100, 65),
+            } catch (e) {
+              print('Error: $e');
+            } finally {
+              setState(() {
+                isLoading = false;
+              });
+            }
+            _ftsRegistrationMarkController.clear();
+          },
+          style: ElevatedButton.styleFrom(
+            backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(2.0),
             ),
-            child: const Text("Pretraga", style: TextStyle(fontSize: 18)),
-          )
-        ],
-      ),
+            minimumSize: const Size(100, 65),
+          ),
+          child: const Text("Pretraga", style: TextStyle(fontSize: 18)),
+        )
+      ],
     );
   }
 
@@ -194,12 +194,26 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
                       width: double.infinity,
                       child: DataTable(
                         headingRowColor: MaterialStateColor.resolveWith(
-                            (states) => Color.fromRGBO(72, 156, 118, 100)),
-                        columns: <DataColumn>[
+                            (states) =>
+                                const Color.fromRGBO(72, 156, 118, 100)),
+                        columns: const <DataColumn>[
                           DataColumn(
                             label: Flexible(
                               child: Text(
                                 'Registracijska oznaka',
+                                softWrap: true,
+                                overflow: TextOverflow.visible,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),
+                              ),
+                            ),
+                          ),
+                          DataColumn(
+                            label: Flexible(
+                              child: Text(
+                                'Broj',
                                 softWrap: true,
                                 overflow: TextOverflow.visible,
                                 style: TextStyle(
@@ -258,12 +272,17 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
                                     cells: [
                                       DataCell(Text(
                                         e.registrationNumber ?? "",
-                                        style: TextStyle(
+                                        style: const TextStyle(
+                                            color: Colors.white, fontSize: 17),
+                                      )),
+                                      DataCell(Text(
+                                        e.number.toString(),
+                                        style: const TextStyle(
                                             color: Colors.white, fontSize: 17),
                                       )),
                                       DataCell(Text(
                                         e.buildYear.toString(),
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             color: Colors.white, fontSize: 17),
                                       )),
                                       DataCell(Text(
@@ -272,7 +291,7 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
                                                     element.typeId == e.typeId)
                                                 .name ??
                                             "",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             color: Colors.white, fontSize: 17),
                                       )),
                                       DataCell(Text(
@@ -282,24 +301,25 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
                                                     e.manufacturerId)
                                                 .name ??
                                             "",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             color: Colors.white, fontSize: 17),
                                       )),
+                                      // delete
                                       DataCell(IconButton(
                                         onPressed: () {
                                           showDialog(
                                               context: context,
                                               builder: (context) => AlertDialog(
-                                                    title: Text("Delete"),
+                                                    title: const Text("Delete"),
                                                     content: Text(
                                                         "Da li želite obrisati vozilo ${e.registrationNumber}?"),
                                                     actions: [
                                                       TextButton(
-                                                          child: Text(
+                                                          child: const Text(
                                                             "OK",
                                                             style: TextStyle(
                                                                 color: Colors
-                                                                    .green),
+                                                                    .black),
                                                           ),
                                                           onPressed: () async {
                                                             Navigator.pop(
@@ -322,9 +342,9 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
                                                                               : "Vozilo: ${e.registrationNumber}, nije obrisano."),
                                                                           actions: [
                                                                             TextButton(
-                                                                              child: Text(
+                                                                              child: const Text(
                                                                                 "OK",
-                                                                                style: TextStyle(color: Colors.green),
+                                                                                style: TextStyle(color: Colors.black),
                                                                               ),
                                                                               onPressed: () {
                                                                                 refreshTable();
@@ -335,7 +355,7 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
                                                                         ));
                                                           }),
                                                       TextButton(
-                                                          child: Text(
+                                                          child: const Text(
                                                             "Cancel",
                                                             style: TextStyle(
                                                                 color:

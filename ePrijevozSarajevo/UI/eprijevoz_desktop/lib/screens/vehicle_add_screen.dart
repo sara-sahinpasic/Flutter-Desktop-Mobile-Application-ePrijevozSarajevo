@@ -6,6 +6,7 @@ import 'package:eprijevoz_desktop/providers/type_provider.dart';
 import 'package:eprijevoz_desktop/providers/vehicle_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:provider/provider.dart';
 import 'package:eprijevoz_desktop/models/type.dart';
 
@@ -18,29 +19,32 @@ class VehicleAddDialog extends StatefulWidget {
 }
 
 class _VehicleAddDialogState extends State<VehicleAddDialog> {
-  // Form
   final _formKey = GlobalKey<FormBuilderState>();
   Map<String, dynamic> _initialValue = {};
-
   late VehicleProvider vehicleProvider;
   SearchResult<Manufacturer>? manufacturerResult;
   late ManufacturerProvider manufacturerProvider;
   SearchResult<Type>? typeResult;
   late TypeProvider typeProvider;
-
-  TextEditingController _ftsNumberController = TextEditingController();
-  TextEditingController _ftsRegistrationNumberController =
-      TextEditingController();
-  TextEditingController _ftsBuildYearController = TextEditingController();
-  int? _selectedManufacturerId;
-  int? _selectedTypeId;
+  bool isLoading = true;
+  int? selectedManufacturerId;
+  int? selectedTypeId;
 
   @override
   void initState() {
-    super.initState();
     vehicleProvider = context.read<VehicleProvider>();
     manufacturerProvider = context.read<ManufacturerProvider>();
     typeProvider = context.read<TypeProvider>();
+
+    super.initState();
+
+    _initialValue = {
+      'number': widget.vehicle?.number.toString(),
+      'registrationNumber': widget.vehicle?.registrationNumber,
+      'buildYear': widget.vehicle?.buildYear.toString(),
+      'manufacturerId': selectedManufacturerId.toString(),
+      'typeId': selectedTypeId.toString()
+    };
 
     initForm();
   }
@@ -49,267 +53,19 @@ class _VehicleAddDialogState extends State<VehicleAddDialog> {
     manufacturerResult = await manufacturerProvider.get();
     typeResult = await typeProvider.get();
 
-    // Prepare values for dropdown button:
     setState(() {
-      _selectedManufacturerId = widget?.vehicle?.manufacturerId ??
+      isLoading = false;
+
+      selectedManufacturerId = widget.vehicle?.manufacturerId ??
           (manufacturerResult?.result.isNotEmpty ?? false
               ? manufacturerResult!.result.first.manufacturerId
               : null);
-      _selectedTypeId = widget?.vehicle?.typeId ??
+
+      selectedTypeId = widget.vehicle?.typeId ??
           (typeResult?.result.isNotEmpty ?? false
               ? typeResult!.result.first.typeId
               : null);
-
-      // Update _initialValue to reflect the fetched data for dropdown button
-      _initialValue = {
-        'number': widget?.vehicle?.number,
-        'registrationNumber': widget?.vehicle?.registrationNumber,
-        'buildYear': widget?.vehicle?.buildYear,
-        'manufacturerId': _selectedManufacturerId,
-        'typeId': _selectedTypeId
-      };
     });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      title: Text("Novo vozilo"),
-      content: Container(
-        width: 500,
-        height: 450,
-        child: FormBuilder(
-          key: _formKey,
-          initialValue: _initialValue,
-          child: Column(
-            children: [
-              SizedBox(
-                height: 15,
-              ),
-              Row(
-                children: [
-                  Text(
-                    "Broj vozila:",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                  ),
-                  SizedBox(
-                    width: 130,
-                  ),
-                  Expanded(
-                    child: TextFormField(
-                      controller: _ftsNumberController,
-                      decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black),
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(10),
-                            topRight: Radius.circular(10),
-                            bottomLeft: Radius.circular(10),
-                            bottomRight: Radius.circular(10),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              Row(
-                children: [
-                  Text(
-                    "Registracijska oznaka:",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                  ),
-                  SizedBox(
-                    width: 50,
-                  ),
-                  Expanded(
-                    child: TextFormField(
-                      controller: _ftsRegistrationNumberController,
-                      decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black),
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(10),
-                            topRight: Radius.circular(10),
-                            bottomLeft: Radius.circular(10),
-                            bottomRight: Radius.circular(10),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              Row(
-                children: [
-                  Text(
-                    "Godina proizvodnje:",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                  ),
-                  SizedBox(
-                    width: 63,
-                  ),
-                  Expanded(
-                    child: TextFormField(
-                      controller: _ftsBuildYearController,
-                      decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black),
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(10),
-                            topRight: Radius.circular(10),
-                            bottomLeft: Radius.circular(10),
-                            bottomRight: Radius.circular(10),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              Row(
-                children: [
-                  const Text(
-                    "Proizvođač:",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                  ),
-                  const SizedBox(
-                    width: 125,
-                  ),
-                  Expanded(
-                    child: FormBuilderDropdown(
-                      name: "manufacturerId",
-                      items: getManufacturer(),
-                      initialValue: _selectedManufacturerId?.toString(),
-                      onChanged: (value) {
-                        setState(() {
-                          _selectedManufacturerId = int.parse(value as String);
-                        });
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              Row(
-                children: [
-                  const Text(
-                    "Tip vozila:",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                  ),
-                  const SizedBox(
-                    width: 135,
-                  ),
-                  Expanded(
-                    child: FormBuilderDropdown(
-                      name: "typeId",
-                      items: getType(),
-                      initialValue: _selectedTypeId?.toString(),
-                      onChanged: (value) {
-                        setState(() {
-                          _selectedTypeId = int.parse(value as String);
-                        });
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              //
-              SizedBox(
-                height: 25,
-              ),
-              Row(
-                children: [
-                  Expanded(
-                      child: ElevatedButton(
-                    onPressed: () async {
-                      if (_formKey.currentState?.saveAndValidate() ?? false) {
-                        var request = {
-                          'number': _ftsNumberController.text,
-                          'registrationNumber':
-                              _ftsRegistrationNumberController.text,
-                          'buildYear': _ftsBuildYearController.text,
-                          'manufacturerId': _selectedManufacturerId,
-                          'typeId': _selectedTypeId
-                        };
-
-                        try {
-                          await vehicleProvider.insert(request);
-                          showDialog(
-                            context: context,
-                            builder: (context) => AlertDialog(
-                              title: Text("Success"),
-                              content: Text("Vozilo je uspješno dodano."),
-                              actions: [
-                                TextButton(
-                                  child: Text("OK",
-                                      style: TextStyle(color: Colors.green)),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                    Navigator.pop(context,
-                                        true); // Close the dialog and return success
-                                  },
-                                ),
-                              ],
-                            ),
-                          );
-                        } catch (error) {
-                          showDialog(
-                            context: context,
-                            builder: (context) => AlertDialog(
-                              title: Text("Error"),
-                              content:
-                                  Text("Greška prilikom dodavanja vozila."),
-                              actions: [
-                                TextButton(
-                                  child: Text("OK",
-                                      style: TextStyle(color: Colors.red)),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                              ],
-                            ),
-                          );
-                        }
-                      }
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(2.0),
-                      ),
-                      minimumSize: const Size(100, 65),
-                    ),
-                    child: const Text("Dodaj", style: TextStyle(fontSize: 18)),
-                  )),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
-      //
-      actions: [
-        TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text(
-              "Cancel",
-              style: TextStyle(color: Colors.red, fontSize: 18),
-            )),
-      ],
-    );
   }
 
   List<DropdownMenuItem<String>> getManufacturer() {
@@ -329,5 +85,322 @@ class _VehicleAddDialogState extends State<VehicleAddDialog> {
             .toList() ??
         [];
     return list;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: const Text("Novo vozilo"),
+      content: SingleChildScrollView(
+        child: SizedBox(
+          width: 500,
+          child: isLoading
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : FormBuilder(
+                  key: _formKey,
+                  initialValue: _initialValue,
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Row(
+                        children: [
+                          const Text(
+                            "Broj vozila:",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15),
+                          ),
+                          const SizedBox(
+                            width: 130,
+                          ),
+                          Expanded(
+                            child: FormBuilderTextField(
+                              name: 'number',
+                              validator: FormBuilderValidators.compose([
+                                FormBuilderValidators.required(
+                                    errorText: "Ovo polje ne može bit prazno."),
+                                FormBuilderValidators.integer(
+                                    errorText: "Format broja vozila: 10"),
+                                FormBuilderValidators.maxLength(3,
+                                    errorText:
+                                        "Maksimalna dužina broja vozila je 3."),
+                                FormBuilderValidators.minLength(1,
+                                    errorText:
+                                        "Minimalna dužina broja vozila je 1."),
+                              ]),
+                              decoration: const InputDecoration(
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.black),
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(10),
+                                    topRight: Radius.circular(10),
+                                    bottomLeft: Radius.circular(10),
+                                    bottomRight: Radius.circular(10),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Row(
+                        children: [
+                          const Text(
+                            "Registracijska oznaka:",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15),
+                          ),
+                          const SizedBox(
+                            width: 50,
+                          ),
+                          Expanded(
+                            child: FormBuilderTextField(
+                              name: 'registrationNumber',
+                              validator: FormBuilderValidators.compose([
+                                FormBuilderValidators.required(
+                                    errorText: "Ovo polje ne može bit prazno."),
+                                FormBuilderValidators.maxLength(9,
+                                    errorText:
+                                        "Maksimalna dužina registracijske oznake je 9."),
+                                FormBuilderValidators.minLength(9,
+                                    errorText:
+                                        "Minimalna dužina registracijske oznake je 9."),
+                                FormBuilderValidators.match(
+                                  r'^[A-Z]\d{2}-[A-Z]-\d{3}$',
+                                  errorText:
+                                      "Format registracijske oznake: A10-L-123.",
+                                ),
+                              ]),
+                              decoration: const InputDecoration(
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.black),
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(10),
+                                    topRight: Radius.circular(10),
+                                    bottomLeft: Radius.circular(10),
+                                    bottomRight: Radius.circular(10),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Row(
+                        children: [
+                          const Text(
+                            "Godina proizvodnje:",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15),
+                          ),
+                          const SizedBox(
+                            width: 63,
+                          ),
+                          Expanded(
+                            child: FormBuilderTextField(
+                              name: 'buildYear',
+                              validator: FormBuilderValidators.compose([
+                                FormBuilderValidators.required(
+                                    errorText: "Ovo polje ne može bit prazno."),
+                                FormBuilderValidators.maxLength(4,
+                                    errorText: "Godina se sastoji od 4 cifre."),
+                                FormBuilderValidators.minLength(4,
+                                    errorText: "Godina se sastoji od 4 cifre."),
+                                FormBuilderValidators.min(1960,
+                                    errorText:
+                                        "Godina proizvodnje ne može biti manja od 1960."),
+                                FormBuilderValidators.max(2025,
+                                    errorText:
+                                        "Godina proizvodnje ne može biti veća od 2025.")
+                              ]),
+                              decoration: const InputDecoration(
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.black),
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(10),
+                                    topRight: Radius.circular(10),
+                                    bottomLeft: Radius.circular(10),
+                                    bottomRight: Radius.circular(10),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Row(
+                        children: [
+                          const Text(
+                            "Proizvođač:",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15),
+                          ),
+                          const SizedBox(
+                            width: 125,
+                          ),
+                          Expanded(
+                            child: FormBuilderDropdown(
+                              name: "manufacturerId",
+                              items: getManufacturer(),
+                              initialValue: selectedManufacturerId?.toString(),
+                              onChanged: (value) {
+                                setState(() {
+                                  selectedManufacturerId =
+                                      int.parse(value as String);
+                                });
+                              },
+                              validator: FormBuilderValidators.compose([
+                                FormBuilderValidators.required(
+                                    errorText: "Odaberite proizvođača."),
+                              ]),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Row(
+                        children: [
+                          const Text(
+                            "Tip vozila:",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15),
+                          ),
+                          const SizedBox(
+                            width: 135,
+                          ),
+                          Expanded(
+                            child: FormBuilderDropdown(
+                              name: "typeId",
+                              items: getType(),
+                              initialValue: selectedTypeId?.toString(),
+                              onChanged: (value) {
+                                setState(() {
+                                  selectedTypeId = int.parse(value as String);
+                                });
+                              },
+                              validator: FormBuilderValidators.compose([
+                                FormBuilderValidators.required(
+                                    errorText: "Odaberite tip vozila."),
+                              ]),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                              child: ElevatedButton(
+                            onPressed: () async {
+                              if (_formKey.currentState?.saveAndValidate() ??
+                                  false) {
+                                var request =
+                                    Map.from(_formKey.currentState!.value);
+
+                                request['manufacturerId'] =
+                                    selectedManufacturerId;
+                                request['typeId'] = selectedTypeId;
+
+                                try {
+                                  setState(() {
+                                    isLoading = true;
+                                  });
+
+                                  await vehicleProvider.insert(request);
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) => AlertDialog(
+                                      title: const Text("Success"),
+                                      content: const Text(
+                                          "Vozilo je uspješno dodano."),
+                                      actions: [
+                                        TextButton(
+                                          child: const Text("OK",
+                                              style: TextStyle(
+                                                  color: Colors.black)),
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                            Navigator.pop(context, true);
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                } catch (error) {
+                                  showDialog(
+                                    context: context,
+                                    builder: (dialogContext) => AlertDialog(
+                                      title: const Text(
+                                        "Error",
+                                        style: TextStyle(
+                                            color: Colors.red,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      content: const Text(
+                                          "Registracijska oznaka mora biti jedinstvena."),
+                                      actions: [
+                                        TextButton(
+                                          child: const Text(
+                                            "OK",
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          onPressed: () {
+                                            Navigator.pop(dialogContext, false);
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                } finally {
+                                  setState(() {
+                                    isLoading = false;
+                                  });
+                                }
+                              }
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  const Color.fromRGBO(72, 156, 118, 100),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(2.0),
+                              ),
+                              minimumSize: const Size(100, 65),
+                            ),
+                            child: const Text("Dodaj",
+                                style: TextStyle(fontSize: 18)),
+                          )),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+        ),
+      ),
+      actions: [
+        TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text(
+              "Cancel",
+              style: TextStyle(color: Colors.red, fontSize: 18),
+            )),
+      ],
+    );
   }
 }

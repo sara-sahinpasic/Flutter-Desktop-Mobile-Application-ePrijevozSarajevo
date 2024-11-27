@@ -21,6 +21,7 @@ class User {
   String? password;
   String? passwordConfirmation;
   String? profileImage;
+  int? roleId;
 
   User(
       {this.userId,
@@ -39,7 +40,9 @@ class User {
       this.userName,
       this.userStatusId,
       this.password,
-      this.passwordConfirmation});
+      this.passwordConfirmation,
+      this.roleId,
+      this.profileImage});
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
