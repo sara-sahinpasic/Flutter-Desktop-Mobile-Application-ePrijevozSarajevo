@@ -7,5 +7,6 @@ namespace ePrijevozSarajevo.Services
         ICRUDService<Model.UserRole, UserRoleSearchObjects, 
             UserRoleUpsertRequest, UserRoleUpsertRequest>
     {
+
     }
 }

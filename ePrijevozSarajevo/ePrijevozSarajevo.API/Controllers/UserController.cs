@@ -34,6 +34,11 @@ namespace ePrijevozSarajevo.API.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
+        [HttpDelete("{id}")]
+        public override async Task Delete(int id)
+        {
+            await(_service as IUserService).DeleteUser(id);
+        }
 
     }
 }

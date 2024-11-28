@@ -2,7 +2,6 @@
 {
     public class UserRoleSearchObjects : BaseSearchObject
     {
-       // public bool? IsRoleIncluded { get; set; }
-
+        public bool? IsRoleIncluded { get; set; }
     }
 }
