@@ -22,26 +22,17 @@ class RequestListScreen extends StatefulWidget {
 }
 
 class _RequestListScreenState extends State<RequestListScreen> {
-  //Form
   final _formKey = GlobalKey<FormBuilderState>();
   Map<String, dynamic> _initialValue = {};
-  //late
   late RequestProvider requestProvider;
   late StatusProvider statusProvider;
   late UserProvider userProvider;
-  //SearchResult
   SearchResult<Request>? requestResult;
   SearchResult<Status>? statusResult;
   SearchResult<Request>? routeResultForStatus;
   SearchResult<User>? userResult;
-
-  int _selectedStatusId = 0;
-  bool isLoading = true;
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-  }
+  int selectedStatusId = 0;
+  bool isLoading = false;
 
   @override
   void initState() {
@@ -52,31 +43,33 @@ class _RequestListScreenState extends State<RequestListScreen> {
     super.initState();
 
     _initialValue = {
-      'userStatusId': widget?.request?.userStatusId?.toString(),
-      'statusId': widget?.status?.statusId?.toString(),
+      'userStatusId': widget.request?.userStatusId?.toString(),
+      'statusId': widget.status?.statusId?.toString(),
     };
 
     initForm();
   }
 
   Future initForm() async {
-    statusResult = await statusProvider.get();
-    requestResult = await requestProvider.get();
-    userResult = await userProvider.get();
+    setState(() {
+      isLoading = true;
+    });
+
+    try {
+      statusResult = await statusProvider.get();
+      requestResult = await requestProvider.get();
+      userResult = await userProvider.get();
+    } catch (e) {
+      print('Error: $e');
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
 
     if (requestResult?.result != null) {
       requestResult!.result = filterDuplicates(requestResult!.result);
     }
-
-    print("statuskoo: ${statusResult?.result.length}");
-    print("statuskoo1: ${statusResult?.result.map((e) => e.name)}");
-
-    print("zahtjev: ${requestResult?.result.length}");
-    print("zahtjev1: ${requestResult?.result.map((e) => e.userStatusId)}");
-
-    setState(() {
-      isLoading = false;
-    });
   }
 
   List<Request> filterDuplicates(List<Request> data) {
@@ -107,8 +100,10 @@ class _RequestListScreenState extends State<RequestListScreen> {
             const SizedBox(
               height: 20,
             ),
-            isLoading ? Container() : _buildSearch(),
-            Expanded(child: _buildResultView())
+            _buildSearch(),
+            isLoading
+                ? const Center(child: CircularProgressIndicator())
+                : _buildResultView()
           ],
         ));
   }
@@ -143,7 +138,7 @@ class _RequestListScreenState extends State<RequestListScreen> {
             onChanged: (value) {
               var status = statusResult?.result.firstWhere(((statusElement) =>
                   statusElement.statusId.toString() == value));
-              _selectedStatusId = status?.statusId ?? 0;
+              selectedStatusId = status?.statusId ?? 0;
             },
           ),
         ),
@@ -152,17 +147,22 @@ class _RequestListScreenState extends State<RequestListScreen> {
         ),
         ElevatedButton(
           onPressed: () async {
-            print("UserStatusIdGTE: ${_selectedStatusId}");
-
-            //Search:
-            var filter = {
-              'UserStatusIdGTE': _selectedStatusId,
-            };
-            routeResultForStatus = await requestProvider.get(filter: filter);
-            print(
-                "tetsni routeResultForStatus : ${routeResultForStatus?.result.map((e) => e.userStatusId)}");
-
-            setState(() {});
+            setState(() {
+              isLoading = false;
+            });
+            try {
+              //Search:
+              var filter = {
+                'UserStatusIdGTE': selectedStatusId,
+              };
+              routeResultForStatus = await requestProvider.get(filter: filter);
+            } catch (e) {
+              print('Error: $e');
+            } finally {
+              setState(() {
+                isLoading = false;
+              });
+            }
           },
           style: ElevatedButton.styleFrom(
             backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
@@ -178,9 +178,7 @@ class _RequestListScreenState extends State<RequestListScreen> {
   }
 
   Widget _buildResultView() {
-    return
-        //Placeholder();
-        Expanded(
+    return Expanded(
       child: SingleChildScrollView(
         child: FormBuilder(
             child: Column(
@@ -268,18 +266,15 @@ class _RequestListScreenState extends State<RequestListScreen> {
                                 children: [
                                   ElevatedButton(
                                     onPressed: () async {
+                                      //accept
                                       try {
-                                        final result = await showDialog<bool>(
+                                        showDialog(
                                           context: context,
                                           builder: (successDialogContext) =>
                                               RequestApproveDialog(
                                             request: e,
                                           ),
                                         );
-
-                                        if (result == true) {
-                                          // refresh???
-                                        }
                                       } catch (error) {
                                         String errorMessage =
                                             "Greška prilikom odobrenja zahtjeva.";
@@ -327,22 +322,19 @@ class _RequestListScreenState extends State<RequestListScreen> {
                                   ),
                                   ElevatedButton(
                                       onPressed: () async {
+                                        //reject
                                         try {
-                                          final result = await showDialog<bool>(
+                                          showDialog(
                                             context: context,
                                             builder: (successDialogContext) =>
                                                 RequestRejectDialog(
                                               request: e,
                                             ),
                                           );
-
-                                          if (result == true) {
-                                            // refresh???
-                                          }
                                         } catch (error) {
                                           String errorMessage =
                                               "Greška prilikom odobrenja zahtjeva.";
-                                          await showDialog(
+                                          showDialog(
                                             context: context,
                                             builder: (errorDialogContext) =>
                                                 AlertDialog(

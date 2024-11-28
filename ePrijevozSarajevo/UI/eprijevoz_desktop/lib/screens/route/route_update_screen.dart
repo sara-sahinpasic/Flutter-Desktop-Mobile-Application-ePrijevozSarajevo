@@ -55,7 +55,7 @@ class _UpdateRouteDialogState extends State<UpdateRouteDialog> {
     });
   }
 
-  Future<void> _selectDepartureDateTime(BuildContext context) async {
+  Future<void> selectDepartureDateTime(BuildContext context) async {
     final DateTime? pickedDate = await showDatePicker(
       context: context,
       initialDate: selectedDepartureDateTime,
@@ -84,7 +84,7 @@ class _UpdateRouteDialogState extends State<UpdateRouteDialog> {
     }
   }
 
-  Future<void> _selectArrivalDateTime(BuildContext context) async {
+  Future<void> selectArrivalDateTime(BuildContext context) async {
     final DateTime? pickedDate = await showDatePicker(
       context: context,
       initialDate: selectedArrivalDateTime,
@@ -154,7 +154,7 @@ class _UpdateRouteDialogState extends State<UpdateRouteDialog> {
                               minimumSize: const Size(450, 40),
                             ),
                             onPressed: () async {
-                              _selectDepartureDateTime(context);
+                              selectDepartureDateTime(context);
                             },
                             child: Text(
                               '${selectedDepartureDateTime.hour}:${selectedDepartureDateTime.minute}',
@@ -184,7 +184,7 @@ class _UpdateRouteDialogState extends State<UpdateRouteDialog> {
                               minimumSize: const Size(450, 40),
                             ),
                             onPressed: () async {
-                              _selectArrivalDateTime(context);
+                              selectArrivalDateTime(context);
                             },
                             child: Text(
                               '${selectedArrivalDateTime.hour}:${selectedArrivalDateTime.minute}',
