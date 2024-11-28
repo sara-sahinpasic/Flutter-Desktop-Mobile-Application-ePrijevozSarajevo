@@ -3,10 +3,12 @@ import 'package:eprijevoz_desktop/providers/country_provider.dart';
 import 'package:eprijevoz_desktop/providers/issuedTicket_provider.dart';
 import 'package:eprijevoz_desktop/providers/manufacturer_provider.dart';
 import 'package:eprijevoz_desktop/providers/request_provider.dart';
+import 'package:eprijevoz_desktop/providers/role_provider.dart';
 import 'package:eprijevoz_desktop/providers/route_provider.dart';
 import 'package:eprijevoz_desktop/providers/station_provider.dart';
 import 'package:eprijevoz_desktop/providers/status_provider.dart';
 import 'package:eprijevoz_desktop/providers/type_provider.dart';
+import 'package:eprijevoz_desktop/providers/userRole_provider.dart';
 import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:eprijevoz_desktop/providers/vehicle_provider.dart';
 import 'package:eprijevoz_desktop/screens/forgot_password_screen.dart';
@@ -31,6 +33,9 @@ void main() {
       ChangeNotifierProvider<IssuedTicketProvider>(
           create: (_) => IssuedTicketProvider()),
       ChangeNotifierProvider<CountryProvider>(create: (_) => CountryProvider()),
+      ChangeNotifierProvider<UserRoleProvider>(
+          create: (_) => UserRoleProvider()),
+      ChangeNotifierProvider<RoleProvider>(create: (_) => RoleProvider()),
     ],
     child: const MyApp(),
   ));

@@ -8,5 +8,6 @@ namespace ePrijevozSarajevo.Services
     {
         public Task<User> Login(string username, string password);
         public Task ResetPassword(string email, string password, string passwordConfirmation);
+        public Task<bool> DeleteUser(int userId);
     }
 }

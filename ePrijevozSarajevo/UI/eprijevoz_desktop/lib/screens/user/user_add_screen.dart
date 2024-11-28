@@ -1,8 +1,14 @@
 import 'package:eprijevoz_desktop/models/country.dart';
+import 'package:eprijevoz_desktop/models/role.dart';
 import 'package:eprijevoz_desktop/models/search_result.dart';
 import 'package:eprijevoz_desktop/models/user.dart';
+import 'package:eprijevoz_desktop/models/userRole.dart';
+import 'package:eprijevoz_desktop/providers/auth_provider.dart';
 import 'package:eprijevoz_desktop/providers/country_provider.dart';
+import 'package:eprijevoz_desktop/providers/role_provider.dart';
+import 'package:eprijevoz_desktop/providers/userRole_provider.dart';
 import 'package:eprijevoz_desktop/providers/user_provider.dart';
+import 'package:eprijevoz_desktop/providers/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -11,7 +17,8 @@ import 'package:provider/provider.dart';
 class UserAddDialog extends StatefulWidget {
   User? user;
   Country? country;
-  UserAddDialog({super.key, this.user, this.country});
+  Role? role;
+  UserAddDialog({super.key, this.user, this.country, this.role});
   @override
   State<UserAddDialog> createState() => _UserAddDialogState();
 }
@@ -25,17 +32,27 @@ class _UserAddDialogState extends State<UserAddDialog> {
   late CountryProvider countryProvider;
   SearchResult<Country>? countryResult;
   int? selectedCountryId;
+  late RoleProvider roleProvider;
+  SearchResult<Role>? roleResult;
+  int? selectedRoleId;
+  late UserRoleProvider userRoleProvider;
+  SearchResult<UserRole>? userRoleResult;
+  DateTime? dateOfBirth;
+  final TextEditingController _dateOfBirthController = TextEditingController();
 
   @override
   void initState() {
     userProvider = context.read<UserProvider>();
     countryProvider = context.read<CountryProvider>();
+    roleProvider = context.read<RoleProvider>();
+    userRoleProvider = context.read<UserRoleProvider>();
 
     super.initState();
 
     _initialValue = {
       'firstName': widget.user?.firstName,
       'lastName': widget.user?.lastName,
+      'dateOfBirth': widget.user?.dateOfBirth,
       'userName': widget.user?.userId,
       'email': widget.user?.email,
       'phoneNumber': widget.user?.phoneNumber,
@@ -43,9 +60,9 @@ class _UserAddDialogState extends State<UserAddDialog> {
       'city': widget.user?.city,
       'zipCode': widget.user?.zipCode,
       'countryId': widget.user?.userCountryId?.toString(),
-      //'roleId': widget.user?.roleId?.toString(),
       'password': widget.user?.password,
-      'passwordConfirmation': widget.user?.passwordConfirmation
+      'passwordConfirmation': widget.user?.passwordConfirmation,
+      'roleId': widget.role?.roleId?.toString(),
     };
 
     initForm();
@@ -54,6 +71,8 @@ class _UserAddDialogState extends State<UserAddDialog> {
   Future initForm() async {
     userResult = await userProvider.get();
     countryResult = await countryProvider.get();
+    roleResult = await roleProvider.get();
+    userRoleResult = await userRoleProvider.get();
 
     setState(() {
       isLoading = false;
@@ -61,6 +80,11 @@ class _UserAddDialogState extends State<UserAddDialog> {
       selectedCountryId = widget.user?.userCountryId ??
           (countryResult?.result.isNotEmpty ?? false
               ? countryResult!.result.first.countryId
+              : null);
+
+      selectedRoleId = widget.role?.roleId ??
+          (roleResult?.result.isNotEmpty ?? false
+              ? roleResult!.result.first.roleId
               : null);
     });
   }
@@ -72,6 +96,31 @@ class _UserAddDialogState extends State<UserAddDialog> {
             .toList() ??
         [];
     return list;
+  }
+
+  List<DropdownMenuItem<String>> getRoleItems() {
+    var list = roleResult?.result
+            .map((item) => DropdownMenuItem(
+                value: item.roleId.toString(), child: Text(item.name ?? "")))
+            .toList() ??
+        [];
+    return list;
+  }
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: dateOfBirth ?? DateTime.now(),
+      firstDate: DateTime(1900),
+      lastDate: DateTime(2100),
+    );
+
+    if (picked != null && picked != dateOfBirth) {
+      setState(() {
+        dateOfBirth = picked;
+        _dateOfBirthController.text = formatDateTime(picked);
+      });
+    }
   }
 
   @override
@@ -154,6 +203,46 @@ class _UserAddDialogState extends State<UserAddDialog> {
                                       ),
                                     ),
                                   ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          //
+                          const SizedBox(width: 20),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  "Datum rođenja:",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15),
+                                ),
+                                const SizedBox(height: 5),
+                                GestureDetector(
+                                  onTap: () => _selectDate(context),
+                                  child: AbsorbPointer(
+                                      child: FormBuilderTextField(
+                                          name: 'dateOfBirth',
+                                          controller: _dateOfBirthController,
+                                          validator:
+                                              FormBuilderValidators.compose([
+                                            FormBuilderValidators.required(
+                                              errorText:
+                                                  "Ovo polje ne može bit prazno.",
+                                            ),
+                                          ]),
+                                          cursorColor: Colors.green.shade800,
+                                          decoration: const InputDecoration(
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  color: Colors.black),
+                                              borderRadius: BorderRadius.all(
+                                                Radius.circular(10),
+                                              ),
+                                            ),
+                                          ))),
                                 ),
                               ],
                             ),
@@ -441,6 +530,15 @@ class _UserAddDialogState extends State<UserAddDialog> {
                                     FormBuilderValidators.required(
                                         errorText:
                                             "Ovo polje ne može bit prazno."),
+                                    FormBuilderValidators.integer(
+                                        errorText:
+                                            "Format poštanskog broja: 71000"),
+                                    FormBuilderValidators.maxLength(5,
+                                        errorText:
+                                            "Maksimalna dužina poštanskog broja je 5."),
+                                    FormBuilderValidators.minLength(4,
+                                        errorText:
+                                            "Minimalna dužina poštanskog broja je 4."),
                                   ]),
                                   cursorColor: Colors.green.shade800,
                                   decoration: const InputDecoration(
@@ -496,7 +594,7 @@ class _UserAddDialogState extends State<UserAddDialog> {
                         ],
                       ),
                       const SizedBox(height: 15),
-                      /*Row(
+                      Row(
                         children: [
                           const Text(
                             "Uloga:",
@@ -506,14 +604,12 @@ class _UserAddDialogState extends State<UserAddDialog> {
                           const SizedBox(width: 95),
                           Expanded(
                             child: FormBuilderDropdown(
-                              name: "userRoleId",
-                              items:
-                                  getCountryItems(), // Replace with your method to fetch roles
-                              initialValue: selectedCountryId?.toString(),
+                              name: "roleId",
+                              items: getRoleItems(),
+                              initialValue: selectedRoleId?.toString(),
                               onChanged: (value) {
                                 setState(() {
-                                  selectedCountryId =
-                                      int.parse(value as String);
+                                  selectedRoleId = int.parse(value as String);
                                 });
                               },
                               validator: FormBuilderValidators.compose([
@@ -532,7 +628,7 @@ class _UserAddDialogState extends State<UserAddDialog> {
                           ),
                           const SizedBox(width: 15),
                         ],
-                      ),*/
+                      ),
                       const SizedBox(height: 20),
                       Row(
                         children: [
@@ -541,28 +637,30 @@ class _UserAddDialogState extends State<UserAddDialog> {
                               onPressed: () async {
                                 if (_formKey.currentState?.saveAndValidate() ??
                                     false) {
-                                  // var request = {
-                                  //   'firstName': _ftsFirstNameController.text,
-                                  //   'lastName': _ftsLastNameController.text,
-                                  //   'userName': _ftsUserNameController.text,
-                                  //   'email': _ftsEmailController.text,
-                                  //   'password': _ftsPasswordController.text,
-                                  //   'passwordConfirmation':
-                                  //       _ftsPasswordConfirmationController.text,
-                                  //   'phoneNumber':
-                                  //       _ftsPhoneNumberController.text,
-                                  //   'address': _ftsAddressController.text,
-                                  // };
-                                  var request =
+                                  var userRequest =
                                       Map.from(_formKey.currentState!.value);
-                                  request['userCountryId'] = selectedCountryId;
+                                  userRequest['userCountryId'] =
+                                      selectedCountryId;
 
                                   try {
                                     setState(() {
                                       isLoading = true;
                                     });
 
-                                    await userProvider.insert(request);
+                                    final createdUser =
+                                        await userProvider.insert(userRequest);
+
+                                    if (createdUser.userId != null) {
+                                      int? newUserId = createdUser.userId;
+
+                                      var userRoleRequest = {
+                                        'roleId': selectedRoleId,
+                                        'userId': newUserId,
+                                      };
+
+                                      await userRoleProvider
+                                          .insert(userRoleRequest);
+                                    }
                                     showDialog(
                                       context: context,
                                       builder: (context) => AlertDialog(
@@ -577,7 +675,7 @@ class _UserAddDialogState extends State<UserAddDialog> {
                                             onPressed: () {
                                               Navigator.pop(context);
                                               Navigator.pop(context,
-                                                  true); // Close the dialog and return success if adding is successful => true
+                                                  true); // close the dialog and return success if adding is successful => true
                                             },
                                           ),
                                         ],

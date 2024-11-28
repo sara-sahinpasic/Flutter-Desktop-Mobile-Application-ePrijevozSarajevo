@@ -20,12 +20,12 @@ builder.Services.AddTransient<IRequestService, RequestService>();
 builder.Services.AddTransient<ITicketService, TicketService>();
 builder.Services.AddTransient<IIssuedTicketService, IssuedTicketService>();
 builder.Services.AddTransient<IUserRoleService, UserRoleService>();
-
 builder.Services.AddTransient<IVehicleService, VehicleService>();
 builder.Services.AddTransient<IManufacturerService, ManufacturerService>();
 builder.Services.AddTransient<ITypeService, TypeService>();
 builder.Services.AddTransient<IStatusService, StatusService>();
 builder.Services.AddTransient<ICountryService, CountryService>();
+builder.Services.AddTransient<IRoleService, RoleService>();
 
 
 //State machine

@@ -134,5 +134,32 @@ namespace ePrijevozSarajevo.Services
             await _dataContext.SaveChangesAsync();
         }
 
+        public async Task<bool> DeleteUser(int userId)
+        {
+           
+            var userRoles = await _dataContext.UserRoles
+                    .Where(ur => ur.UserId == userId).ToListAsync();
+
+            if (userRoles.Any())
+            {
+                _dataContext.UserRoles.RemoveRange(userRoles);
+            }
+
+            // Remove the user
+            var user = await _dataContext.Users.FindAsync(userId);
+            if (user != null)
+            {
+                _dataContext.Users.Remove(user);
+            }
+
+            await _dataContext.SaveChangesAsync();
+            return true;
+            // }
+            //catch (Exception ex)
+            //{
+            //    // Handle or log the exception
+            //    return false;
+            //}
+        }
     }
 }
