@@ -8,7 +8,6 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart' hide Route;
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
-//
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'package:pdf/widgets.dart' as pw;
@@ -27,14 +26,13 @@ class _StatisticScreenState extends State<StatisticScreen> {
   late int selectedYearIndex;
   String selectedYear = "";
   late int currentYear = 2024;
-// Grpah hoover
+  // Grpah hoover
   int touchedIndex = -1;
   bool isTouched = false;
-// Pdf
+  // PDF
   final GlobalKey _ticketChartKey = GlobalKey();
   final GlobalKey _routeChartKey = GlobalKey();
-
-// Ticket
+  // Ticket
   late IssuedTicketProvider issuedTicketProvider;
   SearchResult<IssuedTicket>? issuedTicketResult;
   late List<IssuedTicket> ticketsForYearAndMonths = [];
@@ -42,7 +40,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
   late List<int> selectedMonthsforTickets = [];
   var maxTicketValue = 0;
   var maxStationValue = 0;
-// Station
+  // Station
   late RouteProvider routeProvider;
   SearchResult<Route>? routeResult;
 
@@ -51,31 +49,47 @@ class _StatisticScreenState extends State<StatisticScreen> {
     issuedTicketProvider = context.read<IssuedTicketProvider>();
     routeProvider = context.read<RouteProvider>();
 
-    initForm();
     super.initState();
+
+    initForm();
   }
 
   Future<void> initForm() async {
     for (int i = 2020; i <= 2100; i++) {
       _yearList.add(i.toString());
     }
-    selectedYearIndex = _yearList.indexOf(currentYear.toString());
-    selectedYear = _yearList[selectedYearIndex]; // default selected year
+    setState(() {
+      selectedYearIndex = _yearList.indexOf(currentYear.toString());
+      selectedYear = _yearList[selectedYearIndex]; // default selected year
+    });
 
     issuedTicketResult = await issuedTicketProvider.get();
     routeResult = await routeProvider.get();
-    updateTicketValues(issuedTicketResult);
+
+    setState(() {
+      updateTicketValues(issuedTicketResult);
+    });
   }
 
   void updateTicketValues(SearchResult<IssuedTicket>? issuedTicketResult) {
     if (issuedTicketResult?.result != null) {
-      getIssuedTicketbyMonths(issuedTicketResult!.result);
-
-      selectedMonthsforTickets = getIssuedTicketbyMonths(issuedTicketResult
-          .result
+      final ticketsForSelectedYear = issuedTicketResult!.result
           .where(
-              (element) => element.issuedDate?.year == int.parse(selectedYear))
-          .toList());
+            (ticket) => ticket.issuedDate?.year == int.parse(selectedYear),
+          )
+          .toList();
+
+      if (ticketsForSelectedYear.isEmpty) {
+        setState(() {
+          ticketsForYearAndMonths = [];
+          selectedMonthsforTickets = [];
+          ticketTypeAmounts = {};
+        });
+        return;
+      }
+
+      selectedMonthsforTickets =
+          getIssuedTicketbyMonths(ticketsForSelectedYear);
 
       ticketsForYearAndMonths = getTicketsForYearAndMonths(
           issuedTicketResult.result,
@@ -86,7 +100,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
     }
   }
 
-// PDF
+  // PDF
   Future<Uint8List?> _capturePng(GlobalKey key) async {
     try {
       RenderRepaintBoundary boundary =
@@ -101,9 +115,9 @@ class _StatisticScreenState extends State<StatisticScreen> {
     return null;
   }
 
-  Future<void> _generatePdf() async {
+  Future<void> generatePdf() async {
     try {
-      // Capture the ticket type chart
+      // capture the ticket type chart
       Uint8List? ticketChartImage = await _capturePng(_ticketChartKey);
       if (ticketChartImage == null) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -112,7 +126,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
         return;
       }
 
-      // Capture the route chart
+      // capture the route chart
       Uint8List? routeChartImage = await _capturePng(_routeChartKey);
       if (routeChartImage == null) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -121,7 +135,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
         return;
       }
 
-      // Create a PDF document
+      // create a PDF document
       final pdf = pw.Document();
       pdf.addPage(
         pw.MultiPage(
@@ -140,10 +154,10 @@ class _StatisticScreenState extends State<StatisticScreen> {
         ),
       );
 
-      // Save the PDF to bytes
+      // save the PDF to bytes
       Uint8List pdfBytes = await pdf.save();
 
-      // Use File Picker to select save location
+      // file Picker to select save location
       String? selectedDirectory = await FilePicker.platform.getDirectoryPath();
       if (selectedDirectory != null) {
         final file = File('$selectedDirectory/Statistika_$selectedYear.pdf');
@@ -164,7 +178,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
     }
   }
 
-  // Colors and legend for ticket graph bars
+  // colors and legend for ticket graph bars
   final Map<int, Color> ticketTypeColors = {
     1: Colors.purple, // Jednosmjerna
     2: Colors.blue, // Povratna
@@ -179,7 +193,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
     4: "Povratna dječija",
     5: "Mjesečna",
   };
-  // Colors and legend for stations graph bars
+  // colors and legend for stations graph bars
   final Map<int, Color> stationColors = {
     1: Colors.purple, //Ilidža
     2: Colors.blue, //Stup
@@ -231,10 +245,10 @@ class _StatisticScreenState extends State<StatisticScreen> {
               ),
             ),
             const SizedBox(height: 10),
-            _buildSearch(), // Search
-            _buildTicketTypeChart(), // Tickets
+            _buildSearch(), // search
+            _buildTicketTypeChart(), // tickets
             const SizedBox(height: 20),
-            _buildRouteChart(), // Stations
+            _buildRouteChart(), // stations
           ],
         ),
       ),
@@ -242,6 +256,11 @@ class _StatisticScreenState extends State<StatisticScreen> {
   }
 
   Widget _buildSearch() {
+    if (_yearList.isEmpty) {
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
+    }
     return Column(
       children: [
         Row(
@@ -256,7 +275,9 @@ class _StatisticScreenState extends State<StatisticScreen> {
               items: _yearList
                   .map((e) => DropdownMenuItem(value: e, child: Text(e)))
                   .toList(),
-              value: selectedYear.isNotEmpty ? selectedYear : _yearList.first,
+              value: _yearList.contains(selectedYear)
+                  ? selectedYear
+                  : _yearList.first,
               onChanged: (value) {
                 setState(() {
                   selectedYear = value ?? _yearList.first;
@@ -266,10 +287,11 @@ class _StatisticScreenState extends State<StatisticScreen> {
             )),
             const SizedBox(width: 15),
             ElevatedButton(
-              onPressed: () async {
-                // pdf file
-                await _generatePdf();
-              },
+              onPressed: ticketsForYearAndMonths.isEmpty
+                  ? null // disable button if no data
+                  : () async {
+                      await generatePdf();
+                    },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
                 shape: RoundedRectangleBorder(
@@ -284,7 +306,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
     );
   }
 
-// Months:
+// months:
   Widget bottomGraphTitles(double value, TitleMeta meta) {
     const style = TextStyle(fontSize: 10);
     String text;
@@ -334,7 +356,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
     );
   }
 
-// Values:
+// values:
   Widget leftGraphTitles(double value, TitleMeta meta, int maxTickets) {
     if (value == meta.max) {
       return Container();
@@ -354,7 +376,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
     );
   }
 
-// TicketTypeChart()
+// ticketTypeChart()
   List<int> getIssuedTicketbyMonths(List<IssuedTicket> tickets) {
     final Set<int> months = {};
 
@@ -394,7 +416,8 @@ class _StatisticScreenState extends State<StatisticScreen> {
       return [
         BarChartGroupData(
           x: 0,
-          barRods: [BarChartRodData(toY: 0, color: Colors.grey)],
+          barRods: [BarChartRodData(toY: 0, color: Colors.grey, width: 10)],
+          showingTooltipIndicators: [0],
         ),
       ];
     }
@@ -470,6 +493,17 @@ class _StatisticScreenState extends State<StatisticScreen> {
   }
 
   Widget _buildTicketTypeChart() {
+    if (ticketsForYearAndMonths.isEmpty) {
+      return const Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Center(
+          child: Text(
+            "Nema dostupnih podataka o izdatim kartama za odabranu godinu.",
+            style: TextStyle(fontSize: 16, fontStyle: FontStyle.italic),
+          ),
+        ),
+      );
+    }
     return RepaintBoundary(
       key: _ticketChartKey,
       child: Column(
@@ -578,7 +612,8 @@ class _StatisticScreenState extends State<StatisticScreen> {
       return [
         BarChartGroupData(
           x: 0,
-          barRods: [BarChartRodData(toY: 0, color: Colors.grey)],
+          barRods: [BarChartRodData(toY: 0, color: Colors.grey, width: 10)],
+          showingTooltipIndicators: [0],
         ),
       ];
     }
@@ -663,6 +698,17 @@ class _StatisticScreenState extends State<StatisticScreen> {
   }
 
   Widget _buildRouteChart() {
+    if (ticketsForYearAndMonths.isEmpty) {
+      return const Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Center(
+          child: Text(
+            "Nema dostupnih podataka o rutama za odabranu godinu..",
+            style: TextStyle(fontSize: 16, fontStyle: FontStyle.italic),
+          ),
+        ),
+      );
+    }
     return RepaintBoundary(
       key: _routeChartKey,
       child: Column(
