@@ -90,7 +90,8 @@ class _VehicleAddDialogState extends State<VehicleAddDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text("Novo vozilo"),
+      title: const Text("Novo vozilo",
+          style: TextStyle(fontWeight: FontWeight.bold)),
       content: SingleChildScrollView(
         child: SizedBox(
           width: 500,

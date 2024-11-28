@@ -3,7 +3,6 @@ import 'package:eprijevoz_desktop/models/role.dart';
 import 'package:eprijevoz_desktop/models/search_result.dart';
 import 'package:eprijevoz_desktop/models/user.dart';
 import 'package:eprijevoz_desktop/models/userRole.dart';
-import 'package:eprijevoz_desktop/providers/auth_provider.dart';
 import 'package:eprijevoz_desktop/providers/country_provider.dart';
 import 'package:eprijevoz_desktop/providers/role_provider.dart';
 import 'package:eprijevoz_desktop/providers/userRole_provider.dart';
@@ -107,7 +106,7 @@ class _UserAddDialogState extends State<UserAddDialog> {
     return list;
   }
 
-  Future<void> _selectDate(BuildContext context) async {
+  Future<void> selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: dateOfBirth ?? DateTime.now(),
@@ -207,7 +206,6 @@ class _UserAddDialogState extends State<UserAddDialog> {
                               ],
                             ),
                           ),
-                          //
                           const SizedBox(width: 20),
                           Expanded(
                             child: Column(
@@ -221,7 +219,7 @@ class _UserAddDialogState extends State<UserAddDialog> {
                                 ),
                                 const SizedBox(height: 5),
                                 GestureDetector(
-                                  onTap: () => _selectDate(context),
+                                  onTap: () => selectDate(context),
                                   child: AbsorbPointer(
                                       child: FormBuilderTextField(
                                           name: 'dateOfBirth',

@@ -4,8 +4,8 @@ import 'package:eprijevoz_desktop/models/station.dart';
 import 'package:eprijevoz_desktop/providers/route_provider.dart';
 import 'package:eprijevoz_desktop/providers/station_provider.dart';
 import 'package:eprijevoz_desktop/providers/utils.dart';
-import 'package:eprijevoz_desktop/screens/route_add_screen.dart';
-import 'package:eprijevoz_desktop/screens/route_update_screen.dart';
+import 'package:eprijevoz_desktop/screens/route/route_add_screen.dart';
+import 'package:eprijevoz_desktop/screens/route/route_update_screen.dart';
 import 'package:flutter/material.dart' hide Route;
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
@@ -31,11 +31,10 @@ class _RouteListScreenState extends State<RouteListScreen> {
   SearchResult<Route>? routeResult;
   SearchResult<Route>? routeResultForTime;
   SearchResult<Station>? stationResult;
-  //Form
   final _formKey = GlobalKey<FormBuilderState>();
   Map<String, dynamic> _initialValue = {};
   int _selectedStationId = 0;
-  bool isLoading = true;
+  bool isLoading = false;
   DateTime selectedDate = DateTime.now();
 
   @override
@@ -45,9 +44,11 @@ class _RouteListScreenState extends State<RouteListScreen> {
 
   @override
   void initState() {
-    super.initState();
     stationProvider = context.read<StationProvider>();
     routeProvider = context.read<RouteProvider>();
+
+    super.initState();
+
     initForm();
   }
 
@@ -59,10 +60,6 @@ class _RouteListScreenState extends State<RouteListScreen> {
     if (routeResult?.result != null) {
       routeResult!.result = filterDuplicates(routeResult!.result);
     }
-
-    setState(() {
-      isLoading = false;
-    });
   }
 
   Future<void> _selectDate(BuildContext context) async {
@@ -86,11 +83,20 @@ class _RouteListScreenState extends State<RouteListScreen> {
   }
 
   Future refreshTable() async {
-    var request = Map.from(_formKey.currentState?.value ?? {});
-    routeResult = await routeProvider.get(filter: request);
     setState(() {
       isLoading = false;
     });
+
+    try {
+      var request = Map.from(_formKey.currentState?.value ?? {});
+      routeResult = await routeProvider.get(filter: request);
+    } catch (e) {
+      print('Error: $e');
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
   }
 
   @override
@@ -105,7 +111,7 @@ class _RouteListScreenState extends State<RouteListScreen> {
             const Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                "Za prikaz rezultata, neophodno je odabrati traženu stanicu i datum, te pritisnuti dugme "
+                "Za prikaz rezultata, neophodno je odabrati datum i traženu stanicu, te pritisnuti dugme "
                 '"Pretraga"'
                 ".",
                 style: TextStyle(fontWeight: FontWeight.w400),
@@ -115,7 +121,9 @@ class _RouteListScreenState extends State<RouteListScreen> {
               height: 20,
             ),
             _buildSearch(),
-            _buildResultView()
+            isLoading
+                ? const Center(child: CircularProgressIndicator())
+                : _buildResultView()
           ],
         ));
   }
@@ -124,15 +132,37 @@ class _RouteListScreenState extends State<RouteListScreen> {
     return FormBuilder(
       key: _formKey,
       initialValue: _initialValue,
-      child: Container(
+      child: SizedBox(
         width: double.infinity,
         child: Row(
           children: [
-            const Flexible(
-              child: Text(
-                "Startna stanica:",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-              ),
+            const Text(
+              "Datum:",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            ),
+            const SizedBox(width: 15),
+            Column(
+              children: <Widget>[
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    shape: BeveledRectangleBorder(
+                        borderRadius: BorderRadius.circular(0.0),
+                        side: const BorderSide(color: Colors.black)),
+                    minimumSize: const Size(250, 40),
+                  ),
+                  onPressed: () => _selectDate(context),
+                  child: Text(
+                    '${formatDate(selectedDate)} ',
+                    style: const TextStyle(color: Colors.black),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(width: 15),
+            const Text(
+              "Startna stanica:",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
             const SizedBox(width: 15),
             Expanded(
@@ -158,33 +188,12 @@ class _RouteListScreenState extends State<RouteListScreen> {
               ),
             ),
             const SizedBox(width: 15),
-            const Text(
-              "Datum:",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            ),
-            const SizedBox(width: 15),
-            Column(
-              children: <Widget>[
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    shape: BeveledRectangleBorder(
-                        borderRadius: BorderRadius.circular(0.0),
-                        side: const BorderSide(color: Colors.black)),
-                    minimumSize: const Size(250, 40),
-                  ),
-                  onPressed: () => _selectDate(context),
-                  child: Text(
-                    '${formatDate(selectedDate)} ',
-                    style: const TextStyle(color: Colors.black),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(width: 15),
-            Flexible(
-              child: ElevatedButton(
-                onPressed: () async {
+            ElevatedButton(
+              onPressed: () async {
+                setState(() {
+                  isLoading = true;
+                });
+                try {
                   // Search:
                   // Set the filter for a date range covering the entire selected day
                   var filter = {
@@ -193,17 +202,22 @@ class _RouteListScreenState extends State<RouteListScreen> {
                         selectedDate.day),
                   };
                   routeResultForTime = await routeProvider.get(filter: filter);
-                  setState(() {});
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(2.0),
-                  ),
-                  minimumSize: const Size(100, 65),
+                } catch (e) {
+                  print('Error: $e');
+                } finally {
+                  setState(() {
+                    isLoading = false;
+                  });
+                }
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(2.0),
                 ),
-                child: const Text("Pretraga", style: TextStyle(fontSize: 18)),
+                minimumSize: const Size(100, 65),
               ),
+              child: const Text("Pretraga", style: TextStyle(fontSize: 18)),
             ),
           ],
         ),
@@ -302,15 +316,16 @@ class _RouteListScreenState extends State<RouteListScreen> {
                               //update
                               DataCell(IconButton(
                                 onPressed: () {
-                                  showDialog(
+                                  final result = showDialog(
                                       context: context,
                                       builder: (BuildContext context) =>
                                           UpdateRouteDialog(
                                             route: e,
-                                            // onRouteUpdated: refreshTable,
+                                            onRouteUpdated: refreshTable,
                                           ));
-                                  /*if (result == true)
-                                    refreshTable(); //refresh table with new data*/
+                                  if (result == true) {
+                                    refreshTable();
+                                  }
                                 },
                                 icon: const Icon(
                                   Icons.tips_and_updates_rounded,
@@ -460,10 +475,13 @@ class _RouteListScreenState extends State<RouteListScreen> {
             ),
             ElevatedButton(
                 onPressed: () async {
-                  await showDialog(
-                    context: context,
-                    builder: (dialogAddContext) => RouteAddDialog(),
-                  );
+                  final result = await showDialog(
+                      context: context,
+                      builder: (dialogAddContext) => RouteAddDialog());
+
+                  if (result == true) {
+                    await refreshTable();
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromRGBO(72, 156, 118, 100),

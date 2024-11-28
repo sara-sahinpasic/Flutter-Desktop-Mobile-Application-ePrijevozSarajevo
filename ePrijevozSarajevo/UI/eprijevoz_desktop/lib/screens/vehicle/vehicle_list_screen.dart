@@ -5,7 +5,7 @@ import 'package:eprijevoz_desktop/models/vehicle.dart';
 import 'package:eprijevoz_desktop/providers/manufacturer_provider.dart';
 import 'package:eprijevoz_desktop/providers/type_provider.dart';
 import 'package:eprijevoz_desktop/providers/vehicle_provider.dart';
-import 'package:eprijevoz_desktop/screens/vehicle_add_screen.dart';
+import 'package:eprijevoz_desktop/screens/vehicle/vehicle_add_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';

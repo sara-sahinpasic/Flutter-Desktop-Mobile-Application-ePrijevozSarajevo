@@ -39,8 +39,6 @@ class _UserListScreenState extends State<UserListScreen> {
   }
 
   Future refreshTable() async {
-    //var request = Map.from(_formKey.currentState?.value ?? {});
-    //userResult = await userProvider.get(filter: request);
     setState(() {
       isLoading = true;
     });
@@ -261,8 +259,9 @@ class _UserListScreenState extends State<UserListScreen> {
                                                     onUserUpdated:
                                                         refreshTable, //refresh table with new data
                                                   ));
-                                          if (result == true)
+                                          if (result == true) {
                                             refreshTable(); //refresh table with new data
+                                          }
                                         },
                                         icon: const Icon(
                                           Icons.tips_and_updates_rounded,
