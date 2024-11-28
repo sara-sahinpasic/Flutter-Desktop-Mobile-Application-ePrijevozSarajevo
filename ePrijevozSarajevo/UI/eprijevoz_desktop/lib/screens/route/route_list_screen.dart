@@ -57,9 +57,9 @@ class _RouteListScreenState extends State<RouteListScreen> {
     routeResult = await routeProvider.get();
 
     //filter duplih naziva svih učitanih stanica
-    if (routeResult?.result != null) {
-      routeResult!.result = filterDuplicates(routeResult!.result);
-    }
+    // if (routeResult?.result != null) {
+    //   routeResult!.result = filterDuplicates(routeResult!.result);
+    // }
   }
 
   Future<void> _selectDate(BuildContext context) async {
@@ -80,6 +80,14 @@ class _RouteListScreenState extends State<RouteListScreen> {
     return data
         .where((dataModel) => seen.add(dataModel.startStationId!))
         .toList();
+  }
+
+  List<Route> getUniqueRoutes() {
+    List<Route> result = [];
+    if (routeResult != null) {
+      result = filterDuplicates(routeResult!.result);
+    }
+    return result;
   }
 
   Future refreshTable() async {
@@ -168,7 +176,7 @@ class _RouteListScreenState extends State<RouteListScreen> {
             Expanded(
               child: FormBuilderDropdown(
                 name: "startStationId",
-                items: routeResult?.result
+                items: getUniqueRoutes()
                         .map((e) => DropdownMenuItem<String>(
                             value: e.startStationId.toString(),
                             child: Text(

@@ -5,7 +5,6 @@ import 'package:eprijevoz_desktop/providers/auth_provider.dart';
 import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:eprijevoz_desktop/providers/utils.dart';
 import 'package:eprijevoz_desktop/screens/user/user_list_screen.dart';
-//import 'package:eprijevoz_desktop/screens/user_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

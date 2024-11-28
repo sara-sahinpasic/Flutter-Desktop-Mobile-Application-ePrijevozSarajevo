@@ -17,8 +17,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:provider/provider.dart';
+import 'package:window_manager/window_manager.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await windowManager.ensureInitialized();
+
+  WindowOptions windowOptions = const WindowOptions(
+    size: Size(1536, 864),
+    center: true,
+    backgroundColor: Colors.transparent,
+    skipTaskbar: false,
+    titleBarStyle: TitleBarStyle.normal,
+    windowButtonVisibility: true,
+  );
+  windowManager.waitUntilReadyToShow(windowOptions, () async {
+    await windowManager.show();
+    await windowManager.focus();
+  });
+
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider<VehicleProvider>(create: (_) => VehicleProvider()),
@@ -174,7 +191,8 @@ class _LoginPageState extends State<LoginPage> {
                         child: ElevatedButton(
                           onPressed: () async {
                             UserProvider provider = UserProvider();
-                            AuthProvider.username = _usernameController.text;
+                            AuthProvider.username =
+                                _usernameController.text.toLowerCase();
                             AuthProvider.password = _passwordController.text;
                             try {
                               _formKey.currentState?.saveAndValidate();
