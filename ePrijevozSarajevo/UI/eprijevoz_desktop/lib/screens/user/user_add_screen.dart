@@ -117,7 +117,7 @@ class _UserAddDialogState extends State<UserAddDialog> {
     if (picked != null && picked != dateOfBirth) {
       setState(() {
         dateOfBirth = picked;
-        _dateOfBirthController.text = formatDateTime(picked);
+        _dateOfBirthController.text = formatDateTimeAPI(picked);
       });
     }
   }

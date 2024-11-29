@@ -39,6 +39,10 @@ namespace ePrijevozSarajevo.API.Controllers
         {
             await(_service as IUserService).DeleteUser(id);
         }
-
+        [HttpPost]
+        public override async Task<User> Insert(UserInseretRequest request)
+        {
+            return await (_service as IUserService).InsertDateOfBirth(request);
+        }
     }
 }

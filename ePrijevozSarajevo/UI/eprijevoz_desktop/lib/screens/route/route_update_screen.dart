@@ -1,15 +1,17 @@
 import 'package:eprijevoz_desktop/models/route.dart';
 import 'package:eprijevoz_desktop/models/search_result.dart';
 import 'package:eprijevoz_desktop/providers/route_provider.dart';
+import 'package:eprijevoz_desktop/providers/utils.dart';
 import 'package:flutter/material.dart' hide Route;
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
 
 class UpdateRouteDialog extends StatefulWidget {
   Route route;
-  VoidCallback onRouteUpdated;
-  UpdateRouteDialog(
-      {required this.route, super.key, required this.onRouteUpdated});
+  UpdateRouteDialog({
+    required this.route,
+    super.key,
+  });
 
   @override
   State<UpdateRouteDialog> createState() => _UpdateRouteDialogState();
@@ -138,7 +140,7 @@ class _UpdateRouteDialogState extends State<UpdateRouteDialog> {
                     Row(
                       children: [
                         const Text(
-                          "Vrijeme polaska:",
+                          "Polazak:",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 15),
                         ),
@@ -157,7 +159,7 @@ class _UpdateRouteDialogState extends State<UpdateRouteDialog> {
                               selectDepartureDateTime(context);
                             },
                             child: Text(
-                              '${selectedDepartureDateTime.hour}:${selectedDepartureDateTime.minute}',
+                              formatDateTimeUI(selectedDepartureDateTime),
                               style: const TextStyle(color: Colors.black),
                             ),
                           ),
@@ -168,7 +170,7 @@ class _UpdateRouteDialogState extends State<UpdateRouteDialog> {
                     Row(
                       children: [
                         const Text(
-                          "Vrijeme dolaska:",
+                          "Dolazak:",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 15),
                         ),
@@ -187,7 +189,7 @@ class _UpdateRouteDialogState extends State<UpdateRouteDialog> {
                               selectArrivalDateTime(context);
                             },
                             child: Text(
-                              '${selectedArrivalDateTime.hour}:${selectedArrivalDateTime.minute}',
+                              formatDateTimeUI(selectedArrivalDateTime),
                               style: const TextStyle(color: Colors.black),
                             ),
                           ),
@@ -234,7 +236,6 @@ class _UpdateRouteDialogState extends State<UpdateRouteDialog> {
 
                                   await routeProvider.update(
                                       widget.route.routeId!, request);
-                                  widget.onRouteUpdated();
                                   Navigator.pop(context, true);
 
                                   showDialog(

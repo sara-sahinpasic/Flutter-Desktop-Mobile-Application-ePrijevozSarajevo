@@ -14,7 +14,12 @@ String formatTime(DateTime? date) {
   return DateFormat('HH:mm').format(date);
 }
 
-String formatDateTime(DateTime dateTime) {
+String formatDateTimeAPI(DateTime dateTime) {
   final DateFormat formatter = DateFormat('yyyy-MM-ddTHH:mm:ss');
   return formatter.format(dateTime);
+}
+
+String formatDateTimeUI(DateTime dateTime) {
+  return '${dateTime.day.toString().padLeft(2, '0')}.${dateTime.month.toString().padLeft(2, '0')}.${dateTime.year} '
+      '${dateTime.hour.toString().padLeft(2, '0')}:${dateTime.minute.toString().padLeft(2, '0')}';
 }

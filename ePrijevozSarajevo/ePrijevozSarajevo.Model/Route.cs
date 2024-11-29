@@ -9,8 +9,7 @@
         public int EndStationId { get; set; }
         public Vehicle? Vehicle { get; set; }
         public int VehicleId { get; set; }
-        //public TimeSpan TimeOfArrival { get; set; }
-        //public TimeSpan TimeOfDeparture { get; set; }
+       
         public DateTime Departure { get; set; } = DateTime.Now;
         public DateTime Arrival { get; set; }
 

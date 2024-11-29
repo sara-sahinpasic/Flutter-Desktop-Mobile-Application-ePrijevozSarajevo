@@ -14,8 +14,7 @@ import 'package:provider/provider.dart';
 
 class UpdateProfileScreen extends StatefulWidget {
   User? user;
-  VoidCallback onUserUpdated;
-  UpdateProfileScreen({this.user, required this.onUserUpdated, super.key});
+  UpdateProfileScreen({this.user, super.key});
 
   @override
   State<UpdateProfileScreen> createState() => _UpdateProfileScreenState();
@@ -316,8 +315,6 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     if (widget.user != null) {
                       User updatedUser = await userProvider.update(
                           widget.user!.userId!, request);
-                      widget.onUserUpdated(); // Notify ProfileScreen
-                      //Navigator.pop(context, true); // Return success flag
                       Navigator.pop(
                           context, updatedUser); // Return success flag
                     }
