@@ -136,7 +136,7 @@ namespace ePrijevozSarajevo.Services
 
         public async Task<bool> DeleteUser(int userId)
         {
-           
+
             var userRoles = await _dataContext.UserRoles
                     .Where(ur => ur.UserId == userId).ToListAsync();
 
@@ -160,6 +160,29 @@ namespace ePrijevozSarajevo.Services
             //    // Handle or log the exception
             //    return false;
             //}
+        }
+
+        public async Task<Model.User> InsertDateOfBirth(UserInseretRequest request)
+        {
+            Database.User entity = _mapper.Map<Database.User>(request);
+            await BeforeInsert(request, entity);
+
+            if (entity.DateOfBirth > DateTime.Now)
+            {
+                throw new InvalidOperationException("Datum rođenja ne može biti u budućnosti.");
+            }
+
+            DateTime twelveYearsAgo = DateTime.Now.AddYears(-12);
+            if (entity.DateOfBirth > twelveYearsAgo)
+            {
+                throw new InvalidOperationException("Korisnik mora imati najmanje 12 godina.");
+            }
+
+            await _dataContext.AddAsync(entity);
+            await _dataContext.SaveChangesAsync();
+
+            return _mapper.Map<Model.User>(entity);
+
         }
     }
 }

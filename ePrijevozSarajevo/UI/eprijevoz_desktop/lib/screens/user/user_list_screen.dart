@@ -259,9 +259,6 @@ class _UserListScreenState extends State<UserListScreen> {
                                                     onUserUpdated:
                                                         refreshTable, //refresh table with new data
                                                   ));
-                                          if (result == true) {
-                                            refreshTable(); //refresh table with new data
-                                          }
                                         },
                                         icon: const Icon(
                                           Icons.tips_and_updates_rounded,

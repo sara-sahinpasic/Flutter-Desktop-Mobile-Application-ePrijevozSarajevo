@@ -221,7 +221,10 @@ class _VehicleAddDialogState extends State<VehicleAddDialog> {
                                         "Godina proizvodnje ne može biti manja od 1960."),
                                 FormBuilderValidators.max(2025,
                                     errorText:
-                                        "Godina proizvodnje ne može biti veća od 2025.")
+                                        "Godina proizvodnje ne može biti veća od 2025."),
+                                FormBuilderValidators.integer(
+                                    errorText:
+                                        "Format godine proizvodnje: 2000"),
                               ]),
                               decoration: const InputDecoration(
                                 enabledBorder: OutlineInputBorder(

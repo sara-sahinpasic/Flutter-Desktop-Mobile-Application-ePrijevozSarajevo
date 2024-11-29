@@ -23,12 +23,9 @@ class MasterScreen extends StatefulWidget {
 }
 
 class _MasterScreenState extends State<MasterScreen> {
-//late
   late UserProvider userProvider;
   var userNameUI = "";
-//SearchResult
   SearchResult<User>? userResult;
-//Form
   final _formKey = GlobalKey<FormBuilderState>();
   Map<String, dynamic> _initialValue = {};
 
@@ -58,9 +55,6 @@ class _MasterScreenState extends State<MasterScreen> {
     var user = userResult?.result
         .firstWhere((user) => user.userName == AuthProvider.username);
     userNameUI = '${user?.firstName} ${user?.lastName}';
-    print("user kolicina: ${userResult?.result.length}");
-    print("username spaseni: ${AuthProvider.username}");
-    print("lista username: ${userResult?.result.map((e) => e.userName)}");
 
     setState(() {});
   }
@@ -82,9 +76,10 @@ class _MasterScreenState extends State<MasterScreen> {
                   const SizedBox(
                     height: 20,
                   ),
-                  Center(
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
                     child: Text(
-                      "Zdravo, ${userNameUI}",
+                      "Zdravo, \n$userNameUI",
                       style: TextStyle(
                         color: Colors.green.shade800,
                         fontWeight: FontWeight.bold,
@@ -107,15 +102,8 @@ class _MasterScreenState extends State<MasterScreen> {
                             fontWeight: FontWeight.w400,
                             fontSize: 25)),
                     onTap: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => HomePage()));
-                      // Navigator.pop(context);
-                      //Navigator.pop(context);
-                      // Navigator.pushAndRemoveUntil(
-                      //   context,
-                      //   MaterialPageRoute(builder: (context) => UserListScreen()),
-                      //   (Route<dynamic> route) => false,
-                      // );
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const HomePage()));
                     },
                   ),
                   const SizedBox(
@@ -220,7 +208,7 @@ class _MasterScreenState extends State<MasterScreen> {
                     ),
                     onTap: () {
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => StatisticScreen()));
+                          builder: (context) => const StatisticScreen()));
                     },
                   )
                 ],
@@ -232,7 +220,7 @@ class _MasterScreenState extends State<MasterScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 80,
                     ),
                     Align(
@@ -246,7 +234,7 @@ class _MasterScreenState extends State<MasterScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Expanded(child: widget.child),

@@ -154,6 +154,11 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
   }
 
   List<DropdownMenuItem<String>> getStation() {
+    final sortedStations = stationResult?.result ?? [];
+
+    // Sort stations by their names
+    sortedStations.sort((a, b) => (a.name ?? '').compareTo(b.name ?? ''));
+
     var list = stationResult?.result
             .map((item) => DropdownMenuItem(
                 value: item.stationId.toString(), child: Text(item.name ?? "")))
@@ -314,7 +319,7 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
                                 setState(() {});
                               },
                               child: Text(
-                                '${formatDateTime(selectedDepartureDate)} ',
+                                formatDateTimeUI(selectedDepartureDate),
                                 style: const TextStyle(color: Colors.black),
                               ),
                             ),
@@ -352,7 +357,7 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
                                 setState(() {});
                               },
                               child: Text(
-                                '${formatDateTime(selectedArrivalDate)} ',
+                                formatDateTimeUI(selectedArrivalDate),
                                 style: const TextStyle(color: Colors.black),
                               ),
                             ),
@@ -379,9 +384,9 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
                               request['vehicleId'] = selectedVehicleId;
                               selectedEndStationId;
                               request['arrival'] =
-                                  formatDateTime(selectedArrivalDate);
+                                  formatDateTimeAPI(selectedArrivalDate);
                               request['departure'] =
-                                  formatDateTime(selectedDepartureDate);
+                                  formatDateTimeAPI(selectedDepartureDate);
 
                               try {
                                 setState(() {

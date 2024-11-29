@@ -56,6 +56,21 @@ class _RouteListScreenState extends State<RouteListScreen> {
     stationResult = await stationProvider.get();
     routeResult = await routeProvider.get();
 
+    setState(() {
+      isLoading = false;
+    });
+
+    try {
+      var request = Map.from(_formKey.currentState?.value ?? {});
+      routeResult = await routeProvider.get(filter: request);
+    } catch (e) {
+      print('Error: $e');
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
+
     //filter duplih naziva svih učitanih stanica
     // if (routeResult?.result != null) {
     //   routeResult!.result = filterDuplicates(routeResult!.result);
@@ -82,29 +97,22 @@ class _RouteListScreenState extends State<RouteListScreen> {
         .toList();
   }
 
-  List<Route> getUniqueRoutes() {
+  List<Route> getUniqueRoutes(List<Station> stations) {
     List<Route> result = [];
     if (routeResult != null) {
       result = filterDuplicates(routeResult!.result);
-    }
-    return result;
-  }
 
-  Future refreshTable() async {
-    setState(() {
-      isLoading = false;
-    });
-
-    try {
-      var request = Map.from(_formKey.currentState?.value ?? {});
-      routeResult = await routeProvider.get(filter: request);
-    } catch (e) {
-      print('Error: $e');
-    } finally {
-      setState(() {
-        isLoading = false;
+      result.sort((a, b) {
+        final stationA = stations.firstWhere(
+          (station) => station.stationId == a.startStationId,
+        );
+        final stationB = stations.firstWhere(
+          (station) => station.stationId == b.startStationId,
+        );
+        return (stationA.name ?? '').compareTo(stationB.name ?? '');
       });
     }
+    return result;
   }
 
   @override
@@ -176,18 +184,18 @@ class _RouteListScreenState extends State<RouteListScreen> {
             Expanded(
               child: FormBuilderDropdown(
                 name: "startStationId",
-                items: getUniqueRoutes()
-                        .map((e) => DropdownMenuItem<String>(
-                            value: e.startStationId.toString(),
-                            child: Text(
-                              stationResult?.result
-                                      .firstWhere((element) =>
-                                          element.stationId == e.startStationId)
-                                      .name ??
-                                  "",
-                            )))
-                        .toList() ??
-                    [],
+                items:
+                    getUniqueRoutes(stationResult?.result ?? []).map((route) {
+                  var station = stationResult?.result.firstWhere(
+                    (element) => element.stationId == route.startStationId,
+                  );
+                  return DropdownMenuItem<String>(
+                    value: route.startStationId?.toString(),
+                    child: Text(
+                      station?.name ?? "",
+                    ),
+                  );
+                }).toList(),
                 onChanged: (value) {
                   var station = stationResult?.result.firstWhere(
                       ((station) => station.stationId.toString() == value));
@@ -329,11 +337,7 @@ class _RouteListScreenState extends State<RouteListScreen> {
                                       builder: (BuildContext context) =>
                                           UpdateRouteDialog(
                                             route: e,
-                                            onRouteUpdated: refreshTable,
                                           ));
-                                  if (result == true) {
-                                    refreshTable();
-                                  }
                                 },
                                 icon: const Icon(
                                   Icons.tips_and_updates_rounded,
@@ -370,7 +374,7 @@ class _RouteListScreenState extends State<RouteListScreen> {
                                                 fontWeight: FontWeight.bold),
                                           ),
                                           content: Text(
-                                            "Da li želite obrisati rutu: $startStationName - $endStationName, s polaskom u ${formatDateTime(e.departure!)}?",
+                                            "Da li želite obrisati rutu: $startStationName - $endStationName, s polaskom u ${formatDateTimeUI(e.departure!)}?",
                                           ),
                                           actions: [
                                             TextButton(
@@ -399,7 +403,7 @@ class _RouteListScreenState extends State<RouteListScreen> {
                                                                     .bold),
                                                       ),
                                                       content: Text(
-                                                        "Ruta $startStationName - $endStationName, s polaskom u ${formatDateTime(e.departure!)} je uspješno obrisana.",
+                                                        "Ruta $startStationName - $endStationName, s polaskom u ${formatDateTimeUI(e.departure!)} je uspješno obrisana.",
                                                       ),
                                                       actions: [
                                                         TextButton(
@@ -483,13 +487,9 @@ class _RouteListScreenState extends State<RouteListScreen> {
             ),
             ElevatedButton(
                 onPressed: () async {
-                  final result = await showDialog(
+                  await showDialog(
                       context: context,
                       builder: (dialogAddContext) => RouteAddDialog());
-
-                  if (result == true) {
-                    await refreshTable();
-                  }
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
