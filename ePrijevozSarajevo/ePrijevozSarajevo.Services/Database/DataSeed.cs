@@ -24,7 +24,7 @@ namespace ePrijevozSarajevo.Services.Database
                 {
                     RequestId = 2,
                     UserId = 3,
-                    UserStatusId = 1,
+                    UserStatusId = 5,
                     DateCreated = DateTime.Now,
                     Active = true,
                     Approved = false,
@@ -248,8 +248,30 @@ namespace ePrijevozSarajevo.Services.Database
                     UserRoleId = 2,
                     UserId = 2,
                     RoleId = 2,
+                },
+                new UserRole()
+                {
+                    UserRoleId = 3,
+                    UserId = 3,
+                    RoleId = 2,
+                }, new UserRole()
+                {
+                    UserRoleId = 4,
+                    UserId = 4,
+                    RoleId = 1,
+                }, new UserRole()
+                {
+                    UserRoleId = 5,
+                    UserId = 5,
+                    RoleId = 2,
+                },
+                new UserRole()
+                {
+                    UserRoleId = 6,
+                    UserId = 6,
+                    RoleId = 1,
                 }
-            ); //9 nereferentna
+            ); //9 
             modelBuilder.Entity<Role>().HasData
             (
                  new Role()
