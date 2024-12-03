@@ -33,16 +33,43 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         );
 
         if (success) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Lozinka uspješno promijenjena!')),
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: const Text("Promjena lozinke"),
+              content: const Text("Lozinka uspješno promijenjena!"),
+              actions: [
+                TextButton(
+                    child:
+                        const Text("OK", style: TextStyle(color: Colors.black)),
+                    onPressed: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (context) => const LoginPage())))
+              ],
+            ),
           );
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => LoginPage()));
         }
       } catch (e) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-              content: Text('Greška u promijeni lozinke: ${e.toString()}!')),
+        showDialog(
+          context: context,
+          builder: (dialogContext) => AlertDialog(
+            title: const Text(
+              "Error",
+              style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+            ),
+            content: Text('Greška u promijeni lozinke! ->\n$e'),
+            actions: [
+              TextButton(
+                child: const Text(
+                  "OK",
+                  style: TextStyle(color: Colors.black),
+                ),
+                onPressed: () {
+                  Navigator.pop(dialogContext, false);
+                },
+              ),
+            ],
+          ),
         );
       } finally {
         setState(() {

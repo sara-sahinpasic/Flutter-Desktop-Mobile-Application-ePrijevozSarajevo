@@ -46,7 +46,7 @@ class _UserListScreenState extends State<UserListScreen> {
       var request = Map.from(_formKey.currentState?.value ?? {});
       userResult = await userProvider.get(filter: request);
     } catch (e) {
-      print('Error: $e');
+      debugPrint('Error: $e');
     } finally {
       setState(() {
         isLoading = false; // Hide the loading indicator after completion

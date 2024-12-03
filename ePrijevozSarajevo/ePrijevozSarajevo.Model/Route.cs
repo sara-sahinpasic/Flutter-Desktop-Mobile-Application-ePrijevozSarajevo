@@ -8,13 +8,8 @@
         public Station? EndStation { get; set; }
         public int EndStationId { get; set; }
         public Vehicle? Vehicle { get; set; }
-        public int VehicleId { get; set; }
-       
+        public int VehicleId { get; set; }       
         public DateTime Departure { get; set; } = DateTime.Now;
-        public DateTime Arrival { get; set; }
-
-        public bool Active { get; set; }
-        public bool ActiveOnHolidays { get; set; }
-        public bool ActiveOnWeekend { get; set; }      
+        public DateTime Arrival { get; set; }                    
     }
 }

@@ -70,11 +70,6 @@ class _RouteListScreenState extends State<RouteListScreen> {
         isLoading = false;
       });
     }
-
-    //filter duplih naziva svih učitanih stanica
-    // if (routeResult?.result != null) {
-    //   routeResult!.result = filterDuplicates(routeResult!.result);
-    // }
   }
 
   Future<void> _selectDate(BuildContext context) async {

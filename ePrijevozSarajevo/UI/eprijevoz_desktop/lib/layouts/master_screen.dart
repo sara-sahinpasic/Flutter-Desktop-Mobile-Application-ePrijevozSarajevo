@@ -9,7 +9,6 @@ import 'package:eprijevoz_desktop/screens/statistic_screen.dart';
 import 'package:eprijevoz_desktop/screens/user/user_list_screen.dart';
 import 'package:eprijevoz_desktop/screens/vehicle/vehicle_list_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
 
 class MasterScreen extends StatefulWidget {
@@ -26,13 +25,7 @@ class _MasterScreenState extends State<MasterScreen> {
   late UserProvider userProvider;
   var userNameUI = "";
   SearchResult<User>? userResult;
-  final _formKey = GlobalKey<FormBuilderState>();
   Map<String, dynamic> _initialValue = {};
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-  }
 
   @override
   void initState() {
@@ -41,9 +34,9 @@ class _MasterScreenState extends State<MasterScreen> {
     super.initState();
 
     _initialValue = {
-      'firstName': widget?.user?.firstName,
-      'lastName': widget?.user?.lastName,
-      'userName': widget?.user?.userId,
+      'firstName': widget.user?.firstName,
+      'lastName': widget.user?.lastName,
+      'userName': widget.user?.userId,
     };
 
     initForm();
@@ -70,21 +63,27 @@ class _MasterScreenState extends State<MasterScreen> {
               child: ListView(
                 children: [
                   const SizedBox(
-                    height: 80,
-                  ),
-                  Icon(Icons.person, color: Colors.green.shade800, size: 50),
-                  const SizedBox(
-                    height: 20,
+                    height: 120,
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-                    child: Text(
-                      "Zdravo, \n$userNameUI",
-                      style: TextStyle(
-                        color: Colors.green.shade800,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Icon(Icons.person,
+                            color: Colors.green.shade800, size: 45),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          "Zdravo, \n$userNameUI",
+                          style: TextStyle(
+                            color: Colors.green.shade800,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   const SizedBox(

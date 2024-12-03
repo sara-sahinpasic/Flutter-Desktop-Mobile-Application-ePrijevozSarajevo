@@ -63,7 +63,7 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
       var request = Map.from(_formKey.currentState?.value ?? {});
       vehicleResult = await vehicleProvider.get(filter: request);
     } catch (e) {
-      print('Error: $e');
+      debugPrint('Error: $e');
     } finally {
       setState(() {
         isLoading = false;
@@ -155,7 +155,7 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
               };
               vehicleResult = await vehicleProvider.get(filter: filter);
             } catch (e) {
-              print('Error: $e');
+              debugPrint('Error: $e');
             } finally {
               setState(() {
                 isLoading = false;

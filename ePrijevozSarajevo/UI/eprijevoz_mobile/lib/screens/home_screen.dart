@@ -1,5 +1,4 @@
 import 'package:eprijevoz_mobile/layouts/master_screen.dart';
-import 'package:eprijevoz_mobile/main.dart';
 import 'package:eprijevoz_mobile/models/search_result.dart';
 import 'package:eprijevoz_mobile/models/user.dart';
 import 'package:eprijevoz_mobile/providers/auth_provider.dart';
@@ -17,21 +16,31 @@ class _HomePageState extends State<HomePage> {
   late UserProvider userProvider;
   SearchResult<User>? userResult;
   User? currentUser;
+  bool isLoading = false;
 
   @override
   void initState() {
     userProvider = context.read<UserProvider>();
-
-    initForm();
-
     super.initState();
+    initForm();
   }
 
   Future initForm() async {
-    userResult = await userProvider.get();
-    currentUser = userResult?.result
-        .firstWhere((user) => user.userName == AuthProvider.username);
-    setState(() {});
+    setState(() {
+      isLoading = true;
+    });
+
+    try {
+      userResult = await userProvider.get();
+      currentUser = userResult?.result
+          .firstWhere((user) => user.userName == AuthProvider.username);
+    } catch (e) {
+      debugPrint("Error loading user data: $e");
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
   }
 
   @override
@@ -39,71 +48,46 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(15.0, 37.0, 15.0, 0.0),
+          padding: const EdgeInsets.fromLTRB(15.0, 150.0, 15.0, 0.0),
           child: Column(
             children: [
               Row(
                 children: [
                   Flexible(
-                    child: Text(
-                      "Dobrodošli, ${currentUser?.firstName} ${currentUser?.lastName}!",
-                      style: const TextStyle(
-                          fontSize: 19, fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 50,
-                  ),
-                  TextButton(
-                    onPressed: () => Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => LoginPage())),
-                    child: const Text(
-                      "Odjava",
-                      style: TextStyle(
-                        color: Colors.red,
-                        decoration: TextDecoration.underline,
-                        decorationColor: Colors.red,
-                        decorationThickness: 3.0,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
+                    child: Center(
+                      child: Text(
+                        "Dobrodošli, ${currentUser?.firstName}!",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.green.shade700,
+                        ),
                       ),
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 85),
-              const Row(
-                children: [
-                  Flexible(
-                    child: Text(
-                      "Želimo Vam sigurnu i ugodnu vožnju javnim gradskim prijevozom!",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 19,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ],
+              const SizedBox(
+                height: 20,
               ),
-              const SizedBox(height: 85),
               Row(
                 children: [
                   Flexible(
-                    child: Text(
-                      "ZAJEDNO ZAŠTITIMO NAŠU PLANETU ZEMLJU!",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 21,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.green.shade700,
+                    child: Center(
+                      child: Text(
+                        "ZAJEDNO ZAŠTITIMO NAŠU PLANETU ZEMLJU!",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.green.shade700,
+                        ),
                       ),
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 85),
+              const SizedBox(height: 170),
               Row(
                 children: [
                   Expanded(
@@ -112,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                       child: ElevatedButton(
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => MasterScreen(
+                              builder: (context) => const MasterScreen(
                                     initialIndex: 1,
                                   )));
                         },
