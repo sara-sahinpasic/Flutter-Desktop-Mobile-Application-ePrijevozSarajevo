@@ -187,12 +187,33 @@ class _ProfileScreenState extends State<ProfileScreen> {
       key: _formKey,
       initialValue: _initialValue,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(30.0, 0.0, 0.0, 0.0),
+        padding: const EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Center(
-              child: userImageWidget,
+            Row(
+              children: [
+                Center(
+                  child: userImageWidget,
+                ),
+                TextButton(
+                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const LoginPage())),
+                  child: const Padding(
+                    padding: EdgeInsets.fromLTRB(190, 0, 0, 0),
+                    child: Text(
+                      "Odjava",
+                      style: TextStyle(
+                        color: Colors.red,
+                        decoration: TextDecoration.underline,
+                        decorationColor: Colors.red,
+                        decorationThickness: 1.0,
+                        fontSize: 15,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
             Row(
               children: [
@@ -472,7 +493,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 MaterialPageRoute(
                   builder: (context) => UpdateProfileScreen(
                     user: user,
-                    onUserUpdated: refreshUserData,
+                    // onUserUpdated: refreshUserData,
                   ),
                 ),
               );

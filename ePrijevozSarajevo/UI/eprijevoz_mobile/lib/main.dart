@@ -32,7 +32,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   // This widget is the root of your application.
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -42,13 +41,13 @@ class MyApp extends StatelessWidget {
             seedColor: Colors.white, primary: Colors.white),
         useMaterial3: true,
       ),
-      home: LoginPage(),
+      home: const LoginPage(),
     );
   }
 }
 
 class LoginPage extends StatefulWidget {
-  LoginPage({super.key});
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -56,9 +55,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController _usernameController = TextEditingController();
-
   final TextEditingController _passwordController = TextEditingController();
-
   bool _passwordVisible = false;
 
   @override
@@ -142,17 +139,13 @@ class _LoginPageState extends State<LoginPage> {
                 child: ElevatedButton(
                   onPressed: () async {
                     UserProvider provider = UserProvider();
-                    print(
-                        "credentials: ${_usernameController.text} : ${_passwordController.text}");
                     AuthProvider.username = _usernameController.text;
                     AuthProvider.password = _passwordController.text;
                     try {
-                      var data = await provider.get();
-                      print("Authorized");
+                      await provider.get();
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
                           builder: (context) => MasterScreen()));
                     } on Exception catch (e) {
-                      print("Not authorized!");
                       showDialog(
                           context: context,
                           builder: (context) => AlertDialog(
@@ -189,7 +182,7 @@ class _LoginPageState extends State<LoginPage> {
               TextButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => ForgotPasswordScreen()));
+                      builder: (context) => const ForgotPasswordScreen()));
                 },
                 child: const Text(
                   "Promjena lozinke",

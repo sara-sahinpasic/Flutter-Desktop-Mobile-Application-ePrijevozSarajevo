@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace ePrijevozSarajevo.Model.SearchObjects
+﻿namespace ePrijevozSarajevo.Model.SearchObjects
 {
     public class RouteSearchObject : BaseSearchObject
     {
@@ -8,6 +6,6 @@ namespace ePrijevozSarajevo.Model.SearchObjects
         public int? EndStationIdGTE { get; set; }
         public DateTime DateGTE { get; set; }
         public bool? IsStationIncluded { get; set; }
-
+        public bool? IsVehicleIncluded { get; set; }
     }
 }

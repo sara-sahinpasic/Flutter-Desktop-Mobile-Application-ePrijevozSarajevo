@@ -24,18 +24,28 @@ namespace ePrijevozSarajevo.Services
                 var date = search.DateGTE.Date;
                 var time = search.DateGTE.TimeOfDay;
 
-                query = query.Where(x => x.StartStationId == search.StartStationIdGTE)
+                query = query.Where(x => x.StartStationId == search.StartStationIdGTE && x.EndStationId == search.EndStationIdGTE)
                              .Where(x => x.Departure.Date.Equals(date))
                              //mobile: 
                              .Where(x => x.Departure.Date == date && x.Departure.TimeOfDay >= time);
+                             //&& x.Departure >= search.DateGTE);
 
             }
-            /* if (search.IsStationIncluded == true)
-             {
-                 query = query.Include(x => x.StartStation);
-             }*/
+            if (search.IsStationIncluded == true)
+            {
+                query = query.Include(x => x.StartStation)
+                   .Include(y => y.EndStation);
+            }
+            if (search.IsVehicleIncluded == true)
+            {
+                query = query.Include(x => x.Vehicle)
+                             .ThenInclude(y => y.Type)
+                             .Include(x => x.Vehicle.Manufacturer);
+            }
 
-            return query;//.OrderByDescending(x=>x.Departure);
+
+            return query;
+            //.OrderByDescending(x=>x.Departure);
         }
 
         public async Task DeleteRouteWithIssuedTickets(int routeId)

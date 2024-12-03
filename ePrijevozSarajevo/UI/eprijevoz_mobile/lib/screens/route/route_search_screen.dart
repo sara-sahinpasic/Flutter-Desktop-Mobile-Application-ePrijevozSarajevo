@@ -6,7 +6,7 @@ import 'package:eprijevoz_mobile/models/station.dart';
 import 'package:eprijevoz_mobile/providers/route_provider.dart';
 import 'package:eprijevoz_mobile/providers/station_provider.dart';
 import 'package:eprijevoz_mobile/providers/utils.dart';
-import 'package:eprijevoz_mobile/screens/route_options_screen.dart';
+import 'package:eprijevoz_mobile/screens/route/route_options_screen.dart';
 import 'package:flutter/material.dart' hide Route;
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
@@ -25,21 +25,15 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
   SearchResult<Route>? routeResult;
   late StationProvider stationProvider;
   SearchResult<Station>? stationResult;
-
-  // Form
   final _formKey = GlobalKey<FormBuilderState>();
   Map<String, dynamic> _initialValue = {};
-
-  int? _selectedStartStationId;
-  int? _selectedEndStationId;
-
+  int? selectedStartStationId;
+  int? selectedEndStationId;
   List<Station> uniqueStartStations = [];
   List<Station> endStations = [];
-
   DateTime selectedDepartureDate = DateTime.now();
   TimeOfDay selectedTime = TimeOfDay.now();
-
-  Route? _currentRoute;
+  bool isLoading = false;
 
   @override
   void initState() {
@@ -49,37 +43,49 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
     super.initState();
 
     _initialValue = {
-      'startStationId': widget?.route?.startStationId?.toString(),
-      'endStationId': widget?.route?.endStationId?.toString(),
-      'stationId': widget?.station?.stationId?.toString(),
-      'routeId': widget?.route?.routeId.toString()
+      'startStationId': widget.route?.startStationId?.toString(),
+      'endStationId': widget.route?.endStationId?.toString(),
+      'stationId': widget.station?.stationId?.toString(),
+      'routeId': widget.route?.routeId.toString()
     };
 
     initForm();
   }
 
   Future initForm() async {
-    stationResult = await stationProvider.get();
-    routeResult = await routeProvider.get();
+    setState(() {
+      isLoading = true;
+    });
+
+    try {
+      stationResult = await stationProvider.get();
+      routeResult = await routeProvider.get();
+    } catch (e) {
+      debugPrint('Error: $e');
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
 
     if (routeResult?.result != null) {
       routeResult!.result = filterDuplicates(routeResult!.result);
     }
 
     setState(() {
-      // Filter unique start stations
+      // filter unique start stations
       uniqueStartStations =
           getUniqueStartStations(routeResult!.result, stationResult!.result);
 
-      // Populate end stations based on the selected start station if any
+      // populate end stations based on the selected start station if any
       if (widget.route?.startStationId != null &&
           widget.route!.startStationId! > 0) {
-        _selectedStartStationId = widget.route!.startStationId!;
+        selectedStartStationId = widget.route!.startStationId!;
         endStations =
-            getEndStationsForSelectedStartStation(_selectedStartStationId!);
+            getEndStationsForSelectedStartStation(selectedStartStationId!);
       } else {
-        _selectedStartStationId = null;
-        _selectedEndStationId = null;
+        selectedStartStationId = null;
+        selectedEndStationId = null;
       }
     });
   }
@@ -96,7 +102,7 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
 
   List<Station> getEndStationsForSelectedStartStation(int startStationId) {
     return routeResult?.result
-            ?.where((route) => route.startStationId == startStationId)
+            .where((route) => route.startStationId == startStationId)
             .map((route) => stationResult?.result.firstWhere(
                 (station) => station.stationId == route.endStationId))
             .where((station) => station != null)
@@ -113,12 +119,12 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
         .toList();
   }
 
-  Future<void> _selectDepartureDateTime(BuildContext context) async {
+  Future<void> selectDepartureDateTime(BuildContext context) async {
     final DateTime? pickedDate = await showDatePicker(
       context: context,
       initialDate: selectedDepartureDate,
       firstDate: DateTime(2000),
-      lastDate: DateTime(2101),
+      lastDate: DateTime(2100),
     );
 
     if (pickedDate != null) {
@@ -147,12 +153,12 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Container(
-          child: Column(
-            children: [
-              _buildResultView(),
-            ],
-          ),
+        child: Column(
+          children: [
+            isLoading
+                ? const Center(child: CircularProgressIndicator())
+                : _buildResultView(),
+          ],
         ),
       ),
     );
@@ -172,9 +178,7 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
             width: 200,
             height: 140,
             child: IconButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
+              onPressed: () {},
               icon: const Icon(
                 Icons.location_on,
                 color: Colors.black,
@@ -190,7 +194,7 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
                       20.0, 15.0, 20.0, 0.0), // left, top, right, bottom
                   child: FormBuilderDropdown(
                     name: "startStationId",
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       label: Text("Polazna stanica"),
                     ),
                     items: uniqueStartStations
@@ -200,16 +204,15 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
                         .toList(),
                     onChanged: (value) {
                       setState(() {
-                        _selectedStartStationId =
-                            int.tryParse(value.toString()) ?? null;
-                        endStations = _selectedStartStationId != null
+                        selectedStartStationId = int.tryParse(value.toString());
+                        endStations = selectedStartStationId != null
                             ? getEndStationsForSelectedStartStation(
-                                _selectedStartStationId!)
+                                selectedStartStationId!)
                             : [];
-                        _selectedEndStationId = null; // Reset end station
+                        selectedEndStationId = null; // Reset end station
                       });
                     },
-                    initialValue: _selectedStartStationId?.toString(),
+                    initialValue: selectedStartStationId?.toString(),
                   ),
                 ),
               ),
@@ -223,7 +226,7 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
                       20.0, 10.0, 20.0, 0.0), // left, top, right, bottom
                   child: FormBuilderDropdown(
                     name: "endStationId",
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       label: Text("Cilj"),
                     ),
                     items: endStations
@@ -234,9 +237,9 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
                     onChanged: (value) {
                       var station = stationResult?.result.firstWhere(
                           ((station) => station.stationId.toString() == value));
-                      _selectedEndStationId = station?.stationId ?? 0;
+                      selectedEndStationId = station?.stationId ?? 0;
                     },
-                    initialValue: _selectedEndStationId?.toString(),
+                    initialValue: selectedEndStationId?.toString(),
                   ),
                 ),
               ),
@@ -255,17 +258,16 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
                       backgroundColor: Colors.white,
                       shape: BeveledRectangleBorder(
                           borderRadius: BorderRadius.circular(0.0),
-                          side: BorderSide(color: Colors.black)),
-                      minimumSize: Size(250, 40),
+                          side: const BorderSide(color: Colors.black)),
+                      minimumSize: const Size(250, 40),
                     ),
                     onPressed: () async {
-                      await _selectDepartureDateTime(context);
-                      print("Selected DateTime: ${selectedDepartureDate}");
+                      await selectDepartureDateTime(context);
                       setState(() {});
                     },
                     child: Text(
                       '${formatDateTime(selectedDepartureDate)} ',
-                      style: TextStyle(color: Colors.black),
+                      style: const TextStyle(color: Colors.black),
                     ),
                   ),
                 ),
@@ -282,49 +284,53 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
                   height: 50,
                   child: ElevatedButton(
                       onPressed: () async {
-                        print("StartStationIdGTE: ${_selectedStartStationId}");
-                        print("EndStationIdGTE: ${_selectedEndStationId}");
-                        print("DateGTE: ${selectedDepartureDate}"); //
-                        //print("1. Route search: ${routeResult?.result}");
-                        if (routeResult?.result != null) {
-                          String prettyJson = const JsonEncoder.withIndent('  ')
-                              .convert(routeResult!.result);
-                          print("1. Route search:\n$prettyJson");
-                        } else {
-                          print('result is null');
+                        setState(() {
+                          isLoading = true;
+                        });
+
+                        try {
+                          var filter = {
+                            'StartStationIdGTE': selectedStartStationId,
+                            'EndStationIdGTE': selectedEndStationId,
+                            'DateGTE': selectedDepartureDate
+                          };
+                          routeResult = await routeProvider.get(filter: filter);
+                        } catch (e) {
+                          debugPrint('Error: $e');
+                        } finally {
+                          setState(() {
+                            isLoading = false;
+                          });
                         }
 
-                        // Filter parameters for the route search
-                        var filter = {
-                          'StartStationIdGTE': _selectedStartStationId,
-                          'EndStationIdGTE': _selectedEndStationId,
-                          'DateGTE': selectedDepartureDate
-                        };
-
-                        // Fetch filtered routes
-                        routeResult = await routeProvider.get(filter: filter);
+                        if (routeResult?.result != null) {
+                          const JsonEncoder.withIndent('  ')
+                              .convert(routeResult!.result);
+                        }
 
                         if (routeResult != null &&
                             routeResult!.result.isNotEmpty) {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => RouteOptionsScreen(
                                   routes: routeResult!
-                                      .result))); //pošalji nađene rute na dr. screen
+                                      .result))); // send founded routes on another screen
                         } else {
-                          // Show a dialog if no routes are found
                           showDialog(
                             context: context,
                             builder: (BuildContext context) {
                               return AlertDialog(
-                                title: Text("No Routes Found"),
-                                content: Text(
-                                    "Please try different search criteria."),
+                                title: const Text("Nema pronađenih ruta."),
+                                content: const Text(
+                                    "Molimo, pokušajte drugačiju pretragu."),
                                 actions: [
                                   TextButton(
                                     onPressed: () {
                                       Navigator.of(context).pop();
                                     },
-                                    child: Text("OK"),
+                                    child: const Text(
+                                      "OK",
+                                      style: TextStyle(color: Colors.black),
+                                    ),
                                   ),
                                 ],
                               );
@@ -335,9 +341,11 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(2.0)),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 10.0),
                       ),
-                      child: Text(
+                      child: const Text(
                         "Pretraži",
                         style: TextStyle(fontSize: 19),
                       )),
@@ -367,15 +375,4 @@ class Tuple<T1, T2> {
 
   @override
   int get hashCode => item1.hashCode ^ item2.hashCode;
-}
-
-void showFilteredRoutes(List<Route> routes) {
-  // For now, just print the filtered routes
-  print("Filtered Routes: ${routes.length}");
-  for (var route in routes) {
-    print(
-        "Route from ${route.startStationId} to ${route.endStationId} at ${route.departure}");
-  }
-
-  // Update UI here to display the filtered routes (e.g., in a ListView)
 }
