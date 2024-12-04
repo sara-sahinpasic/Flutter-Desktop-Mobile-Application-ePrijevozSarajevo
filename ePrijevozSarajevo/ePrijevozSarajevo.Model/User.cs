@@ -15,7 +15,6 @@
         public int UserCountryId { get; set; }
         public DateTime RegistrationDate { get; set; }
         public DateTime ModifiedDate { get; set; }
-        public bool Active { get; set; }
         public byte[]? ProfileImage { get; set; }
         public Status? UserStatus { get; set; }
         public int UserStatusId { get; set; }

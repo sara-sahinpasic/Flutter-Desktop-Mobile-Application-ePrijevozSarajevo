@@ -24,15 +24,18 @@ class _TicketScreenState extends State<TicketScreen> {
   SearchResult<User>? userResult;
   SearchResult<IssuedTicket>? issuedTicketResult;
   SearchResult<Ticket>? ticketResult;
-  User? _user;
-  int? _amount;
+  User? user;
+  int? amount;
+  bool isLoading = true;
+  final List<String>? ticketsName = [];
 
   @override
   void initState() {
-    super.initState();
     userProvider = context.read<UserProvider>();
     issuedTicketProvider = context.read<IssuedTicketProvider>();
     ticketProvider = context.read<TicketProvider>();
+
+    super.initState();
 
     initForm();
   }
@@ -42,23 +45,23 @@ class _TicketScreenState extends State<TicketScreen> {
     issuedTicketResult = await issuedTicketProvider.get();
     ticketResult = await ticketProvider.get();
 
-    var user = userResult?.result
+    user = userResult?.result
         .firstWhere((user) => user.userName == AuthProvider.username);
-    _user = user;
 
     var issuedTicket = issuedTicketResult?.result
-        .firstWhere((ticketUser) => ticketUser.userId == _user?.userId);
+        .firstWhere((ticketUser) => ticketUser.userId == user?.userId);
     if (issuedTicket != null) {
-      _amount = issuedTicket.amount;
+      amount = issuedTicket.amount;
     }
 
-    setState(() {});
+    setState(() {
+      isLoading = false;
+    });
   }
 
-  final List<String>? _ticketsName = [];
   List<String>? ticketName() {
     var issuedTickets = issuedTicketResult?.result
-        .where((issuedTicket) => issuedTicket.userId == _user?.userId)
+        .where((issuedTicket) => issuedTicket.userId == user?.userId)
         .toList();
 
     if (issuedTickets != null && issuedTickets.isNotEmpty) {
@@ -68,13 +71,13 @@ class _TicketScreenState extends State<TicketScreen> {
         );
 
         if (ticket != null) {
-          _ticketsName?.add(ticket.name ?? "");
+          ticketsName?.add(ticket.name ?? "");
         }
       }
     } else {
-      print("Korisnik nema izdatih karti.");
+      debugPrint("Korisnik nema izdatih karti.");
     }
-    return _ticketsName;
+    return ticketsName;
   }
 
   @override
@@ -97,67 +100,74 @@ class _TicketScreenState extends State<TicketScreen> {
 
   Widget _buildResultView() {
     var issuedTickets = issuedTicketResult?.result
-        .where((issuedTicket) => issuedTicket.userId == _user?.userId)
+        .where((issuedTicket) => issuedTicket.userId == user?.userId)
         .toList();
 
     if (issuedTickets == null || issuedTickets.isEmpty) {
-      return Text("Korisnik nema izdatih karti.");
+      return const Text("Korisnik nema izdatih karti.");
     }
 
-    return Column(
-      children: issuedTickets.map((issuedTicket) {
-        var ticket = ticketResult?.result.firstWhere(
-          (ticket) => ticket.ticketId == issuedTicket.ticketId,
-        );
+    return isLoading
+        ? const Center(
+            child: CircularProgressIndicator(),
+          )
+        : Column(
+            children: issuedTickets.map((issuedTicket) {
+              var ticket = ticketResult?.result.firstWhere(
+                (ticket) => ticket.ticketId == issuedTicket.ticketId,
+              );
 
-        if (ticket == null) {
-          return Text("Karta nije pronađena.");
-        }
+              if (ticket == null) {
+                return const Text("Karta nije pronađena.");
+              }
 
-        Color cardColor = DateTime.now().isAfter(issuedTicket.validTo!)
-            ? Colors.red.shade300
-            : Colors.green.shade300;
+              Color cardColor = DateTime.now().isAfter(issuedTicket.validTo!)
+                  ? Colors.red.shade300
+                  : Colors.green.shade300;
 
-        return Container(
-          margin: EdgeInsets.symmetric(vertical: 10),
-          width: 400,
-          padding: EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            color: cardColor,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 2,
-                blurRadius: 5,
-                offset: Offset(0, 3),
-              ),
-            ],
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "${ticket.name} karta - ${issuedTicket.amount}X" ?? "",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 5),
-              Text("Broj korisnika: ${_user?.userId}"),
-              Text("Korisnik: ${_user?.firstName} ${_user?.lastName}"),
-              Text(
-                "Datum rođenja: ${formatDate(_user?.dateOfBirth)}",
-              ),
-              Divider(
-                color: Colors.black,
-              ),
-              Text("Datum važenja:"),
-              Text(
-                "${formatDateTime(issuedTicket.validFrom!)} <lll> ${formatDateTime(issuedTicket.validTo!)}",
-              ),
-            ],
-          ),
-        );
-      }).toList(),
-    );
+              return Container(
+                margin: const EdgeInsets.symmetric(vertical: 10),
+                width: 400,
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: cardColor,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: const Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "${ticket.name} karta  (${issuedTicket.amount})",
+                      style: const TextStyle(
+                          fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 5),
+                    Text(
+                      "Kupac: Nr.${user?.userId} | ${user?.firstName} ${user?.lastName} | ${formatDate(user?.dateOfBirth)}",
+                    ),
+                    const Divider(
+                      color: Colors.black,
+                    ),
+                    const Text(
+                      "Valjanost:",
+                      style: TextStyle(fontWeight: FontWeight.w500),
+                    ),
+                    Text(
+                      "${formatDateTime(issuedTicket.validFrom!)} - ${formatDateTime(issuedTicket.validTo!)}",
+                      style: const TextStyle(fontWeight: FontWeight.w500),
+                    ),
+                  ],
+                ),
+              );
+            }).toList(),
+          );
   }
 }

@@ -10,8 +10,8 @@ import 'package:eprijevoz_mobile/providers/request_provider.dart';
 import 'package:eprijevoz_mobile/providers/status_provider.dart';
 import 'package:eprijevoz_mobile/providers/user_provider.dart';
 import 'package:eprijevoz_mobile/providers/utils.dart';
-import 'package:eprijevoz_mobile/screens/profile_screen_update.dart';
-import 'package:eprijevoz_mobile/screens/request/request_options_screen.dart';
+import 'package:eprijevoz_mobile/screens/profile/profile_screen_update.dart';
+import 'package:eprijevoz_mobile/screens/profile/profile_request_options_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
@@ -42,27 +42,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
   User? user;
   final _formKey = GlobalKey<FormBuilderState>();
   Map<String, dynamic> _initialValue = {};
+  bool isLoading = true;
 
   @override
   void initState() {
-    super.initState();
     userProvider = context.read<UserProvider>();
     statusProvider = context.read<StatusProvider>();
     requestProvider = context.read<RequestProvider>();
     countryProvider = context.read<CountryProvider>();
+
+    super.initState();
+
     initForm();
   }
 
-  int? userId;
-  var userFirstName = "";
-  var userLastName = "";
-  var userBirthday = "";
-  var userPhoneNumber = "";
-  var userAddress = "";
-  var userCity = "";
-  var userZipCode = "";
-  var userStatusId = "";
-  var userCountryId = "";
   Widget? userImageWidget;
 
   Future initForm() async {
@@ -74,20 +67,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     user = userResult?.result
         .firstWhere((user) => user.userName == AuthProvider.username);
 
-    userId = int.tryParse('${user?.userId}');
-    userFirstName = '${user?.firstName}';
-    userLastName = '${user?.lastName}';
-    if (user?.dateOfBirth != null) {
-      userBirthday = user?.dateOfBirth.toString() ?? '';
-    } else {
-      userBirthday = '';
-    }
-    userPhoneNumber = '${user?.phoneNumber}';
-    userAddress = '${user?.address}';
-    userCity = '${user?.city}';
-    userZipCode = '${user?.zipCode}';
-    userStatusId = '${user?.userStatusId}';
-    userCountryId = '${user?.userCountryId}';
     userImageWidget = user?.profileImage != null
         ? SizedBox(
             width: 200,
@@ -110,20 +89,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
         "";
     //Refresh UI
     setState(() {
+      isLoading = false;
+
       _initialValue = {
-        'firstName': userFirstName,
-        'lastName': userLastName,
-        'phoneNumber': userPhoneNumber,
-        'address': userAddress,
-        'zipCode': userZipCode,
-        'city': userCity,
-        'country': userCountryId,
+        'firstName': user?.firstName,
+        'lastName': user?.lastName,
+        'userName': user?.userName,
+        'phoneNumber': user?.phoneNumber,
+        'address': user?.address,
+        'zipCode': user?.zipCode,
+        'city': user?.city,
+        'country': user?.userCountryId,
         'profileImage': userImageWidget
       };
     });
 
     userRequest = requestResult?.result.firstWhere(
-        (request) => request.userId == userId && request.active == true);
+        (request) => request.userId == user?.userId && request.active == true);
 
     if (userRequest != null) {
       hasActiveRequest = true; //active
@@ -132,17 +114,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
-  /*Future refreshUserData() async {
-    var request = Map.from(_formKey.currentState?.value ?? {});
-    print("Request: ${request}");
-    userResult = await userProvider.get(filter: request);
-
-    if (userResult != null && userResult!.result.isNotEmpty) {
-      setState(() {
-        user = userResult?.result.first;
-      });
-    }
-  }*/
   Future refreshUserData() async {
     // Ensure the form state is saved
     if (_formKey.currentState?.saveAndValidate() ?? false) {
@@ -165,7 +136,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     value = true;
   }
 
-//default_image.jpg
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -174,7 +144,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          _buildResultView(),
+          isLoading
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : _buildResultView(),
           const SizedBox(height: 15),
           _buildActionButtons(),
         ],
@@ -230,7 +204,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(25.0, 0.0, 0.0, 0.0),
                       child: Text(
-                        '$userId',
+                        "${user?.userId}",
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
@@ -254,7 +228,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(124.0, 0.0, 0.0, 0.0),
                       child: Text(
-                        userFirstName,
+                        "${user?.firstName}",
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
@@ -278,7 +252,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(83.0, 0.0, 0.0, 0.0),
                       child: Text(
-                        userLastName,
+                        "${user?.lastName}",
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
@@ -302,9 +276,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(23.0, 0.0, 0.0, 0.0),
                       child: Text(
-                        userBirthday.isNotEmpty
-                            ? formatDate(DateTime.parse(userBirthday))
-                            : "",
+                        formatDate(user!.dateOfBirth),
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
@@ -328,7 +300,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(94.0, 0.0, 0.0, 0.0),
                       child: Text(
-                        userAddress,
+                        "${user?.address}",
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
@@ -352,7 +324,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(28.0, 0.0, 0.0, 0.0),
                       child: Text(
-                        userZipCode,
+                        "${user?.zipCode}",
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
@@ -376,7 +348,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(116.0, 0.0, 0.0, 0.0),
                       child: Text(
-                        userCity,
+                        "${user?.city}",
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
@@ -441,13 +413,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget _buildActionButtons() {
     return Column(
       children: [
+        // request
         SizedBox(
           width: double.infinity,
           child: ElevatedButton(
             onPressed: () {
               if (hasActiveRequest == true) {
                 setState(() {
-                  isButtonClicked = true; // Set the button as clicked
+                  isButtonClicked = true; // set the button as clicked
                 });
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
@@ -481,29 +454,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ),
         ),
-        // request
         const SizedBox(height: 10),
         // update
         SizedBox(
           width: double.infinity,
           child: ElevatedButton(
             onPressed: () async {
-              User isUpdated = await Navigator.push(
+              await Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => UpdateProfileScreen(
                     user: user,
-                    // onUserUpdated: refreshUserData,
                   ),
                 ),
               );
-
-              if (isUpdated != user) {
-                setState(() async {
-                  await refreshUserData(); // Refresh only if the profile was updated
-                });
-              }
-              //value ? refreshUserData() : const Text("Ništa");
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.black,
@@ -548,7 +512,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     Navigator.pop(dialogContext, false))
                           ]));
               if (userConfirmedDeletion) {
-                bool success = await userProvider.delete(userId!);
+                bool success = await userProvider.delete(user!.userId!);
                 if (mounted) {
                   await showDialog(
                     context: context,
@@ -562,8 +526,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       actions: [
                         TextButton(
                           onPressed: () {
-                            Navigator.of(dialogDeleteContext)
-                                .pop(); // close the dialog
+                            Navigator.of(dialogDeleteContext).pop();
                             if (success) {
                               Navigator.of(context).pushReplacement(
                                 MaterialPageRoute(

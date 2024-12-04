@@ -1,5 +1,5 @@
 import 'package:eprijevoz_mobile/screens/home_screen.dart';
-import 'package:eprijevoz_mobile/screens/profile_screen.dart';
+import 'package:eprijevoz_mobile/screens/profile/profile_screen.dart';
 import 'package:eprijevoz_mobile/screens/route/route_search_screen.dart';
 import 'package:eprijevoz_mobile/screens/ticket_screen.dart';
 import 'package:flutter/material.dart';
