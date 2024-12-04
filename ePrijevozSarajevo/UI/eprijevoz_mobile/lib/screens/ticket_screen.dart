@@ -1,6 +1,5 @@
 import 'package:eprijevoz_mobile/models/issuedTicket.dart';
 import 'package:eprijevoz_mobile/models/search_result.dart';
-import 'package:eprijevoz_mobile/models/status.dart';
 import 'package:eprijevoz_mobile/models/ticket.dart';
 import 'package:eprijevoz_mobile/models/user.dart';
 import 'package:eprijevoz_mobile/providers/auth_provider.dart';
@@ -12,11 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class TicketScreen extends StatefulWidget {
-  //final int? amount;
-  const TicketScreen(
-      {
-      //this.amount,
-      super.key});
+  const TicketScreen({super.key});
 
   @override
   State<TicketScreen> createState() => _TicketScreenState();

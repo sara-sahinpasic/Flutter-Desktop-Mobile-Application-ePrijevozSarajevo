@@ -4,14 +4,14 @@ import 'package:eprijevoz_mobile/models/station.dart';
 import 'package:eprijevoz_mobile/providers/route_provider.dart';
 import 'package:eprijevoz_mobile/providers/station_provider.dart';
 import 'package:eprijevoz_mobile/providers/utils.dart';
-import 'package:eprijevoz_mobile/screens/route_ticket_choose_screen.dart';
+import 'package:eprijevoz_mobile/screens/route/route_ticket_choose_screen.dart';
 import 'package:flutter/material.dart' hide Route;
 import 'package:provider/provider.dart';
 
 class RouteOptionsScreen extends StatefulWidget {
   final List<Route> routes;
 
-  RouteOptionsScreen({required this.routes, super.key});
+  const RouteOptionsScreen({required this.routes, super.key});
   @override
   State<RouteOptionsScreen> createState() => _RouteOptionsScreenState();
 }
