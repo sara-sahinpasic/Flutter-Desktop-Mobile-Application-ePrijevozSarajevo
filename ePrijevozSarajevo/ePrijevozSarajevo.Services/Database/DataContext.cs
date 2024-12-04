@@ -108,7 +108,6 @@ namespace ePrijevozSarajevo.Services.Database
                 UserCountryId =1,
                 RegistrationDate = DateTime.Now,
                 ModifiedDate = DateTime.Now,
-                Active = true,
                 UserStatusId = 4,
                 ProfileImage = null,
                 StatusExpirationDate = new DateTime(2025, 12, 31)
@@ -129,7 +128,6 @@ namespace ePrijevozSarajevo.Services.Database
                 UserCountryId =1,
                 RegistrationDate = DateTime.Now,
                 ModifiedDate = DateTime.Now,
-                Active = true,
                 UserStatusId = 4,
                 ProfileImage = null,
                 StatusExpirationDate = new DateTime(2025, 12, 31)
@@ -150,7 +148,6 @@ namespace ePrijevozSarajevo.Services.Database
                 UserCountryId =2,
                 RegistrationDate = DateTime.Now,
                 ModifiedDate = DateTime.Now,
-                Active = true,
                 UserStatusId = 1,
                 ProfileImage = null,
                 StatusExpirationDate = new DateTime(2025, 12, 31)
@@ -171,7 +168,6 @@ namespace ePrijevozSarajevo.Services.Database
                 UserCountryId =3,
                 RegistrationDate = DateTime.Now,
                 ModifiedDate = DateTime.Now,
-                Active = true,
                 UserStatusId = 1,
                 ProfileImage = null,
                 StatusExpirationDate = new DateTime(2025, 12, 31)
@@ -192,7 +188,6 @@ namespace ePrijevozSarajevo.Services.Database
                 UserCountryId =3,
                 RegistrationDate = DateTime.Now,
                 ModifiedDate = DateTime.Now,
-                Active = true,
                 UserStatusId = 1,
                 ProfileImage = null,
                 StatusExpirationDate = new DateTime(2025, 12, 31)
@@ -213,7 +208,6 @@ namespace ePrijevozSarajevo.Services.Database
                 UserCountryId =2,
                 RegistrationDate = DateTime.Now,
                 ModifiedDate = DateTime.Now,
-                Active = true,
                 UserStatusId = 1,
                 ProfileImage = null,
                 StatusExpirationDate = new DateTime(2025, 12, 31)
@@ -244,7 +238,6 @@ namespace ePrijevozSarajevo.Services.Database
                 int ticketId = random.Next(1, maxTickets + 1);
                 int routeId = random.Next(1, maxRoutes + 1);
 
-                // Random year: Past year or current year
                 int year = DateTime.Now.Year - random.Next(0, 2); // current year or last year
                 int month = random.Next(1, 13);
                 int day = random.Next(1, DateTime.DaysInMonth(year, month) + 1);
@@ -285,46 +278,164 @@ namespace ePrijevozSarajevo.Services.Database
             modelBuilder.Entity<IssuedTicket>()
               .HasData(issuedTickets);
         } //2
-        private static void BuildRoutes(ModelBuilder modelBuilder)
+         private static void BuildRoutes(ModelBuilder modelBuilder)
+         {
+             List<Route> routes = new();
+             var random = new Random();
+
+             int totalRoutes = 100;
+             int totalStations = 15;
+             int totalVehicles = 6;
+
+             for (int i = 1; i <= totalRoutes; i++)
+             {
+                 int startStationId = random.Next(1, totalStations + 1);
+                 int endStationId;
+                 do
+                 {
+                     endStationId = random.Next(1, totalStations + 1);
+                 } while (endStationId == startStationId);
+
+                 DateTime startDate = new DateTime(2024, 11, 01);
+                 DateTime endDate = new DateTime(2024, 12, 31);
+
+                 int range = (endDate - startDate).Days;
+                 DateTime randomDate = startDate.AddDays(random.Next(range));
+
+                 int departureHour = random.Next(5, 24);
+                 int departureMinute = random.Next(0, 60);
+                 DateTime departure = new DateTime(randomDate.Year, randomDate.Month, randomDate.Day, departureHour, departureMinute, 0);
+
+                 DateTime arrival = departure.AddMinutes(random.Next(10, 60)); // between 10 minutes and 1 hour after departure
+
+                 routes.Add(new Route()
+                 {
+                     RouteId = i,
+                     StartStationId = startStationId,
+                     EndStationId = endStationId,
+                     VehicleId = random.Next(1, totalVehicles + 1),
+                     Departure = departure,
+                     Arrival = arrival
+                 });
+             }
+             modelBuilder.Entity<Route>()
+                .HasData(routes);
+         } //3
+        /* private static void BuildRoutes(ModelBuilder modelBuilder)
+         {
+             List<Route> routes = new();
+             var random = new Random();
+
+             int totalStations = 15;
+             int totalVehicles = 6;
+             int routeId = 1;
+
+             // allowed departure days of the month
+             int[] allowedDays = { 5, 10, 15, 20, 25 };
+
+             DateTime startDate = new DateTime(2024, 12, 01);
+             DateTime endDate = new DateTime(2025, 03, 01); 
+
+             foreach (var month in Enumerable.Range(startDate.Month, endDate.Month - startDate.Month + 1))
+             {
+                 foreach (var day in allowedDays)
+                 {
+                     foreach (int startStationId in Enumerable.Range(1, totalStations))
+                     {
+                         foreach (int endStationId in Enumerable.Range(1, totalStations))
+                         {
+                             if (startStationId == endStationId) continue; // skip if stations are the same
+
+                             DateTime departureDate;
+                             try
+                             {
+                                 departureDate = new DateTime(startDate.Year, month, day);
+                             }
+                             catch
+                             {
+                                 // skip invalid days like Feb 30
+                                 continue;
+                             }
+
+                             int departureHour = random.Next(5, 24);
+                             int departureMinute = random.Next(0, 60);
+                             DateTime departure = new DateTime(departureDate.Year, departureDate.Month, departureDate.Day, departureHour, departureMinute, 0);
+
+                             DateTime arrival = departure.AddMinutes(random.Next(10, 60)); // between 10 minutes and 1 hour after departure
+
+                             routes.Add(new Route()
+                             {
+                                 RouteId = routeId++,
+                                 StartStationId = startStationId,
+                                 EndStationId = endStationId,
+                                 VehicleId = random.Next(1, totalVehicles + 1),
+                                 Departure = departure,
+                                 Arrival = arrival
+                             });
+                         }
+                     }
+                 }
+             }
+
+             modelBuilder.Entity<Route>().HasData(routes);
+         }//3*/
+       /* private static void BuildRoutes(ModelBuilder modelBuilder)
         {
             List<Route> routes = new();
             var random = new Random();
-            int totalRoutes = 100;
+
             int totalStations = 15;
             int totalVehicles = 6;
-            for (int i = 1; i <= totalRoutes; i++)
+            int routeId = 1;
+
+            // Define the allowed departure days of the month
+            int[] allowedDays = { 5, 10, 15, 20, 25 };
+
+            DateTime startDate = new DateTime(2024, 12, 01);
+            DateTime endDate = new DateTime(2025, 02, 29); // Leap year ensures February 29 exists
+
+            for (var currentDate = startDate; currentDate <= endDate; currentDate = currentDate.AddMonths(1))
             {
-                int startStationId = random.Next(1, totalStations + 1);
-                int endStationId;
-                do
+                foreach (var day in allowedDays)
                 {
-                    endStationId = random.Next(1, totalStations + 1);
-                } while (endStationId == startStationId);
+                    // Ensure the day exists in the current month
+                    if (day > DateTime.DaysInMonth(currentDate.Year, currentDate.Month)) continue;
 
-                DateTime startDate = new DateTime(2024, 11, 01);
-                DateTime endDate = new DateTime(2024, 12, 31);
+                    foreach (int startStationId in Enumerable.Range(1, totalStations))
+                    {
+                        foreach (int endStationId in Enumerable.Range(1, totalStations))
+                        {
+                            if (startStationId == endStationId) continue; // Skip if stations are the same
 
-                int range = (endDate - startDate).Days;
-                DateTime randomDate = startDate.AddDays(random.Next(range));
+                            // Safely create a departure date
+                            DateTime departureDate = new DateTime(currentDate.Year, currentDate.Month, day);
 
-                int departureHour = random.Next(5, 24);
-                int departureMinute = random.Next(0, 60);
-                DateTime departure = new DateTime(randomDate.Year, randomDate.Month, randomDate.Day, departureHour, departureMinute, 0);
+                            // Generate random departure time
+                            int departureHour = random.Next(5, 24);
+                            int departureMinute = random.Next(0, 60);
+                            DateTime departure = new DateTime(departureDate.Year, departureDate.Month, departureDate.Day, departureHour, departureMinute, 0);
 
-                DateTime arrival = departure.AddMinutes(random.Next(10, 60)); // between 10 minutes and 1 hour after departure
+                            // Generate random arrival time between 10 minutes and 1 hour after departure
+                            DateTime arrival = departure.AddMinutes(random.Next(10, 60));
 
-                routes.Add(new Route()
-                {
-                    RouteId = i,
-                    StartStationId = startStationId,
-                    EndStationId = endStationId,
-                    VehicleId = random.Next(1, totalVehicles + 1),
-                    Departure = departure,
-                    Arrival = arrival
-                });
+                            routes.Add(new Route()
+                            {
+                                RouteId = routeId++,
+                                StartStationId = startStationId,
+                                EndStationId = endStationId,
+                                VehicleId = random.Next(1, totalVehicles + 1),
+                                Departure = departure,
+                                Arrival = arrival
+                            });
+                        }
+                    }
+                }
             }
-            modelBuilder.Entity<Route>()
-               .HasData(routes);
-        } //3
+
+            modelBuilder.Entity<Route>().HasData(routes);
+        }*/
+
+
+
     }
 }

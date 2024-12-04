@@ -3,8 +3,8 @@ import 'package:eprijevoz_mobile/models/user.dart';
 import 'package:eprijevoz_mobile/providers/auth_provider.dart';
 import 'package:eprijevoz_mobile/providers/request_provider.dart';
 import 'package:eprijevoz_mobile/providers/user_provider.dart';
-import 'package:eprijevoz_mobile/screens/profile_screen.dart';
-import 'package:eprijevoz_mobile/screens/request/request_screen.dart';
+import 'package:eprijevoz_mobile/screens/profile/profile_screen.dart';
+import 'package:eprijevoz_mobile/screens/profile/profile_request_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

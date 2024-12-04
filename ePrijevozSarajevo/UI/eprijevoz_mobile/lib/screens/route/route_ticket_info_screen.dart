@@ -166,7 +166,7 @@ class _TicketInfoScreenState extends State<TicketInfoScreen> {
                               borderRadius: BorderRadius.circular(5.0),
                             ),
                             child: Text(
-                              "Nr. ${widget.user?.userId} | ${widget.user?.firstName} ${widget.user?.lastName} | ${formatDate(widget.user?.dateOfBirth)}",
+                              "Nr.${widget.user?.userId} | ${widget.user?.firstName} ${widget.user?.lastName} | ${formatDate(widget.user?.dateOfBirth)}",
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.grey,

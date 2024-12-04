@@ -5,5 +5,7 @@
         public int IssuedTicketIdGTE { get; set; }
         public bool? IsUserIncluded { get; set; }
         public bool? IsTicketIncluded { get; set; }
+        public bool? IsRouteIncluded { get; set; }
+
     }
 }

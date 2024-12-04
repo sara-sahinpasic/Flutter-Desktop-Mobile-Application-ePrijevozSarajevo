@@ -24,18 +24,29 @@ namespace ePrijevozSarajevo.Services
             if (search.IsUserIncluded == true)
             {
                 query = query
-                    //ToDo
-                    //.Include(x => x.User)
-                      //  .ThenInclude(x => x.Role)
                     .Include(x => x.User)
-                        .ThenInclude(x => x.UserStatus);
+                        .ThenInclude(y => y.UserStatus)
+                        .Include(x => x.User.UserRoles)
+                        .Include(x => x.User.UserCountry);
+
             }
             if (search.IsTicketIncluded == true)
             {
                 query = query.Include(x => x.Ticket);
-            }       
+            }
 
-            return query;
+            if (search.IsRouteIncluded == true)
+            {
+                query = query.Include(x => x.Route)
+                    .ThenInclude(y => y.StartStation)
+                    .Include(x => x.Route.EndStation)
+                    .Include(z => z.Route.Vehicle)
+                    .ThenInclude(z => z.Manufacturer)
+                    .Include(z => z.Route.Vehicle)
+                    .ThenInclude(z => z.Type);
+            }
+
+            return query.OrderByDescending(x=>x.ValidTo);
         }
     }
 }
