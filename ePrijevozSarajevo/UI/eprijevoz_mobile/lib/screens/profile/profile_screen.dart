@@ -13,6 +13,7 @@ import 'package:eprijevoz_mobile/providers/utils.dart';
 import 'package:eprijevoz_mobile/screens/profile/profile_screen_update.dart';
 import 'package:eprijevoz_mobile/screens/profile/profile_request_options_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
 
@@ -43,6 +44,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final _formKey = GlobalKey<FormBuilderState>();
   Map<String, dynamic> _initialValue = {};
   bool isLoading = true;
+  Widget? userImageWidget;
 
   @override
   void initState() {
@@ -56,71 +58,81 @@ class _ProfileScreenState extends State<ProfileScreen> {
     initForm();
   }
 
-  Widget? userImageWidget;
-
   Future initForm() async {
     userResult = await userProvider.get();
     statusResult = await statusProvider.get();
     requestResult = await requestProvider.get();
     countryResult = await countryProvider.get();
 
-    user = userResult?.result
-        .firstWhere((user) => user.userName == AuthProvider.username);
+    user = userResult?.result.firstWhere(
+      (user) => user.userName == AuthProvider.username,
+    );
+    debugPrint("User: ${user?.firstName}");
 
-    userImageWidget = user?.profileImage != null
-        ? SizedBox(
-            width: 200,
-            height: 200,
-            child: imageFromString('${user?.profileImage}'),
-          )
-        : const Icon(
-            Icons.person,
-            size: 100,
-          );
+    if (user != null) {
+      userImageWidget = user?.profileImage != null
+          ? SizedBox(
+              width: 200,
+              height: 200,
+              child: imageFromString('${user?.profileImage}'),
+            )
+          : const Icon(
+              Icons.person,
+              size: 100,
+            );
 
-    userStatusName = statusResult?.result
-            .firstWhere((status) => status.statusId == user?.userStatusId)
-            .name ??
-        "";
+      userStatusName = statusResult?.result
+              .firstWhere(
+                (status) => status.statusId == user?.userStatusId,
+              )
+              .name ??
+          "";
+      debugPrint("User status name: $userStatusName");
 
-    userCountryName = countryResult?.result
-            .firstWhere((country) => country.countryId == user?.userCountryId)
-            .name ??
-        "";
-    //Refresh UI
+      userCountryName = countryResult?.result
+              .firstWhere(
+                (country) => country.countryId == user?.userCountryId,
+              )
+              .name ??
+          "";
+
+      debugPrint("User country name: $userCountryName");
+
+      // userRequest = requestResult?.result.firstWhere(
+      //   (request) => request.userId == user?.userId && request.active == true,
+      //   orElse: () => null!,
+      // );
+
+      // hasActiveRequest = userRequest != null;
+
+      // debugPrint("User request: $userRequest");
+
+      // Refresh UI
+      setState(() {
+        isLoading = false;
+
+        _initialValue = {
+          'firstName': user?.firstName,
+          'lastName': user?.lastName,
+          'userName': user?.userName,
+          'phoneNumber': user?.phoneNumber,
+          'address': user?.address,
+          'zipCode': user?.zipCode,
+          'city': user?.city,
+          'country': user?.userCountryId,
+          'profileImage': userImageWidget,
+        };
+      });
+    }
     setState(() {
       isLoading = false;
-
-      _initialValue = {
-        'firstName': user?.firstName,
-        'lastName': user?.lastName,
-        'userName': user?.userName,
-        'phoneNumber': user?.phoneNumber,
-        'address': user?.address,
-        'zipCode': user?.zipCode,
-        'city': user?.city,
-        'country': user?.userCountryId,
-        'profileImage': userImageWidget
-      };
     });
-
-    userRequest = requestResult?.result.firstWhere(
-        (request) => request.userId == user?.userId && request.active == true);
-
-    if (userRequest != null) {
-      hasActiveRequest = true; //active
-    } else {
-      hasActiveRequest = false;
-    }
   }
 
   Future refreshUserData() async {
-    // Ensure the form state is saved
     if (_formKey.currentState?.saveAndValidate() ?? false) {
-      // Retrieve the form values
       var request = Map.from(_formKey.currentState!.value);
 
-      print("Request: $request");
       userResult = await userProvider.get(filter: request);
 
       if (userResult != null && userResult!.result.isNotEmpty) {
@@ -129,11 +141,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
         });
       }
     }
-  }
-
-  bool value = false;
-  void changeData() {
-    value = true;
   }
 
   @override
@@ -170,19 +177,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Center(
                   child: userImageWidget,
                 ),
-                TextButton(
-                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const LoginPage())),
-                  child: const Padding(
-                    padding: EdgeInsets.fromLTRB(190, 0, 0, 0),
-                    child: Text(
-                      "Odjava",
-                      style: TextStyle(
-                        color: Colors.red,
-                        decoration: TextDecoration.underline,
-                        decorationColor: Colors.red,
-                        decorationThickness: 1.0,
-                        fontSize: 15,
+                Flexible(
+                  child: TextButton(
+                    onPressed: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (context) => const LoginPage())),
+                    child: const Padding(
+                      padding: EdgeInsets.fromLTRB(190, 0, 0, 0),
+                      child: Text(
+                        "Odjava",
+                        overflow:
+                            TextOverflow.ellipsis, // Prevents text overflow
+                        style: TextStyle(
+                          color: Colors.red,
+                          decoration: TextDecoration.underline,
+                          decorationColor: Colors.red,
+                          decorationThickness: 1.0,
+                          fontSize: 15,
+                        ),
                       ),
                     ),
                   ),
@@ -464,7 +476,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => UpdateProfileScreen(
-                    user: user,
+                    user: user!,
                   ),
                 ),
               );
