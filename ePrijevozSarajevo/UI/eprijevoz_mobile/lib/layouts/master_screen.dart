@@ -18,7 +18,6 @@ class MasterScreen extends StatefulWidget {
 
 class _MasterScreenState extends State<MasterScreen> {
   late int _currentIndex;
-
   late List<Widget> _pages;
   late List<String> _titles;
 
@@ -32,7 +31,7 @@ class _MasterScreenState extends State<MasterScreen> {
     // initialize the pages with corresponding titles
     _pages = [
       const HomePage(),
-      RouteSearchScreen(),
+      const RouteSearchScreen(),
       const TicketScreen(),
       const ProfileScreen(),
     ];
@@ -59,7 +58,7 @@ class _MasterScreenState extends State<MasterScreen> {
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(50.0, 35.0, 0.0, 20.0),
+                      padding: const EdgeInsets.fromLTRB(50.0, 30.0, 0.0, 20.0),
                       child: Text(
                         _titles[
                             _currentIndex], // the title corresponding to the selected tab

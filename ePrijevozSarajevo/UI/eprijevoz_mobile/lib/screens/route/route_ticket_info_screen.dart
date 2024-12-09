@@ -40,7 +40,6 @@ class _TicketInfoScreenState extends State<TicketInfoScreen> {
   late StationProvider stationProvider;
   SearchResult<Station>? stationResult;
   bool isLoading = true;
-
   DateTime? dateOfBirth;
   int? countNumberOfTickets = 1;
   double? finalTicketPrice;
@@ -48,7 +47,6 @@ class _TicketInfoScreenState extends State<TicketInfoScreen> {
   Status? userTicketStatus;
   User? currentUser;
   Route? currentRoute;
-
   String? startStationName;
   String? endStationName;
 
@@ -134,7 +132,7 @@ class _TicketInfoScreenState extends State<TicketInfoScreen> {
                     ),
                   ),
                   const Padding(
-                    padding: EdgeInsets.fromLTRB(110.0, 20.0, 0.0, 20.0),
+                    padding: EdgeInsets.fromLTRB(110.0, 20.0, 0.0, 0.0),
                     child: Row(
                       children: [
                         Icon(
@@ -149,6 +147,23 @@ class _TicketInfoScreenState extends State<TicketInfoScreen> {
                     ),
                   ),
                   const SizedBox(height: 10),
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Flexible(
+                          child: Text(
+                            "Kupovinom osoba stiče pravo putovanja javnim gradskim prijevozom unutar odabranog područja važenja.\nMogući su prekidi i transferi.\nPutnici u pratnji su mogući uz naknadu.",
+                            style: TextStyle(
+                              fontSize: 10,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                   const Padding(
                     padding: EdgeInsets.fromLTRB(0.0, 0.0, 330.0, 0.0),
                     child: Text("Račun:"),

@@ -1,13 +1,9 @@
 import 'dart:convert';
-
 import 'package:eprijevoz_desktop/providers/base_provider.dart';
 import '../models/request.dart';
-
 import 'package:http/http.dart' as http;
 
 final _httpClient = http.Client();
-
-//get http => _httpClient;
 
 class RequestProvider extends BaseProvider<Request> {
   RequestProvider() : super("Request");
@@ -28,7 +24,7 @@ class RequestProvider extends BaseProvider<Request> {
     var body = {
       'expirationDate': formattedExpirationDate,
       if (rejectionReason != null)
-        'rejectionReason': rejectionReason, // Optional parameter
+        'rejectionReason': rejectionReason, // optional parameter
     };
 
     var headers = createHeaders();

@@ -6,7 +6,6 @@ class StatusProvider extends BaseProvider<Status> {
 
   @override
   Status fromJson(data) {
-    // TODO: implement fromJson
     return Status.fromJson(data);
   }
 }

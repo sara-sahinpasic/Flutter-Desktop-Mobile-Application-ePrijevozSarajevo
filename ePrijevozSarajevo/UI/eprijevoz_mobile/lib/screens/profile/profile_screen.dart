@@ -13,7 +13,6 @@ import 'package:eprijevoz_mobile/providers/utils.dart';
 import 'package:eprijevoz_mobile/screens/profile/profile_screen_update.dart';
 import 'package:eprijevoz_mobile/screens/profile/profile_request_options_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
 
@@ -59,87 +58,72 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Future initForm() async {
-    userResult = await userProvider.get();
-    statusResult = await statusProvider.get();
-    requestResult = await requestProvider.get();
-    countryResult = await countryProvider.get();
+    try {
+      userResult = await userProvider.get();
+      statusResult = await statusProvider.get();
+      requestResult = await requestProvider.get();
+      countryResult = await countryProvider.get();
 
-    user = userResult?.result.firstWhere(
-      (user) => user.userName == AuthProvider.username,
-    );
-    debugPrint("User: ${user?.firstName}");
+      user = userResult?.result.firstWhere(
+        (user) => user.userName == AuthProvider.username,
+      );
 
-    if (user != null) {
-      userImageWidget = user?.profileImage != null
-          ? SizedBox(
-              width: 200,
-              height: 200,
-              child: imageFromString('${user?.profileImage}'),
-            )
-          : const Icon(
-              Icons.person,
-              size: 100,
-            );
-
-      userStatusName = statusResult?.result
-              .firstWhere(
-                (status) => status.statusId == user?.userStatusId,
+      if (user != null) {
+        userImageWidget = user?.profileImage != null
+            ? SizedBox(
+                width: 200,
+                height: 200,
+                child: imageFromString('${user?.profileImage}'),
               )
-              .name ??
-          "";
-      debugPrint("User status name: $userStatusName");
+            : const Icon(
+                Icons.person,
+                size: 100,
+              );
 
-      userCountryName = countryResult?.result
-              .firstWhere(
-                (country) => country.countryId == user?.userCountryId,
-              )
-              .name ??
-          "";
+        userStatusName = statusResult?.result
+                .firstWhere(
+                  (status) => status.statusId == user?.userStatusId,
+                )
+                .name ??
+            "";
 
-      debugPrint("User country name: $userCountryName");
+        userCountryName = countryResult?.result
+                .firstWhere(
+                  (country) => country.countryId == user?.userCountryId,
+                )
+                .name ??
+            "";
 
-      // userRequest = requestResult?.result.firstWhere(
-      //   (request) => request.userId == user?.userId && request.active == true,
-      //   orElse: () => null!,
-      // );
+        userRequest = requestResult?.result.firstWhere(
+          (request) => request.userId == user?.userId && request.active == true,
+        );
+        hasActiveRequest = userRequest != null;
 
-      // hasActiveRequest = userRequest != null;
-
-      // debugPrint("User request: $userRequest");
-
-      // Refresh UI
-      setState(() {
-        isLoading = false;
-
-        _initialValue = {
-          'firstName': user?.firstName,
-          'lastName': user?.lastName,
-          'userName': user?.userName,
-          'phoneNumber': user?.phoneNumber,
-          'address': user?.address,
-          'zipCode': user?.zipCode,
-          'city': user?.city,
-          'country': user?.userCountryId,
-          'profileImage': userImageWidget,
-        };
-      });
-    }
-    setState(() {
-      isLoading = false;
-    });
-  }
-
-  Future refreshUserData() async {
-    if (_formKey.currentState?.saveAndValidate() ?? false) {
-      var request = Map.from(_formKey.currentState!.value);
-
-      userResult = await userProvider.get(filter: request);
-
-      if (userResult != null && userResult!.result.isNotEmpty) {
         setState(() {
-          user = userResult?.result.first;
+          isLoading = false;
+
+          _initialValue = {
+            'firstName': user?.firstName,
+            'lastName': user?.lastName,
+            'userName': user?.userName,
+            'phoneNumber': user?.phoneNumber,
+            'address': user?.address,
+            'zipCode': user?.zipCode,
+            'city': user?.city,
+            'country': user?.userCountryId,
+            'profileImage': userImageWidget,
+          };
+        });
+      } else {
+        setState(() {
+          isLoading = false;
         });
       }
+    } catch (e) {
+      debugPrint("Error: $e");
+      setState(() {
+        isLoading = false;
+      });
     }
   }
 
@@ -173,28 +157,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Center(
-                  child: userImageWidget,
+                SizedBox(
+                  width: 100,
+                  height: 100,
+                  child: Center(
+                    child:
+                        userImageWidget ?? const Icon(Icons.person, size: 100),
+                  ),
                 ),
-                Flexible(
-                  child: TextButton(
-                    onPressed: () => Navigator.of(context).push(
-                        MaterialPageRoute(
-                            builder: (context) => const LoginPage())),
-                    child: const Padding(
-                      padding: EdgeInsets.fromLTRB(190, 0, 0, 0),
-                      child: Text(
-                        "Odjava",
-                        overflow:
-                            TextOverflow.ellipsis, // Prevents text overflow
-                        style: TextStyle(
-                          color: Colors.red,
-                          decoration: TextDecoration.underline,
-                          decorationColor: Colors.red,
-                          decorationThickness: 1.0,
-                          fontSize: 15,
-                        ),
+                TextButton(
+                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const LoginPage())),
+                  child: const Padding(
+                    padding: EdgeInsets.fromLTRB(190, 0, 0, 0),
+                    child: Text(
+                      "Odjava",
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color: Colors.red,
+                        decoration: TextDecoration.underline,
+                        decorationColor: Colors.red,
+                        decorationThickness: 1.0,
+                        fontSize: 15,
                       ),
                     ),
                   ),
@@ -510,7 +496,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             TextButton(
                                 child: const Text(
                                   "OK",
-                                  style: TextStyle(color: Colors.green),
+                                  style: TextStyle(color: Colors.black),
                                 ),
                                 onPressed: () async {
                                   Navigator.pop(dialogContext, true);
@@ -542,12 +528,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             if (success) {
                               Navigator.of(context).pushReplacement(
                                 MaterialPageRoute(
-                                    builder: (context) => LoginPage()),
+                                    builder: (context) => const LoginPage()),
                               );
                             }
                           },
                           child: const Text("OK",
-                              style: TextStyle(color: Colors.green)),
+                              style: TextStyle(color: Colors.black)),
                         ),
                       ],
                     ),

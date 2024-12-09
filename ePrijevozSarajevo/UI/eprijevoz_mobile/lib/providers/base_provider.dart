@@ -3,12 +3,11 @@ import 'package:eprijevoz_mobile/providers/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
-
 import 'package:eprijevoz_mobile/models/search_result.dart';
 
 abstract class BaseProvider<T> with ChangeNotifier {
   static String?
-      baseUrl; //from _baseUrl (private) to the baseUrl (protected) so it canbe acceddes in child classes (like UserProvider)
+      baseUrl; // from _baseUrl (private) to the baseUrl (protected) so it canbe acceddes in child classes (like UserProvider)
   String _endpoint = "";
 
   BaseProvider(String endpoint) {
@@ -16,10 +15,10 @@ abstract class BaseProvider<T> with ChangeNotifier {
     baseUrl = const String.fromEnvironment("baseUrl",
         defaultValue: "http://10.0.2.2:7292/");
   }
-// Add a getter for _endpoint
+  // add a getter for _endpoint
   String get endpoint => _endpoint;
 
-//CRUD:
+  //CRUD:
   Future<SearchResult<T>> get({dynamic filter}) async {
     var url = "$baseUrl$_endpoint";
 
@@ -109,8 +108,6 @@ abstract class BaseProvider<T> with ChangeNotifier {
     return true;
   }
 
-//
-
   T fromJson(data) {
     throw Exception("Method not implemented");
   }
@@ -121,8 +118,7 @@ abstract class BaseProvider<T> with ChangeNotifier {
     } else if (response.statusCode == 401) {
       throw Exception("Unauthorized");
     } else {
-      print(response.body);
-      //throw new Exception("Something bad happened please try again");
+      debugPrint(response.body);
       throw Exception(response.body);
     }
   }
@@ -131,7 +127,7 @@ abstract class BaseProvider<T> with ChangeNotifier {
     String username = AuthProvider.username ?? "";
     String password = AuthProvider.password ?? "";
 
-    print("passed creds: $username, $password");
+    debugPrint("passed creds: $username, $password");
 
     String basicAuth =
         "Basic ${base64Encode(utf8.encode('$username:$password'))}";
@@ -164,7 +160,7 @@ abstract class BaseProvider<T> with ChangeNotifier {
         }
         query += '$prefix$key=$encoded';
       } else if (value is DateTime) {
-        query += '$prefix$key=${(value as DateTime).toIso8601String()}';
+        query += '$prefix$key=${(value).toIso8601String()}';
       } else if (value is List || value is Map) {
         if (value is List) value = value.asMap();
         value.forEach((k, v) {

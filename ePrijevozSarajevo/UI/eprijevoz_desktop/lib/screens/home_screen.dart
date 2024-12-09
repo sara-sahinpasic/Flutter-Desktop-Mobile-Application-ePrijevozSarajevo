@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
       debugPrint("Error loading user data: $e");
     } finally {
       setState(() {
-        isLoading = false; // Stop loading
+        isLoading = false; // stop loading
       });
     }
   }
@@ -152,7 +152,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     onPressed: () => Navigator.of(context).push(
                         MaterialPageRoute(
-                            builder: (context) => UserListScreen()))),
+                            builder: (context) => const UserListScreen()))),
                 const Spacer(),
                 TextButton(
                     child: const Text(

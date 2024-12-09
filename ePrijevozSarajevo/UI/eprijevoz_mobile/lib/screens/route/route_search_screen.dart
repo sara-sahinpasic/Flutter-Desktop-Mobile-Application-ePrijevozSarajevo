@@ -1,5 +1,4 @@
-import 'dart:convert';
-
+import 'package:eprijevoz_mobile/layouts/master_screen.dart';
 import 'package:eprijevoz_mobile/models/route.dart';
 import 'package:eprijevoz_mobile/models/search_result.dart';
 import 'package:eprijevoz_mobile/models/station.dart';
@@ -12,9 +11,9 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
 
 class RouteSearchScreen extends StatefulWidget {
-  Station? station;
-  Route? route;
-  RouteSearchScreen({super.key, this.station, this.route});
+  const RouteSearchScreen({
+    super.key,
+  });
 
   @override
   State<RouteSearchScreen> createState() => _RouteSearchScreenState();
@@ -26,14 +25,16 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
   late StationProvider stationProvider;
   SearchResult<Station>? stationResult;
   final _formKey = GlobalKey<FormBuilderState>();
-  Map<String, dynamic> _initialValue = {};
-  int? selectedStartStationId;
+  final Map<String, dynamic> _initialValue = {};
   int? selectedEndStationId;
+  int? selectedStartStationId;
   List<Station> uniqueStartStations = [];
   List<Station> endStations = [];
   DateTime selectedDepartureDate = DateTime.now();
   TimeOfDay selectedTime = TimeOfDay.now();
   bool isLoading = false;
+  Station? station;
+  Route? route;
 
   @override
   void initState() {
@@ -41,13 +42,6 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
     routeProvider = context.read<RouteProvider>();
 
     super.initState();
-
-    _initialValue = {
-      'startStationId': widget.route?.startStationId?.toString(),
-      'endStationId': widget.route?.endStationId?.toString(),
-      'stationId': widget.station?.stationId?.toString(),
-      'routeId': widget.route?.routeId.toString()
-    };
 
     initForm();
   }
@@ -71,23 +65,11 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
     if (routeResult?.result != null) {
       routeResult!.result = filterDuplicates(routeResult!.result);
     }
+    uniqueStartStations =
+        getUniqueStartStations(routeResult!.result, stationResult!.result);
 
-    setState(() {
-      // filter unique start stations
-      uniqueStartStations =
-          getUniqueStartStations(routeResult!.result, stationResult!.result);
-
-      // populate end stations based on the selected start station if any
-      if (widget.route?.startStationId != null &&
-          widget.route!.startStationId! > 0) {
-        selectedStartStationId = widget.route!.startStationId!;
-        endStations =
-            getEndStationsForSelectedStartStation(selectedStartStationId!);
-      } else {
-        selectedStartStationId = null;
-        selectedEndStationId = null;
-      }
-    });
+    endStations =
+        getEndStationsForSelectedStartStation(selectedStartStationId!);
   }
 
   List<Station> getUniqueStartStations(
@@ -190,8 +172,7 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
             children: [
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                      20.0, 15.0, 20.0, 0.0), // left, top, right, bottom
+                  padding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 0.0),
                   child: FormBuilderDropdown(
                     name: "startStationId",
                     decoration: const InputDecoration(
@@ -209,8 +190,12 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
                             ? getEndStationsForSelectedStartStation(
                                 selectedStartStationId!)
                             : [];
-                        selectedEndStationId = null; // Reset end station
+                        selectedEndStationId = endStations.isNotEmpty
+                            ? endStations[0].stationId
+                            : null;
                       });
+                      _formKey.currentState?.fields['endStationId']
+                          ?.didChange(null);
                     },
                     initialValue: selectedStartStationId?.toString(),
                   ),
@@ -222,32 +207,30 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
             children: [
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                      20.0, 10.0, 20.0, 0.0), // left, top, right, bottom
+                  padding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
                   child: FormBuilderDropdown(
-                    name: "endStationId",
-                    decoration: const InputDecoration(
-                      label: Text("Cilj"),
-                    ),
-                    items: endStations
-                        .map((station) => DropdownMenuItem<String>(
-                            value: station.stationId.toString(),
-                            child: Text(station.name ?? "")))
-                        .toList(),
-                    onChanged: (value) {
-                      var station = stationResult?.result.firstWhere(
-                          ((station) => station.stationId.toString() == value));
-                      selectedEndStationId = station?.stationId ?? 0;
-                    },
-                    initialValue: selectedEndStationId?.toString(),
-                  ),
+                      name: "endStationId",
+                      decoration: const InputDecoration(
+                        label: Text("Cilj"),
+                      ),
+                      items: endStations
+                          .map((station) => DropdownMenuItem<String>(
+                              value: station.stationId.toString(),
+                              child: Text(station.name ?? "")))
+                          .toList(),
+                      onChanged: (value) {
+                        var station = stationResult?.result.firstWhere(
+                            ((station) =>
+                                station.stationId.toString() == value));
+                        selectedEndStationId = station?.stationId;
+                      },
+                      initialValue: null),
                 ),
               ),
             ],
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(
-                20.0, 30.0, 20.0, 0.0), // left, top, right, bottom
+            padding: const EdgeInsets.fromLTRB(20.0, 30.0, 20.0, 0.0),
             child: Row(
               children: [
                 SizedBox(
@@ -275,8 +258,7 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(
-                20.0, 20.0, 20.0, 0.0), // left, top, right, bottom
+            padding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0.0),
             child: Row(
               children: [
                 SizedBox(
@@ -294,48 +276,93 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
                             'EndStationIdGTE': selectedEndStationId,
                             'DateGTE': selectedDepartureDate
                           };
+
                           routeResult = await routeProvider.get(filter: filter);
+                          // search: start and end and date == false
+                          bool exactMatchFound = routeResult?.result.any(
+                                  (route) =>
+                                      route.startStationId ==
+                                          selectedStartStationId &&
+                                      route.endStationId ==
+                                          selectedEndStationId) ??
+                              false;
+
+                          if (!exactMatchFound) {
+                            // only StartStationId and Date
+                            filter.remove('EndStationIdGTE');
+                            routeResult =
+                                await routeProvider.get(filter: filter);
+
+                            // if alternate routes are found
+                            if (routeResult?.result.isNotEmpty ?? false) {
+                              await showDialog(
+                                context: context,
+                                builder: (context) => AlertDialog(
+                                  title: const Text(
+                                    "Warning",
+                                    style: TextStyle(
+                                        color: Colors.orange,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  content: const Text(
+                                    "Nema pronađenih ruta s željenom pretragom.\nPrikaz drugih mogućih opcija s odabranom startnom stanicom.",
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                      child: const Text("OK",
+                                          style:
+                                              TextStyle(color: Colors.black)),
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              );
+                            }
+                          }
+                          if (routeResult?.result.isNotEmpty ?? false) {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => RouteOptionsScreen(
+                                    routes: routeResult!.result),
+                              ),
+                            );
+                          } else {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: const Text("Nema pronađenih ruta."),
+                                  content: const Text(
+                                      "Molimo, pokušajte drugačiju pretragu."),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const MasterScreen(
+                                              initialIndex: 1,
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                      child: const Text("OK",
+                                          style:
+                                              TextStyle(color: Colors.black)),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          }
                         } catch (e) {
                           debugPrint('Error: $e');
                         } finally {
                           setState(() {
                             isLoading = false;
                           });
-                        }
-
-                        if (routeResult?.result != null) {
-                          const JsonEncoder.withIndent('  ')
-                              .convert(routeResult!.result);
-                        }
-
-                        if (routeResult != null &&
-                            routeResult!.result.isNotEmpty) {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => RouteOptionsScreen(
-                                  routes: routeResult!
-                                      .result))); // send founded routes on another screen
-                        } else {
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                title: const Text("Nema pronađenih ruta."),
-                                content: const Text(
-                                    "Molimo, pokušajte drugačiju pretragu."),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                    child: const Text(
-                                      "OK",
-                                      style: TextStyle(color: Colors.black),
-                                    ),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
                         }
                       },
                       style: ElevatedButton.styleFrom(

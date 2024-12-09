@@ -6,7 +6,6 @@ class ManufacturerProvider extends BaseProvider<Manufacturer> {
 
   @override
   Manufacturer fromJson(data) {
-    // TODO: implement fromJson
     return Manufacturer.fromJson(data);
   }
 }

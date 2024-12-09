@@ -6,7 +6,6 @@ class TypeProvider extends BaseProvider<Type> {
 
   @override
   Type fromJson(data) {
-    // TODO: implement fromJson
     return Type.fromJson(data);
   }
 }

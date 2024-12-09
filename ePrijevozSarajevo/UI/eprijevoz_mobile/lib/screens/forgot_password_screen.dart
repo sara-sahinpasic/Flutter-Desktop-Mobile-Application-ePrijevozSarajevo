@@ -36,7 +36,11 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           showDialog(
             context: context,
             builder: (context) => AlertDialog(
-              title: const Text("Promjena lozinke"),
+              title: const Text(
+                "Promjena lozinke",
+                style:
+                    TextStyle(fontWeight: FontWeight.bold, color: Colors.green),
+              ),
               content: const Text("Lozinka uspješno promijenjena!"),
               actions: [
                 TextButton(

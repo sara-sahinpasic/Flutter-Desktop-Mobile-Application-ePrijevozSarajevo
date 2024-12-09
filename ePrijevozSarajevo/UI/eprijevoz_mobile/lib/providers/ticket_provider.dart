@@ -6,7 +6,6 @@ class TicketProvider extends BaseProvider<Ticket> {
 
   @override
   Ticket fromJson(data) {
-    // TODO: implement fromJson
     return Ticket.fromJson(data);
   }
 }

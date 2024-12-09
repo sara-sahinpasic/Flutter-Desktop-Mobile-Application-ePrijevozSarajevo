@@ -73,8 +73,8 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
 
     super.initState();
 
-    currentUser = widget.user; //?.userId;
-    choosenTicket = widget.ticket; //?.ticketId;
+    currentUser = widget.user;
+    choosenTicket = widget.ticket;
     issuedDate = DateTime.now();
     amount = widget.amount;
     selectedTicketPrice = widget.selectedTicketPrice;
@@ -248,7 +248,7 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      // Payment Buttons
+                      // payment Buttons
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: 10.0, horizontal: 30.0),
@@ -280,8 +280,7 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
                                 side: BorderSide(
                                   color: _isPayPalSelected!
                                       ? Colors.orange
-                                      : Colors.grey
-                                          .shade300, // change border color when selected
+                                      : Colors.grey.shade300,
                                 ),
                                 elevation: 5,
                               ),
@@ -330,7 +329,7 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   SvgPicture.network(
-                                    'https://www.vectorlogo.zone/logos/stripe/stripe-ar21.svg', // Stripe Logo SVG
+                                    'https://www.vectorlogo.zone/logos/stripe/stripe-ar21.svg',
                                     height: 30,
                                   ),
                                 ],

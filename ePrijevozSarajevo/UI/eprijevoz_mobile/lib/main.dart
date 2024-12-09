@@ -10,6 +10,8 @@ import 'package:eprijevoz_mobile/providers/ticket_provider.dart';
 import 'package:eprijevoz_mobile/providers/user_provider.dart';
 import 'package:eprijevoz_mobile/screens/forgot_password_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -31,7 +33,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -85,8 +86,13 @@ class _LoginPageState extends State<LoginPage> {
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 35, vertical: 20),
-                child: TextField(
+                child: FormBuilderTextField(
+                  name: 'userName',
                   controller: _usernameController,
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(
+                        errorText: "Ovo polje ne može bit prazno."),
+                  ]),
                   style: const TextStyle(color: Colors.white, fontSize: 18),
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
@@ -102,7 +108,12 @@ class _LoginPageState extends State<LoginPage> {
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 35, vertical: 0),
-                child: TextField(
+                child: FormBuilderTextField(
+                  name: 'password',
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(
+                        errorText: "Ovo polje ne može bit prazno."),
+                  ]),
                   controller: _passwordController,
                   style: const TextStyle(color: Colors.white, fontSize: 18),
                   obscureText: !_passwordVisible,
@@ -144,7 +155,7 @@ class _LoginPageState extends State<LoginPage> {
                     try {
                       await provider.get();
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => MasterScreen()));
+                          builder: (context) => const MasterScreen()));
                     } on Exception catch (e) {
                       showDialog(
                           context: context,

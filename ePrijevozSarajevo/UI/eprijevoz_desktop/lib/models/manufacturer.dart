@@ -7,7 +7,7 @@ class Manufacturer {
   int? manufacturerId;
   String? name;
 
-  Manufacturer();
+  Manufacturer({this.manufacturerId, this.name});
 
   factory Manufacturer.fromJson(Map<String, dynamic> json) =>
       _$ManufacturerFromJson(json);

@@ -13,8 +13,7 @@ import 'package:provider/provider.dart';
 import 'package:eprijevoz_desktop/models/type.dart';
 
 class VehicleListScreen extends StatefulWidget {
-  Vehicle? vehicle;
-  VehicleListScreen({super.key, this.vehicle});
+  const VehicleListScreen({super.key});
 
   @override
   State<VehicleListScreen> createState() => _VehicleListScreenState();
@@ -25,11 +24,11 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
   late ManufacturerProvider manufacturerProvider;
   late TypeProvider typeProvider;
   final _formKey = GlobalKey<FormBuilderState>();
-  Map<String, dynamic> _initialValue = {};
   SearchResult<Manufacturer>? manufacturerResult;
   SearchResult<Vehicle>? vehicleResult;
   SearchResult<Type>? typeResult;
   bool isLoading = false;
+  Vehicle? vehicle;
 
   @override
   void initState() {
@@ -38,14 +37,6 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
     typeProvider = context.read<TypeProvider>();
 
     super.initState();
-
-    _initialValue = {
-      'number': widget.vehicle?.number,
-      'registrationNumber': widget.vehicle?.registrationNumber,
-      'buildYear': widget.vehicle?.buildYear,
-      'manufacturerId': widget.vehicle?.manufacturerId?.toString(),
-      'typeId': widget.vehicle?.typeId?.toString()
-    };
 
     initForm();
   }
@@ -181,7 +172,7 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
       child: SingleChildScrollView(
         child: FormBuilder(
             key: _formKey,
-            initialValue: _initialValue,
+            // initialValue: _initialValue,
             child: Column(
               children: [
                 const SizedBox(
@@ -310,7 +301,12 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
                                           showDialog(
                                               context: context,
                                               builder: (context) => AlertDialog(
-                                                    title: const Text("Delete"),
+                                                    title: const Text(
+                                                      "Delete",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
                                                     content: Text(
                                                         "Da li želite obrisati vozilo ${e.registrationNumber}?"),
                                                     actions: [
@@ -334,9 +330,17 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
                                                                 builder:
                                                                     (context) =>
                                                                         AlertDialog(
-                                                                          title: Text(success
-                                                                              ? "Success"
-                                                                              : "Error"),
+                                                                          title:
+                                                                              Text(
+                                                                            success
+                                                                                ? "Success"
+                                                                                : "Error",
+                                                                            style:
+                                                                                TextStyle(
+                                                                              color: success ? Colors.green : Colors.red,
+                                                                              fontWeight: FontWeight.bold,
+                                                                            ),
+                                                                          ),
                                                                           content: Text(success
                                                                               ? "Vozilo: ${e.registrationNumber}, uspješno obrisano."
                                                                               : "Vozilo: ${e.registrationNumber}, nije obrisano."),
@@ -388,7 +392,7 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
                           final result = await showDialog(
                               context: context,
                               builder: (dialogAddContext) =>
-                                  VehicleAddDialog());
+                                  const VehicleAddDialog());
 
                           if (result == true) {
                             await refreshTable();

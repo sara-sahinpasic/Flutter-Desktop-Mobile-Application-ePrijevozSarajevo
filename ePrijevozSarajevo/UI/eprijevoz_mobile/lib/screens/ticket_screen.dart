@@ -1,13 +1,17 @@
 import 'package:eprijevoz_mobile/models/issuedTicket.dart';
+import 'package:eprijevoz_mobile/models/route.dart';
 import 'package:eprijevoz_mobile/models/search_result.dart';
+import 'package:eprijevoz_mobile/models/station.dart';
 import 'package:eprijevoz_mobile/models/ticket.dart';
 import 'package:eprijevoz_mobile/models/user.dart';
 import 'package:eprijevoz_mobile/providers/auth_provider.dart';
 import 'package:eprijevoz_mobile/providers/issuedTicket_provider.dart';
+import 'package:eprijevoz_mobile/providers/route_provider.dart';
+import 'package:eprijevoz_mobile/providers/station_provider.dart';
 import 'package:eprijevoz_mobile/providers/ticket_provider.dart';
 import 'package:eprijevoz_mobile/providers/user_provider.dart';
 import 'package:eprijevoz_mobile/providers/utils.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Route;
 import 'package:provider/provider.dart';
 
 class TicketScreen extends StatefulWidget {
@@ -28,12 +32,19 @@ class _TicketScreenState extends State<TicketScreen> {
   int? amount;
   bool isLoading = true;
   final List<String>? ticketsName = [];
+  late RouteProvider routeProvider;
+  SearchResult<Route>? routeResult;
+  late StationProvider stationProvider;
+  SearchResult<Station>? stationResult;
+  String? startStationName;
 
   @override
   void initState() {
     userProvider = context.read<UserProvider>();
     issuedTicketProvider = context.read<IssuedTicketProvider>();
     ticketProvider = context.read<TicketProvider>();
+    routeProvider = context.read<RouteProvider>();
+    stationProvider = context.read<StationProvider>();
 
     super.initState();
 
@@ -44,6 +55,8 @@ class _TicketScreenState extends State<TicketScreen> {
     userResult = await userProvider.get();
     issuedTicketResult = await issuedTicketProvider.get();
     ticketResult = await ticketProvider.get();
+    routeResult = await routeProvider.get();
+    stationResult = await stationProvider.get();
 
     user = userResult?.result
         .firstWhere((user) => user.userName == AuthProvider.username);
@@ -57,27 +70,6 @@ class _TicketScreenState extends State<TicketScreen> {
     setState(() {
       isLoading = false;
     });
-  }
-
-  List<String>? ticketName() {
-    var issuedTickets = issuedTicketResult?.result
-        .where((issuedTicket) => issuedTicket.userId == user?.userId)
-        .toList();
-
-    if (issuedTickets != null && issuedTickets.isNotEmpty) {
-      for (var issuedTicket in issuedTickets) {
-        var ticket = ticketResult?.result.firstWhere(
-          (ticket) => ticket.ticketId == issuedTicket.ticketId,
-        );
-
-        if (ticket != null) {
-          ticketsName?.add(ticket.name ?? "");
-        }
-      }
-    } else {
-      debugPrint("Korisnik nema izdatih karti.");
-    }
-    return ticketsName;
   }
 
   @override
@@ -113,12 +105,22 @@ class _TicketScreenState extends State<TicketScreen> {
           )
         : Column(
             children: issuedTickets.map((issuedTicket) {
-              var ticket = ticketResult?.result.firstWhere(
-                (ticket) => ticket.ticketId == issuedTicket.ticketId,
+              Route? route = routeResult?.result.firstWhere(
+                (route) => route.routeId == issuedTicket.routeId,
               );
 
-              if (ticket == null) {
-                return const Text("Karta nije pronađena.");
+              if (route == null) {
+                return const Text("Ruta nije pronađena.");
+              }
+
+              String? startStation = stationResult!.result
+                  .firstWhere(
+                    (station) => station.stationId == route.startStationId,
+                  )
+                  .name;
+
+              if (startStation == null) {
+                return const Text("Početna stanica nije pronađena.");
               }
 
               Color cardColor = DateTime.now().isAfter(issuedTicket.validTo!)
@@ -145,7 +147,7 @@ class _TicketScreenState extends State<TicketScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "${ticket.name} karta  (${issuedTicket.amount})",
+                      "${ticketResult?.result.firstWhere((ticket) => ticket.ticketId == issuedTicket.ticketId).name ?? 'Karta'} karta (${issuedTicket.amount})",
                       style: const TextStyle(
                           fontSize: 18, fontWeight: FontWeight.bold),
                     ),
@@ -162,6 +164,15 @@ class _TicketScreenState extends State<TicketScreen> {
                     ),
                     Text(
                       "${formatDateTime(issuedTicket.validFrom!)} - ${formatDateTime(issuedTicket.validTo!)}",
+                      style: const TextStyle(fontWeight: FontWeight.w500),
+                    ),
+                    const SizedBox(height: 5),
+                    const Text(
+                      "Startna stanica:",
+                      style: TextStyle(fontWeight: FontWeight.w500),
+                    ),
+                    Text(
+                      startStation,
                       style: const TextStyle(fontWeight: FontWeight.w500),
                     ),
                   ],

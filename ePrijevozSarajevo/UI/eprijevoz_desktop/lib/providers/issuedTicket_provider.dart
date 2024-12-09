@@ -6,7 +6,6 @@ class IssuedTicketProvider extends BaseProvider<IssuedTicket> {
 
   @override
   IssuedTicket fromJson(data) {
-    // TODO: implement fromJson
     return IssuedTicket.fromJson(data);
   }
 }

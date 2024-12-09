@@ -7,7 +7,7 @@ class Station {
   int? stationId;
   String? name;
 
-  Station();
+  Station({this.stationId, this.name});
 
   factory Station.fromJson(Map<String, dynamic> json) =>
       _$StationFromJson(json);

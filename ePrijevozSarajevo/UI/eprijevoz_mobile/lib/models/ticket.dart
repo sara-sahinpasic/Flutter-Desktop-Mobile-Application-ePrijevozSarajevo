@@ -8,7 +8,7 @@ class Ticket {
   String? name;
   double? price;
 
-  Ticket();
+  Ticket({this.ticketId, this.name, this.price});
 
   factory Ticket.fromJson(Map<String, dynamic> json) => _$TicketFromJson(json);
 

@@ -6,7 +6,6 @@ class UserRoleProvider extends BaseProvider<UserRole> {
 
   @override
   UserRole fromJson(data) {
-    // TODO: implement fromJson
     return UserRole.fromJson(data);
   }
 }

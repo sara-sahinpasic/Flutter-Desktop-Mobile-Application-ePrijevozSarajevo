@@ -8,14 +8,13 @@ class UserProvider extends BaseProvider<User> {
 
   @override
   User fromJson(data) {
-    // TODO: implement fromJson
     return User.fromJson(data);
   }
 
   Future<bool> resetPassword(
       String username, String newPassword, String passwordConfirmation) async {
     var url =
-        "${BaseProvider.baseUrl}$endpoint/reset-password"; // Use the getter
+        "${BaseProvider.baseUrl}$endpoint/reset-password"; // use the getter
 
     var body = {
       'username': username,
@@ -30,7 +29,7 @@ class UserProvider extends BaseProvider<User> {
     var response = await http.post(uri, headers: headers, body: jsonRequest);
 
     if (isValidResponse(response)) {
-      return true; // Password reset successful
+      return true; // password reset successful
     } else {
       throw Exception("Failed to reset password");
     }

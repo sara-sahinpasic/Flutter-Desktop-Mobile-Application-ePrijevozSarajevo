@@ -11,8 +11,9 @@ import 'package:provider/provider.dart';
 import 'package:eprijevoz_desktop/models/type.dart';
 
 class VehicleAddDialog extends StatefulWidget {
-  Vehicle? vehicle;
-  VehicleAddDialog({super.key, this.vehicle});
+  const VehicleAddDialog({
+    super.key,
+  });
 
   @override
   State<VehicleAddDialog> createState() => _VehicleAddDialogState();
@@ -20,7 +21,6 @@ class VehicleAddDialog extends StatefulWidget {
 
 class _VehicleAddDialogState extends State<VehicleAddDialog> {
   final _formKey = GlobalKey<FormBuilderState>();
-  Map<String, dynamic> _initialValue = {};
   late VehicleProvider vehicleProvider;
   SearchResult<Manufacturer>? manufacturerResult;
   late ManufacturerProvider manufacturerProvider;
@@ -29,6 +29,7 @@ class _VehicleAddDialogState extends State<VehicleAddDialog> {
   bool isLoading = true;
   int? selectedManufacturerId;
   int? selectedTypeId;
+  Vehicle? vehicle;
 
   @override
   void initState() {
@@ -37,14 +38,6 @@ class _VehicleAddDialogState extends State<VehicleAddDialog> {
     typeProvider = context.read<TypeProvider>();
 
     super.initState();
-
-    _initialValue = {
-      'number': widget.vehicle?.number.toString(),
-      'registrationNumber': widget.vehicle?.registrationNumber,
-      'buildYear': widget.vehicle?.buildYear.toString(),
-      'manufacturerId': selectedManufacturerId.toString(),
-      'typeId': selectedTypeId.toString()
-    };
 
     initForm();
   }
@@ -56,12 +49,12 @@ class _VehicleAddDialogState extends State<VehicleAddDialog> {
     setState(() {
       isLoading = false;
 
-      selectedManufacturerId = widget.vehicle?.manufacturerId ??
+      selectedManufacturerId = vehicle?.manufacturerId ??
           (manufacturerResult?.result.isNotEmpty ?? false
               ? manufacturerResult!.result.first.manufacturerId
               : null);
 
-      selectedTypeId = widget.vehicle?.typeId ??
+      selectedTypeId = vehicle?.typeId ??
           (typeResult?.result.isNotEmpty ?? false
               ? typeResult!.result.first.typeId
               : null);
@@ -101,7 +94,6 @@ class _VehicleAddDialogState extends State<VehicleAddDialog> {
                 )
               : FormBuilder(
                   key: _formKey,
-                  initialValue: _initialValue,
                   child: Column(
                     children: [
                       const SizedBox(
@@ -330,7 +322,12 @@ class _VehicleAddDialogState extends State<VehicleAddDialog> {
                                   showDialog(
                                     context: context,
                                     builder: (context) => AlertDialog(
-                                      title: const Text("Success"),
+                                      title: const Text(
+                                        "Success",
+                                        style: TextStyle(
+                                            color: Colors.green,
+                                            fontWeight: FontWeight.bold),
+                                      ),
                                       content: const Text(
                                           "Vozilo je uspješno dodano."),
                                       actions: [

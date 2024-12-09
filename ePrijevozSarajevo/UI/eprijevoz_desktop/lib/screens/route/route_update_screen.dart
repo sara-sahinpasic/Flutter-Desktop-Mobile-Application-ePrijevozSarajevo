@@ -7,8 +7,8 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
 
 class UpdateRouteDialog extends StatefulWidget {
-  Route route;
-  UpdateRouteDialog({
+  final Route route;
+  const UpdateRouteDialog({
     required this.route,
     super.key,
   });
@@ -174,7 +174,7 @@ class _UpdateRouteDialogState extends State<UpdateRouteDialog> {
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 15),
                         ),
-                        const SizedBox(width: 50),
+                        const SizedBox(width: 48),
                         Expanded(
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
@@ -265,8 +265,8 @@ class _UpdateRouteDialogState extends State<UpdateRouteDialog> {
                                             color: Colors.red,
                                             fontWeight: FontWeight.bold),
                                       ),
-                                      content: const Text(
-                                          "Greška prilikom ažuriranja rute."),
+                                      content: Text(
+                                          "Greška prilikom ažuriranja rute.->\n$error"),
                                       actions: [
                                         TextButton(
                                           child: const Text(

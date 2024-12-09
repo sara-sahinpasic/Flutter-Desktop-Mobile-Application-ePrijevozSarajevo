@@ -37,7 +37,11 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           showDialog(
             context: context,
             builder: (context) => AlertDialog(
-              title: const Text("Promjena lozinke"),
+              title: const Text(
+                "Promjena lozinke",
+                style:
+                    TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
+              ),
               content: const Text("Lozinka uspješno promijenjena!"),
               actions: [
                 TextButton(
@@ -58,7 +62,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               "Error",
               style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
             ),
-            content: Text('Greška u promijeni lozinke! ->\n$e'),
+            content: Text('Greška u promijeni lozinke!->\n$e'),
             actions: [
               TextButton(
                 child: const Text(

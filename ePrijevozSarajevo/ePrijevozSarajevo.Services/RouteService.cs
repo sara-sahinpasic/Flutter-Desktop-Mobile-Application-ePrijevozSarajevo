@@ -17,18 +17,12 @@ namespace ePrijevozSarajevo.Services
         {
             query = base.AddFilter(search, query);
 
-            //FOR MOBILE ROUTE_SCREEN
             if ((search?.StartStationIdGTE >= 0) && (search.DateGTE.Year > 1))
             {
 
-                var date = search.DateGTE.Date;
-                var time = search.DateGTE.TimeOfDay;
-
-                query = query.Where(x => x.StartStationId == search.StartStationIdGTE && x.EndStationId == search.EndStationIdGTE)
-                             .Where(x => x.Departure.Date.Equals(date))
-                             //mobile: 
-                             .Where(x => x.Departure.Date == date && x.Departure.TimeOfDay >= time);
-                             //&& x.Departure >= search.DateGTE);
+                query = query.Where(x => x.StartStationId == search.StartStationIdGTE || x.EndStationId == search.EndStationIdGTE)
+                             .Where(x => x.Departure.Date.Equals(search.DateGTE.Date))
+                             .Where(x => x.Departure.Date >= search.DateGTE.Date && x.Departure.TimeOfDay >= search.DateGTE.TimeOfDay);
 
             }
             if (search.IsStationIncluded == true)
@@ -47,7 +41,6 @@ namespace ePrijevozSarajevo.Services
             return query;
             //.OrderByDescending(x=>x.Departure);
         }
-
         public async Task DeleteRouteWithIssuedTickets(int routeId)
         {
             // Route from past
