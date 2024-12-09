@@ -12,10 +12,10 @@ import 'package:provider/provider.dart';
 import 'package:eprijevoz_desktop/models/route.dart';
 
 class RouteListScreen extends StatefulWidget {
-  Station? station;
-  Route? route;
+  final Station? station;
+  final Route? route;
 
-  RouteListScreen({
+  const RouteListScreen({
     super.key,
     this.route,
     this.station,
@@ -32,15 +32,9 @@ class _RouteListScreenState extends State<RouteListScreen> {
   SearchResult<Route>? routeResultForTime;
   SearchResult<Station>? stationResult;
   final _formKey = GlobalKey<FormBuilderState>();
-  Map<String, dynamic> _initialValue = {};
-  int _selectedStationId = 0;
+  int selectedStationId = 0;
   bool isLoading = false;
   DateTime selectedDate = DateTime.now();
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-  }
 
   @override
   void initState() {
@@ -64,7 +58,7 @@ class _RouteListScreenState extends State<RouteListScreen> {
       var request = Map.from(_formKey.currentState?.value ?? {});
       routeResult = await routeProvider.get(filter: request);
     } catch (e) {
-      print('Error: $e');
+      debugPrint('Error: $e');
     } finally {
       setState(() {
         isLoading = false;
@@ -142,7 +136,6 @@ class _RouteListScreenState extends State<RouteListScreen> {
   Widget _buildSearch() {
     return FormBuilder(
       key: _formKey,
-      initialValue: _initialValue,
       child: SizedBox(
         width: double.infinity,
         child: Row(
@@ -194,7 +187,7 @@ class _RouteListScreenState extends State<RouteListScreen> {
                 onChanged: (value) {
                   var station = stationResult?.result.firstWhere(
                       ((station) => station.stationId.toString() == value));
-                  _selectedStationId = station?.stationId ?? 0;
+                  selectedStationId = station?.stationId ?? 0;
                 },
               ),
             ),
@@ -205,16 +198,41 @@ class _RouteListScreenState extends State<RouteListScreen> {
                   isLoading = true;
                 });
                 try {
-                  // Search:
-                  // Set the filter for a date range covering the entire selected day
+                  // search:
+                  // set the filter for a date range covering the entire selected day
                   var filter = {
-                    'StartStationIdGTE': _selectedStationId,
+                    'StartStationIdGTE': selectedStationId,
                     'DateGTE': DateTime(selectedDate.year, selectedDate.month,
                         selectedDate.day),
                   };
                   routeResultForTime = await routeProvider.get(filter: filter);
+                  if (routeResultForTime?.count == 0) {
+                    await showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: const Text(
+                          "Warning",
+                          style: TextStyle(
+                              color: Colors.orange,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        content: const Text(
+                          "Nema pronađenog plana vožnje s zadatom pretragom.",
+                        ),
+                        actions: [
+                          TextButton(
+                            child: const Text("OK",
+                                style: TextStyle(color: Colors.black)),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ],
+                      ),
+                    );
+                  }
                 } catch (e) {
-                  print('Error: $e');
+                  debugPrint('Error: $e');
                 } finally {
                   setState(() {
                     isLoading = false;
@@ -305,12 +323,12 @@ class _RouteListScreenState extends State<RouteListScreen> {
                           (e) => DataRow(
                             cells: [
                               DataCell(Text(
-                                formatTime(e.departure) ?? "",
+                                formatTime(e.departure),
                                 style: const TextStyle(
                                     color: Colors.white, fontSize: 17),
                               )),
                               DataCell(Text(
-                                formatTime(e.arrival) ?? "",
+                                formatTime(e.arrival),
                                 style: const TextStyle(
                                     color: Colors.white, fontSize: 17),
                               )),
@@ -327,7 +345,7 @@ class _RouteListScreenState extends State<RouteListScreen> {
                               //update
                               DataCell(IconButton(
                                 onPressed: () {
-                                  final result = showDialog(
+                                  showDialog(
                                       context: context,
                                       builder: (BuildContext context) =>
                                           UpdateRouteDialog(
@@ -348,19 +366,18 @@ class _RouteListScreenState extends State<RouteListScreen> {
                                       context: context,
                                       builder: (dialogContext) {
                                         final startStationName = stationResult
-                                                ?.result
-                                                .firstWhere((station) =>
-                                                    station.stationId ==
-                                                    e.startStationId)
-                                                .name ??
-                                            "Unknown";
+                                            ?.result
+                                            .firstWhere((station) =>
+                                                station.stationId ==
+                                                e.startStationId)
+                                            .name;
+
                                         final endStationName = stationResult
-                                                ?.result
-                                                .firstWhere((station) =>
-                                                    station.stationId ==
-                                                    e.endStationId)
-                                                .name ??
-                                            "Unknown";
+                                            ?.result
+                                            .firstWhere((station) =>
+                                                station.stationId ==
+                                                e.endStationId)
+                                            .name;
 
                                         return AlertDialog(
                                           title: const Text(
@@ -417,7 +434,7 @@ class _RouteListScreenState extends State<RouteListScreen> {
                                                   );
                                                 } catch (error) {
                                                   String errorMessage =
-                                                      "Greška prilikom brisanja rute.";
+                                                      "Greška prilikom brisanja rute.->\n$error";
 
                                                   await showDialog(
                                                     context: context,
@@ -484,7 +501,7 @@ class _RouteListScreenState extends State<RouteListScreen> {
                 onPressed: () async {
                   await showDialog(
                       context: context,
-                      builder: (dialogAddContext) => RouteAddDialog());
+                      builder: (dialogAddContext) => const RouteAddDialog());
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromRGBO(72, 156, 118, 100),

@@ -14,10 +14,11 @@ import 'package:provider/provider.dart';
 import 'package:eprijevoz_desktop/models/type.dart';
 
 class RouteAddDialog extends StatefulWidget {
-  Station? station;
-  Vehicle? vehicle;
-  Route? route;
-  RouteAddDialog({
+  final Station? station;
+  final Vehicle? vehicle;
+  final Route? route;
+
+  const RouteAddDialog({
     super.key,
     this.station,
     this.vehicle,
@@ -30,7 +31,6 @@ class RouteAddDialog extends StatefulWidget {
 
 class _RouteAddDialogState extends State<RouteAddDialog> {
   final _formKey = GlobalKey<FormBuilderState>();
-  Map<String, dynamic> _initialValue = {};
   SearchResult<Route>? routeResult;
   SearchResult<Station>? stationResult;
   SearchResult<Vehicle>? vehicleResult;
@@ -56,14 +56,6 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
     typeProvider = context.read<TypeProvider>();
 
     super.initState();
-
-    _initialValue = {
-      'startStationId': widget.route?.startStationId,
-      'endStationId': widget.route?.endStationId,
-      'vehicleId': widget.route?.vehicleId,
-      'arrival': widget.route?.arrival,
-      'departure': widget.route?.departure
-    };
 
     initForm();
   }
@@ -156,7 +148,7 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
   List<DropdownMenuItem<String>> getStation() {
     final sortedStations = stationResult?.result ?? [];
 
-    // Sort stations by their names
+    // sort stations by their names
     sortedStations.sort((a, b) => (a.name ?? '').compareTo(b.name ?? ''));
 
     var list = stationResult?.result
@@ -192,7 +184,6 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
                 )
               : FormBuilder(
                   key: _formKey,
-                  initialValue: _initialValue,
                   child: Column(children: [
                     const SizedBox(
                       height: 15,
@@ -429,8 +420,8 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
                                           color: Colors.red,
                                           fontWeight: FontWeight.bold),
                                     ),
-                                    content: const Text(
-                                        "Greška prilikom dodavanja rute."),
+                                    content: Text(
+                                        "Greška prilikom dodavanja rute.->\n$error"),
                                     actions: [
                                       TextButton(
                                         child: const Text(

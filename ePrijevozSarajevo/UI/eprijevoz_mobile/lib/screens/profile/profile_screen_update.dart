@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:eprijevoz_mobile/layouts/master_screen.dart';
 import 'package:eprijevoz_mobile/models/country.dart';
 import 'package:eprijevoz_mobile/models/search_result.dart';
 import 'package:eprijevoz_mobile/models/user.dart';
@@ -12,8 +13,8 @@ import 'package:provider/provider.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
 class UpdateProfileScreen extends StatefulWidget {
-  User user;
-  UpdateProfileScreen({required this.user, super.key});
+  final User user;
+  const UpdateProfileScreen({required this.user, super.key});
 
   @override
   State<UpdateProfileScreen> createState() => _UpdateProfileScreenState();
@@ -28,6 +29,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   Map<String, dynamic> _initialValue = {};
   int? selectedCountryId;
   bool isLoading = true;
+  File? _image;
+  String? _base64Image;
 
   @override
   void initState() {
@@ -44,6 +47,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
       'city': widget.user.city,
       'zipCode': widget.user.zipCode,
       'countryId': widget.user.userCountryId?.toString(),
+      'profileImage': widget.user.profileImage
     };
 
     initForm();
@@ -56,30 +60,22 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     setState(() {
       isLoading = false;
 
-      selectedCountryId = widget.user?.userCountryId ??
+      selectedCountryId = widget.user.userCountryId ??
           (countryResult?.result.isNotEmpty ?? false
               ? countryResult!.result.first.countryId
               : null);
     });
   }
 
-  File? _image;
-  String? _base64Image;
-
   void getImage() async {
     var result = await FilePicker.platform.pickFiles(type: FileType.image);
 
     if (result != null && result.files.single.path != null) {
-      if (!mounted) return; // Prevents calling setState if widget is disposed
+      if (!mounted) return; // prevents calling setState if widget is disposed
       _image = File(result.files.single.path!);
       _base64Image = base64Encode(_image!.readAsBytesSync());
-      setState(() {}); // Update the state
+      setState(() {});
     }
-  }
-
-  bool value = false;
-  void changeData() {
-    value = true;
   }
 
   List<DropdownMenuItem<String>> getCountryItems() {
@@ -93,7 +89,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
 
   DropdownMenuItem<int> getInititalCountry() {
     final country = countryResult?.result.firstWhere(
-        (country) => country.countryId == widget.user?.userCountryId);
+        (country) => country.countryId == widget.user.userCountryId);
     return DropdownMenuItem(
         value: country?.countryId ?? -1, child: Text(country?.name ?? ""));
   }
@@ -146,7 +142,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                         ),
                         Padding(
                           padding:
-                              const EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 0.0),
+                              const EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 0.0),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -290,7 +286,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                       color: Colors.black, fontSize: 18),
                                   decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
-                                    labelText: "Poštnaski broj",
+                                    labelText: "Poštanski broj",
                                     labelStyle: TextStyle(color: Colors.black),
                                     hintText: 'Unesite poštanski broj',
                                     hintStyle: TextStyle(
@@ -310,6 +306,10 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                     FormBuilderValidators.required(
                                         errorText:
                                             "Ovo polje ne može bit prazno."),
+                                    FormBuilderValidators.match(
+                                        r'^[a-zA-Z\s]*$',
+                                        errorText:
+                                            "Ovo polje može sadržavati isključivo slova."),
                                   ]),
                                   style: const TextStyle(
                                       color: Colors.black, fontSize: 18),
@@ -342,20 +342,22 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                               ),
                               SizedBox(
                                 height: 60,
-                                width: 360,
+                                width: 400,
                                 child: FormBuilderField(
                                   name: "profileImage",
                                   builder: (field) {
-                                    return InputDecorator(
-                                      decoration: const InputDecoration(
-                                          labelText: "Odaberite sliku"),
-                                      child: ListTile(
-                                        leading: const Icon(Icons.image),
-                                        title: const Text("Slika"),
-                                        trailing: const Icon(
-                                          Icons.file_upload,
+                                    return GestureDetector(
+                                      onTap: getImage,
+                                      child: const InputDecorator(
+                                        decoration: InputDecoration(
+                                            labelText: "Odaberite sliku"),
+                                        child: ListTile(
+                                          leading: Icon(Icons.image),
+                                          title: Text("Slika"),
+                                          trailing: Icon(
+                                            Icons.file_upload,
+                                          ),
                                         ),
-                                        onTap: getImage,
                                       ),
                                     );
                                   },
@@ -372,38 +374,77 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                           height: 55,
                           child: ElevatedButton(
                             onPressed: () async {
-                              _formKey.currentState?.saveAndValidate();
-                              var request =
-                                  Map.from(_formKey.currentState!.value);
-                              request['countryId'] = selectedCountryId;
-                              request['profileImage'] = _base64Image;
+                              if (_formKey.currentState?.saveAndValidate() ??
+                                  false) {
+                                var request =
+                                    Map.from(_formKey.currentState!.value);
 
-                              if (widget.user != null) {
-                                User updatedUser = await userProvider.update(
-                                    widget.user!.userId!, request);
-                                Navigator.pop(context,
-                                    updatedUser); // Return success flag
+                                request['countryId'] = selectedCountryId;
+                                request['profileImage'] =
+                                    _base64Image ?? widget.user.profileImage;
+
+                                try {
+                                  User updatedUser = await userProvider.update(
+                                    widget.user.userId!,
+                                    request,
+                                  );
+
+                                  Navigator.pop(context, updatedUser);
+
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) => AlertDialog(
+                                      title: const Text(
+                                        "Update",
+                                        style: TextStyle(color: Colors.green),
+                                      ),
+                                      content:
+                                          const Text("Korisnik je ažuriran"),
+                                      actions: [
+                                        TextButton(
+                                          child: const Text(
+                                            "OK",
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          onPressed: () {
+                                            Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        const MasterScreen(
+                                                          initialIndex: 3,
+                                                        )));
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                } catch (e) {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) => AlertDialog(
+                                      title: const Text(
+                                        "Error",
+                                        style: TextStyle(color: Colors.red),
+                                      ),
+                                      content: Text(
+                                          "Korisnički podaci nisu ažurirani. ->\n$e"),
+                                      actions: [
+                                        TextButton(
+                                          child: const Text(
+                                            "OK",
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                }
                               }
-
-                              showDialog(
-                                  context: context,
-                                  builder: (context) => AlertDialog(
-                                        title: const Text("Update"),
-                                        content:
-                                            const Text("Korisnik je ažuriran"),
-                                        actions: [
-                                          TextButton(
-                                            child: const Text(
-                                              "OK",
-                                              style: TextStyle(
-                                                  color: Colors.green),
-                                            ),
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                          )
-                                        ],
-                                      ));
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.black,

@@ -12,10 +12,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class MasterScreen extends StatefulWidget {
-  User? user;
-  MasterScreen(this.title, this.child, {super.key});
-  String title;
-  Widget child;
+  final String title;
+  final Widget child;
+
+  const MasterScreen(
+    this.title,
+    this.child, {
+    super.key,
+  });
 
   @override
   State<MasterScreen> createState() => _MasterScreenState();
@@ -25,19 +29,12 @@ class _MasterScreenState extends State<MasterScreen> {
   late UserProvider userProvider;
   var userNameUI = "";
   SearchResult<User>? userResult;
-  Map<String, dynamic> _initialValue = {};
 
   @override
   void initState() {
     userProvider = context.read<UserProvider>();
 
     super.initState();
-
-    _initialValue = {
-      'firstName': widget.user?.firstName,
-      'lastName': widget.user?.lastName,
-      'userName': widget.user?.userId,
-    };
 
     initForm();
   }
@@ -58,7 +55,7 @@ class _MasterScreenState extends State<MasterScreen> {
         body: Row(
           children: [
             Container(
-              width: 250,
+              width: 300,
               color: Colors.black,
               child: ListView(
                 children: [
@@ -75,12 +72,15 @@ class _MasterScreenState extends State<MasterScreen> {
                         const SizedBox(
                           width: 10,
                         ),
-                        Text(
-                          "Zdravo, \n$userNameUI",
-                          style: TextStyle(
-                            color: Colors.green.shade800,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
+                        Expanded(
+                          child: Text(
+                            "Zdravo, \n$userNameUI",
+                            style: TextStyle(
+                              color: Colors.green.shade800,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
                       ],
@@ -123,7 +123,7 @@ class _MasterScreenState extends State<MasterScreen> {
                     ),
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => UserListScreen()));
+                          builder: (context) => const UserListScreen()));
                     },
                   ),
                   const SizedBox(
@@ -144,7 +144,7 @@ class _MasterScreenState extends State<MasterScreen> {
                     ),
                     onTap: () {
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => VehicleListScreen()));
+                          builder: (context) => const VehicleListScreen()));
                     },
                   ),
                   const SizedBox(
@@ -165,7 +165,7 @@ class _MasterScreenState extends State<MasterScreen> {
                     ),
                     onTap: () {
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => RouteListScreen()));
+                          builder: (context) => const RouteListScreen()));
                     },
                   ),
                   const SizedBox(
@@ -186,7 +186,7 @@ class _MasterScreenState extends State<MasterScreen> {
                     ),
                     onTap: () {
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => RequestListScreen()));
+                          builder: (context) => const RequestListScreen()));
                     },
                   ),
                   const SizedBox(

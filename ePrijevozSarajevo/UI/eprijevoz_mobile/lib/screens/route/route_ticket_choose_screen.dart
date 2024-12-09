@@ -16,7 +16,7 @@ import 'package:flutter/material.dart' hide Route;
 import 'package:provider/provider.dart';
 
 class TicketChooseScreen extends StatefulWidget {
-  final Route route; // Accept only ONE route
+  final Route route;
   const TicketChooseScreen({required this.route, super.key});
   @override
   State<TicketChooseScreen> createState() => _TicketChooseScreenState();

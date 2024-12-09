@@ -15,7 +15,7 @@ abstract class BaseProvider<T> with ChangeNotifier {
         defaultValue: "http://localhost:7292/");
   }
 
-  // Add a getter for _endpoint
+  // add a getter for _endpoint
   String get endpoint => _endpoint;
 
   Future<SearchResult<T>> get({dynamic filter}) async {
@@ -80,7 +80,6 @@ abstract class BaseProvider<T> with ChangeNotifier {
     }
   }
 
-  //
   Future<T> getById(int id) async {
     var url = "$baseUrl$_endpoint/$id";
     var uri = Uri.parse(url);
@@ -107,7 +106,6 @@ abstract class BaseProvider<T> with ChangeNotifier {
     }
     return true;
   }
-  //
 
   T fromJson(data) {
     throw Exception("Method not implemented");
@@ -119,8 +117,7 @@ abstract class BaseProvider<T> with ChangeNotifier {
     } else if (response.statusCode == 401) {
       throw Exception("Unauthorized");
     } else {
-      print(response.body);
-      //throw Exception("Something bad happened please try again");
+      debugPrint(response.body);
       throw Exception(response.body);
     }
   }
@@ -129,7 +126,7 @@ abstract class BaseProvider<T> with ChangeNotifier {
     String username = AuthProvider.username ?? "";
     String password = AuthProvider.password ?? "";
 
-    print("passed creds: $username, $password");
+    debugPrint("passed creds: $username, $password");
 
     String basicAuth =
         "Basic ${base64Encode(utf8.encode('$username:$password'))}";

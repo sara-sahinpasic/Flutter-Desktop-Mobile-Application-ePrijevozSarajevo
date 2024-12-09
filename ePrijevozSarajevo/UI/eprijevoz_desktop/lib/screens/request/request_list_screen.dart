@@ -13,9 +13,9 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
 
 class RequestListScreen extends StatefulWidget {
-  Status? status;
-  Request? request;
-  RequestListScreen({super.key, this.request, this.status});
+  final Status? status;
+  final Request? request;
+  const RequestListScreen({super.key, this.request, this.status});
 
   @override
   State<RequestListScreen> createState() => _RequestListScreenState();
@@ -60,7 +60,7 @@ class _RequestListScreenState extends State<RequestListScreen> {
       requestResult = await requestProvider.get();
       userResult = await userProvider.get();
     } catch (e) {
-      print('Error: $e');
+      debugPrint('Error: $e');
     } finally {
       setState(() {
         isLoading = false;
@@ -151,13 +151,37 @@ class _RequestListScreenState extends State<RequestListScreen> {
               isLoading = false;
             });
             try {
-              //Search:
+              // search:
               var filter = {
                 'UserStatusIdGTE': selectedStatusId,
               };
               routeResultForStatus = await requestProvider.get(filter: filter);
+              if (routeResultForStatus?.count == 0) {
+                await showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: const Text(
+                      "Warning",
+                      style: TextStyle(
+                          color: Colors.orange, fontWeight: FontWeight.bold),
+                    ),
+                    content: const Text(
+                      "Nema pronađenog nađenih zahtjeva.",
+                    ),
+                    actions: [
+                      TextButton(
+                        child: const Text("OK",
+                            style: TextStyle(color: Colors.black)),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ],
+                  ),
+                );
+              }
             } catch (e) {
-              print('Error: $e');
+              debugPrint('Error: $e');
             } finally {
               setState(() {
                 isLoading = false;

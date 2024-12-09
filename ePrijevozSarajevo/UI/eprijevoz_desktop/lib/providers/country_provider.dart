@@ -6,7 +6,6 @@ class CountryProvider extends BaseProvider<Country> {
 
   @override
   Country fromJson(data) {
-    // TODO: implement fromJson
     return Country.fromJson(data);
   }
 }

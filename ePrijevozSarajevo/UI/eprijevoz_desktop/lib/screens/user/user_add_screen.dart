@@ -14,17 +14,19 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:provider/provider.dart';
 
 class UserAddDialog extends StatefulWidget {
-  User? user;
-  Country? country;
-  Role? role;
-  UserAddDialog({super.key, this.user, this.country, this.role});
+  // final User? user;
+  // final Country? country;
+  // final Role? role;
+  const UserAddDialog({
+    super.key,
+  });
   @override
   State<UserAddDialog> createState() => _UserAddDialogState();
 }
 
 class _UserAddDialogState extends State<UserAddDialog> {
   final _formKey = GlobalKey<FormBuilderState>();
-  Map<String, dynamic> _initialValue = {};
+  //Map<String, dynamic> _initialValue = {};
   SearchResult<User>? userResult;
   late UserProvider userProvider;
   bool isLoading = true;
@@ -38,6 +40,9 @@ class _UserAddDialogState extends State<UserAddDialog> {
   SearchResult<UserRole>? userRoleResult;
   DateTime? dateOfBirth;
   final TextEditingController _dateOfBirthController = TextEditingController();
+  User? user;
+  Country? country;
+  Role? role;
 
   @override
   void initState() {
@@ -47,22 +52,6 @@ class _UserAddDialogState extends State<UserAddDialog> {
     userRoleProvider = context.read<UserRoleProvider>();
 
     super.initState();
-
-    _initialValue = {
-      'firstName': widget.user?.firstName,
-      'lastName': widget.user?.lastName,
-      'dateOfBirth': widget.user?.dateOfBirth,
-      'userName': widget.user?.userId,
-      'email': widget.user?.email,
-      'phoneNumber': widget.user?.phoneNumber,
-      'address': widget.user?.address,
-      'city': widget.user?.city,
-      'zipCode': widget.user?.zipCode,
-      'countryId': widget.user?.userCountryId?.toString(),
-      'password': widget.user?.password,
-      'passwordConfirmation': widget.user?.passwordConfirmation,
-      'roleId': widget.role?.roleId?.toString(),
-    };
 
     initForm();
   }
@@ -76,12 +65,12 @@ class _UserAddDialogState extends State<UserAddDialog> {
     setState(() {
       isLoading = false;
 
-      selectedCountryId = widget.user?.userCountryId ??
+      selectedCountryId = user?.userCountryId ??
           (countryResult?.result.isNotEmpty ?? false
               ? countryResult!.result.first.countryId
               : null);
 
-      selectedRoleId = widget.role?.roleId ??
+      selectedRoleId = role?.roleId ??
           (roleResult?.result.isNotEmpty ?? false
               ? roleResult!.result.first.roleId
               : null);
@@ -125,7 +114,10 @@ class _UserAddDialogState extends State<UserAddDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text("Novi korisnik"),
+      title: const Text(
+        "Novi korisnik",
+        style: TextStyle(fontWeight: FontWeight.bold),
+      ),
       content: SingleChildScrollView(
         child: SizedBox(
           width: 800,
@@ -135,7 +127,6 @@ class _UserAddDialogState extends State<UserAddDialog> {
                 )
               : FormBuilder(
                   key: _formKey,
-                  initialValue: _initialValue,
                   child: Column(
                     children: [
                       const SizedBox(height: 15),
@@ -664,7 +655,11 @@ class _UserAddDialogState extends State<UserAddDialog> {
                                       builder: (context) => AlertDialog(
                                         title: const Text("Success"),
                                         content: const Text(
-                                            "Korisnik je uspješno dodan."),
+                                          "Korisnik je uspješno dodan.",
+                                          style: TextStyle(
+                                              color: Colors.green,
+                                              fontWeight: FontWeight.bold),
+                                        ),
                                         actions: [
                                           TextButton(
                                             child: const Text("OK",
@@ -687,8 +682,8 @@ class _UserAddDialogState extends State<UserAddDialog> {
                                             style: TextStyle(
                                                 color: Colors.red,
                                                 fontWeight: FontWeight.bold)),
-                                        content: const Text(
-                                            "Greška prilikom dodavanja korisnika."),
+                                        content: Text(
+                                            'Greška prilikom dodavanja korisnika ->\n$error'),
                                         actions: [
                                           TextButton(
                                             child: const Text("OK",

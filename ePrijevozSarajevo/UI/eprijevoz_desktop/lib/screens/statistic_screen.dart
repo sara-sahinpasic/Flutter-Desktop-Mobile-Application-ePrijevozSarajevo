@@ -26,13 +26,13 @@ class _StatisticScreenState extends State<StatisticScreen> {
   late int selectedYearIndex;
   String selectedYear = "";
   late int currentYear = 2024;
-  // Grpah hoover
+  // grpah hoover
   int touchedIndex = -1;
   bool isTouched = false;
   // PDF
   final GlobalKey _ticketChartKey = GlobalKey();
   final GlobalKey _routeChartKey = GlobalKey();
-  // Ticket
+  // ticket
   late IssuedTicketProvider issuedTicketProvider;
   SearchResult<IssuedTicket>? issuedTicketResult;
   late List<IssuedTicket> ticketsForYearAndMonths = [];
@@ -40,7 +40,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
   late List<int> selectedMonthsforTickets = [];
   var maxTicketValue = 0;
   var maxStationValue = 0;
-  // Station
+  // station
   late RouteProvider routeProvider;
   SearchResult<Route>? routeResult;
 
@@ -110,7 +110,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
           await image.toByteData(format: ui.ImageByteFormat.png);
       return byteData?.buffer.asUint8List();
     } catch (e) {
-      print(e);
+      debugPrint(e.toString());
     }
     return null;
   }
@@ -171,7 +171,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
         );
       }
     } catch (e) {
-      print('Error generating PDF: $e');
+      debugPrint('Error generating PDF: $e');
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Error generating PDF')),
       );
@@ -522,7 +522,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
               ),
             ),
           ),
-          // Legend
+          // legend
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: buildTicketTypeLegend(),
@@ -727,7 +727,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
               ),
             ),
           ),
-          // Legend
+          // legend
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: buildStationsLegend(),

@@ -46,80 +46,69 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(15.0, 150.0, 15.0, 0.0),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Flexible(
-                    child: Center(
-                      child: Text(
-                        "Dobrodošli, ${currentUser?.firstName}!",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.green.shade700,
-                        ),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          constraints.maxWidth;
+          return Padding(
+            padding: const EdgeInsets.fromLTRB(15.0, 70.0, 15.0, 0.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Flexible(
+                  child: Center(
+                    child: Text(
+                      "Dobrodošli, ${currentUser?.firstName ?? ''}!",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.green.shade700,
                       ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Row(
-                children: [
-                  Flexible(
-                    child: Center(
-                      child: Text(
-                        "ZAJEDNO ZAŠTITIMO NAŠU PLANETU ZEMLJU!",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.green.shade700,
-                        ),
-                      ),
-                    ),
+                ),
+                Text(
+                  "ZAJEDNO ZAŠTITIMO NAŠU PLANETU ZEMLJU!",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.green.shade700,
                   ),
-                ],
-              ),
-              const SizedBox(height: 170),
-              Row(
-                children: [
-                  Expanded(
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const MasterScreen(
-                                    initialIndex: 1,
-                                  )));
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.black,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
+                ),
+                const SizedBox(height: 30),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const MasterScreen(
+                            initialIndex: 1,
                           ),
-                          padding: const EdgeInsets.symmetric(vertical: 10.0),
                         ),
-                        child: const Text(
-                          "Krenimo odmah!",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
-                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.black,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
                       ),
+                      padding: const EdgeInsets.symmetric(vertical: 10.0),
+                    ),
+                    child: const Text(
+                      "Krenimo odmah!",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                     ),
                   ),
-                ],
-              ),
-            ],
-          ),
-        ),
+                ),
+              ],
+            ),
+          );
+        },
       ),
     );
   }

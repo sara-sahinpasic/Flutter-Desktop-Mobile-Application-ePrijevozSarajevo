@@ -7,7 +7,7 @@ class Type {
   int? typeId;
   String? name;
 
-  Type();
+  Type({this.typeId, this.name});
 
   factory Type.fromJson(Map<String, dynamic> json) => _$TypeFromJson(json);
 

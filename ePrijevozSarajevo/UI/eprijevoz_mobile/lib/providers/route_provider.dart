@@ -6,7 +6,6 @@ class RouteProvider extends BaseProvider<Route> {
 
   @override
   Route fromJson(data) {
-    // TODO: implement fromJson
     return Route.fromJson(data);
   }
 }

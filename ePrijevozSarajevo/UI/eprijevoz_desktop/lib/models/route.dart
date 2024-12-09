@@ -1,5 +1,4 @@
 import 'package:json_annotation/json_annotation.dart';
-
 part 'route.g.dart';
 
 @JsonSerializable()
@@ -10,9 +9,6 @@ class Route {
   int? vehicleId;
   DateTime? arrival;
   DateTime? departure;
-  //bool? active;
-  //bool? activeOnHolidays;
-  //bool? activeOnWeekend;
 
   Route(
       {this.routeId,

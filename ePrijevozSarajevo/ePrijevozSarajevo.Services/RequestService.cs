@@ -16,6 +16,7 @@ namespace ePrijevozSarajevo.Services
         public override IQueryable<Request> AddFilter(RequestSearchObject search, IQueryable<Request> query)
         {
             query = base.AddFilter(search, query);
+            
 
             if (search?.UserStatusIdGTE >= 0)
             {
@@ -28,7 +29,7 @@ namespace ePrijevozSarajevo.Services
                       .ThenInclude(u => u.UserRoles);
             }
 
-            return query;
+            return query.Where(x => x.Active == true);
         }
 
         public async Task ApproveRequest(int requestId, DateTime expirationDate)

@@ -10,10 +10,8 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
 
 class UserListScreen extends StatefulWidget {
-  User? user;
-  UserListScreen({
+  const UserListScreen({
     super.key,
-    this.user,
   });
   @override
   State<UserListScreen> createState() => _UserListScreenState();
@@ -25,16 +23,17 @@ class _UserListScreenState extends State<UserListScreen> {
   bool isLoading = false;
   final _formKey = GlobalKey<FormBuilderState>();
   Map<String, dynamic> _initialValue = {};
+  User? user;
 
   @override
   void initState() {
     userProvider = context.read<UserProvider>();
     super.initState();
     _initialValue = {
-      'firstName': widget.user?.firstName,
-      'lastName': widget.user?.lastName,
-      'userName': widget.user?.userId,
-      'dateOfBirth': widget.user?.dateOfBirth?.toString(),
+      'firstName': user?.firstName,
+      'lastName': user?.lastName,
+      'userName': user?.userId,
+      'dateOfBirth': user?.dateOfBirth?.toString(),
     };
   }
 
@@ -49,7 +48,7 @@ class _UserListScreenState extends State<UserListScreen> {
       debugPrint('Error: $e');
     } finally {
       setState(() {
-        isLoading = false; // Hide the loading indicator after completion
+        isLoading = false; // hide the loading indicator after completion
       });
     }
   }
@@ -77,8 +76,8 @@ class _UserListScreenState extends State<UserListScreen> {
           ),
           _buildSearch(),
           isLoading
-              ? const Center(child: CircularProgressIndicator()) // Show loader
-              : _buildResultView(), // Show results when not loading
+              ? const Center(child: CircularProgressIndicator()) // show loader
+              : _buildResultView(), // show results when not loading
         ],
       ),
     );
@@ -122,9 +121,9 @@ class _UserListScreenState extends State<UserListScreen> {
         ElevatedButton(
           onPressed: () async {
             setState(() {
-              isLoading = true; // Show the loading indicator
+              isLoading = true;
             });
-            //Search:
+            // search:
             try {
               var filter = {
                 'FirstNameGTE': _ftsFirstLastNameController.text,
@@ -132,10 +131,10 @@ class _UserListScreenState extends State<UserListScreen> {
               };
               userResult = await userProvider.get(filter: filter);
             } catch (e) {
-              print('Error: $e');
+              debugPrint('Error: $e');
             } finally {
               setState(() {
-                isLoading = false; // Hide the loading indicator
+                isLoading = false;
               });
             }
             _ftsFirstLastNameController.clear();
@@ -251,7 +250,7 @@ class _UserListScreenState extends State<UserListScreen> {
                                       // update
                                       DataCell(IconButton(
                                         onPressed: () {
-                                          final result = showDialog(
+                                          showDialog(
                                               context: context,
                                               builder: (BuildContext context) =>
                                                   UpdateUserDialog(
@@ -274,7 +273,12 @@ class _UserListScreenState extends State<UserListScreen> {
                                                   builder: (dialogContext) =>
                                                       AlertDialog(
                                                         title: const Text(
-                                                            "Delete"),
+                                                          "Delete",
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold),
+                                                        ),
                                                         content: Text(
                                                             "Da li želite obrisati korisnika ${e.firstName} ${e.lastName}?"),
                                                         actions: [
@@ -313,9 +317,21 @@ class _UserListScreenState extends State<UserListScreen> {
                                                   builder:
                                                       (dialogDeleteContext) =>
                                                           AlertDialog(
-                                                            title: Text(success
-                                                                ? "Success"
-                                                                : "Error"),
+                                                            title: Text(
+                                                              success
+                                                                  ? "Success"
+                                                                  : "Error",
+                                                              style: TextStyle(
+                                                                color: success
+                                                                    ? Colors
+                                                                        .green
+                                                                    : Colors
+                                                                        .red,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                              ),
+                                                            ),
                                                             content: Text(success
                                                                 ? "Korisnik: ${e.firstName} ${e.lastName}, uspješno obrisan."
                                                                 : "Korisnik: ${e.firstName} ${e.lastName}, nije obrisan."),
@@ -360,7 +376,8 @@ class _UserListScreenState extends State<UserListScreen> {
                         onPressed: () async {
                           final result = await showDialog(
                             context: context,
-                            builder: (dialogAddContext) => UserAddDialog(),
+                            builder: (dialogAddContext) =>
+                                const UserAddDialog(),
                           );
                           if (result == true) {
                             await refreshTable(); // refresh table after a new user is added

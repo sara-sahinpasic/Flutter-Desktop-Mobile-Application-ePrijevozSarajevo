@@ -8,8 +8,7 @@ import 'package:provider/provider.dart';
 
 class RequestApproveDialog extends StatefulWidget {
   final Request? request;
-
-  RequestApproveDialog({this.request, super.key});
+  const RequestApproveDialog({this.request, super.key});
 
   @override
   State<RequestApproveDialog> createState() => _RequestApproveDialogState();
@@ -92,7 +91,12 @@ class _RequestApproveDialogState extends State<RequestApproveDialog> {
                               showDialog(
                                 context: context,
                                 builder: (context) => AlertDialog(
-                                  title: const Text("Success"),
+                                  title: const Text(
+                                    "Success",
+                                    style: TextStyle(
+                                        color: Colors.green,
+                                        fontWeight: FontWeight.bold),
+                                  ),
                                   content:
                                       const Text("Zahtjev uspješno odobren."),
                                   actions: [
@@ -112,9 +116,14 @@ class _RequestApproveDialogState extends State<RequestApproveDialog> {
                               showDialog(
                                 context: context,
                                 builder: (context) => AlertDialog(
-                                  title: const Text("Error"),
-                                  content: const Text(
-                                      "Greška prilikom odobrenja zahtjeva."),
+                                  title: const Text(
+                                    "Error",
+                                    style: TextStyle(
+                                        color: Colors.red,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  content: Text(
+                                      "Greška prilikom odobrenja zahtjeva.->\n$error"),
                                   actions: [
                                     TextButton(
                                       child: const Text("OK",

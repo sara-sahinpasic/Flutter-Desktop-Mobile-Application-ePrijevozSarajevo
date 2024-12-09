@@ -105,7 +105,12 @@ class _RequestRejectDialogState extends State<RequestRejectDialog> {
                               showDialog(
                                 context: context,
                                 builder: (context) => AlertDialog(
-                                  title: const Text("Success"),
+                                  title: const Text(
+                                    "Success",
+                                    style: TextStyle(
+                                        color: Colors.green,
+                                        fontWeight: FontWeight.bold),
+                                  ),
                                   content: const Text("Zahtjev je odbijen."),
                                   actions: [
                                     TextButton(
@@ -124,9 +129,14 @@ class _RequestRejectDialogState extends State<RequestRejectDialog> {
                               showDialog(
                                 context: context,
                                 builder: (context) => AlertDialog(
-                                  title: const Text("Error"),
-                                  content: const Text(
-                                      "Greška prilikom odbijanja zahtjeva."),
+                                  title: const Text(
+                                    "Error",
+                                    style: TextStyle(
+                                        color: Colors.red,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  content: Text(
+                                      "Greška prilikom odbijanja zahtjeva.->\n$error"),
                                   actions: [
                                     TextButton(
                                       child: const Text("OK",

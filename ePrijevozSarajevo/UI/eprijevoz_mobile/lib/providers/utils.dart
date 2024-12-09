@@ -23,10 +23,7 @@ String formatDateTime(DateTime dateTime) {
 
 String formatPrice(double price) {
   final NumberFormat formatter = NumberFormat.currency(
-      locale: 'bs_BA', // Bosnian locale
-      symbol:
-          'KM', // Currency symbol for Bosnia and Herzegovina (Convertible Mark)
-      decimalDigits: 2 // Ensures two decimal places
+      locale: 'bs_BA', symbol: 'KM', decimalDigits: 2 // two decimal places
       );
   return formatter.format(price);
 }

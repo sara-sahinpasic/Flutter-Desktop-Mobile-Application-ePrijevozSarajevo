@@ -10,14 +10,12 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:provider/provider.dart';
 
 class UpdateUserDialog extends StatefulWidget {
-  Country? country;
-  User user;
-  VoidCallback onUserUpdated; //refresh table with new data
+  final User user;
+  final VoidCallback onUserUpdated; //refresh table with new data
 
-  UpdateUserDialog({
+  const UpdateUserDialog({
     required this.user,
     required this.onUserUpdated,
-    this.country,
     super.key,
   });
 
@@ -34,7 +32,6 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
   int? selectedCountryId;
   bool isLoading = true;
   final _formKey = GlobalKey<FormBuilderState>();
-  Map<String, dynamic> _initialValue = {};
 
   @override
   void initState() {
@@ -42,18 +39,6 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
     countryProvider = context.read<CountryProvider>();
 
     super.initState();
-
-    _initialValue = {
-      'firstName': widget.user.firstName,
-      'lastName': widget.user.lastName,
-      'userName': widget.user.userId,
-      'dateOfBirth': widget.user.dateOfBirth?.toString(),
-      'phoneNumber': widget.user.phoneNumber,
-      'address': widget.user.address,
-      'city': widget.user.city,
-      'zipCode': widget.user.zipCode,
-      'countryId': widget.user.userCountryId?.toString(),
-    };
 
     initForm();
   }
@@ -91,7 +76,10 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text("Update"),
+      title: const Text(
+        "Update",
+        style: TextStyle(fontWeight: FontWeight.bold),
+      ),
       content: SingleChildScrollView(
         child: SizedBox(
           width: 500,
@@ -150,37 +138,6 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
                           child: FormBuilderTextField(
                             name: 'lastName',
                             initialValue: widget.user.lastName,
-                            validator: FormBuilderValidators.compose([
-                              FormBuilderValidators.required(
-                                  errorText: "Ovo polje ne može bit prazno."),
-                            ]),
-                            cursorColor: Colors.green.shade800,
-                            decoration: const InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.black),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Row(
-                      children: [
-                        const Text(
-                          "Username:",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 15),
-                        ),
-                        const SizedBox(
-                          width: 35,
-                        ),
-                        Expanded(
-                          child: FormBuilderTextField(
-                            name: 'userName',
-                            initialValue: widget.user.userName,
                             validator: FormBuilderValidators.compose([
                               FormBuilderValidators.required(
                                   errorText: "Ovo polje ne može bit prazno."),
@@ -292,6 +249,9 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
                             validator: FormBuilderValidators.compose([
                               FormBuilderValidators.required(
                                   errorText: "Ovo polje ne može bit prazno."),
+                              FormBuilderValidators.match(r'^[a-zA-Z\s]*$',
+                                  errorText:
+                                      "Ovo polje može sadržavati isključivo slova."),
                             ]),
                             cursorColor: Colors.green.shade800,
                             decoration: const InputDecoration(
@@ -400,7 +360,12 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
                                 showDialog(
                                   context: context,
                                   builder: (context) => AlertDialog(
-                                    title: const Text("Update"),
+                                    title: const Text(
+                                      "Update",
+                                      style: TextStyle(
+                                          color: Colors.green,
+                                          fontWeight: FontWeight.bold),
+                                    ),
                                     content: const Text("Korisnik je ažuriran"),
                                     actions: [
                                       TextButton(
