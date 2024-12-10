@@ -6,12 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ePrijevozSarajevo.Services
 {
-    public class UserRoleService : BaseCRUDService<Model.UserRole,
-        UserRoleSearchObjects, Database.UserRole, UserRoleUpsertRequest,
-        UserRoleUpsertRequest>, IUserRoleService
+    public class UserRoleService : BaseCRUDService<Model.UserRole, UserRoleSearchObjects, Database.UserRole, UserRoleUpsertRequest, UserRoleUpsertRequest>, IUserRoleService
     {
-        public UserRoleService(DataContext context, IMapper mapper)
-            : base(context, mapper) { }
+        public UserRoleService(DataContext context, IMapper mapper) : base(context, mapper) { }
 
         public override IQueryable<UserRole> AddFilter(UserRoleSearchObjects search, IQueryable<UserRole> query)
         {

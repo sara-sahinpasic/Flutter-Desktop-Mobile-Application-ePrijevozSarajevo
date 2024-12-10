@@ -6,6 +6,5 @@ namespace ePrijevozSarajevo.Model.SearchObjects
     {
         public int? UserStatusIdGTE { get; set; }
         public bool? IsUserIncluded { get; set; }
-
     }
 }

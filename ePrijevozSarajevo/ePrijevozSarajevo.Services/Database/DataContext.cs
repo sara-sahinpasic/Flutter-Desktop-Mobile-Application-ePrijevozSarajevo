@@ -1,7 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Net;
-using System;
-using ePrijevozSarajevo.Model;
 
 namespace ePrijevozSarajevo.Services.Database
 {
@@ -34,12 +31,12 @@ namespace ePrijevozSarajevo.Services.Database
 
         /*
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-     => optionsBuilder.UseSqlServer("Data Source=localhost; Initial Catalog=140261; user=sa; Password=QWEasd123!;" +
+        #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Data Source=localhost; Initial Catalog=140261; user=sa; Password=QWEasd123!;" +
          "Trusted_Connection=True;TrustServerCertificate=True");
         */
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder) //10
+        protected override void OnModelCreating(ModelBuilder modelBuilder) 
         {
             base.OnModelCreating(modelBuilder);
 
@@ -321,121 +318,5 @@ namespace ePrijevozSarajevo.Services.Database
              modelBuilder.Entity<Route>()
                 .HasData(routes);
          } //3
-        /* private static void BuildRoutes(ModelBuilder modelBuilder)
-         {
-             List<Route> routes = new();
-             var random = new Random();
-
-             int totalStations = 15;
-             int totalVehicles = 6;
-             int routeId = 1;
-
-             // allowed departure days of the month
-             int[] allowedDays = { 5, 10, 15, 20, 25 };
-
-             DateTime startDate = new DateTime(2024, 12, 01);
-             DateTime endDate = new DateTime(2025, 03, 01); 
-
-             foreach (var month in Enumerable.Range(startDate.Month, endDate.Month - startDate.Month + 1))
-             {
-                 foreach (var day in allowedDays)
-                 {
-                     foreach (int startStationId in Enumerable.Range(1, totalStations))
-                     {
-                         foreach (int endStationId in Enumerable.Range(1, totalStations))
-                         {
-                             if (startStationId == endStationId) continue; // skip if stations are the same
-
-                             DateTime departureDate;
-                             try
-                             {
-                                 departureDate = new DateTime(startDate.Year, month, day);
-                             }
-                             catch
-                             {
-                                 // skip invalid days like Feb 30
-                                 continue;
-                             }
-
-                             int departureHour = random.Next(5, 24);
-                             int departureMinute = random.Next(0, 60);
-                             DateTime departure = new DateTime(departureDate.Year, departureDate.Month, departureDate.Day, departureHour, departureMinute, 0);
-
-                             DateTime arrival = departure.AddMinutes(random.Next(10, 60)); // between 10 minutes and 1 hour after departure
-
-                             routes.Add(new Route()
-                             {
-                                 RouteId = routeId++,
-                                 StartStationId = startStationId,
-                                 EndStationId = endStationId,
-                                 VehicleId = random.Next(1, totalVehicles + 1),
-                                 Departure = departure,
-                                 Arrival = arrival
-                             });
-                         }
-                     }
-                 }
-             }
-
-             modelBuilder.Entity<Route>().HasData(routes);
-         }//3*/
-       /* private static void BuildRoutes(ModelBuilder modelBuilder)
-        {
-            List<Route> routes = new();
-            var random = new Random();
-
-            int totalStations = 15;
-            int totalVehicles = 6;
-            int routeId = 1;
-
-            // Define the allowed departure days of the month
-            int[] allowedDays = { 5, 10, 15, 20, 25 };
-
-            DateTime startDate = new DateTime(2024, 12, 01);
-            DateTime endDate = new DateTime(2025, 02, 29); // Leap year ensures February 29 exists
-
-            for (var currentDate = startDate; currentDate <= endDate; currentDate = currentDate.AddMonths(1))
-            {
-                foreach (var day in allowedDays)
-                {
-                    // Ensure the day exists in the current month
-                    if (day > DateTime.DaysInMonth(currentDate.Year, currentDate.Month)) continue;
-
-                    foreach (int startStationId in Enumerable.Range(1, totalStations))
-                    {
-                        foreach (int endStationId in Enumerable.Range(1, totalStations))
-                        {
-                            if (startStationId == endStationId) continue; // Skip if stations are the same
-
-                            // Safely create a departure date
-                            DateTime departureDate = new DateTime(currentDate.Year, currentDate.Month, day);
-
-                            // Generate random departure time
-                            int departureHour = random.Next(5, 24);
-                            int departureMinute = random.Next(0, 60);
-                            DateTime departure = new DateTime(departureDate.Year, departureDate.Month, departureDate.Day, departureHour, departureMinute, 0);
-
-                            // Generate random arrival time between 10 minutes and 1 hour after departure
-                            DateTime arrival = departure.AddMinutes(random.Next(10, 60));
-
-                            routes.Add(new Route()
-                            {
-                                RouteId = routeId++,
-                                StartStationId = startStationId,
-                                EndStationId = endStationId,
-                                VehicleId = random.Next(1, totalVehicles + 1),
-                                Departure = departure,
-                                Arrival = arrival
-                            });
-                        }
-                    }
-                }
-            }
-
-            modelBuilder.Entity<Route>().HasData(routes);
-        }*/
-
-
-
     }
 }

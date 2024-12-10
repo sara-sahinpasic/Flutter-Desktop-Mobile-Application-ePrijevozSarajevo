@@ -9,8 +9,7 @@ using System.Text;
 
 namespace ePrijevozSarajevo.Services
 {
-    public class UserService : BaseCRUDService<Model.User, UserSearchObject, Database.User, UserInseretRequest,
-        UserUpdateRequest>, IUserService
+    public class UserService : BaseCRUDService<Model.User, UserSearchObject, Database.User, UserInseretRequest, UserUpdateRequest>, IUserService
     {
         ILogger<UserService> _logger;
 
@@ -38,6 +37,11 @@ namespace ePrijevozSarajevo.Services
             if (search?.IsUserStatusIncluded == true)
             {
                 query = query.Include(x => x.UserStatus);
+            }
+
+            if (search?.IsCountryIncluded == true)
+            {
+                query = query.Include(x => x.UserCountry);
             }
 
             return query;
@@ -154,12 +158,6 @@ namespace ePrijevozSarajevo.Services
 
             await _dataContext.SaveChangesAsync();
             return true;
-            // }
-            //catch (Exception ex)
-            //{
-            //    // Handle or log the exception
-            //    return false;
-            //}
         }
 
         public async Task<Model.User> InsertDateOfBirth(UserInseretRequest request)

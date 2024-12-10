@@ -10,9 +10,7 @@ namespace ePrijevozSarajevo.API.Controllers
     [ApiController]
     public class StationController : BaseCRUDController<Model.Station, StationSearchObject, StationInsertRequest, StationUpdateRequest>
     {
-        public StationController(IStationService service) : base(service)
-        {
-        }
-        
+        public StationController(IStationService service) : base(service) { }
+
     }
 }

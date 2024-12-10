@@ -1,6 +1,4 @@
 ﻿namespace ePrijevozSarajevo.Model.SearchObjects
 {
-    public class TypeSearchObject : BaseSearchObject
-    {
-    }
+    public class TypeSearchObject : BaseSearchObject { }
 }

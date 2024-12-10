@@ -1,7 +1,6 @@
 ﻿using ePrijevozSarajevo.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using System.ComponentModel;
 using System.Net;
 
 namespace ePrijevozSarajevo.API.Filters

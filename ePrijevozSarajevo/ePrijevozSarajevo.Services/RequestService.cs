@@ -9,14 +9,12 @@ namespace ePrijevozSarajevo.Services
     public class RequestService : BaseCRUDService<Model.Request, RequestSearchObject, Database.Request, RequestInsertRequest, RequestUpdateRequest>,
         IRequestService
     {
-        public RequestService(DataContext context, IMapper mapper) : base(context, mapper)
-        {
-        }
+        public RequestService(DataContext context, IMapper mapper) : base(context, mapper) { }
 
         public override IQueryable<Request> AddFilter(RequestSearchObject search, IQueryable<Request> query)
         {
             query = base.AddFilter(search, query);
-            
+
 
             if (search?.UserStatusIdGTE >= 0)
             {
@@ -25,8 +23,14 @@ namespace ePrijevozSarajevo.Services
 
             if (search?.IsUserIncluded == true)
             {
-                query = query.Include(x => x.User)
-                      .ThenInclude(u => u.UserRoles);
+                query = query
+                    .Include(x => x.User)
+                        .ThenInclude(y => y.UserStatus)
+                    .Include(x => x.User)
+                        .ThenInclude(y => y.UserCountry)
+                    .Include(x => x.User)
+                        .ThenInclude(y => y.UserRoles)
+                        .ThenInclude(z => z.Role);
             }
 
             return query.Where(x => x.Active == true);

@@ -14,8 +14,7 @@ namespace ePrijevozSarajevo.Services
         public BaseTicketState _ticketState { get; set; }
 
         public TicketService(DataContext context, IMapper mapper, BaseTicketState ticketState,
-            ILogger<TicketService> logger)
-            : base(context, mapper)
+            ILogger<TicketService> logger) : base(context, mapper)
         {
             _ticketState = ticketState;
             this._logger = logger;
@@ -82,7 +81,6 @@ namespace ePrijevozSarajevo.Services
                 var entity = await _dataContext.Tickets.FindAsync(id);
                 var state = await _ticketState.CreateState(entity.StateMachine);
                 return state.AllowedActions(entity);
-
             }
         }
     }

@@ -10,8 +10,6 @@ namespace ePrijevozSarajevo.API.Controllers
     [ApiController]
     public class StatusController : BaseCRUDController<Model.Status, StatusSearchObject, StatusInsertRequest, StatusUpdateRequest>
     {
-        public StatusController( IStatusService service) : base(service)
-        {
-        }
+        public StatusController(IStatusService service) : base(service) { }
     }
 }

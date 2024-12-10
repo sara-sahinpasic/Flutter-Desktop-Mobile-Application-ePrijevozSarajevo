@@ -11,9 +11,7 @@ namespace ePrijevozSarajevo.API.Controllers
     [Route("[controller]")]
     public class ManufacturerController : BaseCRUDController<Model.Manufacturer, ManufacturerSearchObject, ManufacturerUpsertRequest, ManufacturerUpsertRequest>
     {
-        public ManufacturerController(IManufacturerService service) : base(service)
-        {
-        }
+        public ManufacturerController(IManufacturerService service) : base(service) { }
 
         [AllowAnonymous]
         public override Task<PagedResult<Manufacturer>> GetList([FromQuery] ManufacturerSearchObject searchObject)

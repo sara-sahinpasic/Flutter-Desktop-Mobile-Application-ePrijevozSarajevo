@@ -3,6 +3,5 @@
     public class VehicleTypeSearchObject : BaseSearchObject
     {
         public bool? IsTypeIncluded { get; set; }
-
     }
 }

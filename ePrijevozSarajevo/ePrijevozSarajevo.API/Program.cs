@@ -12,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-//Dependency Injection
+// Dependency Injection
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IRouteService, RouteService>();
 builder.Services.AddTransient<IStationService, StationService>();
@@ -28,20 +28,20 @@ builder.Services.AddTransient<ICountryService, CountryService>();
 builder.Services.AddTransient<IRoleService, RoleService>();
 
 
-//State machine
+// State machine
 builder.Services.AddTransient<BaseTicketState>();
 builder.Services.AddTransient<InitialTicketState>();
 builder.Services.AddTransient<DraftTicketState>();
 builder.Services.AddTransient<ActiveTicketState>();
 builder.Services.AddTransient<HiddenTicketState>();
 
-//Connection string EF
+// Connection string EF
 builder.Services.AddDbContext<DataContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"));
 });
 
-//Mapster
+// Mapster
 builder.Services.AddMapster();
 
 builder.Services.AddControllers(x =>
@@ -52,7 +52,7 @@ builder.Services.AddControllers(x =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
-//Basic Authentication
+// Basic Authentication
 builder.Services.AddSwaggerGen(c =>
 {
     c.AddSecurityDefinition("basicAuth", new Microsoft.OpenApi.Models.OpenApiSecurityScheme()
@@ -72,7 +72,6 @@ builder.Services.AddSwaggerGen(c =>
     } });
 
 });
-//Basic Authentication
 builder.Services.AddAuthentication("BasicAuthentication")
     .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
 
@@ -91,11 +90,10 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-//Docker
+// Docker
 using (var scope = app.Services.CreateScope())
 {
     var dataContext = scope.ServiceProvider.GetRequiredService<DataContext>();
-    //dataContext.Database.EnsureCreated();
 
     dataContext.Database.Migrate();
 }

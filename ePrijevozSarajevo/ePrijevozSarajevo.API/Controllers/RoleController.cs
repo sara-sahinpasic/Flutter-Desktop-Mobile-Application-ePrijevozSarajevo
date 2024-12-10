@@ -12,9 +12,8 @@ namespace ePrijevozSarajevo.API.Controllers
     public class RoleController : BaseCRUDController
         <Model.Role, RoleSearchObject, RoleUpsertRequest, RoleUpsertRequest>
     {
-        public RoleController(IRoleService service) : base(service)
-        {
-        }
+        public RoleController(IRoleService service) : base(service) { }
+
         [Authorize(Roles = "Admin")]
         public override async Task<Model.Role> Insert(RoleUpsertRequest request)
         {

@@ -9,9 +9,7 @@ namespace ePrijevozSarajevo.Services
 {
     public class RouteService : BaseCRUDService<Model.Route, RouteSearchObject, Database.Route, RouteInsertRequest, RouteUpdateRequest>, IRouteService
     {
-        public RouteService(DataContext context, IMapper mapper) : base(context, mapper)
-        {
-        }
+        public RouteService(DataContext context, IMapper mapper) : base(context, mapper) { }
 
         public override IQueryable<Database.Route> AddFilter(RouteSearchObject search, IQueryable<Database.Route> query)
         {
@@ -37,9 +35,7 @@ namespace ePrijevozSarajevo.Services
                              .Include(x => x.Vehicle.Manufacturer);
             }
 
-
             return query;
-            //.OrderByDescending(x=>x.Departure);
         }
         public async Task DeleteRouteWithIssuedTickets(int routeId)
         {
@@ -81,7 +77,6 @@ namespace ePrijevozSarajevo.Services
                 await _dataContext.SaveChangesAsync();
             }
             return _mapper.Map<Model.Route>(entity);
-
         }
 
         public async Task<Model.Route> UpdateArrivalDeparture(int id, RouteUpdateRequest request)

@@ -10,8 +10,6 @@ namespace ePrijevozSarajevo.API.Controllers
     [Route("[controller]")]
     public class UserRoleController : BaseCRUDController<UserRole, UserRoleSearchObjects, UserRoleUpsertRequest, UserRoleUpsertRequest>
     {
-        public UserRoleController(IUserRoleService service) : base(service)
-        {
-        }
+        public UserRoleController(IUserRoleService service) : base(service) { }
     }
 }

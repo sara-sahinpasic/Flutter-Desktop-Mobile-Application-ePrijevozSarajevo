@@ -5,13 +5,10 @@ using MapsterMapper;
 
 namespace ePrijevozSarajevo.Services
 {
-    public class CountryService : BaseCRUDService<Model.Country, 
-        CountrySearchObject, Database.Country, CountryUpsertRequest, 
+    public class CountryService : BaseCRUDService<Model.Country,
+        CountrySearchObject, Database.Country, CountryUpsertRequest,
         CountryUpsertRequest>, ICountryService
     {
-        public CountryService(DataContext context, IMapper mapper) : 
-            base(context, mapper)
-        {
-        }
+        public CountryService(DataContext context, IMapper mapper) : base(context, mapper) { }
     }
 }
