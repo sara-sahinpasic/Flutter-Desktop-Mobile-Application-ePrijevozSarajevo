@@ -10,10 +10,8 @@ namespace ePrijevozSarajevo.API.Controllers
     [ApiController]
     public class RouteController : BaseCRUDController<Model.Route, RouteSearchObject, RouteInsertRequest, RouteUpdateRequest>
     {
-        public RouteController(IRouteService service) : base(service)
-        {
+        public RouteController(IRouteService service) : base(service) { }
 
-        }
         [HttpDelete("{id}")]
         public override async Task Delete(int id)
         {
@@ -23,19 +21,19 @@ namespace ePrijevozSarajevo.API.Controllers
         {
             var result = await base.GetList(searchObject);
 
-            result.ResultList = result.ResultList.OrderByDescending(departure=> departure.Departure).ToList();
+            result.ResultList = result.ResultList.OrderByDescending(departure => departure.Departure).ToList();
 
             return result;
         }
         [HttpPost]
         public override async Task<Model.Route> Insert(RouteInsertRequest request)
         {
-            return await(_service as IRouteService).InsertArrivalDeparture(request);
+            return await (_service as IRouteService).InsertArrivalDeparture(request);
         }
         [HttpPut("{id}")]
         public override async Task<Model.Route> Update(int id, RouteUpdateRequest request)
         {
-            return await(_service as IRouteService).UpdateArrivalDeparture(id, request);
+            return await (_service as IRouteService).UpdateArrivalDeparture(id, request);
         }
     }
 }

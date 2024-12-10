@@ -3,7 +3,5 @@ using ePrijevozSarajevo.Model.SearchObjects;
 
 namespace ePrijevozSarajevo.Services
 {
-    public interface IStatusService : ICRUDService<Model.Status, StatusSearchObject, StatusInsertRequest, StatusUpdateRequest>
-    {
-    }
+    public interface IStatusService : ICRUDService<Model.Status, StatusSearchObject, StatusInsertRequest, StatusUpdateRequest> { }
 }

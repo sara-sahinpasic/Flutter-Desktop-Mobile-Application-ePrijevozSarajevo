@@ -9,9 +9,6 @@ namespace ePrijevozSarajevo.Services
         <Model.Role, RoleSearchObject, Database.Role, RoleUpsertRequest,
         RoleUpsertRequest>, IRoleService
     {
-        public RoleService(DataContext context, IMapper mapper) : 
-            base(context, mapper)
-        {
-        }
+        public RoleService(DataContext context, IMapper mapper) : base(context, mapper) { }
     }
 }

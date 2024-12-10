@@ -22,9 +22,7 @@ namespace ePrijevozSarajevo.Services
             return _mapper.Map<TModel>(entity);
         }
 
-        public virtual async Task BeforeInsert(TInsert request, TDbEntity entity)
-        {
-        }
+        public virtual async Task BeforeInsert(TInsert request, TDbEntity entity) { }
 
         public virtual async Task<TModel> Update(int id, TUpdate request)
         {
@@ -40,9 +38,7 @@ namespace ePrijevozSarajevo.Services
             return _mapper.Map<TModel>(entity);
         }
 
-        public virtual async Task BeforeUpdate(TUpdate? request, TDbEntity? entity)
-        {
-        }
+        public virtual async Task BeforeUpdate(TUpdate? request, TDbEntity? entity) { }
         public virtual async Task Delete(int id)
         {
             var entity = await _dataContext.Set<TDbEntity>().FindAsync(id);

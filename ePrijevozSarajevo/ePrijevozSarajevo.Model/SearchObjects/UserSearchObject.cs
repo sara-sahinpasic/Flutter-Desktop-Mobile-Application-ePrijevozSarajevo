@@ -6,5 +6,7 @@
         public string? LastNameGTE { get; set; }
         public bool? IsRoleIncluded { get; set; }
         public bool? IsUserStatusIncluded { get; set; }
+        public bool? IsCountryIncluded { get; set; }
+
     }
 }

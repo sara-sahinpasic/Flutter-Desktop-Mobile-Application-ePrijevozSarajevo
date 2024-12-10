@@ -10,9 +10,7 @@ namespace ePrijevozSarajevo.API.Controllers
     [Route("[controller]")]
     public class IssuedTicketController : BaseCRUDController<Model.IssuedTicket, IssuedTicketSearchObject, IssuedTicketInsertequest, IssuedTicketUpdateRequest>
     {
-        public IssuedTicketController(IIssuedTicketService service) : base(service)
-        {
-        }
+        public IssuedTicketController(IIssuedTicketService service) : base(service) { }
         public override async Task<PagedResult<IssuedTicket>> GetList([FromQuery] IssuedTicketSearchObject searchObject)
         {
             var result = await base.GetList(searchObject);

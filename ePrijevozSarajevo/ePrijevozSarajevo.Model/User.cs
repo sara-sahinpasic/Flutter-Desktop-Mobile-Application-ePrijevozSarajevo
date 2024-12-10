@@ -15,11 +15,11 @@
         public int UserCountryId { get; set; }
         public DateTime RegistrationDate { get; set; }
         public DateTime ModifiedDate { get; set; }
-        public byte[]? ProfileImage { get; set; }
         public Status? UserStatus { get; set; }
         public int UserStatusId { get; set; }
         public DateTime? StatusExpirationDate { get; set; }
         public virtual ICollection<UserRole> UserRoles { get; set; } = new List<UserRole>();
         public string? UserName { get; set; }
+        public byte[]? ProfileImage { get; set; }
     }
 }

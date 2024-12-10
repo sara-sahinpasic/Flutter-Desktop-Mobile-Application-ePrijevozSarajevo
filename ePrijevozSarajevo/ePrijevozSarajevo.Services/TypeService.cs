@@ -5,14 +5,9 @@ using MapsterMapper;
 
 namespace ePrijevozSarajevo.Services
 {
-    public class TypeService : BaseCRUDService<Model.Type,
-        TypeSearchObject, Database.Type,
-        TypeUpsertRequest, TypeUpsertRequest>, ITypeService
+    public class TypeService : BaseCRUDService<Model.Type, TypeSearchObject, Database.Type, TypeUpsertRequest, TypeUpsertRequest>, ITypeService
     {
-        public TypeService(DataContext context, IMapper mapper) : 
-            base(context, mapper)
-        {
-        }
+        public TypeService(DataContext context, IMapper mapper) : base(context, mapper) { }
 
     }
 }

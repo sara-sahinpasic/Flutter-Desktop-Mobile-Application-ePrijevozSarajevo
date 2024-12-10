@@ -11,9 +11,7 @@ namespace ePrijevozSarajevo.API.Controllers
     [ApiController]
     public class VehicleController : BaseCRUDController<Vehicle, VehicleSearchObject, VehicleInsertRequest, VehicleUpdateRequest>
     {
-        public VehicleController(IVehicleService service) : base(service)
-        {
-        }
+        public VehicleController(IVehicleService service) : base(service) { }
 
         [AllowAnonymous]
         public override Task<PagedResult<Vehicle>> GetList([FromQuery] VehicleSearchObject searchObject)

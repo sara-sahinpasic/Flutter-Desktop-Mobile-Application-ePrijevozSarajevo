@@ -9,9 +9,7 @@ namespace ePrijevozSarajevo.Services
     public class IssuedTicketService : BaseCRUDService<Model.IssuedTicket, IssuedTicketSearchObject, Database.IssuedTicket,
         IssuedTicketInsertequest, IssuedTicketUpdateRequest>, IIssuedTicketService
     {
-        public IssuedTicketService(DataContext context, IMapper mapper) : base(context, mapper)
-        {
-        }
+        public IssuedTicketService(DataContext context, IMapper mapper) : base(context, mapper) { }
 
         public override IQueryable<IssuedTicket> AddFilter(IssuedTicketSearchObject search, IQueryable<IssuedTicket> query)
         {
@@ -26,8 +24,11 @@ namespace ePrijevozSarajevo.Services
                 query = query
                     .Include(x => x.User)
                         .ThenInclude(y => y.UserStatus)
-                        .Include(x => x.User.UserRoles)
-                        .Include(x => x.User.UserCountry);
+                    .Include(x => x.User)
+                        .ThenInclude(y => y.UserCountry)
+                    .Include(x => x.User)
+                        .ThenInclude(y => y.UserRoles)
+                        .ThenInclude(z => z.Role);
 
             }
             if (search.IsTicketIncluded == true)
@@ -37,16 +38,20 @@ namespace ePrijevozSarajevo.Services
 
             if (search.IsRouteIncluded == true)
             {
-                query = query.Include(x => x.Route)
-                    .ThenInclude(y => y.StartStation)
-                    .Include(x => x.Route.EndStation)
-                    .Include(z => z.Route.Vehicle)
-                    .ThenInclude(z => z.Manufacturer)
-                    .Include(z => z.Route.Vehicle)
-                    .ThenInclude(z => z.Type);
+                query = query
+                    .Include(x => x.Route)
+                        .ThenInclude(r => r.StartStation)
+                    .Include(x => x.Route)
+                     .ThenInclude(r => r.EndStation)
+                    .Include(x => x.Route)
+                        .ThenInclude(r => r.Vehicle)
+                        .ThenInclude(v => v.Manufacturer)
+                    .Include(x => x.Route)
+                        .ThenInclude(r => r.Vehicle)
+                        .ThenInclude(v => v.Type);
             }
 
-            return query.OrderByDescending(x=>x.ValidTo);
+            return query.OrderByDescending(x => x.ValidTo);
         }
     }
 }

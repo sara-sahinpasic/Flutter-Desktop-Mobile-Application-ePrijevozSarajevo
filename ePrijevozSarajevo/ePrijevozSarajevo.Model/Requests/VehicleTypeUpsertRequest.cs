@@ -3,6 +3,5 @@
     public class VehicleTypeUpsertRequest
     {
         public string? Name { get; set; }
-
     }
 }

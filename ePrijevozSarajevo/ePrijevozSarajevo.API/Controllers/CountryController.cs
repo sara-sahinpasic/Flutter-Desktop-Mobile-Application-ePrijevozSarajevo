@@ -11,8 +11,6 @@ namespace ePrijevozSarajevo.API.Controllers
     public class CountryController : BaseCRUDController<Model.Country,
         CountrySearchObject, CountryUpsertRequest, CountryUpsertRequest>
     {
-        public CountryController(ICountryService service) : base(service)
-        {
-        }
+        public CountryController(ICountryService service) : base(service) { }
     }
 }
