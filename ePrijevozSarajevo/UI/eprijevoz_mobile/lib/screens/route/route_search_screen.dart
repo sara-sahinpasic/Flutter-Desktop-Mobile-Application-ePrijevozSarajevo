@@ -2,8 +2,11 @@ import 'package:eprijevoz_mobile/layouts/master_screen.dart';
 import 'package:eprijevoz_mobile/models/route.dart';
 import 'package:eprijevoz_mobile/models/search_result.dart';
 import 'package:eprijevoz_mobile/models/station.dart';
+import 'package:eprijevoz_mobile/models/user.dart';
+import 'package:eprijevoz_mobile/providers/auth_provider.dart';
 import 'package:eprijevoz_mobile/providers/route_provider.dart';
 import 'package:eprijevoz_mobile/providers/station_provider.dart';
+import 'package:eprijevoz_mobile/providers/user_provider.dart';
 import 'package:eprijevoz_mobile/providers/utils.dart';
 import 'package:eprijevoz_mobile/screens/route/route_options_screen.dart';
 import 'package:flutter/material.dart' hide Route;
@@ -35,11 +38,15 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
   bool isLoading = false;
   Station? station;
   Route? route;
+  late UserProvider userProvider;
+  SearchResult<User>? userResult;
+  User? loggedUser;
 
   @override
   void initState() {
     stationProvider = context.read<StationProvider>();
     routeProvider = context.read<RouteProvider>();
+    userProvider = context.read<UserProvider>();
 
     super.initState();
 
@@ -47,6 +54,11 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
   }
 
   Future initForm() async {
+    userResult = await userProvider.get();
+
+    loggedUser = userResult?.result
+        .firstWhere((user) => user.userName == AuthProvider.username);
+
     setState(() {
       isLoading = true;
     });
@@ -54,6 +66,9 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
     try {
       stationResult = await stationProvider.get();
       routeResult = await routeProvider.get();
+
+      // ML recommendations for the user
+      await fetchRecommendations(userId: loggedUser!.userId!);
     } catch (e) {
       debugPrint('Error: $e');
     } finally {
@@ -70,6 +85,31 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
 
     endStations =
         getEndStationsForSelectedStartStation(selectedStartStationId!);
+  }
+
+  Future<void> fetchRecommendations({required int userId}) async {
+    setState(() {
+      isLoading = true;
+    });
+
+    try {
+      final results = await routeProvider.getRecommendations(userId);
+      if (results.isNotEmpty) {
+        final firstRecommendation = results.first;
+        selectedStartStationId = firstRecommendation.startStationId;
+        selectedEndStationId = firstRecommendation.endStationId;
+
+        // pre-fill dropdown lists
+        endStations =
+            getEndStationsForSelectedStartStation(selectedStartStationId!);
+      }
+    } catch (e) {
+      print('Error fetching recommendations: $e');
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
   }
 
   List<Station> getUniqueStartStations(
@@ -149,7 +189,11 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
   Widget _buildResultView() {
     return FormBuilder(
       key: _formKey,
-      initialValue: _initialValue,
+      // initialValue: _initialValue,
+      initialValue: {
+        'startStationId': selectedStartStationId?.toString(),
+        'endStationId': selectedEndStationId?.toString(),
+      },
       child: Column(
         children: [
           const SizedBox(
