@@ -9,6 +9,5 @@ namespace ePrijevozSarajevo.Services
         public Task DeleteRouteWithIssuedTickets(int id);
         public Task<Route> InsertArrivalDeparture(RouteInsertRequest request);
         public Task<Route> UpdateArrivalDeparture(int id, RouteUpdateRequest request);
-        public List<Model.Route> GetRecommendations(int userId, int maxRecommendations = 5);
     }
 }

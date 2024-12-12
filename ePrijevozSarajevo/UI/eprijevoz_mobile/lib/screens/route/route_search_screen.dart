@@ -4,6 +4,7 @@ import 'package:eprijevoz_mobile/models/search_result.dart';
 import 'package:eprijevoz_mobile/models/station.dart';
 import 'package:eprijevoz_mobile/models/user.dart';
 import 'package:eprijevoz_mobile/providers/auth_provider.dart';
+import 'package:eprijevoz_mobile/providers/recommendation_provider.dart';
 import 'package:eprijevoz_mobile/providers/route_provider.dart';
 import 'package:eprijevoz_mobile/providers/station_provider.dart';
 import 'package:eprijevoz_mobile/providers/user_provider.dart';
@@ -41,12 +42,14 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
   late UserProvider userProvider;
   SearchResult<User>? userResult;
   User? loggedUser;
+  late RecommendationProvider recommendationProvider;
 
   @override
   void initState() {
     stationProvider = context.read<StationProvider>();
     routeProvider = context.read<RouteProvider>();
     userProvider = context.read<UserProvider>();
+    recommendationProvider = context.read<RecommendationProvider>();
 
     super.initState();
 
@@ -74,6 +77,7 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
     } finally {
       setState(() {
         isLoading = false;
+        showInfoMessage();
       });
     }
 
@@ -93,7 +97,7 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
     });
 
     try {
-      final results = await routeProvider.getRecommendations(userId);
+      final results = await recommendationProvider.getRecommendations(userId);
       if (results.isNotEmpty) {
         final firstRecommendation = results.first;
         selectedStartStationId = firstRecommendation.startStationId;
@@ -424,6 +428,29 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
               ],
             ),
           )
+        ],
+      ),
+    );
+  }
+
+  void showInfoMessage() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text(
+          "Info",
+          style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
+        ),
+        content: const Text(
+          "Za Vas je inicijalno odabrana Vaša najčešće korištena ruta.",
+        ),
+        actions: [
+          TextButton(
+            child: const Text("OK", style: TextStyle(color: Colors.black)),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
         ],
       ),
     );

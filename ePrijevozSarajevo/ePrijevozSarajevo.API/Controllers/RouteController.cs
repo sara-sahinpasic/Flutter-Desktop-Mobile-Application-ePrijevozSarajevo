@@ -36,14 +36,5 @@ namespace ePrijevozSarajevo.API.Controllers
         {
             return await (_service as IRouteService).UpdateArrivalDeparture(id, request);
         }
-
-        [AllowAnonymous]
-        [HttpGet("recommendations/{userId}")]
-        public async Task<IActionResult> GetRecommendations(int userId, int maxRecommendations = 5)
-        {
-            var recommendations =  (_service as IRouteService).GetRecommendations(userId, maxRecommendations);
-            return Ok(recommendations);
-        }
-
     }
 }
