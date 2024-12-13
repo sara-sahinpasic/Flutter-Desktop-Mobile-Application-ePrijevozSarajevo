@@ -14,9 +14,6 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:provider/provider.dart';
 
 class UserAddDialog extends StatefulWidget {
-  // final User? user;
-  // final Country? country;
-  // final Role? role;
   const UserAddDialog({
     super.key,
   });
@@ -26,7 +23,6 @@ class UserAddDialog extends StatefulWidget {
 
 class _UserAddDialogState extends State<UserAddDialog> {
   final _formKey = GlobalKey<FormBuilderState>();
-  //Map<String, dynamic> _initialValue = {};
   SearchResult<User>? userResult;
   late UserProvider userProvider;
   bool isLoading = true;

@@ -1,10 +1,8 @@
-﻿using Azure;
-using ePrijevozSarajevo.Model;
+﻿using ePrijevozSarajevo.Model;
 using ePrijevozSarajevo.Model.Requests;
 using ePrijevozSarajevo.Model.SearchObjects;
 using ePrijevozSarajevo.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration.UserSecrets;
 
 namespace ePrijevozSarajevo.API.Controllers
 {
@@ -33,8 +31,6 @@ namespace ePrijevozSarajevo.API.Controllers
             }
             return Ok("Uspješno odbijen zahtjev.");
         }
-
-
     }
 }
 

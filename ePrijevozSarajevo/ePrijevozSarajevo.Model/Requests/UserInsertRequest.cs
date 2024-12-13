@@ -1,6 +1,6 @@
 ﻿namespace ePrijevozSarajevo.Model.Requests
 {
-    public class UserInseretRequest
+    public class UserInsertRequest
     {
         public int RoleId { get; set; } = 1;
         public string? FirstName { get; set; }

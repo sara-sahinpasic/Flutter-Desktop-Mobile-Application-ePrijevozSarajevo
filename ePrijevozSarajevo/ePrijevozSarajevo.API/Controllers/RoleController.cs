@@ -14,6 +14,12 @@ namespace ePrijevozSarajevo.API.Controllers
     {
         public RoleController(IRoleService service) : base(service) { }
 
+        [AllowAnonymous]
+        public override Task<PagedResult<Role>> GetList([FromQuery] RoleSearchObject searchObject)
+        {
+            return base.GetList(searchObject);
+        }
+
         [Authorize(Roles = "Admin")]
         public override async Task<Model.Role> Insert(RoleUpsertRequest request)
         {

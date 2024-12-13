@@ -4,12 +4,15 @@ import 'package:eprijevoz_mobile/providers/country_provider.dart';
 import 'package:eprijevoz_mobile/providers/issuedTicket_provider.dart';
 import 'package:eprijevoz_mobile/providers/recommendation_provider.dart';
 import 'package:eprijevoz_mobile/providers/request_provider.dart';
+import 'package:eprijevoz_mobile/providers/role_provider.dart';
 import 'package:eprijevoz_mobile/providers/route_provider.dart';
 import 'package:eprijevoz_mobile/providers/station_provider.dart';
 import 'package:eprijevoz_mobile/providers/status_provider.dart';
 import 'package:eprijevoz_mobile/providers/ticket_provider.dart';
 import 'package:eprijevoz_mobile/providers/user_provider.dart';
+import 'package:eprijevoz_mobile/providers/user_role_provider.dart';
 import 'package:eprijevoz_mobile/screens/forgot_password_screen.dart';
+import 'package:eprijevoz_mobile/screens/profile/profile_newUser_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -29,6 +32,9 @@ void main() {
       ChangeNotifierProvider<CountryProvider>(create: (_) => CountryProvider()),
       ChangeNotifierProvider<RecommendationProvider>(
           create: (_) => RecommendationProvider()),
+      ChangeNotifierProvider<RoleProvider>(create: (_) => RoleProvider()),
+      ChangeNotifierProvider<UserRoleProvider>(
+          create: (_) => UserRoleProvider()),
     ],
     child: const MyApp(),
   ));
@@ -193,21 +199,43 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               const SizedBox(height: 5),
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const ForgotPasswordScreen()));
-                },
-                child: const Text(
-                  "Promjena lozinke",
-                  style: TextStyle(
-                      color: Colors.red,
-                      fontSize: 15,
-                      fontWeight: FontWeight.normal,
-                      decoration: TextDecoration.underline,
-                      decorationColor: Colors.red,
-                      decorationThickness: 1),
-                ),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const ForgotPasswordScreen()));
+                    },
+                    child: const Text(
+                      "Promjena lozinke",
+                      style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 15,
+                          fontWeight: FontWeight.normal,
+                          decoration: TextDecoration.underline,
+                          decorationColor: Colors.red,
+                          decorationThickness: 1),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const ProfileNewUserScreen()));
+                    },
+                    child: const Text(
+                      "Kreiranje korisničkog naloga",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 13,
+                          fontWeight: FontWeight.normal,
+                          decoration: TextDecoration.underline,
+                          decorationColor: Colors.white,
+                          decorationThickness: 0.5),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
