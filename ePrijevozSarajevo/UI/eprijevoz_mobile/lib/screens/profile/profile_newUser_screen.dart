@@ -500,15 +500,17 @@ class _ProfileNewUserScreenState extends State<ProfileNewUserScreen> {
                           }
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              const Color.fromRGBO(72, 156, 118, 100),
+                          backgroundColor: Colors.black,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(2.0),
+                            borderRadius: BorderRadius.circular(10.0),
                           ),
-                          minimumSize: const Size(100, 65),
+                          padding: const EdgeInsets.symmetric(vertical: 10.0),
                         ),
-                        child:
-                            const Text("Dodaj", style: TextStyle(fontSize: 18)),
+                        child: const Text(
+                          "Kreiraj račun",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20),
+                        ),
                       ),
                     ),
                     const SizedBox(
