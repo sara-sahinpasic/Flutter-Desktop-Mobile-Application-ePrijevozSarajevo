@@ -1,5 +1,4 @@
 ﻿using ePrijevozSarajevo.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ePrijevozSarajevo.API.Controllers
@@ -15,8 +14,6 @@ namespace ePrijevozSarajevo.API.Controllers
             _recommenderService = recommenderService;
         }
 
-
-        [AllowAnonymous]
         [HttpGet("{userId}")]
         public async Task<IActionResult> GetRecommendations(int userId, int maxRecommendations = 5)
         {

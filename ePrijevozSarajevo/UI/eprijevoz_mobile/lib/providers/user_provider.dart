@@ -34,4 +34,22 @@ class UserProvider extends BaseProvider<User> {
       throw Exception("Failed to reset password");
     }
   }
+
+  @override
+  Future<User> insert(dynamic request) async {
+    var url = ("${BaseProvider.baseUrl}$endpoint");
+
+    var headers = createHeaders();
+    var jsonRequest = jsonEncode(request);
+
+    var uri = Uri.parse(url);
+    var response = await http.post(uri, headers: headers, body: jsonRequest);
+
+    if (isValidResponse(response)) {
+      var data = jsonDecode(response.body);
+      return fromJson(data);
+    } else {
+      throw Exception("Unknown error");
+    }
+  }
 }

@@ -9,7 +9,7 @@ using System.Text;
 
 namespace ePrijevozSarajevo.Services
 {
-    public class UserService : BaseCRUDService<Model.User, UserSearchObject, Database.User, UserInseretRequest, UserUpdateRequest>, IUserService
+    public class UserService : BaseCRUDService<Model.User, UserSearchObject, Database.User, UserInsertRequest, UserUpdateRequest>, IUserService
     {
         ILogger<UserService> _logger;
 
@@ -47,7 +47,7 @@ namespace ePrijevozSarajevo.Services
             return query;
         }
 
-        public override async Task BeforeInsert(UserInseretRequest request, User entity)
+        public override async Task BeforeInsert(UserInsertRequest request, User entity)
         {
             _logger.LogInformation($"Adding user: {entity.FirstName} {entity.LastName}");
 
@@ -160,7 +160,7 @@ namespace ePrijevozSarajevo.Services
             return true;
         }
 
-        public async Task<Model.User> InsertDateOfBirth(UserInseretRequest request)
+        public async Task<Model.User> InsertUser(UserInsertRequest request)
         {
             Database.User entity = _mapper.Map<Database.User>(request);
             await BeforeInsert(request, entity);
@@ -177,6 +177,15 @@ namespace ePrijevozSarajevo.Services
             }
 
             await _dataContext.AddAsync(entity);
+            await _dataContext.SaveChangesAsync();
+
+            var userRole = new Database.UserRole
+            {
+                UserId = entity.UserId,
+                RoleId = 2
+            };
+
+            await _dataContext.UserRoles.AddAsync(userRole);
             await _dataContext.SaveChangesAsync();
 
             return _mapper.Map<Model.User>(entity);

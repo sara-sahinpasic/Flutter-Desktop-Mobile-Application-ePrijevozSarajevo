@@ -21,6 +21,11 @@ String formatDateTime(DateTime dateTime) {
   return formatter.format(dateTime);
 }
 
+String formatDateTimeAPI(DateTime dateTime) {
+  final DateFormat formatter = DateFormat('yyyy-MM-ddTHH:mm:ss');
+  return formatter.format(dateTime);
+}
+
 String formatPrice(double price) {
   final NumberFormat formatter = NumberFormat.currency(
       locale: 'bs_BA', symbol: 'KM', decimalDigits: 2 // two decimal places

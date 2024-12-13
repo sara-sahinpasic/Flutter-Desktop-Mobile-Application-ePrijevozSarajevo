@@ -9,7 +9,7 @@ namespace ePrijevozSarajevo.API.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class UserController : BaseCRUDController<User, UserSearchObject, UserInseretRequest, UserUpdateRequest>
+    public class UserController : BaseCRUDController<User, UserSearchObject, UserInsertRequest, UserUpdateRequest>
     {
         public UserController(IUserService service) : base(service) { }
 
@@ -40,10 +40,11 @@ namespace ePrijevozSarajevo.API.Controllers
             await(_service as IUserService).DeleteUser(id);
         }
 
+        [AllowAnonymous]
         [HttpPost]
-        public override async Task<User> Insert(UserInseretRequest request)
+        public override async Task<User> Insert(UserInsertRequest request)
         {
-            return await (_service as IUserService).InsertDateOfBirth(request);
+            return await (_service as IUserService).InsertUser(request);
         }
     }
 }
