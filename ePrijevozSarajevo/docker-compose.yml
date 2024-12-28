@@ -1,5 +1,21 @@
 version: '3'
 services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    restart: unless-stopped
+    hostname: ${RABBITMQ_HOST}
+    environment:
+      - RABBITMQ_USERNAME=${RABBITMQ_USERNAME}
+      - RABBITMQ_PASSWORD=${RABBITMQ_PASSWORD}
+    ports:
+      - 5672:5672
+      - 15672:15672
+    expose:
+      - 5672
+      - 15672
+    networks:
+      - eprijevozsarajevonet2024
+
   eprijevozsarajevo-sql:
     image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
     restart: unless-stopped
@@ -21,15 +37,45 @@ services:
     environment:
       - ConnectionStrings:SqlServer=Server=eprijevozsarajevo-sql,1433;Database=140261;User=sa;Password=ePrijevoz321!;ConnectRetryCount=0; TrustServerCertificate=True
       - ASPNETCORE_ENVIRONMENT=Development
+      - RABBITMQ_HOST=${RABBITMQ_HOST}
+      - RABBITMQ_PORT=${RABBITMQ_PORT}
+      - RABBITMQ_USERNAME=${RABBITMQ_USERNAME}
+      - RABBITMQ_PASSWORD=${RABBITMQ_PASSWORD}
+      - SMTP_SERVER=${SMTP_SERVER}
+      - SMTP_PORT=${SMTP_PORT}
+      - SMTP_USERNAME=${SMTP_USERNAME}
+      - SMTP_PASSWORD=${SMTP_PASSWORD}
+      - FROM_EMAIL=${FROM_EMAIL}   
     ports:
-      - 5269:5269
+      - 7292:7292
+    expose:
+      - 7292
     networks:
       - eprijevozsarajevonet2024
     links:
       - eprijevozsarajevo-sql
     depends_on:
       - eprijevozsarajevo-sql
-      
+ 
+  rabbitmq-subscriber:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: ./ePrijevozSarajevo.Subscriber/Dockerfile
+    environment:
+      - RABBITMQ_HOST=${RABBITMQ_HOST}
+      - RABBITMQ_PORT=${RABBITMQ_PORT}
+      - RABBITMQ_USERNAME=${RABBITMQ_USERNAME}
+      - RABBITMQ_PASSWORD=${RABBITMQ_PASSWORD}
+      - SMTP_SERVER=${SMTP_SERVER}
+      - SMTP_PORT=${SMTP_PORT}
+      - SMTP_USERNAME=${SMTP_USERNAME}
+      - SMTP_PASSWORD=${SMTP_PASSWORD}
+      - FROM_EMAIL=${FROM_EMAIL}
+    depends_on:
+      - rabbitmq
+    networks:
+      - eprijevozsarajevonet2024   
 networks:
   eprijevozsarajevonet2024:
     driver: bridge    

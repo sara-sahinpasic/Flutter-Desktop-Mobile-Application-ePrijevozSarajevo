@@ -8,15 +8,23 @@ namespace ePrijevozSarajevo.Services
     {
         public void SendMessage<T>(T message)
         {
-            var factory = new ConnectionFactory
+            var factory = new ConnectionFactory()
             {
-                HostName = "localhost",
-                Port = 5672,
-                UserName = "guest",
-                Password = "guest",
+                HostName = Environment.GetEnvironmentVariable("RABBITMQ_HOST")
+                ??"localhost"
+                ,
+                Port = int.Parse(Environment.GetEnvironmentVariable("RABBITMQ_PORT")
+                ??"5672"
+                ),
+                UserName = Environment.GetEnvironmentVariable("RABBITMQ_USERNAME")
+                ??"guest"
+                ,
+                Password = Environment.GetEnvironmentVariable("RABBITMQ_PASSWORD")
+                ??"guest"
+                ,
+                ClientProvidedName = "Rabbit Test Producer"
             };
-            factory.ClientProvidedName = "Rabbit Test Producer";
-
+            
             var connection = factory.CreateConnection();
             var channel = connection.CreateModel();
 
