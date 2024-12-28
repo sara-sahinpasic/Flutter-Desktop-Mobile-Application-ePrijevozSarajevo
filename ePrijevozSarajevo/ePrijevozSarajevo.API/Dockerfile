@@ -9,7 +9,7 @@ FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["ePrijevozSarajevo.API/ePrijevozSarajevo.API.csproj", "ePrijevozSarajevo.API/"]
-RUN dotnet restore "./ePrijevozSarajevo.API/./ePrijevozSarajevo.API.csproj"
+RUN dotnet restore "./ePrijevozSarajevo.API/ePrijevozSarajevo.API.csproj"
 COPY . .
 WORKDIR "/src/ePrijevozSarajevo.API"
 RUN dotnet build "./ePrijevozSarajevo.API.csproj" -c $BUILD_CONFIGURATION -o /app/build

@@ -6,17 +6,24 @@ using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
 
-
 Console.WriteLine("Waiting for RabbitMQ.");
 Task.Delay(10000).Wait();
 Console.WriteLine("Rabbit should be started now.");
 
 var factory = new ConnectionFactory()
 {
-    HostName = "localhost",
-    Port = 5672,
-    UserName = "guest",
-    Password = "guest",
+    HostName = Environment.GetEnvironmentVariable("RABBITMQ_HOST")
+    ?? "localhost"
+    ,
+    Port = int.Parse(Environment.GetEnvironmentVariable("RABBITMQ_PORT")
+    ?? "5672"
+    ),
+    UserName = Environment.GetEnvironmentVariable("RABBITMQ_USERNAME")
+    ?? "guest"
+    ,
+    Password = Environment.GetEnvironmentVariable("RABBITMQ_PASSWORD")
+    ?? "guest"
+    ,
     ClientProvidedName = "Rabbit Test Consumer"
 };
 
