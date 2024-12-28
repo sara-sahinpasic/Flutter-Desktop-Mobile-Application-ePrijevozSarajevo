@@ -27,6 +27,7 @@ builder.Services.AddTransient<IStatusService, StatusService>();
 builder.Services.AddTransient<ICountryService, CountryService>();
 builder.Services.AddTransient<IRoleService, RoleService>();
 builder.Services.AddScoped<IRecommenderService, RecommenderService>();
+builder.Services.AddTransient<IRabbitMQProducer, RabbitMQProducer>();
 
 
 
