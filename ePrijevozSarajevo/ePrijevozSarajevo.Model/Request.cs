@@ -3,8 +3,8 @@
     public class Request
     {
         public int RequestId { get; set; }
-        public int UserStatusId { get; set; }
         public Status? UserStatus { get; set; }
+        public int UserStatusId { get; set; }
         public User? User { get; set; } = null;
         public int UserId { get; set; }
         public DateTime? DateCreated { get; set; }

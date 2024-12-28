@@ -1,4 +1,5 @@
-﻿using ePrijevozSarajevo.Model.Requests;
+﻿using ePrijevozSarajevo.Model.Messages;
+using ePrijevozSarajevo.Model.Requests;
 using ePrijevozSarajevo.Model.SearchObjects;
 using ePrijevozSarajevo.Services.Database;
 using MapsterMapper;
@@ -9,7 +10,11 @@ namespace ePrijevozSarajevo.Services
     public class RequestService : BaseCRUDService<Model.Request, RequestSearchObject, Database.Request, RequestInsertRequest, RequestUpdateRequest>,
         IRequestService
     {
-        public RequestService(DataContext context, IMapper mapper) : base(context, mapper) { }
+        IRabbitMQProducer _rabbitMQProducer;
+        public RequestService(DataContext context, IMapper mapper, IRabbitMQProducer rabbitMQProducer) : base(context, mapper)
+        {
+            _rabbitMQProducer = rabbitMQProducer;
+        }
 
         public override IQueryable<Request> AddFilter(RequestSearchObject search, IQueryable<Request> query)
         {
@@ -32,7 +37,10 @@ namespace ePrijevozSarajevo.Services
                         .ThenInclude(y => y.UserRoles)
                         .ThenInclude(z => z.Role);
             }
-
+            if (search?.IsUserStatusIncluded == true)
+            {
+                query = query.Include(x => x.UserStatus);
+            }
             return query.Where(x => x.Active == true);
         }
 
@@ -41,6 +49,7 @@ namespace ePrijevozSarajevo.Services
 #pragma warning disable CS8600 
             Request request = await _dataContext.Requests
                  .Include(r => r.User)
+                 .Include(r => r.UserStatus)
                  .FirstOrDefaultAsync(r => r.RequestId == requestId);
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
@@ -61,8 +70,18 @@ namespace ePrijevozSarajevo.Services
 
                 _dataContext.Users.Update(user);
                 _dataContext.Requests.Update(request);
-
                 await _dataContext.SaveChangesAsync();
+
+                //send rabbit mq message
+                var reqProcessed = new RequestsProcessed()
+                {
+                    userEmail = request.User.Email,
+                    userId = request.UserId,
+                    requestedStatusName = request.UserStatus.Name,
+                    requestApproved = true
+
+                };
+                _rabbitMQProducer.SendMessage(reqProcessed);
             }
         }
 
@@ -71,6 +90,7 @@ namespace ePrijevozSarajevo.Services
 #pragma warning disable CS8600 
             Request request = await _dataContext.Requests
                 .Include(r => r.User)
+                .Include(r => r.UserStatus)
                 .FirstOrDefaultAsync(r => r.RequestId == requestId);
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
@@ -92,6 +112,17 @@ namespace ePrijevozSarajevo.Services
             _dataContext.Requests.Update(request);
 
             await _dataContext.SaveChangesAsync();
+
+            //send rabbit mq message
+            var reqProcessed = new RequestsProcessed()
+            {
+                userEmail = request.User.Email,
+                userId = request.UserId,
+                requestedStatusName = request.UserStatus.Name,
+                requestApproved = false
+
+            };            
+            _rabbitMQProducer.SendMessage(reqProcessed);
 
             string content = rejectionReason;
 
