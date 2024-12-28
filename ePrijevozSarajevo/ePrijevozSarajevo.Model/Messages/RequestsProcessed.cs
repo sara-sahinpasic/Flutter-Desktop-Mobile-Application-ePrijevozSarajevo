@@ -2,9 +2,9 @@
 {
     public class RequestsProcessed
     {
-        public string userEmail { get; set; }
-        public int userId { get; set; }
-        public string requestedStatusName { get; set; }
-        public bool requestApproved { get; set; }
+        public string UserEmail { get; set; }
+        public int UserId { get; set; }
+        public string RequestedStatusName { get; set; }
+        public bool RequestApproved { get; set; }
     }
 }

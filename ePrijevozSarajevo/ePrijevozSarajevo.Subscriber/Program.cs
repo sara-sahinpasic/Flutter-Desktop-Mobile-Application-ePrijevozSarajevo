@@ -7,7 +7,7 @@ using RabbitMQ.Client.Events;
 using System.Text;
 
 
-Console.WriteLine("Waiting for Rabbit.");
+Console.WriteLine("Waiting for RabbitMQ.");
 Task.Delay(10000).Wait();
 Console.WriteLine("Rabbit should be started now.");
 
@@ -43,7 +43,7 @@ consumer.Received += (sender, args) =>
 
     string processResultMsg;
       
-    if (request.requestApproved)
+    if (request.RequestApproved)
     {
         processResultMsg = "odobren";
     }
@@ -51,13 +51,13 @@ consumer.Received += (sender, args) =>
     {
         processResultMsg = "odbijen";
     };
-    Console.WriteLine($"1. Zahtjev za status: {request.requestedStatusName} od user:{request.userId} je {processResultMsg}.");
-    Console.WriteLine($"2. Saljem mail useru id: {request.userId} na njegovu adressu: {request.userEmail}.");
-    string subject = $"Zahtjev {request.requestedStatusName} je {processResultMsg}.";
-    string content = $"Postovani,\n\n vas zahtjev za status {request.requestedStatusName} je {processResultMsg}.\n Ukoliko imate pitanja molimo Vas kontaktirajte na nas tim za podrsku. \n\n S postovanjem,\nVas ePrijevoz Sarajevo";
+    Console.WriteLine($"1. Zahtjev za status: {request.RequestedStatusName} od user: {request.UserId} je {processResultMsg}.");
+    Console.WriteLine($"2. Šaljem mail useru id: {request.UserId} na njegovu adresu: {request.UserEmail}.");
+    string subject = $"Zahtjev {request.RequestedStatusName} je {processResultMsg}.";
+    string content = $"Poštovani, <br> Vaš zahtjev za status {request.RequestedStatusName} je {processResultMsg}.<br> Ukoliko imate pitanja molimo Vas kontaktirajte na naš tim za podršku. <br><br> S poštovanjem,<br>Vaš ePrijevoz Sarajevo";
 
     EmailService emailService = new EmailService();
-    emailService.SendNoReplyMail(request.userEmail, subject, content);
+    emailService.SendNoReplyMail(request.UserEmail, subject, content);
 
     channel.BasicAck(args.DeliveryTag, false);
 };
