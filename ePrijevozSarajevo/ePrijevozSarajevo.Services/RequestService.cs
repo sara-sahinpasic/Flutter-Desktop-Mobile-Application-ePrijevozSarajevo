@@ -75,10 +75,10 @@ namespace ePrijevozSarajevo.Services
                 //send rabbit mq message
                 var reqProcessed = new RequestsProcessed()
                 {
-                    userEmail = request.User.Email,
-                    userId = request.UserId,
-                    requestedStatusName = request.UserStatus.Name,
-                    requestApproved = true
+                    UserEmail = request.User.Email,
+                    UserId = request.UserId,
+                    RequestedStatusName = request.UserStatus.Name,
+                    RequestApproved = true
 
                 };
                 _rabbitMQProducer.SendMessage(reqProcessed);
@@ -116,10 +116,10 @@ namespace ePrijevozSarajevo.Services
             //send rabbit mq message
             var reqProcessed = new RequestsProcessed()
             {
-                userEmail = request.User.Email,
-                userId = request.UserId,
-                requestedStatusName = request.UserStatus.Name,
-                requestApproved = false
+                UserEmail = request.User.Email,
+                UserId = request.UserId,
+                RequestedStatusName = request.UserStatus.Name,
+                RequestApproved = false
 
             };            
             _rabbitMQProducer.SendMessage(reqProcessed);
