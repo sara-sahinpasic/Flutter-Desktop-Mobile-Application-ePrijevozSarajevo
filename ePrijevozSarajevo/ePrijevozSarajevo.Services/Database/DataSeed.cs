@@ -49,18 +49,8 @@ namespace ePrijevozSarajevo.Services.Database
                     Active = true,
                     Approved = false,
                     RejectionReason = "",
-                },
-                new Request()
-                {
-                    RequestId = 5,
-                    UserId = 6,
-                    UserStatusId = 2,
-                    DateCreated = DateTime.Now,
-                    Active = true,
-                    Approved = false,
-                    RejectionReason = "",
                 }
-             ); //4
+            ); //4
             modelBuilder.Entity<Station>().HasData
             (
                 new Station()
@@ -93,13 +83,11 @@ namespace ePrijevozSarajevo.Services.Database
                     StationId = 6,
                     Name = "Baščaršija"
                 },
-                //
                 new Station()
                 {
                     StationId = 7,
                     Name = "Otoka"
                 },
-
                 new Station()
                 {
                     StationId = 8,
@@ -110,7 +98,6 @@ namespace ePrijevozSarajevo.Services.Database
                     StationId = 9,
                     Name = "Drvenija"
                 },
-                //
                 new Station()
                 {
                     StationId = 10,
@@ -269,7 +256,7 @@ namespace ePrijevozSarajevo.Services.Database
                 {
                     UserRoleId = 6,
                     UserId = 6,
-                    RoleId = 1,
+                    RoleId = 2,
                 }
             ); //9 
             modelBuilder.Entity<Role>().HasData
@@ -367,48 +354,48 @@ namespace ePrijevozSarajevo.Services.Database
                },
                new Country()
                {
-                    CountryId = 2,
-                    Name = "Germany",
+                   CountryId = 2,
+                   Name = "Germany",
                },
                new Country()
                {
-                     CountryId = 3,
-                     Name = "Austria",
+                   CountryId = 3,
+                   Name = "Austria",
                },
                new Country()
                {
-                     CountryId = 4,
-                     Name = "Croatia",
+                   CountryId = 4,
+                   Name = "Croatia",
                },
                new Country()
                {
-                     CountryId = 5,
-                     Name = "Serbia",
-               }, 
-               new Country()
-               {
-                    CountryId = 6,
-                    Name = "Slovenia",
+                   CountryId = 5,
+                   Name = "Serbia",
                },
                new Country()
                {
-                    CountryId = 7,
-                    Name = "Montenegro",
-               },
-               new Country()
-                {
-                    CountryId = 8,
-                    Name = "Albania",
+                   CountryId = 6,
+                   Name = "Slovenia",
                },
                new Country()
                {
-                    CountryId = 9,
-                    Name = "China",
+                   CountryId = 7,
+                   Name = "Montenegro",
                },
                new Country()
                {
-                    CountryId = 10,
-                    Name = "Japan",
+                   CountryId = 8,
+                   Name = "Albania",
+               },
+               new Country()
+               {
+                   CountryId = 9,
+                   Name = "China",
+               },
+               new Country()
+               {
+                   CountryId = 10,
+                   Name = "Japan",
                }
           ); //13
 

@@ -267,9 +267,10 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
                               child: Text(station.name ?? "")))
                           .toList(),
                       onChanged: (value) {
-                        var station = stationResult?.result.firstWhere(
-                            ((station) =>
-                                station.stationId.toString() == value));
+                        var station = stationResult?.result
+                            .where(((station) =>
+                                station.stationId.toString() == value))
+                            .firstOrNull;
                         selectedEndStationId = station?.stationId;
                       },
                       initialValue: null),
