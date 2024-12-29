@@ -166,7 +166,7 @@ class _RequestListScreenState extends State<RequestListScreen> {
                           color: Colors.orange, fontWeight: FontWeight.bold),
                     ),
                     content: const Text(
-                      "Nema pronađenog nađenih zahtjeva.",
+                      "Nema pronađenih zahtjeva za odabranu kategoriju.",
                     ),
                     actions: [
                       TextButton(

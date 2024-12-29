@@ -52,16 +52,16 @@ consumer.Received += (sender, args) =>
       
     if (request.RequestApproved)
     {
-        processResultMsg = "odobren";
+        processResultMsg = "odobren.";
     }
     else
     {
-        processResultMsg = "odbijen";
+        processResultMsg = $"odbijen. <br> Razlog: {request.Reason} <br>" ;
     };
     Console.WriteLine($"1. Zahtjev za status: {request.RequestedStatusName} od user: {request.UserId} je {processResultMsg}.");
     Console.WriteLine($"2. Šaljem mail useru id: {request.UserId} na njegovu adresu: {request.UserEmail}.");
     string subject = $"Zahtjev {request.RequestedStatusName} je {processResultMsg}.";
-    string content = $"Poštovani, <br> Vaš zahtjev za status {request.RequestedStatusName} je {processResultMsg}.<br> Ukoliko imate pitanja molimo Vas kontaktirajte na naš tim za podršku. <br><br> S poštovanjem,<br>Vaš ePrijevoz Sarajevo";
+    string content = $"Poštovani, <br> Vaš zahtjev za status {request.RequestedStatusName} je {processResultMsg}<br> Ukoliko imate pitanja molimo Vas kontaktirajte na naš tim za podršku. <br><br> S poštovanjem,<br>Vaš ePrijevoz Sarajevo";
 
     EmailService emailService = new EmailService();
     emailService.SendNoReplyMail(request.UserEmail, subject, content);

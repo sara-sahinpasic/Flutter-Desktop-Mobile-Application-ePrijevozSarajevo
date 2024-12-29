@@ -21,7 +21,7 @@ services:
     restart: unless-stopped
     environment:
       - ACCEPT_EULA=Y
-      - SA_PASSWORD=ePrijevoz321!
+      - SA_PASSWORD=${SQL_PASSWORD_DOCKER}
       - MSSQL_PID=Developer
     ports:
       - 1401:1433
@@ -35,8 +35,8 @@ services:
     build:
       context: .
     environment:
-      - ConnectionStrings:SqlServer=Server=eprijevozsarajevo-sql,1433;Database=140261;User=sa;Password=ePrijevoz321!;ConnectRetryCount=0; TrustServerCertificate=True
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings:SqlServer=Server=${SQL_HOST},1433;Database=${SQL_DB_NAME};User=${SQL_USER};Password=${SQL_PASSWORD_DOCKER};ConnectRetryCount=0; TrustServerCertificate=True
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
       - RABBITMQ_HOST=${RABBITMQ_HOST}
       - RABBITMQ_PORT=${RABBITMQ_PORT}
       - RABBITMQ_USERNAME=${RABBITMQ_USERNAME}
