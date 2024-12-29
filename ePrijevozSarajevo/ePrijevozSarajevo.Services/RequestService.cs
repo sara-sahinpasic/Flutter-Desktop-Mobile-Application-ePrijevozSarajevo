@@ -72,14 +72,14 @@ namespace ePrijevozSarajevo.Services
                 _dataContext.Requests.Update(request);
                 await _dataContext.SaveChangesAsync();
 
-                //send rabbit mq message
+                //send rabbitmq message
                 var reqProcessed = new RequestsProcessed()
                 {
                     UserEmail = request.User.Email,
                     UserId = request.UserId,
                     RequestedStatusName = request.UserStatus.Name,
-                    RequestApproved = true
-
+                    RequestApproved = true,
+                    Reason = request.RejectionReason
                 };
                 _rabbitMQProducer.SendMessage(reqProcessed);
             }
@@ -113,13 +113,14 @@ namespace ePrijevozSarajevo.Services
 
             await _dataContext.SaveChangesAsync();
 
-            //send rabbit mq message
+            //send rabbitmq message
             var reqProcessed = new RequestsProcessed()
             {
                 UserEmail = request.User.Email,
                 UserId = request.UserId,
                 RequestedStatusName = request.UserStatus.Name,
-                RequestApproved = false
+                RequestApproved = false,
+                Reason = request.RejectionReason
 
             };            
             _rabbitMQProducer.SendMessage(reqProcessed);

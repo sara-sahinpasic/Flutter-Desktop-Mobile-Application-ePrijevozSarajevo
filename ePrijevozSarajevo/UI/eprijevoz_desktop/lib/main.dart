@@ -189,13 +189,34 @@ class _LoginPageState extends State<LoginPage> {
                         width: 250,
                         child: ElevatedButton(
                           onPressed: () async {
-                            UserProvider provider = UserProvider();
+                            UserProvider userProvider = UserProvider();
+                            UserRoleProvider userRoleProvider =
+                                UserRoleProvider();
+                            RoleProvider roleProvider = RoleProvider();
                             AuthProvider.username =
                                 _usernameController.text.toLowerCase();
                             AuthProvider.password = _passwordController.text;
                             try {
                               _formKey.currentState?.saveAndValidate();
-                              await provider.get();
+                              var userResult = await userProvider.get();
+                              var userRolesResult =
+                                  await userRoleProvider.get();
+                              var rolesResult = await roleProvider.get();
+
+                              var currentUser = userResult.result.firstWhere(
+                                  (user) =>
+                                      user.userName == AuthProvider.username);
+                              var currentUserRole = userRolesResult.result
+                                  .firstWhere((userRole) =>
+                                      userRole.userId == currentUser.userId);
+                              var role = rolesResult.result.firstWhere((role) =>
+                                  role.roleId == currentUserRole.roleId);
+
+                              if (role.name == "User") {
+                                throw Exception(
+                                    "User accounts not allowed on desktop app");
+                              }
+
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => (const HomePage())));
                             } on Exception catch (e) {

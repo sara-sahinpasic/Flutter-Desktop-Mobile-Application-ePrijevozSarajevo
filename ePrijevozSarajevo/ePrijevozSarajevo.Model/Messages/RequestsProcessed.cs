@@ -6,5 +6,6 @@
         public int UserId { get; set; }
         public string RequestedStatusName { get; set; }
         public bool RequestApproved { get; set; }
+        public string Reason { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 import 'package:eprijevoz_mobile/layouts/master_screen.dart';
+import 'package:eprijevoz_mobile/models/role.dart';
 import 'package:eprijevoz_mobile/providers/auth_provider.dart';
 import 'package:eprijevoz_mobile/providers/country_provider.dart';
 import 'package:eprijevoz_mobile/providers/issuedTicket_provider.dart';
@@ -158,11 +159,29 @@ class _LoginPageState extends State<LoginPage> {
                 width: 250,
                 child: ElevatedButton(
                   onPressed: () async {
-                    UserProvider provider = UserProvider();
+                    UserProvider userProvider = UserProvider();
+                    UserRoleProvider userRoleProvider = UserRoleProvider();
+                    RoleProvider roleProvider = RoleProvider();
+
                     AuthProvider.username = _usernameController.text;
                     AuthProvider.password = _passwordController.text;
                     try {
-                      await provider.get();
+                      var userResult = await userProvider.get();
+                      var userRolesResult = await userRoleProvider.get();
+                      var rolesResult = await roleProvider.get();
+
+                      var currentUser = userResult.result.firstWhere(
+                          (user) => user.userName == AuthProvider.username);
+                      var currentUserRole = userRolesResult.result.firstWhere(
+                          (userRole) => userRole.userId == currentUser.userId);
+                      var role = rolesResult.result.firstWhere(
+                          (role) => role.roleId == currentUserRole.roleId);
+
+                      if (role.name == "Admin") {
+                        throw Exception(
+                            "Admin accounts not allowed on mobile app");
+                      }
+
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
                           builder: (context) => const MasterScreen()));
                     } on Exception catch (e) {
