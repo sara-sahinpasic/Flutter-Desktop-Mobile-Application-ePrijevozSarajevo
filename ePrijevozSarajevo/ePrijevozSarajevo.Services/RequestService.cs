@@ -79,7 +79,7 @@ namespace ePrijevozSarajevo.Services
                     UserId = request.UserId,
                     RequestedStatusName = request.UserStatus.Name,
                     RequestApproved = true,
-                    Reason = request.RejectionReason
+                    Reason = request.User.StatusExpirationDate?.ToString()
                 };
                 _rabbitMQProducer.SendMessage(reqProcessed);
             }
@@ -122,7 +122,7 @@ namespace ePrijevozSarajevo.Services
                 RequestApproved = false,
                 Reason = request.RejectionReason
 
-            };            
+            };
             _rabbitMQProducer.SendMessage(reqProcessed);
 
             string content = rejectionReason;
