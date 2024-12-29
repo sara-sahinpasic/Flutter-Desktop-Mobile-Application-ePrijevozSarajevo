@@ -49,19 +49,23 @@ consumer.Received += (sender, args) =>
     var request = JsonConvert.DeserializeObject<RequestsProcessed>(message);
 
     string processResultMsg;
-      
+
+    string reasonMsg;
+
     if (request.RequestApproved)
     {
         processResultMsg = "odobren.";
+        reasonMsg= $"<br> Datum isteka Vašeg statusa: {request.Reason} <br>";
     }
     else
     {
-        processResultMsg = $"odbijen. <br> Razlog: {request.Reason} <br>" ;
+        processResultMsg = "odbijen." ;
+        reasonMsg = $"<br> Razlog: {request.Reason} <br>";
     };
     Console.WriteLine($"1. Zahtjev za status: {request.RequestedStatusName} od user: {request.UserId} je {processResultMsg}.");
     Console.WriteLine($"2. Šaljem mail useru id: {request.UserId} na njegovu adresu: {request.UserEmail}.");
-    string subject = $"Zahtjev {request.RequestedStatusName} je {processResultMsg}.";
-    string content = $"Poštovani, <br> Vaš zahtjev za status {request.RequestedStatusName} je {processResultMsg}<br> Ukoliko imate pitanja molimo Vas kontaktirajte na naš tim za podršku. <br><br> S poštovanjem,<br>Vaš ePrijevoz Sarajevo";
+    string subject = $"Zahtjev {request.RequestedStatusName} je {processResultMsg}";
+    string content = $"Poštovani, <br> <br> Vaš zahtjev za status {request.RequestedStatusName} je {processResultMsg}<br>{reasonMsg}<br> Ukoliko imate pitanja molimo Vas kontaktirajte na naš tim za podršku. <br><br> S poštovanjem,<br>Vaš ePrijevoz Sarajevo";
 
     EmailService emailService = new EmailService();
     emailService.SendNoReplyMail(request.UserEmail, subject, content);
