@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace ePrijevozSarajevo.Services.Database
 {
@@ -135,7 +136,7 @@ namespace ePrijevozSarajevo.Services.Database
                 FirstName = "Test",
                 LastName = "Testni",
                 UserName = "mobile1",
-                Email = "neki@mail.com",
+                Email = "eprijevozsarajevoapp@gmail.com",
                 PasswordSalt = UserService.GenerateSalt(),
                 DateOfBirth = new DateTime(1975, 05, 06),
                 PhoneNumber = "061222555",
@@ -155,7 +156,7 @@ namespace ePrijevozSarajevo.Services.Database
                 FirstName = "Testni",
                 LastName = "Test",
                 UserName = "mobile2",
-                Email = "neko@mail.com",
+                Email = "eprijevozsarajevotest@outlook.com",
                 PasswordSalt = UserService.GenerateSalt(),
                 DateOfBirth = new DateTime(1965, 07, 14),
                 PhoneNumber = "061222666",
@@ -175,7 +176,7 @@ namespace ePrijevozSarajevo.Services.Database
                 FirstName = "Proba",
                 LastName = "Probni",
                 UserName = "mobile3",
-                Email = "proba@mail.com",
+                Email = "eprijevozsarajevo.app@gmx.de",
                 PasswordSalt = UserService.GenerateSalt(),
                 DateOfBirth = new DateTime(1982, 04, 27),
                 PhoneNumber = "061222777",
@@ -227,7 +228,7 @@ namespace ePrijevozSarajevo.Services.Database
             int totalIssuedTickets = 100;
             int maxUsers = 6;
             int maxTickets = 5;
-            int maxRoutes = 100;
+            int maxRoutes = 90;
 
             for (int i = 1; i <= totalIssuedTickets; i++)
             {
@@ -277,44 +278,53 @@ namespace ePrijevozSarajevo.Services.Database
         } //2
          private static void BuildRoutes(ModelBuilder modelBuilder)
          {
-             List<Route> routes = new();
-             var random = new Random();
+            int totalStations = 15;
+            int totalVehicles = 6;
+            var random = new Random();
 
-             int totalRoutes = 100;
-             int totalStations = 15;
-             int totalVehicles = 6;
+            List<Route> routes = new();
+            List<DateTime> dateWithRoutes = new();
+            dateWithRoutes.Add(new DateTime(2025, 01, 05));
+            dateWithRoutes.Add(new DateTime(2025, 01, 15));
+            dateWithRoutes.Add(new DateTime(2025, 01, 25));
+            dateWithRoutes.Add(new DateTime(2025, 02, 05));
+            dateWithRoutes.Add(new DateTime(2025, 02, 15));
+            dateWithRoutes.Add(new DateTime(2025, 02, 25));
+            int routeCounter = 1;
+       
+            for (int i = 0; i< dateWithRoutes.Count; i++)
+            {
+                for (int j = 1; j <= totalStations; j++)
+                { 
+                    for(int k = j+1; k > 0; k--)
+                    {
+                        DateTime departure = new DateTime(dateWithRoutes[i].Year, dateWithRoutes[i].Month, dateWithRoutes[i].Day, 10, 15, 0);
+                        DateTime arrival = departure.AddMinutes(30);
+                        int endstation;
+                        /*if ((totalStations + 1) - j == j)
+                        {
+                            endstation = totalStations;
+                        }
+                        else
+                        {
+                            endstation = (totalStations + 1) - j;
+                        }*/
+                        if (k != j && k <= totalStations)
+                        {
+                            routes.Add(new Route()
+                            {
+                                RouteId = routeCounter++,
+                                StartStationId = j,
+                                EndStationId = k,
+                                VehicleId = random.Next(1, totalVehicles + 1),
+                                Departure = departure,
+                                Arrival = arrival
+                            });
+                        }
+                    }
+                }
 
-             for (int i = 1; i <= totalRoutes; i++)
-             {
-                 int startStationId = random.Next(1, totalStations + 1);
-                 int endStationId;
-                 do
-                 {
-                     endStationId = random.Next(1, totalStations + 1);
-                 } while (endStationId == startStationId);
-
-                 DateTime startDate = new DateTime(2024, 11, 01);
-                 DateTime endDate = new DateTime(2024, 12, 31);
-
-                 int range = (endDate - startDate).Days;
-                 DateTime randomDate = startDate.AddDays(random.Next(range));
-
-                 int departureHour = random.Next(5, 24);
-                 int departureMinute = random.Next(0, 60);
-                 DateTime departure = new DateTime(randomDate.Year, randomDate.Month, randomDate.Day, departureHour, departureMinute, 0);
-
-                 DateTime arrival = departure.AddMinutes(random.Next(10, 60)); // between 10 minutes and 1 hour after departure
-
-                 routes.Add(new Route()
-                 {
-                     RouteId = i,
-                     StartStationId = startStationId,
-                     EndStationId = endStationId,
-                     VehicleId = random.Next(1, totalVehicles + 1),
-                     Departure = departure,
-                     Arrival = arrival
-                 });
-             }
+            }
              modelBuilder.Entity<Route>()
                 .HasData(routes);
          } //3

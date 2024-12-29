@@ -435,12 +435,13 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
         onSuccess: (Map params) async {
           addIssuedTicketToDatabase();
 
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => MasterScreen(
-                    amount: amount,
-                    initialIndex: 2,
-                  )));
-          setState(() {});
+          setState(() {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => MasterScreen(
+                      amount: amount,
+                      initialIndex: 2,
+                    )));
+          });
           showDialog(
               context: context,
               builder: (context) => AlertDialog(
@@ -472,7 +473,7 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
     ));
   }
 
-  void addIssuedTicketToDatabase() {
+  void addIssuedTicketToDatabase() async {
     if (currentUser != null &&
         choosenTicket != null &&
         issuedDate != null &&
@@ -489,7 +490,7 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
 
       Map<String, dynamic> newRequest = newTicket.toJson();
 
-      issuedTicketProvider.insert(newRequest);
+      await issuedTicketProvider.insert(newRequest);
     }
   }
 }
