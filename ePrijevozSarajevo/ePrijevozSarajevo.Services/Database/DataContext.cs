@@ -77,8 +77,8 @@ namespace ePrijevozSarajevo.Services.Database
                 .WithMany()
                 .OnDelete(DeleteBehavior.NoAction);
 
-            BuildIssuedTickets(modelBuilder);
-            BuildRoutes(modelBuilder);
+            var routeList = BuildRoutes(modelBuilder);
+            BuildIssuedTickets(modelBuilder, routeList);
             BuildUsers(modelBuilder);
             OnModelCreatingPartial(modelBuilder);
         }
@@ -221,14 +221,14 @@ namespace ePrijevozSarajevo.Services.Database
             modelBuilder.Entity<User>()
                 .HasData(users);
         } //1
-        private static void BuildIssuedTickets(ModelBuilder modelBuilder)
+        private static void BuildIssuedTickets(ModelBuilder modelBuilder, List<Route> routes)
         {
             List<IssuedTicket> issuedTickets = new();
             var random = new Random();
             int totalIssuedTickets = 100;
             int maxUsers = 6;
             int maxTickets = 5;
-            int maxRoutes = 90;
+            int maxRoutes = routes.Count;
 
             for (int i = 1; i <= totalIssuedTickets; i++)
             {
@@ -269,14 +269,14 @@ namespace ePrijevozSarajevo.Services.Database
                     ValidFrom = validFrom,
                     ValidTo = validTo,
                     IssuedDate = issuedDate,
-                    Amount = random.Next(1, 20),
+                    Amount = random.Next(1, 10),
                     RouteId = routeId
                 });
             }
             modelBuilder.Entity<IssuedTicket>()
               .HasData(issuedTickets);
         } //2
-         private static void BuildRoutes(ModelBuilder modelBuilder)
+         private static List<Route> BuildRoutes(ModelBuilder modelBuilder)
          {
             int totalStations = 15;
             int totalVehicles = 6;
@@ -300,15 +300,7 @@ namespace ePrijevozSarajevo.Services.Database
                     {
                         DateTime departure = new DateTime(dateWithRoutes[i].Year, dateWithRoutes[i].Month, dateWithRoutes[i].Day, 10, 15, 0);
                         DateTime arrival = departure.AddMinutes(30);
-                        int endstation;
-                        /*if ((totalStations + 1) - j == j)
-                        {
-                            endstation = totalStations;
-                        }
-                        else
-                        {
-                            endstation = (totalStations + 1) - j;
-                        }*/
+
                         if (k != j && k <= totalStations)
                         {
                             routes.Add(new Route()
@@ -327,6 +319,7 @@ namespace ePrijevozSarajevo.Services.Database
             }
              modelBuilder.Entity<Route>()
                 .HasData(routes);
+            return routes;
          } //3
     }
 }

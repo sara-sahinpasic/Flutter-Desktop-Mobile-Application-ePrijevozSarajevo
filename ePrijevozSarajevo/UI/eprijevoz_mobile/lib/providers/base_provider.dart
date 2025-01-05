@@ -6,13 +6,13 @@ import 'package:http/http.dart';
 import 'package:eprijevoz_mobile/models/search_result.dart';
 
 abstract class BaseProvider<T> with ChangeNotifier {
-  static String?
-      baseUrl; // from _baseUrl (private) to the baseUrl (protected) so it canbe acceddes in child classes (like UserProvider)
+  static String baseUrl =
+      ""; // from _baseUrl (private) to the baseUrl (protected) so it can be accessed in child classes (like UserProvider)
   String _endpoint = "";
 
   BaseProvider(String endpoint) {
     _endpoint = endpoint;
-    baseUrl = const String.fromEnvironment("baseUrl",
+    baseUrl = const String.fromEnvironment("BASE_URL_MOBILE",
         defaultValue: "http://10.0.2.2:7292/");
   }
   // add a getter for _endpoint

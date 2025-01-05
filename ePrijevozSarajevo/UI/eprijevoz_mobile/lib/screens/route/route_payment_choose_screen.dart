@@ -63,6 +63,12 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
   SearchResult<Station>? stationResult;
   String? startStationName;
   String? endStationName;
+  String paypalClientId = const String.fromEnvironment("PAYPAL_CLIENT_ID",
+      defaultValue:
+          "AYTBslLKVvc0yWmL_p7xuYFsbHzUW0vwDNvY4mxFnsZb8YDe7BCM5TJul8X-y02HhmmMtp5pKKIgSFEf");
+  String paypalSecretKey = const String.fromEnvironment("PAYPAL_SECRET_KEY",
+      defaultValue:
+          "EGQDCKtMnPdbK5EvQwwPDo280-2_Na_UMe5YT4MU1B6LXW45atXupuoP_Cr-G6iSyXGE07XeOr5Ua6dJ");
 
   @override
   void initState() {
@@ -402,10 +408,8 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
     Navigator.of(context).push(MaterialPageRoute(
       builder: (BuildContext context) => PaypalCheckoutView(
         sandboxMode: true,
-        clientId:
-            "AYTBslLKVvc0yWmL_p7xuYFsbHzUW0vwDNvY4mxFnsZb8YDe7BCM5TJul8X-y02HhmmMtp5pKKIgSFEf",
-        secretKey:
-            "EGQDCKtMnPdbK5EvQwwPDo280-2_Na_UMe5YT4MU1B6LXW45atXupuoP_Cr-G6iSyXGE07XeOr5Ua6dJ",
+        clientId: paypalClientId,
+        secretKey: paypalSecretKey,
         transactions: [
           {
             "amount": {
@@ -433,6 +437,7 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
         note:
             "Za bilo kakva pitanja vezana uz Vašu kupovinu, kontaktirajte nas.",
         onSuccess: (Map params) async {
+          debugPrint('Paypal reponse: $params');
           addIssuedTicketToDatabase();
 
           setState(() {
@@ -441,25 +446,25 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
                       amount: amount,
                       initialIndex: 2,
                     )));
+            showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                      title: const Text("Success"),
+                      content: const Text("Karta je uspješno kupljena!"),
+                      titleTextStyle: const TextStyle(
+                          color: Colors.green,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24),
+                      actions: [
+                        TextButton(
+                            onPressed: () => (Navigator.pop(context)),
+                            child: const Text(
+                              "OK",
+                              style: TextStyle(color: Colors.black),
+                            ))
+                      ],
+                    ));
           });
-          showDialog(
-              context: context,
-              builder: (context) => AlertDialog(
-                    title: const Text("Success"),
-                    content: const Text("Karta je uspješno kupljena!"),
-                    titleTextStyle: const TextStyle(
-                        color: Colors.green,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24),
-                    actions: [
-                      TextButton(
-                          onPressed: () => (Navigator.pop(context)),
-                          child: const Text(
-                            "OK",
-                            style: TextStyle(color: Colors.black),
-                          ))
-                    ],
-                  ));
         },
         onError: (error) {
           debugPrint("onError: $error");
