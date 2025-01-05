@@ -8,7 +8,8 @@ import 'package:provider/provider.dart';
 
 class RequestApproveDialog extends StatefulWidget {
   final Request? request;
-  const RequestApproveDialog({this.request, super.key});
+  final Function onDone;
+  const RequestApproveDialog({required this.onDone, this.request, super.key});
 
   @override
   State<RequestApproveDialog> createState() => _RequestApproveDialogState();
@@ -104,7 +105,8 @@ class _RequestApproveDialogState extends State<RequestApproveDialog> {
                                       child: const Text("OK",
                                           style:
                                               TextStyle(color: Colors.black)),
-                                      onPressed: () {
+                                      onPressed: () async {
+                                        await widget.onDone();
                                         Navigator.pop(context);
                                         Navigator.pop(context, true);
                                       },
@@ -129,7 +131,7 @@ class _RequestApproveDialogState extends State<RequestApproveDialog> {
                                       child: const Text("OK",
                                           style:
                                               TextStyle(color: Colors.black)),
-                                      onPressed: () {
+                                      onPressed: () async {
                                         Navigator.pop(context);
                                       },
                                     ),

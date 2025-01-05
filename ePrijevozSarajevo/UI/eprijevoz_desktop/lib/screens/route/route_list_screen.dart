@@ -133,6 +133,51 @@ class _RouteListScreenState extends State<RouteListScreen> {
         ));
   }
 
+  void _refreshData() async {
+    setState(() {
+      isLoading = true;
+    });
+    try {
+      // search:
+      // set the filter for a date range covering the entire selected day
+      var filter = {
+        'StartStationIdGTE': selectedStationId,
+        'DateGTE':
+            DateTime(selectedDate.year, selectedDate.month, selectedDate.day),
+      };
+      routeResultForTime = await routeProvider.get(filter: filter);
+      if (routeResultForTime?.count == 0) {
+        await showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const Text(
+              "Warning",
+              style:
+                  TextStyle(color: Colors.orange, fontWeight: FontWeight.bold),
+            ),
+            content: const Text(
+              "Nema pronađenog plana vožnje s zadatom pretragom.",
+            ),
+            actions: [
+              TextButton(
+                child: const Text("OK", style: TextStyle(color: Colors.black)),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
+        );
+      }
+    } catch (e) {
+      debugPrint('Error: $e');
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
+
   Widget _buildSearch() {
     return FormBuilder(
       key: _formKey,
@@ -194,50 +239,7 @@ class _RouteListScreenState extends State<RouteListScreen> {
             const SizedBox(width: 15),
             ElevatedButton(
               onPressed: () async {
-                setState(() {
-                  isLoading = true;
-                });
-                try {
-                  // search:
-                  // set the filter for a date range covering the entire selected day
-                  var filter = {
-                    'StartStationIdGTE': selectedStationId,
-                    'DateGTE': DateTime(selectedDate.year, selectedDate.month,
-                        selectedDate.day),
-                  };
-                  routeResultForTime = await routeProvider.get(filter: filter);
-                  if (routeResultForTime?.count == 0) {
-                    await showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
-                        title: const Text(
-                          "Warning",
-                          style: TextStyle(
-                              color: Colors.orange,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        content: const Text(
-                          "Nema pronađenog plana vožnje s zadatom pretragom.",
-                        ),
-                        actions: [
-                          TextButton(
-                            child: const Text("OK",
-                                style: TextStyle(color: Colors.black)),
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-                        ],
-                      ),
-                    );
-                  }
-                } catch (e) {
-                  debugPrint('Error: $e');
-                } finally {
-                  setState(() {
-                    isLoading = false;
-                  });
-                }
+                _refreshData();
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
@@ -350,6 +352,7 @@ class _RouteListScreenState extends State<RouteListScreen> {
                                       builder: (BuildContext context) =>
                                           UpdateRouteDialog(
                                             route: e,
+                                            onDone: () => _refreshData(),
                                           ));
                                 },
                                 icon: const Icon(
@@ -400,7 +403,7 @@ class _RouteListScreenState extends State<RouteListScreen> {
                                                 try {
                                                   await routeProvider
                                                       .delete(e.routeId!);
-
+                                                  setState(() {});
                                                   await showDialog(
                                                     context: context,
                                                     builder:
@@ -468,6 +471,7 @@ class _RouteListScreenState extends State<RouteListScreen> {
                                                     ),
                                                   );
                                                 }
+                                                _refreshData();
                                               },
                                             ),
                                             TextButton(
@@ -499,9 +503,11 @@ class _RouteListScreenState extends State<RouteListScreen> {
             ),
             ElevatedButton(
                 onPressed: () async {
-                  await showDialog(
+                  showDialog(
                       context: context,
-                      builder: (dialogAddContext) => const RouteAddDialog());
+                      builder: (BuildContext context) => RouteAddDialog(
+                            onDone: () => _refreshData(),
+                          ));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromRGBO(72, 156, 118, 100),

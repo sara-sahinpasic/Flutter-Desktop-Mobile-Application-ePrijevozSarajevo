@@ -235,12 +235,14 @@ namespace ePrijevozSarajevo.Services.Database
                 int userId = random.Next(1, maxUsers + 1);
                 int ticketId = random.Next(1, maxTickets + 1);
                 int routeId = random.Next(1, maxRoutes + 1);
-
-                int year = DateTime.Now.Year - random.Next(0, 2); // current year or last year
-                int month = random.Next(1, 13);
-                int day = random.Next(1, DateTime.DaysInMonth(year, month) + 1);
-
-                DateTime issuedDate = new DateTime(year, month, day);
+                DateTime issuedDate;
+                do
+                {
+                    int year = DateTime.Now.Year - random.Next(0, 2); // current year or last year
+                    int month = year == DateTime.Now.Year ? random.Next(1, DateTime.Now.Month + 1):random.Next(1, 13);
+                    int day = (year == DateTime.Now.Year) && (month == DateTime.Now.Month) ? random.Next(1, DateTime.Now.Day) : random.Next(1, DateTime.DaysInMonth(year, month) + 1);
+                    issuedDate = new DateTime(year, month, day);
+                } while (issuedDate.CompareTo(DateTime.Now) > 0);
                 DateTime validFrom = issuedDate;
                 DateTime validTo;
 

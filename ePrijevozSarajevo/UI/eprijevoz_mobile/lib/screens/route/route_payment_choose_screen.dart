@@ -438,33 +438,32 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
             "Za bilo kakva pitanja vezana uz Vašu kupovinu, kontaktirajte nas.",
         onSuccess: (Map params) async {
           debugPrint('Paypal reponse: $params');
-          addIssuedTicketToDatabase();
+          await addIssuedTicketToDatabase();
 
-          setState(() {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => MasterScreen(
-                      amount: amount,
-                      initialIndex: 2,
-                    )));
-            showDialog(
-                context: context,
-                builder: (context) => AlertDialog(
-                      title: const Text("Success"),
-                      content: const Text("Karta je uspješno kupljena!"),
-                      titleTextStyle: const TextStyle(
-                          color: Colors.green,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24),
-                      actions: [
-                        TextButton(
-                            onPressed: () => (Navigator.pop(context)),
-                            child: const Text(
-                              "OK",
-                              style: TextStyle(color: Colors.black),
-                            ))
-                      ],
-                    ));
-          });
+          await showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                    title: const Text("Success"),
+                    content: const Text("Karta je uspješno kupljena!"),
+                    titleTextStyle: const TextStyle(
+                        color: Colors.green,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 24),
+                    actions: [
+                      TextButton(
+                          onPressed: () => (Navigator.pop(context)),
+                          child: const Text(
+                            "OK",
+                            style: TextStyle(color: Colors.black),
+                          ))
+                    ],
+                  ));
+
+          await Navigator.of(context).pushReplacement(MaterialPageRoute(
+              builder: (context) => MasterScreen(
+                    amount: amount,
+                    initialIndex: 2,
+                  )));
         },
         onError: (error) {
           debugPrint("onError: $error");
@@ -478,7 +477,7 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
     ));
   }
 
-  void addIssuedTicketToDatabase() async {
+  Future addIssuedTicketToDatabase() async {
     if (currentUser != null &&
         choosenTicket != null &&
         issuedDate != null &&

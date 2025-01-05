@@ -42,6 +42,8 @@ class _MasterScreenState extends State<MasterScreen> {
       "Karte",
       "Profil",
     ];
+
+    setState(() {});
   }
 
   @override

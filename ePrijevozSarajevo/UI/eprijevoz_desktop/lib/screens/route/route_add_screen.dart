@@ -17,12 +17,14 @@ class RouteAddDialog extends StatefulWidget {
   final Station? station;
   final Vehicle? vehicle;
   final Route? route;
+  final Function onDone;
 
   const RouteAddDialog({
     super.key,
     this.station,
     this.vehicle,
     this.route,
+    required this.onDone,
   });
 
   @override
@@ -402,7 +404,8 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
                                           "OK",
                                           style: TextStyle(color: Colors.black),
                                         ),
-                                        onPressed: () {
+                                        onPressed: () async {
+                                          await widget.onDone();
                                           Navigator.pop(dialogContext);
                                           Navigator.pop(dialogContext, true);
                                         },
