@@ -1,4 +1,5 @@
 import 'package:eprijevoz_mobile/models/route.dart';
+import 'package:eprijevoz_mobile/layouts/master_screen.dart';
 import 'package:eprijevoz_mobile/models/search_result.dart';
 import 'package:eprijevoz_mobile/models/station.dart';
 import 'package:eprijevoz_mobile/providers/route_provider.dart';
@@ -67,7 +68,13 @@ class _RouteOptionsScreenState extends State<RouteOptionsScreen> {
                     ),
                     IconButton(
                         onPressed: () {
-                          Navigator.of(context).pop();
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const MasterScreen(
+                                initialIndex: 1,
+                              ),
+                            ),
+                          );
                         },
                         icon: const Icon(
                           Icons.cancel_outlined,

@@ -58,7 +58,7 @@ class RequestScreen extends StatelessWidget {
                             '''Poštovani,\n\nza potrebe dokazivanja traženog statusa, molimo Vas da potrebne dokumente dostavite na e-mail adresu sekretarijata preduzeća: ''',
                       ),
                       TextSpan(
-                        text: 'e.prijevoz.sa@gmail.com',
+                        text: 'eprijevoztest@e-mail.de',
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,

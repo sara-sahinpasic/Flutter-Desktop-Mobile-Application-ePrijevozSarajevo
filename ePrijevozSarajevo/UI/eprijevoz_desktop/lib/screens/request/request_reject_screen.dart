@@ -8,7 +8,8 @@ import 'package:provider/provider.dart';
 
 class RequestRejectDialog extends StatefulWidget {
   final Request? request;
-  const RequestRejectDialog({this.request, super.key});
+  final Function onDone;
+  const RequestRejectDialog({required this.onDone, this.request, super.key});
 
   @override
   State<RequestRejectDialog> createState() => _RequestRejectDialogState();
@@ -117,7 +118,8 @@ class _RequestRejectDialogState extends State<RequestRejectDialog> {
                                       child: const Text("OK",
                                           style:
                                               TextStyle(color: Colors.black)),
-                                      onPressed: () {
+                                      onPressed: () async {
+                                        await widget.onDone();
                                         Navigator.pop(context);
                                         Navigator.pop(context, true);
                                       },

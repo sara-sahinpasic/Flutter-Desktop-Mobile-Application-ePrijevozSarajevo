@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace ePrijevozSarajevo.Services.Database
 {
@@ -29,13 +28,6 @@ namespace ePrijevozSarajevo.Services.Database
                 options.UseSqlServer("Data Source=localhost; Initial Catalog=140261; user=sa; Password=ePrijevoz123!;Trusted_Connection=True;TrustServerCertificate=True");
             }
         }
-
-        /*
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=localhost; Initial Catalog=140261; user=sa; Password=QWEasd123!;" +
-         "Trusted_Connection=True;TrustServerCertificate=True");
-        */
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) 
         {
@@ -77,8 +69,8 @@ namespace ePrijevozSarajevo.Services.Database
                 .WithMany()
                 .OnDelete(DeleteBehavior.NoAction);
 
-            BuildIssuedTickets(modelBuilder);
-            BuildRoutes(modelBuilder);
+            var routeList = BuildRoutes(modelBuilder);
+            BuildIssuedTickets(modelBuilder, routeList);
             BuildUsers(modelBuilder);
             OnModelCreatingPartial(modelBuilder);
         }
@@ -99,7 +91,7 @@ namespace ePrijevozSarajevo.Services.Database
                 Email = "sara.sahinpasic@edu.fit.ba",
                 PasswordSalt = UserService.GenerateSalt(),
                 DateOfBirth = new DateTime(1998, 03, 25),
-                PhoneNumber = "061222333",
+                PhoneNumber = "+38761222333",
                 Address = "Adresa 11",
                 ZipCode="71000",
                 City ="Sarajevo",
@@ -114,12 +106,12 @@ namespace ePrijevozSarajevo.Services.Database
                {
                 UserId = 2,
                 FirstName = "Senada",
-                LastName = "Šahinpašić",
+                LastName = "Senadić",
                 UserName = "mobile",
-                Email = "sara.sahinpasic@hotmail.com",
+                Email = "eprijevozsarajevoapp@gmail.com",
                 PasswordSalt = UserService.GenerateSalt(),
                 DateOfBirth = new DateTime(1988, 10, 26),
-                PhoneNumber = "061222444",
+                PhoneNumber = "+38761222444",
                 Address = "Adresa 12",
                 ZipCode="72000",
                 City ="Zenica",
@@ -136,10 +128,10 @@ namespace ePrijevozSarajevo.Services.Database
                 FirstName = "Test",
                 LastName = "Testni",
                 UserName = "mobile1",
-                Email = "eprijevozsarajevoapp@gmail.com",
+                Email = "sara.sahinpasic@hotmail.com",
                 PasswordSalt = UserService.GenerateSalt(),
                 DateOfBirth = new DateTime(1975, 05, 06),
-                PhoneNumber = "061222555",
+                PhoneNumber = "+38761222444",
                 Address = "Adresa 14",
                 ZipCode="90408",
                 City ="Nürnberg",
@@ -159,7 +151,7 @@ namespace ePrijevozSarajevo.Services.Database
                 Email = "eprijevozsarajevotest@outlook.com",
                 PasswordSalt = UserService.GenerateSalt(),
                 DateOfBirth = new DateTime(1965, 07, 14),
-                PhoneNumber = "061222666",
+                PhoneNumber = "+38761222666",
                 Address = "Adresa 15",
                 ZipCode="1010",
                 City ="Wien",
@@ -179,7 +171,7 @@ namespace ePrijevozSarajevo.Services.Database
                 Email = "eprijevozsarajevo.app@gmx.de",
                 PasswordSalt = UserService.GenerateSalt(),
                 DateOfBirth = new DateTime(1982, 04, 27),
-                PhoneNumber = "061222777",
+                PhoneNumber = "+38761222777",
                 Address = "Adresa 16",
                 ZipCode="1160",
                 City ="Wien",
@@ -199,7 +191,7 @@ namespace ePrijevozSarajevo.Services.Database
                 Email = "probe@mail.com",
                 PasswordSalt = UserService.GenerateSalt(),
                 DateOfBirth = new DateTime(1996, 02, 07),
-                PhoneNumber = "061222888",
+                PhoneNumber = "+38761222888",
                 Address = "Adresa 17",
                 ZipCode="80331",
                 City ="Munich",
@@ -221,26 +213,28 @@ namespace ePrijevozSarajevo.Services.Database
             modelBuilder.Entity<User>()
                 .HasData(users);
         } //1
-        private static void BuildIssuedTickets(ModelBuilder modelBuilder)
+        private static void BuildIssuedTickets(ModelBuilder modelBuilder, List<Route> routes)
         {
             List<IssuedTicket> issuedTickets = new();
             var random = new Random();
             int totalIssuedTickets = 100;
             int maxUsers = 6;
             int maxTickets = 5;
-            int maxRoutes = 90;
+            int maxRoutes = routes.Count;
 
             for (int i = 1; i <= totalIssuedTickets; i++)
             {
                 int userId = random.Next(1, maxUsers + 1);
                 int ticketId = random.Next(1, maxTickets + 1);
                 int routeId = random.Next(1, maxRoutes + 1);
-
-                int year = DateTime.Now.Year - random.Next(0, 2); // current year or last year
-                int month = random.Next(1, 13);
-                int day = random.Next(1, DateTime.DaysInMonth(year, month) + 1);
-
-                DateTime issuedDate = new DateTime(year, month, day);
+                DateTime issuedDate;
+                do
+                {
+                    int year = DateTime.Now.Year - random.Next(0, 2); // current year or last year
+                    int month = year == DateTime.Now.Year ? random.Next(1, DateTime.Now.Month + 1):random.Next(1, 13);
+                    int day = (year == DateTime.Now.Year) && (month == DateTime.Now.Month) ? random.Next(1, DateTime.Now.Day) : random.Next(1, DateTime.DaysInMonth(year, month) + 1);
+                    issuedDate = new DateTime(year, month, day);
+                } while (issuedDate.CompareTo(DateTime.Now) > 0);
                 DateTime validFrom = issuedDate;
                 DateTime validTo;
 
@@ -269,14 +263,14 @@ namespace ePrijevozSarajevo.Services.Database
                     ValidFrom = validFrom,
                     ValidTo = validTo,
                     IssuedDate = issuedDate,
-                    Amount = random.Next(1, 20),
+                    Amount = random.Next(1, 10),
                     RouteId = routeId
                 });
             }
             modelBuilder.Entity<IssuedTicket>()
               .HasData(issuedTickets);
         } //2
-         private static void BuildRoutes(ModelBuilder modelBuilder)
+         private static List<Route> BuildRoutes(ModelBuilder modelBuilder)
          {
             int totalStations = 15;
             int totalVehicles = 6;
@@ -300,15 +294,7 @@ namespace ePrijevozSarajevo.Services.Database
                     {
                         DateTime departure = new DateTime(dateWithRoutes[i].Year, dateWithRoutes[i].Month, dateWithRoutes[i].Day, 10, 15, 0);
                         DateTime arrival = departure.AddMinutes(30);
-                        int endstation;
-                        /*if ((totalStations + 1) - j == j)
-                        {
-                            endstation = totalStations;
-                        }
-                        else
-                        {
-                            endstation = (totalStations + 1) - j;
-                        }*/
+
                         if (k != j && k <= totalStations)
                         {
                             routes.Add(new Route()
@@ -327,6 +313,7 @@ namespace ePrijevozSarajevo.Services.Database
             }
              modelBuilder.Entity<Route>()
                 .HasData(routes);
+            return routes;
          } //3
     }
 }

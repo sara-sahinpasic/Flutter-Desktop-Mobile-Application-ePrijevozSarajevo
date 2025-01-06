@@ -103,7 +103,9 @@ namespace ePrijevozSarajevo.Services
             }
 
             // unique route IDs from the user
-            var userRouteIds = userIssuedTickets.Select(t => t.RouteId).Distinct();
+            var userRouteIds = userIssuedTickets
+                .DistinctBy(t => new { t.Route.StartStationId, t.Route.EndStationId })
+                .Select(t => t.RouteId);    
 
             // predict scores 
             var recommendedRoutes = new List<(int RouteId, float Score)>();
@@ -135,7 +137,7 @@ namespace ePrijevozSarajevo.Services
 
         private async Task<IEnumerable<IssuedTicket>> FetchIssuedTicketsByUserAsync(int userId)
         {
-            return await _context.IssuedTickets.Where(x => x.UserId == userId).ToListAsync();
+            return await _context.IssuedTickets.Include(x => x.Route).Where(x => x.UserId == userId).ToListAsync();
         }
 
         private async Task<IEnumerable<Route>> GetAllRouteIdsAsync()

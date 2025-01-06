@@ -18,11 +18,19 @@ namespace ePrijevozSarajevo.Services
 
             if ((search?.StartStationIdGTE >= 0) && (search.DateGTE.Year > 1))
             {
-
-                query = query.Where(x => x.StartStationId == search.StartStationIdGTE || x.EndStationId == search.EndStationIdGTE)
+                if(search.EndStationIdGTE == null)
+                {
+                    query = query.Where(x => x.StartStationId == search.StartStationIdGTE)
                              .Where(x => x.Departure.Date.Equals(search.DateGTE.Date))
                              .Where(x => x.Departure.Date >= search.DateGTE.Date && x.Departure.TimeOfDay >= search.DateGTE.TimeOfDay);
 
+                }else
+                {
+                    query = query.Where(x => x.StartStationId == search.StartStationIdGTE && x.EndStationId == search.EndStationIdGTE)
+                             .Where(x => x.Departure.Date.Equals(search.DateGTE.Date))
+                             .Where(x => x.Departure.Date >= search.DateGTE.Date && x.Departure.TimeOfDay >= search.DateGTE.TimeOfDay);
+
+                }
             }
             if (search.IsStationIncluded == true)
             {

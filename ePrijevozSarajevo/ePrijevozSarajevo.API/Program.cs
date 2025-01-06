@@ -97,8 +97,18 @@ app.MapControllers();
 using (var scope = app.Services.CreateScope())
 {
     var dataContext = scope.ServiceProvider.GetRequiredService<DataContext>();
-
+    dataContext.Database.EnsureCreated();
     dataContext.Database.Migrate();
+
+    var recommenderService = scope.ServiceProvider.GetRequiredService<IRecommenderService>();
+    try
+    {
+        await recommenderService.TrainModelAsync();
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine($"error training model: {e}");
+    }
 }
 
 app.Run();

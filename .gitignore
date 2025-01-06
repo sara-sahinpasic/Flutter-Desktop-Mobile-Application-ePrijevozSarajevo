@@ -291,3 +291,6 @@ __pycache__/
 
 # Environment
 *.env
+
+# Recommendation Model
+**/RouteRecommendationModel.zip

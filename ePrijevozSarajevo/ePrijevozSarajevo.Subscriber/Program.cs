@@ -69,12 +69,16 @@ consumer.Received += (sender, args) =>
 
     EmailService emailService = new EmailService();
     emailService.SendNoReplyMail(request.UserEmail, subject, content);
-
-    channel.BasicAck(args.DeliveryTag, false);
 };
 
-channel.BasicConsume(routingKey, true, consumer);
+try { 
+    channel.BasicConsume(routingKey, true, consumer);
+}
+catch (Exception e)
+{
+    Console.WriteLine($"There was error consuming messages from channel: {e}");
+}
 
 
 Console.WriteLine("Listening for messages. Press [enter] to quit.");
-Thread.Sleep(Timeout.Infinite);
+Console.ReadLine();

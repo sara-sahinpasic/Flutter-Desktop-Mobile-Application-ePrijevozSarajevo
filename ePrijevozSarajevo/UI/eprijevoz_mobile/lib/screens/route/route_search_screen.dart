@@ -29,7 +29,6 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
   late StationProvider stationProvider;
   SearchResult<Station>? stationResult;
   final _formKey = GlobalKey<FormBuilderState>();
-  final Map<String, dynamic> _initialValue = {};
   int? selectedEndStationId;
   int? selectedStartStationId;
   List<Station> uniqueStartStations = [];
@@ -108,7 +107,7 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
             getEndStationsForSelectedStartStation(selectedStartStationId!);
       }
     } catch (e) {
-      print('Error fetching recommendations: $e');
+      debugPrint('Error fetching recommendations: $e');
     } finally {
       setState(() {
         isLoading = false;
@@ -193,7 +192,6 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
   Widget _buildResultView() {
     return FormBuilder(
       key: _formKey,
-      // initialValue: _initialValue,
       initialValue: {
         'startStationId': selectedStartStationId?.toString(),
         'endStationId': selectedEndStationId?.toString(),
@@ -243,7 +241,7 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
                             : null;
                       });
                       _formKey.currentState?.fields['endStationId']
-                          ?.didChange(null);
+                          ?.didChange(selectedEndStationId?.toString());
                     },
                     initialValue: selectedStartStationId?.toString(),
                   ),
@@ -273,7 +271,7 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
                             .firstOrNull;
                         selectedEndStationId = station?.stationId;
                       },
-                      initialValue: null),
+                      initialValue: selectedEndStationId?.toString()),
                 ),
               ),
             ],

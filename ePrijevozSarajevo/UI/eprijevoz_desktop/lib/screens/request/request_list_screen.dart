@@ -13,9 +13,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
 
 class RequestListScreen extends StatefulWidget {
-  final Status? status;
-  final Request? request;
-  const RequestListScreen({super.key, this.request, this.status});
+  const RequestListScreen({super.key});
 
   @override
   State<RequestListScreen> createState() => _RequestListScreenState();
@@ -41,11 +39,6 @@ class _RequestListScreenState extends State<RequestListScreen> {
     userProvider = context.read<UserProvider>();
 
     super.initState();
-
-    _initialValue = {
-      'userStatusId': widget.request?.userStatusId?.toString(),
-      'statusId': widget.status?.statusId?.toString(),
-    };
 
     initForm();
   }
@@ -108,6 +101,49 @@ class _RequestListScreenState extends State<RequestListScreen> {
         ));
   }
 
+  void _refreshData({bool byUser = false}) async {
+    setState(() {
+      isLoading = false;
+    });
+    try {
+      // search:
+      var filter = {
+        'UserStatusIdGTE': selectedStatusId,
+      };
+      routeResultForStatus = await requestProvider.get(filter: filter);
+      requestResult = await requestProvider.get();
+      if (routeResultForStatus?.count == 0 && byUser) {
+        await showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const Text(
+              "Warning",
+              style:
+                  TextStyle(color: Colors.orange, fontWeight: FontWeight.bold),
+            ),
+            content: const Text(
+              "Nema pronađenih zahtjeva za odabranu kategoriju.",
+            ),
+            actions: [
+              TextButton(
+                child: const Text("OK", style: TextStyle(color: Colors.black)),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
+        );
+      }
+    } catch (e) {
+      debugPrint('Error: $e');
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
+
   Widget _buildSearch() {
     return FormBuilder(
       key: _formKey,
@@ -146,48 +182,7 @@ class _RequestListScreenState extends State<RequestListScreen> {
           width: 15,
         ),
         ElevatedButton(
-          onPressed: () async {
-            setState(() {
-              isLoading = false;
-            });
-            try {
-              // search:
-              var filter = {
-                'UserStatusIdGTE': selectedStatusId,
-              };
-              routeResultForStatus = await requestProvider.get(filter: filter);
-              if (routeResultForStatus?.count == 0) {
-                await showDialog(
-                  context: context,
-                  builder: (context) => AlertDialog(
-                    title: const Text(
-                      "Warning",
-                      style: TextStyle(
-                          color: Colors.orange, fontWeight: FontWeight.bold),
-                    ),
-                    content: const Text(
-                      "Nema pronađenih zahtjeva za odabranu kategoriju.",
-                    ),
-                    actions: [
-                      TextButton(
-                        child: const Text("OK",
-                            style: TextStyle(color: Colors.black)),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      ),
-                    ],
-                  ),
-                );
-              }
-            } catch (e) {
-              debugPrint('Error: $e');
-            } finally {
-              setState(() {
-                isLoading = false;
-              });
-            }
-          },
+          onPressed: () => _refreshData(byUser: true),
           style: ElevatedButton.styleFrom(
             backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
             shape: RoundedRectangleBorder(
@@ -297,6 +292,7 @@ class _RequestListScreenState extends State<RequestListScreen> {
                                           builder: (successDialogContext) =>
                                               RequestApproveDialog(
                                             request: e,
+                                            onDone: () => _refreshData(),
                                           ),
                                         );
                                       } catch (error) {
@@ -353,6 +349,7 @@ class _RequestListScreenState extends State<RequestListScreen> {
                                             builder: (successDialogContext) =>
                                                 RequestRejectDialog(
                                               request: e,
+                                              onDone: () => _refreshData(),
                                             ),
                                           );
                                         } catch (error) {

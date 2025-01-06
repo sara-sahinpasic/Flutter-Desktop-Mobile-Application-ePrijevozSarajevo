@@ -25,7 +25,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
   final List<String> _yearList = [];
   late int selectedYearIndex;
   String selectedYear = "";
-  late int currentYear = 2024;
+  late int currentYear = DateTime.now().year;
   // grpah hoover
   int touchedIndex = -1;
   bool isTouched = false;
@@ -39,7 +39,9 @@ class _StatisticScreenState extends State<StatisticScreen> {
   late Map<int, int> ticketTypeAmounts = {};
   late List<int> selectedMonthsforTickets = [];
   var maxTicketValue = 0;
+  var ticketInterval = 0;
   var maxStationValue = 0;
+  var stationInterval = 0;
   // station
   late RouteProvider routeProvider;
   SearchResult<Route>? routeResult;
@@ -412,6 +414,8 @@ class _StatisticScreenState extends State<StatisticScreen> {
 
   List<BarChartGroupData> getBarChartGroupTicketData(
       List<IssuedTicket> tickets, List<int> months) {
+    maxTicketValue = 0;
+    ticketInterval = 0;
     if (months.isEmpty || tickets.isEmpty) {
       return [
         BarChartGroupData(
@@ -422,7 +426,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
       ];
     }
 
-    return months.map((month) {
+    var list = months.map((month) {
       final monthTickets =
           tickets.where((ticket) => ticket.issuedDate?.month == month).toList();
 
@@ -457,6 +461,13 @@ class _StatisticScreenState extends State<StatisticScreen> {
         barRods: barRods,
       );
     }).toList();
+
+    int i = maxTicketValue;
+    while (i % 100 != 0) {
+      i++;
+    }
+    ticketInterval = i ~/ 10;
+    return list;
   }
 
   Widget buildTicketTypeLegend() {
@@ -468,25 +479,20 @@ class _StatisticScreenState extends State<StatisticScreen> {
         final color = entry.value;
         final label = ticketTypeLabels[ticketTypeId] ?? "";
 
-        return SizedBox(
-          width: 120,
-          child: Row(
-            children: [
-              Container(
-                width: 16,
-                height: 16,
-                color: color,
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: Text(
-                  label,
-                  style: const TextStyle(fontSize: 14),
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-            ],
-          ),
+        return Wrap(
+          children: [
+            Container(
+              width: 16,
+              height: 16,
+              color: color,
+            ),
+            const SizedBox(width: 8),
+            Text(
+              label,
+              style: const TextStyle(fontSize: 14),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ],
         );
       }).toList(),
     );
@@ -538,63 +544,66 @@ class _StatisticScreenState extends State<StatisticScreen> {
                       ticketsForYearAndMonths, selectedMonthsforTickets);
                   return BarChart(
                     BarChartData(
-                      alignment: BarChartAlignment.center,
-                      maxY: (maxTicketValue + 5).toDouble(),
-                      barTouchData: BarTouchData(
-                        enabled: true,
-                        touchTooltipData: BarTouchTooltipData(
-                          tooltipRoundedRadius: 8,
-                          getTooltipItem: (group, groupIndex, rod, rodIndex) {
-                            final value = rod.toY.toInt();
-                            return BarTooltipItem(
-                              '$value',
-                              const TextStyle(color: Colors.white),
-                            );
+                        alignment: BarChartAlignment.center,
+                        maxY: (maxTicketValue + 5).toDouble(),
+                        barTouchData: BarTouchData(
+                          enabled: true,
+                          touchTooltipData: BarTouchTooltipData(
+                            tooltipRoundedRadius: 8,
+                            getTooltipItem: (group, groupIndex, rod, rodIndex) {
+                              final value = rod.toY.toInt();
+                              return BarTooltipItem(
+                                '$value',
+                                const TextStyle(color: Colors.white),
+                              );
+                            },
+                          ),
+                          touchCallback: (event, response) {
+                            if (!event.isInterestedForInteractions ||
+                                response == null ||
+                                response.spot == null) {
+                              setState(() {
+                                touchedIndex = -1;
+                                isTouched = false;
+                              });
+                              return;
+                            }
+                            setState(() {
+                              touchedIndex =
+                                  response.spot!.touchedBarGroupIndex;
+                              isTouched = true;
+                            });
                           },
                         ),
-                        touchCallback: (event, response) {
-                          if (!event.isInterestedForInteractions ||
-                              response == null ||
-                              response.spot == null) {
-                            setState(() {
-                              touchedIndex = -1;
-                              isTouched = false;
-                            });
-                            return;
-                          }
-                          setState(() {
-                            touchedIndex = response.spot!.touchedBarGroupIndex;
-                            isTouched = true;
-                          });
-                        },
-                      ),
-                      titlesData: FlTitlesData(
-                        show: true,
-                        bottomTitles: AxisTitles(
-                          sideTitles: SideTitles(
+                        titlesData: FlTitlesData(
+                          show: true,
+                          bottomTitles: AxisTitles(
+                            sideTitles: SideTitles(
+                                showTitles: true,
+                                reservedSize: 28,
+                                getTitlesWidget: bottomGraphTitles),
+                          ),
+                          leftTitles: AxisTitles(
+                            sideTitles: SideTitles(
                               showTitles: true,
-                              reservedSize: 28,
-                              getTitlesWidget: bottomGraphTitles),
-                        ),
-                        leftTitles: AxisTitles(
-                          sideTitles: SideTitles(
-                            showTitles: true,
-                            reservedSize: 20.0,
-                            interval: 1,
-                            getTitlesWidget: (value, meta) =>
-                                leftGraphTitles(value, meta, 100),
+                              reservedSize: 30.0,
+                              interval: ticketInterval.toDouble(),
+                              getTitlesWidget: (value, meta) =>
+                                  leftGraphTitles(value, meta, 100),
+                            ),
+                          ),
+                          topTitles: const AxisTitles(
+                            sideTitles: SideTitles(showTitles: false),
+                          ),
+                          rightTitles: const AxisTitles(
+                            sideTitles: SideTitles(showTitles: false),
                           ),
                         ),
-                        topTitles: const AxisTitles(
-                          sideTitles: SideTitles(showTitles: false),
-                        ),
-                        rightTitles: const AxisTitles(
-                          sideTitles: SideTitles(showTitles: false),
-                        ),
-                      ),
-                      groupsSpace: barsSpace,
-                      barGroups: barChartGroupData,
-                    ),
+                        groupsSpace: barsSpace,
+                        barGroups: barChartGroupData,
+                        gridData: FlGridData(
+                            verticalInterval: ticketInterval.toDouble(),
+                            horizontalInterval: ticketInterval.toDouble())),
                   );
                 },
               ),
@@ -608,6 +617,8 @@ class _StatisticScreenState extends State<StatisticScreen> {
 // RouteChart()
   List<BarChartGroupData> getBarChartGroupRouteData(
       List<IssuedTicket> tickets, List<int> months) {
+    maxStationValue = 0;
+    stationInterval = 0;
     if (months.isEmpty || tickets.isEmpty) {
       return [
         BarChartGroupData(
@@ -618,7 +629,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
       ];
     }
 
-    return months.map((month) {
+    var list = months.map((month) {
       final monthTickets =
           tickets.where((ticket) => ticket.issuedDate?.month == month).toList();
 
@@ -662,6 +673,14 @@ class _StatisticScreenState extends State<StatisticScreen> {
         barRods: barRods,
       );
     }).toList();
+
+    int i = maxStationValue;
+    while (i % 100 != 0) {
+      i++;
+    }
+    stationInterval = i ~/ 10;
+
+    return list;
   }
 
   Widget buildStationsLegend() {
@@ -673,25 +692,20 @@ class _StatisticScreenState extends State<StatisticScreen> {
         final color = entry.value;
         final label = stationLabels[stationId] ?? "";
 
-        return SizedBox(
-          width: 120,
-          child: Row(
-            children: [
-              Container(
-                width: 16,
-                height: 16,
-                color: color,
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: Text(
-                  label,
-                  style: const TextStyle(fontSize: 14),
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-            ],
-          ),
+        return Wrap(
+          children: [
+            Container(
+              width: 16,
+              height: 16,
+              color: color,
+            ),
+            const SizedBox(width: 8),
+            Text(
+              label,
+              style: const TextStyle(fontSize: 14),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ],
         );
       }).toList(),
     );
@@ -743,63 +757,66 @@ class _StatisticScreenState extends State<StatisticScreen> {
                       ticketsForYearAndMonths, selectedMonthsforTickets);
                   return BarChart(
                     BarChartData(
-                      alignment: BarChartAlignment.center,
-                      maxY: (maxStationValue + 5).toDouble(),
-                      barTouchData: BarTouchData(
-                        enabled: true,
-                        touchTooltipData: BarTouchTooltipData(
-                          tooltipRoundedRadius: 8,
-                          getTooltipItem: (group, groupIndex, rod, rodIndex) {
-                            final value = rod.toY.toInt();
-                            return BarTooltipItem(
-                              '$value',
-                              const TextStyle(color: Colors.white),
-                            );
+                        alignment: BarChartAlignment.center,
+                        maxY: (maxStationValue + 5).toDouble(),
+                        barTouchData: BarTouchData(
+                          enabled: true,
+                          touchTooltipData: BarTouchTooltipData(
+                            tooltipRoundedRadius: 8,
+                            getTooltipItem: (group, groupIndex, rod, rodIndex) {
+                              final value = rod.toY.toInt();
+                              return BarTooltipItem(
+                                '$value',
+                                const TextStyle(color: Colors.white),
+                              );
+                            },
+                          ),
+                          touchCallback: (event, response) {
+                            if (!event.isInterestedForInteractions ||
+                                response == null ||
+                                response.spot == null) {
+                              setState(() {
+                                touchedIndex = -1;
+                                isTouched = false;
+                              });
+                              return;
+                            }
+                            setState(() {
+                              touchedIndex =
+                                  response.spot!.touchedBarGroupIndex;
+                              isTouched = true;
+                            });
                           },
                         ),
-                        touchCallback: (event, response) {
-                          if (!event.isInterestedForInteractions ||
-                              response == null ||
-                              response.spot == null) {
-                            setState(() {
-                              touchedIndex = -1;
-                              isTouched = false;
-                            });
-                            return;
-                          }
-                          setState(() {
-                            touchedIndex = response.spot!.touchedBarGroupIndex;
-                            isTouched = true;
-                          });
-                        },
-                      ),
-                      titlesData: FlTitlesData(
-                        show: true,
-                        bottomTitles: AxisTitles(
-                          sideTitles: SideTitles(
+                        titlesData: FlTitlesData(
+                          show: true,
+                          bottomTitles: AxisTitles(
+                            sideTitles: SideTitles(
+                                showTitles: true,
+                                reservedSize: 28,
+                                getTitlesWidget: bottomGraphTitles),
+                          ),
+                          leftTitles: AxisTitles(
+                            sideTitles: SideTitles(
                               showTitles: true,
-                              reservedSize: 28,
-                              getTitlesWidget: bottomGraphTitles),
-                        ),
-                        leftTitles: AxisTitles(
-                          sideTitles: SideTitles(
-                            showTitles: true,
-                            reservedSize: 20.0,
-                            interval: 1,
-                            getTitlesWidget: (value, meta) =>
-                                leftGraphTitles(value, meta, 100),
+                              reservedSize: 30.0,
+                              interval: stationInterval.toDouble(),
+                              getTitlesWidget: (value, meta) =>
+                                  leftGraphTitles(value, meta, 100),
+                            ),
+                          ),
+                          topTitles: const AxisTitles(
+                            sideTitles: SideTitles(showTitles: false),
+                          ),
+                          rightTitles: const AxisTitles(
+                            sideTitles: SideTitles(showTitles: false),
                           ),
                         ),
-                        topTitles: const AxisTitles(
-                          sideTitles: SideTitles(showTitles: false),
-                        ),
-                        rightTitles: const AxisTitles(
-                          sideTitles: SideTitles(showTitles: false),
-                        ),
-                      ),
-                      groupsSpace: barsSpace,
-                      barGroups: barChartGroupData,
-                    ),
+                        groupsSpace: barsSpace,
+                        barGroups: barChartGroupData,
+                        gridData: FlGridData(
+                            horizontalInterval: stationInterval.toDouble(),
+                            verticalInterval: stationInterval.toDouble())),
                   );
                 },
               ),

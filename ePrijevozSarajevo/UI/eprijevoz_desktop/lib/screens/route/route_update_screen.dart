@@ -8,8 +8,10 @@ import 'package:provider/provider.dart';
 
 class UpdateRouteDialog extends StatefulWidget {
   final Route route;
+  final Function onDone;
   const UpdateRouteDialog({
     required this.route,
+    required this.onDone,
     super.key,
   });
 
@@ -230,10 +232,6 @@ class _UpdateRouteDialogState extends State<UpdateRouteDialog> {
                                     arrivalDateTime.toIso8601String();
 
                                 try {
-                                  setState(() {
-                                    isLoading = true;
-                                  });
-
                                   await routeProvider.update(
                                       widget.route.routeId!, request);
                                   Navigator.pop(context, true);
@@ -249,8 +247,10 @@ class _UpdateRouteDialogState extends State<UpdateRouteDialog> {
                                           child: const Text("OK",
                                               style: TextStyle(
                                                   color: Colors.black)),
-                                          onPressed: () =>
-                                              Navigator.pop(context),
+                                          onPressed: () async {
+                                            await widget.onDone();
+                                            Navigator.pop(context, true);
+                                          },
                                         )
                                       ],
                                     ),
