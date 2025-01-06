@@ -69,13 +69,6 @@ consumer.Received += (sender, args) =>
 
     EmailService emailService = new EmailService();
     emailService.SendNoReplyMail(request.UserEmail, subject, content);
-    try
-    {
-        channel.BasicAck(args.DeliveryTag, false);
-    }catch (Exception e)
-    {
-        Console.WriteLine($"There was error acknowledging message: {e}");
-    }
 };
 
 try { 
@@ -88,4 +81,4 @@ catch (Exception e)
 
 
 Console.WriteLine("Listening for messages. Press [enter] to quit.");
-Thread.Sleep(Timeout.Infinite);
+Console.ReadLine();

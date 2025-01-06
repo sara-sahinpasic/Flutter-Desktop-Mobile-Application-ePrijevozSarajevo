@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace ePrijevozSarajevo.Services.Database
 {
@@ -29,13 +28,6 @@ namespace ePrijevozSarajevo.Services.Database
                 options.UseSqlServer("Data Source=localhost; Initial Catalog=140261; user=sa; Password=ePrijevoz123!;Trusted_Connection=True;TrustServerCertificate=True");
             }
         }
-
-        /*
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=localhost; Initial Catalog=140261; user=sa; Password=QWEasd123!;" +
-         "Trusted_Connection=True;TrustServerCertificate=True");
-        */
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) 
         {
@@ -99,7 +91,7 @@ namespace ePrijevozSarajevo.Services.Database
                 Email = "sara.sahinpasic@edu.fit.ba",
                 PasswordSalt = UserService.GenerateSalt(),
                 DateOfBirth = new DateTime(1998, 03, 25),
-                PhoneNumber = "061222333",
+                PhoneNumber = "+38761222333",
                 Address = "Adresa 11",
                 ZipCode="71000",
                 City ="Sarajevo",
@@ -114,12 +106,12 @@ namespace ePrijevozSarajevo.Services.Database
                {
                 UserId = 2,
                 FirstName = "Senada",
-                LastName = "Šahinpašić",
+                LastName = "Senadić",
                 UserName = "mobile",
-                Email = "sara.sahinpasic@hotmail.com",
+                Email = "eprijevozsarajevoapp@gmail.com",
                 PasswordSalt = UserService.GenerateSalt(),
                 DateOfBirth = new DateTime(1988, 10, 26),
-                PhoneNumber = "061222444",
+                PhoneNumber = "+38761222444",
                 Address = "Adresa 12",
                 ZipCode="72000",
                 City ="Zenica",
@@ -136,10 +128,10 @@ namespace ePrijevozSarajevo.Services.Database
                 FirstName = "Test",
                 LastName = "Testni",
                 UserName = "mobile1",
-                Email = "eprijevozsarajevoapp@gmail.com",
+                Email = "sara.sahinpasic@hotmail.com",
                 PasswordSalt = UserService.GenerateSalt(),
                 DateOfBirth = new DateTime(1975, 05, 06),
-                PhoneNumber = "061222555",
+                PhoneNumber = "+38761222444",
                 Address = "Adresa 14",
                 ZipCode="90408",
                 City ="Nürnberg",
@@ -159,7 +151,7 @@ namespace ePrijevozSarajevo.Services.Database
                 Email = "eprijevozsarajevotest@outlook.com",
                 PasswordSalt = UserService.GenerateSalt(),
                 DateOfBirth = new DateTime(1965, 07, 14),
-                PhoneNumber = "061222666",
+                PhoneNumber = "+38761222666",
                 Address = "Adresa 15",
                 ZipCode="1010",
                 City ="Wien",
@@ -179,7 +171,7 @@ namespace ePrijevozSarajevo.Services.Database
                 Email = "eprijevozsarajevo.app@gmx.de",
                 PasswordSalt = UserService.GenerateSalt(),
                 DateOfBirth = new DateTime(1982, 04, 27),
-                PhoneNumber = "061222777",
+                PhoneNumber = "+38761222777",
                 Address = "Adresa 16",
                 ZipCode="1160",
                 City ="Wien",
@@ -199,7 +191,7 @@ namespace ePrijevozSarajevo.Services.Database
                 Email = "probe@mail.com",
                 PasswordSalt = UserService.GenerateSalt(),
                 DateOfBirth = new DateTime(1996, 02, 07),
-                PhoneNumber = "061222888",
+                PhoneNumber = "+38761222888",
                 Address = "Adresa 17",
                 ZipCode="80331",
                 City ="Munich",

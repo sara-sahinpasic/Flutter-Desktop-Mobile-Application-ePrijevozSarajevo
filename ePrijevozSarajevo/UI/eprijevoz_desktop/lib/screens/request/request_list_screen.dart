@@ -111,6 +111,7 @@ class _RequestListScreenState extends State<RequestListScreen> {
         'UserStatusIdGTE': selectedStatusId,
       };
       routeResultForStatus = await requestProvider.get(filter: filter);
+      requestResult = await requestProvider.get();
       if (routeResultForStatus?.count == 0 && byUser) {
         await showDialog(
           context: context,
