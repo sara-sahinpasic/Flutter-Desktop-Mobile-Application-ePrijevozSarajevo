@@ -3,7 +3,7 @@
 <i>Author: Sara Šahinpašić</i> </br>
 
 ## Running the code
-- Copy the attached `.env` file to the project root
+- Copy the attached `.env` file to the project root (`**/ePrijevozSarajevo/.env`)
 - Use ```docker-compose up --build``` to start the Docker container.
 
 ## Credentials
@@ -21,7 +21,7 @@
 	Password: 123456789
 
 ## Test Data (Data Seed):
-- Routes are generated for the following Dates: 05.01.2025, 15.01.2025, 25.01.2025, 05.02.2025, 15.02.2025, 25.02.2025
+- Routes are pre-generated for the following dates: 05.01.2025, 15.01.2025, 25.01.2025, 05.02.2025, 15.02.2025, 25.02.2025
 - Departure Time-Arrival Time are the same for all dates and routes: 10:15-10:45 
 
 ## Microservice:
