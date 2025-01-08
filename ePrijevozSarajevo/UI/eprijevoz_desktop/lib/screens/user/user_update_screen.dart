@@ -338,6 +338,38 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
                     ),
                     Row(
                       children: [
+                        const Text(
+                          "Grad:",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15),
+                        ),
+                        const SizedBox(
+                          width: 75,
+                        ),
+                        Expanded(
+                          child: FormBuilderTextField(
+                            name: 'profileImage',
+                            initialValue: widget.user.profileImage,
+                            /*validator: FormBuilderValidators.compose([
+                              FormBuilderValidators.required(
+                                  errorText: "Ovo polje ne može bit prazno."),
+                              FormBuilderValidators.match(r'^[a-zA-Z\s]*$',
+                                  errorText:
+                                      "Ovo polje može sadržavati isključivo slova."),
+                            ]),*/
+                            cursorColor: Colors.green.shade800,
+                            decoration: const InputDecoration(
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.black),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    //
+                    Row(
+                      children: [
                         Expanded(
                             child: ElevatedButton(
                           onPressed: () async {
