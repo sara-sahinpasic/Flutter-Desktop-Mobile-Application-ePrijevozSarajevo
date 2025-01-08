@@ -50,7 +50,7 @@ namespace ePrijevozSarajevo.Services.Database
                     Approved = false,
                     RejectionReason = "",
                 }
-            ); //4
+            ); //5
             modelBuilder.Entity<Station>().HasData
             (
                 new Station()
@@ -128,7 +128,7 @@ namespace ePrijevozSarajevo.Services.Database
                      StationId = 15,
                      Name = "Švrakino selo"
                  }
-            ); //5
+            ); //6
             modelBuilder.Entity<Vehicle>().HasData
             (
                 new Vehicle()
@@ -185,7 +185,7 @@ namespace ePrijevozSarajevo.Services.Database
                     ManufacturerId = 3,
                     TypeId = 2,
                 }
-            ); //6
+            ); //7
             modelBuilder.Entity<Manufacturer>().HasData
             (
                 new Manufacturer()
@@ -207,21 +207,61 @@ namespace ePrijevozSarajevo.Services.Database
                 {
                     ManufacturerId = 4,
                     Name = "Mercedes"
+                },
+                new Manufacturer()
+                {
+                    ManufacturerId = 5,
+                    Name = "Setra"
+                },
+                new Manufacturer()
+                {
+                    ManufacturerId = 6,
+                    Name = "Neoplan"
+                },
+                new Manufacturer()
+                {
+                    ManufacturerId = 7,
+                    Name = "Siemens"
+                },
+                new Manufacturer()
+                {
+                    ManufacturerId = 8,
+                    Name = "Traton"
+                },
+                new Manufacturer()
+                {
+                    ManufacturerId = 9,
+                    Name = "Tesla"
                 }
-            ); //7
+            ); //8
             modelBuilder.Entity<Type>().HasData
             (
                 new Type()
                 {
                     TypeId = 1,
-                    Name = "Trolleybus"
+                    Name = "Trolejbus"
                 },
                 new Type()
                 {
                     TypeId = 2,
-                    Name = "Tram"
+                    Name = "Tramvaj"
+                },
+                new Type()
+                {
+                    TypeId = 3,
+                    Name = "Minibus"
+                },
+                new Type()
+                {
+                    TypeId = 4,
+                    Name = "Autobus"
+                },
+                new Type()
+                {
+                    TypeId = 5,
+                    Name = "Kombi"
                 }
-            ); //8
+            ); //9
             modelBuilder.Entity<UserRole>().HasData
             (
                 new UserRole()
@@ -258,7 +298,7 @@ namespace ePrijevozSarajevo.Services.Database
                     UserId = 6,
                     RoleId = 2,
                 }
-            ); //9 
+            ); //10 
             modelBuilder.Entity<Role>().HasData
             (
                  new Role()
@@ -271,7 +311,7 @@ namespace ePrijevozSarajevo.Services.Database
                     RoleId = 2,
                     Name = "User"
                 }
-            ); //10
+            ); //11
             modelBuilder.Entity<Status>().HasData
             (
                   new Status()
@@ -306,7 +346,7 @@ namespace ePrijevozSarajevo.Services.Database
                      Name = "Nezaposlen",
                      Discount = 0.4
                  }
-            ); //11
+            ); //12
             modelBuilder.Entity<Ticket>().HasData
             (
                  new Ticket()
@@ -344,60 +384,7 @@ namespace ePrijevozSarajevo.Services.Database
                     Price = 75,
                     StateMachine = "draft"
                 }
-            ); //12
-            modelBuilder.Entity<Country>().HasData
-            (
-               new Country()
-               {
-                   CountryId = 1,
-                   Name = "Bosnia and Herzegovina",
-               },
-               new Country()
-               {
-                   CountryId = 2,
-                   Name = "Germany",
-               },
-               new Country()
-               {
-                   CountryId = 3,
-                   Name = "Austria",
-               },
-               new Country()
-               {
-                   CountryId = 4,
-                   Name = "Croatia",
-               },
-               new Country()
-               {
-                   CountryId = 5,
-                   Name = "Serbia",
-               },
-               new Country()
-               {
-                   CountryId = 6,
-                   Name = "Slovenia",
-               },
-               new Country()
-               {
-                   CountryId = 7,
-                   Name = "Montenegro",
-               },
-               new Country()
-               {
-                   CountryId = 8,
-                   Name = "Albania",
-               },
-               new Country()
-               {
-                   CountryId = 9,
-                   Name = "China",
-               },
-               new Country()
-               {
-                   CountryId = 10,
-                   Name = "Japan",
-               }
-          ); //13
+            ); //13
 
         }
     }
