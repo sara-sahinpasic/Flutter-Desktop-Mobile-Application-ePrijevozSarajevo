@@ -10,5 +10,16 @@ namespace ePrijevozSarajevo.Services
         CountryUpsertRequest>, ICountryService
     {
         public CountryService(DataContext context, IMapper mapper) : base(context, mapper) { }
+
+        public override IQueryable<Database.Country> AddFilter(CountrySearchObject search, IQueryable<Country> query)
+        {
+            query = base.AddFilter(search, query);
+
+            if (!string.IsNullOrWhiteSpace(search?.CountryNameGTE))
+            {
+                query = query.Where(x => x.Name.Contains(search.CountryNameGTE));
+            }
+            return query;
+        }
     }
 }

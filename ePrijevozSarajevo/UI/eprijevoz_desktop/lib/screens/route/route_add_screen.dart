@@ -161,10 +161,20 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
     return list;
   }
 
-  List<DropdownMenuItem<String>> getVehicle() {
+  List<DropdownMenuItem<String>> getVehicleType() {
     var list = typeResult?.result
             .map((item) => DropdownMenuItem(
                 value: item.typeId.toString(), child: Text(item.name ?? "")))
+            .toList() ??
+        [];
+    return list;
+  }
+
+  List<DropdownMenuItem<String>> getVehicle() {
+    var list = vehicleResult?.result
+            .map((item) => DropdownMenuItem(
+                value: item.vehicleId.toString(),
+                child: Text(item.registrationNumber.toString())))
             .toList() ??
         [];
     return list;

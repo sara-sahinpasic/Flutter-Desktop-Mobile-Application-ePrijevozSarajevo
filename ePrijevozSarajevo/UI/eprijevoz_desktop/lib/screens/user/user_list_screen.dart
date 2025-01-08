@@ -3,6 +3,8 @@ import 'package:eprijevoz_desktop/models/search_result.dart';
 import 'package:eprijevoz_desktop/models/user.dart';
 import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:eprijevoz_desktop/providers/utils.dart';
+import 'package:eprijevoz_desktop/screens/country/country_list_screen.dart';
+import 'package:eprijevoz_desktop/screens/status/status_list_screen.dart';
 import 'package:eprijevoz_desktop/screens/user/user_add_screen.dart';
 import 'package:eprijevoz_desktop/screens/user/user_update_screen.dart';
 import 'package:flutter/material.dart';
@@ -161,7 +163,70 @@ class _UserListScreenState extends State<UserListScreen> {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 40,
+                  height: 20,
+                ),
+                Row(
+                  children: [
+                    // country
+                    TextButton(
+                      onPressed: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const CountryListScreen(),
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.arrow_forward,
+                            color: Colors.green.shade800,
+                          ),
+                          const SizedBox(width: 5),
+                          Text(
+                            "Sekcija države",
+                            style: TextStyle(
+                              color: Colors.green.shade800,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              decoration: TextDecoration.underline,
+                              decorationColor: Colors.green.shade800,
+                              decorationThickness: 1,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    // status
+                    TextButton(
+                      onPressed: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const StatusListScreen(),
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.arrow_forward,
+                            color: Colors.green.shade800,
+                          ),
+                          const SizedBox(width: 5),
+                          Text(
+                            "Sekcija status",
+                            style: TextStyle(
+                              color: Colors.green.shade800,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              decoration: TextDecoration.underline,
+                              decorationColor: Colors.green.shade800,
+                              decorationThickness: 1,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
                 ),
                 Column(
                   children: [
@@ -395,7 +460,7 @@ class _UserListScreenState extends State<UserListScreen> {
                           "Dodaj",
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold),
-                        ))
+                        )),
                   ],
                 ),
               ],
