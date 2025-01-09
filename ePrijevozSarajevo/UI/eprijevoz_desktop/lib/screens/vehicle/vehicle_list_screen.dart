@@ -5,7 +5,10 @@ import 'package:eprijevoz_desktop/models/vehicle.dart';
 import 'package:eprijevoz_desktop/providers/manufacturer_provider.dart';
 import 'package:eprijevoz_desktop/providers/type_provider.dart';
 import 'package:eprijevoz_desktop/providers/vehicle_provider.dart';
+import 'package:eprijevoz_desktop/screens/manufacturer/manufacturer_lsit_screen.dart';
 import 'package:eprijevoz_desktop/screens/vehicle/vehicle_add_screen.dart';
+import 'package:eprijevoz_desktop/screens/vehicle/vehicle_update_screen.dart';
+import 'package:eprijevoz_desktop/screens/vehicle_type/vehicle_type_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -172,14 +175,79 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
       child: SingleChildScrollView(
         child: FormBuilder(
             key: _formKey,
-            // initialValue: _initialValue,
             child: Column(
               children: [
                 const SizedBox(
-                  height: 40,
+                  height: 20,
                 ),
                 Column(
                   children: [
+                    Row(
+                      children: [
+                        // type
+                        TextButton(
+                          onPressed: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const VehicleTypeListScreen(),
+                            ),
+                          ),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.arrow_forward,
+                                color: Colors.green.shade800,
+                              ),
+                              const SizedBox(width: 5),
+                              Text(
+                                "Sekcija tipovi vozila",
+                                style: TextStyle(
+                                  color: Colors.green.shade800,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  decoration: TextDecoration.underline,
+                                  decorationColor: Colors.green.shade800,
+                                  decorationThickness: 1,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        // manufacturer
+                        TextButton(
+                          onPressed: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const ManufacturerListScreen(),
+                            ),
+                          ),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.arrow_forward,
+                                color: Colors.green.shade800,
+                              ),
+                              const SizedBox(width: 5),
+                              Text(
+                                "Sekcija proizvođač",
+                                style: TextStyle(
+                                  color: Colors.green.shade800,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  decoration: TextDecoration.underline,
+                                  decorationColor: Colors.green.shade800,
+                                  decorationThickness: 1,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    //
                     Container(
                       color: Colors.black,
                       width: double.infinity,
@@ -249,6 +317,15 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
                               ),
                             ),
                           ),
+                          // update
+                          DataColumn(
+                            label: Expanded(
+                              child: Text(
+                                '',
+                              ),
+                            ),
+                          ),
+                          // delete
                           DataColumn(
                             label: Expanded(
                               child: Text(
@@ -294,6 +371,23 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
                                             "",
                                         style: const TextStyle(
                                             color: Colors.white, fontSize: 17),
+                                      )),
+                                      // update
+                                      DataCell(IconButton(
+                                        onPressed: () {
+                                          showDialog(
+                                              context: context,
+                                              builder: (BuildContext context) =>
+                                                  VehicleUpdateDialog(
+                                                    vehicle: e,
+                                                    onDone: () =>
+                                                        refreshTable(),
+                                                  ));
+                                        },
+                                        icon: const Icon(
+                                          Icons.tips_and_updates_rounded,
+                                          color: Colors.white,
+                                        ),
                                       )),
                                       // delete
                                       DataCell(IconButton(

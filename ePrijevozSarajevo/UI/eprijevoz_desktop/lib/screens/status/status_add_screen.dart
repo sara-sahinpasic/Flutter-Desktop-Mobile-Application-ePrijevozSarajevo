@@ -158,7 +158,7 @@ class _StatusAddDialogState extends State<StatusAddDialog> {
                                       builder: (context) => AlertDialog(
                                         title: const Text("Error"),
                                         content: Text(
-                                          "Greška prilikom ažuriranja zapisa: $error",
+                                          "Greška prilikom dodavanja zapisa: $error",
                                         ),
                                         actions: [
                                           TextButton(

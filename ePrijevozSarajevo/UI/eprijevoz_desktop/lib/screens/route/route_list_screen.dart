@@ -4,8 +4,12 @@ import 'package:eprijevoz_desktop/models/station.dart';
 import 'package:eprijevoz_desktop/providers/route_provider.dart';
 import 'package:eprijevoz_desktop/providers/station_provider.dart';
 import 'package:eprijevoz_desktop/providers/utils.dart';
+import 'package:eprijevoz_desktop/screens/manufacturer/manufacturer_lsit_screen.dart';
 import 'package:eprijevoz_desktop/screens/route/route_add_screen.dart';
 import 'package:eprijevoz_desktop/screens/route/route_update_screen.dart';
+import 'package:eprijevoz_desktop/screens/station/station_list_screen.dart';
+import 'package:eprijevoz_desktop/screens/ticket/ticket_list_screen.dart';
+import 'package:eprijevoz_desktop/screens/vehicle_type/vehicle_type_list_screen.dart';
 import 'package:flutter/material.dart' hide Route;
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
@@ -263,8 +267,100 @@ class _RouteListScreenState extends State<RouteListScreen> {
             child: Column(
           children: [
             const SizedBox(
-              height: 40,
+              height: 20,
             ),
+            Row(
+              children: [
+                // station
+                TextButton(
+                  onPressed: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const StationListScreen(),
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.arrow_forward,
+                        color: Colors.green.shade800,
+                      ),
+                      const SizedBox(width: 5),
+                      Text(
+                        "Sekcija stanice",
+                        style: TextStyle(
+                          color: Colors.green.shade800,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          decoration: TextDecoration.underline,
+                          decorationColor: Colors.green.shade800,
+                          decorationThickness: 1,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                // tickets
+                TextButton(
+                  onPressed: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const TicketListScreen(),
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.arrow_forward,
+                        color: Colors.green.shade800,
+                      ),
+                      const SizedBox(width: 5),
+                      Text(
+                        "Sekcija karte",
+                        style: TextStyle(
+                          color: Colors.green.shade800,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          decoration: TextDecoration.underline,
+                          decorationColor: Colors.green.shade800,
+                          decorationThickness: 1,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                // issued tickets
+                TextButton(
+                  onPressed: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const VehicleTypeListScreen(),
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.arrow_forward,
+                        color: Colors.green.shade800,
+                      ),
+                      const SizedBox(width: 5),
+                      Text(
+                        "Sekcija izdane karte",
+                        style: TextStyle(
+                          color: Colors.green.shade800,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          decoration: TextDecoration.underline,
+                          decorationColor: Colors.green.shade800,
+                          decorationThickness: 1,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            //
             Container(
               color: Colors.black,
               width: double.infinity,

@@ -1,36 +1,42 @@
-import 'package:eprijevoz_desktop/models/country.dart';
 import 'package:eprijevoz_desktop/models/search_result.dart';
-import 'package:eprijevoz_desktop/providers/country_provider.dart';
+import 'package:eprijevoz_desktop/models/ticket.dart';
+import 'package:eprijevoz_desktop/providers/ticket_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:provider/provider.dart';
 
-class CountryAddDialog extends StatefulWidget {
+class TicketUpdateDialog extends StatefulWidget {
   final Function onDone;
-  const CountryAddDialog({required this.onDone, super.key});
+  final Ticket ticket;
+  const TicketUpdateDialog(
+      {required this.onDone, required this.ticket, super.key});
 
   @override
-  State<CountryAddDialog> createState() => _CountryAddDialogState();
+  State<TicketUpdateDialog> createState() => _TicketUpdateDialogState();
 }
 
-class _CountryAddDialogState extends State<CountryAddDialog> {
-  late CountryProvider countryProvider;
-  SearchResult<Country>? countryResult;
+class _TicketUpdateDialogState extends State<TicketUpdateDialog> {
+  late TicketProvider ticketProvider;
+  SearchResult<Ticket>? ticketResult;
   bool isLoading = false;
   final _formKey = GlobalKey<FormBuilderState>();
+  Map<String, dynamic> _initialValue = {};
   String? countryName;
 
   @override
   void initState() {
-    countryProvider = context.read<CountryProvider>();
+    ticketProvider = context.read<TicketProvider>();
     super.initState();
-
+    _initialValue = {
+      'name': widget.ticket.name,
+      'price': widget.ticket.price?.toStringAsFixed(2)
+    };
     initForm();
   }
 
   Future initForm() async {
-    countryResult = await countryProvider.get();
+    ticketResult = await ticketProvider.get();
 
     setState(() {
       isLoading = false;
@@ -41,7 +47,7 @@ class _CountryAddDialogState extends State<CountryAddDialog> {
   Widget build(BuildContext context) {
     return AlertDialog(
       title: const Text(
-        "Novi zapis",
+        "Update",
         style: TextStyle(fontWeight: FontWeight.bold),
       ),
       content: SingleChildScrollView(
@@ -53,12 +59,13 @@ class _CountryAddDialogState extends State<CountryAddDialog> {
                 )
               : FormBuilder(
                   key: _formKey,
+                  initialValue: _initialValue,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(height: 15),
                       const Text(
-                        "Naziv države:",
+                        "Naziv karte:",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -84,6 +91,32 @@ class _CountryAddDialogState extends State<CountryAddDialog> {
                           ),
                         ]),
                       ),
+                      const SizedBox(height: 15),
+                      const Text(
+                        "Cijena:",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      FormBuilderTextField(
+                        name: 'price',
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          hintText: "Unesite cijenu",
+                        ),
+                        validator: FormBuilderValidators.compose([
+                          FormBuilderValidators.required(
+                            errorText: "Ovo polje ne može bit prazno.",
+                          ),
+                          FormBuilderValidators.numeric(
+                              errorText:
+                                  "Format cijene mora biti decimalni: 1.50"),
+                        ]),
+                      ),
                       const SizedBox(height: 25),
                       Row(
                         children: [
@@ -94,20 +127,20 @@ class _CountryAddDialogState extends State<CountryAddDialog> {
                                     false) {
                                   var request =
                                       Map.from(_formKey.currentState!.value);
+                                  request['price'] =
+                                      double.parse(request['price']);
 
                                   try {
-                                    setState(() {
-                                      isLoading = true;
-                                    });
-
-                                    await countryProvider.insert(request);
+                                    await ticketProvider.update(
+                                        widget.ticket.ticketId!, request);
+                                    Navigator.pop(context, true);
 
                                     showDialog(
                                       context: context,
                                       builder: (context) => AlertDialog(
-                                        title: const Text("Success"),
-                                        content: const Text(
-                                            "Zapis je uspješno dodan."),
+                                        title: const Text("Update"),
+                                        content:
+                                            const Text("Zapis je ažuriran."),
                                         actions: [
                                           TextButton(
                                             child: const Text(
@@ -117,7 +150,6 @@ class _CountryAddDialogState extends State<CountryAddDialog> {
                                             ),
                                             onPressed: () async {
                                               await widget.onDone();
-                                              Navigator.pop(context);
                                               Navigator.pop(context, true);
                                             },
                                           )
@@ -130,7 +162,7 @@ class _CountryAddDialogState extends State<CountryAddDialog> {
                                       builder: (context) => AlertDialog(
                                         title: const Text("Error"),
                                         content: Text(
-                                          "Greška prilikom dodavanja zapisa: $error",
+                                          "Greška prilikom ažuriranja zapisa: $error",
                                         ),
                                         actions: [
                                           TextButton(
@@ -157,7 +189,7 @@ class _CountryAddDialogState extends State<CountryAddDialog> {
                                 minimumSize: const Size(100, 65),
                               ),
                               child: const Text(
-                                "Dodaj",
+                                "Ažuriraj",
                                 style: TextStyle(fontSize: 18),
                               ),
                             ),

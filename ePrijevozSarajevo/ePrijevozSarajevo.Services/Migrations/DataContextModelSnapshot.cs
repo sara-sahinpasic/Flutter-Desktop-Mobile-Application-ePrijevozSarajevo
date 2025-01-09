@@ -1059,429 +1059,429 @@ namespace ePrijevozSarajevo.Services.Migrations
                         new
                         {
                             IssuedTicketId = 1,
-                            Amount = 5,
-                            IssuedDate = new DateTime(2024, 9, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 59,
+                            Amount = 2,
+                            IssuedDate = new DateTime(2024, 11, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 462,
                             TicketId = 5,
-                            UserId = 5,
-                            ValidFrom = new DateTime(2024, 9, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 10, 7, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            UserId = 1,
+                            ValidFrom = new DateTime(2024, 11, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 12, 11, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             IssuedTicketId = 2,
-                            Amount = 4,
-                            IssuedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 154,
-                            TicketId = 5,
-                            UserId = 6,
-                            ValidFrom = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Amount = 1,
+                            IssuedDate = new DateTime(2024, 9, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 642,
+                            TicketId = 2,
+                            UserId = 4,
+                            ValidFrom = new DateTime(2024, 9, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 9, 26, 3, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             IssuedTicketId = 3,
-                            Amount = 5,
-                            IssuedDate = new DateTime(2024, 12, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 301,
-                            TicketId = 3,
-                            UserId = 2,
-                            ValidFrom = new DateTime(2024, 12, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 12, 10, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                            Amount = 8,
+                            IssuedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 371,
+                            TicketId = 2,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             IssuedTicketId = 4,
-                            Amount = 9,
+                            Amount = 2,
                             IssuedDate = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 152,
+                            RouteId = 319,
                             TicketId = 1,
-                            UserId = 5,
+                            UserId = 4,
                             ValidFrom = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ValidTo = new DateTime(2025, 1, 5, 1, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             IssuedTicketId = 5,
-                            Amount = 1,
-                            IssuedDate = new DateTime(2024, 7, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 423,
-                            TicketId = 2,
-                            UserId = 2,
-                            ValidFrom = new DateTime(2024, 7, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 7, 26, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                            Amount = 9,
+                            IssuedDate = new DateTime(2024, 5, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 81,
+                            TicketId = 1,
+                            UserId = 4,
+                            ValidFrom = new DateTime(2024, 5, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 5, 16, 1, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             IssuedTicketId = 6,
-                            Amount = 9,
-                            IssuedDate = new DateTime(2024, 5, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 396,
-                            TicketId = 5,
-                            UserId = 4,
-                            ValidFrom = new DateTime(2024, 5, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 6, 14, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Amount = 4,
+                            IssuedDate = new DateTime(2024, 5, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 541,
+                            TicketId = 2,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2024, 5, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 5, 7, 3, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             IssuedTicketId = 7,
-                            Amount = 7,
-                            IssuedDate = new DateTime(2024, 12, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 3,
-                            TicketId = 3,
-                            UserId = 2,
-                            ValidFrom = new DateTime(2024, 12, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 12, 29, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                            Amount = 6,
+                            IssuedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 520,
+                            TicketId = 4,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             IssuedTicketId = 8,
-                            Amount = 7,
-                            IssuedDate = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 386,
-                            TicketId = 3,
-                            UserId = 4,
-                            ValidFrom = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 3, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                            Amount = 2,
+                            IssuedDate = new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 431,
+                            TicketId = 5,
+                            UserId = 3,
+                            ValidFrom = new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             IssuedTicketId = 9,
-                            Amount = 3,
-                            IssuedDate = new DateTime(2024, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 283,
-                            TicketId = 1,
-                            UserId = 3,
-                            ValidFrom = new DateTime(2024, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 2, 5, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                            Amount = 1,
+                            IssuedDate = new DateTime(2024, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 205,
+                            TicketId = 2,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2024, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 8, 8, 3, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             IssuedTicketId = 10,
-                            Amount = 5,
-                            IssuedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 446,
-                            TicketId = 4,
-                            UserId = 3,
-                            ValidFrom = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 4, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                            Amount = 7,
+                            IssuedDate = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 107,
+                            TicketId = 1,
+                            UserId = 5,
+                            ValidFrom = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 6, 1, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             IssuedTicketId = 11,
-                            Amount = 2,
-                            IssuedDate = new DateTime(2024, 11, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 331,
-                            TicketId = 2,
-                            UserId = 1,
-                            ValidFrom = new DateTime(2024, 11, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 11, 19, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                            Amount = 6,
+                            IssuedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 372,
+                            TicketId = 3,
+                            UserId = 3,
+                            ValidFrom = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 1, 1, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             IssuedTicketId = 12,
                             Amount = 1,
-                            IssuedDate = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 6,
-                            TicketId = 1,
-                            UserId = 2,
-                            ValidFrom = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 2, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 13,
-                            Amount = 8,
-                            IssuedDate = new DateTime(2024, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 304,
-                            TicketId = 3,
-                            UserId = 5,
-                            ValidFrom = new DateTime(2024, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 2, 6, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 14,
-                            Amount = 7,
-                            IssuedDate = new DateTime(2024, 6, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 579,
-                            TicketId = 3,
-                            UserId = 1,
-                            ValidFrom = new DateTime(2024, 6, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 6, 26, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 15,
-                            Amount = 1,
-                            IssuedDate = new DateTime(2024, 11, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 510,
-                            TicketId = 4,
-                            UserId = 6,
-                            ValidFrom = new DateTime(2024, 11, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 11, 23, 3, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 16,
-                            Amount = 9,
-                            IssuedDate = new DateTime(2024, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 603,
-                            TicketId = 3,
-                            UserId = 6,
-                            ValidFrom = new DateTime(2024, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 4, 20, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 17,
-                            Amount = 9,
-                            IssuedDate = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 3,
-                            TicketId = 1,
-                            UserId = 5,
-                            ValidFrom = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 2, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 18,
-                            Amount = 2,
-                            IssuedDate = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 295,
-                            TicketId = 4,
-                            UserId = 4,
-                            ValidFrom = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 3, 3, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 19,
-                            Amount = 2,
-                            IssuedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 450,
-                            TicketId = 5,
-                            UserId = 1,
-                            ValidFrom = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 20,
-                            Amount = 8,
-                            IssuedDate = new DateTime(2024, 11, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 690,
-                            TicketId = 2,
-                            UserId = 4,
-                            ValidFrom = new DateTime(2024, 11, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 11, 27, 3, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 21,
-                            Amount = 4,
-                            IssuedDate = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 612,
-                            TicketId = 3,
-                            UserId = 1,
-                            ValidFrom = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 2, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 22,
-                            Amount = 7,
-                            IssuedDate = new DateTime(2024, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 483,
-                            TicketId = 3,
-                            UserId = 4,
-                            ValidFrom = new DateTime(2024, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 1, 5, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 23,
-                            Amount = 4,
-                            IssuedDate = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 260,
-                            TicketId = 3,
-                            UserId = 6,
-                            ValidFrom = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 3, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 24,
-                            Amount = 4,
                             IssuedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 149,
-                            TicketId = 4,
+                            RouteId = 493,
+                            TicketId = 2,
                             UserId = 5,
                             ValidFrom = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ValidTo = new DateTime(2025, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            IssuedTicketId = 25,
-                            Amount = 7,
-                            IssuedDate = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 293,
-                            TicketId = 5,
-                            UserId = 4,
-                            ValidFrom = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 26,
-                            Amount = 8,
-                            IssuedDate = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 36,
-                            TicketId = 1,
-                            UserId = 2,
-                            ValidFrom = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 6, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 27,
-                            Amount = 3,
-                            IssuedDate = new DateTime(2024, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 322,
-                            TicketId = 5,
-                            UserId = 6,
-                            ValidFrom = new DateTime(2024, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 6, 22, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 28,
-                            Amount = 3,
-                            IssuedDate = new DateTime(2024, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 357,
-                            TicketId = 2,
-                            UserId = 5,
-                            ValidFrom = new DateTime(2024, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 1, 5, 3, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 29,
+                            IssuedTicketId = 13,
                             Amount = 1,
-                            IssuedDate = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 158,
-                            TicketId = 2,
-                            UserId = 3,
-                            ValidFrom = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 3, 3, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 30,
-                            Amount = 6,
-                            IssuedDate = new DateTime(2024, 7, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 603,
-                            TicketId = 4,
-                            UserId = 6,
-                            ValidFrom = new DateTime(2024, 7, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 7, 17, 3, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 31,
-                            Amount = 4,
-                            IssuedDate = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 536,
-                            TicketId = 1,
-                            UserId = 5,
-                            ValidFrom = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 3, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 32,
-                            Amount = 4,
-                            IssuedDate = new DateTime(2024, 7, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 423,
-                            TicketId = 3,
-                            UserId = 1,
-                            ValidFrom = new DateTime(2024, 7, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 7, 11, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 33,
-                            Amount = 4,
-                            IssuedDate = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 623,
-                            TicketId = 3,
-                            UserId = 2,
-                            ValidFrom = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 3, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 34,
-                            Amount = 5,
-                            IssuedDate = new DateTime(2024, 10, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 429,
-                            TicketId = 4,
-                            UserId = 5,
-                            ValidFrom = new DateTime(2024, 10, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 10, 6, 3, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 35,
-                            Amount = 3,
-                            IssuedDate = new DateTime(2024, 10, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 577,
-                            TicketId = 1,
-                            UserId = 2,
-                            ValidFrom = new DateTime(2024, 10, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 10, 4, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 36,
-                            Amount = 9,
-                            IssuedDate = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 608,
-                            TicketId = 1,
-                            UserId = 4,
-                            ValidFrom = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 2, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 37,
-                            Amount = 5,
-                            IssuedDate = new DateTime(2024, 12, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 686,
-                            TicketId = 4,
-                            UserId = 3,
-                            ValidFrom = new DateTime(2024, 12, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 12, 29, 3, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 38,
-                            Amount = 5,
                             IssuedDate = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 412,
+                            RouteId = 342,
                             TicketId = 4,
-                            UserId = 2,
+                            UserId = 1,
                             ValidFrom = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ValidTo = new DateTime(2025, 1, 5, 3, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            IssuedTicketId = 39,
+                            IssuedTicketId = 14,
+                            Amount = 4,
+                            IssuedDate = new DateTime(2024, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 448,
+                            TicketId = 4,
+                            UserId = 2,
+                            ValidFrom = new DateTime(2024, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 4, 16, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 15,
                             Amount = 3,
-                            IssuedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 83,
-                            TicketId = 3,
+                            IssuedDate = new DateTime(2024, 10, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 96,
+                            TicketId = 5,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2024, 10, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 11, 11, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 16,
+                            Amount = 1,
+                            IssuedDate = new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 643,
+                            TicketId = 5,
+                            UserId = 2,
+                            ValidFrom = new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 17,
+                            Amount = 4,
+                            IssuedDate = new DateTime(2024, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 80,
+                            TicketId = 1,
+                            UserId = 2,
+                            ValidFrom = new DateTime(2024, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 1, 10, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 18,
+                            Amount = 7,
+                            IssuedDate = new DateTime(2024, 11, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 48,
+                            TicketId = 2,
                             UserId = 1,
+                            ValidFrom = new DateTime(2024, 11, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 11, 28, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 19,
+                            Amount = 9,
+                            IssuedDate = new DateTime(2024, 7, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 700,
+                            TicketId = 4,
+                            UserId = 2,
+                            ValidFrom = new DateTime(2024, 7, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 7, 27, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 20,
+                            Amount = 6,
+                            IssuedDate = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 118,
+                            TicketId = 5,
+                            UserId = 3,
+                            ValidFrom = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 21,
+                            Amount = 9,
+                            IssuedDate = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 543,
+                            TicketId = 4,
+                            UserId = 5,
+                            ValidFrom = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 2, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 22,
+                            Amount = 1,
+                            IssuedDate = new DateTime(2024, 10, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 315,
+                            TicketId = 3,
+                            UserId = 2,
+                            ValidFrom = new DateTime(2024, 10, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 10, 15, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 23,
+                            Amount = 6,
+                            IssuedDate = new DateTime(2025, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 30,
+                            TicketId = 5,
+                            UserId = 2,
+                            ValidFrom = new DateTime(2025, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 24,
+                            Amount = 2,
+                            IssuedDate = new DateTime(2024, 5, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 524,
+                            TicketId = 2,
+                            UserId = 4,
+                            ValidFrom = new DateTime(2024, 5, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 5, 7, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 25,
+                            Amount = 6,
+                            IssuedDate = new DateTime(2024, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 549,
+                            TicketId = 1,
+                            UserId = 2,
+                            ValidFrom = new DateTime(2024, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 9, 10, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 26,
+                            Amount = 5,
+                            IssuedDate = new DateTime(2024, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 419,
+                            TicketId = 3,
+                            UserId = 5,
+                            ValidFrom = new DateTime(2024, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 1, 7, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 27,
+                            Amount = 3,
+                            IssuedDate = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 633,
+                            TicketId = 2,
+                            UserId = 4,
+                            ValidFrom = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 2, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 28,
+                            Amount = 3,
+                            IssuedDate = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 196,
+                            TicketId = 3,
+                            UserId = 4,
+                            ValidFrom = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 6, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 29,
+                            Amount = 7,
+                            IssuedDate = new DateTime(2024, 3, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 68,
+                            TicketId = 4,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2024, 3, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 3, 17, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 30,
+                            Amount = 7,
+                            IssuedDate = new DateTime(2024, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 646,
+                            TicketId = 2,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2024, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 2, 22, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 31,
+                            Amount = 5,
+                            IssuedDate = new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 556,
+                            TicketId = 3,
+                            UserId = 3,
+                            ValidFrom = new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 7, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 32,
+                            Amount = 2,
+                            IssuedDate = new DateTime(2024, 8, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 608,
+                            TicketId = 4,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2024, 8, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 8, 18, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 33,
+                            Amount = 2,
+                            IssuedDate = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 708,
+                            TicketId = 5,
+                            UserId = 4,
+                            ValidFrom = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 34,
+                            Amount = 2,
+                            IssuedDate = new DateTime(2024, 7, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 600,
+                            TicketId = 2,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2024, 7, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 7, 3, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 35,
+                            Amount = 8,
+                            IssuedDate = new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 310,
+                            TicketId = 2,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 7, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 36,
+                            Amount = 3,
+                            IssuedDate = new DateTime(2024, 2, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 662,
+                            TicketId = 5,
+                            UserId = 5,
+                            ValidFrom = new DateTime(2024, 2, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 37,
+                            Amount = 8,
+                            IssuedDate = new DateTime(2024, 11, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 79,
+                            TicketId = 1,
+                            UserId = 3,
+                            ValidFrom = new DateTime(2024, 11, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 11, 8, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 38,
+                            Amount = 6,
+                            IssuedDate = new DateTime(2024, 11, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 430,
+                            TicketId = 1,
+                            UserId = 4,
+                            ValidFrom = new DateTime(2024, 11, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 11, 11, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 39,
+                            Amount = 9,
+                            IssuedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 528,
+                            TicketId = 3,
+                            UserId = 2,
                             ValidFrom = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ValidTo = new DateTime(2025, 1, 4, 1, 0, 0, 0, DateTimeKind.Unspecified)
                         },
@@ -1489,672 +1489,672 @@ namespace ePrijevozSarajevo.Services.Migrations
                         {
                             IssuedTicketId = 40,
                             Amount = 7,
-                            IssuedDate = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 576,
-                            TicketId = 4,
-                            UserId = 2,
-                            ValidFrom = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 6, 3, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 41,
-                            Amount = 7,
-                            IssuedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 328,
-                            TicketId = 3,
-                            UserId = 3,
-                            ValidFrom = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 4, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 42,
-                            Amount = 4,
-                            IssuedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 220,
-                            TicketId = 4,
-                            UserId = 2,
-                            ValidFrom = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 43,
-                            Amount = 6,
-                            IssuedDate = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 13,
-                            TicketId = 4,
-                            UserId = 6,
-                            ValidFrom = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 6, 3, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 44,
-                            Amount = 7,
-                            IssuedDate = new DateTime(2024, 4, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 497,
-                            TicketId = 3,
-                            UserId = 1,
-                            ValidFrom = new DateTime(2024, 4, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 4, 7, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 45,
-                            Amount = 7,
-                            IssuedDate = new DateTime(2024, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 122,
-                            TicketId = 2,
-                            UserId = 2,
-                            ValidFrom = new DateTime(2024, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 3, 1, 3, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 46,
-                            Amount = 9,
-                            IssuedDate = new DateTime(2024, 5, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 576,
-                            TicketId = 3,
-                            UserId = 3,
-                            ValidFrom = new DateTime(2024, 5, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 5, 4, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 47,
-                            Amount = 9,
                             IssuedDate = new DateTime(2024, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 701,
+                            RouteId = 235,
                             TicketId = 5,
-                            UserId = 3,
+                            UserId = 5,
                             ValidFrom = new DateTime(2024, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ValidTo = new DateTime(2024, 12, 16, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            IssuedTicketId = 48,
-                            Amount = 2,
-                            IssuedDate = new DateTime(2024, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 59,
-                            TicketId = 4,
+                            IssuedTicketId = 41,
+                            Amount = 1,
+                            IssuedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 396,
+                            TicketId = 2,
+                            UserId = 4,
+                            ValidFrom = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 4, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 42,
+                            Amount = 3,
+                            IssuedDate = new DateTime(2024, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 646,
+                            TicketId = 1,
                             UserId = 3,
-                            ValidFrom = new DateTime(2024, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 3, 13, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                            ValidFrom = new DateTime(2024, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 8, 15, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 43,
+                            Amount = 4,
+                            IssuedDate = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 701,
+                            TicketId = 5,
+                            UserId = 4,
+                            ValidFrom = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 44,
+                            Amount = 3,
+                            IssuedDate = new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 166,
+                            TicketId = 2,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 7, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 45,
+                            Amount = 2,
+                            IssuedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 31,
+                            TicketId = 4,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 4, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 46,
+                            Amount = 8,
+                            IssuedDate = new DateTime(2024, 5, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 331,
+                            TicketId = 5,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2024, 5, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 6, 30, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 47,
+                            Amount = 2,
+                            IssuedDate = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 177,
+                            TicketId = 4,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 3, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 48,
+                            Amount = 5,
+                            IssuedDate = new DateTime(2024, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 488,
+                            TicketId = 3,
+                            UserId = 5,
+                            ValidFrom = new DateTime(2024, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 8, 25, 1, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             IssuedTicketId = 49,
-                            Amount = 8,
-                            IssuedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 462,
-                            TicketId = 5,
+                            Amount = 6,
+                            IssuedDate = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 125,
+                            TicketId = 3,
                             UserId = 5,
-                            ValidFrom = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            ValidFrom = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 5, 1, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             IssuedTicketId = 50,
-                            Amount = 1,
-                            IssuedDate = new DateTime(2024, 9, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 412,
+                            Amount = 6,
+                            IssuedDate = new DateTime(2024, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 161,
                             TicketId = 5,
-                            UserId = 3,
-                            ValidFrom = new DateTime(2024, 9, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 10, 9, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            UserId = 4,
+                            ValidFrom = new DateTime(2024, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 8, 23, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             IssuedTicketId = 51,
-                            Amount = 7,
-                            IssuedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 326,
-                            TicketId = 1,
-                            UserId = 4,
-                            ValidFrom = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 4, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                            Amount = 9,
+                            IssuedDate = new DateTime(2024, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 230,
+                            TicketId = 3,
+                            UserId = 3,
+                            ValidFrom = new DateTime(2024, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 11, 5, 1, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             IssuedTicketId = 52,
-                            Amount = 6,
-                            IssuedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 459,
-                            TicketId = 4,
+                            Amount = 7,
+                            IssuedDate = new DateTime(2024, 12, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 639,
+                            TicketId = 2,
                             UserId = 4,
-                            ValidFrom = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 4, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                            ValidFrom = new DateTime(2024, 12, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 12, 14, 3, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             IssuedTicketId = 53,
                             Amount = 2,
-                            IssuedDate = new DateTime(2024, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 561,
-                            TicketId = 3,
-                            UserId = 2,
-                            ValidFrom = new DateTime(2024, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 5, 10, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                            IssuedDate = new DateTime(2024, 8, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 483,
+                            TicketId = 5,
+                            UserId = 4,
+                            ValidFrom = new DateTime(2024, 8, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             IssuedTicketId = 54,
-                            Amount = 2,
-                            IssuedDate = new DateTime(2024, 5, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 86,
-                            TicketId = 4,
-                            UserId = 1,
-                            ValidFrom = new DateTime(2024, 5, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 5, 18, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                            Amount = 4,
+                            IssuedDate = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 616,
+                            TicketId = 3,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 3, 1, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             IssuedTicketId = 55,
-                            Amount = 8,
-                            IssuedDate = new DateTime(2024, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 501,
+                            Amount = 4,
+                            IssuedDate = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 141,
                             TicketId = 4,
-                            UserId = 6,
-                            ValidFrom = new DateTime(2024, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 1, 17, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                            UserId = 3,
+                            ValidFrom = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 5, 3, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             IssuedTicketId = 56,
-                            Amount = 2,
-                            IssuedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 107,
+                            Amount = 4,
+                            IssuedDate = new DateTime(2024, 5, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 627,
                             TicketId = 4,
-                            UserId = 1,
-                            ValidFrom = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 4, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                            UserId = 6,
+                            ValidFrom = new DateTime(2024, 5, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 5, 13, 3, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             IssuedTicketId = 57,
-                            Amount = 7,
-                            IssuedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 234,
-                            TicketId = 5,
-                            UserId = 2,
-                            ValidFrom = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Amount = 1,
+                            IssuedDate = new DateTime(2024, 8, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 31,
+                            TicketId = 4,
+                            UserId = 3,
+                            ValidFrom = new DateTime(2024, 8, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 8, 29, 3, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             IssuedTicketId = 58,
-                            Amount = 9,
-                            IssuedDate = new DateTime(2024, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 38,
-                            TicketId = 2,
-                            UserId = 5,
-                            ValidFrom = new DateTime(2024, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 4, 1, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                            Amount = 8,
+                            IssuedDate = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 707,
+                            TicketId = 3,
+                            UserId = 3,
+                            ValidFrom = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 2, 1, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             IssuedTicketId = 59,
-                            Amount = 6,
-                            IssuedDate = new DateTime(2024, 12, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 146,
-                            TicketId = 4,
-                            UserId = 3,
-                            ValidFrom = new DateTime(2024, 12, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 12, 21, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                            Amount = 1,
+                            IssuedDate = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 591,
+                            TicketId = 1,
+                            UserId = 2,
+                            ValidFrom = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 3, 1, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             IssuedTicketId = 60,
                             Amount = 7,
                             IssuedDate = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 299,
-                            TicketId = 1,
-                            UserId = 1,
-                            ValidFrom = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 2, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 61,
-                            Amount = 7,
-                            IssuedDate = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 259,
-                            TicketId = 3,
-                            UserId = 6,
-                            ValidFrom = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 3, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 62,
-                            Amount = 4,
-                            IssuedDate = new DateTime(2024, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 381,
-                            TicketId = 3,
-                            UserId = 2,
-                            ValidFrom = new DateTime(2024, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 7, 23, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 63,
-                            Amount = 8,
-                            IssuedDate = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 704,
-                            TicketId = 3,
-                            UserId = 6,
-                            ValidFrom = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 3, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 64,
-                            Amount = 8,
-                            IssuedDate = new DateTime(2024, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 624,
-                            TicketId = 4,
-                            UserId = 6,
-                            ValidFrom = new DateTime(2024, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 5, 1, 3, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 65,
-                            Amount = 6,
-                            IssuedDate = new DateTime(2024, 9, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 89,
-                            TicketId = 3,
+                            RouteId = 47,
+                            TicketId = 2,
                             UserId = 5,
-                            ValidFrom = new DateTime(2024, 9, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 9, 29, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 66,
-                            Amount = 3,
-                            IssuedDate = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 475,
-                            TicketId = 1,
-                            UserId = 3,
-                            ValidFrom = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 6, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 67,
-                            Amount = 2,
-                            IssuedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 59,
-                            TicketId = 5,
-                            UserId = 3,
-                            ValidFrom = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 68,
-                            Amount = 7,
-                            IssuedDate = new DateTime(2024, 10, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 432,
-                            TicketId = 3,
-                            UserId = 3,
-                            ValidFrom = new DateTime(2024, 10, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 10, 25, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 69,
-                            Amount = 8,
-                            IssuedDate = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 50,
-                            TicketId = 4,
-                            UserId = 4,
                             ValidFrom = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ValidTo = new DateTime(2025, 1, 2, 3, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            IssuedTicketId = 70,
-                            Amount = 6,
-                            IssuedDate = new DateTime(2024, 10, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 672,
-                            TicketId = 4,
-                            UserId = 1,
-                            ValidFrom = new DateTime(2024, 10, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 10, 9, 3, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 71,
-                            Amount = 2,
-                            IssuedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 714,
-                            TicketId = 1,
-                            UserId = 5,
-                            ValidFrom = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 4, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 72,
-                            Amount = 5,
-                            IssuedDate = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 240,
-                            TicketId = 3,
-                            UserId = 5,
-                            ValidFrom = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 3, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 73,
-                            Amount = 3,
-                            IssuedDate = new DateTime(2024, 12, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 241,
-                            TicketId = 1,
-                            UserId = 3,
-                            ValidFrom = new DateTime(2024, 12, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 12, 8, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 74,
-                            Amount = 6,
-                            IssuedDate = new DateTime(2024, 4, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 658,
-                            TicketId = 3,
-                            UserId = 1,
-                            ValidFrom = new DateTime(2024, 4, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 4, 2, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 75,
-                            Amount = 9,
-                            IssuedDate = new DateTime(2024, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 114,
-                            TicketId = 2,
-                            UserId = 3,
-                            ValidFrom = new DateTime(2024, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 1, 14, 3, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 76,
+                            IssuedTicketId = 61,
                             Amount = 8,
-                            IssuedDate = new DateTime(2024, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 656,
-                            TicketId = 4,
-                            UserId = 4,
-                            ValidFrom = new DateTime(2024, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 1, 18, 3, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 77,
-                            Amount = 9,
-                            IssuedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 691,
-                            TicketId = 3,
-                            UserId = 1,
-                            ValidFrom = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 4, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 78,
-                            Amount = 5,
-                            IssuedDate = new DateTime(2024, 11, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 638,
-                            TicketId = 3,
-                            UserId = 5,
-                            ValidFrom = new DateTime(2024, 11, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 11, 20, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 79,
-                            Amount = 9,
-                            IssuedDate = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 491,
-                            TicketId = 5,
-                            UserId = 3,
-                            ValidFrom = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 80,
-                            Amount = 9,
-                            IssuedDate = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 632,
-                            TicketId = 2,
-                            UserId = 5,
-                            ValidFrom = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 3, 3, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 81,
-                            Amount = 1,
-                            IssuedDate = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 467,
-                            TicketId = 2,
-                            UserId = 4,
-                            ValidFrom = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 6, 3, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 82,
-                            Amount = 9,
-                            IssuedDate = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 27,
+                            IssuedDate = new DateTime(2024, 8, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 432,
                             TicketId = 1,
-                            UserId = 2,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2024, 8, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 8, 23, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 62,
+                            Amount = 6,
+                            IssuedDate = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 711,
+                            TicketId = 1,
+                            UserId = 5,
                             ValidFrom = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ValidTo = new DateTime(2025, 1, 6, 1, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            IssuedTicketId = 83,
-                            Amount = 9,
-                            IssuedDate = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 90,
-                            TicketId = 3,
+                            IssuedTicketId = 63,
+                            Amount = 6,
+                            IssuedDate = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 373,
+                            TicketId = 5,
                             UserId = 2,
-                            ValidFrom = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 5, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                            ValidFrom = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            IssuedTicketId = 84,
-                            Amount = 4,
-                            IssuedDate = new DateTime(2024, 4, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 384,
-                            TicketId = 2,
-                            UserId = 3,
-                            ValidFrom = new DateTime(2024, 4, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 4, 28, 3, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 85,
+                            IssuedTicketId = 64,
                             Amount = 1,
                             IssuedDate = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 564,
+                            RouteId = 558,
+                            TicketId = 5,
+                            UserId = 2,
+                            ValidFrom = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 65,
+                            Amount = 4,
+                            IssuedDate = new DateTime(2024, 10, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 303,
                             TicketId = 1,
                             UserId = 5,
-                            ValidFrom = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 3, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                            ValidFrom = new DateTime(2024, 10, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 10, 29, 1, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            IssuedTicketId = 86,
-                            Amount = 2,
-                            IssuedDate = new DateTime(2024, 6, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 366,
+                            IssuedTicketId = 66,
+                            Amount = 4,
+                            IssuedDate = new DateTime(2025, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 213,
+                            TicketId = 5,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2025, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 67,
+                            Amount = 1,
+                            IssuedDate = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 367,
+                            TicketId = 2,
+                            UserId = 5,
+                            ValidFrom = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 2, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 68,
+                            Amount = 6,
+                            IssuedDate = new DateTime(2024, 9, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 279,
+                            TicketId = 4,
+                            UserId = 3,
+                            ValidFrom = new DateTime(2024, 9, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 9, 22, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 69,
+                            Amount = 1,
+                            IssuedDate = new DateTime(2024, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 42,
                             TicketId = 4,
                             UserId = 5,
-                            ValidFrom = new DateTime(2024, 6, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 6, 24, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                            ValidFrom = new DateTime(2024, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 1, 17, 3, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            IssuedTicketId = 87,
-                            Amount = 6,
-                            IssuedDate = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 216,
-                            TicketId = 3,
-                            UserId = 2,
-                            ValidFrom = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 5, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 88,
-                            Amount = 6,
-                            IssuedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 400,
+                            IssuedTicketId = 70,
+                            Amount = 8,
+                            IssuedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 136,
                             TicketId = 4,
+                            UserId = 2,
+                            ValidFrom = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 4, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 71,
+                            Amount = 5,
+                            IssuedDate = new DateTime(2024, 6, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 103,
+                            TicketId = 4,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2024, 6, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 6, 23, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 72,
+                            Amount = 1,
+                            IssuedDate = new DateTime(2024, 9, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 442,
+                            TicketId = 2,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2024, 9, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 9, 15, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 73,
+                            Amount = 1,
+                            IssuedDate = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 242,
+                            TicketId = 5,
+                            UserId = 3,
+                            ValidFrom = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 74,
+                            Amount = 9,
+                            IssuedDate = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 435,
+                            TicketId = 4,
+                            UserId = 4,
+                            ValidFrom = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 3, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 75,
+                            Amount = 9,
+                            IssuedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 335,
+                            TicketId = 2,
                             UserId = 6,
                             ValidFrom = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ValidTo = new DateTime(2025, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            IssuedTicketId = 89,
-                            Amount = 5,
-                            IssuedDate = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 151,
-                            TicketId = 5,
-                            UserId = 6,
-                            ValidFrom = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 90,
-                            Amount = 6,
-                            IssuedDate = new DateTime(2024, 1, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 255,
-                            TicketId = 1,
-                            UserId = 5,
-                            ValidFrom = new DateTime(2024, 1, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 1, 29, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 91,
-                            Amount = 7,
-                            IssuedDate = new DateTime(2024, 10, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 340,
-                            TicketId = 1,
-                            UserId = 2,
-                            ValidFrom = new DateTime(2024, 10, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 10, 27, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 92,
-                            Amount = 6,
-                            IssuedDate = new DateTime(2024, 12, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 264,
-                            TicketId = 2,
-                            UserId = 4,
-                            ValidFrom = new DateTime(2024, 12, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 12, 15, 3, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 93,
-                            Amount = 1,
-                            IssuedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 319,
-                            TicketId = 3,
-                            UserId = 2,
-                            ValidFrom = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 4, 1, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 94,
-                            Amount = 7,
-                            IssuedDate = new DateTime(2024, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 631,
-                            TicketId = 2,
-                            UserId = 4,
-                            ValidFrom = new DateTime(2024, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 1, 3, 3, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 95,
-                            Amount = 6,
-                            IssuedDate = new DateTime(2024, 3, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 83,
-                            TicketId = 4,
-                            UserId = 3,
-                            ValidFrom = new DateTime(2024, 3, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 3, 26, 3, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 96,
-                            Amount = 6,
+                            IssuedTicketId = 76,
+                            Amount = 4,
                             IssuedDate = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 73,
+                            RouteId = 579,
                             TicketId = 2,
-                            UserId = 1,
+                            UserId = 6,
                             ValidFrom = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ValidTo = new DateTime(2025, 1, 5, 3, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            IssuedTicketId = 97,
-                            Amount = 4,
-                            IssuedDate = new DateTime(2024, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 241,
+                            IssuedTicketId = 77,
+                            Amount = 2,
+                            IssuedDate = new DateTime(2025, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 687,
+                            TicketId = 2,
+                            UserId = 4,
+                            ValidFrom = new DateTime(2025, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 8, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 78,
+                            Amount = 3,
+                            IssuedDate = new DateTime(2024, 4, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 322,
                             TicketId = 1,
                             UserId = 3,
-                            ValidFrom = new DateTime(2024, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 4, 11, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                            ValidFrom = new DateTime(2024, 4, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 4, 19, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 79,
+                            Amount = 4,
+                            IssuedDate = new DateTime(2024, 10, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 232,
+                            TicketId = 2,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2024, 10, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 10, 30, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 80,
+                            Amount = 8,
+                            IssuedDate = new DateTime(2024, 2, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 684,
+                            TicketId = 1,
+                            UserId = 5,
+                            ValidFrom = new DateTime(2024, 2, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 2, 26, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 81,
+                            Amount = 7,
+                            IssuedDate = new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 626,
+                            TicketId = 5,
+                            UserId = 3,
+                            ValidFrom = new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 82,
+                            Amount = 8,
+                            IssuedDate = new DateTime(2024, 11, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 686,
+                            TicketId = 4,
+                            UserId = 3,
+                            ValidFrom = new DateTime(2024, 11, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 11, 10, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 83,
+                            Amount = 9,
+                            IssuedDate = new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 472,
+                            TicketId = 1,
+                            UserId = 5,
+                            ValidFrom = new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 7, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 84,
+                            Amount = 5,
+                            IssuedDate = new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 447,
+                            TicketId = 5,
+                            UserId = 2,
+                            ValidFrom = new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 85,
+                            Amount = 7,
+                            IssuedDate = new DateTime(2024, 4, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 296,
+                            TicketId = 2,
+                            UserId = 4,
+                            ValidFrom = new DateTime(2024, 4, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 4, 3, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 86,
+                            Amount = 4,
+                            IssuedDate = new DateTime(2024, 12, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 412,
+                            TicketId = 5,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2024, 12, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 87,
+                            Amount = 1,
+                            IssuedDate = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 395,
+                            TicketId = 2,
+                            UserId = 4,
+                            ValidFrom = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 5, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 88,
+                            Amount = 8,
+                            IssuedDate = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 638,
+                            TicketId = 1,
+                            UserId = 2,
+                            ValidFrom = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 5, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 89,
+                            Amount = 5,
+                            IssuedDate = new DateTime(2024, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 15,
+                            TicketId = 4,
+                            UserId = 5,
+                            ValidFrom = new DateTime(2024, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 5, 1, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 90,
+                            Amount = 1,
+                            IssuedDate = new DateTime(2025, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 265,
+                            TicketId = 5,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2025, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 91,
+                            Amount = 3,
+                            IssuedDate = new DateTime(2024, 12, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 478,
+                            TicketId = 4,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2024, 12, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 12, 8, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 92,
+                            Amount = 1,
+                            IssuedDate = new DateTime(2024, 12, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 34,
+                            TicketId = 5,
+                            UserId = 3,
+                            ValidFrom = new DateTime(2024, 12, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 93,
+                            Amount = 8,
+                            IssuedDate = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 26,
+                            TicketId = 5,
+                            UserId = 5,
+                            ValidFrom = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 94,
+                            Amount = 7,
+                            IssuedDate = new DateTime(2024, 3, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 342,
+                            TicketId = 5,
+                            UserId = 5,
+                            ValidFrom = new DateTime(2024, 3, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 95,
+                            Amount = 2,
+                            IssuedDate = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 413,
+                            TicketId = 2,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 2, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 96,
+                            Amount = 6,
+                            IssuedDate = new DateTime(2025, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 233,
+                            TicketId = 3,
+                            UserId = 4,
+                            ValidFrom = new DateTime(2025, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 8, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 97,
+                            Amount = 9,
+                            IssuedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 6,
+                            TicketId = 1,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 1, 1, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             IssuedTicketId = 98,
-                            Amount = 7,
-                            IssuedDate = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 135,
-                            TicketId = 1,
+                            Amount = 8,
+                            IssuedDate = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 177,
+                            TicketId = 4,
                             UserId = 5,
-                            ValidFrom = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 2, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                            ValidFrom = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 8, 5, 3, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             IssuedTicketId = 99,
-                            Amount = 4,
-                            IssuedDate = new DateTime(2024, 4, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 574,
-                            TicketId = 4,
-                            UserId = 2,
-                            ValidFrom = new DateTime(2024, 4, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 4, 19, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                            Amount = 6,
+                            IssuedDate = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 480,
+                            TicketId = 5,
+                            UserId = 5,
+                            ValidFrom = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             IssuedTicketId = 100,
-                            Amount = 9,
-                            IssuedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 73,
-                            TicketId = 5,
-                            UserId = 3,
-                            ValidFrom = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Amount = 5,
+                            IssuedDate = new DateTime(2024, 2, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 240,
+                            TicketId = 3,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2024, 2, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 2, 23, 1, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -2262,7 +2262,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             RequestId = 1,
                             Active = true,
                             Approved = false,
-                            DateCreated = new DateTime(2025, 1, 7, 22, 1, 15, 563, DateTimeKind.Local).AddTicks(3373),
+                            DateCreated = new DateTime(2025, 1, 9, 15, 30, 22, 797, DateTimeKind.Local).AddTicks(7166),
                             RejectionReason = "",
                             UserId = 2,
                             UserStatusId = 3
@@ -2272,7 +2272,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             RequestId = 2,
                             Active = true,
                             Approved = false,
-                            DateCreated = new DateTime(2025, 1, 7, 22, 1, 15, 563, DateTimeKind.Local).AddTicks(3378),
+                            DateCreated = new DateTime(2025, 1, 9, 15, 30, 22, 797, DateTimeKind.Local).AddTicks(7169),
                             RejectionReason = "",
                             UserId = 3,
                             UserStatusId = 5
@@ -2282,7 +2282,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             RequestId = 3,
                             Active = true,
                             Approved = false,
-                            DateCreated = new DateTime(2025, 1, 7, 22, 1, 15, 563, DateTimeKind.Local).AddTicks(3380),
+                            DateCreated = new DateTime(2025, 1, 9, 15, 30, 22, 797, DateTimeKind.Local).AddTicks(7172),
                             RejectionReason = "",
                             UserId = 4,
                             UserStatusId = 2
@@ -2292,7 +2292,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             RequestId = 4,
                             Active = true,
                             Approved = false,
-                            DateCreated = new DateTime(2025, 1, 7, 22, 1, 15, 563, DateTimeKind.Local).AddTicks(3383),
+                            DateCreated = new DateTime(2025, 1, 9, 15, 30, 22, 797, DateTimeKind.Local).AddTicks(7174),
                             RejectionReason = "",
                             UserId = 5,
                             UserStatusId = 4
@@ -2369,7 +2369,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 1,
-                            VehicleId = 1
+                            VehicleId = 2
                         },
                         new
                         {
@@ -2378,7 +2378,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 2,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -2387,7 +2387,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 2,
-                            VehicleId = 4
+                            VehicleId = 6
                         },
                         new
                         {
@@ -2396,7 +2396,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 3,
-                            VehicleId = 3
+                            VehicleId = 5
                         },
                         new
                         {
@@ -2405,7 +2405,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 3,
-                            VehicleId = 6
+                            VehicleId = 5
                         },
                         new
                         {
@@ -2414,7 +2414,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 3,
-                            VehicleId = 5
+                            VehicleId = 1
                         },
                         new
                         {
@@ -2423,7 +2423,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 4,
-                            VehicleId = 4
+                            VehicleId = 5
                         },
                         new
                         {
@@ -2432,7 +2432,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 4,
-                            VehicleId = 2
+                            VehicleId = 1
                         },
                         new
                         {
@@ -2441,7 +2441,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 4,
-                            VehicleId = 1
+                            VehicleId = 3
                         },
                         new
                         {
@@ -2450,7 +2450,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 4,
-                            VehicleId = 2
+                            VehicleId = 3
                         },
                         new
                         {
@@ -2468,7 +2468,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 5,
-                            VehicleId = 6
+                            VehicleId = 1
                         },
                         new
                         {
@@ -2477,7 +2477,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 5,
-                            VehicleId = 3
+                            VehicleId = 2
                         },
                         new
                         {
@@ -2495,7 +2495,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 5,
-                            VehicleId = 6
+                            VehicleId = 3
                         },
                         new
                         {
@@ -2504,7 +2504,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 6,
-                            VehicleId = 4
+                            VehicleId = 3
                         },
                         new
                         {
@@ -2522,7 +2522,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 6,
-                            VehicleId = 2
+                            VehicleId = 3
                         },
                         new
                         {
@@ -2531,7 +2531,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 6,
-                            VehicleId = 1
+                            VehicleId = 2
                         },
                         new
                         {
@@ -2540,7 +2540,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 6,
-                            VehicleId = 1
+                            VehicleId = 5
                         },
                         new
                         {
@@ -2558,7 +2558,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 7,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -2567,7 +2567,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 7,
-                            VehicleId = 3
+                            VehicleId = 6
                         },
                         new
                         {
@@ -2576,7 +2576,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 7,
-                            VehicleId = 4
+                            VehicleId = 5
                         },
                         new
                         {
@@ -2585,7 +2585,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 7,
-                            VehicleId = 2
+                            VehicleId = 3
                         },
                         new
                         {
@@ -2594,7 +2594,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 7,
-                            VehicleId = 4
+                            VehicleId = 5
                         },
                         new
                         {
@@ -2603,7 +2603,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 7,
-                            VehicleId = 5
+                            VehicleId = 2
                         },
                         new
                         {
@@ -2612,7 +2612,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 7,
-                            VehicleId = 3
+                            VehicleId = 2
                         },
                         new
                         {
@@ -2621,7 +2621,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 8,
-                            VehicleId = 4
+                            VehicleId = 3
                         },
                         new
                         {
@@ -2630,7 +2630,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 8,
-                            VehicleId = 3
+                            VehicleId = 1
                         },
                         new
                         {
@@ -2639,7 +2639,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 8,
-                            VehicleId = 5
+                            VehicleId = 4
                         },
                         new
                         {
@@ -2648,7 +2648,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 8,
-                            VehicleId = 4
+                            VehicleId = 6
                         },
                         new
                         {
@@ -2657,7 +2657,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 8,
-                            VehicleId = 3
+                            VehicleId = 5
                         },
                         new
                         {
@@ -2666,7 +2666,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 8,
-                            VehicleId = 3
+                            VehicleId = 1
                         },
                         new
                         {
@@ -2675,7 +2675,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 8,
-                            VehicleId = 3
+                            VehicleId = 6
                         },
                         new
                         {
@@ -2684,7 +2684,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 8,
-                            VehicleId = 2
+                            VehicleId = 4
                         },
                         new
                         {
@@ -2693,7 +2693,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 9,
-                            VehicleId = 3
+                            VehicleId = 2
                         },
                         new
                         {
@@ -2702,7 +2702,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 9,
-                            VehicleId = 5
+                            VehicleId = 6
                         },
                         new
                         {
@@ -2711,7 +2711,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 9,
-                            VehicleId = 5
+                            VehicleId = 4
                         },
                         new
                         {
@@ -2729,7 +2729,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 9,
-                            VehicleId = 6
+                            VehicleId = 1
                         },
                         new
                         {
@@ -2738,7 +2738,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 9,
-                            VehicleId = 6
+                            VehicleId = 2
                         },
                         new
                         {
@@ -2747,7 +2747,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 9,
-                            VehicleId = 3
+                            VehicleId = 2
                         },
                         new
                         {
@@ -2756,7 +2756,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 9,
-                            VehicleId = 1
+                            VehicleId = 3
                         },
                         new
                         {
@@ -2765,7 +2765,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 9,
-                            VehicleId = 1
+                            VehicleId = 2
                         },
                         new
                         {
@@ -2774,7 +2774,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 10,
-                            VehicleId = 6
+                            VehicleId = 4
                         },
                         new
                         {
@@ -2792,7 +2792,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 10,
-                            VehicleId = 2
+                            VehicleId = 5
                         },
                         new
                         {
@@ -2801,7 +2801,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 10,
-                            VehicleId = 2
+                            VehicleId = 6
                         },
                         new
                         {
@@ -2810,7 +2810,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 10,
-                            VehicleId = 5
+                            VehicleId = 2
                         },
                         new
                         {
@@ -2819,7 +2819,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 10,
-                            VehicleId = 6
+                            VehicleId = 3
                         },
                         new
                         {
@@ -2828,7 +2828,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 10,
-                            VehicleId = 3
+                            VehicleId = 2
                         },
                         new
                         {
@@ -2837,7 +2837,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 10,
-                            VehicleId = 1
+                            VehicleId = 4
                         },
                         new
                         {
@@ -2855,7 +2855,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 10,
-                            VehicleId = 4
+                            VehicleId = 2
                         },
                         new
                         {
@@ -2864,7 +2864,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 11,
-                            VehicleId = 4
+                            VehicleId = 1
                         },
                         new
                         {
@@ -2873,7 +2873,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 11,
-                            VehicleId = 1
+                            VehicleId = 3
                         },
                         new
                         {
@@ -2891,7 +2891,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 11,
-                            VehicleId = 6
+                            VehicleId = 4
                         },
                         new
                         {
@@ -2900,7 +2900,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 11,
-                            VehicleId = 3
+                            VehicleId = 6
                         },
                         new
                         {
@@ -2909,7 +2909,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 11,
-                            VehicleId = 1
+                            VehicleId = 4
                         },
                         new
                         {
@@ -2918,7 +2918,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 11,
-                            VehicleId = 3
+                            VehicleId = 2
                         },
                         new
                         {
@@ -2927,7 +2927,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 11,
-                            VehicleId = 4
+                            VehicleId = 1
                         },
                         new
                         {
@@ -2936,7 +2936,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 11,
-                            VehicleId = 5
+                            VehicleId = 4
                         },
                         new
                         {
@@ -2945,7 +2945,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 11,
-                            VehicleId = 1
+                            VehicleId = 4
                         },
                         new
                         {
@@ -2954,7 +2954,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 11,
-                            VehicleId = 6
+                            VehicleId = 5
                         },
                         new
                         {
@@ -2963,7 +2963,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 13,
                             StartStationId = 12,
-                            VehicleId = 4
+                            VehicleId = 1
                         },
                         new
                         {
@@ -2981,7 +2981,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 12,
-                            VehicleId = 5
+                            VehicleId = 2
                         },
                         new
                         {
@@ -2990,7 +2990,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 12,
-                            VehicleId = 4
+                            VehicleId = 1
                         },
                         new
                         {
@@ -3008,7 +3008,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 12,
-                            VehicleId = 1
+                            VehicleId = 2
                         },
                         new
                         {
@@ -3017,7 +3017,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 12,
-                            VehicleId = 2
+                            VehicleId = 6
                         },
                         new
                         {
@@ -3026,7 +3026,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 12,
-                            VehicleId = 1
+                            VehicleId = 6
                         },
                         new
                         {
@@ -3035,7 +3035,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 12,
-                            VehicleId = 1
+                            VehicleId = 2
                         },
                         new
                         {
@@ -3044,7 +3044,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 12,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -3053,7 +3053,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 12,
-                            VehicleId = 3
+                            VehicleId = 6
                         },
                         new
                         {
@@ -3071,7 +3071,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 14,
                             StartStationId = 13,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -3080,7 +3080,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 13,
-                            VehicleId = 3
+                            VehicleId = 6
                         },
                         new
                         {
@@ -3089,7 +3089,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 13,
-                            VehicleId = 4
+                            VehicleId = 3
                         },
                         new
                         {
@@ -3098,7 +3098,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 13,
-                            VehicleId = 3
+                            VehicleId = 1
                         },
                         new
                         {
@@ -3107,7 +3107,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 13,
-                            VehicleId = 1
+                            VehicleId = 3
                         },
                         new
                         {
@@ -3116,7 +3116,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 13,
-                            VehicleId = 2
+                            VehicleId = 5
                         },
                         new
                         {
@@ -3134,7 +3134,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 13,
-                            VehicleId = 3
+                            VehicleId = 5
                         },
                         new
                         {
@@ -3143,7 +3143,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 13,
-                            VehicleId = 4
+                            VehicleId = 6
                         },
                         new
                         {
@@ -3152,7 +3152,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 13,
-                            VehicleId = 3
+                            VehicleId = 2
                         },
                         new
                         {
@@ -3161,7 +3161,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 13,
-                            VehicleId = 1
+                            VehicleId = 3
                         },
                         new
                         {
@@ -3179,7 +3179,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 13,
-                            VehicleId = 1
+                            VehicleId = 2
                         },
                         new
                         {
@@ -3188,7 +3188,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 15,
                             StartStationId = 14,
-                            VehicleId = 5
+                            VehicleId = 2
                         },
                         new
                         {
@@ -3197,7 +3197,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 13,
                             StartStationId = 14,
-                            VehicleId = 3
+                            VehicleId = 2
                         },
                         new
                         {
@@ -3215,7 +3215,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 14,
-                            VehicleId = 4
+                            VehicleId = 2
                         },
                         new
                         {
@@ -3224,7 +3224,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 14,
-                            VehicleId = 5
+                            VehicleId = 4
                         },
                         new
                         {
@@ -3233,7 +3233,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 14,
-                            VehicleId = 6
+                            VehicleId = 2
                         },
                         new
                         {
@@ -3242,7 +3242,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 14,
-                            VehicleId = 3
+                            VehicleId = 1
                         },
                         new
                         {
@@ -3251,7 +3251,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 14,
-                            VehicleId = 2
+                            VehicleId = 4
                         },
                         new
                         {
@@ -3260,7 +3260,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 14,
-                            VehicleId = 4
+                            VehicleId = 3
                         },
                         new
                         {
@@ -3278,7 +3278,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 14,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -3287,7 +3287,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 14,
-                            VehicleId = 2
+                            VehicleId = 5
                         },
                         new
                         {
@@ -3296,7 +3296,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 14,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -3305,7 +3305,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 14,
-                            VehicleId = 2
+                            VehicleId = 3
                         },
                         new
                         {
@@ -3314,7 +3314,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 14,
                             StartStationId = 15,
-                            VehicleId = 6
+                            VehicleId = 3
                         },
                         new
                         {
@@ -3323,7 +3323,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 13,
                             StartStationId = 15,
-                            VehicleId = 5
+                            VehicleId = 2
                         },
                         new
                         {
@@ -3332,7 +3332,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 15,
-                            VehicleId = 4
+                            VehicleId = 2
                         },
                         new
                         {
@@ -3341,7 +3341,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 15,
-                            VehicleId = 3
+                            VehicleId = 2
                         },
                         new
                         {
@@ -3350,7 +3350,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 15,
-                            VehicleId = 1
+                            VehicleId = 3
                         },
                         new
                         {
@@ -3359,7 +3359,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 15,
-                            VehicleId = 4
+                            VehicleId = 1
                         },
                         new
                         {
@@ -3368,7 +3368,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 15,
-                            VehicleId = 5
+                            VehicleId = 1
                         },
                         new
                         {
@@ -3377,7 +3377,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 15,
-                            VehicleId = 6
+                            VehicleId = 2
                         },
                         new
                         {
@@ -3386,7 +3386,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 15,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -3404,7 +3404,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 15,
-                            VehicleId = 4
+                            VehicleId = 6
                         },
                         new
                         {
@@ -3413,7 +3413,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 15,
-                            VehicleId = 2
+                            VehicleId = 4
                         },
                         new
                         {
@@ -3422,7 +3422,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 15,
-                            VehicleId = 5
+                            VehicleId = 6
                         },
                         new
                         {
@@ -3431,7 +3431,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 15,
-                            VehicleId = 5
+                            VehicleId = 6
                         },
                         new
                         {
@@ -3440,7 +3440,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 1,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -3449,7 +3449,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 2,
-                            VehicleId = 1
+                            VehicleId = 6
                         },
                         new
                         {
@@ -3458,7 +3458,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 2,
-                            VehicleId = 2
+                            VehicleId = 5
                         },
                         new
                         {
@@ -3467,7 +3467,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 3,
-                            VehicleId = 2
+                            VehicleId = 4
                         },
                         new
                         {
@@ -3476,7 +3476,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 3,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -3485,7 +3485,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 3,
-                            VehicleId = 3
+                            VehicleId = 2
                         },
                         new
                         {
@@ -3494,7 +3494,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 4,
-                            VehicleId = 3
+                            VehicleId = 2
                         },
                         new
                         {
@@ -3503,7 +3503,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 4,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -3512,7 +3512,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 4,
-                            VehicleId = 6
+                            VehicleId = 1
                         },
                         new
                         {
@@ -3521,7 +3521,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 4,
-                            VehicleId = 5
+                            VehicleId = 2
                         },
                         new
                         {
@@ -3539,7 +3539,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 5,
-                            VehicleId = 4
+                            VehicleId = 6
                         },
                         new
                         {
@@ -3548,7 +3548,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 5,
-                            VehicleId = 5
+                            VehicleId = 2
                         },
                         new
                         {
@@ -3557,7 +3557,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 5,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -3566,7 +3566,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 5,
-                            VehicleId = 6
+                            VehicleId = 3
                         },
                         new
                         {
@@ -3575,7 +3575,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 6,
-                            VehicleId = 3
+                            VehicleId = 5
                         },
                         new
                         {
@@ -3593,7 +3593,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 6,
-                            VehicleId = 2
+                            VehicleId = 5
                         },
                         new
                         {
@@ -3602,7 +3602,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 6,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -3611,7 +3611,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 6,
-                            VehicleId = 1
+                            VehicleId = 2
                         },
                         new
                         {
@@ -3620,7 +3620,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 6,
-                            VehicleId = 1
+                            VehicleId = 4
                         },
                         new
                         {
@@ -3629,7 +3629,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 7,
-                            VehicleId = 4
+                            VehicleId = 5
                         },
                         new
                         {
@@ -3638,7 +3638,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 7,
-                            VehicleId = 4
+                            VehicleId = 1
                         },
                         new
                         {
@@ -3647,7 +3647,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 7,
-                            VehicleId = 4
+                            VehicleId = 3
                         },
                         new
                         {
@@ -3656,7 +3656,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 7,
-                            VehicleId = 5
+                            VehicleId = 2
                         },
                         new
                         {
@@ -3665,7 +3665,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 7,
-                            VehicleId = 4
+                            VehicleId = 5
                         },
                         new
                         {
@@ -3674,7 +3674,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 7,
-                            VehicleId = 3
+                            VehicleId = 1
                         },
                         new
                         {
@@ -3683,7 +3683,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 7,
-                            VehicleId = 4
+                            VehicleId = 6
                         },
                         new
                         {
@@ -3692,7 +3692,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 8,
-                            VehicleId = 5
+                            VehicleId = 1
                         },
                         new
                         {
@@ -3701,7 +3701,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 8,
-                            VehicleId = 5
+                            VehicleId = 2
                         },
                         new
                         {
@@ -3710,7 +3710,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 8,
-                            VehicleId = 4
+                            VehicleId = 6
                         },
                         new
                         {
@@ -3719,7 +3719,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 8,
-                            VehicleId = 1
+                            VehicleId = 4
                         },
                         new
                         {
@@ -3728,7 +3728,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 8,
-                            VehicleId = 3
+                            VehicleId = 6
                         },
                         new
                         {
@@ -3737,7 +3737,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 8,
-                            VehicleId = 3
+                            VehicleId = 5
                         },
                         new
                         {
@@ -3746,7 +3746,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 8,
-                            VehicleId = 6
+                            VehicleId = 5
                         },
                         new
                         {
@@ -3755,7 +3755,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 8,
-                            VehicleId = 1
+                            VehicleId = 2
                         },
                         new
                         {
@@ -3764,7 +3764,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 9,
-                            VehicleId = 6
+                            VehicleId = 3
                         },
                         new
                         {
@@ -3773,7 +3773,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 9,
-                            VehicleId = 2
+                            VehicleId = 3
                         },
                         new
                         {
@@ -3782,7 +3782,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 9,
-                            VehicleId = 6
+                            VehicleId = 4
                         },
                         new
                         {
@@ -3791,7 +3791,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 9,
-                            VehicleId = 6
+                            VehicleId = 1
                         },
                         new
                         {
@@ -3809,7 +3809,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 9,
-                            VehicleId = 5
+                            VehicleId = 6
                         },
                         new
                         {
@@ -3827,7 +3827,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 9,
-                            VehicleId = 5
+                            VehicleId = 4
                         },
                         new
                         {
@@ -3836,7 +3836,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 9,
-                            VehicleId = 1
+                            VehicleId = 3
                         },
                         new
                         {
@@ -3845,7 +3845,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 10,
-                            VehicleId = 3
+                            VehicleId = 2
                         },
                         new
                         {
@@ -3863,7 +3863,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 10,
-                            VehicleId = 5
+                            VehicleId = 4
                         },
                         new
                         {
@@ -3872,7 +3872,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 10,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -3881,7 +3881,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 10,
-                            VehicleId = 6
+                            VehicleId = 2
                         },
                         new
                         {
@@ -3890,7 +3890,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 10,
-                            VehicleId = 4
+                            VehicleId = 1
                         },
                         new
                         {
@@ -3899,7 +3899,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 10,
-                            VehicleId = 6
+                            VehicleId = 2
                         },
                         new
                         {
@@ -3917,7 +3917,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 10,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -3953,7 +3953,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 11,
-                            VehicleId = 5
+                            VehicleId = 1
                         },
                         new
                         {
@@ -3962,7 +3962,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 11,
-                            VehicleId = 5
+                            VehicleId = 1
                         },
                         new
                         {
@@ -3971,7 +3971,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 11,
-                            VehicleId = 2
+                            VehicleId = 5
                         },
                         new
                         {
@@ -3980,7 +3980,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 11,
-                            VehicleId = 5
+                            VehicleId = 2
                         },
                         new
                         {
@@ -3989,7 +3989,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 11,
-                            VehicleId = 4
+                            VehicleId = 6
                         },
                         new
                         {
@@ -3998,7 +3998,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 11,
-                            VehicleId = 3
+                            VehicleId = 6
                         },
                         new
                         {
@@ -4007,7 +4007,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 11,
-                            VehicleId = 1
+                            VehicleId = 3
                         },
                         new
                         {
@@ -4016,7 +4016,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 11,
-                            VehicleId = 3
+                            VehicleId = 1
                         },
                         new
                         {
@@ -4034,7 +4034,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 13,
                             StartStationId = 12,
-                            VehicleId = 3
+                            VehicleId = 1
                         },
                         new
                         {
@@ -4043,7 +4043,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 12,
-                            VehicleId = 4
+                            VehicleId = 3
                         },
                         new
                         {
@@ -4052,7 +4052,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 12,
-                            VehicleId = 6
+                            VehicleId = 3
                         },
                         new
                         {
@@ -4070,7 +4070,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 12,
-                            VehicleId = 4
+                            VehicleId = 1
                         },
                         new
                         {
@@ -4079,7 +4079,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 12,
-                            VehicleId = 6
+                            VehicleId = 5
                         },
                         new
                         {
@@ -4106,7 +4106,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 12,
-                            VehicleId = 5
+                            VehicleId = 4
                         },
                         new
                         {
@@ -4124,7 +4124,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 12,
-                            VehicleId = 4
+                            VehicleId = 5
                         },
                         new
                         {
@@ -4133,7 +4133,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 12,
-                            VehicleId = 4
+                            VehicleId = 2
                         },
                         new
                         {
@@ -4151,7 +4151,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 13,
-                            VehicleId = 3
+                            VehicleId = 5
                         },
                         new
                         {
@@ -4160,7 +4160,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 13,
-                            VehicleId = 4
+                            VehicleId = 1
                         },
                         new
                         {
@@ -4169,7 +4169,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 13,
-                            VehicleId = 3
+                            VehicleId = 5
                         },
                         new
                         {
@@ -4178,7 +4178,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 13,
-                            VehicleId = 4
+                            VehicleId = 5
                         },
                         new
                         {
@@ -4187,7 +4187,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 13,
-                            VehicleId = 3
+                            VehicleId = 2
                         },
                         new
                         {
@@ -4196,7 +4196,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 13,
-                            VehicleId = 3
+                            VehicleId = 2
                         },
                         new
                         {
@@ -4205,7 +4205,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 13,
-                            VehicleId = 4
+                            VehicleId = 6
                         },
                         new
                         {
@@ -4214,7 +4214,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 13,
-                            VehicleId = 2
+                            VehicleId = 5
                         },
                         new
                         {
@@ -4223,7 +4223,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 13,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -4241,7 +4241,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 13,
-                            VehicleId = 3
+                            VehicleId = 2
                         },
                         new
                         {
@@ -4250,7 +4250,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 13,
-                            VehicleId = 6
+                            VehicleId = 4
                         },
                         new
                         {
@@ -4259,7 +4259,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 15,
                             StartStationId = 14,
-                            VehicleId = 5
+                            VehicleId = 1
                         },
                         new
                         {
@@ -4268,7 +4268,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 13,
                             StartStationId = 14,
-                            VehicleId = 2
+                            VehicleId = 4
                         },
                         new
                         {
@@ -4277,7 +4277,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 14,
-                            VehicleId = 5
+                            VehicleId = 6
                         },
                         new
                         {
@@ -4286,7 +4286,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 14,
-                            VehicleId = 4
+                            VehicleId = 3
                         },
                         new
                         {
@@ -4295,7 +4295,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 14,
-                            VehicleId = 1
+                            VehicleId = 4
                         },
                         new
                         {
@@ -4304,7 +4304,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 14,
-                            VehicleId = 4
+                            VehicleId = 3
                         },
                         new
                         {
@@ -4313,7 +4313,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 14,
-                            VehicleId = 2
+                            VehicleId = 1
                         },
                         new
                         {
@@ -4322,7 +4322,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 14,
-                            VehicleId = 5
+                            VehicleId = 6
                         },
                         new
                         {
@@ -4340,7 +4340,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 14,
-                            VehicleId = 2
+                            VehicleId = 5
                         },
                         new
                         {
@@ -4349,7 +4349,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 14,
-                            VehicleId = 1
+                            VehicleId = 3
                         },
                         new
                         {
@@ -4358,7 +4358,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 14,
-                            VehicleId = 4
+                            VehicleId = 5
                         },
                         new
                         {
@@ -4367,7 +4367,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 14,
-                            VehicleId = 2
+                            VehicleId = 4
                         },
                         new
                         {
@@ -4376,7 +4376,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 14,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -4394,7 +4394,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 13,
                             StartStationId = 15,
-                            VehicleId = 3
+                            VehicleId = 5
                         },
                         new
                         {
@@ -4403,7 +4403,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 15,
-                            VehicleId = 5
+                            VehicleId = 1
                         },
                         new
                         {
@@ -4412,7 +4412,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 15,
-                            VehicleId = 3
+                            VehicleId = 1
                         },
                         new
                         {
@@ -4421,7 +4421,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 15,
-                            VehicleId = 5
+                            VehicleId = 4
                         },
                         new
                         {
@@ -4430,7 +4430,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 15,
-                            VehicleId = 2
+                            VehicleId = 3
                         },
                         new
                         {
@@ -4439,7 +4439,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 15,
-                            VehicleId = 4
+                            VehicleId = 3
                         },
                         new
                         {
@@ -4448,7 +4448,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 15,
-                            VehicleId = 1
+                            VehicleId = 6
                         },
                         new
                         {
@@ -4457,7 +4457,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 15,
-                            VehicleId = 2
+                            VehicleId = 5
                         },
                         new
                         {
@@ -4466,7 +4466,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 15,
-                            VehicleId = 5
+                            VehicleId = 1
                         },
                         new
                         {
@@ -4475,7 +4475,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 15,
-                            VehicleId = 5
+                            VehicleId = 4
                         },
                         new
                         {
@@ -4493,7 +4493,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 15,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -4511,7 +4511,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 1,
-                            VehicleId = 6
+                            VehicleId = 4
                         },
                         new
                         {
@@ -4520,7 +4520,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 2,
-                            VehicleId = 3
+                            VehicleId = 5
                         },
                         new
                         {
@@ -4529,7 +4529,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 2,
-                            VehicleId = 2
+                            VehicleId = 1
                         },
                         new
                         {
@@ -4538,7 +4538,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 3,
-                            VehicleId = 4
+                            VehicleId = 2
                         },
                         new
                         {
@@ -4556,7 +4556,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 3,
-                            VehicleId = 1
+                            VehicleId = 3
                         },
                         new
                         {
@@ -4565,7 +4565,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 4,
-                            VehicleId = 2
+                            VehicleId = 3
                         },
                         new
                         {
@@ -4574,7 +4574,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 4,
-                            VehicleId = 4
+                            VehicleId = 6
                         },
                         new
                         {
@@ -4583,7 +4583,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 4,
-                            VehicleId = 4
+                            VehicleId = 1
                         },
                         new
                         {
@@ -4592,7 +4592,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 4,
-                            VehicleId = 2
+                            VehicleId = 1
                         },
                         new
                         {
@@ -4601,7 +4601,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 5,
-                            VehicleId = 6
+                            VehicleId = 4
                         },
                         new
                         {
@@ -4610,7 +4610,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 5,
-                            VehicleId = 6
+                            VehicleId = 1
                         },
                         new
                         {
@@ -4619,7 +4619,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 5,
-                            VehicleId = 4
+                            VehicleId = 3
                         },
                         new
                         {
@@ -4628,7 +4628,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 5,
-                            VehicleId = 4
+                            VehicleId = 6
                         },
                         new
                         {
@@ -4637,7 +4637,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 5,
-                            VehicleId = 6
+                            VehicleId = 4
                         },
                         new
                         {
@@ -4646,7 +4646,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 6,
-                            VehicleId = 3
+                            VehicleId = 1
                         },
                         new
                         {
@@ -4655,7 +4655,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 6,
-                            VehicleId = 6
+                            VehicleId = 5
                         },
                         new
                         {
@@ -4664,7 +4664,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 6,
-                            VehicleId = 2
+                            VehicleId = 3
                         },
                         new
                         {
@@ -4673,7 +4673,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 6,
-                            VehicleId = 6
+                            VehicleId = 2
                         },
                         new
                         {
@@ -4682,7 +4682,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 6,
-                            VehicleId = 4
+                            VehicleId = 5
                         },
                         new
                         {
@@ -4691,7 +4691,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 6,
-                            VehicleId = 4
+                            VehicleId = 3
                         },
                         new
                         {
@@ -4700,7 +4700,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 7,
-                            VehicleId = 4
+                            VehicleId = 3
                         },
                         new
                         {
@@ -4709,7 +4709,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 7,
-                            VehicleId = 6
+                            VehicleId = 2
                         },
                         new
                         {
@@ -4727,7 +4727,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 7,
-                            VehicleId = 3
+                            VehicleId = 6
                         },
                         new
                         {
@@ -4736,7 +4736,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 7,
-                            VehicleId = 5
+                            VehicleId = 2
                         },
                         new
                         {
@@ -4745,7 +4745,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 7,
-                            VehicleId = 1
+                            VehicleId = 5
                         },
                         new
                         {
@@ -4754,7 +4754,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 7,
-                            VehicleId = 1
+                            VehicleId = 5
                         },
                         new
                         {
@@ -4763,7 +4763,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 8,
-                            VehicleId = 2
+                            VehicleId = 3
                         },
                         new
                         {
@@ -4772,7 +4772,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 8,
-                            VehicleId = 6
+                            VehicleId = 4
                         },
                         new
                         {
@@ -4781,7 +4781,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 8,
-                            VehicleId = 1
+                            VehicleId = 3
                         },
                         new
                         {
@@ -4790,7 +4790,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 8,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -4799,7 +4799,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 8,
-                            VehicleId = 1
+                            VehicleId = 4
                         },
                         new
                         {
@@ -4808,7 +4808,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 8,
-                            VehicleId = 5
+                            VehicleId = 2
                         },
                         new
                         {
@@ -4817,7 +4817,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 8,
-                            VehicleId = 1
+                            VehicleId = 4
                         },
                         new
                         {
@@ -4826,7 +4826,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 8,
-                            VehicleId = 1
+                            VehicleId = 6
                         },
                         new
                         {
@@ -4835,7 +4835,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 9,
-                            VehicleId = 1
+                            VehicleId = 5
                         },
                         new
                         {
@@ -4844,7 +4844,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 9,
-                            VehicleId = 1
+                            VehicleId = 5
                         },
                         new
                         {
@@ -4853,7 +4853,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 9,
-                            VehicleId = 2
+                            VehicleId = 4
                         },
                         new
                         {
@@ -4862,7 +4862,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 9,
-                            VehicleId = 2
+                            VehicleId = 5
                         },
                         new
                         {
@@ -4871,7 +4871,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 9,
-                            VehicleId = 6
+                            VehicleId = 1
                         },
                         new
                         {
@@ -4880,7 +4880,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 9,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -4889,7 +4889,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 9,
-                            VehicleId = 1
+                            VehicleId = 6
                         },
                         new
                         {
@@ -4898,7 +4898,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 9,
-                            VehicleId = 3
+                            VehicleId = 6
                         },
                         new
                         {
@@ -4907,7 +4907,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 9,
-                            VehicleId = 6
+                            VehicleId = 5
                         },
                         new
                         {
@@ -4916,7 +4916,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 10,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -4925,7 +4925,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 10,
-                            VehicleId = 5
+                            VehicleId = 4
                         },
                         new
                         {
@@ -4934,7 +4934,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 10,
-                            VehicleId = 1
+                            VehicleId = 3
                         },
                         new
                         {
@@ -4943,7 +4943,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 10,
-                            VehicleId = 6
+                            VehicleId = 2
                         },
                         new
                         {
@@ -4961,7 +4961,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 10,
-                            VehicleId = 2
+                            VehicleId = 1
                         },
                         new
                         {
@@ -4970,7 +4970,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 10,
-                            VehicleId = 4
+                            VehicleId = 3
                         },
                         new
                         {
@@ -4979,7 +4979,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 10,
-                            VehicleId = 1
+                            VehicleId = 2
                         },
                         new
                         {
@@ -4997,7 +4997,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 10,
-                            VehicleId = 1
+                            VehicleId = 4
                         },
                         new
                         {
@@ -5006,7 +5006,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 11,
-                            VehicleId = 1
+                            VehicleId = 4
                         },
                         new
                         {
@@ -5015,7 +5015,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 11,
-                            VehicleId = 2
+                            VehicleId = 1
                         },
                         new
                         {
@@ -5024,7 +5024,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 11,
-                            VehicleId = 1
+                            VehicleId = 4
                         },
                         new
                         {
@@ -5033,7 +5033,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 11,
-                            VehicleId = 3
+                            VehicleId = 5
                         },
                         new
                         {
@@ -5042,7 +5042,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 11,
-                            VehicleId = 2
+                            VehicleId = 6
                         },
                         new
                         {
@@ -5051,7 +5051,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 11,
-                            VehicleId = 2
+                            VehicleId = 6
                         },
                         new
                         {
@@ -5060,7 +5060,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 11,
-                            VehicleId = 4
+                            VehicleId = 5
                         },
                         new
                         {
@@ -5078,7 +5078,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 11,
-                            VehicleId = 4
+                            VehicleId = 1
                         },
                         new
                         {
@@ -5087,7 +5087,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 11,
-                            VehicleId = 4
+                            VehicleId = 3
                         },
                         new
                         {
@@ -5096,7 +5096,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 11,
-                            VehicleId = 2
+                            VehicleId = 4
                         },
                         new
                         {
@@ -5105,7 +5105,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 13,
                             StartStationId = 12,
-                            VehicleId = 4
+                            VehicleId = 5
                         },
                         new
                         {
@@ -5114,7 +5114,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 12,
-                            VehicleId = 6
+                            VehicleId = 1
                         },
                         new
                         {
@@ -5123,7 +5123,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 12,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -5132,7 +5132,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 12,
-                            VehicleId = 4
+                            VehicleId = 3
                         },
                         new
                         {
@@ -5150,7 +5150,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 12,
-                            VehicleId = 4
+                            VehicleId = 6
                         },
                         new
                         {
@@ -5168,7 +5168,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 12,
-                            VehicleId = 4
+                            VehicleId = 2
                         },
                         new
                         {
@@ -5177,7 +5177,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 12,
-                            VehicleId = 4
+                            VehicleId = 1
                         },
                         new
                         {
@@ -5186,7 +5186,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 12,
-                            VehicleId = 4
+                            VehicleId = 2
                         },
                         new
                         {
@@ -5195,7 +5195,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 12,
-                            VehicleId = 4
+                            VehicleId = 1
                         },
                         new
                         {
@@ -5204,7 +5204,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 12,
-                            VehicleId = 5
+                            VehicleId = 2
                         },
                         new
                         {
@@ -5213,7 +5213,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 14,
                             StartStationId = 13,
-                            VehicleId = 1
+                            VehicleId = 4
                         },
                         new
                         {
@@ -5222,7 +5222,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 13,
-                            VehicleId = 4
+                            VehicleId = 2
                         },
                         new
                         {
@@ -5240,7 +5240,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 13,
-                            VehicleId = 2
+                            VehicleId = 3
                         },
                         new
                         {
@@ -5249,7 +5249,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 13,
-                            VehicleId = 2
+                            VehicleId = 3
                         },
                         new
                         {
@@ -5258,7 +5258,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 13,
-                            VehicleId = 6
+                            VehicleId = 1
                         },
                         new
                         {
@@ -5267,7 +5267,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 13,
-                            VehicleId = 5
+                            VehicleId = 2
                         },
                         new
                         {
@@ -5276,7 +5276,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 13,
-                            VehicleId = 3
+                            VehicleId = 6
                         },
                         new
                         {
@@ -5285,7 +5285,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 13,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -5294,7 +5294,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 13,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -5312,7 +5312,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 13,
-                            VehicleId = 3
+                            VehicleId = 6
                         },
                         new
                         {
@@ -5321,7 +5321,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 13,
-                            VehicleId = 1
+                            VehicleId = 2
                         },
                         new
                         {
@@ -5330,7 +5330,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 15,
                             StartStationId = 14,
-                            VehicleId = 1
+                            VehicleId = 3
                         },
                         new
                         {
@@ -5339,7 +5339,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 13,
                             StartStationId = 14,
-                            VehicleId = 6
+                            VehicleId = 2
                         },
                         new
                         {
@@ -5348,7 +5348,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 14,
-                            VehicleId = 4
+                            VehicleId = 5
                         },
                         new
                         {
@@ -5357,7 +5357,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 14,
-                            VehicleId = 2
+                            VehicleId = 5
                         },
                         new
                         {
@@ -5375,7 +5375,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 14,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -5384,7 +5384,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 14,
-                            VehicleId = 5
+                            VehicleId = 1
                         },
                         new
                         {
@@ -5393,7 +5393,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 14,
-                            VehicleId = 4
+                            VehicleId = 6
                         },
                         new
                         {
@@ -5402,7 +5402,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 14,
-                            VehicleId = 4
+                            VehicleId = 3
                         },
                         new
                         {
@@ -5411,7 +5411,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 14,
-                            VehicleId = 6
+                            VehicleId = 5
                         },
                         new
                         {
@@ -5420,7 +5420,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 14,
-                            VehicleId = 4
+                            VehicleId = 3
                         },
                         new
                         {
@@ -5456,7 +5456,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 14,
                             StartStationId = 15,
-                            VehicleId = 4
+                            VehicleId = 1
                         },
                         new
                         {
@@ -5465,7 +5465,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 13,
                             StartStationId = 15,
-                            VehicleId = 5
+                            VehicleId = 4
                         },
                         new
                         {
@@ -5474,7 +5474,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 15,
-                            VehicleId = 4
+                            VehicleId = 6
                         },
                         new
                         {
@@ -5483,7 +5483,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 15,
-                            VehicleId = 2
+                            VehicleId = 6
                         },
                         new
                         {
@@ -5492,7 +5492,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 15,
-                            VehicleId = 3
+                            VehicleId = 5
                         },
                         new
                         {
@@ -5501,7 +5501,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 15,
-                            VehicleId = 4
+                            VehicleId = 1
                         },
                         new
                         {
@@ -5510,7 +5510,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 15,
-                            VehicleId = 2
+                            VehicleId = 1
                         },
                         new
                         {
@@ -5519,7 +5519,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 15,
-                            VehicleId = 4
+                            VehicleId = 6
                         },
                         new
                         {
@@ -5528,7 +5528,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 15,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -5537,7 +5537,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 15,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -5546,7 +5546,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 15,
-                            VehicleId = 4
+                            VehicleId = 1
                         },
                         new
                         {
@@ -5555,7 +5555,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 15,
-                            VehicleId = 1
+                            VehicleId = 2
                         },
                         new
                         {
@@ -5564,7 +5564,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 15,
-                            VehicleId = 3
+                            VehicleId = 5
                         },
                         new
                         {
@@ -5573,7 +5573,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 15,
-                            VehicleId = 3
+                            VehicleId = 2
                         },
                         new
                         {
@@ -5582,7 +5582,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 1,
-                            VehicleId = 1
+                            VehicleId = 5
                         },
                         new
                         {
@@ -5591,7 +5591,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 2,
-                            VehicleId = 1
+                            VehicleId = 6
                         },
                         new
                         {
@@ -5600,7 +5600,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 2,
-                            VehicleId = 3
+                            VehicleId = 5
                         },
                         new
                         {
@@ -5609,7 +5609,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 3,
-                            VehicleId = 6
+                            VehicleId = 4
                         },
                         new
                         {
@@ -5618,7 +5618,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 3,
-                            VehicleId = 2
+                            VehicleId = 5
                         },
                         new
                         {
@@ -5627,7 +5627,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 3,
-                            VehicleId = 4
+                            VehicleId = 1
                         },
                         new
                         {
@@ -5636,7 +5636,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 4,
-                            VehicleId = 3
+                            VehicleId = 5
                         },
                         new
                         {
@@ -5645,7 +5645,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 4,
-                            VehicleId = 1
+                            VehicleId = 2
                         },
                         new
                         {
@@ -5654,7 +5654,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 4,
-                            VehicleId = 1
+                            VehicleId = 6
                         },
                         new
                         {
@@ -5663,7 +5663,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 4,
-                            VehicleId = 2
+                            VehicleId = 1
                         },
                         new
                         {
@@ -5672,7 +5672,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 5,
-                            VehicleId = 3
+                            VehicleId = 1
                         },
                         new
                         {
@@ -5681,7 +5681,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 5,
-                            VehicleId = 4
+                            VehicleId = 1
                         },
                         new
                         {
@@ -5690,7 +5690,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 5,
-                            VehicleId = 1
+                            VehicleId = 6
                         },
                         new
                         {
@@ -5699,7 +5699,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 5,
-                            VehicleId = 2
+                            VehicleId = 6
                         },
                         new
                         {
@@ -5708,7 +5708,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 5,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -5717,7 +5717,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 6,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -5726,7 +5726,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 6,
-                            VehicleId = 4
+                            VehicleId = 6
                         },
                         new
                         {
@@ -5735,7 +5735,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 6,
-                            VehicleId = 5
+                            VehicleId = 1
                         },
                         new
                         {
@@ -5744,7 +5744,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 6,
-                            VehicleId = 5
+                            VehicleId = 2
                         },
                         new
                         {
@@ -5753,7 +5753,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 6,
-                            VehicleId = 2
+                            VehicleId = 6
                         },
                         new
                         {
@@ -5762,7 +5762,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 6,
-                            VehicleId = 4
+                            VehicleId = 3
                         },
                         new
                         {
@@ -5771,7 +5771,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 7,
-                            VehicleId = 1
+                            VehicleId = 5
                         },
                         new
                         {
@@ -5780,7 +5780,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 7,
-                            VehicleId = 5
+                            VehicleId = 1
                         },
                         new
                         {
@@ -5807,7 +5807,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 7,
-                            VehicleId = 3
+                            VehicleId = 6
                         },
                         new
                         {
@@ -5834,7 +5834,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 8,
-                            VehicleId = 6
+                            VehicleId = 4
                         },
                         new
                         {
@@ -5843,7 +5843,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 8,
-                            VehicleId = 3
+                            VehicleId = 5
                         },
                         new
                         {
@@ -5861,7 +5861,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 8,
-                            VehicleId = 4
+                            VehicleId = 1
                         },
                         new
                         {
@@ -5870,7 +5870,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 8,
-                            VehicleId = 2
+                            VehicleId = 1
                         },
                         new
                         {
@@ -5879,7 +5879,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 8,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -5897,7 +5897,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 8,
-                            VehicleId = 1
+                            VehicleId = 4
                         },
                         new
                         {
@@ -5906,7 +5906,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 9,
-                            VehicleId = 2
+                            VehicleId = 3
                         },
                         new
                         {
@@ -5915,7 +5915,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 9,
-                            VehicleId = 5
+                            VehicleId = 4
                         },
                         new
                         {
@@ -5933,7 +5933,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 9,
-                            VehicleId = 2
+                            VehicleId = 3
                         },
                         new
                         {
@@ -5942,7 +5942,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 9,
-                            VehicleId = 5
+                            VehicleId = 4
                         },
                         new
                         {
@@ -5951,7 +5951,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 9,
-                            VehicleId = 5
+                            VehicleId = 4
                         },
                         new
                         {
@@ -5969,7 +5969,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 9,
-                            VehicleId = 3
+                            VehicleId = 2
                         },
                         new
                         {
@@ -5978,7 +5978,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 9,
-                            VehicleId = 1
+                            VehicleId = 3
                         },
                         new
                         {
@@ -5987,7 +5987,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 10,
-                            VehicleId = 1
+                            VehicleId = 6
                         },
                         new
                         {
@@ -5996,7 +5996,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 10,
-                            VehicleId = 4
+                            VehicleId = 5
                         },
                         new
                         {
@@ -6005,7 +6005,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 10,
-                            VehicleId = 4
+                            VehicleId = 5
                         },
                         new
                         {
@@ -6014,7 +6014,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 10,
-                            VehicleId = 1
+                            VehicleId = 2
                         },
                         new
                         {
@@ -6023,7 +6023,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 10,
-                            VehicleId = 6
+                            VehicleId = 3
                         },
                         new
                         {
@@ -6032,7 +6032,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 10,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -6041,7 +6041,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 10,
-                            VehicleId = 4
+                            VehicleId = 1
                         },
                         new
                         {
@@ -6050,7 +6050,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 10,
-                            VehicleId = 4
+                            VehicleId = 2
                         },
                         new
                         {
@@ -6059,7 +6059,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 10,
-                            VehicleId = 4
+                            VehicleId = 6
                         },
                         new
                         {
@@ -6068,7 +6068,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 10,
-                            VehicleId = 2
+                            VehicleId = 3
                         },
                         new
                         {
@@ -6077,7 +6077,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 11,
-                            VehicleId = 4
+                            VehicleId = 2
                         },
                         new
                         {
@@ -6086,7 +6086,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 11,
-                            VehicleId = 3
+                            VehicleId = 1
                         },
                         new
                         {
@@ -6095,7 +6095,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 11,
-                            VehicleId = 3
+                            VehicleId = 2
                         },
                         new
                         {
@@ -6104,7 +6104,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 11,
-                            VehicleId = 1
+                            VehicleId = 3
                         },
                         new
                         {
@@ -6131,7 +6131,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 11,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -6140,7 +6140,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 11,
-                            VehicleId = 3
+                            VehicleId = 2
                         },
                         new
                         {
@@ -6149,7 +6149,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 11,
-                            VehicleId = 5
+                            VehicleId = 6
                         },
                         new
                         {
@@ -6167,7 +6167,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 11,
-                            VehicleId = 6
+                            VehicleId = 2
                         },
                         new
                         {
@@ -6194,7 +6194,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 12,
-                            VehicleId = 3
+                            VehicleId = 5
                         },
                         new
                         {
@@ -6203,7 +6203,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 12,
-                            VehicleId = 2
+                            VehicleId = 3
                         },
                         new
                         {
@@ -6212,7 +6212,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 12,
-                            VehicleId = 2
+                            VehicleId = 6
                         },
                         new
                         {
@@ -6221,7 +6221,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 12,
-                            VehicleId = 5
+                            VehicleId = 4
                         },
                         new
                         {
@@ -6230,7 +6230,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 12,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -6239,7 +6239,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 12,
-                            VehicleId = 4
+                            VehicleId = 3
                         },
                         new
                         {
@@ -6248,7 +6248,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 12,
-                            VehicleId = 1
+                            VehicleId = 4
                         },
                         new
                         {
@@ -6257,7 +6257,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 12,
-                            VehicleId = 2
+                            VehicleId = 6
                         },
                         new
                         {
@@ -6266,7 +6266,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 12,
-                            VehicleId = 6
+                            VehicleId = 3
                         },
                         new
                         {
@@ -6275,7 +6275,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 12,
-                            VehicleId = 4
+                            VehicleId = 1
                         },
                         new
                         {
@@ -6284,7 +6284,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 14,
                             StartStationId = 13,
-                            VehicleId = 5
+                            VehicleId = 4
                         },
                         new
                         {
@@ -6293,7 +6293,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 13,
-                            VehicleId = 1
+                            VehicleId = 4
                         },
                         new
                         {
@@ -6302,7 +6302,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 13,
-                            VehicleId = 1
+                            VehicleId = 3
                         },
                         new
                         {
@@ -6311,7 +6311,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 13,
-                            VehicleId = 1
+                            VehicleId = 4
                         },
                         new
                         {
@@ -6320,7 +6320,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 13,
-                            VehicleId = 1
+                            VehicleId = 3
                         },
                         new
                         {
@@ -6329,7 +6329,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 13,
-                            VehicleId = 2
+                            VehicleId = 5
                         },
                         new
                         {
@@ -6347,7 +6347,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 13,
-                            VehicleId = 2
+                            VehicleId = 3
                         },
                         new
                         {
@@ -6356,7 +6356,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 13,
-                            VehicleId = 4
+                            VehicleId = 2
                         },
                         new
                         {
@@ -6374,7 +6374,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 13,
-                            VehicleId = 1
+                            VehicleId = 6
                         },
                         new
                         {
@@ -6383,7 +6383,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 13,
-                            VehicleId = 6
+                            VehicleId = 1
                         },
                         new
                         {
@@ -6392,7 +6392,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 13,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -6401,7 +6401,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 15,
                             StartStationId = 14,
-                            VehicleId = 1
+                            VehicleId = 4
                         },
                         new
                         {
@@ -6410,7 +6410,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 13,
                             StartStationId = 14,
-                            VehicleId = 6
+                            VehicleId = 4
                         },
                         new
                         {
@@ -6419,7 +6419,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 14,
-                            VehicleId = 1
+                            VehicleId = 3
                         },
                         new
                         {
@@ -6428,7 +6428,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 14,
-                            VehicleId = 3
+                            VehicleId = 5
                         },
                         new
                         {
@@ -6446,7 +6446,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 14,
-                            VehicleId = 6
+                            VehicleId = 2
                         },
                         new
                         {
@@ -6455,7 +6455,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 14,
-                            VehicleId = 6
+                            VehicleId = 3
                         },
                         new
                         {
@@ -6464,7 +6464,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 14,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -6473,7 +6473,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 14,
-                            VehicleId = 4
+                            VehicleId = 3
                         },
                         new
                         {
@@ -6482,7 +6482,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 14,
-                            VehicleId = 3
+                            VehicleId = 1
                         },
                         new
                         {
@@ -6500,7 +6500,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 14,
-                            VehicleId = 6
+                            VehicleId = 3
                         },
                         new
                         {
@@ -6509,7 +6509,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 14,
-                            VehicleId = 5
+                            VehicleId = 6
                         },
                         new
                         {
@@ -6518,7 +6518,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 14,
-                            VehicleId = 4
+                            VehicleId = 6
                         },
                         new
                         {
@@ -6527,7 +6527,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 14,
                             StartStationId = 15,
-                            VehicleId = 6
+                            VehicleId = 5
                         },
                         new
                         {
@@ -6536,7 +6536,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 13,
                             StartStationId = 15,
-                            VehicleId = 6
+                            VehicleId = 4
                         },
                         new
                         {
@@ -6545,7 +6545,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 15,
-                            VehicleId = 2
+                            VehicleId = 5
                         },
                         new
                         {
@@ -6563,7 +6563,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 15,
-                            VehicleId = 3
+                            VehicleId = 2
                         },
                         new
                         {
@@ -6572,7 +6572,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 15,
-                            VehicleId = 6
+                            VehicleId = 1
                         },
                         new
                         {
@@ -6581,7 +6581,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 15,
-                            VehicleId = 1
+                            VehicleId = 4
                         },
                         new
                         {
@@ -6590,7 +6590,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 15,
-                            VehicleId = 6
+                            VehicleId = 5
                         },
                         new
                         {
@@ -6608,7 +6608,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 15,
-                            VehicleId = 6
+                            VehicleId = 4
                         },
                         new
                         {
@@ -6617,7 +6617,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 15,
-                            VehicleId = 4
+                            VehicleId = 3
                         },
                         new
                         {
@@ -6626,7 +6626,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 15,
-                            VehicleId = 6
+                            VehicleId = 5
                         },
                         new
                         {
@@ -6635,7 +6635,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 15,
-                            VehicleId = 2
+                            VehicleId = 1
                         },
                         new
                         {
@@ -6644,7 +6644,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 15,
-                            VehicleId = 6
+                            VehicleId = 2
                         },
                         new
                         {
@@ -6662,7 +6662,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 2,
-                            VehicleId = 5
+                            VehicleId = 4
                         },
                         new
                         {
@@ -6671,7 +6671,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 2,
-                            VehicleId = 2
+                            VehicleId = 4
                         },
                         new
                         {
@@ -6680,7 +6680,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 3,
-                            VehicleId = 3
+                            VehicleId = 1
                         },
                         new
                         {
@@ -6689,7 +6689,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 3,
-                            VehicleId = 4
+                            VehicleId = 2
                         },
                         new
                         {
@@ -6698,7 +6698,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 3,
-                            VehicleId = 5
+                            VehicleId = 2
                         },
                         new
                         {
@@ -6707,7 +6707,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 4,
-                            VehicleId = 6
+                            VehicleId = 2
                         },
                         new
                         {
@@ -6716,7 +6716,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 4,
-                            VehicleId = 1
+                            VehicleId = 6
                         },
                         new
                         {
@@ -6725,7 +6725,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 4,
-                            VehicleId = 3
+                            VehicleId = 6
                         },
                         new
                         {
@@ -6752,7 +6752,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 5,
-                            VehicleId = 3
+                            VehicleId = 2
                         },
                         new
                         {
@@ -6770,7 +6770,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 5,
-                            VehicleId = 6
+                            VehicleId = 1
                         },
                         new
                         {
@@ -6779,7 +6779,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 5,
-                            VehicleId = 6
+                            VehicleId = 3
                         },
                         new
                         {
@@ -6788,7 +6788,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 6,
-                            VehicleId = 1
+                            VehicleId = 3
                         },
                         new
                         {
@@ -6797,7 +6797,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 6,
-                            VehicleId = 2
+                            VehicleId = 4
                         },
                         new
                         {
@@ -6806,7 +6806,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 6,
-                            VehicleId = 4
+                            VehicleId = 6
                         },
                         new
                         {
@@ -6815,7 +6815,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 6,
-                            VehicleId = 3
+                            VehicleId = 1
                         },
                         new
                         {
@@ -6824,7 +6824,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 6,
-                            VehicleId = 6
+                            VehicleId = 5
                         },
                         new
                         {
@@ -6833,7 +6833,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 6,
-                            VehicleId = 4
+                            VehicleId = 3
                         },
                         new
                         {
@@ -6842,7 +6842,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 7,
-                            VehicleId = 2
+                            VehicleId = 1
                         },
                         new
                         {
@@ -6851,7 +6851,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 7,
-                            VehicleId = 5
+                            VehicleId = 6
                         },
                         new
                         {
@@ -6860,7 +6860,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 7,
-                            VehicleId = 2
+                            VehicleId = 1
                         },
                         new
                         {
@@ -6869,7 +6869,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 7,
-                            VehicleId = 6
+                            VehicleId = 2
                         },
                         new
                         {
@@ -6878,7 +6878,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 7,
-                            VehicleId = 6
+                            VehicleId = 3
                         },
                         new
                         {
@@ -6887,7 +6887,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 7,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -6896,7 +6896,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 7,
-                            VehicleId = 1
+                            VehicleId = 3
                         },
                         new
                         {
@@ -6914,7 +6914,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 8,
-                            VehicleId = 3
+                            VehicleId = 5
                         },
                         new
                         {
@@ -6923,7 +6923,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 8,
-                            VehicleId = 4
+                            VehicleId = 5
                         },
                         new
                         {
@@ -6932,7 +6932,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 8,
-                            VehicleId = 3
+                            VehicleId = 1
                         },
                         new
                         {
@@ -6950,7 +6950,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 8,
-                            VehicleId = 5
+                            VehicleId = 2
                         },
                         new
                         {
@@ -6959,7 +6959,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 8,
-                            VehicleId = 5
+                            VehicleId = 6
                         },
                         new
                         {
@@ -6968,7 +6968,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 8,
-                            VehicleId = 3
+                            VehicleId = 2
                         },
                         new
                         {
@@ -6977,7 +6977,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 9,
-                            VehicleId = 3
+                            VehicleId = 1
                         },
                         new
                         {
@@ -6986,7 +6986,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 9,
-                            VehicleId = 5
+                            VehicleId = 1
                         },
                         new
                         {
@@ -6995,7 +6995,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 9,
-                            VehicleId = 4
+                            VehicleId = 5
                         },
                         new
                         {
@@ -7004,7 +7004,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 9,
-                            VehicleId = 5
+                            VehicleId = 2
                         },
                         new
                         {
@@ -7013,7 +7013,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 9,
-                            VehicleId = 2
+                            VehicleId = 3
                         },
                         new
                         {
@@ -7031,7 +7031,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 9,
-                            VehicleId = 2
+                            VehicleId = 3
                         },
                         new
                         {
@@ -7040,7 +7040,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 9,
-                            VehicleId = 1
+                            VehicleId = 2
                         },
                         new
                         {
@@ -7049,7 +7049,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 9,
-                            VehicleId = 6
+                            VehicleId = 1
                         },
                         new
                         {
@@ -7067,7 +7067,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 10,
-                            VehicleId = 2
+                            VehicleId = 5
                         },
                         new
                         {
@@ -7085,7 +7085,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 10,
-                            VehicleId = 1
+                            VehicleId = 5
                         },
                         new
                         {
@@ -7094,7 +7094,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 10,
-                            VehicleId = 1
+                            VehicleId = 6
                         },
                         new
                         {
@@ -7112,7 +7112,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 10,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -7121,7 +7121,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 10,
-                            VehicleId = 1
+                            VehicleId = 4
                         },
                         new
                         {
@@ -7130,7 +7130,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 10,
-                            VehicleId = 2
+                            VehicleId = 1
                         },
                         new
                         {
@@ -7139,7 +7139,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 10,
-                            VehicleId = 2
+                            VehicleId = 6
                         },
                         new
                         {
@@ -7148,7 +7148,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 11,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -7157,7 +7157,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 11,
-                            VehicleId = 4
+                            VehicleId = 2
                         },
                         new
                         {
@@ -7166,7 +7166,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 11,
-                            VehicleId = 4
+                            VehicleId = 5
                         },
                         new
                         {
@@ -7175,7 +7175,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 11,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -7184,7 +7184,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 11,
-                            VehicleId = 4
+                            VehicleId = 2
                         },
                         new
                         {
@@ -7193,7 +7193,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 11,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -7202,7 +7202,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 11,
-                            VehicleId = 1
+                            VehicleId = 6
                         },
                         new
                         {
@@ -7220,7 +7220,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 11,
-                            VehicleId = 6
+                            VehicleId = 2
                         },
                         new
                         {
@@ -7229,7 +7229,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 11,
-                            VehicleId = 4
+                            VehicleId = 3
                         },
                         new
                         {
@@ -7238,7 +7238,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 11,
-                            VehicleId = 3
+                            VehicleId = 2
                         },
                         new
                         {
@@ -7247,7 +7247,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 13,
                             StartStationId = 12,
-                            VehicleId = 1
+                            VehicleId = 3
                         },
                         new
                         {
@@ -7256,7 +7256,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 12,
-                            VehicleId = 2
+                            VehicleId = 6
                         },
                         new
                         {
@@ -7265,7 +7265,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 12,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -7274,7 +7274,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 12,
-                            VehicleId = 2
+                            VehicleId = 1
                         },
                         new
                         {
@@ -7283,7 +7283,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 12,
-                            VehicleId = 4
+                            VehicleId = 5
                         },
                         new
                         {
@@ -7292,7 +7292,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 12,
-                            VehicleId = 4
+                            VehicleId = 6
                         },
                         new
                         {
@@ -7301,7 +7301,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 12,
-                            VehicleId = 6
+                            VehicleId = 2
                         },
                         new
                         {
@@ -7310,7 +7310,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 12,
-                            VehicleId = 3
+                            VehicleId = 2
                         },
                         new
                         {
@@ -7319,7 +7319,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 12,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -7328,7 +7328,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 12,
-                            VehicleId = 1
+                            VehicleId = 2
                         },
                         new
                         {
@@ -7337,7 +7337,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 12,
-                            VehicleId = 1
+                            VehicleId = 4
                         },
                         new
                         {
@@ -7355,7 +7355,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 14,
                             StartStationId = 13,
-                            VehicleId = 2
+                            VehicleId = 1
                         },
                         new
                         {
@@ -7364,7 +7364,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 13,
-                            VehicleId = 3
+                            VehicleId = 5
                         },
                         new
                         {
@@ -7373,7 +7373,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 13,
-                            VehicleId = 5
+                            VehicleId = 2
                         },
                         new
                         {
@@ -7382,7 +7382,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 13,
-                            VehicleId = 1
+                            VehicleId = 5
                         },
                         new
                         {
@@ -7391,7 +7391,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 13,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -7400,7 +7400,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 13,
-                            VehicleId = 3
+                            VehicleId = 5
                         },
                         new
                         {
@@ -7409,7 +7409,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 13,
-                            VehicleId = 1
+                            VehicleId = 2
                         },
                         new
                         {
@@ -7418,7 +7418,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 13,
-                            VehicleId = 2
+                            VehicleId = 1
                         },
                         new
                         {
@@ -7427,7 +7427,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 13,
-                            VehicleId = 4
+                            VehicleId = 2
                         },
                         new
                         {
@@ -7436,7 +7436,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 13,
-                            VehicleId = 5
+                            VehicleId = 6
                         },
                         new
                         {
@@ -7445,7 +7445,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 13,
-                            VehicleId = 2
+                            VehicleId = 1
                         },
                         new
                         {
@@ -7454,7 +7454,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 13,
-                            VehicleId = 3
+                            VehicleId = 6
                         },
                         new
                         {
@@ -7463,7 +7463,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 13,
-                            VehicleId = 2
+                            VehicleId = 1
                         },
                         new
                         {
@@ -7481,7 +7481,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 13,
                             StartStationId = 14,
-                            VehicleId = 6
+                            VehicleId = 3
                         },
                         new
                         {
@@ -7490,7 +7490,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 14,
-                            VehicleId = 6
+                            VehicleId = 3
                         },
                         new
                         {
@@ -7499,7 +7499,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 14,
-                            VehicleId = 1
+                            VehicleId = 2
                         },
                         new
                         {
@@ -7508,7 +7508,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 14,
-                            VehicleId = 1
+                            VehicleId = 3
                         },
                         new
                         {
@@ -7517,7 +7517,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 14,
-                            VehicleId = 2
+                            VehicleId = 6
                         },
                         new
                         {
@@ -7526,7 +7526,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 14,
-                            VehicleId = 5
+                            VehicleId = 6
                         },
                         new
                         {
@@ -7535,7 +7535,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 14,
-                            VehicleId = 1
+                            VehicleId = 6
                         },
                         new
                         {
@@ -7544,7 +7544,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 14,
-                            VehicleId = 1
+                            VehicleId = 3
                         },
                         new
                         {
@@ -7553,7 +7553,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 14,
-                            VehicleId = 1
+                            VehicleId = 4
                         },
                         new
                         {
@@ -7562,7 +7562,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 14,
-                            VehicleId = 6
+                            VehicleId = 1
                         },
                         new
                         {
@@ -7571,7 +7571,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 14,
-                            VehicleId = 5
+                            VehicleId = 4
                         },
                         new
                         {
@@ -7580,7 +7580,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 14,
-                            VehicleId = 3
+                            VehicleId = 5
                         },
                         new
                         {
@@ -7598,7 +7598,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 14,
                             StartStationId = 15,
-                            VehicleId = 1
+                            VehicleId = 3
                         },
                         new
                         {
@@ -7607,7 +7607,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 13,
                             StartStationId = 15,
-                            VehicleId = 2
+                            VehicleId = 4
                         },
                         new
                         {
@@ -7625,7 +7625,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 15,
-                            VehicleId = 4
+                            VehicleId = 1
                         },
                         new
                         {
@@ -7634,7 +7634,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 15,
-                            VehicleId = 4
+                            VehicleId = 6
                         },
                         new
                         {
@@ -7643,7 +7643,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 15,
-                            VehicleId = 5
+                            VehicleId = 1
                         },
                         new
                         {
@@ -7652,7 +7652,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 15,
-                            VehicleId = 2
+                            VehicleId = 4
                         },
                         new
                         {
@@ -7661,7 +7661,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 15,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -7670,7 +7670,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 15,
-                            VehicleId = 3
+                            VehicleId = 1
                         },
                         new
                         {
@@ -7679,7 +7679,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 15,
-                            VehicleId = 6
+                            VehicleId = 3
                         },
                         new
                         {
@@ -7688,7 +7688,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 15,
-                            VehicleId = 4
+                            VehicleId = 3
                         },
                         new
                         {
@@ -7697,7 +7697,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 15,
-                            VehicleId = 4
+                            VehicleId = 6
                         },
                         new
                         {
@@ -7706,7 +7706,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 15,
-                            VehicleId = 2
+                            VehicleId = 4
                         },
                         new
                         {
@@ -7733,7 +7733,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 2,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -7742,7 +7742,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 2,
-                            VehicleId = 6
+                            VehicleId = 5
                         },
                         new
                         {
@@ -7751,7 +7751,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 3,
-                            VehicleId = 3
+                            VehicleId = 6
                         },
                         new
                         {
@@ -7760,7 +7760,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 3,
-                            VehicleId = 4
+                            VehicleId = 3
                         },
                         new
                         {
@@ -7769,7 +7769,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 3,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -7778,7 +7778,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 4,
-                            VehicleId = 5
+                            VehicleId = 1
                         },
                         new
                         {
@@ -7814,7 +7814,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 5,
-                            VehicleId = 4
+                            VehicleId = 5
                         },
                         new
                         {
@@ -7823,7 +7823,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 5,
-                            VehicleId = 1
+                            VehicleId = 3
                         },
                         new
                         {
@@ -7832,7 +7832,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 5,
-                            VehicleId = 5
+                            VehicleId = 1
                         },
                         new
                         {
@@ -7841,7 +7841,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 5,
-                            VehicleId = 4
+                            VehicleId = 2
                         },
                         new
                         {
@@ -7850,7 +7850,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 5,
-                            VehicleId = 2
+                            VehicleId = 4
                         },
                         new
                         {
@@ -7859,7 +7859,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 6,
-                            VehicleId = 6
+                            VehicleId = 4
                         },
                         new
                         {
@@ -7877,7 +7877,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 6,
-                            VehicleId = 4
+                            VehicleId = 6
                         },
                         new
                         {
@@ -7886,7 +7886,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 6,
-                            VehicleId = 4
+                            VehicleId = 2
                         },
                         new
                         {
@@ -7895,7 +7895,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 6,
-                            VehicleId = 6
+                            VehicleId = 5
                         },
                         new
                         {
@@ -7904,7 +7904,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 6,
-                            VehicleId = 4
+                            VehicleId = 2
                         },
                         new
                         {
@@ -7913,7 +7913,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 7,
-                            VehicleId = 2
+                            VehicleId = 4
                         },
                         new
                         {
@@ -7922,7 +7922,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 7,
-                            VehicleId = 2
+                            VehicleId = 1
                         },
                         new
                         {
@@ -7931,7 +7931,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 7,
-                            VehicleId = 3
+                            VehicleId = 5
                         },
                         new
                         {
@@ -7940,7 +7940,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 7,
-                            VehicleId = 6
+                            VehicleId = 1
                         },
                         new
                         {
@@ -7949,7 +7949,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 7,
-                            VehicleId = 2
+                            VehicleId = 1
                         },
                         new
                         {
@@ -7958,7 +7958,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 7,
-                            VehicleId = 1
+                            VehicleId = 3
                         },
                         new
                         {
@@ -7967,7 +7967,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 7,
-                            VehicleId = 4
+                            VehicleId = 3
                         },
                         new
                         {
@@ -7985,7 +7985,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 8,
-                            VehicleId = 6
+                            VehicleId = 1
                         },
                         new
                         {
@@ -7994,7 +7994,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 8,
-                            VehicleId = 3
+                            VehicleId = 1
                         },
                         new
                         {
@@ -8003,7 +8003,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 8,
-                            VehicleId = 5
+                            VehicleId = 2
                         },
                         new
                         {
@@ -8030,7 +8030,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 8,
-                            VehicleId = 1
+                            VehicleId = 3
                         },
                         new
                         {
@@ -8039,7 +8039,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 8,
-                            VehicleId = 1
+                            VehicleId = 6
                         },
                         new
                         {
@@ -8048,7 +8048,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 9,
-                            VehicleId = 6
+                            VehicleId = 4
                         },
                         new
                         {
@@ -8057,7 +8057,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 9,
-                            VehicleId = 2
+                            VehicleId = 4
                         },
                         new
                         {
@@ -8066,7 +8066,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 9,
-                            VehicleId = 6
+                            VehicleId = 3
                         },
                         new
                         {
@@ -8084,7 +8084,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 9,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -8093,7 +8093,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 9,
-                            VehicleId = 3
+                            VehicleId = 1
                         },
                         new
                         {
@@ -8102,7 +8102,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 9,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -8111,7 +8111,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 9,
-                            VehicleId = 1
+                            VehicleId = 2
                         },
                         new
                         {
@@ -8120,7 +8120,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 9,
-                            VehicleId = 2
+                            VehicleId = 5
                         },
                         new
                         {
@@ -8129,7 +8129,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 10,
-                            VehicleId = 1
+                            VehicleId = 3
                         },
                         new
                         {
@@ -8138,7 +8138,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 10,
-                            VehicleId = 1
+                            VehicleId = 2
                         },
                         new
                         {
@@ -8147,7 +8147,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 10,
-                            VehicleId = 6
+                            VehicleId = 3
                         },
                         new
                         {
@@ -8156,7 +8156,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 10,
-                            VehicleId = 6
+                            VehicleId = 1
                         },
                         new
                         {
@@ -8165,7 +8165,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 10,
-                            VehicleId = 1
+                            VehicleId = 6
                         },
                         new
                         {
@@ -8183,7 +8183,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 10,
-                            VehicleId = 2
+                            VehicleId = 5
                         },
                         new
                         {
@@ -8192,7 +8192,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 10,
-                            VehicleId = 1
+                            VehicleId = 6
                         },
                         new
                         {
@@ -8201,7 +8201,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 10,
-                            VehicleId = 5
+                            VehicleId = 2
                         },
                         new
                         {
@@ -8210,7 +8210,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 10,
-                            VehicleId = 1
+                            VehicleId = 2
                         },
                         new
                         {
@@ -8219,7 +8219,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 11,
-                            VehicleId = 6
+                            VehicleId = 2
                         },
                         new
                         {
@@ -8228,7 +8228,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 11,
-                            VehicleId = 3
+                            VehicleId = 2
                         },
                         new
                         {
@@ -8237,7 +8237,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 11,
-                            VehicleId = 6
+                            VehicleId = 5
                         },
                         new
                         {
@@ -8246,7 +8246,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 11,
-                            VehicleId = 3
+                            VehicleId = 6
                         },
                         new
                         {
@@ -8255,7 +8255,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 11,
-                            VehicleId = 1
+                            VehicleId = 3
                         },
                         new
                         {
@@ -8264,7 +8264,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 11,
-                            VehicleId = 4
+                            VehicleId = 6
                         },
                         new
                         {
@@ -8273,7 +8273,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 11,
-                            VehicleId = 6
+                            VehicleId = 1
                         },
                         new
                         {
@@ -8282,7 +8282,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 11,
-                            VehicleId = 6
+                            VehicleId = 5
                         },
                         new
                         {
@@ -8291,7 +8291,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 11,
-                            VehicleId = 3
+                            VehicleId = 2
                         },
                         new
                         {
@@ -8318,7 +8318,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 13,
                             StartStationId = 12,
-                            VehicleId = 3
+                            VehicleId = 1
                         },
                         new
                         {
@@ -8345,7 +8345,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 12,
-                            VehicleId = 6
+                            VehicleId = 2
                         },
                         new
                         {
@@ -8354,7 +8354,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 12,
-                            VehicleId = 6
+                            VehicleId = 2
                         },
                         new
                         {
@@ -8363,7 +8363,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 12,
-                            VehicleId = 5
+                            VehicleId = 2
                         },
                         new
                         {
@@ -8381,7 +8381,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 12,
-                            VehicleId = 3
+                            VehicleId = 1
                         },
                         new
                         {
@@ -8390,7 +8390,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 12,
-                            VehicleId = 5
+                            VehicleId = 4
                         },
                         new
                         {
@@ -8399,7 +8399,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 12,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -8408,7 +8408,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 12,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -8417,7 +8417,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 12,
-                            VehicleId = 3
+                            VehicleId = 5
                         },
                         new
                         {
@@ -8435,7 +8435,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 13,
-                            VehicleId = 5
+                            VehicleId = 6
                         },
                         new
                         {
@@ -8444,7 +8444,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 13,
-                            VehicleId = 2
+                            VehicleId = 3
                         },
                         new
                         {
@@ -8453,7 +8453,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 13,
-                            VehicleId = 4
+                            VehicleId = 1
                         },
                         new
                         {
@@ -8462,7 +8462,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 13,
-                            VehicleId = 4
+                            VehicleId = 3
                         },
                         new
                         {
@@ -8471,7 +8471,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 13,
-                            VehicleId = 3
+                            VehicleId = 1
                         },
                         new
                         {
@@ -8480,7 +8480,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 13,
-                            VehicleId = 3
+                            VehicleId = 5
                         },
                         new
                         {
@@ -8489,7 +8489,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 13,
-                            VehicleId = 6
+                            VehicleId = 4
                         },
                         new
                         {
@@ -8498,7 +8498,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 13,
-                            VehicleId = 2
+                            VehicleId = 3
                         },
                         new
                         {
@@ -8507,7 +8507,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 13,
-                            VehicleId = 2
+                            VehicleId = 1
                         },
                         new
                         {
@@ -8516,7 +8516,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 13,
-                            VehicleId = 5
+                            VehicleId = 6
                         },
                         new
                         {
@@ -8525,7 +8525,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 13,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -8534,7 +8534,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 13,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -8543,7 +8543,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 15,
                             StartStationId = 14,
-                            VehicleId = 1
+                            VehicleId = 5
                         },
                         new
                         {
@@ -8552,7 +8552,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 13,
                             StartStationId = 14,
-                            VehicleId = 6
+                            VehicleId = 5
                         },
                         new
                         {
@@ -8561,7 +8561,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 14,
-                            VehicleId = 6
+                            VehicleId = 3
                         },
                         new
                         {
@@ -8588,7 +8588,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 14,
-                            VehicleId = 5
+                            VehicleId = 2
                         },
                         new
                         {
@@ -8597,7 +8597,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 14,
-                            VehicleId = 4
+                            VehicleId = 6
                         },
                         new
                         {
@@ -8606,7 +8606,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 14,
-                            VehicleId = 2
+                            VehicleId = 1
                         },
                         new
                         {
@@ -8615,7 +8615,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 14,
-                            VehicleId = 2
+                            VehicleId = 6
                         },
                         new
                         {
@@ -8624,7 +8624,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 14,
-                            VehicleId = 1
+                            VehicleId = 4
                         },
                         new
                         {
@@ -8633,7 +8633,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 14,
-                            VehicleId = 2
+                            VehicleId = 1
                         },
                         new
                         {
@@ -8642,7 +8642,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 14,
-                            VehicleId = 1
+                            VehicleId = 2
                         },
                         new
                         {
@@ -8651,7 +8651,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 14,
-                            VehicleId = 5
+                            VehicleId = 6
                         },
                         new
                         {
@@ -8660,7 +8660,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 14,
-                            VehicleId = 2
+                            VehicleId = 4
                         },
                         new
                         {
@@ -8669,7 +8669,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 14,
                             StartStationId = 15,
-                            VehicleId = 3
+                            VehicleId = 2
                         },
                         new
                         {
@@ -8678,7 +8678,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 13,
                             StartStationId = 15,
-                            VehicleId = 5
+                            VehicleId = 1
                         },
                         new
                         {
@@ -8687,7 +8687,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 15,
-                            VehicleId = 5
+                            VehicleId = 6
                         },
                         new
                         {
@@ -8696,7 +8696,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 15,
-                            VehicleId = 2
+                            VehicleId = 6
                         },
                         new
                         {
@@ -8705,7 +8705,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 15,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -8714,7 +8714,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 15,
-                            VehicleId = 5
+                            VehicleId = 2
                         },
                         new
                         {
@@ -8723,7 +8723,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 15,
-                            VehicleId = 1
+                            VehicleId = 4
                         },
                         new
                         {
@@ -8732,7 +8732,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 15,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -8741,7 +8741,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 15,
-                            VehicleId = 4
+                            VehicleId = 5
                         },
                         new
                         {
@@ -8750,7 +8750,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 15,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -8759,7 +8759,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 15,
-                            VehicleId = 3
+                            VehicleId = 2
                         },
                         new
                         {
@@ -8768,7 +8768,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 15,
-                            VehicleId = 3
+                            VehicleId = 1
                         },
                         new
                         {
@@ -8777,7 +8777,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 15,
-                            VehicleId = 1
+                            VehicleId = 2
                         },
                         new
                         {
@@ -9134,11 +9134,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Email = "sara.sahinpasic@edu.fit.ba",
                             FirstName = "Sara",
                             LastName = "Šahinpašić",
-                            ModifiedDate = new DateTime(2025, 1, 7, 22, 1, 15, 563, DateTimeKind.Local).AddTicks(2823),
-                            PasswordHash = "/OPlRW057kSRZvaocjS3koMbFcw=",
-                            PasswordSalt = "NzqCfMS+kpdY1JXW5psUcQ==",
+                            ModifiedDate = new DateTime(2025, 1, 9, 15, 30, 22, 797, DateTimeKind.Local).AddTicks(6726),
+                            PasswordHash = "teIeJ0MPDYIUQkrPk+t0+EjZF0Q=",
+                            PasswordSalt = "kmtW4sZPUhNb7sso852Udw==",
                             PhoneNumber = "+38761222333",
-                            RegistrationDate = new DateTime(2025, 1, 7, 22, 1, 15, 563, DateTimeKind.Local).AddTicks(2821),
+                            RegistrationDate = new DateTime(2025, 1, 9, 15, 30, 22, 797, DateTimeKind.Local).AddTicks(6725),
                             StatusExpirationDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserCountryId = 1,
                             UserName = "desktop",
@@ -9154,11 +9154,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Email = "eprijevozsarajevoapp@gmail.com",
                             FirstName = "Senada",
                             LastName = "Senadić",
-                            ModifiedDate = new DateTime(2025, 1, 7, 22, 1, 15, 563, DateTimeKind.Local).AddTicks(2837),
-                            PasswordHash = "vpwsttpAWyX2+3+ZR2LO1B3DeCk=",
-                            PasswordSalt = "7O/NGBMSuFqB6nJlkpDBUA==",
+                            ModifiedDate = new DateTime(2025, 1, 9, 15, 30, 22, 797, DateTimeKind.Local).AddTicks(6735),
+                            PasswordHash = "qdBFlQEAlcneNUaWyC6JcQmoOfg=",
+                            PasswordSalt = "OzTlSiAXzPSPWXRJ9aY4ig==",
                             PhoneNumber = "+38761222444",
-                            RegistrationDate = new DateTime(2025, 1, 7, 22, 1, 15, 563, DateTimeKind.Local).AddTicks(2835),
+                            RegistrationDate = new DateTime(2025, 1, 9, 15, 30, 22, 797, DateTimeKind.Local).AddTicks(6734),
                             StatusExpirationDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserCountryId = 1,
                             UserName = "mobile",
@@ -9174,11 +9174,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Email = "sara.sahinpasic@hotmail.com",
                             FirstName = "Test",
                             LastName = "Testni",
-                            ModifiedDate = new DateTime(2025, 1, 7, 22, 1, 15, 563, DateTimeKind.Local).AddTicks(2843),
-                            PasswordHash = "GXWqgXUzQGpLDvsaAXgJM403HQo=",
-                            PasswordSalt = "jC0QZKO+PjcQ1vf0UMnPjA==",
+                            ModifiedDate = new DateTime(2025, 1, 9, 15, 30, 22, 797, DateTimeKind.Local).AddTicks(6744),
+                            PasswordHash = "s8v3/9hfdJjLFGULzPyHRpHqYMI=",
+                            PasswordSalt = "xZazaxPirUA/ZtKsU3NujQ==",
                             PhoneNumber = "+38761222444",
-                            RegistrationDate = new DateTime(2025, 1, 7, 22, 1, 15, 563, DateTimeKind.Local).AddTicks(2842),
+                            RegistrationDate = new DateTime(2025, 1, 9, 15, 30, 22, 797, DateTimeKind.Local).AddTicks(6743),
                             StatusExpirationDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserCountryId = 2,
                             UserName = "mobile1",
@@ -9194,11 +9194,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Email = "eprijevozsarajevotest@outlook.com",
                             FirstName = "Testni",
                             LastName = "Test",
-                            ModifiedDate = new DateTime(2025, 1, 7, 22, 1, 15, 563, DateTimeKind.Local).AddTicks(2849),
-                            PasswordHash = "tRb1ZarqDaDOaIQ51f1QZLyXZmg=",
-                            PasswordSalt = "bID/Dl1WzdMBptJYokIjFw==",
+                            ModifiedDate = new DateTime(2025, 1, 9, 15, 30, 22, 797, DateTimeKind.Local).AddTicks(6749),
+                            PasswordHash = "2OUGBhrc0CaYnMmw412TcubEkt0=",
+                            PasswordSalt = "iio2v2a3SfPPXrRcVeNcqQ==",
                             PhoneNumber = "+38761222666",
-                            RegistrationDate = new DateTime(2025, 1, 7, 22, 1, 15, 563, DateTimeKind.Local).AddTicks(2847),
+                            RegistrationDate = new DateTime(2025, 1, 9, 15, 30, 22, 797, DateTimeKind.Local).AddTicks(6748),
                             StatusExpirationDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserCountryId = 3,
                             UserName = "mobile2",
@@ -9214,11 +9214,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Email = "eprijevozsarajevo.app@gmx.de",
                             FirstName = "Proba",
                             LastName = "Probni",
-                            ModifiedDate = new DateTime(2025, 1, 7, 22, 1, 15, 563, DateTimeKind.Local).AddTicks(2856),
-                            PasswordHash = "plqvfbDtGE1G6RDAGSMjD4wQR2A=",
-                            PasswordSalt = "uf/3QeyktGAWm8UmC7zu3w==",
+                            ModifiedDate = new DateTime(2025, 1, 9, 15, 30, 22, 797, DateTimeKind.Local).AddTicks(6753),
+                            PasswordHash = "sQH4H4+EllIZob4PES8XH4KJ/0w=",
+                            PasswordSalt = "BstyrKIxKu3VGK2x+jjy0w==",
                             PhoneNumber = "+38761222777",
-                            RegistrationDate = new DateTime(2025, 1, 7, 22, 1, 15, 563, DateTimeKind.Local).AddTicks(2855),
+                            RegistrationDate = new DateTime(2025, 1, 9, 15, 30, 22, 797, DateTimeKind.Local).AddTicks(6753),
                             StatusExpirationDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserCountryId = 3,
                             UserName = "mobile3",
@@ -9234,11 +9234,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Email = "probe@mail.com",
                             FirstName = "Probe",
                             LastName = "Probno",
-                            ModifiedDate = new DateTime(2025, 1, 7, 22, 1, 15, 563, DateTimeKind.Local).AddTicks(2863),
-                            PasswordHash = "6QBxTdwMc7AGnrJ29A+Co1rmjvw=",
-                            PasswordSalt = "rukRGBMTQBvVgviufcQY2Q==",
+                            ModifiedDate = new DateTime(2025, 1, 9, 15, 30, 22, 797, DateTimeKind.Local).AddTicks(6760),
+                            PasswordHash = "RJMPTGubSeQTEvjAmMfRF5ukAzM=",
+                            PasswordSalt = "axOdqXkgX72w++j8bKqvdQ==",
                             PhoneNumber = "+38761222888",
-                            RegistrationDate = new DateTime(2025, 1, 7, 22, 1, 15, 563, DateTimeKind.Local).AddTicks(2862),
+                            RegistrationDate = new DateTime(2025, 1, 9, 15, 30, 22, 797, DateTimeKind.Local).AddTicks(6760),
                             StatusExpirationDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserCountryId = 2,
                             UserName = "mobile4",
@@ -9336,6 +9336,9 @@ namespace ePrijevozSarajevo.Services.Migrations
 
                     b.HasIndex("ManufacturerId");
 
+                    b.HasIndex("Number")
+                        .IsUnique();
+
                     b.HasIndex("RegistrationNumber")
                         .IsUnique();
 
@@ -9394,7 +9397,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             VehicleId = 6,
                             BuildYear = 2011,
                             ManufacturerId = 3,
-                            Number = 35,
+                            Number = 40,
                             RegistrationNumber = "A16-G-195",
                             TypeId = 2
                         });
