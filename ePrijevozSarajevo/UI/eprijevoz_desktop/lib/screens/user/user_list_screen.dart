@@ -210,7 +210,7 @@ class _UserListScreenState extends State<UserListScreen> {
                           ),
                           const SizedBox(width: 5),
                           Text(
-                            "Sekcija status",
+                            "Sekcija statusi",
                             style: TextStyle(
                               color: Colors.green.shade800,
                               fontSize: 18,

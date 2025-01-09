@@ -1,36 +1,36 @@
-import 'package:eprijevoz_desktop/models/country.dart';
 import 'package:eprijevoz_desktop/models/search_result.dart';
-import 'package:eprijevoz_desktop/providers/country_provider.dart';
+import 'package:eprijevoz_desktop/models/ticket.dart';
+import 'package:eprijevoz_desktop/providers/ticket_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:provider/provider.dart';
 
-class CountryAddDialog extends StatefulWidget {
+class TicketAddDialog extends StatefulWidget {
   final Function onDone;
-  const CountryAddDialog({required this.onDone, super.key});
+  const TicketAddDialog({required this.onDone, super.key});
 
   @override
-  State<CountryAddDialog> createState() => _CountryAddDialogState();
+  State<TicketAddDialog> createState() => _TicketAddDialogState();
 }
 
-class _CountryAddDialogState extends State<CountryAddDialog> {
-  late CountryProvider countryProvider;
-  SearchResult<Country>? countryResult;
+class _TicketAddDialogState extends State<TicketAddDialog> {
+  late TicketProvider ticketProvider;
+  SearchResult<Ticket>? ticketResult;
   bool isLoading = false;
   final _formKey = GlobalKey<FormBuilderState>();
   String? countryName;
 
   @override
   void initState() {
-    countryProvider = context.read<CountryProvider>();
+    ticketProvider = context.read<TicketProvider>();
     super.initState();
 
     initForm();
   }
 
   Future initForm() async {
-    countryResult = await countryProvider.get();
+    ticketResult = await ticketProvider.get();
 
     setState(() {
       isLoading = false;
@@ -58,7 +58,7 @@ class _CountryAddDialogState extends State<CountryAddDialog> {
                     children: [
                       const SizedBox(height: 15),
                       const Text(
-                        "Naziv države:",
+                        "Naziv karte:",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -84,6 +84,33 @@ class _CountryAddDialogState extends State<CountryAddDialog> {
                           ),
                         ]),
                       ),
+                      //
+                      const SizedBox(height: 15),
+                      const Text(
+                        "Cijena:",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      FormBuilderTextField(
+                        name: 'price',
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          hintText: "Unesite cijenu",
+                        ),
+                        validator: FormBuilderValidators.compose([
+                          FormBuilderValidators.required(
+                            errorText: "Ovo polje ne može bit prazno.",
+                          ),
+                          FormBuilderValidators.numeric(
+                              errorText:
+                                  "Format cijene mora biti decimalni: 1.50"),
+                        ]),
+                      ),
                       const SizedBox(height: 25),
                       Row(
                         children: [
@@ -100,7 +127,7 @@ class _CountryAddDialogState extends State<CountryAddDialog> {
                                       isLoading = true;
                                     });
 
-                                    await countryProvider.insert(request);
+                                    await ticketProvider.insert(request);
 
                                     showDialog(
                                       context: context,

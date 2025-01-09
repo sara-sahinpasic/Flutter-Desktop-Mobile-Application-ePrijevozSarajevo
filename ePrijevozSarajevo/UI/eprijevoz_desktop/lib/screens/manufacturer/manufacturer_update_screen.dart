@@ -1,36 +1,42 @@
-import 'package:eprijevoz_desktop/models/country.dart';
+import 'package:eprijevoz_desktop/models/manufacturer.dart';
 import 'package:eprijevoz_desktop/models/search_result.dart';
-import 'package:eprijevoz_desktop/providers/country_provider.dart';
+import 'package:eprijevoz_desktop/providers/manufacturer_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:provider/provider.dart';
 
-class CountryAddDialog extends StatefulWidget {
+class ManufacturerUpdateDialog extends StatefulWidget {
   final Function onDone;
-  const CountryAddDialog({required this.onDone, super.key});
+  final Manufacturer manufacturer;
+  const ManufacturerUpdateDialog(
+      {required this.manufacturer, required this.onDone, super.key});
 
   @override
-  State<CountryAddDialog> createState() => _CountryAddDialogState();
+  State<ManufacturerUpdateDialog> createState() =>
+      _ManufacturerUpdateDialogState();
 }
 
-class _CountryAddDialogState extends State<CountryAddDialog> {
-  late CountryProvider countryProvider;
-  SearchResult<Country>? countryResult;
+class _ManufacturerUpdateDialogState extends State<ManufacturerUpdateDialog> {
+  late ManufacturerProvider manufacturerProvider;
+  SearchResult<Manufacturer>? manufacturerResult;
   bool isLoading = false;
   final _formKey = GlobalKey<FormBuilderState>();
-  String? countryName;
+  Map<String, dynamic> _initialValue = {};
+  String? manufacturerName;
 
   @override
   void initState() {
-    countryProvider = context.read<CountryProvider>();
+    manufacturerProvider = context.read<ManufacturerProvider>();
     super.initState();
-
+    _initialValue = {
+      'name': widget.manufacturer.name,
+    };
     initForm();
   }
 
   Future initForm() async {
-    countryResult = await countryProvider.get();
+    manufacturerResult = await manufacturerProvider.get();
 
     setState(() {
       isLoading = false;
@@ -41,7 +47,7 @@ class _CountryAddDialogState extends State<CountryAddDialog> {
   Widget build(BuildContext context) {
     return AlertDialog(
       title: const Text(
-        "Novi zapis",
+        "Update",
         style: TextStyle(fontWeight: FontWeight.bold),
       ),
       content: SingleChildScrollView(
@@ -53,12 +59,13 @@ class _CountryAddDialogState extends State<CountryAddDialog> {
                 )
               : FormBuilder(
                   key: _formKey,
+                  initialValue: _initialValue,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(height: 15),
                       const Text(
-                        "Naziv države:",
+                        "Naziv proizvođača:",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -96,18 +103,17 @@ class _CountryAddDialogState extends State<CountryAddDialog> {
                                       Map.from(_formKey.currentState!.value);
 
                                   try {
-                                    setState(() {
-                                      isLoading = true;
-                                    });
-
-                                    await countryProvider.insert(request);
+                                    await manufacturerProvider.update(
+                                        widget.manufacturer.manufacturerId!,
+                                        request);
+                                    Navigator.pop(context, true);
 
                                     showDialog(
                                       context: context,
                                       builder: (context) => AlertDialog(
-                                        title: const Text("Success"),
-                                        content: const Text(
-                                            "Zapis je uspješno dodan."),
+                                        title: const Text("Update"),
+                                        content:
+                                            const Text("Zapis je ažuriran."),
                                         actions: [
                                           TextButton(
                                             child: const Text(
@@ -117,7 +123,6 @@ class _CountryAddDialogState extends State<CountryAddDialog> {
                                             ),
                                             onPressed: () async {
                                               await widget.onDone();
-                                              Navigator.pop(context);
                                               Navigator.pop(context, true);
                                             },
                                           )
@@ -130,7 +135,7 @@ class _CountryAddDialogState extends State<CountryAddDialog> {
                                       builder: (context) => AlertDialog(
                                         title: const Text("Error"),
                                         content: Text(
-                                          "Greška prilikom dodavanja zapisa: $error",
+                                          "Greška prilikom ažuriranja zapisa: $error",
                                         ),
                                         actions: [
                                           TextButton(
@@ -157,7 +162,7 @@ class _CountryAddDialogState extends State<CountryAddDialog> {
                                 minimumSize: const Size(100, 65),
                               ),
                               child: const Text(
-                                "Dodaj",
+                                "Ažuriraj",
                                 style: TextStyle(fontSize: 18),
                               ),
                             ),

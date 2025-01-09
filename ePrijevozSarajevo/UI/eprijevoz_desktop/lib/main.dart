@@ -7,6 +7,7 @@ import 'package:eprijevoz_desktop/providers/role_provider.dart';
 import 'package:eprijevoz_desktop/providers/route_provider.dart';
 import 'package:eprijevoz_desktop/providers/station_provider.dart';
 import 'package:eprijevoz_desktop/providers/status_provider.dart';
+import 'package:eprijevoz_desktop/providers/ticket_provider.dart';
 import 'package:eprijevoz_desktop/providers/type_provider.dart';
 import 'package:eprijevoz_desktop/providers/userRole_provider.dart';
 import 'package:eprijevoz_desktop/providers/user_provider.dart';
@@ -53,6 +54,7 @@ void main() async {
       ChangeNotifierProvider<UserRoleProvider>(
           create: (_) => UserRoleProvider()),
       ChangeNotifierProvider<RoleProvider>(create: (_) => RoleProvider()),
+      ChangeNotifierProvider<TicketProvider>(create: (_) => TicketProvider()),
     ],
     child: const MyApp(),
   ));

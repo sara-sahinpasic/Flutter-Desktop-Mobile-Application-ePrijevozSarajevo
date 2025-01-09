@@ -80,6 +80,6 @@ catch (Exception e)
 }
 
 
-Console.WriteLine("Listening for messages. Press [enter] to quit.");
+Console.WriteLine("Listening for messages.");
 Console.ReadLine();
 Thread.Sleep(Timeout.Infinite);

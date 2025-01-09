@@ -1,36 +1,36 @@
-import 'package:eprijevoz_desktop/models/country.dart';
 import 'package:eprijevoz_desktop/models/search_result.dart';
-import 'package:eprijevoz_desktop/providers/country_provider.dart';
+import 'package:eprijevoz_desktop/providers/type_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:eprijevoz_desktop/models/type.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:provider/provider.dart';
 
-class CountryAddDialog extends StatefulWidget {
+class VehicleTypeAddDialog extends StatefulWidget {
   final Function onDone;
-  const CountryAddDialog({required this.onDone, super.key});
+  const VehicleTypeAddDialog({required this.onDone, super.key});
 
   @override
-  State<CountryAddDialog> createState() => _CountryAddDialogState();
+  State<VehicleTypeAddDialog> createState() => _VehicleTypeAddDialogState();
 }
 
-class _CountryAddDialogState extends State<CountryAddDialog> {
-  late CountryProvider countryProvider;
-  SearchResult<Country>? countryResult;
+class _VehicleTypeAddDialogState extends State<VehicleTypeAddDialog> {
+  late TypeProvider typeProvider;
+  SearchResult<Type>? countryResult;
   bool isLoading = false;
   final _formKey = GlobalKey<FormBuilderState>();
-  String? countryName;
+  String? typeName;
 
   @override
   void initState() {
-    countryProvider = context.read<CountryProvider>();
+    typeProvider = context.read<TypeProvider>();
     super.initState();
 
     initForm();
   }
 
   Future initForm() async {
-    countryResult = await countryProvider.get();
+    countryResult = await typeProvider.get();
 
     setState(() {
       isLoading = false;
@@ -58,7 +58,7 @@ class _CountryAddDialogState extends State<CountryAddDialog> {
                     children: [
                       const SizedBox(height: 15),
                       const Text(
-                        "Naziv države:",
+                        "Tip vozila:",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -100,7 +100,7 @@ class _CountryAddDialogState extends State<CountryAddDialog> {
                                       isLoading = true;
                                     });
 
-                                    await countryProvider.insert(request);
+                                    await typeProvider.insert(request);
 
                                     showDialog(
                                       context: context,

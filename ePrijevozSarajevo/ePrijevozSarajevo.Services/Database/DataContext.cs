@@ -38,6 +38,10 @@ namespace ePrijevozSarajevo.Services.Database
                 .HasIndex(v => v.RegistrationNumber)
                 .IsUnique();
 
+            modelBuilder.Entity<Vehicle>()
+                .HasIndex(v => v.Number)
+                .IsUnique();
+
             modelBuilder.Entity<User>()
                .HasIndex(u => u.Email)
                .IsUnique();

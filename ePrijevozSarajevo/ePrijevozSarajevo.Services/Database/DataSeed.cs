@@ -179,7 +179,7 @@ namespace ePrijevozSarajevo.Services.Database
                 new Vehicle()
                 {
                     VehicleId = 6,
-                    Number = 35,
+                    Number = 40,
                     RegistrationNumber = "A16-G-195",
                     BuildYear = 2011,
                     ManufacturerId = 3,

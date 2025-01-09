@@ -1,36 +1,36 @@
-import 'package:eprijevoz_desktop/models/country.dart';
+import 'package:eprijevoz_desktop/models/manufacturer.dart';
 import 'package:eprijevoz_desktop/models/search_result.dart';
-import 'package:eprijevoz_desktop/providers/country_provider.dart';
+import 'package:eprijevoz_desktop/providers/manufacturer_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:provider/provider.dart';
 
-class CountryAddDialog extends StatefulWidget {
+class ManufacturerAddDialog extends StatefulWidget {
   final Function onDone;
-  const CountryAddDialog({required this.onDone, super.key});
+  const ManufacturerAddDialog({required this.onDone, super.key});
 
   @override
-  State<CountryAddDialog> createState() => _CountryAddDialogState();
+  State<ManufacturerAddDialog> createState() => _ManufacturerAddDialogState();
 }
 
-class _CountryAddDialogState extends State<CountryAddDialog> {
-  late CountryProvider countryProvider;
-  SearchResult<Country>? countryResult;
+class _ManufacturerAddDialogState extends State<ManufacturerAddDialog> {
+  late ManufacturerProvider manufacturerProvider;
+  SearchResult<Manufacturer>? countryResult;
   bool isLoading = false;
   final _formKey = GlobalKey<FormBuilderState>();
   String? countryName;
 
   @override
   void initState() {
-    countryProvider = context.read<CountryProvider>();
+    manufacturerProvider = context.read<ManufacturerProvider>();
     super.initState();
 
     initForm();
   }
 
   Future initForm() async {
-    countryResult = await countryProvider.get();
+    countryResult = await manufacturerProvider.get();
 
     setState(() {
       isLoading = false;
@@ -58,7 +58,7 @@ class _CountryAddDialogState extends State<CountryAddDialog> {
                     children: [
                       const SizedBox(height: 15),
                       const Text(
-                        "Naziv države:",
+                        "Naziv proizvođača:",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -100,7 +100,7 @@ class _CountryAddDialogState extends State<CountryAddDialog> {
                                       isLoading = true;
                                     });
 
-                                    await countryProvider.insert(request);
+                                    await manufacturerProvider.insert(request);
 
                                     showDialog(
                                       context: context,
