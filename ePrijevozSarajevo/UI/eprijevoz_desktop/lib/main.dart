@@ -1,4 +1,5 @@
 import 'package:eprijevoz_desktop/providers/auth_provider.dart';
+import 'package:eprijevoz_desktop/providers/base_provider.dart';
 import 'package:eprijevoz_desktop/providers/country_provider.dart';
 import 'package:eprijevoz_desktop/providers/issuedTicket_provider.dart';
 import 'package:eprijevoz_desktop/providers/manufacturer_provider.dart';
@@ -216,9 +217,9 @@ class _LoginPageState extends State<LoginPage> {
                               var role = rolesResult.result.firstWhere((role) =>
                                   role.roleId == currentUserRole.roleId);
 
-                              if (role.name == "User") {
-                                throw Exception(
-                                    "User accounts not allowed on desktop app");
+                              if (role.name != "Admin") {
+                                throw UserException(
+                                    "Samo Admin računi se mogu koristiti na desktop aplikaciji");
                               }
 
                               Navigator.of(context).push(MaterialPageRoute(

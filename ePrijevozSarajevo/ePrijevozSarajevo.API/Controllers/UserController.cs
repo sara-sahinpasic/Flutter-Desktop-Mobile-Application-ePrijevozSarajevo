@@ -22,17 +22,11 @@ namespace ePrijevozSarajevo.API.Controllers
 
         [HttpPost("reset-password")]
         [AllowAnonymous]
-        public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordRequest request)
+        public async Task ResetPassword([FromBody] ResetPasswordRequest request)
         {
-            try
-            {
-                await (_service as IUserService).ResetPassword(request.Username, request.NewPassword, request.PasswordConfirmation);
-                return Ok(new { message = "Password reset successful" });
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { ex.Message });
-            }
+         
+            await (_service as IUserService).ResetPassword(request.Username, request.NewPassword, request.PasswordConfirmation);
+            
         }
         [HttpDelete("{id}")]
         public override async Task Delete(int id)

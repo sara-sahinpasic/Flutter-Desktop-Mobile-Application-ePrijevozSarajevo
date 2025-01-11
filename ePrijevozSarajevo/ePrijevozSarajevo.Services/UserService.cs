@@ -1,9 +1,11 @@
-﻿using ePrijevozSarajevo.Model.Requests;
+﻿using ePrijevozSarajevo.Model.Exceptions;
+using ePrijevozSarajevo.Model.Requests;
 using ePrijevozSarajevo.Model.SearchObjects;
 using ePrijevozSarajevo.Services.Database;
 using MapsterMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -53,7 +55,7 @@ namespace ePrijevozSarajevo.Services
 
             if (request.Password != request.PasswordConfirmation)
             {
-                throw new Exception("Password and password confirmation must be the same.");
+                throw new UserException("Lozinke se moraju podudarati.");
             }
 
             entity.PasswordSalt = GenerateSalt();
@@ -91,7 +93,7 @@ namespace ePrijevozSarajevo.Services
             {
                 if (request.Password != request.PasswordConfirmation)
                 {
-                    throw new Exception("Password and password confirmation must be the same.");
+                    throw new UserException("Lozinke se moraju podudarati.");
                 }
                 entity.PasswordSalt = GenerateSalt();
                 entity.PasswordHash = GenerateHash(entity.PasswordSalt, request.Password);
@@ -124,12 +126,12 @@ namespace ePrijevozSarajevo.Services
 
             if (user == null)
             {
-                throw new Exception("User not found.");
+                throw new UserException("Korisnik nije pronađen.");
             }
 
             if (newPassword != passwordConfirmation)
             {
-                throw new Exception("Password and password confirmation must be the same.");
+                throw new UserException("Lozinke se moraju podudarati.");
             }
 
             user.PasswordSalt = GenerateSalt();
@@ -163,17 +165,29 @@ namespace ePrijevozSarajevo.Services
         public async Task<Model.User> InsertUser(UserInsertRequest request)
         {
             Database.User entity = _mapper.Map<Database.User>(request);
+
+            var uniqueUserName = _dataContext.Users.Where(x => x.UserName == entity.UserName).ToList();
+            if (!uniqueUserName.IsNullOrEmpty())   
+            {
+                throw new UserException("Korisničko ime već postoji.");
+            }
+
+            var uniqueEmail = _dataContext.Users.Where(x => x.Email == entity.Email).ToList();
+            if (!uniqueEmail.IsNullOrEmpty())
+            {
+                throw new UserException($"Račun sa unesenom email adresom {entity.Email} već postoji.");
+            }
             await BeforeInsert(request, entity);
 
             if (entity.DateOfBirth > DateTime.Now)
             {
-                throw new InvalidOperationException("Datum rođenja ne može biti u budućnosti.");
+                throw new UserException("Datum rođenja ne može biti u budućnosti.");
             }
 
             DateTime twelveYearsAgo = DateTime.Now.AddYears(-12);
             if (entity.DateOfBirth > twelveYearsAgo)
             {
-                throw new InvalidOperationException("Korisnik mora imati najmanje 12 godina.");
+                throw new UserException("Korisnik mora imati najmanje 12 godina.");
             }
 
             await _dataContext.AddAsync(entity);
