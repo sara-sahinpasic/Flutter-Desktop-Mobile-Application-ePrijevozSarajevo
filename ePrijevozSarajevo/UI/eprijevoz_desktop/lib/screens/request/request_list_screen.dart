@@ -112,6 +112,9 @@ class _RequestListScreenState extends State<RequestListScreen> {
       };
       routeResultForStatus = await requestProvider.get(filter: filter);
       requestResult = await requestProvider.get();
+      if (requestResult != null) {
+        requestResult!.result = filterDuplicates(requestResult!.result);
+      }
       if (routeResultForStatus?.count == 0 && byUser) {
         await showDialog(
           context: context,

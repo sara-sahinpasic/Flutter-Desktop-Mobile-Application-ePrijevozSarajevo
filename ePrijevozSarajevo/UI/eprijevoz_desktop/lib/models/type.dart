@@ -7,6 +7,7 @@ class Type {
   int? typeId;
   String? name;
   DateTime? modifiedDate;
+  int? currentUserId;
 
   Type({this.typeId, this.name});
 

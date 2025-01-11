@@ -7,5 +7,6 @@
         public DateTime? ModifiedDate { get; set; }
         public Country? ManufacturerCountry { get; set; }
         public int ManufacturerCountryId { get; set; }
+        public int? CurrentUserId { get; set; }
     }
 }

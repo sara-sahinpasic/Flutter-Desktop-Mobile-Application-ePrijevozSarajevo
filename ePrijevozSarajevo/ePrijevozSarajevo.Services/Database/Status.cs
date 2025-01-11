@@ -6,5 +6,6 @@
         public string Name { get; set; } = null!;
         public double Discount { get; set; }
         public DateTime? ModifiedDate { get; set; }
+        public int? CurrentUserId { get; set; }
     }
 }

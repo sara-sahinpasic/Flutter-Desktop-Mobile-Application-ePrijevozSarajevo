@@ -30,22 +30,7 @@ class _TicketListScreenState extends State<TicketListScreen> {
   }
 
   Future initForm() async {
-    setState(() {
-      isLoading = true;
-    });
-    try {
-      ticketResult = await ticketProvider.get();
-      for (var ticket in ticketResult?.result ?? []) {
-        ticket.allowedActions =
-            await ticketProvider.getAllowedActions(ticket.ticketId!);
-      }
-    } catch (e) {
-      debugPrint('Error: $e');
-    } finally {
-      setState(() {
-        isLoading = false;
-      });
-    }
+    ticketResult = await ticketProvider.get();
   }
 
   Future refreshTable() async {
@@ -55,10 +40,6 @@ class _TicketListScreenState extends State<TicketListScreen> {
     try {
       var request = Map.from(_formKey.currentState?.value ?? {});
       ticketResult = await ticketProvider.get(filter: request);
-      for (var ticket in ticketResult?.result ?? []) {
-        ticket.allowedActions =
-            await ticketProvider.getAllowedActions(ticket.ticketId!);
-      }
     } catch (e) {
       debugPrint('Error: $e');
     } finally {
@@ -167,10 +148,6 @@ class _TicketListScreenState extends State<TicketListScreen> {
                 'NameGTE': _ftsTicketNameController.text,
               };
               ticketResult = await ticketProvider.get(filter: filter);
-              for (var ticket in ticketResult?.result ?? []) {
-                ticket.allowedActions =
-                    await ticketProvider.getAllowedActions(ticket.ticketId!);
-              }
             } catch (e) {
               debugPrint('Error: $e');
             } finally {

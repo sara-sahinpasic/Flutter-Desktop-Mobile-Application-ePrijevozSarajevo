@@ -6,6 +6,7 @@ class Country {
   int? countryId;
   String? name;
   DateTime? modifiedDate;
+  int? currentUserId;
 
   Country({this.countryId, this.name});
 

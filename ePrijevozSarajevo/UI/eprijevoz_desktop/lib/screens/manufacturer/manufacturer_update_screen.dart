@@ -1,8 +1,11 @@
 import 'package:eprijevoz_desktop/models/country.dart';
 import 'package:eprijevoz_desktop/models/manufacturer.dart';
 import 'package:eprijevoz_desktop/models/search_result.dart';
+import 'package:eprijevoz_desktop/models/user.dart';
+import 'package:eprijevoz_desktop/providers/auth_provider.dart';
 import 'package:eprijevoz_desktop/providers/country_provider.dart';
 import 'package:eprijevoz_desktop/providers/manufacturer_provider.dart';
+import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -29,11 +32,15 @@ class _ManufacturerUpdateDialogState extends State<ManufacturerUpdateDialog> {
   late CountryProvider countryProvider;
   SearchResult<Country>? countryResult;
   int? selectedCountryId;
+  late UserProvider userProvider;
+  SearchResult<User>? userResult;
+  int? currentUserId;
 
   @override
   void initState() {
     manufacturerProvider = context.read<ManufacturerProvider>();
     countryProvider = context.read<CountryProvider>();
+    userProvider = context.read<UserProvider>();
 
     super.initState();
     _initialValue = {
@@ -45,9 +52,14 @@ class _ManufacturerUpdateDialogState extends State<ManufacturerUpdateDialog> {
   Future initForm() async {
     manufacturerResult = await manufacturerProvider.get();
     countryResult = await countryProvider.get();
+    userResult = await userProvider.get();
 
     setState(() {
       isLoading = false;
+
+      currentUserId = userResult?.result
+          .firstWhere((user) => user.userName == AuthProvider.username)
+          .userId;
 
       selectedCountryId = widget.manufacturer.manufacturerCountryId ??
           (countryResult?.result.isNotEmpty ?? false
@@ -170,6 +182,7 @@ class _ManufacturerUpdateDialogState extends State<ManufacturerUpdateDialog> {
                                       DateTime.now().toIso8601String();
                                   request['manufacturerCountryId'] =
                                       selectedCountryId;
+                                  request['currentUserId'] = currentUserId;
 
                                   try {
                                     await manufacturerProvider.update(

@@ -1,5 +1,8 @@
 import 'package:eprijevoz_desktop/models/search_result.dart';
+import 'package:eprijevoz_desktop/models/user.dart';
+import 'package:eprijevoz_desktop/providers/auth_provider.dart';
 import 'package:eprijevoz_desktop/providers/type_provider.dart';
+import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:eprijevoz_desktop/models/type.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -24,10 +27,15 @@ class _VehicleTypeUpdateDialogState extends State<VehicleTypeUpdateDialog> {
   final _formKey = GlobalKey<FormBuilderState>();
   Map<String, dynamic> _initialValue = {};
   String? typeName;
+  late UserProvider userProvider;
+  SearchResult<User>? userResult;
+  int? currentUserId;
 
   @override
   void initState() {
     typeProvider = context.read<TypeProvider>();
+    userProvider = context.read<UserProvider>();
+
     super.initState();
     _initialValue = {
       'name': widget.type.name,
@@ -37,9 +45,14 @@ class _VehicleTypeUpdateDialogState extends State<VehicleTypeUpdateDialog> {
 
   Future initForm() async {
     typeResult = await typeProvider.get();
+    userResult = await userProvider.get();
 
     setState(() {
       isLoading = false;
+
+      currentUserId = userResult?.result
+          .firstWhere((user) => user.userName == AuthProvider.username)
+          .userId;
     });
   }
 
@@ -103,6 +116,7 @@ class _VehicleTypeUpdateDialogState extends State<VehicleTypeUpdateDialog> {
                                       Map.from(_formKey.currentState!.value);
                                   request['modifiedDate'] =
                                       DateTime.now().toIso8601String();
+                                  request['currentUserId'] = currentUserId;
 
                                   try {
                                     await typeProvider.update(

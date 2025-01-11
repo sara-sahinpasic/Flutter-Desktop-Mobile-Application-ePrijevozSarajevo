@@ -49,6 +49,26 @@ namespace ePrijevozSarajevo.Services.Database
                     Active = true,
                     Approved = false,
                     RejectionReason = "",
+                },
+                new Request()
+                {
+                    RequestId = 5,
+                    UserId = 1,
+                    UserStatusId = 2,
+                    DateCreated = DateTime.Now,
+                    Active = true,
+                    Approved = false,
+                    RejectionReason = "",
+                },
+                new Request()
+                {
+                    RequestId = 6,
+                    UserId = 6,
+                    UserStatusId = 3,
+                    DateCreated = DateTime.Now,
+                    Active = true,
+                    Approved = false,
+                    RejectionReason = "",
                 }
             ); //5
             modelBuilder.Entity<Station>().HasData

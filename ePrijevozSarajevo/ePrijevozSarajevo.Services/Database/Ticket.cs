@@ -7,5 +7,6 @@
         public double Price { get; set; }
         public string? StateMachine { get; set; }
         public DateTime? ModifiedDate { get; set; }
+        public int? CurrentUserId { get; set; }
     }
 }

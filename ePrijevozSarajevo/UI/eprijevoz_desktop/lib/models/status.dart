@@ -7,6 +7,7 @@ class Status {
   String? name;
   double? discount;
   DateTime? modifiedDate;
+  int? currentUserId;
 
   Status({this.statusId, this.name, this.discount});
 

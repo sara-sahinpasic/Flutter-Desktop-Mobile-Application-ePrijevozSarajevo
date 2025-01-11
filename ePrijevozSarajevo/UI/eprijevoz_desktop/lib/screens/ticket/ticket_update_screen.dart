@@ -1,6 +1,9 @@
 import 'package:eprijevoz_desktop/models/search_result.dart';
 import 'package:eprijevoz_desktop/models/ticket.dart';
+import 'package:eprijevoz_desktop/models/user.dart';
+import 'package:eprijevoz_desktop/providers/auth_provider.dart';
 import 'package:eprijevoz_desktop/providers/ticket_provider.dart';
+import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -23,10 +26,15 @@ class _TicketUpdateDialogState extends State<TicketUpdateDialog> {
   final _formKey = GlobalKey<FormBuilderState>();
   Map<String, dynamic> _initialValue = {};
   String? countryName;
+  late UserProvider userProvider;
+  SearchResult<User>? userResult;
+  int? currentUserId;
 
   @override
   void initState() {
     ticketProvider = context.read<TicketProvider>();
+    userProvider = context.read<UserProvider>();
+
     super.initState();
     _initialValue = {
       'name': widget.ticket.name,
@@ -37,9 +45,14 @@ class _TicketUpdateDialogState extends State<TicketUpdateDialog> {
 
   Future initForm() async {
     ticketResult = await ticketProvider.get();
+    userResult = await userProvider.get();
 
     setState(() {
       isLoading = false;
+
+      currentUserId = userResult?.result
+          .firstWhere((user) => user.userName == AuthProvider.username)
+          .userId;
     });
   }
 
@@ -131,6 +144,7 @@ class _TicketUpdateDialogState extends State<TicketUpdateDialog> {
                                       double.parse(request['price']);
                                   request['modifiedDate'] =
                                       DateTime.now().toIso8601String();
+                                  request['currentUserId'] = currentUserId;
 
                                   try {
                                     await ticketProvider.update(

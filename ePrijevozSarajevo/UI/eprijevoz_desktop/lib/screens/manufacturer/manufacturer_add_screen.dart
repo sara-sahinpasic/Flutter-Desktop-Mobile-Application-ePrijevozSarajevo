@@ -1,8 +1,11 @@
 import 'package:eprijevoz_desktop/models/country.dart';
 import 'package:eprijevoz_desktop/models/manufacturer.dart';
 import 'package:eprijevoz_desktop/models/search_result.dart';
+import 'package:eprijevoz_desktop/models/user.dart';
+import 'package:eprijevoz_desktop/providers/auth_provider.dart';
 import 'package:eprijevoz_desktop/providers/country_provider.dart';
 import 'package:eprijevoz_desktop/providers/manufacturer_provider.dart';
+import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -25,11 +28,15 @@ class _ManufacturerAddDialogState extends State<ManufacturerAddDialog> {
   late CountryProvider countryProvider;
   SearchResult<Country>? countryResult;
   int? selectedCountryId;
+  late UserProvider userProvider;
+  SearchResult<User>? userResult;
+  int? currentUserId;
 
   @override
   void initState() {
     manufacturerProvider = context.read<ManufacturerProvider>();
     countryProvider = context.read<CountryProvider>();
+    userProvider = context.read<UserProvider>();
 
     super.initState();
 
@@ -39,8 +46,13 @@ class _ManufacturerAddDialogState extends State<ManufacturerAddDialog> {
   Future initForm() async {
     manufacturerResult = await manufacturerProvider.get();
     countryResult = await countryProvider.get();
+    userResult = await userProvider.get();
 
     selectedCountryId = countryResult?.result.first.countryId;
+
+    currentUserId = userResult?.result
+        .firstWhere((user) => user.userName == AuthProvider.username)
+        .userId;
 
     setState(() {
       isLoading = false;
@@ -151,6 +163,7 @@ class _ManufacturerAddDialogState extends State<ManufacturerAddDialog> {
                                       Map.from(_formKey.currentState!.value);
                                   request['modifiedDate'] =
                                       DateTime.now().toIso8601String();
+                                  request['currentUserId'] = currentUserId;
 
                                   try {
                                     setState(() {
