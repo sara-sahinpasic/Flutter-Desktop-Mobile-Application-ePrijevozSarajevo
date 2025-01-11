@@ -1,4 +1,4 @@
-﻿using ePrijevozSarajevo.Model;
+﻿using ePrijevozSarajevo.Model.Exceptions;
 using ePrijevozSarajevo.Model.Requests;
 using ePrijevozSarajevo.Services.Database;
 using MapsterMapper;

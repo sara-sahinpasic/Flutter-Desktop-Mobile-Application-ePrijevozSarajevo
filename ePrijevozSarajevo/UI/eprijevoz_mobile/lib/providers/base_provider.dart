@@ -117,10 +117,16 @@ abstract class BaseProvider<T> with ChangeNotifier {
     if (response.statusCode < 299) {
       return true;
     } else if (response.statusCode == 401) {
-      throw Exception("Unauthorized");
+      throw UserException("Unauthorized");
     } else {
-      debugPrint(response.body);
-      throw Exception(response.body);
+      final errorResp = jsonDecode(response.body);
+      if (errorResp is Map<String, dynamic> &&
+          errorResp['errors'] != null &&
+          errorResp['errors']['userError'] != null) {
+        throw UserException(errorResp['errors']['userError'].join(', '));
+      } else {
+        throw UserException("Greška, molimo pokušajte ponovo");
+      }
     }
   }
 
@@ -172,4 +178,13 @@ abstract class BaseProvider<T> with ChangeNotifier {
     });
     return query;
   }
+}
+
+class UserException implements Exception {
+  final String message;
+
+  UserException(this.message);
+
+  @override
+  String toString() => message;
 }

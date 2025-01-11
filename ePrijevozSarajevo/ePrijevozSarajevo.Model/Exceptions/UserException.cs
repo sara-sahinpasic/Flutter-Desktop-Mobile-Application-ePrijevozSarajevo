@@ -1,4 +1,4 @@
-﻿namespace ePrijevozSarajevo.Model
+﻿namespace ePrijevozSarajevo.Model.Exceptions
 {
     public class UserException : Exception
     {

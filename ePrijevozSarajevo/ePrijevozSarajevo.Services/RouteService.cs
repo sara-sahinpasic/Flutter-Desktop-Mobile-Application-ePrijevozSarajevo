@@ -1,4 +1,5 @@
-﻿using ePrijevozSarajevo.Model.Requests;
+﻿using ePrijevozSarajevo.Model.Exceptions;
+using ePrijevozSarajevo.Model.Requests;
 using ePrijevozSarajevo.Model.SearchObjects;
 using ePrijevozSarajevo.Services.Database;
 using MapsterMapper;
@@ -55,12 +56,12 @@ namespace ePrijevozSarajevo.Services
 
             if (route == null)
             {
-                throw new InvalidOperationException("Ruta nije pronađena.");
+                throw new UserException("Ruta nije pronađena.");
             }
 
             if (route.Departure <= todayDate)
             {
-                throw new InvalidOperationException("Nije moguće izbrisati rutu s prošlim datumom polaska.");
+                throw new UserException("Nije moguće izbrisati rutu s prošlim datumom polaska.");
             }
 
             // Find and delete issued tickets related to the route
@@ -78,7 +79,7 @@ namespace ePrijevozSarajevo.Services
 
             if (entity.Arrival < entity.Departure)
             {
-                throw new InvalidOperationException("Vrijeme dolaska ne može biti biti manje od vremena polaska.");
+                throw new UserException("Vrijeme dolaska ne može biti manje od vremena polaska.");
             }
             else
             {
@@ -95,7 +96,7 @@ namespace ePrijevozSarajevo.Services
 
             if (entity != null && request.Arrival < request.Departure)
             {
-                throw new InvalidOperationException("Update:: Vrijeme dolaska ne može biti biti manje od vremena polaska.");
+                throw new UserException("Vrijeme dolaska ne može biti biti manje od vremena polaska.");
             }
             else
             {

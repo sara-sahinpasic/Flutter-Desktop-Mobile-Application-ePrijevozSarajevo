@@ -1,5 +1,6 @@
 import 'package:eprijevoz_mobile/layouts/master_screen.dart';
 import 'package:eprijevoz_mobile/providers/auth_provider.dart';
+import 'package:eprijevoz_mobile/providers/base_provider.dart';
 import 'package:eprijevoz_mobile/providers/country_provider.dart';
 import 'package:eprijevoz_mobile/providers/issuedTicket_provider.dart';
 import 'package:eprijevoz_mobile/providers/recommendation_provider.dart';
@@ -179,9 +180,9 @@ class _LoginPageState extends State<LoginPage> {
                       var role = rolesResult.result.firstWhere(
                           (role) => role.roleId == currentUserRole.roleId);
 
-                      if (role.name == "Admin") {
-                        throw Exception(
-                            "Admin accounts not allowed on mobile app");
+                      if (role.name != "User") {
+                        throw UserException(
+                            "Samo korisnički računi se mogu koristiti na mobilnoj aplikaciji");
                       }
 
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
