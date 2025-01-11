@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:eprijevoz_mobile/providers/auth_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:eprijevoz_mobile/models/search_result.dart';
@@ -12,8 +13,8 @@ abstract class BaseProvider<T> with ChangeNotifier {
 
   BaseProvider(String endpoint) {
     _endpoint = endpoint;
-    baseUrl = const String.fromEnvironment("BASE_URL_MOBILE",
-        defaultValue: "http://10.0.2.2:7292/");
+    baseUrl = String.fromEnvironment("BASE_URL_MOBILE",
+        defaultValue: dotenv.get("BASE_URL_MOBILE"));
   }
   // add a getter for _endpoint
   String get endpoint => _endpoint;
