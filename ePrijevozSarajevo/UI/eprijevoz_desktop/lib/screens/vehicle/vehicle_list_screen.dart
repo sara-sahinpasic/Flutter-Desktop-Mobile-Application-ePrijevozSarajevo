@@ -229,7 +229,7 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
                               ),
                               const SizedBox(width: 5),
                               Text(
-                                "Sekcija proizvođač",
+                                "Sekcija proizvođači",
                                 style: TextStyle(
                                   color: Colors.green.shade800,
                                   fontSize: 18,

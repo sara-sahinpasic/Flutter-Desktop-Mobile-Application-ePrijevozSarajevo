@@ -5,6 +5,7 @@ part 'country.g.dart';
 class Country {
   int? countryId;
   String? name;
+  DateTime? modifiedDate;
 
   Country({this.countryId, this.name});
 

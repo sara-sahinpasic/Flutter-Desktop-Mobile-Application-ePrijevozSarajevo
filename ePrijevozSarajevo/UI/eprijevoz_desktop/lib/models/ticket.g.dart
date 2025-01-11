@@ -11,9 +11,13 @@ Ticket _$TicketFromJson(Map<String, dynamic> json) => Ticket(
       name: json['name'] as String?,
       price: (json['price'] as num?)?.toDouble(),
       stateMachine: json['stateMachine'] as String?,
-    )..allowedActions = (json['allowedActions'] as List<dynamic>?)
-        ?.map((e) => e as String)
-        .toList();
+    )
+      ..allowedActions = (json['allowedActions'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList()
+      ..modifiedDate = json['modifiedDate'] == null
+          ? null
+          : DateTime.parse(json['modifiedDate'] as String);
 
 Map<String, dynamic> _$TicketToJson(Ticket instance) => <String, dynamic>{
       'ticketId': instance.ticketId,
@@ -21,4 +25,5 @@ Map<String, dynamic> _$TicketToJson(Ticket instance) => <String, dynamic>{
       'price': instance.price,
       'stateMachine': instance.stateMachine,
       'allowedActions': instance.allowedActions,
+      'modifiedDate': instance.modifiedDate?.toIso8601String(),
     };

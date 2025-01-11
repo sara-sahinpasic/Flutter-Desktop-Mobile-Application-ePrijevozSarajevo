@@ -6,6 +6,7 @@ part 'type.g.dart';
 class Type {
   int? typeId;
   String? name;
+  DateTime? modifiedDate;
 
   Type({this.typeId, this.name});
 

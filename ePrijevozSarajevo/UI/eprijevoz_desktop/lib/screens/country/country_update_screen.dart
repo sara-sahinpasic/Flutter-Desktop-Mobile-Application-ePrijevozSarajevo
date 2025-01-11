@@ -100,6 +100,8 @@ class _CountryUpdateDialogState extends State<CountryUpdateDialog> {
                                     false) {
                                   var request =
                                       Map.from(_formKey.currentState!.value);
+                                  request['modifiedDate'] =
+                                      DateTime.now().toIso8601String();
 
                                   try {
                                     await countryProvider.update(

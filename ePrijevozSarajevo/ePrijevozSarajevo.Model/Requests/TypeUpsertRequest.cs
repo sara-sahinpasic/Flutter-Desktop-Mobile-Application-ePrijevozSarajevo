@@ -3,5 +3,7 @@
     public class TypeUpsertRequest
     {
         public string? Name { get; set; }
+        public DateTime? ModifiedDate { get; set; }
+
     }
 }

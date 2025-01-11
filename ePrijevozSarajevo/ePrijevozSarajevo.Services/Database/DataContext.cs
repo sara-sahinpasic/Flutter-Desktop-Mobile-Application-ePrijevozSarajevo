@@ -30,7 +30,7 @@ namespace ePrijevozSarajevo.Services.Database
             }
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder) 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
@@ -73,6 +73,22 @@ namespace ePrijevozSarajevo.Services.Database
                 .HasOne(r => r.EndStation)
                 .WithMany()
                 .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<IssuedTicket>()
+                .HasOne(i => i.Route)
+                .WithMany()
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<IssuedTicket>()
+               .HasOne(i => i.Ticket)
+               .WithMany()
+               .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<IssuedTicket>()
+               .HasOne(i => i.User)
+               .WithMany()
+               .OnDelete(DeleteBehavior.NoAction);
+
 
             var routeList = BuildRoutes(modelBuilder);
             BuildIssuedTickets(modelBuilder, routeList);
@@ -276,8 +292,8 @@ namespace ePrijevozSarajevo.Services.Database
             modelBuilder.Entity<IssuedTicket>()
               .HasData(issuedTickets);
         } //2
-         private static List<Route> BuildRoutes(ModelBuilder modelBuilder)
-         {
+        private static List<Route> BuildRoutes(ModelBuilder modelBuilder)
+        {
             int totalStations = 15;
             int totalVehicles = 6;
             var random = new Random();
@@ -291,11 +307,11 @@ namespace ePrijevozSarajevo.Services.Database
             dateWithRoutes.Add(new DateTime(2025, 02, 15));
             dateWithRoutes.Add(new DateTime(2025, 02, 25));
             int routeCounter = 1;
-       
+
             for (int i = 0; i< dateWithRoutes.Count; i++)
             {
                 for (int j = 1; j <= totalStations; j++)
-                { 
+                {
                     for(int k = j+1; k > 0; k--)
                     {
                         DateTime departure = new DateTime(dateWithRoutes[i].Year, dateWithRoutes[i].Month, dateWithRoutes[i].Day, 10, 15, 0);
@@ -317,10 +333,10 @@ namespace ePrijevozSarajevo.Services.Database
                 }
 
             }
-             modelBuilder.Entity<Route>()
-                .HasData(routes);
+            modelBuilder.Entity<Route>()
+               .HasData(routes);
             return routes;
-         } //3
+        } //3
         private static void BuildCountries(ModelBuilder modelBuilder)
         {
             var result = new List<Country>();
@@ -528,6 +544,7 @@ namespace ePrijevozSarajevo.Services.Database
                 {
                     CountryId = index,
                     Name = countryName,
+                    ModifiedDate = DateTime.Now,
                 });
                 index++;
             }

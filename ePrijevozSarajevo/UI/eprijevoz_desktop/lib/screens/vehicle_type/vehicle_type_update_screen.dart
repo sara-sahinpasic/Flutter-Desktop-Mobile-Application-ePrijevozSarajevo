@@ -101,6 +101,8 @@ class _VehicleTypeUpdateDialogState extends State<VehicleTypeUpdateDialog> {
                                     false) {
                                   var request =
                                       Map.from(_formKey.currentState!.value);
+                                  request['modifiedDate'] =
+                                      DateTime.now().toIso8601String();
 
                                   try {
                                     await typeProvider.update(

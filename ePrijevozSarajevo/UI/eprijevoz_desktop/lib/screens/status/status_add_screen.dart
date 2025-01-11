@@ -122,6 +122,8 @@ class _StatusAddDialogState extends State<StatusAddDialog> {
                                     false) {
                                   var request =
                                       Map.from(_formKey.currentState!.value);
+                                  request['modifiedDate'] =
+                                      DateTime.now().toIso8601String();
 
                                   try {
                                     setState(() {

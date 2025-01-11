@@ -10,10 +10,13 @@ Status _$StatusFromJson(Map<String, dynamic> json) => Status(
       statusId: (json['statusId'] as num?)?.toInt(),
       name: json['name'] as String?,
       discount: (json['discount'] as num?)?.toDouble(),
-    );
+    )..modifiedDate = json['modifiedDate'] == null
+        ? null
+        : DateTime.parse(json['modifiedDate'] as String);
 
 Map<String, dynamic> _$StatusToJson(Status instance) => <String, dynamic>{
       'statusId': instance.statusId,
       'name': instance.name,
       'discount': instance.discount,
+      'modifiedDate': instance.modifiedDate?.toIso8601String(),
     };

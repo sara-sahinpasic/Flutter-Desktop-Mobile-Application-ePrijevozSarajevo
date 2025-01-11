@@ -130,6 +130,8 @@ class _StatusUpdateDialogState extends State<StatusUpdateDialog> {
                                       Map.from(_formKey.currentState!.value);
                                   request['discount'] =
                                       double.parse(request['discount']);
+                                  request['modifiedDate'] =
+                                      DateTime.now().toIso8601String();
 
                                   try {
                                     await statusProvider.update(

@@ -61,6 +61,7 @@ namespace ePrijevozSarajevo.Services
                 request.Approved = true;
                 user.UserStatusId = (int)request.UserStatusId;
                 user.StatusExpirationDate = expirationDate;
+                user.ModifiedDate = DateTime.Now;
 
                 if (user.StatusExpirationDate < DateTime.UtcNow || user.StatusExpirationDate == null && request.Active == false)
                 {
@@ -107,6 +108,7 @@ namespace ePrijevozSarajevo.Services
 
             user.UserStatusId = 1;
             user.StatusExpirationDate = null;
+            user.ModifiedDate = DateTime.Now;
 
             _dataContext.Users.Update(user);
             _dataContext.Requests.Update(request);

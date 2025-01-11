@@ -129,6 +129,8 @@ class _TicketUpdateDialogState extends State<TicketUpdateDialog> {
                                       Map.from(_formKey.currentState!.value);
                                   request['price'] =
                                       double.parse(request['price']);
+                                  request['modifiedDate'] =
+                                      DateTime.now().toIso8601String();
 
                                   try {
                                     await ticketProvider.update(
