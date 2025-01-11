@@ -11,6 +11,7 @@ import 'package:eprijevoz_mobile/providers/route_provider.dart';
 import 'package:eprijevoz_mobile/providers/station_provider.dart';
 import 'package:eprijevoz_mobile/providers/utils.dart';
 import 'package:flutter/material.dart' hide Route;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
@@ -63,12 +64,10 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
   SearchResult<Station>? stationResult;
   String? startStationName;
   String? endStationName;
-  String paypalClientId = const String.fromEnvironment("PAYPAL_CLIENT_ID",
-      defaultValue:
-          "AYTBslLKVvc0yWmL_p7xuYFsbHzUW0vwDNvY4mxFnsZb8YDe7BCM5TJul8X-y02HhmmMtp5pKKIgSFEf");
-  String paypalSecretKey = const String.fromEnvironment("PAYPAL_SECRET_KEY",
-      defaultValue:
-          "EGQDCKtMnPdbK5EvQwwPDo280-2_Na_UMe5YT4MU1B6LXW45atXupuoP_Cr-G6iSyXGE07XeOr5Ua6dJ");
+  String paypalClientId = String.fromEnvironment("PAYPAL_CLIENT_ID",
+      defaultValue: dotenv.get("PAYPAL_CLIENT_ID"));
+  String paypalSecretKey = String.fromEnvironment("PAYPAL_SECRET_KEY",
+      defaultValue: dotenv.get("PAYPAL_SECRET_KEY"));
 
   @override
   void initState() {

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:eprijevoz_desktop/models/search_result.dart';
 import 'package:eprijevoz_desktop/providers/auth_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 
@@ -11,8 +12,8 @@ abstract class BaseProvider<T> with ChangeNotifier {
 
   BaseProvider(String endpoint) {
     _endpoint = endpoint;
-    baseUrl = const String.fromEnvironment("BASE_URL_DESKTOP",
-        defaultValue: "http://localhost:7292/");
+    baseUrl = String.fromEnvironment("BASE_URL_DESKTOP",
+        defaultValue: dotenv.get("BASE_URL_DESKTOP"));
   }
 
   // add a getter for _endpoint

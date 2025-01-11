@@ -289,8 +289,5 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 
-# Environment
-*.env
-
 # Recommendation Model
 **/RouteRecommendationModel.zip
