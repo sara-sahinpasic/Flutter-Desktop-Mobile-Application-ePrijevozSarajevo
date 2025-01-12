@@ -1,6 +1,9 @@
 import 'package:eprijevoz_desktop/models/search_result.dart';
 import 'package:eprijevoz_desktop/models/station.dart';
+import 'package:eprijevoz_desktop/models/user.dart';
+import 'package:eprijevoz_desktop/providers/auth_provider.dart';
 import 'package:eprijevoz_desktop/providers/station_provider.dart';
+import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -20,10 +23,15 @@ class _StationAddDialogState extends State<StationAddDialog> {
   bool isLoading = false;
   final _formKey = GlobalKey<FormBuilderState>();
   String? stationName;
+  late UserProvider userProvider;
+  SearchResult<User>? userResult;
+  int? currentUserId;
 
   @override
   void initState() {
     stationProvider = context.read<StationProvider>();
+    userProvider = context.read<UserProvider>();
+
     super.initState();
 
     initForm();
@@ -31,8 +39,13 @@ class _StationAddDialogState extends State<StationAddDialog> {
 
   Future initForm() async {
     stationResult = await stationProvider.get();
+    userResult = await userProvider.get();
 
     setState(() {
+      currentUserId = userResult?.result
+          .firstWhere((user) => user.userName == AuthProvider.username)
+          .userId;
+
       isLoading = false;
     });
   }
@@ -94,6 +107,9 @@ class _StationAddDialogState extends State<StationAddDialog> {
                                     false) {
                                   var request =
                                       Map.from(_formKey.currentState!.value);
+                                  request['modifiedDate'] =
+                                      DateTime.now().toIso8601String();
+                                  request['currentUserId'] = currentUserId;
 
                                   try {
                                     setState(() {

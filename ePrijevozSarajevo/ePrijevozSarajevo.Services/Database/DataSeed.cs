@@ -49,6 +49,26 @@ namespace ePrijevozSarajevo.Services.Database
                     Active = true,
                     Approved = false,
                     RejectionReason = "",
+                },
+                new Request()
+                {
+                    RequestId = 5,
+                    UserId = 1,
+                    UserStatusId = 2,
+                    DateCreated = DateTime.Now,
+                    Active = true,
+                    Approved = false,
+                    RejectionReason = "",
+                },
+                new Request()
+                {
+                    RequestId = 6,
+                    UserId = 6,
+                    UserStatusId = 3,
+                    DateCreated = DateTime.Now,
+                    Active = true,
+                    Approved = false,
+                    RejectionReason = "",
                 }
             ); //5
             modelBuilder.Entity<Station>().HasData
@@ -56,77 +76,92 @@ namespace ePrijevozSarajevo.Services.Database
                 new Station()
                 {
                     StationId = 1,
-                    Name = "Ilidža"
+                    Name = "Ilidža",
+                    ModifiedDate = DateTime.Now,
                 },
                 new Station()
                 {
                     StationId = 2,
-                    Name = "Stup"
+                    Name = "Stup",
+                    ModifiedDate = DateTime.Now,
                 },
                 new Station()
                 {
                     StationId = 3,
-                    Name = "Nedžarići"
+                    Name = "Nedžarići",
+                    ModifiedDate = DateTime.Now,
                 },
                 new Station()
                 {
                     StationId = 4,
-                    Name = "Socijalno"
+                    Name = "Socijalno",
+                    ModifiedDate = DateTime.Now,
                 },
                 new Station()
                 {
                     StationId = 5,
-                    Name = "Malta"
+                    Name = "Malta",
+                    ModifiedDate = DateTime.Now,
                 },
                 new Station()
                 {
                     StationId = 6,
-                    Name = "Baščaršija"
+                    Name = "Baščaršija",
+                    ModifiedDate = DateTime.Now,
                 },
                 new Station()
                 {
                     StationId = 7,
-                    Name = "Otoka"
+                    Name = "Otoka",
+                    ModifiedDate = DateTime.Now,
                 },
                 new Station()
                 {
                     StationId = 8,
-                    Name = "Skenderija"
+                    Name = "Skenderija",
+                    ModifiedDate = DateTime.Now,
                 },
                 new Station()
                 {
                     StationId = 9,
-                    Name = "Drvenija"
+                    Name = "Drvenija",
+                    ModifiedDate = DateTime.Now,
                 },
                 new Station()
                 {
                     StationId = 10,
-                    Name = "Dobrinja"
+                    Name = "Dobrinja",
+                    ModifiedDate = DateTime.Now,
                 },
                 new Station()
                 {
                     StationId = 11,
-                    Name = "Grbavica"
+                    Name = "Grbavica",
+                    ModifiedDate = DateTime.Now,
                 },
                 new Station()
                 {
                     StationId = 12,
-                    Name = "Hrasno"
+                    Name = "Hrasno",
+                    ModifiedDate = DateTime.Now,
                 },
                 new Station()
                 {
                     StationId = 13,
-                    Name = "Aneks"
+                    Name = "Aneks",
+                    ModifiedDate = DateTime.Now,
                 },
                 new Station()
                 {
                     StationId = 14,
-                    Name = "Alipašino polje"
+                    Name = "Alipašino polje",
+                    ModifiedDate = DateTime.Now,
                 },
                  new Station()
                  {
                      StationId = 15,
-                     Name = "Švrakino selo"
+                     Name = "Švrakino selo",
+                     ModifiedDate = DateTime.Now,
                  }
             ); //6
             modelBuilder.Entity<Vehicle>().HasData
@@ -191,47 +226,65 @@ namespace ePrijevozSarajevo.Services.Database
                 new Manufacturer()
                 {
                     ManufacturerId = 1,
-                    Name = "MAN"
+                    Name = "MAN",
+                    ModifiedDate = DateTime.Now,
+                    ManufacturerCountryId = 1,
                 },
                 new Manufacturer()
                 {
                     ManufacturerId = 2,
-                    Name = "Solaris"
+                    Name = "Solaris",
+                    ModifiedDate = DateTime.Now,
+                    ManufacturerCountryId = 2,
                 },
                 new Manufacturer()
                 {
                     ManufacturerId = 3,
-                    Name = "Volvo"
+                    Name = "Volvo",
+                    ModifiedDate = DateTime.Now,
+                    ManufacturerCountryId = 3,
                 },
                 new Manufacturer()
                 {
                     ManufacturerId = 4,
-                    Name = "Mercedes"
+                    Name = "Mercedes",
+                    ModifiedDate = DateTime.Now,
+                    ManufacturerCountryId = 4,
                 },
                 new Manufacturer()
                 {
                     ManufacturerId = 5,
-                    Name = "Setra"
+                    Name = "Setra",
+                    ModifiedDate = DateTime.Now,
+                    ManufacturerCountryId = 5,
                 },
                 new Manufacturer()
                 {
                     ManufacturerId = 6,
-                    Name = "Neoplan"
+                    Name = "Neoplan",
+                    ModifiedDate = DateTime.Now,
+                    ManufacturerCountryId = 6,
                 },
                 new Manufacturer()
                 {
                     ManufacturerId = 7,
-                    Name = "Siemens"
+                    Name = "Siemens",
+                    ModifiedDate = DateTime.Now,
+                    ManufacturerCountryId = 7,
                 },
                 new Manufacturer()
                 {
                     ManufacturerId = 8,
-                    Name = "Traton"
+                    Name = "Traton",
+                    ModifiedDate = DateTime.Now,
+                    ManufacturerCountryId = 8,
                 },
                 new Manufacturer()
                 {
                     ManufacturerId = 9,
-                    Name = "Tesla"
+                    Name = "Tesla",
+                    ModifiedDate = DateTime.Now,
+                    ManufacturerCountryId = 9,
                 }
             ); //8
             modelBuilder.Entity<Type>().HasData
@@ -239,27 +292,32 @@ namespace ePrijevozSarajevo.Services.Database
                 new Type()
                 {
                     TypeId = 1,
-                    Name = "Trolejbus"
+                    Name = "Trolejbus",
+                    ModifiedDate = DateTime.Now,
                 },
                 new Type()
                 {
                     TypeId = 2,
-                    Name = "Tramvaj"
+                    Name = "Tramvaj",
+                    ModifiedDate = DateTime.Now,
                 },
                 new Type()
                 {
                     TypeId = 3,
-                    Name = "Minibus"
+                    Name = "Minibus",
+                    ModifiedDate = DateTime.Now,
                 },
                 new Type()
                 {
                     TypeId = 4,
-                    Name = "Autobus"
+                    Name = "Autobus",
+                    ModifiedDate = DateTime.Now,
                 },
                 new Type()
                 {
                     TypeId = 5,
-                    Name = "Kombi"
+                    Name = "Kombi",
+                    ModifiedDate = DateTime.Now,
                 }
             ); //9
             modelBuilder.Entity<UserRole>().HasData
@@ -319,6 +377,7 @@ namespace ePrijevozSarajevo.Services.Database
                       StatusId = 1,
                       Name = "Default",
                       Discount = 0.0,
+                      ModifiedDate = DateTime.Now,
 
                   },
                  new Status()
@@ -326,25 +385,29 @@ namespace ePrijevozSarajevo.Services.Database
                      StatusId = 2,
                      Name = "Student",
                      Discount = 0.3,
+                     ModifiedDate = DateTime.Now,
 
                  },
                 new Status()
                 {
                     StatusId = 3,
                     Name = "Penzioner",
-                    Discount = 0.5
+                    Discount = 0.5,
+                    ModifiedDate = DateTime.Now,
                 },
                  new Status()
                  {
                      StatusId = 4,
                      Name = "Zaposlenik",
-                     Discount = 0.15
+                     Discount = 0.15,
+                     ModifiedDate = DateTime.Now,
                  },
                  new Status()
                  {
                      StatusId = 5,
                      Name = "Nezaposlen",
-                     Discount = 0.4
+                     Discount = 0.4,
+                     ModifiedDate = DateTime.Now,
                  }
             ); //12
             modelBuilder.Entity<Ticket>().HasData
@@ -354,35 +417,40 @@ namespace ePrijevozSarajevo.Services.Database
                      TicketId = 1,
                      Name = "Jednosmjerna",
                      Price = 1.80,
-                     StateMachine = "draft"
+                     StateMachine = "draft",
+                     ModifiedDate = DateTime.Now,
                  },
                 new Ticket()
                 {
                     TicketId = 2,
                     Name = "Povratna",
                     Price = 3.20,
-                    StateMachine = "draft"
+                    StateMachine = "draft",
+                    ModifiedDate = DateTime.Now,
                 },
                 new Ticket()
                 {
                     TicketId = 3,
                     Name = "Jednosmjerna dječija",
                     Price = 0.80,
-                    StateMachine = "draft"
+                    StateMachine = "draft",
+                    ModifiedDate = DateTime.Now,
                 },
                 new Ticket()
                 {
                     TicketId = 4,
                     Name = "Povratna dječija",
                     Price = 1.20,
-                    StateMachine = "draft"
+                    StateMachine = "draft",
+                    ModifiedDate = DateTime.Now,
                 },
                 new Ticket()
                 {
                     TicketId = 5,
                     Name = "Mjesečna",
                     Price = 75,
-                    StateMachine = "draft"
+                    StateMachine = "draft",
+                    ModifiedDate = DateTime.Now,
                 }
             ); //13
 

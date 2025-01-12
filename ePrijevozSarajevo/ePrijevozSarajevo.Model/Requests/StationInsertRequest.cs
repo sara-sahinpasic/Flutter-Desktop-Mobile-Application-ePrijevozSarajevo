@@ -3,6 +3,7 @@
     public class StationInsertRequest
     {
         public string? Name { get; set; }
-        public DateTime DateCreated { get; set; } = DateTime.Now;
+        public DateTime? ModifiedDate { get; set; }
+        public int? CurrentUserId { get; set; }
     }
 }

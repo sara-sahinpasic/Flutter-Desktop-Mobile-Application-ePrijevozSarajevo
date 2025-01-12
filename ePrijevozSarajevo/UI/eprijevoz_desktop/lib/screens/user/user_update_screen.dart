@@ -346,6 +346,8 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
                               var request =
                                   Map.from(_formKey.currentState!.value);
                               request['userCountryId'] = selectedCountryId;
+                              request['modifiedDate'] =
+                                  DateTime.now().toIso8601String();
 
                               try {
                                 setState(() {

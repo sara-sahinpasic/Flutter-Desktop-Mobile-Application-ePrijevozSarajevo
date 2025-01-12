@@ -6,6 +6,8 @@ part 'station.g.dart';
 class Station {
   int? stationId;
   String? name;
+  DateTime? modifiedDate;
+  int? currentUserId;
 
   Station({this.stationId, this.name});
 

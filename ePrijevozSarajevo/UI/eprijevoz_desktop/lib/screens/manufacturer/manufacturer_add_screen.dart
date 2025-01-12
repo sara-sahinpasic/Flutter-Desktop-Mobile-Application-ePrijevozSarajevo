@@ -1,6 +1,11 @@
+import 'package:eprijevoz_desktop/models/country.dart';
 import 'package:eprijevoz_desktop/models/manufacturer.dart';
 import 'package:eprijevoz_desktop/models/search_result.dart';
+import 'package:eprijevoz_desktop/models/user.dart';
+import 'package:eprijevoz_desktop/providers/auth_provider.dart';
+import 'package:eprijevoz_desktop/providers/country_provider.dart';
 import 'package:eprijevoz_desktop/providers/manufacturer_provider.dart';
+import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -16,25 +21,51 @@ class ManufacturerAddDialog extends StatefulWidget {
 
 class _ManufacturerAddDialogState extends State<ManufacturerAddDialog> {
   late ManufacturerProvider manufacturerProvider;
-  SearchResult<Manufacturer>? countryResult;
+  SearchResult<Manufacturer>? manufacturerResult;
   bool isLoading = false;
   final _formKey = GlobalKey<FormBuilderState>();
   String? countryName;
+  late CountryProvider countryProvider;
+  SearchResult<Country>? countryResult;
+  int? selectedCountryId;
+  late UserProvider userProvider;
+  SearchResult<User>? userResult;
+  int? currentUserId;
 
   @override
   void initState() {
     manufacturerProvider = context.read<ManufacturerProvider>();
+    countryProvider = context.read<CountryProvider>();
+    userProvider = context.read<UserProvider>();
+
     super.initState();
 
     initForm();
   }
 
   Future initForm() async {
-    countryResult = await manufacturerProvider.get();
+    manufacturerResult = await manufacturerProvider.get();
+    countryResult = await countryProvider.get();
+    userResult = await userProvider.get();
+
+    selectedCountryId = countryResult?.result.first.countryId;
+
+    currentUserId = userResult?.result
+        .firstWhere((user) => user.userName == AuthProvider.username)
+        .userId;
 
     setState(() {
       isLoading = false;
     });
+  }
+
+  List<DropdownMenuItem<String>> getCountryItems() {
+    var list = countryResult?.result
+            .map((item) => DropdownMenuItem(
+                value: item.countryId.toString(), child: Text(item.name ?? "")))
+            .toList() ??
+        [];
+    return list;
   }
 
   @override
@@ -57,32 +88,68 @@ class _ManufacturerAddDialogState extends State<ManufacturerAddDialog> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(height: 15),
-                      const Text(
-                        "Naziv proizvođača:",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
+                      Row(
+                        children: [
+                          const Text(
+                            "Naziv proizvođača:",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                          const SizedBox(width: 20),
+                          Expanded(
+                            child: FormBuilderTextField(
+                              name: 'name',
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                hintText: "Unesite naziv",
+                              ),
+                              validator: FormBuilderValidators.compose([
+                                FormBuilderValidators.required(
+                                  errorText: "Ovo polje ne može bit prazno.",
+                                ),
+                                FormBuilderValidators.match(
+                                  r'^[a-zA-Z\s]*$',
+                                  errorText:
+                                      "Ovo polje može sadržavati isključivo slova.",
+                                ),
+                              ]),
+                            ),
+                          ),
+                        ],
                       ),
-                      const SizedBox(height: 10),
-                      FormBuilderTextField(
-                        name: 'name',
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8.0),
+                      const SizedBox(height: 15),
+                      Row(
+                        children: [
+                          const Text(
+                            "Država:",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15),
                           ),
-                          hintText: "Unesite naziv",
-                        ),
-                        validator: FormBuilderValidators.compose([
-                          FormBuilderValidators.required(
-                            errorText: "Ovo polje ne može bit prazno.",
+                          const SizedBox(
+                            width: 115,
                           ),
-                          FormBuilderValidators.match(
-                            r'^[a-zA-Z\s]*$',
-                            errorText:
-                                "Ovo polje može sadržavati isključivo slova.",
+                          Expanded(
+                            child: FormBuilderDropdown(
+                              name: "manufacturerCountryId",
+                              items: getCountryItems(),
+                              initialValue: selectedCountryId?.toString(),
+                              onChanged: (value) {
+                                setState(() {
+                                  selectedCountryId =
+                                      int.parse(value as String);
+                                });
+                              },
+                              validator: FormBuilderValidators.compose([
+                                FormBuilderValidators.required(
+                                    errorText: "Odaberite državu."),
+                              ]),
+                            ),
                           ),
-                        ]),
+                        ],
                       ),
                       const SizedBox(height: 25),
                       Row(
@@ -94,6 +161,9 @@ class _ManufacturerAddDialogState extends State<ManufacturerAddDialog> {
                                     false) {
                                   var request =
                                       Map.from(_formKey.currentState!.value);
+                                  request['modifiedDate'] =
+                                      DateTime.now().toIso8601String();
+                                  request['currentUserId'] = currentUserId;
 
                                   try {
                                     setState(() {

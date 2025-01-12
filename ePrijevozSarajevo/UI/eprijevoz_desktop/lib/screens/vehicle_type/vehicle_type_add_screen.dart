@@ -1,5 +1,8 @@
 import 'package:eprijevoz_desktop/models/search_result.dart';
+import 'package:eprijevoz_desktop/models/user.dart';
+import 'package:eprijevoz_desktop/providers/auth_provider.dart';
 import 'package:eprijevoz_desktop/providers/type_provider.dart';
+import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:eprijevoz_desktop/models/type.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -20,10 +23,15 @@ class _VehicleTypeAddDialogState extends State<VehicleTypeAddDialog> {
   bool isLoading = false;
   final _formKey = GlobalKey<FormBuilderState>();
   String? typeName;
+  late UserProvider userProvider;
+  SearchResult<User>? userResult;
+  int? currentUserId;
 
   @override
   void initState() {
     typeProvider = context.read<TypeProvider>();
+    userProvider = context.read<UserProvider>();
+
     super.initState();
 
     initForm();
@@ -31,9 +39,14 @@ class _VehicleTypeAddDialogState extends State<VehicleTypeAddDialog> {
 
   Future initForm() async {
     countryResult = await typeProvider.get();
+    userResult = await userProvider.get();
 
     setState(() {
       isLoading = false;
+
+      currentUserId = userResult?.result
+          .firstWhere((user) => user.userName == AuthProvider.username)
+          .userId;
     });
   }
 
@@ -94,6 +107,9 @@ class _VehicleTypeAddDialogState extends State<VehicleTypeAddDialog> {
                                     false) {
                                   var request =
                                       Map.from(_formKey.currentState!.value);
+                                  request['modifiedDate'] =
+                                      DateTime.now().toIso8601String();
+                                  request['currentUserId'] = currentUserId;
 
                                   try {
                                     setState(() {

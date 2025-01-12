@@ -6,6 +6,9 @@ part 'manufacturer.g.dart';
 class Manufacturer {
   int? manufacturerId;
   String? name;
+  DateTime? modifiedDate;
+  int? manufacturerCountryId;
+  int? currentUserId;
 
   Manufacturer({this.manufacturerId, this.name});
 

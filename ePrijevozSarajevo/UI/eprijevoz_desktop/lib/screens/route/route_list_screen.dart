@@ -4,7 +4,6 @@ import 'package:eprijevoz_desktop/models/station.dart';
 import 'package:eprijevoz_desktop/providers/route_provider.dart';
 import 'package:eprijevoz_desktop/providers/station_provider.dart';
 import 'package:eprijevoz_desktop/providers/utils.dart';
-import 'package:eprijevoz_desktop/screens/manufacturer/manufacturer_lsit_screen.dart';
 import 'package:eprijevoz_desktop/screens/route/route_add_screen.dart';
 import 'package:eprijevoz_desktop/screens/route/route_update_screen.dart';
 import 'package:eprijevoz_desktop/screens/station/station_list_screen.dart';
@@ -327,40 +326,11 @@ class _RouteListScreenState extends State<RouteListScreen> {
                     ],
                   ),
                 ),
-                // issued tickets
-                TextButton(
-                  onPressed: () => Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const VehicleTypeListScreen(),
-                    ),
-                  ),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.arrow_forward,
-                        color: Colors.green.shade800,
-                      ),
-                      const SizedBox(width: 5),
-                      Text(
-                        "Sekcija izdane karte",
-                        style: TextStyle(
-                          color: Colors.green.shade800,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          decoration: TextDecoration.underline,
-                          decorationColor: Colors.green.shade800,
-                          decorationThickness: 1,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
               ],
             ),
             const SizedBox(
               height: 20,
             ),
-            //
             Container(
               color: Colors.black,
               width: double.infinity,

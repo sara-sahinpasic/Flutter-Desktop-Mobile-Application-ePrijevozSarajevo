@@ -1,6 +1,9 @@
 import 'package:eprijevoz_desktop/models/country.dart';
 import 'package:eprijevoz_desktop/models/search_result.dart';
+import 'package:eprijevoz_desktop/models/user.dart';
+import 'package:eprijevoz_desktop/providers/auth_provider.dart';
 import 'package:eprijevoz_desktop/providers/country_provider.dart';
+import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -23,10 +26,15 @@ class _CountryUpdateDialogState extends State<CountryUpdateDialog> {
   final _formKey = GlobalKey<FormBuilderState>();
   Map<String, dynamic> _initialValue = {};
   String? countryName;
+  late UserProvider userProvider;
+  SearchResult<User>? userResult;
+  int? currentUserId;
 
   @override
   void initState() {
     countryProvider = context.read<CountryProvider>();
+    userProvider = context.read<UserProvider>();
+
     super.initState();
     _initialValue = {
       'name': widget.country.name,
@@ -36,6 +44,11 @@ class _CountryUpdateDialogState extends State<CountryUpdateDialog> {
 
   Future initForm() async {
     countryResult = await countryProvider.get();
+    userResult = await userProvider.get();
+
+    currentUserId = userResult?.result
+        .firstWhere((user) => user.userName == AuthProvider.username)
+        .userId;
 
     setState(() {
       isLoading = false;
@@ -100,6 +113,9 @@ class _CountryUpdateDialogState extends State<CountryUpdateDialog> {
                                     false) {
                                   var request =
                                       Map.from(_formKey.currentState!.value);
+                                  request['modifiedDate'] =
+                                      DateTime.now().toIso8601String();
+                                  request['currentUserId'] = currentUserId;
 
                                   try {
                                     await countryProvider.update(

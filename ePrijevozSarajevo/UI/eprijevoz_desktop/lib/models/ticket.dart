@@ -9,6 +9,8 @@ class Ticket {
   double? price;
   String? stateMachine;
   List<String>? allowedActions = [];
+  DateTime? modifiedDate;
+  int? currentUserId;
 
   Ticket({this.ticketId, this.name, this.price, this.stateMachine});
 

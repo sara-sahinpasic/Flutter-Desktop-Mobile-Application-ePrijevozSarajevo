@@ -30,22 +30,7 @@ class _TicketListScreenState extends State<TicketListScreen> {
   }
 
   Future initForm() async {
-    setState(() {
-      isLoading = true;
-    });
-    try {
-      ticketResult = await ticketProvider.get();
-      for (var ticket in ticketResult?.result ?? []) {
-        ticket.allowedActions =
-            await ticketProvider.getAllowedActions(ticket.ticketId!);
-      }
-    } catch (e) {
-      debugPrint('Error: $e');
-    } finally {
-      setState(() {
-        isLoading = false;
-      });
-    }
+    ticketResult = await ticketProvider.get();
   }
 
   Future refreshTable() async {
@@ -55,10 +40,6 @@ class _TicketListScreenState extends State<TicketListScreen> {
     try {
       var request = Map.from(_formKey.currentState?.value ?? {});
       ticketResult = await ticketProvider.get(filter: request);
-      for (var ticket in ticketResult?.result ?? []) {
-        ticket.allowedActions =
-            await ticketProvider.getAllowedActions(ticket.ticketId!);
-      }
     } catch (e) {
       debugPrint('Error: $e');
     } finally {
@@ -167,10 +148,6 @@ class _TicketListScreenState extends State<TicketListScreen> {
                 'NameGTE': _ftsTicketNameController.text,
               };
               ticketResult = await ticketProvider.get(filter: filter);
-              for (var ticket in ticketResult?.result ?? []) {
-                ticket.allowedActions =
-                    await ticketProvider.getAllowedActions(ticket.ticketId!);
-              }
             } catch (e) {
               debugPrint('Error: $e');
             } finally {
@@ -239,22 +216,6 @@ class _TicketListScreenState extends State<TicketListScreen> {
                           ),
                         ),
                         DataColumn(
-                          label: Flexible(
-                            child: Text(
-                              'State Machine',
-                              softWrap: true,
-                              overflow: TextOverflow.visible,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                          ),
-                        ),
-                        DataColumn(
-                          label: Text("Akcije"),
-                        ),
-                        DataColumn(
                           label: Expanded(
                             child: Text(
                               '',
@@ -283,81 +244,6 @@ class _TicketListScreenState extends State<TicketListScreen> {
                                       style: const TextStyle(
                                           color: Colors.white, fontSize: 17),
                                     )),
-                                    DataCell(Text(
-                                      '${e.stateMachine}',
-                                      style: const TextStyle(
-                                          color: Colors.white, fontSize: 17),
-                                    )),
-                                    //
-                                    DataCell(
-                                      InkWell(
-                                        onTap: () async {
-                                          try {
-                                            // Fetch allowed actions for this ticket
-                                            final allowedActions =
-                                                await ticketProvider
-                                                    .getAllowedActions(
-                                                        e.ticketId!);
-
-                                            // Display allowed actions in a dialog
-                                            final selectedAction =
-                                                await showDialog<String>(
-                                              context: context,
-                                              builder: (context) {
-                                                return SimpleDialog(
-                                                  title: const Text(
-                                                      "Allowed Actions"),
-                                                  children: allowedActions
-                                                      .map((action) {
-                                                    return SimpleDialogOption(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              context, action),
-                                                      child: Text(action),
-                                                    );
-                                                  }).toList(),
-                                                );
-                                              },
-                                            );
-
-                                            if (selectedAction != null) {
-                                              // Trigger the corresponding backend action
-                                              bool success = false;
-                                              if (selectedAction ==
-                                                  "Activate") {
-                                                success = await ticketProvider
-                                                    .activate(e.ticketId!);
-                                              } else if (selectedAction ==
-                                                  "Hide") {
-                                                success = await ticketProvider
-                                                    .hide(e.ticketId!);
-                                              } else if (selectedAction ==
-                                                  "Edit") {
-                                                // Add edit logic if needed
-                                              }
-
-                                              if (success) {
-                                                // Refresh table after successful state update
-                                                refreshTable();
-                                              }
-                                            }
-                                          } catch (error) {
-                                            debugPrint(
-                                                "Error fetching or executing allowed actions: $error");
-                                          }
-                                        },
-                                        child: Text(
-                                          '${e.stateMachine}',
-                                          style: const TextStyle(
-                                            color: Colors.blue,
-                                            fontSize: 17,
-                                            decoration:
-                                                TextDecoration.underline,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-
                                     // update
                                     DataCell(IconButton(
                                       onPressed: () {

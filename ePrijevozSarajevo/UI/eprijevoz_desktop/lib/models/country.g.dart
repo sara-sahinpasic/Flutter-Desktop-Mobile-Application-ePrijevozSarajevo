@@ -9,9 +9,15 @@ part of 'country.dart';
 Country _$CountryFromJson(Map<String, dynamic> json) => Country(
       countryId: (json['countryId'] as num?)?.toInt(),
       name: json['name'] as String?,
-    );
+    )
+      ..modifiedDate = json['modifiedDate'] == null
+          ? null
+          : DateTime.parse(json['modifiedDate'] as String)
+      ..currentUserId = (json['currentUserId'] as num?)?.toInt();
 
 Map<String, dynamic> _$CountryToJson(Country instance) => <String, dynamic>{
       'countryId': instance.countryId,
       'name': instance.name,
+      'modifiedDate': instance.modifiedDate?.toIso8601String(),
+      'currentUserId': instance.currentUserId,
     };

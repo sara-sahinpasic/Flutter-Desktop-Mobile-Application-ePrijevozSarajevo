@@ -626,6 +626,8 @@ class _UserAddDialogState extends State<UserAddDialog> {
                                       Map.from(_formKey.currentState!.value);
                                   userRequest['userCountryId'] =
                                       selectedCountryId;
+                                  userRequest['modifiedDate'] =
+                                      DateTime.now().toIso8601String();
 
                                   try {
                                     setState(() {
