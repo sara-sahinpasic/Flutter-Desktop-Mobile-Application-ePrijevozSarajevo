@@ -1,7 +1,9 @@
-﻿using ePrijevozSarajevo.Model.Requests;
+﻿using ePrijevozSarajevo.Model.Exceptions;
+using ePrijevozSarajevo.Model.Requests;
 using ePrijevozSarajevo.Model.SearchObjects;
 using ePrijevozSarajevo.Services.Database;
 using MapsterMapper;
+using Microsoft.IdentityModel.Tokens;
 
 namespace ePrijevozSarajevo.Services
 {
@@ -18,6 +20,16 @@ namespace ePrijevozSarajevo.Services
             }
 
             return query;
+        }
+
+        public override Task Delete(int id)
+        {
+            var routes = _dataContext.Routes.Where(x => x.StartStationId == id || x.EndStationId == id);
+            if (!routes.IsNullOrEmpty())
+            {
+                throw new UserException("Nije moguće obrisati stanicu koja se koristi. Potrebno obrisati prvo rute.");
+            }
+            return base.Delete(id);
         }
     }
 }

@@ -15,11 +15,11 @@
         public string ZipCode { get; set; } = null!;
         public string City { get; set; } = null!;
         public Country? UserCountry { get; set; }
-        public int UserCountryId { get; set; }
+        public int? UserCountryId { get; set; }
         public DateTime RegistrationDate { get; set; } 
         public DateTime ModifiedDate { get; set; } 
         public Status? UserStatus { get; set; }
-        public int UserStatusId { get; set; }
+        public int? UserStatusId { get; set; }
         public byte[]? ProfileImage { get; set; }
         public DateTime? StatusExpirationDate { get; set; }
         public virtual ICollection<UserRole> UserRoles { get; set; } = new List<UserRole>();

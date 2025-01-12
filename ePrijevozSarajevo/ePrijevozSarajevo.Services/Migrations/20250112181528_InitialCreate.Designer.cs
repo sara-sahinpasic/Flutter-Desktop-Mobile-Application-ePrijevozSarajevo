@@ -12,7 +12,11 @@ using ePrijevozSarajevo.Services.Database;
 namespace ePrijevozSarajevo.Services.Migrations
 {
     [DbContext(typeof(DataContext))]
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
     [Migration("20250112153934_InitialCreate")]
+========
+    [Migration("20250112181528_InitialCreate")]
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -51,1171 +55,1951 @@ namespace ePrijevozSarajevo.Services.Migrations
                         new
                         {
                             CountryId = 1,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9114),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3556),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Afghanistan"
                         },
                         new
                         {
                             CountryId = 2,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9117),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3560),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Albania"
                         },
                         new
                         {
                             CountryId = 3,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9118),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3561),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Algeria"
                         },
                         new
                         {
                             CountryId = 4,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9119),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3563),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Andorra"
                         },
                         new
                         {
                             CountryId = 5,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9120),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3564),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Angola"
                         },
                         new
                         {
                             CountryId = 6,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9121),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3566),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Antigua and Barbuda"
                         },
                         new
                         {
                             CountryId = 7,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9122),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3567),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Argentina"
                         },
                         new
                         {
                             CountryId = 8,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9123),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3568),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Armenia"
                         },
                         new
                         {
                             CountryId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9124),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3569),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Australia"
                         },
                         new
                         {
                             CountryId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9125),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3571),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Austria"
                         },
                         new
                         {
                             CountryId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9126),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3572),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Azerbaijan"
                         },
                         new
                         {
                             CountryId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9127),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3573),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Bahrain"
                         },
                         new
                         {
                             CountryId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9128),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3575),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Bangladesh"
                         },
                         new
                         {
                             CountryId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9129),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3576),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Barbados"
                         },
                         new
                         {
                             CountryId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9130),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3577),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Belarus"
                         },
                         new
                         {
                             CountryId = 16,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9131),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3578),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Belgium"
                         },
                         new
                         {
                             CountryId = 17,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9131),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3579),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Belize"
                         },
                         new
                         {
                             CountryId = 18,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9133),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3581),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Benin"
                         },
                         new
                         {
                             CountryId = 19,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9133),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3582),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Bhutan"
                         },
                         new
                         {
                             CountryId = 20,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9134),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3584),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Bolivia"
                         },
                         new
                         {
                             CountryId = 21,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9135),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3585),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Bosnia and Herzegovina"
                         },
                         new
                         {
                             CountryId = 22,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9136),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3586),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Botswana"
                         },
                         new
                         {
                             CountryId = 23,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9137),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3587),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Brazil"
                         },
                         new
                         {
                             CountryId = 24,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9138),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3588),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Brunei"
                         },
                         new
                         {
                             CountryId = 25,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9138),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3589),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Bulgaria"
                         },
                         new
                         {
                             CountryId = 26,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9139),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3591),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Burkina Faso"
                         },
                         new
                         {
                             CountryId = 27,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9140),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3592),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Burundi"
                         },
                         new
                         {
                             CountryId = 28,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9141),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3593),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Cambodia"
                         },
                         new
                         {
                             CountryId = 29,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9142),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3594),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Cameroon"
                         },
                         new
                         {
                             CountryId = 30,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9143),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3595),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Canada"
                         },
                         new
                         {
                             CountryId = 31,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9144),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3596),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Cape Verde"
                         },
                         new
                         {
                             CountryId = 32,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9144),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3597),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Central African Republic"
                         },
                         new
                         {
                             CountryId = 33,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9145),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3599),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Chad"
                         },
                         new
                         {
                             CountryId = 34,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9147),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3601),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Chile"
                         },
                         new
                         {
                             CountryId = 35,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9147),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3602),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "China"
                         },
                         new
                         {
                             CountryId = 36,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9148),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3603),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Colombia"
                         },
                         new
                         {
                             CountryId = 37,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9149),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3604),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Comoros"
                         },
                         new
                         {
                             CountryId = 38,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9150),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3605),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Congo"
                         },
                         new
                         {
                             CountryId = 39,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9151),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3606),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Congo (Democratic Republic)"
                         },
                         new
                         {
                             CountryId = 40,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9152),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3608),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Costa Rica"
                         },
                         new
                         {
                             CountryId = 41,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9152),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3609),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Croatia"
                         },
                         new
                         {
                             CountryId = 42,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9153),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3610),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Cuba"
                         },
                         new
                         {
                             CountryId = 43,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9154),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3611),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Cyprus"
                         },
                         new
                         {
                             CountryId = 44,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9155),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3612),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Czechia"
                         },
                         new
                         {
                             CountryId = 45,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9156),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3613),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Denmark"
                         },
                         new
                         {
                             CountryId = 46,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9157),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3614),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Djibouti"
                         },
                         new
                         {
                             CountryId = 47,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9158),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3616),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Dominica"
                         },
                         new
                         {
                             CountryId = 48,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9158),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3617),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Dominican Republic"
                         },
                         new
                         {
                             CountryId = 49,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9159),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3618),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "East Timor"
                         },
                         new
                         {
                             CountryId = 50,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9160),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3619),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Ecuador"
                         },
                         new
                         {
                             CountryId = 51,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9161),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3620),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Egypt"
                         },
                         new
                         {
                             CountryId = 52,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9162),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3621),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "El Salvador"
                         },
                         new
                         {
                             CountryId = 53,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9163),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3622),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Equatorial Guinea"
                         },
                         new
                         {
                             CountryId = 54,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9163),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3624),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Eritrea"
                         },
                         new
                         {
                             CountryId = 55,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9164),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3625),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Estonia"
                         },
                         new
                         {
                             CountryId = 56,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9165),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3626),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Eswatini"
                         },
                         new
                         {
                             CountryId = 57,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9166),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3627),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Ethiopia"
                         },
                         new
                         {
                             CountryId = 58,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9167),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3628),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Fiji"
                         },
                         new
                         {
                             CountryId = 59,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9168),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3629),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Finland"
                         },
                         new
                         {
                             CountryId = 60,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9168),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3630),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "France"
                         },
                         new
                         {
                             CountryId = 61,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9169),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3631),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Gabon"
                         },
                         new
                         {
                             CountryId = 62,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9170),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3633),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Georgia"
                         },
                         new
                         {
                             CountryId = 63,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9171),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3634),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Germany"
                         },
                         new
                         {
                             CountryId = 64,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9172),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3635),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Ghana"
                         },
                         new
                         {
                             CountryId = 65,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9173),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3636),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Greece"
                         },
                         new
                         {
                             CountryId = 66,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9174),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3645),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Grenada"
                         },
                         new
                         {
                             CountryId = 67,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9175),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3646),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Guatemala"
                         },
                         new
                         {
                             CountryId = 68,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9176),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3647),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Guinea"
                         },
                         new
                         {
                             CountryId = 69,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9176),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3649),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Guinea-Bissau"
                         },
                         new
                         {
                             CountryId = 70,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9177),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3650),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Guyana"
                         },
                         new
                         {
                             CountryId = 71,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9178),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3651),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Haiti"
                         },
                         new
                         {
                             CountryId = 72,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9179),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3652),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Honduras"
                         },
                         new
                         {
                             CountryId = 73,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9186),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3653),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Hungary"
                         },
                         new
                         {
                             CountryId = 74,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9188),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3654),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Iceland"
                         },
                         new
                         {
                             CountryId = 75,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9189),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3656),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "India"
                         },
                         new
                         {
                             CountryId = 76,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9190),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3657),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Indonesia"
                         },
                         new
                         {
                             CountryId = 77,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9191),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3658),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Iran"
                         },
                         new
                         {
                             CountryId = 78,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9191),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3660),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Iraq"
                         },
                         new
                         {
                             CountryId = 79,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9192),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3661),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Ireland"
                         },
                         new
                         {
                             CountryId = 80,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9193),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3662),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Israel"
                         },
                         new
                         {
                             CountryId = 81,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9194),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3663),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Italy"
                         },
                         new
                         {
                             CountryId = 82,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9195),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3664),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Ivory Coast"
                         },
                         new
                         {
                             CountryId = 83,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9195),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3665),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Jamaica"
                         },
                         new
                         {
                             CountryId = 84,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9196),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3666),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Japan"
                         },
                         new
                         {
                             CountryId = 85,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9197),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3667),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Jordan"
                         },
                         new
                         {
                             CountryId = 86,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9198),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3669),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Kazakhstan"
                         },
                         new
                         {
                             CountryId = 87,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9199),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3670),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Kenya"
                         },
                         new
                         {
                             CountryId = 88,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9200),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3671),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Kiribati"
                         },
                         new
                         {
                             CountryId = 89,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9200),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3672),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Kosovo"
                         },
                         new
                         {
                             CountryId = 90,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9201),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3673),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Kuwait"
                         },
                         new
                         {
                             CountryId = 91,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9202),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3674),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Kyrgyzstan"
                         },
                         new
                         {
                             CountryId = 92,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9203),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3675),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Laos"
                         },
                         new
                         {
                             CountryId = 93,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9204),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3676),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Latvia"
                         },
                         new
                         {
                             CountryId = 94,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9205),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3678),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Lebanon"
                         },
                         new
                         {
                             CountryId = 95,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9205),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3679),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Lesotho"
                         },
                         new
                         {
                             CountryId = 96,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9206),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3680),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Liberia"
                         },
                         new
                         {
                             CountryId = 97,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9207),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3681),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Libya"
                         },
                         new
                         {
                             CountryId = 98,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9208),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3682),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Liechtenstein"
                         },
                         new
                         {
                             CountryId = 99,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9209),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3684),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Lithuania"
                         },
                         new
                         {
                             CountryId = 100,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9210),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3685),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Luxembourg"
                         },
                         new
                         {
                             CountryId = 101,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9210),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3686),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Madagascar"
                         },
                         new
                         {
                             CountryId = 102,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9211),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3687),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Malawi"
                         },
                         new
                         {
                             CountryId = 103,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9212),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3688),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Malaysia"
                         },
                         new
                         {
                             CountryId = 104,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9213),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3689),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Maldives"
                         },
                         new
                         {
                             CountryId = 105,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9214),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3690),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Mali"
                         },
                         new
                         {
                             CountryId = 106,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9215),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3692),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Malta"
                         },
                         new
                         {
                             CountryId = 107,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9215),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3693),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Marshall Islands"
                         },
                         new
                         {
                             CountryId = 108,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9216),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3694),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Mauritania"
                         },
                         new
                         {
                             CountryId = 109,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9217),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3695),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Mauritius"
                         },
                         new
                         {
                             CountryId = 110,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9218),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3696),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Mexico"
                         },
                         new
                         {
                             CountryId = 111,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9219),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3697),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Federated States of Micronesia"
                         },
                         new
                         {
                             CountryId = 112,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9220),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3698),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Moldova"
                         },
                         new
                         {
                             CountryId = 113,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9221),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3699),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Monaco"
                         },
                         new
                         {
                             CountryId = 114,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9221),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3701),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Mongolia"
                         },
                         new
                         {
                             CountryId = 115,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9222),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3702),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Montenegro"
                         },
                         new
                         {
                             CountryId = 116,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9223),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3703),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Morocco"
                         },
                         new
                         {
                             CountryId = 117,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9224),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3704),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Mozambique"
                         },
                         new
                         {
                             CountryId = 118,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9225),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3705),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Myanmar (Burma)"
                         },
                         new
                         {
                             CountryId = 119,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9225),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3706),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Namibia"
                         },
                         new
                         {
                             CountryId = 120,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9226),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3707),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Nauru"
                         },
                         new
                         {
                             CountryId = 121,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9227),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3708),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Nepal"
                         },
                         new
                         {
                             CountryId = 122,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9228),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3710),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Netherlands"
                         },
                         new
                         {
                             CountryId = 123,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9229),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3711),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "New Zealand"
                         },
                         new
                         {
                             CountryId = 124,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9230),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3712),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Nicaragua"
                         },
                         new
                         {
                             CountryId = 125,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9230),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3713),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Niger"
                         },
                         new
                         {
                             CountryId = 126,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9231),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3714),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Nigeria"
                         },
                         new
                         {
                             CountryId = 127,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9232),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3715),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "North Korea"
                         },
                         new
                         {
                             CountryId = 128,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9233),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3716),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "North Macedonia"
                         },
                         new
                         {
                             CountryId = 129,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9234),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3718),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Norway"
                         },
                         new
                         {
                             CountryId = 130,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9235),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3720),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Oman"
                         },
                         new
                         {
                             CountryId = 131,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9236),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3721),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Pakistan"
                         },
                         new
                         {
                             CountryId = 132,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9237),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3722),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Palau"
                         },
                         new
                         {
                             CountryId = 133,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9238),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3723),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Panama"
                         },
                         new
                         {
                             CountryId = 134,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9239),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3724),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Papua New Guinea"
                         },
                         new
                         {
                             CountryId = 135,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9239),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3725),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Paraguay"
                         },
                         new
                         {
                             CountryId = 136,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9240),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3727),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Peru"
                         },
                         new
                         {
                             CountryId = 137,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9241),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3728),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Philippines"
                         },
                         new
                         {
                             CountryId = 138,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9242),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3729),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Poland"
                         },
                         new
                         {
                             CountryId = 139,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9243),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3730),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Portugal"
                         },
                         new
                         {
                             CountryId = 140,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9244),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3731),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Qatar"
                         },
                         new
                         {
                             CountryId = 141,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9244),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3732),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Romania"
                         },
                         new
                         {
                             CountryId = 142,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9245),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3733),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Russia"
                         },
                         new
                         {
                             CountryId = 143,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9246),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3735),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Rwanda"
                         },
                         new
                         {
                             CountryId = 144,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9247),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3736),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "St Kitts and Nevis"
                         },
                         new
                         {
                             CountryId = 145,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9248),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3737),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "St Lucia"
                         },
                         new
                         {
                             CountryId = 146,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9249),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3738),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "St Vincent"
                         },
                         new
                         {
                             CountryId = 147,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9250),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3739),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Samoa"
                         },
                         new
                         {
                             CountryId = 148,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9250),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3740),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "San Marino"
                         },
                         new
                         {
                             CountryId = 149,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9251),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3741),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Sao Tome and Principe"
                         },
                         new
                         {
                             CountryId = 150,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9252),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3743),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Saudi Arabia"
                         },
                         new
                         {
                             CountryId = 151,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9253),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3744),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Senegal"
                         },
                         new
                         {
                             CountryId = 152,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9254),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3745),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Serbia"
                         },
                         new
                         {
                             CountryId = 153,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9255),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3746),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Seychelles"
                         },
                         new
                         {
                             CountryId = 154,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9255),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3747),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Sierra Leone"
                         },
                         new
                         {
                             CountryId = 155,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9256),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3748),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Singapore"
                         },
                         new
                         {
                             CountryId = 156,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9257),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3749),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Slovakia"
                         },
                         new
                         {
                             CountryId = 157,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9258),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3750),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Slovenia"
                         },
                         new
                         {
                             CountryId = 158,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9259),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3752),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Solomon Islands"
                         },
                         new
                         {
                             CountryId = 159,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9260),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3753),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Somalia"
                         },
                         new
                         {
                             CountryId = 160,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9260),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3760),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "South Africa"
                         },
                         new
                         {
                             CountryId = 161,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9261),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3762),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "South Korea"
                         },
                         new
                         {
                             CountryId = 162,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9262),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3763),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "South Sudan"
                         },
                         new
                         {
                             CountryId = 163,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9263),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3764),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Spain"
                         },
                         new
                         {
                             CountryId = 164,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9264),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3765),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Sri Lanka"
                         },
                         new
                         {
                             CountryId = 165,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9265),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3766),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Sudan"
                         },
                         new
                         {
                             CountryId = 166,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9265),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3767),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Suriname"
                         },
                         new
                         {
                             CountryId = 167,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9266),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3768),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Sweden"
                         },
                         new
                         {
                             CountryId = 168,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9267),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3770),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Switzerland"
                         },
                         new
                         {
                             CountryId = 169,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9268),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3771),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Syria"
                         },
                         new
                         {
                             CountryId = 170,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9269),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3772),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Tajikistan"
                         },
                         new
                         {
                             CountryId = 171,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9270),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3773),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Tanzania"
                         },
                         new
                         {
                             CountryId = 172,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9270),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3774),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Thailand"
                         },
                         new
                         {
                             CountryId = 173,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9271),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3775),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "The Bahamas"
                         },
                         new
                         {
                             CountryId = 174,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9272),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3776),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "The Gambia"
                         },
                         new
                         {
                             CountryId = 175,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9273),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3777),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Togo"
                         },
                         new
                         {
                             CountryId = 176,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9274),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3779),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Tonga"
                         },
                         new
                         {
                             CountryId = 177,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9275),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3780),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Trinidad and Tobago"
                         },
                         new
                         {
                             CountryId = 178,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9275),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3781),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Tunisia"
                         },
                         new
                         {
                             CountryId = 179,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9276),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3782),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Turkey"
                         },
                         new
                         {
                             CountryId = 180,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9277),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3783),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Turkmenistan"
                         },
                         new
                         {
                             CountryId = 181,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9278),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3784),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Tuvalu"
                         },
                         new
                         {
                             CountryId = 182,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9283),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3785),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Uganda"
                         },
                         new
                         {
                             CountryId = 183,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9286),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3786),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Ukraine"
                         },
                         new
                         {
                             CountryId = 184,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9287),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3788),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "United Arab Emirates"
                         },
                         new
                         {
                             CountryId = 185,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9287),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3789),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "United Kingdom"
                         },
                         new
                         {
                             CountryId = 186,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9288),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3790),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "United States"
                         },
                         new
                         {
                             CountryId = 187,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9289),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3791),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Uruguay"
                         },
                         new
                         {
                             CountryId = 188,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9290),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3792),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Uzbekistan"
                         },
                         new
                         {
                             CountryId = 189,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9291),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3793),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Vanuatu"
                         },
                         new
                         {
                             CountryId = 190,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9292),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3794),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Vatican City"
                         },
                         new
                         {
                             CountryId = 191,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9292),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3796),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Venezuela"
                         },
                         new
                         {
                             CountryId = 192,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9293),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3797),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Vietnam"
                         },
                         new
                         {
                             CountryId = 193,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9294),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3798),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Yemen"
                         },
                         new
                         {
                             CountryId = 194,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9295),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3799),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Zambia"
                         },
                         new
                         {
                             CountryId = 195,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9296),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3800),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Zimbabwe"
                         });
                 });
@@ -1234,13 +2018,13 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.Property<DateTime>("IssuedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("RouteId")
+                    b.Property<int?>("RouteId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TicketId")
+                    b.Property<int?>("TicketId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("ValidFrom")
@@ -1263,6 +2047,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                         new
                         {
                             IssuedTicketId = 1,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             Amount = 7,
                             IssuedDate = new DateTime(2025, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RouteId = 281,
@@ -1270,10 +2055,20 @@ namespace ePrijevozSarajevo.Services.Migrations
                             UserId = 6,
                             ValidFrom = new DateTime(2025, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ValidTo = new DateTime(2025, 1, 9, 3, 0, 0, 0, DateTimeKind.Unspecified)
+========
+                            Amount = 6,
+                            IssuedDate = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 496,
+                            TicketId = 5,
+                            UserId = 4,
+                            ValidFrom = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified)
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
                             IssuedTicketId = 2,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             Amount = 1,
                             IssuedDate = new DateTime(2024, 3, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RouteId = 197,
@@ -1367,11 +2162,19 @@ namespace ePrijevozSarajevo.Services.Migrations
                             RouteId = 517,
                             TicketId = 2,
                             UserId = 3,
+========
+                            Amount = 3,
+                            IssuedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 187,
+                            TicketId = 4,
+                            UserId = 2,
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             ValidFrom = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ValidTo = new DateTime(2025, 1, 4, 3, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             IssuedTicketId = 11,
                             Amount = 7,
                             IssuedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1380,20 +2183,226 @@ namespace ePrijevozSarajevo.Services.Migrations
                             UserId = 5,
                             ValidFrom = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ValidTo = new DateTime(2025, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified)
+========
+                            IssuedTicketId = 3,
+                            Amount = 8,
+                            IssuedDate = new DateTime(2024, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 156,
+                            TicketId = 2,
+                            UserId = 2,
+                            ValidFrom = new DateTime(2024, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 4, 22, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 4,
+                            Amount = 9,
+                            IssuedDate = new DateTime(2024, 9, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 154,
+                            TicketId = 2,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2024, 9, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 9, 23, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 5,
+                            Amount = 8,
+                            IssuedDate = new DateTime(2024, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 667,
+                            TicketId = 5,
+                            UserId = 3,
+                            ValidFrom = new DateTime(2024, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 2, 13, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 6,
+                            Amount = 6,
+                            IssuedDate = new DateTime(2024, 5, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 435,
+                            TicketId = 4,
+                            UserId = 2,
+                            ValidFrom = new DateTime(2024, 5, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 5, 13, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 7,
+                            Amount = 2,
+                            IssuedDate = new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 268,
+                            TicketId = 3,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 7, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 8,
+                            Amount = 1,
+                            IssuedDate = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 538,
+                            TicketId = 5,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 9,
+                            Amount = 9,
+                            IssuedDate = new DateTime(2025, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 204,
+                            TicketId = 3,
+                            UserId = 2,
+                            ValidFrom = new DateTime(2025, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 10, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 10,
+                            Amount = 5,
+                            IssuedDate = new DateTime(2025, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 248,
+                            TicketId = 3,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2025, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 11, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 11,
+                            Amount = 7,
+                            IssuedDate = new DateTime(2025, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 499,
+                            TicketId = 3,
+                            UserId = 5,
+                            ValidFrom = new DateTime(2025, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 8, 1, 0, 0, 0, DateTimeKind.Unspecified)
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
                             IssuedTicketId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             Amount = 1,
                             IssuedDate = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RouteId = 530,
                             TicketId = 5,
                             UserId = 5,
+========
+                            Amount = 5,
+                            IssuedDate = new DateTime(2024, 11, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 450,
+                            TicketId = 3,
+                            UserId = 4,
+                            ValidFrom = new DateTime(2024, 11, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 11, 2, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 13,
+                            Amount = 4,
+                            IssuedDate = new DateTime(2025, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 112,
+                            TicketId = 2,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2025, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 9, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 14,
+                            Amount = 6,
+                            IssuedDate = new DateTime(2024, 12, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 330,
+                            TicketId = 3,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2024, 12, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 12, 4, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 15,
+                            Amount = 3,
+                            IssuedDate = new DateTime(2024, 12, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 64,
+                            TicketId = 1,
+                            UserId = 3,
+                            ValidFrom = new DateTime(2024, 12, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 12, 18, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 16,
+                            Amount = 6,
+                            IssuedDate = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 459,
+                            TicketId = 3,
+                            UserId = 4,
+                            ValidFrom = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 3, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 17,
+                            Amount = 8,
+                            IssuedDate = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 625,
+                            TicketId = 3,
+                            UserId = 3,
+                            ValidFrom = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 6, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 18,
+                            Amount = 2,
+                            IssuedDate = new DateTime(2024, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 358,
+                            TicketId = 2,
+                            UserId = 3,
+                            ValidFrom = new DateTime(2024, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 1, 18, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 19,
+                            Amount = 4,
+                            IssuedDate = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 173,
+                            TicketId = 1,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 2, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 20,
+                            Amount = 5,
+                            IssuedDate = new DateTime(2024, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 663,
+                            TicketId = 2,
+                            UserId = 4,
+                            ValidFrom = new DateTime(2024, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 2, 9, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 21,
+                            Amount = 6,
+                            IssuedDate = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 554,
+                            TicketId = 5,
+                            UserId = 4,
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             ValidFrom = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ValidTo = new DateTime(2025, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             IssuedTicketId = 13,
                             Amount = 7,
                             IssuedDate = new DateTime(2025, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1409,6 +2418,166 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Amount = 7,
                             IssuedDate = new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RouteId = 284,
+========
+                            IssuedTicketId = 22,
+                            Amount = 6,
+                            IssuedDate = new DateTime(2025, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 128,
+                            TicketId = 1,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2025, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 11, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 23,
+                            Amount = 8,
+                            IssuedDate = new DateTime(2024, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 133,
+                            TicketId = 4,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2024, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 2, 5, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 24,
+                            Amount = 2,
+                            IssuedDate = new DateTime(2025, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 263,
+                            TicketId = 3,
+                            UserId = 3,
+                            ValidFrom = new DateTime(2025, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 10, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 25,
+                            Amount = 4,
+                            IssuedDate = new DateTime(2025, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 552,
+                            TicketId = 2,
+                            UserId = 4,
+                            ValidFrom = new DateTime(2025, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 8, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 26,
+                            Amount = 2,
+                            IssuedDate = new DateTime(2024, 5, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 656,
+                            TicketId = 3,
+                            UserId = 5,
+                            ValidFrom = new DateTime(2024, 5, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 5, 21, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 27,
+                            Amount = 6,
+                            IssuedDate = new DateTime(2024, 9, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 402,
+                            TicketId = 3,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2024, 9, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 9, 8, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 28,
+                            Amount = 8,
+                            IssuedDate = new DateTime(2025, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 684,
+                            TicketId = 4,
+                            UserId = 2,
+                            ValidFrom = new DateTime(2025, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 11, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 29,
+                            Amount = 5,
+                            IssuedDate = new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 582,
+                            TicketId = 3,
+                            UserId = 2,
+                            ValidFrom = new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 1, 15, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 30,
+                            Amount = 4,
+                            IssuedDate = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 499,
+                            TicketId = 5,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 31,
+                            Amount = 6,
+                            IssuedDate = new DateTime(2024, 2, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 83,
+                            TicketId = 1,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2024, 2, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 2, 29, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 32,
+                            Amount = 8,
+                            IssuedDate = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 505,
+                            TicketId = 3,
+                            UserId = 5,
+                            ValidFrom = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 2, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 33,
+                            Amount = 3,
+                            IssuedDate = new DateTime(2024, 7, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 356,
+                            TicketId = 5,
+                            UserId = 3,
+                            ValidFrom = new DateTime(2024, 7, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 8, 24, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 34,
+                            Amount = 8,
+                            IssuedDate = new DateTime(2024, 2, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 445,
+                            TicketId = 3,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2024, 2, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 2, 17, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 35,
+                            Amount = 7,
+                            IssuedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 289,
+                            TicketId = 1,
+                            UserId = 2,
+                            ValidFrom = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 4, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 36,
+                            Amount = 1,
+                            IssuedDate = new DateTime(2024, 4, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 40,
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             TicketId = 4,
                             UserId = 2,
                             ValidFrom = new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1653,12 +2822,13 @@ namespace ePrijevozSarajevo.Services.Migrations
                             RouteId = 32,
                             TicketId = 2,
                             UserId = 5,
-                            ValidFrom = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2025, 1, 6, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                            ValidFrom = new DateTime(2024, 4, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 4, 28, 3, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             IssuedTicketId = 37,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             Amount = 6,
                             IssuedDate = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RouteId = 263,
@@ -1739,13 +2909,30 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Amount = 9,
                             IssuedDate = new DateTime(2025, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RouteId = 460,
+========
+                            Amount = 7,
+                            IssuedDate = new DateTime(2024, 9, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 687,
+                            TicketId = 1,
+                            UserId = 3,
+                            ValidFrom = new DateTime(2024, 9, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 9, 5, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 38,
+                            Amount = 2,
+                            IssuedDate = new DateTime(2025, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 139,
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             TicketId = 3,
-                            UserId = 5,
+                            UserId = 6,
                             ValidFrom = new DateTime(2025, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ValidTo = new DateTime(2025, 1, 10, 1, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             IssuedTicketId = 45,
                             Amount = 6,
                             IssuedDate = new DateTime(2025, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -2256,6 +3443,133 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Amount = 6,
                             IssuedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RouteId = 82,
+========
+                            IssuedTicketId = 39,
+                            Amount = 9,
+                            IssuedDate = new DateTime(2024, 11, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 627,
+                            TicketId = 1,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2024, 11, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 11, 13, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 40,
+                            Amount = 1,
+                            IssuedDate = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 238,
+                            TicketId = 4,
+                            UserId = 4,
+                            ValidFrom = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 6, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 41,
+                            Amount = 5,
+                            IssuedDate = new DateTime(2024, 12, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 463,
+                            TicketId = 4,
+                            UserId = 2,
+                            ValidFrom = new DateTime(2024, 12, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 12, 28, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 42,
+                            Amount = 6,
+                            IssuedDate = new DateTime(2025, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 648,
+                            TicketId = 5,
+                            UserId = 4,
+                            ValidFrom = new DateTime(2025, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 43,
+                            Amount = 1,
+                            IssuedDate = new DateTime(2024, 10, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 2,
+                            TicketId = 3,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2024, 10, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 10, 23, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 44,
+                            Amount = 2,
+                            IssuedDate = new DateTime(2024, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 471,
+                            TicketId = 5,
+                            UserId = 5,
+                            ValidFrom = new DateTime(2024, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 7, 2, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 45,
+                            Amount = 3,
+                            IssuedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 117,
+                            TicketId = 4,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 4, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 46,
+                            Amount = 6,
+                            IssuedDate = new DateTime(2024, 11, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 655,
+                            TicketId = 2,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2024, 11, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 11, 28, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 47,
+                            Amount = 4,
+                            IssuedDate = new DateTime(2024, 11, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 210,
+                            TicketId = 5,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2024, 11, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 12, 12, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 48,
+                            Amount = 2,
+                            IssuedDate = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 132,
+                            TicketId = 4,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 3, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 49,
+                            Amount = 4,
+                            IssuedDate = new DateTime(2024, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 165,
+                            TicketId = 2,
+                            UserId = 2,
+                            ValidFrom = new DateTime(2024, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 8, 12, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 50,
+                            Amount = 2,
+                            IssuedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 419,
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             TicketId = 3,
                             UserId = 2,
                             ValidFrom = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -2263,10 +3577,204 @@ namespace ePrijevozSarajevo.Services.Migrations
                         },
                         new
                         {
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             IssuedTicketId = 92,
                             Amount = 4,
                             IssuedDate = new DateTime(2025, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RouteId = 616,
+========
+                            IssuedTicketId = 51,
+                            Amount = 4,
+                            IssuedDate = new DateTime(2024, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 205,
+                            TicketId = 5,
+                            UserId = 3,
+                            ValidFrom = new DateTime(2024, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 52,
+                            Amount = 1,
+                            IssuedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 687,
+                            TicketId = 2,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 1, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 53,
+                            Amount = 7,
+                            IssuedDate = new DateTime(2024, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 531,
+                            TicketId = 1,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2024, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 4, 21, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 54,
+                            Amount = 1,
+                            IssuedDate = new DateTime(2024, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 311,
+                            TicketId = 4,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2024, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 9, 10, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 55,
+                            Amount = 9,
+                            IssuedDate = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 365,
+                            TicketId = 5,
+                            UserId = 3,
+                            ValidFrom = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 56,
+                            Amount = 9,
+                            IssuedDate = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 473,
+                            TicketId = 2,
+                            UserId = 5,
+                            ValidFrom = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 2, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 57,
+                            Amount = 1,
+                            IssuedDate = new DateTime(2024, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 480,
+                            TicketId = 3,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2024, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 7, 23, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 58,
+                            Amount = 8,
+                            IssuedDate = new DateTime(2024, 10, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 646,
+                            TicketId = 3,
+                            UserId = 5,
+                            ValidFrom = new DateTime(2024, 10, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 10, 3, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 59,
+                            Amount = 1,
+                            IssuedDate = new DateTime(2024, 7, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 215,
+                            TicketId = 4,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2024, 7, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 7, 9, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 60,
+                            Amount = 2,
+                            IssuedDate = new DateTime(2024, 8, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 71,
+                            TicketId = 2,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2024, 8, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 8, 31, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 61,
+                            Amount = 4,
+                            IssuedDate = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 370,
+                            TicketId = 4,
+                            UserId = 2,
+                            ValidFrom = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 3, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 62,
+                            Amount = 7,
+                            IssuedDate = new DateTime(2024, 9, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 458,
+                            TicketId = 4,
+                            UserId = 2,
+                            ValidFrom = new DateTime(2024, 9, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 9, 15, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 63,
+                            Amount = 2,
+                            IssuedDate = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 252,
+                            TicketId = 3,
+                            UserId = 3,
+                            ValidFrom = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 3, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 64,
+                            Amount = 5,
+                            IssuedDate = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 102,
+                            TicketId = 5,
+                            UserId = 2,
+                            ValidFrom = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 65,
+                            Amount = 6,
+                            IssuedDate = new DateTime(2024, 5, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 282,
+                            TicketId = 5,
+                            UserId = 3,
+                            ValidFrom = new DateTime(2024, 5, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 6, 17, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 66,
+                            Amount = 8,
+                            IssuedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 575,
+                            TicketId = 5,
+                            UserId = 5,
+                            ValidFrom = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 67,
+                            Amount = 9,
+                            IssuedDate = new DateTime(2024, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 214,
+                            TicketId = 4,
+                            UserId = 2,
+                            ValidFrom = new DateTime(2024, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 1, 18, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 68,
+                            Amount = 1,
+                            IssuedDate = new DateTime(2025, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 197,
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             TicketId = 2,
                             UserId = 5,
                             ValidFrom = new DateTime(2025, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -2274,6 +3782,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                         },
                         new
                         {
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             IssuedTicketId = 93,
                             Amount = 2,
                             IssuedDate = new DateTime(2024, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -2282,24 +3791,132 @@ namespace ePrijevozSarajevo.Services.Migrations
                             UserId = 4,
                             ValidFrom = new DateTime(2024, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ValidTo = new DateTime(2024, 3, 9, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 94,
-                            Amount = 5,
-                            IssuedDate = new DateTime(2024, 9, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 463,
-                            TicketId = 2,
-                            UserId = 4,
-                            ValidFrom = new DateTime(2024, 9, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValidTo = new DateTime(2024, 9, 4, 3, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            IssuedTicketId = 95,
+========
+                            IssuedTicketId = 69,
                             Amount = 4,
+                            IssuedDate = new DateTime(2024, 4, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 366,
+                            TicketId = 5,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2024, 4, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 5, 24, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 70,
+                            Amount = 7,
+                            IssuedDate = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 291,
+                            TicketId = 4,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 6, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 71,
+                            Amount = 5,
+                            IssuedDate = new DateTime(2025, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 427,
+                            TicketId = 5,
+                            UserId = 4,
+                            ValidFrom = new DateTime(2025, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 72,
+                            Amount = 6,
+                            IssuedDate = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 460,
+                            TicketId = 5,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 73,
+                            Amount = 6,
+                            IssuedDate = new DateTime(2024, 9, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 56,
+                            TicketId = 5,
+                            UserId = 2,
+                            ValidFrom = new DateTime(2024, 9, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 74,
+                            Amount = 8,
+                            IssuedDate = new DateTime(2024, 11, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 263,
+                            TicketId = 4,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2024, 11, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 11, 29, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 75,
+                            Amount = 4,
+                            IssuedDate = new DateTime(2024, 10, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 362,
+                            TicketId = 1,
+                            UserId = 4,
+                            ValidFrom = new DateTime(2024, 10, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 10, 28, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 76,
+                            Amount = 4,
+                            IssuedDate = new DateTime(2024, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 2,
+                            TicketId = 2,
+                            UserId = 3,
+                            ValidFrom = new DateTime(2024, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 11, 5, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 77,
+                            Amount = 4,
+                            IssuedDate = new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 390,
+                            TicketId = 3,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 7, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 78,
+                            Amount = 8,
+                            IssuedDate = new DateTime(2024, 11, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 534,
+                            TicketId = 3,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2024, 11, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 11, 3, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 79,
+                            Amount = 5,
+                            IssuedDate = new DateTime(2024, 5, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 584,
+                            TicketId = 3,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2024, 5, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 5, 18, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 80,
+                            Amount = 6,
                             IssuedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RouteId = 49,
+                            RouteId = 500,
                             TicketId = 2,
                             UserId = 6,
                             ValidFrom = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -2307,7 +3924,194 @@ namespace ePrijevozSarajevo.Services.Migrations
                         },
                         new
                         {
+                            IssuedTicketId = 81,
+                            Amount = 6,
+                            IssuedDate = new DateTime(2025, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 713,
+                            TicketId = 2,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2025, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 8, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 82,
+                            Amount = 2,
+                            IssuedDate = new DateTime(2024, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 551,
+                            TicketId = 2,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2024, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 5, 6, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 83,
+                            Amount = 3,
+                            IssuedDate = new DateTime(2024, 7, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 163,
+                            TicketId = 1,
+                            UserId = 3,
+                            ValidFrom = new DateTime(2024, 7, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 7, 29, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 84,
+                            Amount = 9,
+                            IssuedDate = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 576,
+                            TicketId = 5,
+                            UserId = 2,
+                            ValidFrom = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 85,
+                            Amount = 9,
+                            IssuedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 164,
+                            TicketId = 5,
+                            UserId = 4,
+                            ValidFrom = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 86,
+                            Amount = 4,
+                            IssuedDate = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 269,
+                            TicketId = 1,
+                            UserId = 5,
+                            ValidFrom = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 5, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 87,
+                            Amount = 5,
+                            IssuedDate = new DateTime(2025, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 146,
+                            TicketId = 5,
+                            UserId = 3,
+                            ValidFrom = new DateTime(2025, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 88,
+                            Amount = 4,
+                            IssuedDate = new DateTime(2025, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 241,
+                            TicketId = 3,
+                            UserId = 3,
+                            ValidFrom = new DateTime(2025, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 11, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 89,
+                            Amount = 1,
+                            IssuedDate = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 420,
+                            TicketId = 4,
+                            UserId = 2,
+                            ValidFrom = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 2, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 90,
+                            Amount = 3,
+                            IssuedDate = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 356,
+                            TicketId = 2,
+                            UserId = 4,
+                            ValidFrom = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 3, 3, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 91,
+                            Amount = 6,
+                            IssuedDate = new DateTime(2024, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 65,
+                            TicketId = 3,
+                            UserId = 4,
+                            ValidFrom = new DateTime(2024, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 10, 19, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 92,
+                            Amount = 3,
+                            IssuedDate = new DateTime(2025, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 335,
+                            TicketId = 1,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2025, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 8, 1, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            IssuedTicketId = 93,
+                            Amount = 3,
+                            IssuedDate = new DateTime(2024, 6, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 562,
+                            TicketId = 4,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2024, 6, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 6, 13, 3, 0, 0, 0, DateTimeKind.Unspecified)
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
+                        },
+                        new
+                        {
+                            IssuedTicketId = 94,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
+                            Amount = 5,
+                            IssuedDate = new DateTime(2024, 9, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 463,
+                            TicketId = 2,
+                            UserId = 4,
+                            ValidFrom = new DateTime(2024, 9, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 9, 4, 3, 0, 0, 0, DateTimeKind.Unspecified)
+========
+                            Amount = 7,
+                            IssuedDate = new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 266,
+                            TicketId = 5,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified)
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
+                        },
+                        new
+                        {
+                            IssuedTicketId = 95,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
+                            Amount = 4,
+                            IssuedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 49,
+                            TicketId = 2,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 4, 3, 0, 0, 0, DateTimeKind.Unspecified)
+========
+                            Amount = 9,
+                            IssuedDate = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 104,
+                            TicketId = 5,
+                            UserId = 4,
+                            ValidFrom = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
+                        },
+                        new
+                        {
                             IssuedTicketId = 96,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             Amount = 1,
                             IssuedDate = new DateTime(2024, 6, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RouteId = 198,
@@ -2315,10 +4119,20 @@ namespace ePrijevozSarajevo.Services.Migrations
                             UserId = 5,
                             ValidFrom = new DateTime(2024, 6, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ValidTo = new DateTime(2024, 6, 19, 1, 0, 0, 0, DateTimeKind.Unspecified)
+========
+                            Amount = 7,
+                            IssuedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 140,
+                            TicketId = 4,
+                            UserId = 2,
+                            ValidFrom = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 4, 3, 0, 0, 0, DateTimeKind.Unspecified)
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
                             IssuedTicketId = 97,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             Amount = 3,
                             IssuedDate = new DateTime(2024, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RouteId = 563,
@@ -2326,10 +4140,20 @@ namespace ePrijevozSarajevo.Services.Migrations
                             UserId = 3,
                             ValidFrom = new DateTime(2024, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ValidTo = new DateTime(2024, 3, 20, 1, 0, 0, 0, DateTimeKind.Unspecified)
+========
+                            Amount = 5,
+                            IssuedDate = new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 119,
+                            TicketId = 3,
+                            UserId = 6,
+                            ValidFrom = new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2025, 1, 7, 1, 0, 0, 0, DateTimeKind.Unspecified)
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
                             IssuedTicketId = 98,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             Amount = 5,
                             IssuedDate = new DateTime(2024, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RouteId = 174,
@@ -2337,10 +4161,20 @@ namespace ePrijevozSarajevo.Services.Migrations
                             UserId = 6,
                             ValidFrom = new DateTime(2024, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ValidTo = new DateTime(2024, 1, 19, 1, 0, 0, 0, DateTimeKind.Unspecified)
+========
+                            Amount = 2,
+                            IssuedDate = new DateTime(2024, 6, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 379,
+                            TicketId = 3,
+                            UserId = 5,
+                            ValidFrom = new DateTime(2024, 6, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 6, 18, 1, 0, 0, 0, DateTimeKind.Unspecified)
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
                             IssuedTicketId = 99,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             Amount = 9,
                             IssuedDate = new DateTime(2025, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RouteId = 708,
@@ -2348,10 +4182,20 @@ namespace ePrijevozSarajevo.Services.Migrations
                             UserId = 3,
                             ValidFrom = new DateTime(2025, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ValidTo = new DateTime(2025, 1, 9, 3, 0, 0, 0, DateTimeKind.Unspecified)
+========
+                            Amount = 8,
+                            IssuedDate = new DateTime(2024, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 635,
+                            TicketId = 4,
+                            UserId = 2,
+                            ValidFrom = new DateTime(2024, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 4, 25, 3, 0, 0, 0, DateTimeKind.Unspecified)
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
                             IssuedTicketId = 100,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             Amount = 5,
                             IssuedDate = new DateTime(2024, 9, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RouteId = 302,
@@ -2359,6 +4203,15 @@ namespace ePrijevozSarajevo.Services.Migrations
                             UserId = 1,
                             ValidFrom = new DateTime(2024, 9, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ValidTo = new DateTime(2024, 10, 20, 0, 0, 0, 0, DateTimeKind.Unspecified)
+========
+                            Amount = 2,
+                            IssuedDate = new DateTime(2024, 1, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RouteId = 620,
+                            TicketId = 3,
+                            UserId = 1,
+                            ValidFrom = new DateTime(2024, 1, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ValidTo = new DateTime(2024, 1, 23, 1, 0, 0, 0, DateTimeKind.Unspecified)
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         });
                 });
 
@@ -2373,7 +4226,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.Property<int?>("CurrentUserId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ManufacturerCountryId")
+                    b.Property<int?>("ManufacturerCountryId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("ModifiedDate")
@@ -2394,63 +4247,99 @@ namespace ePrijevozSarajevo.Services.Migrations
                         {
                             ManufacturerId = 1,
                             ManufacturerCountryId = 1,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9486),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(4079),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "MAN"
                         },
                         new
                         {
                             ManufacturerId = 2,
                             ManufacturerCountryId = 2,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9488),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(4084),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Solaris"
                         },
                         new
                         {
                             ManufacturerId = 3,
                             ManufacturerCountryId = 3,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9489),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(4085),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Volvo"
                         },
                         new
                         {
                             ManufacturerId = 4,
                             ManufacturerCountryId = 4,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9491),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(4087),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Mercedes"
                         },
                         new
                         {
                             ManufacturerId = 5,
                             ManufacturerCountryId = 5,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9492),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(4089),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Setra"
                         },
                         new
                         {
                             ManufacturerId = 6,
                             ManufacturerCountryId = 6,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9494),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(4091),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Neoplan"
                         },
                         new
                         {
                             ManufacturerId = 7,
                             ManufacturerCountryId = 7,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9495),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(4092),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Siemens"
                         },
                         new
                         {
                             ManufacturerId = 8,
                             ManufacturerCountryId = 8,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9497),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(4094),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Traton"
                         },
                         new
                         {
                             ManufacturerId = 9,
                             ManufacturerCountryId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9499),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(4096),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Tesla"
                         });
                 });
@@ -2478,7 +4367,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserStatusId")
+                    b.Property<int>("UserStatusId")
                         .HasColumnType("int");
 
                     b.HasKey("RequestId");
@@ -2495,7 +4384,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             RequestId = 1,
                             Active = true,
                             Approved = false,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             DateCreated = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9346),
+========
+                            DateCreated = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3870),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             RejectionReason = "",
                             UserId = 2,
                             UserStatusId = 3
@@ -2505,7 +4398,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             RequestId = 2,
                             Active = true,
                             Approved = false,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             DateCreated = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9349),
+========
+                            DateCreated = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3873),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             RejectionReason = "",
                             UserId = 3,
                             UserStatusId = 5
@@ -2515,7 +4412,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             RequestId = 3,
                             Active = true,
                             Approved = false,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             DateCreated = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9351),
+========
+                            DateCreated = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3876),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             RejectionReason = "",
                             UserId = 4,
                             UserStatusId = 2
@@ -2525,7 +4426,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             RequestId = 4,
                             Active = true,
                             Approved = false,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             DateCreated = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9353),
+========
+                            DateCreated = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3878),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             RejectionReason = "",
                             UserId = 5,
                             UserStatusId = 4
@@ -2535,7 +4440,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             RequestId = 5,
                             Active = true,
                             Approved = false,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             DateCreated = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9355),
+========
+                            DateCreated = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3880),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             RejectionReason = "",
                             UserId = 1,
                             UserStatusId = 2
@@ -2545,7 +4454,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             RequestId = 6,
                             Active = true,
                             Approved = false,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             DateCreated = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9357),
+========
+                            DateCreated = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3882),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             RejectionReason = "",
                             UserId = 6,
                             UserStatusId = 3
@@ -2622,7 +4535,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 1,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -2658,7 +4575,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 3,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -2667,7 +4588,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 3,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -2676,7 +4601,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 4,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -2685,7 +4614,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 4,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -2703,7 +4636,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 4,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -2721,7 +4658,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 5,
-                            VehicleId = 1
+                            VehicleId = 3
                         },
                         new
                         {
@@ -2739,7 +4676,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 5,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -2748,7 +4689,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 5,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -2757,7 +4702,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 6,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -2784,7 +4733,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 6,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -2793,7 +4746,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 6,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -2811,7 +4768,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 7,
-                            VehicleId = 6
+                            VehicleId = 4
                         },
                         new
                         {
@@ -2820,7 +4777,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 7,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -2829,7 +4790,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 7,
-                            VehicleId = 4
+                            VehicleId = 3
                         },
                         new
                         {
@@ -2838,7 +4799,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 7,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -2847,7 +4812,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 7,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -2856,7 +4825,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 7,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -2865,7 +4838,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 7,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -2874,7 +4851,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 8,
-                            VehicleId = 6
+                            VehicleId = 2
                         },
                         new
                         {
@@ -2883,7 +4860,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 8,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -2892,7 +4873,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 8,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -2901,7 +4886,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 8,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -2919,7 +4908,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 8,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -2928,7 +4921,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 8,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -2937,7 +4934,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 8,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -2946,7 +4947,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -2955,7 +4960,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 9,
-                            VehicleId = 4
+                            VehicleId = 5
                         },
                         new
                         {
@@ -2964,7 +4969,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -2973,7 +4982,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 9,
-                            VehicleId = 2
+                            VehicleId = 6
                         },
                         new
                         {
@@ -2991,7 +5000,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3009,7 +5022,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 9,
-                            VehicleId = 1
+                            VehicleId = 2
                         },
                         new
                         {
@@ -3018,7 +5031,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3027,7 +5044,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3036,7 +5057,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3054,7 +5079,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3063,7 +5092,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3117,7 +5150,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3126,7 +5163,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 11,
-                            VehicleId = 4
+                            VehicleId = 3
                         },
                         new
                         {
@@ -3135,7 +5172,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3144,7 +5185,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3153,7 +5198,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 11,
-                            VehicleId = 5
+                            VehicleId = 4
                         },
                         new
                         {
@@ -3162,7 +5207,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3171,7 +5220,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3180,7 +5233,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3189,7 +5246,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3207,7 +5268,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3216,7 +5281,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 13,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3225,7 +5294,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3234,7 +5307,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3252,7 +5329,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3270,7 +5351,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3279,7 +5364,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3288,7 +5377,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 12,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -3297,7 +5386,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3315,7 +5408,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3342,7 +5439,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3360,7 +5461,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3369,7 +5474,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 13,
-                            VehicleId = 5
+                            VehicleId = 4
                         },
                         new
                         {
@@ -3387,7 +5492,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3396,7 +5505,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3405,7 +5518,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3432,7 +5549,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3450,7 +5571,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 13,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3468,7 +5593,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3477,7 +5606,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3504,7 +5637,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 14,
-                            VehicleId = 5
+                            VehicleId = 2
                         },
                         new
                         {
@@ -3513,7 +5646,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 14,
-                            VehicleId = 5
+                            VehicleId = 1
                         },
                         new
                         {
@@ -3522,7 +5655,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3531,7 +5668,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 14,
-                            VehicleId = 1
+                            VehicleId = 2
                         },
                         new
                         {
@@ -3549,7 +5686,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 14,
-                            VehicleId = 6
+                            VehicleId = 4
                         },
                         new
                         {
@@ -3558,7 +5695,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 14,
-                            VehicleId = 6
+                            VehicleId = 2
                         },
                         new
                         {
@@ -3567,7 +5704,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 14,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3576,7 +5717,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 13,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3585,7 +5730,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3594,7 +5743,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 15,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -3603,7 +5752,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 15,
-                            VehicleId = 1
+                            VehicleId = 5
                         },
                         new
                         {
@@ -3612,7 +5761,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3621,7 +5774,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3630,7 +5787,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3639,7 +5800,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3657,7 +5822,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 15,
-                            VehicleId = 2
+                            VehicleId = 1
                         },
                         new
                         {
@@ -3675,7 +5840,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3684,7 +5853,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3693,7 +5866,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 1,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3702,7 +5879,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 2,
-                            VehicleId = 6
+                            VehicleId = 3
                         },
                         new
                         {
@@ -3720,7 +5897,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 3,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3756,7 +5937,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 4,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3783,7 +5968,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 5,
-                            VehicleId = 5
+                            VehicleId = 4
                         },
                         new
                         {
@@ -3792,7 +5977,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 5,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3810,7 +5999,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 5,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3819,7 +6012,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 5,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3828,7 +6025,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 6,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3837,7 +6038,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 6,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3846,7 +6051,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 6,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3855,7 +6064,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 6,
-                            VehicleId = 3
+                            VehicleId = 6
                         },
                         new
                         {
@@ -3882,7 +6091,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 7,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3891,7 +6104,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 7,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3909,7 +6126,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 7,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -3918,7 +6135,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 7,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3927,7 +6148,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 7,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3945,7 +6170,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 8,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3954,7 +6183,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 8,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3963,7 +6196,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 8,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3981,7 +6218,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 8,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3990,7 +6231,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 8,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -3999,7 +6244,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 8,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4017,7 +6266,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4026,7 +6279,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4053,7 +6310,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4071,7 +6332,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4080,7 +6345,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4089,7 +6358,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4098,7 +6371,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4116,7 +6393,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4125,7 +6406,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4134,7 +6419,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4143,7 +6432,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4152,7 +6445,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4161,7 +6458,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4170,7 +6471,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4179,7 +6484,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4188,7 +6497,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4197,7 +6510,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4206,7 +6523,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4251,7 +6572,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4269,7 +6594,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4278,7 +6607,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4287,7 +6620,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 13,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4314,7 +6651,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4332,7 +6673,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4359,7 +6704,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 12,
-                            VehicleId = 6
+                            VehicleId = 5
                         },
                         new
                         {
@@ -4368,7 +6713,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4386,7 +6735,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4395,7 +6748,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 14,
                             StartStationId = 13,
-                            VehicleId = 6
+                            VehicleId = 4
                         },
                         new
                         {
@@ -4404,7 +6757,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4413,7 +6770,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4422,7 +6783,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4431,7 +6796,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4449,7 +6818,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4467,7 +6840,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 13,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -4476,7 +6849,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4485,7 +6862,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4494,7 +6875,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4503,7 +6888,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4539,7 +6928,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4548,7 +6941,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4557,7 +6954,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4566,7 +6967,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4575,7 +6980,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4584,7 +6993,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4593,7 +7006,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4611,7 +7028,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4620,7 +7041,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4629,7 +7054,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4638,7 +7067,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 14,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4647,7 +7080,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 13,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4656,7 +7093,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 15,
-                            VehicleId = 3
+                            VehicleId = 6
                         },
                         new
                         {
@@ -4665,7 +7102,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4674,7 +7115,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4683,7 +7128,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4692,7 +7141,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 15,
-                            VehicleId = 3
+                            VehicleId = 5
                         },
                         new
                         {
@@ -4701,7 +7150,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4710,7 +7163,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4719,7 +7176,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 15,
-                            VehicleId = 1
+                            VehicleId = 6
                         },
                         new
                         {
@@ -4728,7 +7185,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4737,7 +7198,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4773,7 +7238,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 2,
-                            VehicleId = 3
+                            VehicleId = 5
                         },
                         new
                         {
@@ -4782,7 +7247,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 2,
-                            VehicleId = 4
+                            VehicleId = 6
                         },
                         new
                         {
@@ -4818,7 +7283,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 4,
-                            VehicleId = 6
+                            VehicleId = 5
                         },
                         new
                         {
@@ -4827,7 +7292,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 4,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4845,7 +7314,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 4,
-                            VehicleId = 1
+                            VehicleId = 2
                         },
                         new
                         {
@@ -4854,7 +7323,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 5,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4872,7 +7345,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 5,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4881,7 +7358,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 5,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4890,7 +7371,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 5,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4908,7 +7393,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 6,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4917,7 +7406,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 6,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4926,7 +7419,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 6,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4935,7 +7432,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 6,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4944,7 +7445,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 6,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4953,7 +7458,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 7,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4980,7 +7489,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 7,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -4989,7 +7502,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 7,
-                            VehicleId = 3
+                            VehicleId = 6
                         },
                         new
                         {
@@ -4998,7 +7511,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 7,
-                            VehicleId = 3
+                            VehicleId = 6
                         },
                         new
                         {
@@ -5016,7 +7529,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 8,
-                            VehicleId = 3
+                            VehicleId = 1
                         },
                         new
                         {
@@ -5025,7 +7538,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 8,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5034,7 +7551,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 8,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5043,7 +7564,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 8,
-                            VehicleId = 5
+                            VehicleId = 1
                         },
                         new
                         {
@@ -5061,7 +7582,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 8,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5088,7 +7613,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5097,7 +7626,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5106,7 +7639,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5115,7 +7652,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5124,7 +7665,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5133,7 +7678,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5142,7 +7691,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 9,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -5151,7 +7700,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5160,7 +7713,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5169,7 +7726,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5178,7 +7739,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5187,7 +7752,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 10,
-                            VehicleId = 3
+                            VehicleId = 2
                         },
                         new
                         {
@@ -5205,7 +7770,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5214,7 +7783,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5223,7 +7796,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5241,7 +7818,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5259,7 +7840,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5268,7 +7853,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5277,7 +7866,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5286,7 +7879,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 11,
-                            VehicleId = 5
+                            VehicleId = 1
                         },
                         new
                         {
@@ -5295,7 +7888,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5304,7 +7901,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5313,7 +7914,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5331,7 +7936,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5349,7 +7958,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5376,7 +7989,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5403,7 +8020,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5412,7 +8033,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 12,
-                            VehicleId = 6
+                            VehicleId = 5
                         },
                         new
                         {
@@ -5421,7 +8042,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5430,7 +8055,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5439,7 +8068,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5448,7 +8081,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5457,7 +8094,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 12,
-                            VehicleId = 2
+                            VehicleId = 1
                         },
                         new
                         {
@@ -5466,7 +8103,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 14,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5475,7 +8116,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5493,7 +8138,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5502,7 +8151,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 13,
-                            VehicleId = 3
+                            VehicleId = 5
                         },
                         new
                         {
@@ -5520,7 +8169,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 13,
-                            VehicleId = 2
+                            VehicleId = 6
                         },
                         new
                         {
@@ -5538,7 +8187,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5547,7 +8200,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5556,7 +8213,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5565,7 +8226,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 13,
-                            VehicleId = 5
+                            VehicleId = 2
                         },
                         new
                         {
@@ -5574,7 +8235,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5583,7 +8248,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 15,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5601,7 +8270,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 14,
-                            VehicleId = 2
+                            VehicleId = 3
                         },
                         new
                         {
@@ -5610,7 +8279,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5619,7 +8292,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5637,7 +8314,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5673,7 +8354,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5682,7 +8367,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 14,
-                            VehicleId = 6
+                            VehicleId = 4
                         },
                         new
                         {
@@ -5691,7 +8376,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5718,7 +8407,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 13,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5727,7 +8420,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 15,
-                            VehicleId = 2
+                            VehicleId = 1
                         },
                         new
                         {
@@ -5736,7 +8429,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 15,
-                            VehicleId = 6
+                            VehicleId = 4
                         },
                         new
                         {
@@ -5745,7 +8438,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5754,7 +8451,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5763,7 +8464,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5781,7 +8486,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5790,7 +8499,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 15,
-                            VehicleId = 4
+                            VehicleId = 1
                         },
                         new
                         {
@@ -5808,7 +8517,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5817,7 +8530,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5826,7 +8543,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 1, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 15,
-                            VehicleId = 6
+                            VehicleId = 1
                         },
                         new
                         {
@@ -5844,7 +8561,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 2,
-                            VehicleId = 1
+                            VehicleId = 2
                         },
                         new
                         {
@@ -5853,7 +8570,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 2,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5871,7 +8592,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 3,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5880,7 +8605,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 3,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5889,7 +8618,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 4,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5898,7 +8631,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 4,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5907,7 +8644,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 4,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5916,7 +8657,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 4,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5925,7 +8670,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 5,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5952,7 +8701,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 5,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5970,7 +8723,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 6,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5979,7 +8736,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 6,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -5997,7 +8758,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 6,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6006,7 +8771,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 6,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6015,7 +8784,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 6,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6024,7 +8797,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 7,
-                            VehicleId = 3
+                            VehicleId = 2
                         },
                         new
                         {
@@ -6033,7 +8806,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 7,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6042,7 +8819,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 7,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6051,7 +8832,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 7,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6060,7 +8845,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 7,
-                            VehicleId = 1
+                            VehicleId = 6
                         },
                         new
                         {
@@ -6069,7 +8854,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 7,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6078,7 +8867,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 7,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6087,7 +8880,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 8,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6096,7 +8893,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 8,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6114,7 +8915,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 8,
-                            VehicleId = 3
+                            VehicleId = 5
                         },
                         new
                         {
@@ -6123,7 +8924,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 8,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6132,7 +8937,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 8,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6141,7 +8950,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 8,
-                            VehicleId = 5
+                            VehicleId = 6
                         },
                         new
                         {
@@ -6150,7 +8959,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 8,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6159,7 +8972,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6177,7 +8994,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6186,7 +9007,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6213,7 +9038,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 9,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -6231,7 +9056,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6276,7 +9105,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6285,7 +9118,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6312,7 +9149,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6330,7 +9171,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6339,7 +9184,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 11,
-                            VehicleId = 6
+                            VehicleId = 4
                         },
                         new
                         {
@@ -6357,7 +9202,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6375,7 +9224,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6384,7 +9237,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6402,7 +9259,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 11,
-                            VehicleId = 6
+                            VehicleId = 2
                         },
                         new
                         {
@@ -6411,7 +9268,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6420,7 +9281,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 11,
-                            VehicleId = 5
+                            VehicleId = 6
                         },
                         new
                         {
@@ -6429,7 +9290,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 13,
                             StartStationId = 12,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -6438,7 +9299,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6447,7 +9312,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 12,
-                            VehicleId = 5
+                            VehicleId = 6
                         },
                         new
                         {
@@ -6456,7 +9321,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6465,7 +9334,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 12,
-                            VehicleId = 5
+                            VehicleId = 4
                         },
                         new
                         {
@@ -6474,7 +9343,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6510,7 +9383,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 12,
-                            VehicleId = 2
+                            VehicleId = 5
                         },
                         new
                         {
@@ -6519,7 +9392,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6537,7 +9414,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 14,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6546,7 +9427,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6555,7 +9440,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6564,7 +9453,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6582,7 +9475,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 13,
-                            VehicleId = 5
+                            VehicleId = 1
                         },
                         new
                         {
@@ -6591,7 +9484,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6609,7 +9506,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6627,7 +9528,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6636,7 +9541,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6654,7 +9563,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 15,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6663,7 +9576,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 13,
                             StartStationId = 14,
-                            VehicleId = 2
+                            VehicleId = 6
                         },
                         new
                         {
@@ -6681,7 +9594,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6690,7 +9607,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6708,7 +9629,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6726,7 +9651,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 14,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -6735,7 +9660,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6744,7 +9673,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6753,7 +9686,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6771,7 +9708,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6798,7 +9739,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6807,7 +9752,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6816,7 +9765,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6825,7 +9778,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6834,7 +9791,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6843,7 +9804,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6852,7 +9817,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 15,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -6861,7 +9826,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 15,
-                            VehicleId = 1
+                            VehicleId = 2
                         },
                         new
                         {
@@ -6870,7 +9835,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6879,7 +9848,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 15,
-                            VehicleId = 5
+                            VehicleId = 2
                         },
                         new
                         {
@@ -6888,7 +9857,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 15,
-                            VehicleId = 2
+                            VehicleId = 4
                         },
                         new
                         {
@@ -6897,7 +9866,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 5, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6915,7 +9888,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 2,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6924,7 +9901,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 2,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6933,7 +9914,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 3,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6942,7 +9927,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 3,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6960,7 +9949,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 4,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6969,7 +9962,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 4,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -6978,7 +9975,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 4,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7005,7 +10006,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 5,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7014,7 +10019,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 5,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7023,7 +10032,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 5,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7032,7 +10045,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 5,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7041,7 +10058,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 6,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7068,7 +10089,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 6,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7095,7 +10120,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 7,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7104,7 +10133,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 7,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7113,7 +10146,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 7,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7122,7 +10159,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 7,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7131,7 +10172,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 7,
-                            VehicleId = 3
+                            VehicleId = 6
                         },
                         new
                         {
@@ -7158,7 +10199,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 8,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7185,7 +10230,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 8,
-                            VehicleId = 1
+                            VehicleId = 2
                         },
                         new
                         {
@@ -7203,7 +10248,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 8,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7212,7 +10261,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 8,
-                            VehicleId = 3
+                            VehicleId = 5
                         },
                         new
                         {
@@ -7230,7 +10279,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7239,7 +10292,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7266,7 +10323,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7275,7 +10336,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7284,7 +10349,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 9,
-                            VehicleId = 5
+                            VehicleId = 4
                         },
                         new
                         {
@@ -7293,7 +10358,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 9,
-                            VehicleId = 5
+                            VehicleId = 1
                         },
                         new
                         {
@@ -7302,7 +10367,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7311,7 +10380,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7320,7 +10393,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 10,
-                            VehicleId = 2
+                            VehicleId = 3
                         },
                         new
                         {
@@ -7329,7 +10402,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7338,7 +10415,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7356,7 +10437,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7365,7 +10450,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7374,7 +10463,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7383,7 +10476,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7401,7 +10498,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 11,
-                            VehicleId = 5
+                            VehicleId = 2
                         },
                         new
                         {
@@ -7410,7 +10507,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7419,7 +10520,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7428,7 +10533,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7437,7 +10546,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7455,7 +10568,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7473,7 +10590,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7482,7 +10603,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 11,
-                            VehicleId = 6
+                            VehicleId = 1
                         },
                         new
                         {
@@ -7518,7 +10639,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7536,7 +10661,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7545,7 +10674,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 12,
-                            VehicleId = 3
+                            VehicleId = 6
                         },
                         new
                         {
@@ -7554,7 +10683,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7572,7 +10705,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7581,7 +10718,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7590,7 +10731,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7599,7 +10744,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7617,7 +10766,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7635,7 +10788,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7644,7 +10801,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7653,7 +10814,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7662,7 +10827,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7680,7 +10849,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7689,7 +10862,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7707,7 +10884,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7716,7 +10897,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7725,7 +10910,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 15,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7761,7 +10950,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7779,7 +10972,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7797,7 +10994,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7815,7 +11016,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 14,
-                            VehicleId = 6
+                            VehicleId = 5
                         },
                         new
                         {
@@ -7824,7 +11025,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 14,
-                            VehicleId = 3
+                            VehicleId = 6
                         },
                         new
                         {
@@ -7833,7 +11034,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7842,7 +11047,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 14,
-                            VehicleId = 1
+                            VehicleId = 3
                         },
                         new
                         {
@@ -7851,7 +11056,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 14,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7860,7 +11069,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 13,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7869,7 +11082,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7887,7 +11104,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7914,7 +11135,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 15,
-                            VehicleId = 4
+                            VehicleId = 3
                         },
                         new
                         {
@@ -7932,7 +11153,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7941,7 +11166,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 15,
-                            VehicleId = 3
+                            VehicleId = 6
                         },
                         new
                         {
@@ -7950,7 +11175,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7959,7 +11188,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7968,7 +11201,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 15, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 15,
-                            VehicleId = 3
+                            VehicleId = 4
                         },
                         new
                         {
@@ -7977,7 +11210,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 1,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -7986,7 +11223,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 2,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8004,7 +11245,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 3,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8013,7 +11258,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 3,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8022,7 +11271,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 3,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8040,7 +11293,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 4,
-                            VehicleId = 1
+                            VehicleId = 2
                         },
                         new
                         {
@@ -8067,7 +11320,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 5,
-                            VehicleId = 1
+                            VehicleId = 4
                         },
                         new
                         {
@@ -8076,7 +11329,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 5,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8085,7 +11342,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 5,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8103,7 +11364,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 5,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8112,7 +11377,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 6,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8121,7 +11390,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 6,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8130,7 +11403,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 6,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8139,7 +11416,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 6,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8148,7 +11429,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 6,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8157,7 +11442,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 6,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -8175,7 +11460,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 7,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8193,7 +11482,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 7,
-                            VehicleId = 4
+                            VehicleId = 2
                         },
                         new
                         {
@@ -8202,7 +11491,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 7,
-                            VehicleId = 1
+                            VehicleId = 5
                         },
                         new
                         {
@@ -8220,7 +11509,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 7,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8229,7 +11522,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 8,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8238,7 +11535,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 8,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8256,7 +11557,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 8,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8265,7 +11570,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 8,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8274,7 +11583,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 8,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8301,7 +11614,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8319,7 +11636,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8337,7 +11658,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8364,7 +11689,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8382,7 +11711,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8391,7 +11724,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8400,7 +11737,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 10,
-                            VehicleId = 1
+                            VehicleId = 6
                         },
                         new
                         {
@@ -8418,7 +11755,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8427,7 +11768,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 10,
-                            VehicleId = 4
+                            VehicleId = 1
                         },
                         new
                         {
@@ -8436,7 +11777,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8445,7 +11790,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8454,7 +11803,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 10,
-                            VehicleId = 5
+                            VehicleId = 3
                         },
                         new
                         {
@@ -8463,7 +11812,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8472,7 +11825,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8499,7 +11856,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8517,7 +11878,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8544,7 +11909,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8553,7 +11922,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8562,7 +11935,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8571,7 +11948,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 13,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8580,7 +11961,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8589,7 +11974,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8598,7 +11987,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8607,7 +12000,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8625,7 +12022,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8634,7 +12035,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8652,7 +12057,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 12,
-                            VehicleId = 1
+                            VehicleId = 2
                         },
                         new
                         {
@@ -8661,7 +12066,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8670,7 +12079,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8679,7 +12092,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 14,
                             StartStationId = 13,
-                            VehicleId = 1
+                            VehicleId = 5
                         },
                         new
                         {
@@ -8688,7 +12101,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8697,7 +12114,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8706,7 +12127,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8715,7 +12140,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8724,7 +12153,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 8,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8733,7 +12166,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 13,
-                            VehicleId = 1
+                            VehicleId = 6
                         },
                         new
                         {
@@ -8742,7 +12175,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8751,7 +12188,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8760,7 +12201,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8769,7 +12214,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8778,7 +12227,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 13,
-                            VehicleId = 4
+                            VehicleId = 3
                         },
                         new
                         {
@@ -8796,7 +12245,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 15,
                             StartStationId = 14,
-                            VehicleId = 2
+                            VehicleId = 1
                         },
                         new
                         {
@@ -8805,7 +12254,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 13,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8814,7 +12267,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 14,
-                            VehicleId = 5
+                            VehicleId = 1
                         },
                         new
                         {
@@ -8832,7 +12285,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8841,7 +12298,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 14,
-                            VehicleId = 3
+                            VehicleId = 5
                         },
                         new
                         {
@@ -8859,7 +12316,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 1
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8868,7 +12329,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8877,7 +12342,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 14,
-                            VehicleId = 2
+                            VehicleId = 1
                         },
                         new
                         {
@@ -8886,7 +12351,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 4,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8895,7 +12364,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8904,7 +12377,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 6
+========
+                            VehicleId = 2
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8913,7 +12390,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 1
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8922,7 +12403,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 14,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8940,7 +12425,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 12,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 3
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8949,7 +12438,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 11,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8958,7 +12451,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 10,
                             StartStationId = 15,
-                            VehicleId = 6
+                            VehicleId = 4
                         },
                         new
                         {
@@ -8967,7 +12460,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 9,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 3
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8985,7 +12482,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 7,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 5
+========
+                            VehicleId = 4
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -8994,7 +12495,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 6,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -9003,7 +12508,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 5,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 2
+========
+                            VehicleId = 6
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -9021,7 +12530,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 3,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         },
                         new
                         {
@@ -9030,7 +12543,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 2,
                             StartStationId = 15,
-                            VehicleId = 2
+                            VehicleId = 3
                         },
                         new
                         {
@@ -9039,7 +12552,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Departure = new DateTime(2025, 2, 25, 10, 15, 0, 0, DateTimeKind.Unspecified),
                             EndStationId = 1,
                             StartStationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             VehicleId = 4
+========
+                            VehicleId = 5
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                         });
                 });
 
@@ -9069,91 +12586,151 @@ namespace ePrijevozSarajevo.Services.Migrations
                         new
                         {
                             StationId = 1,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9432),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3976),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Ilidža"
                         },
                         new
                         {
                             StationId = 2,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9434),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3979),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Stup"
                         },
                         new
                         {
                             StationId = 3,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9435),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3981),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Nedžarići"
                         },
                         new
                         {
                             StationId = 4,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9437),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3983),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Socijalno"
                         },
                         new
                         {
                             StationId = 5,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9438),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3985),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Malta"
                         },
                         new
                         {
                             StationId = 6,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9439),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3986),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Baščaršija"
                         },
                         new
                         {
                             StationId = 7,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9441),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3988),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Otoka"
                         },
                         new
                         {
                             StationId = 8,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9442),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3990),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Skenderija"
                         },
                         new
                         {
                             StationId = 9,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9444),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3991),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Drvenija"
                         },
                         new
                         {
                             StationId = 10,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9445),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3993),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Dobrinja"
                         },
                         new
                         {
                             StationId = 11,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9446),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(4000),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Grbavica"
                         },
                         new
                         {
                             StationId = 12,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9448),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(4001),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Hrasno"
                         },
                         new
                         {
                             StationId = 13,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9450),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(4003),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Aneks"
                         },
                         new
                         {
                             StationId = 14,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9451),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(4004),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Alipašino polje"
                         },
                         new
                         {
                             StationId = 15,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9452),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(4006),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Švrakino selo"
                         });
                 });
@@ -9189,35 +12766,55 @@ namespace ePrijevozSarajevo.Services.Migrations
                         {
                             StatusId = 1,
                             Discount = 0.0,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9543),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(4181),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Default"
                         },
                         new
                         {
                             StatusId = 2,
                             Discount = 0.29999999999999999,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9545),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(4185),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Student"
                         },
                         new
                         {
                             StatusId = 3,
                             Discount = 0.5,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9547),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(4186),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Penzioner"
                         },
                         new
                         {
                             StatusId = 4,
                             Discount = 0.14999999999999999,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9548),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(4188),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Zaposlenik"
                         },
                         new
                         {
                             StatusId = 5,
                             Discount = 0.40000000000000002,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9550),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(4190),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Nezaposlen"
                         });
                 });
@@ -9254,7 +12851,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                         new
                         {
                             TicketId = 1,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9559),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(4209),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Jednosmjerna",
                             Price = 1.8,
                             StateMachine = "draft"
@@ -9262,7 +12863,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                         new
                         {
                             TicketId = 2,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9560),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(4212),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Povratna",
                             Price = 3.2000000000000002,
                             StateMachine = "draft"
@@ -9270,7 +12875,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                         new
                         {
                             TicketId = 3,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9562),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(4214),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Jednosmjerna dječija",
                             Price = 0.80000000000000004,
                             StateMachine = "draft"
@@ -9278,7 +12887,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                         new
                         {
                             TicketId = 4,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9563),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(4215),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Povratna dječija",
                             Price = 1.2,
                             StateMachine = "draft"
@@ -9286,7 +12899,11 @@ namespace ePrijevozSarajevo.Services.Migrations
                         new
                         {
                             TicketId = 5,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9565),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(4217),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Mjesečna",
                             Price = 75.0,
                             StateMachine = "draft"
@@ -9319,31 +12936,51 @@ namespace ePrijevozSarajevo.Services.Migrations
                         new
                         {
                             TypeId = 1,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9510),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(4116),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Trolejbus"
                         },
                         new
                         {
                             TypeId = 2,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9511),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(4119),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Tramvaj"
                         },
                         new
                         {
                             TypeId = 3,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9513),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(4121),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Minibus"
                         },
                         new
                         {
                             TypeId = 4,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9514),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(4123),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Autobus"
                         },
                         new
                         {
                             TypeId = 5,
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(9516),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(4124),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             Name = "Kombi"
                         });
                 });
@@ -9403,14 +13040,14 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.Property<DateTime?>("StatusExpirationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserCountryId")
+                    b.Property<int?>("UserCountryId")
                         .HasColumnType("int");
 
                     b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("UserStatusId")
+                    b.Property<int?>("UserStatusId")
                         .HasColumnType("int");
 
                     b.Property<string>("ZipCode")
@@ -9441,11 +13078,19 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Email = "sara.sahinpasic@edu.fit.ba",
                             FirstName = "Sara",
                             LastName = "Šahinpašić",
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(8763),
                             PasswordHash = "HrGV2xmi2OaQJ4J0cmozCu3VvPc=",
                             PasswordSalt = "M1Wx/ljo9YLmR0OREeAkEw==",
                             PhoneNumber = "+38761222333",
                             RegistrationDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(8762),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3100),
+                            PasswordHash = "JiR1qsTqgtNL67s/dvi2GgkkJ+A=",
+                            PasswordSalt = "jqKeIwTHWuFGhfTxhg0NHQ==",
+                            PhoneNumber = "+38761222333",
+                            RegistrationDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3098),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             StatusExpirationDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserCountryId = 1,
                             UserName = "desktop",
@@ -9461,11 +13106,19 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Email = "eprijevozsarajevoapp@gmail.com",
                             FirstName = "Senada",
                             LastName = "Senadić",
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(8773),
                             PasswordHash = "9oJ1FPZ1X0mB+fJHrQ2GucF1fbI=",
                             PasswordSalt = "wLiq7V63SJUsMtz3wZ7TPw==",
                             PhoneNumber = "+38761222444",
                             RegistrationDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(8772),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3112),
+                            PasswordHash = "nGkHnGGdieMBpizG4zGRAggpjAE=",
+                            PasswordSalt = "J//jlWUTuq79Av5VGaMjHg==",
+                            PhoneNumber = "+38761222444",
+                            RegistrationDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3111),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             StatusExpirationDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserCountryId = 1,
                             UserName = "mobile",
@@ -9481,11 +13134,19 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Email = "sara.sahinpasic@hotmail.com",
                             FirstName = "Test",
                             LastName = "Testni",
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(8778),
                             PasswordHash = "wRnpQEhuZ+yQ65+qpKNmbota36A=",
                             PasswordSalt = "Gsgf5S2vIb6MhZR0PWVTNQ==",
                             PhoneNumber = "+38761222444",
                             RegistrationDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(8777),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3118),
+                            PasswordHash = "kBywhFsMTb8I5q+orni0+yQsrg4=",
+                            PasswordSalt = "AA8/FfJaYe1Hz5UurtHe0g==",
+                            PhoneNumber = "+38761222444",
+                            RegistrationDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3117),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             StatusExpirationDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserCountryId = 2,
                             UserName = "mobile1",
@@ -9501,11 +13162,19 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Email = "eprijevozsarajevotest@outlook.com",
                             FirstName = "Testni",
                             LastName = "Test",
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(8788),
                             PasswordHash = "T+6xIfR7y/9PsNOpvVx0buTJ0c4=",
                             PasswordSalt = "j+nv0R9FyM1HffKskBVcLQ==",
                             PhoneNumber = "+38761222666",
                             RegistrationDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(8787),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3124),
+                            PasswordHash = "bt4MjVvG/n0hYUM/poGocsSTvGo=",
+                            PasswordSalt = "T5krbc0sR3Q9OlhuggS9Ug==",
+                            PhoneNumber = "+38761222666",
+                            RegistrationDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3123),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             StatusExpirationDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserCountryId = 3,
                             UserName = "mobile2",
@@ -9521,11 +13190,19 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Email = "eprijevozsarajevo.app@gmx.de",
                             FirstName = "Proba",
                             LastName = "Probni",
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(8792),
                             PasswordHash = "wHzNtGdTuTQr0e5gAQfKIkG6UHY=",
                             PasswordSalt = "ui0BhKIRulQX7Sp3Ci/8wQ==",
                             PhoneNumber = "+38761222777",
                             RegistrationDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(8792),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3130),
+                            PasswordHash = "xMKUj3CvRH+f8EZqSEOHfc9YAPw=",
+                            PasswordSalt = "iTRWWRijrKZqr3pK0feY3w==",
+                            PhoneNumber = "+38761222777",
+                            RegistrationDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3129),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             StatusExpirationDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserCountryId = 3,
                             UserName = "mobile3",
@@ -9541,11 +13218,19 @@ namespace ePrijevozSarajevo.Services.Migrations
                             Email = "probe@mail.com",
                             FirstName = "Probe",
                             LastName = "Probno",
+<<<<<<<< HEAD:ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112153934_InitialCreate.Designer.cs
                             ModifiedDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(8798),
                             PasswordHash = "oymt4QoGNKHMTbDCvIX95iyrAbM=",
                             PasswordSalt = "igHT2VX2LdnwyeRCMPlagA==",
                             PhoneNumber = "+38761222888",
                             RegistrationDate = new DateTime(2025, 1, 12, 16, 39, 34, 401, DateTimeKind.Local).AddTicks(8797),
+========
+                            ModifiedDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3140),
+                            PasswordHash = "mSTcYlG11c+UOP/CvMe0Uw13tY8=",
+                            PasswordSalt = "V/tiISzzHVSIYdmrAVh6Ew==",
+                            PhoneNumber = "+38761222888",
+                            RegistrationDate = new DateTime(2025, 1, 12, 19, 15, 27, 961, DateTimeKind.Local).AddTicks(3138),
+>>>>>>>> 7eed4b2 (Fix: db relations):ePrijevozSarajevo/ePrijevozSarajevo.Services/Migrations/20250112181528_InitialCreate.Designer.cs
                             StatusExpirationDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserCountryId = 2,
                             UserName = "mobile4",
@@ -9715,20 +13400,17 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.HasOne("ePrijevozSarajevo.Services.Database.Route", "Route")
                         .WithMany()
                         .HasForeignKey("RouteId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("ePrijevozSarajevo.Services.Database.Ticket", "Ticket")
                         .WithMany()
                         .HasForeignKey("TicketId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("ePrijevozSarajevo.Services.Database.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Route");
 
@@ -9742,8 +13424,7 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.HasOne("ePrijevozSarajevo.Services.Database.Country", "ManufacturerCountry")
                         .WithMany()
                         .HasForeignKey("ManufacturerCountryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("ManufacturerCountry");
                 });
@@ -9758,7 +13439,9 @@ namespace ePrijevozSarajevo.Services.Migrations
 
                     b.HasOne("ePrijevozSarajevo.Services.Database.Status", "UserStatus")
                         .WithMany()
-                        .HasForeignKey("UserStatusId");
+                        .HasForeignKey("UserStatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
 
@@ -9797,14 +13480,12 @@ namespace ePrijevozSarajevo.Services.Migrations
                     b.HasOne("ePrijevozSarajevo.Services.Database.Country", "UserCountry")
                         .WithMany()
                         .HasForeignKey("UserCountryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("ePrijevozSarajevo.Services.Database.Status", "UserStatus")
                         .WithMany()
                         .HasForeignKey("UserStatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("UserCountry");
 
