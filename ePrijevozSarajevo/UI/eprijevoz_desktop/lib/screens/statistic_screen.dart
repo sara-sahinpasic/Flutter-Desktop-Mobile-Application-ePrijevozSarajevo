@@ -76,6 +76,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
   void updateTicketValues(
       SearchResult<IssuedTicket>? issuedTicketResult) async {
     issuedTicketResult = await issuedTicketProvider.get();
+    routeResult = await routeProvider.get();
     if (issuedTicketResult?.result != null) {
       final ticketsForSelectedYear = issuedTicketResult!.result
           .where(
@@ -295,6 +296,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
               onPressed: ticketsForYearAndMonths.isEmpty
                   ? null // disable button if no data
                   : () async {
+                      updateTicketValues(issuedTicketResult);
                       await generatePdf();
                     },
               style: ElevatedButton.styleFrom(
