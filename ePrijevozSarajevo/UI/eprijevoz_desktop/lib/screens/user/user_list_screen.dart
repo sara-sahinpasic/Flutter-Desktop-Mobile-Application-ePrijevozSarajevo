@@ -330,102 +330,134 @@ class _UserListScreenState extends State<UserListScreen> {
                                         ),
                                       )),
                                       // delete:
-                                      DataCell(IconButton(
-                                        onPressed: () async {
-                                          final bool userConfirmedDeletion =
-                                              await showDialog(
-                                                  context: context,
-                                                  builder: (dialogContext) =>
-                                                      AlertDialog(
-                                                        title: const Text(
-                                                          "Delete",
-                                                          style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
-                                                        ),
-                                                        content: Text(
-                                                            "Da li želite obrisati korisnika ${e.firstName} ${e.lastName}?"),
-                                                        actions: [
-                                                          TextButton(
-                                                              child: const Text(
-                                                                "OK",
+                                      DataCell(
+                                        IconButton(
+                                          onPressed: () async {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (dialogContext) {
+                                                return AlertDialog(
+                                                  title: const Text(
+                                                    "Delete",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                  content: const Text(
+                                                    "Da li želite obrisati zapis?",
+                                                  ),
+                                                  actions: [
+                                                    TextButton(
+                                                      child: const Text(
+                                                        "OK",
+                                                        style: TextStyle(
+                                                            color:
+                                                                Colors.black),
+                                                      ),
+                                                      onPressed: () async {
+                                                        Navigator.pop(
+                                                            dialogContext);
+                                                        try {
+                                                          await userProvider
+                                                              .delete(
+                                                                  e.userId!);
+                                                          setState(() {});
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (successDialogContext) =>
+                                                                    AlertDialog(
+                                                              title: const Text(
+                                                                "Success",
                                                                 style: TextStyle(
                                                                     color: Colors
-                                                                        .black),
+                                                                        .green,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold),
                                                               ),
-                                                              onPressed:
-                                                                  () async {
-                                                                Navigator.pop(
-                                                                    dialogContext,
-                                                                    true);
-                                                              }),
-                                                          TextButton(
-                                                              child: const Text(
-                                                                "Cancel",
-                                                                style: TextStyle(
-                                                                    color: Colors
-                                                                        .red),
+                                                              content:
+                                                                  const Text(
+                                                                "Zapis je uspješno obrisan.",
                                                               ),
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      dialogContext,
-                                                                      false))
-                                                        ],
-                                                      ));
-                                          if (userConfirmedDeletion) {
-                                            bool success = await userProvider
-                                                .delete(e.userId!);
-                                            if (mounted) {
-                                              await showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (dialogDeleteContext) =>
-                                                          AlertDialog(
-                                                            title: Text(
-                                                              success
-                                                                  ? "Success"
-                                                                  : "Error",
-                                                              style: TextStyle(
-                                                                color: success
-                                                                    ? Colors
-                                                                        .green
-                                                                    : Colors
-                                                                        .red,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                              ),
-                                                            ),
-                                                            content: Text(success
-                                                                ? "Korisnik: ${e.firstName} ${e.lastName}, uspješno obrisan."
-                                                                : "Korisnik: ${e.firstName} ${e.lastName}, nije obrisan."),
-                                                            actions: [
-                                                              TextButton(
-                                                                child:
-                                                                    const Text(
-                                                                  "OK",
-                                                                  style: TextStyle(
-                                                                      color: Colors
-                                                                          .black),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          successDialogContext),
+                                                                  child:
+                                                                      const Text(
+                                                                    "OK",
+                                                                    style: TextStyle(
+                                                                        color: Colors
+                                                                            .black),
+                                                                  ),
                                                                 ),
-                                                                onPressed: () {
-                                                                  refreshTable(); //refresh table with new data
-                                                                  Navigator.pop(
-                                                                      dialogDeleteContext);
-                                                                },
-                                                              )
-                                                            ],
-                                                          ));
-                                              await refreshTable();
-                                            }
-                                          }
-                                        },
-                                        icon: const Icon(
-                                          Icons.delete_forever_rounded,
-                                          color: Colors.white,
+                                                              ],
+                                                            ),
+                                                          );
+                                                        } catch (error) {
+                                                          String errorMessage =
+                                                              "Greška prilikom brisanja zapisa.\n$error";
+
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (errorDialogContext) =>
+                                                                    AlertDialog(
+                                                              title: const Text(
+                                                                "Error",
+                                                                style: TextStyle(
+                                                                    color: Colors
+                                                                        .red,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold),
+                                                              ),
+                                                              content: Text(
+                                                                errorMessage,
+                                                              ),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          errorDialogContext),
+                                                                  child:
+                                                                      const Text(
+                                                                    "OK",
+                                                                    style: TextStyle(
+                                                                        color: Colors
+                                                                            .black),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          );
+                                                        }
+                                                        refreshTable();
+                                                      },
+                                                    ),
+                                                    TextButton(
+                                                      child: const Text(
+                                                          "Cancel",
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.red)),
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              dialogContext,
+                                                              false),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          },
+                                          icon: const Icon(
+                                              Icons.delete_forever_rounded,
+                                              color: Colors.white),
                                         ),
-                                      )),
+                                      )
                                     ],
                                   ),
                                 )
