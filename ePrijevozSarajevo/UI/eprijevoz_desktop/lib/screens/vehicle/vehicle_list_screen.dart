@@ -56,6 +56,8 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
     try {
       var request = Map.from(_formKey.currentState?.value ?? {});
       vehicleResult = await vehicleProvider.get(filter: request);
+      manufacturerResult = await manufacturerProvider.get();
+      typeResult = await typeProvider.get();
     } catch (e) {
       debugPrint('Error: $e');
     } finally {
@@ -186,12 +188,15 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
                       children: [
                         // type
                         TextButton(
-                          onPressed: () => Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  const VehicleTypeListScreen(),
-                            ),
-                          ),
+                          onPressed: () async {
+                            await Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const VehicleTypeListScreen(),
+                              ),
+                            );
+                            await refreshTable();
+                          },
                           child: Row(
                             children: [
                               Icon(
@@ -215,12 +220,15 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
                         ),
                         // manufacturer
                         TextButton(
-                          onPressed: () => Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  const ManufacturerListScreen(),
-                            ),
-                          ),
+                          onPressed: () async {
+                            await Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const ManufacturerListScreen(),
+                              ),
+                            );
+                            await refreshTable();
+                          },
                           child: Row(
                             children: [
                               Icon(

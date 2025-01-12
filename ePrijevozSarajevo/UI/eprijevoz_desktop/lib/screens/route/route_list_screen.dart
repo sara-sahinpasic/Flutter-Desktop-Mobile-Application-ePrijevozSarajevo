@@ -149,6 +149,7 @@ class _RouteListScreenState extends State<RouteListScreen> {
             DateTime(selectedDate.year, selectedDate.month, selectedDate.day),
       };
       routeResultForTime = await routeProvider.get(filter: filter);
+      stationResult = await stationProvider.get();
       if (routeResultForTime?.count == 0) {
         await showDialog(
           context: context,
@@ -272,16 +273,19 @@ class _RouteListScreenState extends State<RouteListScreen> {
               children: [
                 // station
                 TextButton(
-                  onPressed: () => Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const StationListScreen(),
-                    ),
-                  ),
+                  onPressed: () async {
+                    await Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const StationListScreen(),
+                      ),
+                    );
+                    _refreshData();
+                  },
                   child: Row(
                     children: [
                       Icon(
                         Icons.arrow_forward,
-                        color: Colors.green.shade800,
+                        color: const Color.fromARGB(255, 46, 53, 46),
                       ),
                       const SizedBox(width: 5),
                       Text(
@@ -300,11 +304,14 @@ class _RouteListScreenState extends State<RouteListScreen> {
                 ),
                 // tickets
                 TextButton(
-                  onPressed: () => Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const TicketListScreen(),
-                    ),
-                  ),
+                  onPressed: () async {
+                    await Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const TicketListScreen(),
+                      ),
+                    );
+                    _refreshData();
+                  },
                   child: Row(
                     children: [
                       Icon(

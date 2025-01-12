@@ -169,11 +169,14 @@ class _UserListScreenState extends State<UserListScreen> {
                   children: [
                     // country
                     TextButton(
-                      onPressed: () => Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const CountryListScreen(),
-                        ),
-                      ),
+                      onPressed: () async {
+                        await Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const CountryListScreen(),
+                          ),
+                        );
+                        refreshTable();
+                      },
                       child: Row(
                         children: [
                           Icon(
@@ -197,11 +200,14 @@ class _UserListScreenState extends State<UserListScreen> {
                     ),
                     // status
                     TextButton(
-                      onPressed: () => Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const StatusListScreen(),
-                        ),
-                      ),
+                      onPressed: () async {
+                        await Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const StatusListScreen(),
+                          ),
+                        );
+                        refreshTable();
+                      },
                       child: Row(
                         children: [
                           Icon(
