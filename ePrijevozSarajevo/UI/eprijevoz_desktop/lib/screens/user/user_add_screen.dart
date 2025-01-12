@@ -681,7 +681,7 @@ class _UserAddDialogState extends State<UserAddDialog> {
                                                 color: Colors.red,
                                                 fontWeight: FontWeight.bold)),
                                         content: Text(
-                                            'Greška prilikom dodavanja korisnika ->\n$error'),
+                                            'Greška prilikom dodavanja korisnika \n$error'),
                                         actions: [
                                           TextButton(
                                             child: const Text("OK",

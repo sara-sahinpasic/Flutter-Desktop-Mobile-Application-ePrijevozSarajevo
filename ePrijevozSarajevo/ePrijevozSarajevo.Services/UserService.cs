@@ -126,7 +126,7 @@ namespace ePrijevozSarajevo.Services
 
             if (user == null)
             {
-                throw new UserException("Korisnik nije pronađen.");
+                throw new UserException("Korisnik nije pronađen. Lozinku možete promijeniti samo za već postojećeg korisnika.");
             }
 
             if (newPassword != passwordConfirmation)

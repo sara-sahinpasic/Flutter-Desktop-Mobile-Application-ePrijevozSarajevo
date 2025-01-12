@@ -62,7 +62,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               "Error",
               style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
             ),
-            content: Text('Greška u promijeni lozinke!->\n$e'),
+            content: Text('Greška u promijeni lozinke!\n$e'),
             actions: [
               TextButton(
                 child: const Text(

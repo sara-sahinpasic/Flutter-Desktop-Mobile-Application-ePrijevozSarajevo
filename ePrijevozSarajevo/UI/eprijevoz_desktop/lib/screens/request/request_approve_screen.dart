@@ -125,7 +125,7 @@ class _RequestApproveDialogState extends State<RequestApproveDialog> {
                                         fontWeight: FontWeight.bold),
                                   ),
                                   content: Text(
-                                      "Greška prilikom odobrenja zahtjeva.->\n$error"),
+                                      "Greška prilikom odobrenja zahtjeva.\n$error"),
                                   actions: [
                                     TextButton(
                                       child: const Text("OK",

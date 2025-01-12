@@ -428,7 +428,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                         style: TextStyle(color: Colors.red),
                                       ),
                                       content: Text(
-                                          "Korisnički podaci nisu ažurirani. ->\n$e"),
+                                          "Korisnički podaci nisu ažurirani. \n$e"),
                                       actions: [
                                         TextButton(
                                           child: const Text(

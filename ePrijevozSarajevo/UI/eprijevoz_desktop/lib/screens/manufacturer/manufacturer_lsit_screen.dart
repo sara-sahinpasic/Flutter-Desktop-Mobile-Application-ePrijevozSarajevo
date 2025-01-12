@@ -312,7 +312,7 @@ class _ManufacturerListScreenState extends State<ManufacturerListScreen> {
                                                         );
                                                       } catch (error) {
                                                         String errorMessage =
-                                                            "Greška prilikom brisanja zapisa.->\n$error";
+                                                            "Greška prilikom brisanja zapisa.\n$error";
 
                                                         await showDialog(
                                                           context: context,
