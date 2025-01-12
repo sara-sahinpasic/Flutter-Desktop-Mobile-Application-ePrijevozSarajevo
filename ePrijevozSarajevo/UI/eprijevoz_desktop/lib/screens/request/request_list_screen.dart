@@ -466,7 +466,7 @@ class _RequestListScreenState extends State<RequestListScreen> {
                                                     );
                                                   } catch (error) {
                                                     String errorMessage =
-                                                        "Greška prilikom brisanja zapisa.->\n$error";
+                                                        "Greška prilikom brisanja zapisa.\n$error";
 
                                                     await showDialog(
                                                       context: context,
@@ -500,7 +500,7 @@ class _RequestListScreenState extends State<RequestListScreen> {
                                                       ),
                                                     );
                                                   }
-                                                  initForm();
+                                                  _refreshData();
                                                 },
                                               ),
                                               TextButton(
@@ -521,6 +521,7 @@ class _RequestListScreenState extends State<RequestListScreen> {
                                   ),
                                 ],
                               )),
+                              //--------------------
                             ],
                           ),
                         )

@@ -390,86 +390,134 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
                                         ),
                                       )),
                                       // delete
-                                      DataCell(IconButton(
-                                        onPressed: () {
-                                          showDialog(
+                                      DataCell(
+                                        IconButton(
+                                          onPressed: () async {
+                                            await showDialog(
                                               context: context,
-                                              builder: (context) => AlertDialog(
-                                                    title: const Text(
-                                                      "Delete",
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold),
+                                              builder: (dialogContext) {
+                                                return AlertDialog(
+                                                  title: const Text(
+                                                    "Delete",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                  content: const Text(
+                                                    "Da li želite obrisati zapis?",
+                                                  ),
+                                                  actions: [
+                                                    TextButton(
+                                                      child: const Text(
+                                                        "OK",
+                                                        style: TextStyle(
+                                                            color:
+                                                                Colors.black),
+                                                      ),
+                                                      onPressed: () async {
+                                                        Navigator.pop(
+                                                            dialogContext);
+                                                        try {
+                                                          await vehicleProvider
+                                                              .delete(
+                                                                  e.vehicleId!);
+                                                          setState(() {});
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (successDialogContext) =>
+                                                                    AlertDialog(
+                                                              title: const Text(
+                                                                "Success",
+                                                                style: TextStyle(
+                                                                    color: Colors
+                                                                        .green,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold),
+                                                              ),
+                                                              content:
+                                                                  const Text(
+                                                                "Zapis je uspješno obrisan.",
+                                                              ),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          successDialogContext),
+                                                                  child:
+                                                                      const Text(
+                                                                    "OK",
+                                                                    style: TextStyle(
+                                                                        color: Colors
+                                                                            .black),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          );
+                                                        } catch (error) {
+                                                          String errorMessage =
+                                                              "Greška prilikom brisanja zapisa.\n$error";
+
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (errorDialogContext) =>
+                                                                    AlertDialog(
+                                                              title: const Text(
+                                                                "Error",
+                                                                style: TextStyle(
+                                                                    color: Colors
+                                                                        .red,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold),
+                                                              ),
+                                                              content: Text(
+                                                                errorMessage,
+                                                              ),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          errorDialogContext),
+                                                                  child:
+                                                                      const Text(
+                                                                    "OK",
+                                                                    style: TextStyle(
+                                                                        color: Colors
+                                                                            .black),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          );
+                                                        }
+                                                        refreshTable();
+                                                      },
                                                     ),
-                                                    content: Text(
-                                                        "Da li želite obrisati vozilo ${e.registrationNumber}?"),
-                                                    actions: [
-                                                      TextButton(
-                                                          child: const Text(
-                                                            "OK",
-                                                            style: TextStyle(
-                                                                color: Colors
-                                                                    .black),
-                                                          ),
-                                                          onPressed: () async {
-                                                            Navigator.pop(
-                                                                context);
-                                                            bool success =
-                                                                await vehicleProvider
-                                                                    .delete(e
-                                                                        .vehicleId!);
-                                                            showDialog(
-                                                                context:
-                                                                    context,
-                                                                builder:
-                                                                    (context) =>
-                                                                        AlertDialog(
-                                                                          title:
-                                                                              Text(
-                                                                            success
-                                                                                ? "Success"
-                                                                                : "Error",
-                                                                            style:
-                                                                                TextStyle(
-                                                                              color: success ? Colors.green : Colors.red,
-                                                                              fontWeight: FontWeight.bold,
-                                                                            ),
-                                                                          ),
-                                                                          content: Text(success
-                                                                              ? "Vozilo: ${e.registrationNumber}, uspješno obrisano."
-                                                                              : "Vozilo: ${e.registrationNumber}, nije obrisano."),
-                                                                          actions: [
-                                                                            TextButton(
-                                                                              child: const Text(
-                                                                                "OK",
-                                                                                style: TextStyle(color: Colors.black),
-                                                                              ),
-                                                                              onPressed: () {
-                                                                                refreshTable();
-                                                                                Navigator.pop(context);
-                                                                              },
-                                                                            )
-                                                                          ],
-                                                                        ));
-                                                          }),
-                                                      TextButton(
-                                                          child: const Text(
-                                                            "Cancel",
-                                                            style: TextStyle(
-                                                                color:
-                                                                    Colors.red),
-                                                          ),
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  context))
-                                                    ],
-                                                  ));
-                                        },
-                                        icon: const Icon(
-                                          Icons.delete_forever_rounded,
-                                          color: Colors.white,
+                                                    TextButton(
+                                                      child: const Text(
+                                                          "Cancel",
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.red)),
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              dialogContext,
+                                                              false),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          },
+                                          icon: const Icon(
+                                              Icons.delete_forever_rounded,
+                                              color: Colors.white),
                                         ),
-                                      )),
+                                      )
                                     ],
                                   ),
                                 )
