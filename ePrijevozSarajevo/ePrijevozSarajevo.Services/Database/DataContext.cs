@@ -34,6 +34,8 @@ namespace ePrijevozSarajevo.Services.Database
         {
             base.OnModelCreating(modelBuilder);
 
+            // Vehicle
+
             modelBuilder.Entity<Vehicle>()
                 .HasIndex(v => v.RegistrationNumber)
                 .IsUnique();
@@ -42,53 +44,100 @@ namespace ePrijevozSarajevo.Services.Database
                 .HasIndex(v => v.Number)
                 .IsUnique();
 
-            modelBuilder.Entity<User>()
-               .HasIndex(u => u.Email)
-               .IsUnique();
+            modelBuilder.Entity<Vehicle>()
+                .HasOne(v => v.Manufacturer)
+                .WithMany()
+                .HasForeignKey(v => v.ManufacturerId);
 
-            modelBuilder.Entity<User>()
-               .HasIndex(u => u.UserName)
-               .IsUnique();
+            modelBuilder.Entity<Vehicle>()
+                .HasOne(v => v.Type)
+                .WithMany()
+                .HasForeignKey(v => v.TypeId);
+
+            // Manufacturer
+
+            modelBuilder.Entity<Manufacturer>()
+                .HasOne(m => m.ManufacturerCountry)
+                .WithMany()
+                .HasForeignKey(m => m.ManufacturerCountryId)
+                .OnDelete(DeleteBehavior.SetNull);  
+
+            // Status
 
             modelBuilder.Entity<Status>()
                 .Property(p => p.Discount)
                 .HasPrecision(5, 2);
 
+            // User
+
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.Email)
+                .IsUnique();
+
+            modelBuilder.Entity<User>()
+               .HasIndex(u => u.UserName)
+               .IsUnique();
+
             modelBuilder.Entity<User>()
                 .HasOne(user => user.UserStatus)
                 .WithMany()
-                .HasForeignKey(user => user.UserStatusId);
+                .HasForeignKey(user => user.UserStatusId)
+                .OnDelete(DeleteBehavior.SetNull); 
+            
+            modelBuilder.Entity<User>()
+                .HasOne(user => user.UserCountry)
+                .WithMany()
+                .HasForeignKey(user => user.UserCountryId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            // Request
+
+            modelBuilder.Entity<Request>()
+                .HasOne(request => request.User)
+                .WithMany()
+                .HasForeignKey(r => r.UserId);
 
             modelBuilder.Entity<Request>()
                 .HasOne(request => request.UserStatus)
                 .WithMany()
                 .HasForeignKey(r => r.UserStatusId);
 
+
+            // Route
+
             modelBuilder.Entity<Route>()
                 .HasOne(r => r.StartStation)
                 .WithMany()
+                .HasForeignKey(r => r.StartStationId)
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Route>()
                 .HasOne(r => r.EndStation)
                 .WithMany()
+                .HasForeignKey(r => r.EndStationId)
                 .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Route>()
+                .HasOne(r => r.Vehicle)
+                .WithMany()
+                .HasForeignKey(r => r.VehicleId);
+
+            // Issued Ticket
 
             modelBuilder.Entity<IssuedTicket>()
                 .HasOne(i => i.Route)
                 .WithMany()
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.SetNull);
 
             modelBuilder.Entity<IssuedTicket>()
                .HasOne(i => i.Ticket)
                .WithMany()
-               .OnDelete(DeleteBehavior.NoAction);
+               .OnDelete(DeleteBehavior.SetNull);
 
             modelBuilder.Entity<IssuedTicket>()
                .HasOne(i => i.User)
                .WithMany()
-               .OnDelete(DeleteBehavior.NoAction);
-
+               .OnDelete(DeleteBehavior.SetNull);
 
             var routeList = BuildRoutes(modelBuilder);
             BuildIssuedTickets(modelBuilder, routeList);

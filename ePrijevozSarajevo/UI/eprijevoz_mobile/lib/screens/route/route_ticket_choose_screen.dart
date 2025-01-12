@@ -88,7 +88,7 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
   }
 
   bool disableTickets(Status userStatus) {
-    if (loggedUser != null) {
+    if (loggedUser != null && loggedUser?.userStatusId != null) {
       userStatusId = loggedUser?.userStatusId!;
     }
 
@@ -139,43 +139,47 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
         ),
       );
     }).toList();
-
-    var extraTicketList = statusResult!.result
-        .where((element) => !element.name!.contains("Default"))
-        .map((status) {
-      var reducedPrice =
-          mjesecnaKarta!.price! - (mjesecnaKarta!.price! * status.discount!);
-      var enabled = currentUser!.userStatusId! == status.statusId!;
-      return ListTile(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text("${mjesecnaKarta?.name} karta - ${status.name}",
-                style:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
-            Text(formatPrice(reducedPrice),
-                style:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
-          ],
-        ),
-        leading: Radio<double>(
-          value: reducedPrice,
-          groupValue: selectedTicketPrice,
-          activeColor: Colors.green,
-          onChanged: enabled
-              ? (double? value) {
-                  setState(() {
-                    selectedTicketPrice = value;
-                    extraStatusTicket = status;
-                    basicTicket = mjesecnaKarta;
-                  });
-                }
-              : null,
-        ),
-        enabled: enabled,
-      );
-    }).toList();
-
+    var extraTicketList = <ListTile>[];
+    if (mjesecnaKarta != null) {
+      extraTicketList = statusResult!.result
+          .where((element) => !element.name!.contains("Default"))
+          .map((status) {
+        var reducedPrice =
+            mjesecnaKarta!.price! - (mjesecnaKarta!.price! * status.discount!);
+        var currentUserStatus = currentUser!.userStatusId;
+        var enabled = currentUserStatus != null
+            ? currentUserStatus == status.statusId!
+            : false;
+        return ListTile(
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text("${mjesecnaKarta?.name} karta - ${status.name}",
+                  style: const TextStyle(
+                      fontSize: 16, fontWeight: FontWeight.w500)),
+              Text(formatPrice(reducedPrice),
+                  style: const TextStyle(
+                      fontSize: 16, fontWeight: FontWeight.w700)),
+            ],
+          ),
+          leading: Radio<double>(
+            value: reducedPrice,
+            groupValue: selectedTicketPrice,
+            activeColor: Colors.green,
+            onChanged: enabled
+                ? (double? value) {
+                    setState(() {
+                      selectedTicketPrice = value;
+                      extraStatusTicket = status;
+                      basicTicket = mjesecnaKarta;
+                    });
+                  }
+                : null,
+          ),
+          enabled: enabled,
+        );
+      }).toList();
+    }
     return basicTicketList + extraTicketList;
   }
 

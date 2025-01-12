@@ -64,10 +64,6 @@ namespace ePrijevozSarajevo.Services
                 throw new UserException("Nije moguće izbrisati rutu s prošlim datumom polaska.");
             }
 
-            // Find and delete issued tickets related to the route
-            var issuedTickets = _dataContext.IssuedTickets.Where(t => t.RouteId == routeId);
-            _dataContext.IssuedTickets.RemoveRange(issuedTickets);
-
             _dataContext.Routes.Remove(route);
             await _dataContext.SaveChangesAsync();
         }

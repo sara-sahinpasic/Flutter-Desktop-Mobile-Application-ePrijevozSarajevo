@@ -32,10 +32,11 @@ namespace ePrijevozSarajevo.Services
                 .GroupBy(t => new { t.UserId, t.RouteId })
                 .Select(g => new RouteUsageData
                 {
-                    UserId = g.Key.UserId,
-                    RouteId = g.Key.RouteId,
+                    UserId = g.Key.UserId ?? -1,
+                    RouteId = g.Key.RouteId ?? -1,
                     UsageCount = g.Count()
-                })
+                })       
+                .Where(x => x.UserId != -1)
                 .ToList();
 
             var trainingData = mlContext.Data.LoadFromEnumerable(routeUsage);
@@ -104,6 +105,7 @@ namespace ePrijevozSarajevo.Services
 
             // unique route IDs from the user
             var userRouteIds = userIssuedTickets
+                .Where(t => t.Route!=null)
                 .DistinctBy(t => new { t.Route.StartStationId, t.Route.EndStationId })
                 .Select(t => t.RouteId);    
 
@@ -112,13 +114,17 @@ namespace ePrijevozSarajevo.Services
 
             foreach (var routeId in userRouteIds)
             {
+                if (routeId == null)
+                {
+                    continue;
+                }
                 var prediction = predictionEngine.Predict(new RouteUsageData
                 {
                     UserId = userId,
-                    RouteId = routeId
+                    RouteId = routeId ?? -1
                 });
 
-                recommendedRoutes.Add((routeId, prediction.Score));
+                recommendedRoutes.Add((routeId ?? -1, prediction.Score));
             }
 
             var recommended = recommendedRoutes

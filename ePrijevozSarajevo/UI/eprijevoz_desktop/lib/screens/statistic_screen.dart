@@ -73,7 +73,9 @@ class _StatisticScreenState extends State<StatisticScreen> {
     });
   }
 
-  void updateTicketValues(SearchResult<IssuedTicket>? issuedTicketResult) {
+  void updateTicketValues(
+      SearchResult<IssuedTicket>? issuedTicketResult) async {
+    issuedTicketResult = await issuedTicketProvider.get();
     if (issuedTicketResult?.result != null) {
       final ticketsForSelectedYear = issuedTicketResult!.result
           .where(
@@ -233,6 +235,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
 
   @override
   Widget build(BuildContext context) {
+    updateTicketValues(issuedTicketResult);
     return MasterScreen(
       "Statistika",
       SingleChildScrollView(
@@ -637,14 +640,20 @@ class _StatisticScreenState extends State<StatisticScreen> {
       final Map<int, List<IssuedTicket>> groupedStations = {};
       for (var ticket in monthTickets) {
         var startStationId = routeResult?.result
-            .firstWhere((route) => route.routeId == ticket.routeId)
-            .startStationId;
+            .where((route) => route.routeId == ticket.routeId)
+            .firstOrNull
+            ?.startStationId;
 
         var endStationId = routeResult?.result
-            .firstWhere((route) => route.routeId == ticket.routeId)
-            .endStationId;
-        groupedStations.putIfAbsent(startStationId!, () => []).add(ticket);
-        groupedStations.putIfAbsent(endStationId!, () => []).add(ticket);
+            .where((route) => route.routeId == ticket.routeId)
+            .firstOrNull
+            ?.endStationId;
+        if (startStationId != null) {
+          groupedStations.putIfAbsent(startStationId!, () => []).add(ticket);
+        }
+        if (endStationId != null) {
+          groupedStations.putIfAbsent(endStationId!, () => []).add(ticket);
+        }
       }
 
       // create a list of BarChartRodData for each ticket type
