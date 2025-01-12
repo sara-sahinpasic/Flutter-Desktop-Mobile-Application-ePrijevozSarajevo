@@ -533,7 +533,7 @@ class _RouteListScreenState extends State<RouteListScreen> {
                                                   );
                                                 } catch (error) {
                                                   String errorMessage =
-                                                      "Greška prilikom brisanja rute.->\n$error";
+                                                      "Greška prilikom brisanja rute.\n$error";
 
                                                   await showDialog(
                                                     context: context,

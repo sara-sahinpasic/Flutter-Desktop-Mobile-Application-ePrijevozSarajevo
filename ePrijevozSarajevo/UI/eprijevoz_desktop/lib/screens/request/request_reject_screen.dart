@@ -138,7 +138,7 @@ class _RequestRejectDialogState extends State<RequestRejectDialog> {
                                         fontWeight: FontWeight.bold),
                                   ),
                                   content: Text(
-                                      "Greška prilikom odbijanja zahtjeva.->\n$error"),
+                                      "Greška prilikom odbijanja zahtjeva.\n$error"),
                                   actions: [
                                     TextButton(
                                       child: const Text("OK",

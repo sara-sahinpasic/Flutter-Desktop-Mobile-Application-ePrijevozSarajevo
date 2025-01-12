@@ -309,7 +309,7 @@ class _VehicleTypeListScreenState extends State<VehicleTypeListScreen> {
                                                         );
                                                       } catch (error) {
                                                         String errorMessage =
-                                                            "Greška prilikom brisanja zapisa.->\n$error";
+                                                            "Greška prilikom brisanja zapisa.\n$error";
 
                                                         await showDialog(
                                                           context: context,

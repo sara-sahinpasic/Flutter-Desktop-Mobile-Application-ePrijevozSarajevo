@@ -266,7 +266,7 @@ class _UpdateRouteDialogState extends State<UpdateRouteDialog> {
                                             fontWeight: FontWeight.bold),
                                       ),
                                       content: Text(
-                                          "Greška prilikom ažuriranja rute.->\n$error"),
+                                          "Greška prilikom ažuriranja rute.\n$error"),
                                       actions: [
                                         TextButton(
                                           child: const Text(

@@ -329,7 +329,7 @@ class _StatusListScreenState extends State<StatusListScreen> {
                                                         );
                                                       } catch (error) {
                                                         String errorMessage =
-                                                            "Greška prilikom brisanja zapisa.->\n$error";
+                                                            "Greška prilikom brisanja zapisa.\n$error";
 
                                                         await showDialog(
                                                           context: context,

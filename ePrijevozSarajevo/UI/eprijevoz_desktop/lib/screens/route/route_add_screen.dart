@@ -434,7 +434,7 @@ class _RouteAddDialogState extends State<RouteAddDialog> {
                                           fontWeight: FontWeight.bold),
                                     ),
                                     content: Text(
-                                        "Greška prilikom dodavanja rute.->\n$error"),
+                                        "Greška prilikom dodavanja rute.\n$error"),
                                     actions: [
                                       TextButton(
                                         child: const Text(
