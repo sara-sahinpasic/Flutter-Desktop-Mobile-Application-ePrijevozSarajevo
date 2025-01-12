@@ -39,6 +39,7 @@ class _UserAddDialogState extends State<UserAddDialog> {
   User? user;
   Country? country;
   Role? role;
+  bool isPasswordVisible = false;
 
   @override
   void initState() {
@@ -323,19 +324,33 @@ class _UserAddDialogState extends State<UserAddDialog> {
                                 const SizedBox(height: 5),
                                 FormBuilderTextField(
                                   name: 'password',
+                                  obscureText: !isPasswordVisible,
                                   validator: FormBuilderValidators.compose([
                                     FormBuilderValidators.required(
                                         errorText:
                                             "Ovo polje ne može bit prazno."),
                                   ]),
                                   cursorColor: Colors.green.shade800,
-                                  decoration: const InputDecoration(
-                                    enabledBorder: OutlineInputBorder(
+                                  decoration: InputDecoration(
+                                    enabledBorder: const OutlineInputBorder(
                                       borderSide:
                                           BorderSide(color: Colors.black),
                                       borderRadius: BorderRadius.all(
                                         Radius.circular(10),
                                       ),
+                                    ),
+                                    suffixIcon: IconButton(
+                                      icon: Icon(
+                                        isPasswordVisible
+                                            ? Icons.visibility
+                                            : Icons.visibility_off,
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          isPasswordVisible =
+                                              !isPasswordVisible;
+                                        });
+                                      },
                                     ),
                                   ),
                                 ),
@@ -356,19 +371,33 @@ class _UserAddDialogState extends State<UserAddDialog> {
                                 const SizedBox(height: 5),
                                 FormBuilderTextField(
                                   name: 'passwordConfirmation',
+                                  obscureText: !isPasswordVisible,
                                   validator: FormBuilderValidators.compose([
                                     FormBuilderValidators.required(
                                         errorText:
                                             "Ovo polje ne može bit prazno."),
                                   ]),
                                   cursorColor: Colors.green.shade800,
-                                  decoration: const InputDecoration(
-                                    enabledBorder: OutlineInputBorder(
+                                  decoration: InputDecoration(
+                                    enabledBorder: const OutlineInputBorder(
                                       borderSide:
                                           BorderSide(color: Colors.black),
                                       borderRadius: BorderRadius.all(
                                         Radius.circular(10),
                                       ),
+                                    ),
+                                    suffixIcon: IconButton(
+                                      icon: Icon(
+                                        isPasswordVisible
+                                            ? Icons.visibility
+                                            : Icons.visibility_off,
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          isPasswordVisible =
+                                              !isPasswordVisible;
+                                        });
+                                      },
                                     ),
                                   ),
                                 ),
@@ -482,6 +511,10 @@ class _UserAddDialogState extends State<UserAddDialog> {
                                     FormBuilderValidators.required(
                                         errorText:
                                             "Ovo polje ne može bit prazno."),
+                                    FormBuilderValidators.match(
+                                        r'^[a-zA-Z\s]*$',
+                                        errorText:
+                                            "Ovo polje može sadržavati isključivo slova."),
                                   ]),
                                   cursorColor: Colors.green.shade800,
                                   decoration: const InputDecoration(

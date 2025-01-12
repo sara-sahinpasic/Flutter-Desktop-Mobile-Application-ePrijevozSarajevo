@@ -27,6 +27,7 @@ class _ProfileNewUserScreenState extends State<ProfileNewUserScreen> {
   DateTime? dateOfBirth;
   final TextEditingController _dateOfBirthController = TextEditingController();
   User? user;
+  bool isPasswordVisible = false;
 
   @override
   void initState() {
@@ -258,21 +259,39 @@ class _ProfileNewUserScreenState extends State<ProfileNewUserScreen> {
                                 horizontal: 10, vertical: 5),
                             child: FormBuilderTextField(
                               name: 'password',
+                              obscureText: !isPasswordVisible,
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(
                                     errorText: "Ovo polje ne može bit prazno."),
                               ]),
-                              style: const TextStyle(
-                                  color: Colors.black, fontSize: 18),
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
+                              cursorColor: Colors.green.shade800,
+                              decoration: InputDecoration(
                                 labelText: "Password",
-                                labelStyle: TextStyle(color: Colors.black),
+                                labelStyle:
+                                    const TextStyle(color: Colors.black),
                                 hintText: 'Unesite password',
-                                hintStyle: TextStyle(
+                                hintStyle: const TextStyle(
                                     color: Colors.black, fontSize: 13),
-                                prefixIcon: Icon(Icons.password),
+                                prefixIcon: const Icon(Icons.password),
                                 prefixIconColor: Colors.black,
+                                enabledBorder: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.black),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(10),
+                                  ),
+                                ),
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    isPasswordVisible
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      isPasswordVisible = !isPasswordVisible;
+                                    });
+                                  },
+                                ),
                               ),
                             ),
                           ),
@@ -281,21 +300,39 @@ class _ProfileNewUserScreenState extends State<ProfileNewUserScreen> {
                                 horizontal: 10, vertical: 5),
                             child: FormBuilderTextField(
                               name: 'passwordConfirmation',
+                              obscureText: !isPasswordVisible,
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(
                                     errorText: "Ovo polje ne može bit prazno."),
                               ]),
-                              style: const TextStyle(
-                                  color: Colors.black, fontSize: 18),
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
+                              cursorColor: Colors.green.shade800,
+                              decoration: InputDecoration(
                                 labelText: "Password potvrda",
-                                labelStyle: TextStyle(color: Colors.black),
+                                labelStyle:
+                                    const TextStyle(color: Colors.black),
                                 hintText: 'Unesite potvrdu password-a',
-                                hintStyle: TextStyle(
+                                hintStyle: const TextStyle(
                                     color: Colors.black, fontSize: 13),
-                                prefixIcon: Icon(Icons.password),
+                                prefixIcon: const Icon(Icons.password),
                                 prefixIconColor: Colors.black,
+                                enabledBorder: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.black),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(10),
+                                  ),
+                                ),
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    isPasswordVisible
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      isPasswordVisible = !isPasswordVisible;
+                                    });
+                                  },
+                                ),
                               ),
                             ),
                           ),
@@ -368,6 +405,9 @@ class _ProfileNewUserScreenState extends State<ProfileNewUserScreen> {
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(
                                     errorText: "Ovo polje ne može bit prazno."),
+                                FormBuilderValidators.match(r'^[a-zA-Z\s]*$',
+                                    errorText:
+                                        "Ovo polje može sadržavati isključivo slova."),
                               ]),
                               style: const TextStyle(
                                   color: Colors.black, fontSize: 18),
