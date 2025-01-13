@@ -2,8 +2,12 @@ import 'package:eprijevoz_desktop/layouts/master_screen.dart';
 import 'package:eprijevoz_desktop/models/issuedTicket.dart';
 import 'package:eprijevoz_desktop/models/route.dart';
 import 'package:eprijevoz_desktop/models/search_result.dart';
+import 'package:eprijevoz_desktop/models/station.dart';
+import 'package:eprijevoz_desktop/models/ticket.dart';
 import 'package:eprijevoz_desktop/providers/issuedTicket_provider.dart';
 import 'package:eprijevoz_desktop/providers/route_provider.dart';
+import 'package:eprijevoz_desktop/providers/station_provider.dart';
+import 'package:eprijevoz_desktop/providers/ticket_provider.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart' hide Route;
 import 'package:flutter/rendering.dart';
@@ -42,14 +46,24 @@ class _StatisticScreenState extends State<StatisticScreen> {
   var ticketInterval = 0;
   var maxStationValue = 0;
   var stationInterval = 0;
+  late TicketProvider ticketProvider;
+  SearchResult<Ticket>? ticketResult;
+  late Map<int, String> ticketTypeLabels = {};
+  final Map<int, Color> ticketTypeColors = {};
   // station
   late RouteProvider routeProvider;
   SearchResult<Route>? routeResult;
+  late StationProvider stationProvider;
+  SearchResult<Station>? stationResult;
+  late Map<int, String> stationLabels = {};
+  late Map<int, Color> stationColors = {};
 
   @override
   void initState() {
     issuedTicketProvider = context.read<IssuedTicketProvider>();
     routeProvider = context.read<RouteProvider>();
+    stationProvider = context.read<StationProvider>();
+    ticketProvider = context.read<TicketProvider>();
 
     super.initState();
 
@@ -67,6 +81,73 @@ class _StatisticScreenState extends State<StatisticScreen> {
 
     issuedTicketResult = await issuedTicketProvider.get();
     routeResult = await routeProvider.get();
+    stationResult = await stationProvider.get();
+    ticketResult = await ticketProvider.get();
+
+    if (stationResult?.result != null) {
+      stationLabels = {
+        for (var station in stationResult!.result)
+          station.stationId!: station.name ?? ""
+      };
+    }
+
+    if (ticketResult?.result != null) {
+      ticketTypeLabels = {
+        for (var ticket in ticketResult!.result)
+          ticket.ticketId!: ticket.name ?? ""
+      };
+    }
+
+    final colorList = [
+      Colors.purple,
+      Colors.blue,
+      Colors.orange,
+      Colors.green,
+      Colors.red,
+      Colors.pink,
+      Colors.grey,
+      Colors.yellow,
+      Colors.brown,
+      Colors.cyan,
+      Colors.indigo,
+      Colors.teal,
+      Colors.black,
+      Colors.lightBlue,
+      Colors.lightGreen,
+      Colors.lightBlueAccent,
+      Colors.lightGreenAccent,
+      Colors.deepOrange,
+      Colors.deepOrangeAccent,
+      Colors.deepPurple,
+      Colors.deepPurpleAccent,
+      Colors.blue.shade900,
+      Colors.blue.shade700,
+      Colors.blue.shade300,
+      Colors.green.shade900,
+      Colors.green.shade700,
+      Colors.green.shade300,
+      Colors.pink.shade900,
+      Colors.pink.shade700,
+      Colors.pink.shade300,
+      Colors.purple.shade900,
+      Colors.purple.shade700,
+      Colors.purple.shade300,
+      Colors.lime,
+      Colors.limeAccent,
+      Colors.yellow.shade700,
+      Colors.orange.shade700,
+      Colors.brown.shade700,
+    ];
+
+    for (var station in stationResult!.result) {
+      stationColors[station.stationId!] =
+          colorList[station.stationId! % colorList.length];
+    }
+
+    for (var ticket in ticketResult!.result) {
+      ticketTypeColors[ticket.ticketId!] =
+          colorList[ticket.ticketId! % colorList.length];
+    }
 
     setState(() {
       updateTicketValues(issuedTicketResult);
@@ -188,57 +269,6 @@ class _StatisticScreenState extends State<StatisticScreen> {
       );
     }
   }
-
-  // colors and legend for ticket graph bars
-  final Map<int, Color> ticketTypeColors = {
-    1: Colors.purple, // Jednosmjerna
-    2: Colors.blue, // Povratna
-    3: Colors.orange, // Jednosmjerna dječija
-    4: Colors.green, // Povratna dječija
-    5: Colors.red, // Mjesečna
-  };
-  final Map<int, String> ticketTypeLabels = {
-    1: "Jednosmjerna",
-    2: "Povratna",
-    3: "Jednosmjerna dječija",
-    4: "Povratna dječija",
-    5: "Mjesečna",
-  };
-  // colors and legend for stations graph bars
-  final Map<int, Color> stationColors = {
-    1: Colors.purple, //Ilidža
-    2: Colors.blue, //Stup
-    3: Colors.orange, //Nedžarići
-    4: Colors.green, //Socijalno
-    5: Colors.red, //Malta
-    6: Colors.pink, //Baščaršija
-    7: Colors.grey, //Otoka
-    8: Colors.yellow, //Skenderija
-    9: Colors.brown, //Drvenija
-    10: Colors.amber, //Dobrinja
-    11: Colors.cyan, //Grbavica
-    12: Colors.indigo, //Hrasno
-    13: Colors.teal, //Aneks
-    14: Colors.lightGreenAccent, //Alipašino polje
-    15: Colors.deepPurpleAccent, //Švrakino selo
-  };
-  final Map<int, String> stationLabels = {
-    1: "Ilidža",
-    2: "Stup",
-    3: "Nedžarići",
-    4: "Socijalno",
-    5: "Malta",
-    6: "Baščaršija",
-    7: "Otoka",
-    8: "Skenderija",
-    9: "Drvenija",
-    10: "Dobrinja",
-    11: "Grbavica",
-    12: "Hrasno",
-    13: "Aneks",
-    14: "Alipašino polje",
-    15: "Švrakino selo",
-  };
 
   @override
   Widget build(BuildContext context) {
