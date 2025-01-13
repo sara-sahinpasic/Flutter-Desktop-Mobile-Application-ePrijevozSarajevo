@@ -73,38 +73,6 @@ class _StatisticScreenState extends State<StatisticScreen> {
     });
   }
 
-  void updateTicketValues(
-      SearchResult<IssuedTicket>? issuedTicketResult) async {
-    issuedTicketResult = await issuedTicketProvider.get();
-    routeResult = await routeProvider.get();
-    if (issuedTicketResult?.result != null) {
-      final ticketsForSelectedYear = issuedTicketResult!.result
-          .where(
-            (ticket) => ticket.issuedDate?.year == int.parse(selectedYear),
-          )
-          .toList();
-
-      if (ticketsForSelectedYear.isEmpty) {
-        setState(() {
-          ticketsForYearAndMonths = [];
-          selectedMonthsforTickets = [];
-          ticketTypeAmounts = {};
-        });
-        return;
-      }
-
-      selectedMonthsforTickets =
-          getIssuedTicketbyMonths(ticketsForSelectedYear);
-
-      ticketsForYearAndMonths = getTicketsForYearAndMonths(
-          issuedTicketResult.result,
-          int.parse(selectedYear),
-          selectedMonthsforTickets);
-
-      ticketTypeAmounts = calculateTicketTypeAmounts(ticketsForYearAndMonths);
-    }
-  }
-
   // PDF
   Future<Uint8List?> _capturePng(GlobalKey key) async {
     try {
@@ -120,27 +88,68 @@ class _StatisticScreenState extends State<StatisticScreen> {
     return null;
   }
 
+  void updateTicketValues(SearchResult<IssuedTicket>? issuedTicketResult) {
+    if (issuedTicketResult?.result == null ||
+        issuedTicketResult!.result.isEmpty) {
+      ticketsForYearAndMonths = [];
+      selectedMonthsforTickets = [];
+      ticketTypeAmounts = {};
+      return;
+    }
+
+    final ticketsForSelectedYear = issuedTicketResult.result
+        .where(
+          (ticket) => ticket.issuedDate?.year == int.parse(selectedYear),
+        )
+        .toList();
+
+    if (ticketsForSelectedYear.isEmpty) {
+      ticketsForYearAndMonths = [];
+      selectedMonthsforTickets = [];
+      ticketTypeAmounts = {};
+      return;
+    }
+
+    selectedMonthsforTickets = getIssuedTicketbyMonths(ticketsForSelectedYear);
+
+    ticketsForYearAndMonths = getTicketsForYearAndMonths(
+      issuedTicketResult.result,
+      int.parse(selectedYear),
+      selectedMonthsforTickets,
+    );
+
+    ticketTypeAmounts = calculateTicketTypeAmounts(ticketsForYearAndMonths);
+  }
+
   Future<void> generatePdf() async {
     try {
-      // capture the ticket type chart
+      issuedTicketResult = await issuedTicketProvider.get();
+      routeResult = await routeProvider.get();
+
+      setState(() {
+        updateTicketValues(issuedTicketResult);
+      });
+
+      await Future.delayed(const Duration(milliseconds: 500));
+
       Uint8List? ticketChartImage = await _capturePng(_ticketChartKey);
       if (ticketChartImage == null) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Failed to capture Ticket Chart')),
+          const SnackBar(
+              content: Text('Snimanje dijagrama karti nije uspjelo')),
         );
         return;
       }
 
-      // capture the route chart
       Uint8List? routeChartImage = await _capturePng(_routeChartKey);
       if (routeChartImage == null) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Failed to capture Route Chart')),
+          const SnackBar(
+              content: Text('Snimanje dijagrama stanica nije uspjelo.')),
         );
         return;
       }
 
-      // create a PDF document
       final pdf = pw.Document();
       pdf.addPage(
         pw.MultiPage(
@@ -159,26 +168,23 @@ class _StatisticScreenState extends State<StatisticScreen> {
         ),
       );
 
-      // save the PDF to bytes
       Uint8List pdfBytes = await pdf.save();
-
-      // file Picker to select save location
       String? selectedDirectory = await FilePicker.platform.getDirectoryPath();
       if (selectedDirectory != null) {
         final file = File('$selectedDirectory/Statistika_$selectedYear.pdf');
         await file.writeAsBytes(pdfBytes);
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('PDF saved at: ${file.path}')),
+          SnackBar(content: Text('PDF spašen na lokaciji: ${file.path}')),
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Save operation cancelled')),
+          const SnackBar(content: Text('Prekinuta opcija spašavanja')),
         );
       }
     } catch (e) {
-      debugPrint('Error generating PDF: $e');
+      debugPrint('Greška s generisanjem PDF: $e');
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Error generating PDF')),
+        const SnackBar(content: Text('Greška s generisanje PDF')),
       );
     }
   }
@@ -236,7 +242,6 @@ class _StatisticScreenState extends State<StatisticScreen> {
 
   @override
   Widget build(BuildContext context) {
-    updateTicketValues(issuedTicketResult);
     return MasterScreen(
       "Statistika",
       SingleChildScrollView(
@@ -296,7 +301,6 @@ class _StatisticScreenState extends State<StatisticScreen> {
               onPressed: ticketsForYearAndMonths.isEmpty
                   ? null // disable button if no data
                   : () async {
-                      updateTicketValues(issuedTicketResult);
                       await generatePdf();
                     },
               style: ElevatedButton.styleFrom(
@@ -642,20 +646,14 @@ class _StatisticScreenState extends State<StatisticScreen> {
       final Map<int, List<IssuedTicket>> groupedStations = {};
       for (var ticket in monthTickets) {
         var startStationId = routeResult?.result
-            .where((route) => route.routeId == ticket.routeId)
-            .firstOrNull
-            ?.startStationId;
+            .firstWhere((route) => route.routeId == ticket.routeId)
+            .startStationId;
 
         var endStationId = routeResult?.result
-            .where((route) => route.routeId == ticket.routeId)
-            .firstOrNull
-            ?.endStationId;
-        if (startStationId != null) {
-          groupedStations.putIfAbsent(startStationId!, () => []).add(ticket);
-        }
-        if (endStationId != null) {
-          groupedStations.putIfAbsent(endStationId!, () => []).add(ticket);
-        }
+            .firstWhere((route) => route.routeId == ticket.routeId)
+            .endStationId;
+        groupedStations.putIfAbsent(startStationId!, () => []).add(ticket);
+        groupedStations.putIfAbsent(endStationId!, () => []).add(ticket);
       }
 
       // create a list of BarChartRodData for each ticket type
