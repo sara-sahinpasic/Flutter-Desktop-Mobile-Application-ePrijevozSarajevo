@@ -69,12 +69,11 @@ class _StatisticScreenState extends State<StatisticScreen> {
     routeResult = await routeProvider.get();
 
     setState(() {
-      updateTicketValues(issuedTicketResult);
+      updateTicketValues();
     });
   }
 
-  void updateTicketValues(
-      SearchResult<IssuedTicket>? issuedTicketResult) async {
+  void updateTicketValues() async {
     issuedTicketResult = await issuedTicketProvider.get();
     routeResult = await routeProvider.get();
     if (issuedTicketResult?.result != null) {
@@ -97,7 +96,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
           getIssuedTicketbyMonths(ticketsForSelectedYear);
 
       ticketsForYearAndMonths = getTicketsForYearAndMonths(
-          issuedTicketResult.result,
+          issuedTicketResult!.result,
           int.parse(selectedYear),
           selectedMonthsforTickets);
 
@@ -236,7 +235,6 @@ class _StatisticScreenState extends State<StatisticScreen> {
 
   @override
   Widget build(BuildContext context) {
-    updateTicketValues(issuedTicketResult);
     return MasterScreen(
       "Statistika",
       SingleChildScrollView(
@@ -288,16 +286,20 @@ class _StatisticScreenState extends State<StatisticScreen> {
                 setState(() {
                   selectedYear = value ?? _yearList.first;
                 });
-                updateTicketValues(issuedTicketResult);
+                updateTicketValues();
               },
             )),
             const SizedBox(width: 15),
             ElevatedButton(
               onPressed: ticketsForYearAndMonths.isEmpty
                   ? null // disable button if no data
-                  : () async {
-                      updateTicketValues(issuedTicketResult);
-                      await generatePdf();
+                  : () {
+                      setState(() {
+                        updateTicketValues();
+                        WidgetsBinding.instance.addPostFrameCallback((_) async {
+                          await generatePdf();
+                        });
+                      });
                     },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
