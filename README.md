@@ -2,10 +2,6 @@
 <i>Seminar work - Software development 2 - Faculty of Information Technologies</i> </br>
 <i>Author: Sara Šahinpašić</i> </br>
 
-## Note
-- Određene tabele svjesno ne podržavaju sve CRUD operacije na UI dijelu aplikacije (na backend strani podržano) jer bi u suprotnom nastao direktni 
-konflikt sa već prihvaćenim izgledom i obimom funkcionalnosti aplikacije u prijavi teme ovog seminarskog rada.
-
 ## Running the code
 - Clone the project `git clone https://github.com/sara-sahinpasic/Flutter-Desktop-Mobile-Application-ePrijevozSarajevo.git`
 - Navigate to repository root
@@ -19,7 +15,7 @@ For running the desktop app you can either build the app and run it or use prebu
 
 #### Running prebuilt desktop app
 - Navigate to repository root
-- Extract the provided `fit-build-2025-01-06.zip` file
+- Extract the provided `fit-build-2025-01-13.zip` file
 - Navigate to `Desktop_App\`
 - Start `eprijevoz_desktop.exe`
 
@@ -34,7 +30,7 @@ For running the mobile app you can either build the app and run it or use prebui
 #### Running prebuilt mobile app
 - Start Android emulator
 - Navigate to repository root
-- Extract the provided `fit-build-2025-01-06.zip` file
+- Extract the provided `fit-build-2025-01-13.zip` file
 - Navigate to `Mobile_App\`
 - Drag and Drop `app-debug.apk` to emulator window and start the app manually
 - Instead of Drag and Drop you can also install the app from `Mobile_App\` via `C:\Users\<username>\AppData\Local\Android\Sdk\platform-tools\adb.exe install app-debug.apk`
