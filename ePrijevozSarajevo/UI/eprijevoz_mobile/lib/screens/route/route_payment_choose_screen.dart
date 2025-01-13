@@ -71,7 +71,6 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
 
   @override
   void initState() {
-    super.initState();
     issuedTicketProvider = context.read<IssuedTicketProvider>();
     routeProvider = context.read<RouteProvider>();
     stationProvider = context.read<StationProvider>();
@@ -92,17 +91,19 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
     routeResult = await routeProvider.get();
     stationResult = await stationProvider.get();
 
-    startStationName = stationResult!.result
-        .firstWhere(
+    startStationName = stationResult?.result
+        .where(
           (start) => start.stationId == widget.route?.startStationId,
         )
-        .name;
+        .firstOrNull
+        ?.name;
 
-    endStationName = stationResult!.result
-        .firstWhere(
+    endStationName = stationResult?.result
+        .where(
           (end) => end.stationId == widget.route?.endStationId,
         )
-        .name;
+        .firstOrNull
+        ?.name;
 
     setState(() {
       isLoading = false;
@@ -131,6 +132,9 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
         widget.ticket!.name!.contains("Povratna dječija")) {
       validFrom = DateTime.now();
       validTo = validFrom?.add(const Duration(minutes: 180));
+    } else {
+      validFrom = DateTime.now();
+      validTo = validFrom?.add(const Duration(hours: 2));
     }
 
     return "${formatDateTime(validFrom!)}\n${formatDateTime(validTo!)}";

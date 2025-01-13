@@ -8,7 +8,6 @@ import 'package:eprijevoz_desktop/screens/route/route_add_screen.dart';
 import 'package:eprijevoz_desktop/screens/route/route_update_screen.dart';
 import 'package:eprijevoz_desktop/screens/station/station_list_screen.dart';
 import 'package:eprijevoz_desktop/screens/ticket/ticket_list_screen.dart';
-import 'package:eprijevoz_desktop/screens/vehicle_type/vehicle_type_list_screen.dart';
 import 'package:flutter/material.dart' hide Route;
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
@@ -136,7 +135,7 @@ class _RouteListScreenState extends State<RouteListScreen> {
         ));
   }
 
-  void _refreshData() async {
+  void _refreshData({bool fromUser = false}) async {
     setState(() {
       isLoading = true;
     });
@@ -149,8 +148,9 @@ class _RouteListScreenState extends State<RouteListScreen> {
             DateTime(selectedDate.year, selectedDate.month, selectedDate.day),
       };
       routeResultForTime = await routeProvider.get(filter: filter);
+      routeResult = await routeProvider.get();
       stationResult = await stationProvider.get();
-      if (routeResultForTime?.count == 0) {
+      if (routeResultForTime?.count == 0 && fromUser) {
         await showDialog(
           context: context,
           builder: (context) => AlertDialog(
@@ -234,8 +234,10 @@ class _RouteListScreenState extends State<RouteListScreen> {
                   );
                 }).toList(),
                 onChanged: (value) {
-                  var station = stationResult?.result.firstWhere(
-                      ((station) => station.stationId.toString() == value));
+                  var station = stationResult?.result
+                      .where(
+                          ((station) => station.stationId.toString() == value))
+                      .firstOrNull;
                   selectedStationId = station?.stationId ?? 0;
                 },
               ),
@@ -243,7 +245,7 @@ class _RouteListScreenState extends State<RouteListScreen> {
             const SizedBox(width: 15),
             ElevatedButton(
               onPressed: () async {
-                _refreshData();
+                _refreshData(fromUser: true);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromRGBO(72, 156, 118, 100),
@@ -279,13 +281,15 @@ class _RouteListScreenState extends State<RouteListScreen> {
                         builder: (context) => const StationListScreen(),
                       ),
                     );
+                    _formKey.currentState?.fields['startStationId']
+                        ?.didChange("");
                     _refreshData();
                   },
                   child: Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.arrow_forward,
-                        color: const Color.fromARGB(255, 46, 53, 46),
+                        color: Color.fromARGB(255, 46, 53, 46),
                       ),
                       const SizedBox(width: 5),
                       Text(
@@ -310,6 +314,8 @@ class _RouteListScreenState extends State<RouteListScreen> {
                         builder: (context) => const TicketListScreen(),
                       ),
                     );
+                    _formKey.currentState?.fields['startStationId']
+                        ?.didChange("");
                     _refreshData();
                   },
                   child: Row(
