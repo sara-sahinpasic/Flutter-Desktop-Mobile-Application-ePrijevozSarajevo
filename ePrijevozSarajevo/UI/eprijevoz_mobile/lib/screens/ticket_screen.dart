@@ -104,13 +104,17 @@ class _TicketScreenState extends State<TicketScreen> {
             child: CircularProgressIndicator(),
           )
         : Column(
-            children: issuedTickets.map((issuedTicket) {
-              Route? route = routeResult?.result.firstWhere(
-                (route) => route.routeId == issuedTicket.routeId,
-              );
+            children: issuedTickets
+                .where((ticket) => ticket.routeId != null)
+                .map((issuedTicket) {
+              Route? route = routeResult?.result
+                  .where(
+                    (route) => route.routeId == issuedTicket.routeId,
+                  )
+                  .firstOrNull;
 
               if (route == null) {
-                return const Text("Ruta nije pronađena.");
+                return const Text("");
               }
 
               String? startStation = stationResult!.result
@@ -120,7 +124,7 @@ class _TicketScreenState extends State<TicketScreen> {
                   .name;
 
               if (startStation == null) {
-                return const Text("Početna stanica nije pronađena.");
+                return const Text("");
               }
 
               Color cardColor = DateTime.now().isAfter(issuedTicket.validTo!)

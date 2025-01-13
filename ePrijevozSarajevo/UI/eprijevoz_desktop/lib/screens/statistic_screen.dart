@@ -150,7 +150,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
     }
 
     setState(() {
-      updateTicketValues(issuedTicketResult);
+      updateTicketValues();
     });
   }
 
@@ -169,7 +169,10 @@ class _StatisticScreenState extends State<StatisticScreen> {
     return null;
   }
 
-  void updateTicketValues(SearchResult<IssuedTicket>? issuedTicketResult) {
+  void updateTicketValues() async {
+    issuedTicketResult = await issuedTicketProvider.get();
+    routeResult = await routeProvider.get();
+    stationResult = await stationProvider.get();
     if (issuedTicketResult?.result == null ||
         issuedTicketResult!.result.isEmpty) {
       ticketsForYearAndMonths = [];
@@ -178,13 +181,13 @@ class _StatisticScreenState extends State<StatisticScreen> {
       return;
     }
 
-    final ticketsForSelectedYear = issuedTicketResult.result
+    final ticketsForSelectedYear = issuedTicketResult?.result
         .where(
           (ticket) => ticket.issuedDate?.year == int.parse(selectedYear),
         )
         .toList();
 
-    if (ticketsForSelectedYear.isEmpty) {
+    if (ticketsForSelectedYear == null || ticketsForSelectedYear.isEmpty) {
       ticketsForYearAndMonths = [];
       selectedMonthsforTickets = [];
       ticketTypeAmounts = {};
@@ -194,24 +197,26 @@ class _StatisticScreenState extends State<StatisticScreen> {
     selectedMonthsforTickets = getIssuedTicketbyMonths(ticketsForSelectedYear);
 
     ticketsForYearAndMonths = getTicketsForYearAndMonths(
-      issuedTicketResult.result,
+      issuedTicketResult!.result,
       int.parse(selectedYear),
       selectedMonthsforTickets,
     );
 
     ticketTypeAmounts = calculateTicketTypeAmounts(ticketsForYearAndMonths);
+    setState(() {});
   }
 
   Future<void> generatePdf() async {
     try {
       issuedTicketResult = await issuedTicketProvider.get();
       routeResult = await routeProvider.get();
+      stationResult = await stationProvider.get();
 
       setState(() {
-        updateTicketValues(issuedTicketResult);
+        updateTicketValues();
       });
 
-      await Future.delayed(const Duration(milliseconds: 500));
+      await Future.delayed(const Duration(milliseconds: 2000));
 
       Uint8List? ticketChartImage = await _capturePng(_ticketChartKey);
       if (ticketChartImage == null) {
@@ -323,7 +328,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
                 setState(() {
                   selectedYear = value ?? _yearList.first;
                 });
-                updateTicketValues(issuedTicketResult);
+                updateTicketValues();
               },
             )),
             const SizedBox(width: 15),
@@ -602,12 +607,14 @@ class _StatisticScreenState extends State<StatisticScreen> {
                                 response == null ||
                                 response.spot == null) {
                               setState(() {
+                                updateTicketValues();
                                 touchedIndex = -1;
                                 isTouched = false;
                               });
                               return;
                             }
                             setState(() {
+                              updateTicketValues();
                               touchedIndex =
                                   response.spot!.touchedBarGroupIndex;
                               isTouched = true;
@@ -676,14 +683,20 @@ class _StatisticScreenState extends State<StatisticScreen> {
       final Map<int, List<IssuedTicket>> groupedStations = {};
       for (var ticket in monthTickets) {
         var startStationId = routeResult?.result
-            .firstWhere((route) => route.routeId == ticket.routeId)
-            .startStationId;
+            .where((route) => route.routeId == ticket.routeId)
+            .firstOrNull
+            ?.startStationId;
 
         var endStationId = routeResult?.result
-            .firstWhere((route) => route.routeId == ticket.routeId)
-            .endStationId;
-        groupedStations.putIfAbsent(startStationId!, () => []).add(ticket);
-        groupedStations.putIfAbsent(endStationId!, () => []).add(ticket);
+            .where((route) => route.routeId == ticket.routeId)
+            .firstOrNull
+            ?.endStationId;
+        if (startStationId != null) {
+          groupedStations.putIfAbsent(startStationId!, () => []).add(ticket);
+        }
+        if (endStationId != null) {
+          groupedStations.putIfAbsent(endStationId!, () => []).add(ticket);
+        }
       }
 
       // create a list of BarChartRodData for each ticket type
