@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:eprijevoz_desktop/layouts/master_screen.dart';
 import 'package:eprijevoz_desktop/models/issuedTicket.dart';
 import 'package:eprijevoz_desktop/models/route.dart';
@@ -167,6 +169,15 @@ class _StatisticScreenState extends State<StatisticScreen> {
       debugPrint(e.toString());
     }
     return null;
+  }
+
+  Timer? _hoverUpdateTimer;
+
+  void onHoverUpdate() {
+    if (_hoverUpdateTimer?.isActive ?? false) _hoverUpdateTimer!.cancel();
+    _hoverUpdateTimer = Timer(const Duration(milliseconds: 500), () {
+      updateTicketValues();
+    });
   }
 
   void updateTicketValues() async {
@@ -606,19 +617,10 @@ class _StatisticScreenState extends State<StatisticScreen> {
                             if (!event.isInterestedForInteractions ||
                                 response == null ||
                                 response.spot == null) {
-                              setState(() {
-                                updateTicketValues();
-                                touchedIndex = -1;
-                                isTouched = false;
-                              });
+                              onHoverUpdate();
                               return;
                             }
-                            setState(() {
-                              updateTicketValues();
-                              touchedIndex =
-                                  response.spot!.touchedBarGroupIndex;
-                              isTouched = true;
-                            });
+                            onHoverUpdate();
                           },
                         ),
                         titlesData: FlTitlesData(
@@ -827,17 +829,10 @@ class _StatisticScreenState extends State<StatisticScreen> {
                             if (!event.isInterestedForInteractions ||
                                 response == null ||
                                 response.spot == null) {
-                              setState(() {
-                                touchedIndex = -1;
-                                isTouched = false;
-                              });
+                              onHoverUpdate();
                               return;
                             }
-                            setState(() {
-                              touchedIndex =
-                                  response.spot!.touchedBarGroupIndex;
-                              isTouched = true;
-                            });
+                            onHoverUpdate();
                           },
                         ),
                         titlesData: FlTitlesData(
