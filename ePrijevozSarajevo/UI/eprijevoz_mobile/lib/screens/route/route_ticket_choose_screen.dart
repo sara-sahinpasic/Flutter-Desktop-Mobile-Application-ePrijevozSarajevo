@@ -34,6 +34,7 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
   SearchResult<User>? userResult;
   SearchResult<Route>? routeResult;
   double? selectedTicketPrice;
+  int? selectedTicketId;
   int? userStatusId;
   User? loggedUser;
   Ticket? basicTicket;
@@ -110,8 +111,7 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
         .firstWhere((user) => user.userName == AuthProvider.username);
 
     var basicTicketList = ticketResult!.result.map((ticket) {
-      if (ticket.ticketId == 5) // 5 == mjesečna
-      {
+      if (ticket.name != null && ticket.name == "Mjesečna") {
         mjesecnaKarta = ticket;
       }
       return ListTile(
@@ -126,24 +126,28 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
                     const TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
           ],
         ),
-        leading: Radio<double>(
-          value: ticket.price!,
-          groupValue: selectedTicketPrice,
+        leading: Radio<int>(
+          value: ticket.ticketId!,
+          groupValue: selectedTicketId,
           activeColor: Colors.green,
-          onChanged: (double? value) {
+          onChanged: (int? value) {
             setState(() {
-              selectedTicketPrice = value;
+              selectedTicketId = value;
+              selectedTicketPrice = ticket.price;
               basicTicket = ticket;
             });
           },
         ),
       );
     }).toList();
+    var index = basicTicketList.length;
+
     var extraTicketList = <ListTile>[];
     if (mjesecnaKarta != null) {
       extraTicketList = statusResult!.result
           .where((element) => !element.name!.contains("Default"))
           .map((status) {
+        index++;
         var reducedPrice =
             mjesecnaKarta!.price! - (mjesecnaKarta!.price! * status.discount!);
         var currentUserStatus = currentUser!.userStatusId;
@@ -162,19 +166,19 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
                       fontSize: 16, fontWeight: FontWeight.w700)),
             ],
           ),
-          leading: Radio<double>(
-            value: reducedPrice,
-            groupValue: selectedTicketPrice,
+          leading: Radio<int>(
+            value: index,
+            groupValue: selectedTicketId,
             activeColor: Colors.green,
-            onChanged: enabled
-                ? (double? value) {
-                    setState(() {
-                      selectedTicketPrice = value;
-                      extraStatusTicket = status;
-                      basicTicket = mjesecnaKarta;
-                    });
-                  }
-                : null,
+            onChanged: (int? value) {
+              if (enabled) {
+                setState(() {
+                  selectedTicketId = value;
+                  selectedTicketPrice = reducedPrice;
+                  basicTicket = mjesecnaKarta;
+                });
+              }
+            },
           ),
           enabled: enabled,
         );

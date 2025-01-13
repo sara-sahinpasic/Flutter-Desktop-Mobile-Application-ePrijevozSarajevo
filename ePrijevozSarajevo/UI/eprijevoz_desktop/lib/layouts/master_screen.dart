@@ -89,126 +89,156 @@ class _MasterScreenState extends State<MasterScreen> {
                   const SizedBox(
                     height: 45,
                   ),
-                  ListTile(
-                    leading: const Icon(
-                      Icons.home,
-                      color: Colors.white,
-                      size: 30,
+                  Container(
+                    color: widget.title == "Početna"
+                        ? const Color.fromRGBO(72, 156, 118, 100)
+                        : Colors.black,
+                    child: ListTile(
+                      leading: const Icon(
+                        Icons.home,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                      title: const Text("Početna",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 25)),
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const HomePage()));
+                      },
                     ),
-                    title: const Text("Početna",
+                  ),
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  Container(
+                    color: widget.title == "Korisnici"
+                        ? const Color.fromRGBO(72, 156, 118, 100)
+                        : Colors.black,
+                    child: ListTile(
+                      leading: const Icon(
+                        Icons.people,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                      title: const Text(
+                        "Korisnici",
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w400,
-                            fontSize: 25)),
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const HomePage()));
-                    },
+                            fontSize: 25),
+                      ),
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const UserListScreen()));
+                      },
+                    ),
                   ),
                   const SizedBox(
                     height: 25,
                   ),
-                  ListTile(
-                    leading: const Icon(
-                      Icons.people,
-                      color: Colors.white,
-                      size: 30,
+                  Container(
+                    color: widget.title == "Vozila"
+                        ? const Color.fromRGBO(72, 156, 118, 100)
+                        : Colors.black,
+                    child: ListTile(
+                      leading: const Icon(
+                        Icons.directions_car,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                      title: const Text(
+                        "Vozila",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 25),
+                      ),
+                      onTap: () {
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            builder: (context) => const VehicleListScreen()));
+                      },
                     ),
-                    title: const Text(
-                      "Korisnici",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 25),
-                    ),
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const UserListScreen()));
-                    },
                   ),
                   const SizedBox(
                     height: 25,
                   ),
-                  ListTile(
-                    leading: const Icon(
-                      Icons.directions_car,
-                      color: Colors.white,
-                      size: 30,
+                  Container(
+                    color: widget.title == "Plan vožnje"
+                        ? const Color.fromRGBO(72, 156, 118, 100)
+                        : Colors.black,
+                    child: ListTile(
+                      leading: const Icon(
+                        Icons.sync,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                      title: const Text(
+                        "Plan vožnje",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 25),
+                      ),
+                      onTap: () {
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            builder: (context) => const RouteListScreen()));
+                      },
                     ),
-                    title: const Text(
-                      "Vozila",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 25),
-                    ),
-                    onTap: () {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => const VehicleListScreen()));
-                    },
                   ),
                   const SizedBox(
                     height: 25,
                   ),
-                  ListTile(
-                    leading: const Icon(
-                      Icons.sync,
-                      color: Colors.white,
-                      size: 30,
+                  Container(
+                    color: widget.title == "Zahtjevi"
+                        ? const Color.fromRGBO(72, 156, 118, 100)
+                        : Colors.black,
+                    child: ListTile(
+                      leading: const Icon(
+                        Icons.request_page,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                      title: const Text(
+                        "Zahtjevi",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 25),
+                      ),
+                      onTap: () {
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            builder: (context) => const RequestListScreen()));
+                      },
                     ),
-                    title: const Text(
-                      "Plan vožnje",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 25),
-                    ),
-                    onTap: () {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => const RouteListScreen()));
-                    },
                   ),
                   const SizedBox(
                     height: 25,
                   ),
-                  ListTile(
-                    leading: const Icon(
-                      Icons.request_page,
-                      color: Colors.white,
-                      size: 30,
+                  Container(
+                    color: widget.title == "Statistika"
+                        ? const Color.fromRGBO(72, 156, 118, 100)
+                        : Colors.black,
+                    child: ListTile(
+                      leading: const Icon(
+                        Icons.bar_chart,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                      title: const Text(
+                        "Statistika",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 25),
+                      ),
+                      onTap: () {
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            builder: (context) => const StatisticScreen()));
+                      },
                     ),
-                    title: const Text(
-                      "Zahtjevi",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 25),
-                    ),
-                    onTap: () {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => const RequestListScreen()));
-                    },
-                  ),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  ListTile(
-                    leading: const Icon(
-                      Icons.bar_chart,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                    title: const Text(
-                      "Statistika",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 25),
-                    ),
-                    onTap: () {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => const StatisticScreen()));
-                    },
                   )
                 ],
               ),
