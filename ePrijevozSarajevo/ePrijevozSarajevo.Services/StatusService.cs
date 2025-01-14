@@ -1,4 +1,5 @@
-﻿using ePrijevozSarajevo.Model.Requests;
+﻿using ePrijevozSarajevo.Model.Exceptions;
+using ePrijevozSarajevo.Model.Requests;
 using ePrijevozSarajevo.Model.SearchObjects;
 using ePrijevozSarajevo.Services.Database;
 using MapsterMapper;
@@ -17,6 +18,39 @@ namespace ePrijevozSarajevo.Services
                 query = query.Where(x => x.Name.Contains(search.NameGTE));
             }
             return query;
+        }
+        public override async Task<Model.Status> Insert(StatusInsertRequest request)
+        {
+            Database.Status entity = _mapper.Map<Database.Status>(request);
+
+            var uniqueName = _dataContext.Statuses.FirstOrDefault(x => x.Name == entity.Name);
+            if (uniqueName != null)
+            {
+                throw new UserException($"Naziv {entity.Name} već postoji.");
+            }
+
+            await _dataContext.Statuses.AddAsync(entity);
+            await _dataContext.SaveChangesAsync();
+
+            return _mapper.Map<Model.Status>(entity);
+        }
+        public override async Task<Model.Status> Update(int id, StatusUpdateRequest request)
+        {
+            var entity = await _dataContext.Statuses.FindAsync(id);
+
+            var existingName = _dataContext.Statuses
+                .FirstOrDefault(x => x.Name == request.Name);
+
+            if (existingName != null)
+            {
+                throw new UserException($"Naziv {request.Name} već postoji.");
+            }
+
+            _mapper.Map(request, entity);
+
+            await _dataContext.SaveChangesAsync();
+
+            return _mapper.Map<Model.Status>(entity);
         }
     }
 }

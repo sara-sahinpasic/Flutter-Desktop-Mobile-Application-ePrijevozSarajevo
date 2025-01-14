@@ -1,4 +1,5 @@
-﻿using ePrijevozSarajevo.Model.Requests;
+﻿using ePrijevozSarajevo.Model.Exceptions;
+using ePrijevozSarajevo.Model.Requests;
 using ePrijevozSarajevo.Model.SearchObjects;
 using ePrijevozSarajevo.Services.Database;
 using ePrijevozSarajevo.Services.TicketsStateMachine;
@@ -32,17 +33,49 @@ namespace ePrijevozSarajevo.Services
 
             return query;
         }
+
         public override async Task<Model.Ticket> Insert(TicketInsertRequest request)
         {
             var state = await _ticketState.CreateState("initial");
-            return await state.Insert(request);
+
+            var uniqueName = _dataContext.Tickets.FirstOrDefault(x => x.Name == request.Name);
+            if (uniqueName != null)
+            {
+                throw new UserException($"Naziv {request.Name} već postoji.");
+            }
+
+            Database.Ticket entity = _mapper.Map<Database.Ticket>(request);
+
+            await state.Insert(request);
+
+            await _dataContext.Tickets.AddAsync(entity);
+            await _dataContext.SaveChangesAsync();
+
+            return _mapper.Map<Model.Ticket>(entity);
         }
+
+        //
         public override async Task<Model.Ticket> Update(int id, TicketUpdateRequest request)
         {
-            var entity = await GetById(id);
+            var entity = await _dataContext.Tickets.FindAsync(id);
+
             var state = await _ticketState.CreateState(entity.StateMachine);
-            return await state.Update(id, request);
+
+            var existingName = _dataContext.Tickets.FirstOrDefault(x => x.Name == request.Name);
+            if (existingName != null)
+            {
+                throw new UserException($"Naziv {request.Name} već postoji.");
+            }
+
+            _mapper.Map(request, entity);
+
+            await _dataContext.SaveChangesAsync();
+
+            await state.Update(id, request);
+
+            return _mapper.Map<Model.Ticket>(entity);
         }
+
 
         //StateMachine
         public async Task<Model.Ticket> Activate(int id)

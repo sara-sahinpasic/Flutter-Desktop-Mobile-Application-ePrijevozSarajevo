@@ -661,12 +661,7 @@ class _UserAddDialogState extends State<UserAddDialog> {
                                       selectedCountryId;
                                   userRequest['modifiedDate'] =
                                       DateTime.now().toIso8601String();
-
                                   try {
-                                    setState(() {
-                                      isLoading = true;
-                                    });
-
                                     final createdUser =
                                         await userProvider.insert(userRequest);
 
@@ -728,10 +723,6 @@ class _UserAddDialogState extends State<UserAddDialog> {
                                         ],
                                       ),
                                     );
-                                  } finally {
-                                    setState(() {
-                                      isLoading = false;
-                                    });
                                   }
                                 }
                               },

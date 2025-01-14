@@ -67,16 +67,16 @@ class _MasterScreenState extends State<MasterScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Icon(Icons.person,
-                            color: Colors.green.shade800, size: 45),
+                        const Icon(Icons.person,
+                            color: Color.fromRGBO(72, 156, 118, 100), size: 45),
                         const SizedBox(
                           width: 10,
                         ),
                         Expanded(
                           child: Text(
                             "Zdravo, \n$userNameUI",
-                            style: TextStyle(
-                              color: Colors.green.shade800,
+                            style: const TextStyle(
+                              color: Color.fromRGBO(72, 156, 118, 100),
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
                             ),
