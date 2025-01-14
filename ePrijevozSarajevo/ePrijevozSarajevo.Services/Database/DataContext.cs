@@ -60,13 +60,33 @@ namespace ePrijevozSarajevo.Services.Database
                 .HasOne(m => m.ManufacturerCountry)
                 .WithMany()
                 .HasForeignKey(m => m.ManufacturerCountryId)
-                .OnDelete(DeleteBehavior.SetNull);  
+                .OnDelete(DeleteBehavior.SetNull);
+
+            modelBuilder.Entity<Manufacturer>()
+              .HasIndex(v => v.Name)
+              .IsUnique();
+
+            // Type
+
+            modelBuilder.Entity<Type>()
+              .HasIndex(v => v.Name)
+              .IsUnique();
 
             // Status
 
             modelBuilder.Entity<Status>()
                 .Property(p => p.Discount)
                 .HasPrecision(5, 2);
+
+            modelBuilder.Entity<Status>()
+              .HasIndex(v => v.Name)
+              .IsUnique();
+
+            // Country
+
+            modelBuilder.Entity<Country>()
+               .HasIndex(v => v.Name)
+               .IsUnique();
 
             // User
 
@@ -82,8 +102,8 @@ namespace ePrijevozSarajevo.Services.Database
                 .HasOne(user => user.UserStatus)
                 .WithMany()
                 .HasForeignKey(user => user.UserStatusId)
-                .OnDelete(DeleteBehavior.SetNull); 
-            
+                .OnDelete(DeleteBehavior.SetNull);
+
             modelBuilder.Entity<User>()
                 .HasOne(user => user.UserCountry)
                 .WithMany()
@@ -122,6 +142,12 @@ namespace ePrijevozSarajevo.Services.Database
                 .WithMany()
                 .HasForeignKey(r => r.VehicleId);
 
+            // Station
+
+            modelBuilder.Entity<Station>()
+              .HasIndex(v => v.Name)
+              .IsUnique();
+
             // Issued Ticket
 
             modelBuilder.Entity<IssuedTicket>()
@@ -138,6 +164,12 @@ namespace ePrijevozSarajevo.Services.Database
                .HasOne(i => i.User)
                .WithMany()
                .OnDelete(DeleteBehavior.SetNull);
+
+            // Ticket
+
+            modelBuilder.Entity<Ticket>()
+              .HasIndex(v => v.Name)
+              .IsUnique();
 
             var routeList = BuildRoutes(modelBuilder);
             BuildIssuedTickets(modelBuilder, routeList);
@@ -302,7 +334,7 @@ namespace ePrijevozSarajevo.Services.Database
                 do
                 {
                     int year = DateTime.Now.Year - random.Next(0, 2); // current year or last year
-                    int month = year == DateTime.Now.Year ? random.Next(1, DateTime.Now.Month + 1):random.Next(1, 13);
+                    int month = year == DateTime.Now.Year ? random.Next(1, DateTime.Now.Month + 1) : random.Next(1, 13);
                     int day = (year == DateTime.Now.Year) && (month == DateTime.Now.Month) ? random.Next(1, DateTime.Now.Day) : random.Next(1, DateTime.DaysInMonth(year, month) + 1);
                     issuedDate = new DateTime(year, month, day);
                 } while (issuedDate.CompareTo(DateTime.Now) > 0);
@@ -357,11 +389,11 @@ namespace ePrijevozSarajevo.Services.Database
             dateWithRoutes.Add(new DateTime(2025, 02, 25));
             int routeCounter = 1;
 
-            for (int i = 0; i< dateWithRoutes.Count; i++)
+            for (int i = 0; i < dateWithRoutes.Count; i++)
             {
                 for (int j = 1; j <= totalStations; j++)
                 {
-                    for(int k = j+1; k > 0; k--)
+                    for (int k = j + 1; k > 0; k--)
                     {
                         DateTime departure = new DateTime(dateWithRoutes[i].Year, dateWithRoutes[i].Month, dateWithRoutes[i].Day, 10, 15, 0);
                         DateTime arrival = departure.AddMinutes(30);

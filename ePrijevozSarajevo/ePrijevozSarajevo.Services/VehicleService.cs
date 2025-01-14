@@ -1,4 +1,5 @@
-﻿using ePrijevozSarajevo.Model.Requests;
+﻿using ePrijevozSarajevo.Model.Exceptions;
+using ePrijevozSarajevo.Model.Requests;
 using ePrijevozSarajevo.Model.SearchObjects;
 using ePrijevozSarajevo.Services.Database;
 using MapsterMapper;
@@ -30,5 +31,26 @@ namespace ePrijevozSarajevo.Services
             }
             return query;
         }
+        public override async Task<Model.Vehicle> Update(int id, VehicleUpdateRequest request)
+        {
+            var set = _dataContext.Set<Database.Vehicle>();
+            var entity = await set.FindAsync(id);
+
+            var existingVehicle = await set
+                .Where(x => x.Number == request.Number)
+                .FirstOrDefaultAsync();
+
+            if (existingVehicle != null)
+            {
+                throw new UserException("Broj vozila već postoji.");
+            }
+
+            _mapper.Map(request, entity);
+            await BeforeUpdate(request, entity);
+            await _dataContext.SaveChangesAsync();
+
+            return _mapper.Map<Model.Vehicle>(entity);
+        }
+
     }
 }

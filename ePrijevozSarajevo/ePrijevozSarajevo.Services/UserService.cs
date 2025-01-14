@@ -167,7 +167,7 @@ namespace ePrijevozSarajevo.Services
             Database.User entity = _mapper.Map<Database.User>(request);
 
             var uniqueUserName = _dataContext.Users.Where(x => x.UserName == entity.UserName).ToList();
-            if (!uniqueUserName.IsNullOrEmpty())   
+            if (!uniqueUserName.IsNullOrEmpty())
             {
                 throw new UserException("Korisničko ime već postoji.");
             }
@@ -191,15 +191,6 @@ namespace ePrijevozSarajevo.Services
             }
 
             await _dataContext.AddAsync(entity);
-            await _dataContext.SaveChangesAsync();
-
-            var userRole = new Database.UserRole
-            {
-                UserId = entity.UserId,
-                RoleId = 2
-            };
-
-            await _dataContext.UserRoles.AddAsync(userRole);
             await _dataContext.SaveChangesAsync();
 
             return _mapper.Map<Model.User>(entity);

@@ -314,10 +314,6 @@ class _VehicleAddDialogState extends State<VehicleAddDialog> {
                                 request['typeId'] = selectedTypeId;
 
                                 try {
-                                  setState(() {
-                                    isLoading = true;
-                                  });
-
                                   await vehicleProvider.insert(request);
                                   showDialog(
                                     context: context,
@@ -369,10 +365,6 @@ class _VehicleAddDialogState extends State<VehicleAddDialog> {
                                       ],
                                     ),
                                   );
-                                } finally {
-                                  setState(() {
-                                    isLoading = false;
-                                  });
                                 }
                               }
                             },

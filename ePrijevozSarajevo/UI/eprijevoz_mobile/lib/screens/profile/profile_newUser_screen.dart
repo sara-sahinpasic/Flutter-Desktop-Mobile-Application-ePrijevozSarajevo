@@ -486,6 +486,7 @@ class _ProfileNewUserScreenState extends State<ProfileNewUserScreen> {
                             var userRequest =
                                 Map.from(_formKey.currentState!.value);
                             userRequest['userCountryId'] = selectedCountryId;
+                            userRequest['roleId'] = 2;
 
                             try {
                               await userProvider.insert(userRequest);

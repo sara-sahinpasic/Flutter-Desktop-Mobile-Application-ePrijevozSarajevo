@@ -8,6 +8,7 @@
 - Navigate to ePrijevozSarajevo/
 
 ### Run backend
+- Start Docker Desktop app or Run Docker Daemon
 - Use ```docker-compose up --build``` to start the Docker container.
 
 ### Run desktop app
@@ -15,7 +16,8 @@ For running the desktop app you can either build the app and run it or use prebu
 
 #### Running prebuilt desktop app
 - Navigate to repository root
-- Extract the provided `fit-build-2025-01-13.zip` file
+- Extract the provided `fit-build-2025-01-14.zip` file
+- Password: **fit**
 - Navigate to `Desktop_App\`
 - Start `eprijevoz_desktop.exe`
 
@@ -30,7 +32,8 @@ For running the mobile app you can either build the app and run it or use prebui
 #### Running prebuilt mobile app
 - Start Android emulator
 - Navigate to repository root
-- Extract the provided `fit-build-2025-01-13.zip` file
+- Extract the provided `fit-build-2025-01-14.zip` file
+- Password: **fit**
 - Navigate to `Mobile_App\`
 - Drag and Drop `app-debug.apk` to emulator window and start the app manually
 - Instead of Drag and Drop you can also install the app from `Mobile_App\` via `C:\Users\<username>\AppData\Local\Android\Sdk\platform-tools\adb.exe install app-debug.apk`
@@ -59,6 +62,7 @@ For running the mobile app you can either build the app and run it or use prebui
 ## Test Data (Data Seed):
 - Please note that routes are pre-generated for the following dates: **05.01.2025**, **15.01.2025**, **25.01.2025**, **05.02.2025**, **15.02.2025**, **25.02.2025**
 - Departure Time-Arrival Time are also pre-generated and are the same for all dates and routes: **10:15-10:45**
+- Issued tickets (for statistics purpose) are generated for following years: **2024**, **2025**
 
 ## Recommendation system:
 - Recommendation system is based on most frequently used route by user. 
