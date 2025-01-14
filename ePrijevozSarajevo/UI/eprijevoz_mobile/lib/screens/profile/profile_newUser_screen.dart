@@ -487,6 +487,8 @@ class _ProfileNewUserScreenState extends State<ProfileNewUserScreen> {
                                 Map.from(_formKey.currentState!.value);
                             userRequest['userCountryId'] = selectedCountryId;
                             userRequest['roleId'] = 2;
+                            userRequest['modifiedDate'] =
+                                DateTime.now().toIso8601String();
 
                             try {
                               await userProvider.insert(userRequest);
