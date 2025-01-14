@@ -661,21 +661,10 @@ class _UserAddDialogState extends State<UserAddDialog> {
                                       selectedCountryId;
                                   userRequest['modifiedDate'] =
                                       DateTime.now().toIso8601String();
+                                  userRequest['roleId'] = selectedRoleId;
                                   try {
-                                    final createdUser =
-                                        await userProvider.insert(userRequest);
+                                    await userProvider.insert(userRequest);
 
-                                    if (createdUser.userId != null) {
-                                      int? newUserId = createdUser.userId;
-
-                                      var userRoleRequest = {
-                                        'roleId': selectedRoleId,
-                                        'userId': newUserId,
-                                      };
-
-                                      await userRoleProvider
-                                          .insert(userRoleRequest);
-                                    }
                                     showDialog(
                                       context: context,
                                       builder: (context) => AlertDialog(

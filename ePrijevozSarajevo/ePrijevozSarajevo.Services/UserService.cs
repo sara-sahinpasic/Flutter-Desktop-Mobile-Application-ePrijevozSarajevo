@@ -193,6 +193,16 @@ namespace ePrijevozSarajevo.Services
             await _dataContext.AddAsync(entity);
             await _dataContext.SaveChangesAsync();
 
+            var userRole = new Database.UserRole
+            {
+                UserId = entity.UserId,
+                RoleId = request.RoleId,
+            };
+
+            await _dataContext.UserRoles.AddAsync(userRole);
+            await _dataContext.SaveChangesAsync();
+
+
             return _mapper.Map<Model.User>(entity);
 
         }

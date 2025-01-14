@@ -12,6 +12,7 @@
         public string ZipCode { get; set; } = null!;
         public string City { get; set; } = null!;
         public DateTime RegistrationDate { get; set; } = DateTime.UtcNow;
+        public DateTime ModifiedDate { get; set; }
         public byte[]? ProfileImage { get; set; }
         public string? Password { get; set; } = null!;
         public string? PasswordConfirmation { get; set; } = null!;

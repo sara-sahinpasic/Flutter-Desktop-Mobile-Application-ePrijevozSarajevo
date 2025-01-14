@@ -382,6 +382,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                 request['countryId'] = selectedCountryId;
                                 request['profileImage'] =
                                     _base64Image ?? widget.user.profileImage;
+                                request['modifiedDate'] =
+                                    DateTime.now().toIso8601String();
 
                                 try {
                                   User updatedUser = await userProvider.update(
