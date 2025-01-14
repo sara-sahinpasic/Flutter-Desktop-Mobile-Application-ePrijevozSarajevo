@@ -97,7 +97,7 @@ class _RequestOptionsScreenState extends State<RequestOptionsScreen> {
                     padding: const EdgeInsets.fromLTRB(15.0, 75.0, 0.0, 60.0),
                     child: Column(
                       children: statusResult!.result
-                          .where((element) => element.name != "Defaultni")
+                          .where((element) => element.name != "Default")
                           .map((status) {
                         return ListTile(
                           title: Text(
