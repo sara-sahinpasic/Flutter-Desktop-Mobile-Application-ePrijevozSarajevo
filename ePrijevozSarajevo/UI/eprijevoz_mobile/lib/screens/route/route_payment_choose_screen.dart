@@ -64,10 +64,14 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
   SearchResult<Station>? stationResult;
   String? startStationName;
   String? endStationName;
-  String paypalClientId = String.fromEnvironment("PAYPAL_CLIENT_ID",
-      defaultValue: dotenv.get("PAYPAL_CLIENT_ID"));
-  String paypalSecretKey = String.fromEnvironment("PAYPAL_SECRET_KEY",
-      defaultValue: dotenv.get("PAYPAL_SECRET_KEY"));
+  String paypalClientIdFromEnv =
+      const String.fromEnvironment('PAYPAL_CLIENT_ID', defaultValue: "");
+  String paypalClientIdFromEnvFile = dotenv.get('PAYPAL_CLIENT_ID');
+  String paypalSecretKeyFromEnv =
+      const String.fromEnvironment('PAYPAL_SECRET_KEY', defaultValue: "");
+  String paypalSecretKeyFromEnvFile = dotenv.get('PAYPAL_SECRET_KEY');
+  String paypalClientId = "";
+  String paypalSecretKey = "";
 
   @override
   void initState() {
@@ -83,6 +87,13 @@ class _PaymentChooseScreenState extends State<PaymentChooseScreen> {
     amount = widget.amount;
     selectedTicketPrice = widget.selectedTicketPrice;
     currentRoute = widget.route;
+    paypalClientId = paypalClientIdFromEnv.isNotEmpty
+        ? paypalClientIdFromEnv
+        : paypalClientIdFromEnvFile;
+
+    paypalSecretKey = paypalSecretKeyFromEnv.isNotEmpty
+        ? paypalSecretKeyFromEnv
+        : paypalSecretKeyFromEnvFile;
 
     initForm();
   }

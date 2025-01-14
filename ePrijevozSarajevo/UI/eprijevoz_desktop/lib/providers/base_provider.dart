@@ -12,8 +12,14 @@ abstract class BaseProvider<T> with ChangeNotifier {
 
   BaseProvider(String endpoint) {
     _endpoint = endpoint;
-    baseUrl = String.fromEnvironment("BASE_URL_DESKTOP",
-        defaultValue: dotenv.get("BASE_URL_DESKTOP"));
+    var fromEnvFile = dotenv.get('BASE_URL_DESKTOP');
+    var fromEnv =
+        const String.fromEnvironment('BASE_URL_DESKTOP', defaultValue: "");
+    if (fromEnv == "") {
+      baseUrl = fromEnvFile;
+    } else {
+      baseUrl = fromEnv;
+    }
   }
 
   // add a getter for _endpoint
