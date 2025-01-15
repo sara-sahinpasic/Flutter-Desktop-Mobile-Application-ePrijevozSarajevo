@@ -447,7 +447,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               elevation: 5,
             ),
             child: const Text(
-              "Zahtjev",
+              "Zahtjev za ostvarivanje povlastice",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             ),
           ),

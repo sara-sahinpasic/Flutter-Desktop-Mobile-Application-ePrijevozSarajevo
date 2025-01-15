@@ -16,15 +16,16 @@ For running the desktop app you can either build the app and run it or use prebu
 
 #### Running prebuilt desktop app
 - Navigate to repository root
-- Extract the provided `fit-build-2025-01-14.zip` file
+- Extract the provided `fit-build-2025-01-15.zip` file
 - Password: **fit**
 - Navigate to `Desktop_App\`
 - Start `eprijevoz_desktop.exe`
 
 #### Building desktop app
 - Navigate to UI/eprijevoz_desktop
-- Use ```flutter run```
-- Choose respective option i.e. ```windows```
+- Use ```flutter pub get```
+- Use ```flutter run -d windows``` or 
+- Use ```flutter run``` and choose respective option i.e. ```windows```
 
 ### Run mobile app
 For running the mobile app you can either build the app and run it or use prebuilt app
@@ -32,7 +33,7 @@ For running the mobile app you can either build the app and run it or use prebui
 #### Running prebuilt mobile app
 - Start Android emulator
 - Navigate to repository root
-- Extract the provided `fit-build-2025-01-14.zip` file
+- Extract the provided `fit-build-2025-01-15.zip` file
 - Password: **fit**
 - Navigate to `Mobile_App\`
 - Drag and Drop `app-debug.apk` to emulator window and start the app manually
@@ -41,6 +42,7 @@ For running the mobile app you can either build the app and run it or use prebui
 #### Building mobile app
 - Start Android emulator
 - Navigate to UI/eprijevoz_mobile
+- Use ```flutter pub get```
 - Use ```flutter run``` 
 
 ## Credentials
@@ -65,8 +67,9 @@ For running the mobile app you can either build the app and run it or use prebui
 - Issued tickets (for statistics purpose) are generated for following years: **2024**, **2025**
 
 ## Recommendation system:
-- Recommendation system is based on most frequently used route by user. 
+- Recommendation system is based on most frequently used (most traveled) route by user, regardless of amount of tickets for each time user has traveled the route.
 - In order to be efficient the Model is trained with new data only on backend application (re)start.
+i.e. stop then start debugging again in Visual Studio or stop docker process and start it again with ```docker-compose up --build```
 - In the meantime saved model is used for getting the recommendations. 
 - See also `my recommender system docx.zip`
 

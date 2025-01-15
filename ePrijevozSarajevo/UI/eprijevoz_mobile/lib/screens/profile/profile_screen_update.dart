@@ -31,6 +31,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   bool isLoading = true;
   File? _image;
   String? _base64Image;
+  String? _fileName;
 
   @override
   void initState() {
@@ -74,6 +75,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
       if (!mounted) return; // prevents calling setState if widget is disposed
       _image = File(result.files.single.path!);
       _base64Image = base64Encode(_image!.readAsBytesSync());
+      _fileName = result.files.single.name;
       setState(() {});
     }
   }
@@ -120,7 +122,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               const Text(
-                                "Update",
+                                "Ažuriraj",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 40,
@@ -348,13 +350,13 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                   builder: (field) {
                                     return GestureDetector(
                                       onTap: getImage,
-                                      child: const InputDecorator(
-                                        decoration: InputDecoration(
+                                      child: InputDecorator(
+                                        decoration: const InputDecoration(
                                             labelText: "Odaberite sliku"),
                                         child: ListTile(
-                                          leading: Icon(Icons.image),
-                                          title: Text("Slika"),
-                                          trailing: Icon(
+                                          leading: const Icon(Icons.image),
+                                          title: Text(_fileName ?? "Slika"),
+                                          trailing: const Icon(
                                             Icons.file_upload,
                                           ),
                                         ),
@@ -457,7 +459,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                   const EdgeInsets.symmetric(vertical: 10.0),
                             ),
                             child: const Text(
-                              "Update",
+                              "Ažuriraj",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 20),
                             ),

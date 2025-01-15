@@ -41,6 +41,8 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
   Status? extraStatusTicket;
   Route? currentRoute;
   bool isLoading = true;
+  DateTime? departureDate;
+  DateTime? todayDate;
 
   @override
   void initState() {
@@ -66,6 +68,9 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
         .firstWhere((user) => user.userName == AuthProvider.username);
 
     currentRoute = widget.route;
+
+    departureDate = widget.route.departure;
+    todayDate = DateTime.now();
 
     setState(() {
       isLoading = false;
@@ -272,7 +277,49 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: selectedTicketPrice != null
-                        ? () {
+                        ? () async {
+                            if (departureDate != null &&
+                                departureDate!.isAfter(todayDate!)) {
+                              bool shouldContinue = await showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: const Text(
+                                        "Datum polaska je u budućnosti"),
+                                    content: const Text(
+                                      "Odabrani datum polaska je u budućnosti. Vozna karta uvijek vrijedi od trenutnog vremena polaska. Da li još uvijek želite nastaviti kupovinu?",
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop(false);
+                                        },
+                                        child: const Text(
+                                          "Cancel",
+                                          style: TextStyle(
+                                              color: Colors.red, fontSize: 16),
+                                        ),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop(true);
+                                        },
+                                        child: const Text(
+                                          "Nastavi",
+                                          style: TextStyle(color: Colors.black),
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+
+                              if (!shouldContinue) {
+                                return;
+                              }
+                            }
+
+                            // user pressed nastavi
                             Navigator.of(context)
                                 .push(
                               MaterialPageRoute(
@@ -287,14 +334,13 @@ class _TicketChooseScreenState extends State<TicketChooseScreen> {
                             )
                                 .then((_) {
                               setState(() {
-                                // reset the state only after returning to this page
                                 selectedTicketPrice = null;
                                 basicTicket = null;
                                 extraStatusTicket = null;
                               });
                             });
                           }
-                        : null, // disable the button if no price is selected
+                        : null, // Disable the button if no price is selected
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,
                       shape: RoundedRectangleBorder(

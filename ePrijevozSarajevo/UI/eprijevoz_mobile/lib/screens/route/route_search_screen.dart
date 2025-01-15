@@ -76,7 +76,6 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
     } finally {
       setState(() {
         isLoading = false;
-        showInfoMessage();
       });
     }
 
@@ -105,6 +104,7 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
         // pre-fill dropdown lists
         endStations =
             getEndStationsForSelectedStartStation(selectedStartStationId!);
+        showInfoMessage();
       }
     } catch (e) {
       debugPrint('Error fetching recommendations: $e');
@@ -222,7 +222,10 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
                   child: FormBuilderDropdown(
                     name: "startStationId",
                     decoration: const InputDecoration(
-                      label: Text("Polazna stanica"),
+                      label: Text(
+                        "Polazna stanica",
+                        style: TextStyle(color: Colors.black),
+                      ),
                     ),
                     items: uniqueStartStations
                         .map((station) => DropdownMenuItem<String>(
@@ -257,7 +260,10 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
                   child: FormBuilderDropdown(
                       name: "endStationId",
                       decoration: const InputDecoration(
-                        label: Text("Cilj"),
+                        label: Text(
+                          "Cilj",
+                          style: TextStyle(color: Colors.black),
+                        ),
                       ),
                       items: endStations
                           .map((station) => DropdownMenuItem<String>(
@@ -432,6 +438,7 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
     );
   }
 
+  // recommender
   void showInfoMessage() {
     showDialog(
       context: context,

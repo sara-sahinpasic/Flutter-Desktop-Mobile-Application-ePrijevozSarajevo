@@ -55,27 +55,48 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Flexible(
-                  child: Center(
-                    child: Text(
-                      "Dobrodošli, ${currentUser?.firstName ?? ''}!",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.green.shade700,
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(110.0, 0.0, 0.0, 0.0),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.tram,
+                        size: 80,
+                        color: Colors.green.shade800,
                       ),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
+                      Icon(
+                        Icons.bus_alert,
+                        size: 80,
+                        color: Colors.green.shade800,
+                      ),
+                    ],
                   ),
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                Center(
+                  child: Text(
+                    "ePrijevozSarajevo\nDobrodošli, ${currentUser?.firstName ?? ''}!",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green.shade700,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                const SizedBox(
+                  height: 55,
                 ),
                 Text(
                   "ZAJEDNO ZAŠTITIMO NAŠU PLANETU ZEMLJU!",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.green.shade700,
+                    fontSize: 20,
+                    color: Colors.green.shade800,
                   ),
                 ),
                 const SizedBox(height: 30),
@@ -101,7 +122,7 @@ class _HomePageState extends State<HomePage> {
                     child: const Text(
                       "Krenimo odmah!",
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 23),
                     ),
                   ),
                 ),
