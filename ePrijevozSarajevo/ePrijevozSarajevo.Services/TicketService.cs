@@ -36,7 +36,6 @@ namespace ePrijevozSarajevo.Services
 
         public override async Task<Model.Ticket> Insert(TicketInsertRequest request)
         {
-            var state = await _ticketState.CreateState("initial");
 
             var uniqueName = _dataContext.Tickets.FirstOrDefault(x => x.Name == request.Name);
             if (uniqueName != null)
@@ -45,8 +44,6 @@ namespace ePrijevozSarajevo.Services
             }
 
             Database.Ticket entity = _mapper.Map<Database.Ticket>(request);
-
-            await state.Insert(request);
 
             await _dataContext.Tickets.AddAsync(entity);
             await _dataContext.SaveChangesAsync();
