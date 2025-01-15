@@ -77,3 +77,7 @@ i.e. stop then start debugging again in Visual Studio or stop docker process and
 - RabbitMQ is used for sending an email when Administrator (Desktop) Approves/Rejects Users (Mobile) request for discount status.
 - Test email account is created in order to test this behavior. See `Test email` and `Test email password` above.
 - It is also possible to create a new mobile user yourself using your own email address so emails are received there.
+
+## Note:
+- Please note that in order to insert a profile photo as user in mobile application (user profile update) you have to have some image file saved on emulator.
+- If You do not have any, You can i.e. open the preinstalled camera app on emulator and take a test picture or download a photo using the browser.
