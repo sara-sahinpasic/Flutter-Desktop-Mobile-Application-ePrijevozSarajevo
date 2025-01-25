@@ -392,14 +392,7 @@ class _RouteSearchScreenState extends State<RouteSearchScreen> {
                                   actions: [
                                     TextButton(
                                       onPressed: () {
-                                        Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                const MasterScreen(
-                                              initialIndex: 1,
-                                            ),
-                                          ),
-                                        );
+                                        Navigator.of(context).pop();
                                       },
                                       child: const Text("OK",
                                           style:

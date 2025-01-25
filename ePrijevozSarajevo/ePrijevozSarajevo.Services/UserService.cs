@@ -120,9 +120,10 @@ namespace ePrijevozSarajevo.Services
             return _mapper.Map<Model.User>(entity);
         }
 
-        public async Task ResetPassword(string username, string newPassword, string passwordConfirmation)
+        public async Task ResetPassword(string username, string newPassword, string passwordConfirmation, string oldPassword)
         {
             var user = await _dataContext.Users.FirstOrDefaultAsync(u => u.UserName == username);
+            var validOldPassword= await Login(username, oldPassword);
 
             if (user == null)
             {
@@ -132,6 +133,11 @@ namespace ePrijevozSarajevo.Services
             if (newPassword != passwordConfirmation)
             {
                 throw new UserException("Lozinke se moraju podudarati.");
+            }
+
+            if (validOldPassword == null)
+            {
+                throw new UserException("Stara lozinka nije ispravna.");
             }
 
             user.PasswordSalt = GenerateSalt();

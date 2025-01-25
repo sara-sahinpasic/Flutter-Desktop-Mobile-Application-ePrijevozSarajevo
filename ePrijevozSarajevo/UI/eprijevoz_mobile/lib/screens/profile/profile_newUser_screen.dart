@@ -76,7 +76,7 @@ class _ProfileNewUserScreenState extends State<ProfileNewUserScreen> {
     if (picked != null && picked != dateOfBirth) {
       setState(() {
         dateOfBirth = picked;
-        _dateOfBirthController.text = formatDateTimeAPI(picked);
+        _dateOfBirthController.text = formatDate(picked);
       });
     }
   }
@@ -489,6 +489,9 @@ class _ProfileNewUserScreenState extends State<ProfileNewUserScreen> {
                             userRequest['roleId'] = 2;
                             userRequest['modifiedDate'] =
                                 DateTime.now().toIso8601String();
+
+                            userRequest['dateOfBirth'] =
+                                dateOfBirth?.toIso8601String();
 
                             try {
                               await userProvider.insert(userRequest);

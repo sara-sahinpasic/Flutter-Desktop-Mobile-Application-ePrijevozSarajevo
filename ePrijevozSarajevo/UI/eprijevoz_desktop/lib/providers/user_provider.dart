@@ -11,8 +11,8 @@ class UserProvider extends BaseProvider<User> {
     return User.fromJson(data);
   }
 
-  Future<bool> resetPassword(
-      String username, String newPassword, String passwordConfirmation) async {
+  Future<bool> resetPassword(String username, String newPassword,
+      String passwordConfirmation, String oldPassword) async {
     var url =
         "${BaseProvider.baseUrl}$endpoint/reset-password"; // use the getter
 
@@ -20,6 +20,7 @@ class UserProvider extends BaseProvider<User> {
       'username': username,
       'newPassword': newPassword,
       'passwordConfirmation': passwordConfirmation,
+      'oldPassword': oldPassword
     };
 
     var headers = createHeaders();

@@ -4,6 +4,7 @@ import 'package:eprijevoz_desktop/models/user.dart';
 import 'package:eprijevoz_desktop/providers/auth_provider.dart';
 import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:eprijevoz_desktop/providers/utils.dart';
+import 'package:eprijevoz_desktop/screens/forgot_password_screen.dart';
 import 'package:eprijevoz_desktop/screens/user/user_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -167,8 +168,29 @@ class _HomePageState extends State<HomePage> {
                     onPressed: () => Navigator.of(context).push(
                         MaterialPageRoute(
                             builder: (context) => const LoginPage()))),
+                //
               ]),
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const ForgotPasswordScreen()));
+                  },
+                  child: const Text(
+                    "Promjena lozinke",
+                    style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        decorationColor: Colors.red,
+                        color: Color.fromARGB(255, 212, 16, 2),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15),
+                  ),
+                ),
+              ],
+            )
           ],
         ),
       ),

@@ -10,6 +10,7 @@ import 'package:eprijevoz_mobile/providers/request_provider.dart';
 import 'package:eprijevoz_mobile/providers/status_provider.dart';
 import 'package:eprijevoz_mobile/providers/user_provider.dart';
 import 'package:eprijevoz_mobile/providers/utils.dart';
+import 'package:eprijevoz_mobile/screens/forgot_password_screen.dart';
 import 'package:eprijevoz_mobile/screens/profile/profile_screen_update.dart';
 import 'package:eprijevoz_mobile/screens/profile/profile_request_options_screen.dart';
 import 'package:flutter/material.dart';
@@ -168,24 +169,40 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
                 TextButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const ForgotPasswordScreen()));
+                  },
+                  child: const Text(
+                    "Promjena lozinke",
+                    style: TextStyle(
+                      color: Colors.red,
+                      decoration: TextDecoration.underline,
+                      decorationColor: Colors.red,
+                      decorationThickness: 1.0,
+                      fontSize: 15,
+                    ),
+                  ),
+                ),
+                TextButton(
                   onPressed: () => Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const LoginPage())),
-                  child: const Padding(
-                    padding: EdgeInsets.fromLTRB(190, 0, 0, 0),
-                    child: Text(
-                      "Odjava",
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        color: Colors.red,
-                        decoration: TextDecoration.underline,
-                        decorationColor: Colors.red,
-                        decorationThickness: 1.0,
-                        fontSize: 15,
-                      ),
+                  child: const Text(
+                    "Odjava",
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: Colors.red,
+                      decoration: TextDecoration.underline,
+                      decorationColor: Colors.red,
+                      decorationThickness: 1.0,
+                      fontSize: 15,
                     ),
                   ),
                 ),
               ],
+            ),
+            const SizedBox(
+              height: 20,
             ),
             Row(
               children: [

@@ -228,22 +228,6 @@ class _LoginPageState extends State<LoginPage> {
                   TextButton(
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const ForgotPasswordScreen()));
-                    },
-                    child: const Text(
-                      "Promjena lozinke",
-                      style: TextStyle(
-                          color: Colors.red,
-                          fontSize: 15,
-                          fontWeight: FontWeight.normal,
-                          decoration: TextDecoration.underline,
-                          decorationColor: Colors.red,
-                          decorationThickness: 1),
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const ProfileNewUserScreen()));
                     },
                     child: const Text(

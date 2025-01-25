@@ -25,7 +25,7 @@ namespace ePrijevozSarajevo.API.Controllers
         public async Task ResetPassword([FromBody] ResetPasswordRequest request)
         {
          
-            await (_service as IUserService).ResetPassword(request.Username, request.NewPassword, request.PasswordConfirmation);
+            await (_service as IUserService).ResetPassword(request.Username, request.NewPassword, request.PasswordConfirmation,request.OldPassword);
             
         }
         [HttpDelete("{id}")]

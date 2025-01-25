@@ -103,7 +103,8 @@ class _UserAddDialogState extends State<UserAddDialog> {
     if (picked != null && picked != dateOfBirth) {
       setState(() {
         dateOfBirth = picked;
-        _dateOfBirthController.text = formatDateTimeAPI(picked);
+        _dateOfBirthController.text = formatDate(picked);
+        //formatDateTimeAPI(picked);
       });
     }
   }
@@ -661,6 +662,10 @@ class _UserAddDialogState extends State<UserAddDialog> {
                                       selectedCountryId;
                                   userRequest['modifiedDate'] =
                                       DateTime.now().toIso8601String();
+
+                                  userRequest['dateOfBirth'] =
+                                      dateOfBirth?.toIso8601String();
+
                                   userRequest['roleId'] = selectedRoleId;
                                   try {
                                     await userProvider.insert(userRequest);

@@ -1,4 +1,5 @@
 import 'package:eprijevoz_desktop/main.dart';
+import 'package:eprijevoz_desktop/providers/auth_provider.dart';
 import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -13,9 +14,11 @@ class ForgotPasswordScreen extends StatefulWidget {
 
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   final _formKey = GlobalKey<FormState>();
-  String _username = '';
+  final String? _username = AuthProvider.username;
   String _newPassword = '';
   String _passwordConfirmation = '';
+  String _oldPassword = '';
+
   bool _passwordVisible = false;
   bool isLoading = false;
 
@@ -28,10 +31,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       try {
         var userProvider = Provider.of<UserProvider>(context, listen: false);
         bool success = await userProvider.resetPassword(
-          _username,
-          _newPassword,
-          _passwordConfirmation,
-        );
+            _username ?? "", _newPassword, _passwordConfirmation, _oldPassword);
 
         if (success) {
           showDialog(
@@ -108,30 +108,45 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                       child: Column(
                         children: [
                           TextFormField(
-                            style: const TextStyle(color: Colors.white),
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: 'Korisničko ime',
-                              labelStyle: TextStyle(color: Colors.white),
-                              hintText: 'Unesite korisničko ime',
-                              hintStyle:
-                                  TextStyle(color: Colors.white, fontSize: 13),
-                              prefixIcon:
-                                  Icon(Icons.person, color: Colors.white),
-                            ),
-                            onChanged: (value) {
-                              setState(() {
-                                _username = value;
-                              });
-                            },
-                            validator: FormBuilderValidators.compose([
-                              FormBuilderValidators.required(
-                                  errorText: "Unesite korisničko ime."),
-                            ]),
-                          ),
+                              style: const TextStyle(color: Colors.white),
+                              obscureText: !_passwordVisible,
+                              decoration: InputDecoration(
+                                border: const OutlineInputBorder(),
+                                labelText: 'Stara loznika',
+                                labelStyle:
+                                    const TextStyle(color: Colors.white),
+                                hintText: 'Unesite staru lozinku',
+                                hintStyle: const TextStyle(
+                                    color: Colors.white, fontSize: 13),
+                                prefixIcon: const Icon(Icons.password,
+                                    color: Colors.white),
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    _passwordVisible
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
+                                    color: Colors.white,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      _passwordVisible = !_passwordVisible;
+                                    });
+                                  },
+                                ),
+                              ),
+                              onChanged: (value) {
+                                setState(() {
+                                  _oldPassword = value;
+                                });
+                              },
+                              validator: FormBuilderValidators.compose([
+                                FormBuilderValidators.required(
+                                    errorText: "Unesite staru lozinku."),
+                              ])),
                           const SizedBox(
                             height: 20,
                           ),
+                          //
                           TextFormField(
                               style: const TextStyle(color: Colors.white),
                               obscureText: !_passwordVisible,

@@ -1,4 +1,6 @@
+import 'package:eprijevoz_mobile/layouts/master_screen.dart';
 import 'package:eprijevoz_mobile/main.dart';
+import 'package:eprijevoz_mobile/providers/auth_provider.dart';
 import 'package:eprijevoz_mobile/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,8 +14,9 @@ class ForgotPasswordScreen extends StatefulWidget {
 
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   final _formKey = GlobalKey<FormState>();
-  String _username = '';
+  final String? _username = AuthProvider.username;
   String _newPassword = '';
+  String _oldPassword = '';
   String _passwordConfirmation = '';
   bool _isLoading = false;
   bool _passwordVisible = false;
@@ -27,9 +30,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       try {
         var userProvider = Provider.of<UserProvider>(context, listen: false);
         bool success = await userProvider.resetPassword(
-          _username,
+          _username ?? "",
           _newPassword,
           _passwordConfirmation,
+          _oldPassword,
         );
 
         if (success) {
@@ -46,9 +50,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 TextButton(
                     child:
                         const Text("OK", style: TextStyle(color: Colors.black)),
-                    onPressed: () => Navigator.of(context).push(
-                        MaterialPageRoute(
-                            builder: (context) => const LoginPage())))
+                    onPressed: () =>
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const MasterScreen(
+                            initialIndex: 3,
+                          ),
+                        )))
               ],
             ),
           );
@@ -110,27 +117,43 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     children: [
                       TextFormField(
                         style: const TextStyle(color: Colors.white),
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Korisničko ime',
-                          labelStyle: TextStyle(color: Colors.white),
-                          hintText: 'Unesite korisničko ime',
-                          hintStyle:
-                              TextStyle(color: Colors.white, fontSize: 13),
-                          prefixIcon: Icon(Icons.person, color: Colors.white),
+                        obscureText: !_passwordVisible,
+                        decoration: InputDecoration(
+                          border: const OutlineInputBorder(),
+                          labelText: 'Stara loznika',
+                          labelStyle: const TextStyle(color: Colors.white),
+                          hintText: 'Unesite staru lozinku',
+                          hintStyle: const TextStyle(
+                              color: Colors.white, fontSize: 13),
+                          prefixIcon:
+                              const Icon(Icons.password, color: Colors.white),
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              _passwordVisible
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                _passwordVisible = !_passwordVisible;
+                              });
+                            },
+                          ),
                         ),
                         onChanged: (value) {
                           setState(() {
-                            _username = value;
+                            _oldPassword = value;
                           });
                         },
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Unesite korisničko ime';
+                            return 'Unesite staru lozinku';
                           }
                           return null;
                         },
                       ),
+                      //
                       const SizedBox(
                         height: 20,
                       ),
