@@ -1,4 +1,5 @@
-﻿using ePrijevozSarajevo.Model.Requests;
+﻿using ePrijevozSarajevo.Model.Exceptions;
+using ePrijevozSarajevo.Model.Requests;
 using ePrijevozSarajevo.Model.SearchObjects;
 using ePrijevozSarajevo.Services.Database;
 using MapsterMapper;
@@ -22,6 +23,15 @@ namespace ePrijevozSarajevo.Services
                 query = query.Where(x => x.VehicleId == search.VehicleIdGTE);
             }
             return query;
+        }
+        public override Task<Model.Malfunction> Insert(MalfunctionInsertRequest request)
+        {
+            if (request != null && request.DateOfMalufunction != null && request.DateOfMalufunction.Value.Date > DateTime.Now.Date)
+            {
+                throw new UserException("Nije moguće unositi kvarove iz budućnosti");
+
+            }
+            return base.Insert(request);
         }
     }
 }

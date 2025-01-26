@@ -2,6 +2,7 @@ import 'package:eprijevoz_mobile/layouts/master_screen.dart';
 import 'package:eprijevoz_mobile/providers/auth_provider.dart';
 import 'package:eprijevoz_mobile/providers/base_provider.dart';
 import 'package:eprijevoz_mobile/providers/country_provider.dart';
+import 'package:eprijevoz_mobile/providers/delay_provider.dart';
 import 'package:eprijevoz_mobile/providers/issuedTicket_provider.dart';
 import 'package:eprijevoz_mobile/providers/recommendation_provider.dart';
 import 'package:eprijevoz_mobile/providers/request_provider.dart';
@@ -10,9 +11,9 @@ import 'package:eprijevoz_mobile/providers/route_provider.dart';
 import 'package:eprijevoz_mobile/providers/station_provider.dart';
 import 'package:eprijevoz_mobile/providers/status_provider.dart';
 import 'package:eprijevoz_mobile/providers/ticket_provider.dart';
+import 'package:eprijevoz_mobile/providers/type_provider.dart';
 import 'package:eprijevoz_mobile/providers/user_provider.dart';
 import 'package:eprijevoz_mobile/providers/user_role_provider.dart';
-import 'package:eprijevoz_mobile/screens/forgot_password_screen.dart';
 import 'package:eprijevoz_mobile/screens/profile/profile_newUser_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -39,6 +40,9 @@ void main() async {
       ChangeNotifierProvider<RoleProvider>(create: (_) => RoleProvider()),
       ChangeNotifierProvider<UserRoleProvider>(
           create: (_) => UserRoleProvider()),
+      //
+      ChangeNotifierProvider<DelayProvider>(create: (_) => DelayProvider()),
+      ChangeNotifierProvider<TypeProvider>(create: (_) => TypeProvider()),
     ],
     child: const MyApp(),
   ));
