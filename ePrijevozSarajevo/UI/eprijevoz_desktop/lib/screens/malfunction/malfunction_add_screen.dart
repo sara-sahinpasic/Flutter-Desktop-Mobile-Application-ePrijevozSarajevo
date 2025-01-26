@@ -87,7 +87,7 @@ class _MalfunctionAddScreenState extends State<MalfunctionAddScreen> {
   List<DropdownMenuItem<String>> getVehicle() {
     var list = vehicleResult?.result
             .map((item) => DropdownMenuItem(
-                value: item.manufacturerId.toString(),
+                value: item.vehicleId.toString(),
                 child: Text(item.registrationNumber ?? "")))
             .toList() ??
         [];
@@ -132,7 +132,6 @@ class _MalfunctionAddScreenState extends State<MalfunctionAddScreen> {
                       ),
                       const SizedBox(height: 10),
                       FormBuilderTextField(
-                        //controller: ftsRejectReasonController,
                         name: 'description',
                         validator: FormBuilderValidators.compose([
                           FormBuilderValidators.required(
@@ -240,6 +239,7 @@ class _MalfunctionAddScreenState extends State<MalfunctionAddScreen> {
                       ),
                       const SizedBox(height: 25),
                       Checkbox(
+                        checkColor: Colors.black,
                         value: isFixed,
                         onChanged: (bool? value) {
                           setState(() {
@@ -248,7 +248,7 @@ class _MalfunctionAddScreenState extends State<MalfunctionAddScreen> {
                         },
                       ),
                       const Text(
-                        "Fixed",
+                        "Popravljen?",
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),
                       ),

@@ -108,7 +108,7 @@ class _StationAddDialogState extends State<StationAddDialog> {
                                   var request =
                                       Map.from(_formKey.currentState!.value);
                                   request['modifiedDate'] =
-                                      Map.from(_formKey.currentState!.value);
+                                      DateTime.now().toIso8601String();
                                   request['dateCreated'] =
                                       DateTime.now().toIso8601String();
                                   request['currentUserId'] = currentUserId;

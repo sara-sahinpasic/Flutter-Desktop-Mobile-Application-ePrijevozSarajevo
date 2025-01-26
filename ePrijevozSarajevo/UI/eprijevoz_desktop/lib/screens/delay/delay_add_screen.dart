@@ -225,7 +225,7 @@ class _DelayAddScreenState extends State<DelayAddScreen> {
                           FormBuilderValidators.required(
                               errorText: "Ovo polje ne može bit prazno."),
                           FormBuilderValidators.integer(
-                              errorText: "Format poštanskog broja: 1010"),
+                              errorText: "Format broja: 1010"),
                         ]),
                         cursorColor: Colors.green.shade800,
                         decoration: const InputDecoration(
