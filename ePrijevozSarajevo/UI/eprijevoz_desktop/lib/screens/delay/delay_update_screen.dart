@@ -1,6 +1,9 @@
 import 'package:eprijevoz_desktop/models/delay.dart';
 import 'package:eprijevoz_desktop/models/search_result.dart';
+import 'package:eprijevoz_desktop/models/user.dart';
+import 'package:eprijevoz_desktop/providers/auth_provider.dart';
 import 'package:eprijevoz_desktop/providers/delay_provider.dart';
+import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -22,10 +25,14 @@ class _DelayUpdateScreenState extends State<DelayUpdateScreen> {
   bool isLoading = false;
   final _formKey = GlobalKey<FormBuilderState>();
   Map<String, dynamic> _initialValue = {};
+  int? currentUserId;
+  late UserProvider userProvider;
+  SearchResult<User>? userResult;
 
   @override
   void initState() {
     dealyProvider = context.read<DelayProvider>();
+    userProvider = context.read<UserProvider>();
 
     super.initState();
     _initialValue = {
@@ -37,6 +44,11 @@ class _DelayUpdateScreenState extends State<DelayUpdateScreen> {
 
   Future initForm() async {
     delayResult = await dealyProvider.get();
+    userResult = await userProvider.get();
+
+    currentUserId = userResult?.result
+        .firstWhere((user) => user.userName == AuthProvider.username)
+        .userId;
 
     setState(() {
       isLoading = false;
@@ -132,6 +144,9 @@ class _DelayUpdateScreenState extends State<DelayUpdateScreen> {
                                       Map.from(_formKey.currentState!.value);
                                   request['delayAmountMinutes'] =
                                       int.parse(request['delayAmountMinutes']);
+                                  request['modifiedDate'] =
+                                      DateTime.now().toIso8601String();
+                                  request['currentUserId'] = currentUserId;
 
                                   try {
                                     await dealyProvider.update(

@@ -3,6 +3,8 @@ using ePrijevozSarajevo.Model.Requests;
 using ePrijevozSarajevo.Model.SearchObjects;
 using ePrijevozSarajevo.Services.Database;
 using MapsterMapper;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace ePrijevozSarajevo.Services
 {
@@ -51,6 +53,32 @@ namespace ePrijevozSarajevo.Services
             await _dataContext.SaveChangesAsync();
 
             return _mapper.Map<Model.Type>(entity);
+        }
+        public override async Task Delete(int id)
+        {
+            var vehicleSet = _dataContext.Set<Database.Vehicle>();
+            var vehicleExists = vehicleSet
+                //.Include(x => x.Type)
+                .Where(x => x.TypeId == id)
+                .ToList();
+
+            if (!vehicleExists.IsNullOrEmpty())
+            {
+                throw new UserException("Ne može se obrisati tip vozila za koje već postoji vozilo. Potrebno je prvo obrisati vozilo.");
+            }
+
+            var delaySet = _dataContext.Set<Database.Delay>();
+            var delayExists = delaySet
+            //.Include(x => x.Type)
+            .Where(x => x.TypeId == id)
+            .ToList();
+
+            if (!delayExists.IsNullOrEmpty())
+            {
+                throw new UserException("Ne može se obrisati tip vozila za koje postoji kašnjenje. Potrebno je prvo obrisati kašnjenje.");
+            }
+
+            await base.Delete(id);
         }
     }
 }

@@ -12,5 +12,7 @@ namespace ePrijevozSarajevo.Services.Database
         public int? VehicleId { get; set; }
         public Station? Station { get; set; }
         public int? StationId{ get; set; }
+        public DateTime? ModifiedDate { get; set; }
+        public int? CurrentUserId { get; set; }
     }
 }
