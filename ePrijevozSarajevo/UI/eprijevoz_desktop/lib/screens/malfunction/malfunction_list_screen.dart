@@ -341,7 +341,6 @@ class _MalfunctionListScreenState extends State<MalfunctionListScreen> {
                                       style: const TextStyle(
                                           color: Colors.white, fontSize: 17),
                                     )),
-                                    //********** */
                                     DataCell(Text(
                                       stationResult?.result
                                               .firstWhere((element) =>
