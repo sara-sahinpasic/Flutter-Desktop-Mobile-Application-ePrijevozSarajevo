@@ -1,51 +1,44 @@
+import 'package:eprijevoz_desktop/models/malfunction.dart';
 import 'package:eprijevoz_desktop/models/search_result.dart';
-import 'package:eprijevoz_desktop/models/station.dart';
-import 'package:eprijevoz_desktop/models/user.dart';
-import 'package:eprijevoz_desktop/providers/auth_provider.dart';
-import 'package:eprijevoz_desktop/providers/station_provider.dart';
-import 'package:eprijevoz_desktop/providers/user_provider.dart';
+import 'package:eprijevoz_desktop/providers/malfunction_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:provider/provider.dart';
 
-class StationAddDialog extends StatefulWidget {
-  final Function onDone;
-  const StationAddDialog({required this.onDone, super.key});
+class MalfunctionUpdateScreen extends StatefulWidget {
+  final Malfunction malfunction;
+  final VoidCallback onDone;
+  const MalfunctionUpdateScreen(
+      {required this.malfunction, required this.onDone, super.key});
 
   @override
-  State<StationAddDialog> createState() => _StationAddDialogState();
+  State<MalfunctionUpdateScreen> createState() =>
+      _MalfunctionUpdateScreenState();
 }
 
-class _StationAddDialogState extends State<StationAddDialog> {
-  late StationProvider stationProvider;
-  SearchResult<Station>? stationResult;
+class _MalfunctionUpdateScreenState extends State<MalfunctionUpdateScreen> {
+  late MalfunctionProvider malfunctionProvider;
+  SearchResult<Malfunction>? malfunctionResult;
   bool isLoading = false;
   final _formKey = GlobalKey<FormBuilderState>();
-  String? stationName;
-  late UserProvider userProvider;
-  SearchResult<User>? userResult;
-  int? currentUserId;
+  Map<String, dynamic> _initialValue = {};
+  Malfunction? malfunction;
+  bool? isFixed = false;
 
   @override
   void initState() {
-    stationProvider = context.read<StationProvider>();
-    userProvider = context.read<UserProvider>();
+    malfunctionProvider = context.read<MalfunctionProvider>();
 
     super.initState();
 
+    // _initialValue = {'fixed': widget.malfunction.fixed};
     initForm();
   }
 
   Future initForm() async {
-    stationResult = await stationProvider.get();
-    userResult = await userProvider.get();
+    malfunctionResult = await malfunctionProvider.get();
 
     setState(() {
-      currentUserId = userResult?.result
-          .firstWhere((user) => user.userName == AuthProvider.username)
-          .userId;
-
       isLoading = false;
     });
   }
@@ -54,7 +47,7 @@ class _StationAddDialogState extends State<StationAddDialog> {
   Widget build(BuildContext context) {
     return AlertDialog(
       title: const Text(
-        "Novi zapis",
+        "Update",
         style: TextStyle(fontWeight: FontWeight.bold),
       ),
       content: SingleChildScrollView(
@@ -66,36 +59,30 @@ class _StationAddDialogState extends State<StationAddDialog> {
                 )
               : FormBuilder(
                   key: _formKey,
+                  initialValue: _initialValue,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const SizedBox(height: 15),
-                      const Text(
-                        "Naziv stanice:",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      FormBuilderTextField(
-                        name: 'name',
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8.0),
+                      const SizedBox(height: 25),
+                      Row(
+                        children: [
+                          Checkbox(
+                            checkColor: Colors.black,
+                            // value: isFixed,
+                            value: widget.malfunction.fixed,
+                            onChanged: (bool? value) {
+                              setState(() {
+                                isFixed = value ?? false;
+                                widget.malfunction.fixed = value ?? false;
+                              });
+                            },
                           ),
-                          hintText: "Unesite naziv",
-                        ),
-                        validator: FormBuilderValidators.compose([
-                          FormBuilderValidators.required(
-                            errorText: "Ovo polje ne može bit prazno.",
+                          const Text(
+                            "Da li je kvar na vozilu popravljen?",
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
                           ),
-                          FormBuilderValidators.match(
-                            r'^[a-zA-Z\s]*$',
-                            errorText:
-                                "Ovo polje može sadržavati isključivo slova.",
-                          ),
-                        ]),
+                        ],
                       ),
                       const SizedBox(height: 25),
                       Row(
@@ -107,25 +94,20 @@ class _StationAddDialogState extends State<StationAddDialog> {
                                     false) {
                                   var request =
                                       Map.from(_formKey.currentState!.value);
-                                  request['modifiedDate'] =
-                                      Map.from(_formKey.currentState!.value);
-                                  request['dateCreated'] =
-                                      DateTime.now().toIso8601String();
-                                  request['currentUserId'] = currentUserId;
-
+                                  request['fixed'] = isFixed;
                                   try {
-                                    setState(() {
-                                      isLoading = true;
-                                    });
-
-                                    await stationProvider.insert(request);
+                                    await malfunctionProvider.update(
+                                        widget.malfunction.malfunctionId!,
+                                        request);
+                                    widget.onDone();
+                                    Navigator.pop(context, true);
 
                                     showDialog(
                                       context: context,
                                       builder: (context) => AlertDialog(
-                                        title: const Text("Success"),
-                                        content: const Text(
-                                            "Zapis je uspješno dodan."),
+                                        title: const Text("Update"),
+                                        content:
+                                            const Text("Zapis je ažuriran."),
                                         actions: [
                                           TextButton(
                                             child: const Text(
@@ -134,8 +116,7 @@ class _StationAddDialogState extends State<StationAddDialog> {
                                                   color: Colors.black),
                                             ),
                                             onPressed: () async {
-                                              await widget.onDone();
-                                              Navigator.pop(context);
+                                              widget.onDone();
                                               Navigator.pop(context, true);
                                             },
                                           )
@@ -148,7 +129,7 @@ class _StationAddDialogState extends State<StationAddDialog> {
                                       builder: (context) => AlertDialog(
                                         title: const Text("Error"),
                                         content: Text(
-                                          "Greška prilikom dodavanja zapisa: $error",
+                                          "Greška prilikom ažuriranja zapisa: $error",
                                         ),
                                         actions: [
                                           TextButton(
@@ -175,7 +156,7 @@ class _StationAddDialogState extends State<StationAddDialog> {
                                 minimumSize: const Size(100, 65),
                               ),
                               child: const Text(
-                                "Dodaj",
+                                "Ažuriraj",
                                 style: TextStyle(fontSize: 18),
                               ),
                             ),

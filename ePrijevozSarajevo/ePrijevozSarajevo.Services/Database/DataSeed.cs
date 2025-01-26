@@ -78,89 +78,105 @@ namespace ePrijevozSarajevo.Services.Database
                     StationId = 1,
                     Name = "Ilidža",
                     ModifiedDate = DateTime.Now,
+                    DateCreated = DateTime.Now,
                 },
                 new Station()
                 {
                     StationId = 2,
                     Name = "Stup",
                     ModifiedDate = DateTime.Now,
+                    DateCreated = DateTime.Now,
+
                 },
                 new Station()
                 {
                     StationId = 3,
                     Name = "Nedžarići",
+                    DateCreated = DateTime.Now,
                     ModifiedDate = DateTime.Now,
                 },
                 new Station()
                 {
                     StationId = 4,
                     Name = "Socijalno",
+                    DateCreated = DateTime.Now,
                     ModifiedDate = DateTime.Now,
                 },
                 new Station()
                 {
                     StationId = 5,
                     Name = "Malta",
+                    DateCreated = DateTime.Now,
                     ModifiedDate = DateTime.Now,
                 },
                 new Station()
                 {
                     StationId = 6,
                     Name = "Baščaršija",
+                    DateCreated = DateTime.Now,
                     ModifiedDate = DateTime.Now,
                 },
                 new Station()
                 {
                     StationId = 7,
                     Name = "Otoka",
+                    DateCreated = DateTime.Now,
                     ModifiedDate = DateTime.Now,
                 },
                 new Station()
                 {
                     StationId = 8,
                     Name = "Skenderija",
+                    DateCreated = DateTime.Now,
                     ModifiedDate = DateTime.Now,
                 },
                 new Station()
                 {
                     StationId = 9,
                     Name = "Drvenija",
+                    DateCreated = DateTime.Now,
                     ModifiedDate = DateTime.Now,
                 },
                 new Station()
                 {
                     StationId = 10,
                     Name = "Dobrinja",
+                    DateCreated = DateTime.Now,
                     ModifiedDate = DateTime.Now,
                 },
                 new Station()
                 {
                     StationId = 11,
                     Name = "Grbavica",
+                    DateCreated = DateTime.Now,
                     ModifiedDate = DateTime.Now,
                 },
                 new Station()
                 {
                     StationId = 12,
                     Name = "Hrasno",
+                    DateCreated = DateTime.Now,
                     ModifiedDate = DateTime.Now,
                 },
                 new Station()
                 {
                     StationId = 13,
                     Name = "Aneks",
+                    DateCreated = DateTime.Now,
                     ModifiedDate = DateTime.Now,
                 },
                 new Station()
                 {
                     StationId = 14,
                     Name = "Alipašino polje",
+                    DateCreated = DateTime.Now,
                     ModifiedDate = DateTime.Now,
                 },
                  new Station()
                  {
                      StationId = 15,
                      Name = "Švrakino selo",
+                     DateCreated = DateTime.Now,
                      ModifiedDate = DateTime.Now,
                  }
             ); //6
@@ -453,6 +469,36 @@ namespace ePrijevozSarajevo.Services.Database
                     ModifiedDate = DateTime.Now,
                 }
             ); //13
+            modelBuilder.Entity<Malfunction>().HasData
+            (
+               new Malfunction()
+               {
+                   MalfunctionId = 1,
+                   Description = "Opis kvara: Test 1",
+                   DateOfMalufunction = DateTime.Now,
+                   Fixed = true,
+                   VehicleId = 1,
+                   StationId = 1,
+               },
+                new Malfunction()
+                {
+                    MalfunctionId = 2,
+                    Description = "Opis kvara: Test 2",
+                    DateOfMalufunction = DateTime.Now,
+                    Fixed = false,
+                    VehicleId = 2,
+                    StationId = 2,
+                },
+                 new Malfunction()
+                 {
+                     MalfunctionId = 3,
+                     Description = "Opis kvara: Test 3",
+                     DateOfMalufunction = DateTime.Now,
+                     Fixed = true,
+                     VehicleId = 3,
+                     StationId = 3,
+                 }
+            );//14
 
         }
     }

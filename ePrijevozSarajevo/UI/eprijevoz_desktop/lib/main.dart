@@ -2,6 +2,7 @@ import 'package:eprijevoz_desktop/providers/auth_provider.dart';
 import 'package:eprijevoz_desktop/providers/base_provider.dart';
 import 'package:eprijevoz_desktop/providers/country_provider.dart';
 import 'package:eprijevoz_desktop/providers/issuedTicket_provider.dart';
+import 'package:eprijevoz_desktop/providers/malfunction_provider.dart';
 import 'package:eprijevoz_desktop/providers/manufacturer_provider.dart';
 import 'package:eprijevoz_desktop/providers/request_provider.dart';
 import 'package:eprijevoz_desktop/providers/role_provider.dart';
@@ -58,6 +59,9 @@ void main() async {
           create: (_) => UserRoleProvider()),
       ChangeNotifierProvider<RoleProvider>(create: (_) => RoleProvider()),
       ChangeNotifierProvider<TicketProvider>(create: (_) => TicketProvider()),
+      //
+      ChangeNotifierProvider<MalfunctionProvider>(
+          create: (_) => MalfunctionProvider()),
     ],
     child: const MyApp(),
   ));

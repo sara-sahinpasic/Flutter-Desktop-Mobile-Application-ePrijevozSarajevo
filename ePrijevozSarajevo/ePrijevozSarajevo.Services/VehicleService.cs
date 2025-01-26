@@ -52,5 +52,19 @@ namespace ePrijevozSarajevo.Services
             return _mapper.Map<Model.Vehicle>(entity);
         }
 
+        public override async Task Delete(int id)
+        {
+            var set = _dataContext.Set<Database.Malfunction>();
+            var malfuctionExists = set.Where(x => x.VehicleId == id).FirstOrDefaultAsync() != null;
+
+            if (malfuctionExists)
+            {
+                throw new UserException("Ne može se obrisati vozilo na kome je prijavljen kvar. Potrebno je prvo obrisati kvar.");
+
+            }
+
+            await base.Delete(id);
+        }
+
     }
 }

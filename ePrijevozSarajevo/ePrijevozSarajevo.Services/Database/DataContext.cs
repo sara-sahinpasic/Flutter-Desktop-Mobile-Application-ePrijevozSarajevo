@@ -20,6 +20,9 @@ namespace ePrijevozSarajevo.Services.Database
         public DbSet<Manufacturer> Manufacturers { get; set; } = null!;
         public DbSet<Type> Types { get; set; } = null!;
         public DbSet<Country> Countries { get; set; } = null!;
+        //
+        public DbSet<Malfunction> Malfunctions { get; set; } = null!;
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
@@ -53,6 +56,19 @@ namespace ePrijevozSarajevo.Services.Database
                 .HasOne(v => v.Type)
                 .WithMany()
                 .HasForeignKey(v => v.TypeId);
+
+            // Malfunction
+
+            modelBuilder.Entity<Malfunction>()
+               .HasOne(v => v.Vehicle)
+               .WithMany()
+               .HasForeignKey(v => v.VehicleId);
+
+            modelBuilder.Entity<Malfunction>()
+                .HasOne(v => v.Station)
+                .WithMany()
+                .HasForeignKey(v => v.StationId);
+
 
             // Manufacturer
 
@@ -221,7 +237,7 @@ namespace ePrijevozSarajevo.Services.Database
                 UserCountryId =1,
                 RegistrationDate = DateTime.Now,
                 ModifiedDate = DateTime.Now,
-                UserStatusId = 4,
+                UserStatusId = 1,
                 ProfileImage = null,
                 StatusExpirationDate = new DateTime(2025, 12, 31)
                },

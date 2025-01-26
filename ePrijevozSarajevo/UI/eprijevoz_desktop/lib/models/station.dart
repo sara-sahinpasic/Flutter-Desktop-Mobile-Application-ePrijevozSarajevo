@@ -8,8 +8,14 @@ class Station {
   String? name;
   DateTime? modifiedDate;
   int? currentUserId;
+  DateTime? dateCreated;
 
-  Station({this.stationId, this.name});
+  Station(
+      {this.stationId,
+      this.name,
+      this.modifiedDate,
+      this.currentUserId,
+      this.dateCreated});
 
   factory Station.fromJson(Map<String, dynamic> json) =>
       _$StationFromJson(json);
