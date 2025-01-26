@@ -4,6 +4,7 @@ using ePrijevozSarajevo.Model.SearchObjects;
 using ePrijevozSarajevo.Services.Database;
 using MapsterMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace ePrijevozSarajevo.Services
 {
@@ -55,9 +56,9 @@ namespace ePrijevozSarajevo.Services
         public override async Task Delete(int id)
         {
             var set = _dataContext.Set<Database.Malfunction>();
-            var malfuctionExists = set.Where(x => x.VehicleId == id).FirstOrDefaultAsync() != null;
+            var malfuctionExists = set.Where(x => x.VehicleId == id).ToList();
 
-            if (malfuctionExists)
+            if (!malfuctionExists.IsNullOrEmpty())
             {
                 throw new UserException("Ne može se obrisati vozilo na kome je prijavljen kvar. Potrebno je prvo obrisati kvar.");
 

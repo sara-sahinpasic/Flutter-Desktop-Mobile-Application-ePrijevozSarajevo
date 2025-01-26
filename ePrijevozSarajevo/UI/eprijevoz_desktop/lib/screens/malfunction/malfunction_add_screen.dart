@@ -1,13 +1,15 @@
 import 'package:eprijevoz_desktop/models/malfunction.dart';
 import 'package:eprijevoz_desktop/models/search_result.dart';
 import 'package:eprijevoz_desktop/models/station.dart';
+import 'package:eprijevoz_desktop/models/user.dart';
 import 'package:eprijevoz_desktop/models/vehicle.dart';
+import 'package:eprijevoz_desktop/providers/auth_provider.dart';
 import 'package:eprijevoz_desktop/providers/malfunction_provider.dart';
 import 'package:eprijevoz_desktop/providers/station_provider.dart';
+import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:eprijevoz_desktop/providers/utils.dart';
 import 'package:eprijevoz_desktop/providers/vehicle_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:provider/provider.dart';
@@ -32,12 +34,16 @@ class _MalfunctionAddScreenState extends State<MalfunctionAddScreen> {
   int? selectedVehicleId;
   int? selectedStationId;
   bool? isFixed = false;
+  late UserProvider userProvider;
+  SearchResult<User>? userResult;
+  int? currentUserId;
 
   @override
   void initState() {
     malfunctionProvider = context.read<MalfunctionProvider>();
     vehicleProvider = context.read<VehicleProvider>();
     stationProvider = context.read<StationProvider>();
+    userProvider = context.read<UserProvider>();
 
     super.initState();
 
@@ -48,6 +54,11 @@ class _MalfunctionAddScreenState extends State<MalfunctionAddScreen> {
     malfunctionResult = await malfunctionProvider.get();
     vehicleResult = await vehicleProvider.get();
     stationResult = await stationProvider.get();
+    userResult = await userProvider.get();
+
+    currentUserId = userResult?.result
+        .firstWhere((user) => user.userName == AuthProvider.username)
+        .userId;
 
     setState(() {
       isLoading = false;
@@ -257,6 +268,9 @@ class _MalfunctionAddScreenState extends State<MalfunctionAddScreen> {
                                   request['fixed'] = isFixed;
                                   request['VehicleId'] = selectedVehicleId;
                                   request['StationId'] = selectedStationId;
+                                  request['modifiedDate'] =
+                                      DateTime.now().toIso8601String();
+                                  request['currentUserId'] = currentUserId;
 
                                   try {
                                     setState(() {

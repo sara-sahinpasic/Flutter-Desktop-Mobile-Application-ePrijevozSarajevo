@@ -12,16 +12,6 @@ namespace ePrijevozSarajevo.Services.Database
             (
                 new Request()
                 {
-                    RequestId = 1,
-                    UserId = 2,
-                    UserStatusId = 3,
-                    DateCreated = DateTime.Now,
-                    Active = true,
-                    Approved = false,
-                    RejectionReason = "",
-                },
-                new Request()
-                {
                     RequestId = 2,
                     UserId = 3,
                     UserStatusId = 5,
@@ -479,6 +469,8 @@ namespace ePrijevozSarajevo.Services.Database
                    Fixed = true,
                    VehicleId = 1,
                    StationId = 1,
+                   ModifiedDate = DateTime.Now,
+
                },
                 new Malfunction()
                 {
@@ -488,6 +480,8 @@ namespace ePrijevozSarajevo.Services.Database
                     Fixed = false,
                     VehicleId = 2,
                     StationId = 2,
+                    ModifiedDate = DateTime.Now,
+
                 },
                  new Malfunction()
                  {
@@ -497,6 +491,8 @@ namespace ePrijevozSarajevo.Services.Database
                      Fixed = true,
                      VehicleId = 3,
                      StationId = 3,
+                     ModifiedDate = DateTime.Now,
+
                  }
             );//14
             modelBuilder.Entity<Delay>().HasData
@@ -508,6 +504,8 @@ namespace ePrijevozSarajevo.Services.Database
                  RouteId = 1,
                  DelayAmountMinutes = 30,
                  TypeId = 1,
+                  ModifiedDate = DateTime.Now,
+
               },
                new Delay()
                {
@@ -516,6 +514,8 @@ namespace ePrijevozSarajevo.Services.Database
                    RouteId = 2,
                    DelayAmountMinutes = 60,
                    TypeId = 2,
+                   ModifiedDate = DateTime.Now,
+
                }, new Delay()
                {
                    DelayId = 3,
@@ -523,6 +523,8 @@ namespace ePrijevozSarajevo.Services.Database
                    RouteId = 3,
                    DelayAmountMinutes = 15,
                    TypeId = 1,
+                   ModifiedDate = DateTime.Now,
+
                }
            );//15
 

@@ -1,6 +1,9 @@
 import 'package:eprijevoz_desktop/models/malfunction.dart';
 import 'package:eprijevoz_desktop/models/search_result.dart';
+import 'package:eprijevoz_desktop/models/user.dart';
+import 'package:eprijevoz_desktop/providers/auth_provider.dart';
 import 'package:eprijevoz_desktop/providers/malfunction_provider.dart';
+import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:provider/provider.dart';
@@ -24,19 +27,27 @@ class _MalfunctionUpdateScreenState extends State<MalfunctionUpdateScreen> {
   Map<String, dynamic> _initialValue = {};
   Malfunction? malfunction;
   bool? isFixed = false;
+  late UserProvider userProvider;
+  SearchResult<User>? userResult;
+  int? currentUserId;
 
   @override
   void initState() {
     malfunctionProvider = context.read<MalfunctionProvider>();
+    userProvider = context.read<UserProvider>();
 
     super.initState();
 
-    // _initialValue = {'fixed': widget.malfunction.fixed};
     initForm();
   }
 
   Future initForm() async {
     malfunctionResult = await malfunctionProvider.get();
+    userResult = await userProvider.get();
+
+    currentUserId = userResult?.result
+        .firstWhere((user) => user.userName == AuthProvider.username)
+        .userId;
 
     setState(() {
       isLoading = false;
@@ -95,6 +106,10 @@ class _MalfunctionUpdateScreenState extends State<MalfunctionUpdateScreen> {
                                   var request =
                                       Map.from(_formKey.currentState!.value);
                                   request['fixed'] = isFixed;
+                                  request['modifiedDate'] =
+                                      DateTime.now().toIso8601String();
+                                  request['currentUserId'] = currentUserId;
+
                                   try {
                                     await malfunctionProvider.update(
                                         widget.malfunction.malfunctionId!,

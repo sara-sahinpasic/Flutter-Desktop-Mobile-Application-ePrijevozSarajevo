@@ -2,10 +2,13 @@ import 'package:eprijevoz_desktop/models/delay.dart';
 import 'package:eprijevoz_desktop/models/route.dart';
 import 'package:eprijevoz_desktop/models/search_result.dart';
 import 'package:eprijevoz_desktop/models/station.dart';
+import 'package:eprijevoz_desktop/models/user.dart';
+import 'package:eprijevoz_desktop/providers/auth_provider.dart';
 import 'package:eprijevoz_desktop/providers/delay_provider.dart';
 import 'package:eprijevoz_desktop/providers/route_provider.dart';
 import 'package:eprijevoz_desktop/providers/station_provider.dart';
 import 'package:eprijevoz_desktop/providers/type_provider.dart';
+import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:flutter/material.dart' hide Route;
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -26,13 +29,15 @@ class _DelayAddScreenState extends State<DelayAddScreen> {
   bool isLoading = false;
   final _formKey = GlobalKey<FormBuilderState>();
   String? typeName;
-
   late RouteProvider routeProvider;
   SearchResult<Route>? routeResult;
   late TypeProvider typeProvider;
   SearchResult<Type>? typeResult;
   late StationProvider stationProvider;
   SearchResult<Station>? stationResult;
+  int? currentUserId;
+  late UserProvider userProvider;
+  SearchResult<User>? userResult;
 
   @override
   void initState() {
@@ -40,6 +45,7 @@ class _DelayAddScreenState extends State<DelayAddScreen> {
     routeProvider = context.read<RouteProvider>();
     typeProvider = context.read<TypeProvider>();
     stationProvider = context.read<StationProvider>();
+    userProvider = context.read<UserProvider>();
 
     super.initState();
 
@@ -51,6 +57,11 @@ class _DelayAddScreenState extends State<DelayAddScreen> {
     routeResult = await routeProvider.get();
     typeResult = await typeProvider.get();
     stationResult = await stationProvider.get();
+    userResult = await userProvider.get();
+
+    currentUserId = userResult?.result
+        .firstWhere((user) => user.userName == AuthProvider.username)
+        .userId;
 
     setState(() {
       isLoading = false;
@@ -266,9 +277,11 @@ class _DelayAddScreenState extends State<DelayAddScreen> {
                                     false) {
                                   var request =
                                       Map.from(_formKey.currentState!.value);
-
+                                  request['modifiedDate'] =
+                                      DateTime.now().toIso8601String();
                                   request['typeId'] = selectedVehicleTypeId;
                                   request['routeId'] = selectedRouteId;
+                                  request['currentUserId'] = currentUserId;
 
                                   try {
                                     setState(() {
