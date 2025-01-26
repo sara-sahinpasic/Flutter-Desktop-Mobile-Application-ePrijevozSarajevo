@@ -24,6 +24,7 @@ class MalfunctionListScreen extends StatefulWidget {
 class _MalfunctionListScreenState extends State<MalfunctionListScreen> {
   late MalfunctionProvider malfunctionProvider;
   SearchResult<Malfunction>? malfunctionResult;
+  SearchResult<Malfunction>? malfunctionResultAll;
   bool isLoading = false;
   final _formKey = GlobalKey<FormBuilderState>();
   Malfunction? malfunction;
@@ -32,7 +33,6 @@ class _MalfunctionListScreenState extends State<MalfunctionListScreen> {
   late StationProvider stationProvider;
   SearchResult<Station>? stationResult;
   int? selectedVehicleId;
-  int? selectedStationId;
 
   @override
   void initState() {
@@ -46,8 +46,13 @@ class _MalfunctionListScreenState extends State<MalfunctionListScreen> {
 
   Future initForm() async {
     malfunctionResult = await malfunctionProvider.get();
+    malfunctionResultAll = await malfunctionProvider.get();
     vehicleResult = await vehicleProvider.get();
     stationResult = await stationProvider.get();
+
+    setState(() {
+      isLoading = false;
+    });
   }
 
   Future refreshTable() async {
@@ -59,6 +64,7 @@ class _MalfunctionListScreenState extends State<MalfunctionListScreen> {
       malfunctionResult = await malfunctionProvider.get(filter: request);
       vehicleResult = await vehicleProvider.get();
       stationResult = await stationProvider.get();
+      malfunctionResultAll = await malfunctionProvider.get();
     } catch (e) {
       debugPrint('Error: $e');
     } finally {
@@ -69,9 +75,14 @@ class _MalfunctionListScreenState extends State<MalfunctionListScreen> {
   }
 
   List<DropdownMenuItem<String>> getVehicle() {
+    var listMalfunction = malfunctionResultAll?.result;
     var list = vehicleResult?.result
+            .where((vehicle) =>
+                listMalfunction?.any(
+                    (element) => element.vehicleId == vehicle.vehicleId) ??
+                false)
             .map((item) => DropdownMenuItem(
-                value: item.manufacturerId.toString(),
+                value: item.vehicleId.toString(),
                 child: Text(item.registrationNumber ?? "")))
             .toList() ??
         [];
@@ -155,9 +166,9 @@ class _MalfunctionListScreenState extends State<MalfunctionListScreen> {
           child: FormBuilderDropdown(
             name: "vehicleId",
             items: getVehicle(),
-            initialValue: selectedVehicleId?.toString(),
             onChanged: (value) {
               setState(() {
+                isLoading = false;
                 selectedVehicleId = int.parse(value as String);
               });
             },
@@ -179,6 +190,7 @@ class _MalfunctionListScreenState extends State<MalfunctionListScreen> {
                 'VehicleIdGTE': selectedVehicleId,
               };
               malfunctionResult = await malfunctionProvider.get(filter: filter);
+              malfunctionResultAll = await malfunctionProvider.get();
             } catch (e) {
               debugPrint('Error: $e');
             } finally {

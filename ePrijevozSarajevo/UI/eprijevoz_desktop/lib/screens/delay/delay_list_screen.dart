@@ -25,6 +25,7 @@ class DelaylistScreen extends StatefulWidget {
 class _DelaylistScreenState extends State<DelaylistScreen> {
   late DelayProvider delayProvider;
   SearchResult<Delay>? delayResult;
+  SearchResult<Delay>? delayResultAll;
   bool isLoading = false;
   final _formKey = GlobalKey<FormBuilderState>();
   Delay? delay;
@@ -48,9 +49,14 @@ class _DelaylistScreenState extends State<DelaylistScreen> {
   dynamic stationName;
   Future initForm() async {
     delayResult = await delayProvider.get();
+    delayResultAll = await delayProvider.get();
     routeResult = await routeProvider.get();
     typeResult = await typeProvider.get();
     stationResult = await stationProvider.get();
+
+    setState(() {
+      isLoading = false;
+    });
   }
 
   String getRoutesName(int? id) {
@@ -72,7 +78,11 @@ class _DelaylistScreenState extends State<DelaylistScreen> {
   }
 
   List<DropdownMenuItem<String>> getVehicleType() {
+    var listDelay = delayResultAll?.result;
     var list = typeResult?.result
+            .where((type) =>
+                listDelay?.any((element) => element.typeId == type.typeId) ??
+                false)
             .map((item) => DropdownMenuItem(
                 value: item.typeId.toString(), child: Text(item.name ?? "")))
             .toList() ??
@@ -168,7 +178,6 @@ class _DelaylistScreenState extends State<DelaylistScreen> {
           child: FormBuilderDropdown(
             name: "typeId",
             items: getVehicleType(),
-            initialValue: selectedVehicleTypeId?.toString(),
             onChanged: (value) {
               setState(() {
                 selectedVehicleTypeId = int.parse(value as String);
