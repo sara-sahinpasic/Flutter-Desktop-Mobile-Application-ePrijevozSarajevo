@@ -11,7 +11,7 @@ namespace ePrijevozSarajevo.Services
             var factory = new ConnectionFactory()
             {
                 HostName = Environment.GetEnvironmentVariable("RABBITMQ_HOST")
-                ??"rabbitmq"
+                ??"localhost"
                 ,
                 Port = int.Parse(Environment.GetEnvironmentVariable("RABBITMQ_PORT")
                 ??"5672"

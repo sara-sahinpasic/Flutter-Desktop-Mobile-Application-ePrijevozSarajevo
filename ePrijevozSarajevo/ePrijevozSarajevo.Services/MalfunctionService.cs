@@ -17,11 +17,11 @@ namespace ePrijevozSarajevo.Services
         }
         public override IQueryable<Malfunction> AddFilter(MalfunctionSearchObject search, IQueryable<Malfunction> query)
         {
-            query = base.AddFilter(search, query);
+                query = base.AddFilter(search, query);
             if (search?.VehicleIdGTE >= 0)
-            {
-                query = query.Where(x => x.VehicleId == search.VehicleIdGTE);
-            }
+                {
+                    query = query.Where(x => x.VehicleId == search.VehicleIdGTE);
+                }
             return query;
         }
         public override Task<Model.Malfunction> Insert(MalfunctionInsertRequest request)
