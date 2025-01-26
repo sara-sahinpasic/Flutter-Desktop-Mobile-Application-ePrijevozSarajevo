@@ -1,42 +1,44 @@
-import 'package:eprijevoz_desktop/models/malfunction.dart';
+import 'package:eprijevoz_desktop/models/delay.dart';
+import 'package:eprijevoz_desktop/models/route.dart';
 import 'package:eprijevoz_desktop/models/search_result.dart';
 import 'package:eprijevoz_desktop/models/station.dart';
-import 'package:eprijevoz_desktop/models/vehicle.dart';
-import 'package:eprijevoz_desktop/providers/malfunction_provider.dart';
+import 'package:eprijevoz_desktop/providers/delay_provider.dart';
+import 'package:eprijevoz_desktop/providers/route_provider.dart';
 import 'package:eprijevoz_desktop/providers/station_provider.dart';
-import 'package:eprijevoz_desktop/providers/utils.dart';
-import 'package:eprijevoz_desktop/providers/vehicle_provider.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:eprijevoz_desktop/providers/type_provider.dart';
+import 'package:flutter/material.dart' hide Route;
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:provider/provider.dart';
+import 'package:eprijevoz_desktop/models/type.dart';
 
-class MalfunctionAddScreen extends StatefulWidget {
+class DelayAddScreen extends StatefulWidget {
   final Function onDone;
-  const MalfunctionAddScreen({required this.onDone, super.key});
+  const DelayAddScreen({required this.onDone, super.key});
 
   @override
-  State<MalfunctionAddScreen> createState() => _MalfunctionAddScreenState();
+  State<DelayAddScreen> createState() => _DelayAddScreenState();
 }
 
-class _MalfunctionAddScreenState extends State<MalfunctionAddScreen> {
-  late MalfunctionProvider malfunctionProvider;
-  SearchResult<Malfunction>? malfunctionResult;
+class _DelayAddScreenState extends State<DelayAddScreen> {
+  late DelayProvider delayProvider;
+  SearchResult<Delay>? delayResult;
   bool isLoading = false;
   final _formKey = GlobalKey<FormBuilderState>();
-  late VehicleProvider vehicleProvider;
-  SearchResult<Vehicle>? vehicleResult;
+  String? typeName;
+
+  late RouteProvider routeProvider;
+  SearchResult<Route>? routeResult;
+  late TypeProvider typeProvider;
+  SearchResult<Type>? typeResult;
   late StationProvider stationProvider;
   SearchResult<Station>? stationResult;
-  int? selectedVehicleId;
-  int? selectedStationId;
-  bool? isFixed = false;
 
   @override
   void initState() {
-    malfunctionProvider = context.read<MalfunctionProvider>();
-    vehicleProvider = context.read<VehicleProvider>();
+    delayProvider = context.read<DelayProvider>();
+    routeProvider = context.read<RouteProvider>();
+    typeProvider = context.read<TypeProvider>();
     stationProvider = context.read<StationProvider>();
 
     super.initState();
@@ -45,8 +47,9 @@ class _MalfunctionAddScreenState extends State<MalfunctionAddScreen> {
   }
 
   Future initForm() async {
-    malfunctionResult = await malfunctionProvider.get();
-    vehicleResult = await vehicleProvider.get();
+    delayResult = await delayProvider.get();
+    routeResult = await routeProvider.get();
+    typeResult = await typeProvider.get();
     stationResult = await stationProvider.get();
 
     setState(() {
@@ -54,42 +57,68 @@ class _MalfunctionAddScreenState extends State<MalfunctionAddScreen> {
     });
   }
 
-  DateTime? dateOfMalfunction;
-  final TextEditingController _dateOfMalfunctionController =
-      TextEditingController();
-  Future<void> selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: dateOfMalfunction ?? DateTime.now(),
-      firstDate: DateTime(1900),
-      lastDate: DateTime(2100),
-    );
+  int? selectedRouteId;
+  int? selectedVehicleTypeId;
+  List<DropdownMenuItem<String>> getVehicleType() {
+    var list = typeResult?.result
+            .map((item) => DropdownMenuItem(
+                value: item.typeId.toString(), child: Text(item.name ?? "")))
+            .toList() ??
+        [];
+    return list;
+  }
 
-    if (picked != null && picked != dateOfMalfunction) {
-      setState(() {
-        dateOfMalfunction = picked;
-        _dateOfMalfunctionController.text = formatDate(picked);
+  List<Route> filterDuplicates(List<Route> data) {
+    final seen = <int>{};
+    return data
+        .where((dataModel) => seen.add(dataModel.startStationId!))
+        .toList();
+  }
+
+  List<Route> getUniqueRoutes(List<Station> stations) {
+    List<Route> result = [];
+    if (routeResult != null) {
+      result = filterDuplicates(routeResult!.result);
+
+      result.sort((a, b) {
+        final stationA = stations.firstWhere(
+          (station) => station.stationId == a.startStationId,
+        );
+        final stationB = stations.firstWhere(
+          (station) => station.stationId == b.startStationId,
+        );
+        return (stationA.name ?? '').compareTo(stationB.name ?? '');
       });
     }
+    return result;
   }
 
-  List<DropdownMenuItem<String>> getVehicle() {
-    var list = vehicleResult?.result
-            .map((item) => DropdownMenuItem(
-                value: item.manufacturerId.toString(),
-                child: Text(item.registrationNumber ?? "")))
-            .toList() ??
-        [];
+  List<DropdownMenuItem<String>> getRoutes() {
+    var list = getUniqueRoutes(stationResult?.result ?? [])
+        .map((item) => DropdownMenuItem(
+            value: item.routeId.toString(),
+            child: Text(getRoutesName(item.routeId))))
+        .toList();
     return list;
   }
 
-  List<DropdownMenuItem<String>> getStatione() {
-    var list = stationResult?.result
-            .map((item) => DropdownMenuItem(
-                value: item.stationId.toString(), child: Text(item.name ?? "")))
-            .toList() ??
-        [];
-    return list;
+  String getRoutesName(int? rutaId) {
+    String result = "";
+
+    if (rutaId != null) {
+      var ruta = routeResult?.result
+          .where((route) => route.routeId == rutaId)
+          .firstOrNull;
+      var startStation = stationResult?.result
+          .where((station) => station.stationId == ruta?.startStationId)
+          .firstOrNull;
+      var endStation = stationResult?.result
+          .where((station) => station.stationId == ruta?.endStationId)
+          .firstOrNull;
+      result = "${startStation?.name ?? ""} - ${endStation?.name ?? ""}";
+    }
+
+    return result;
   }
 
   @override
@@ -113,7 +142,7 @@ class _MalfunctionAddScreenState extends State<MalfunctionAddScreen> {
                     children: [
                       const SizedBox(height: 15),
                       const Text(
-                        "Opis kvara:",
+                        "Razlog kašnjenja:",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -121,74 +150,102 @@ class _MalfunctionAddScreenState extends State<MalfunctionAddScreen> {
                       ),
                       const SizedBox(height: 10),
                       FormBuilderTextField(
-                        //controller: ftsRejectReasonController,
-                        name: 'description',
+                          name: 'reason',
+                          validator: FormBuilderValidators.compose([
+                            FormBuilderValidators.required(
+                              errorText: "Ovo polje ne može bit prazno.",
+                            ),
+                          ]),
+                          maxLines: 2,
+                          keyboardType: TextInputType.multiline,
+                          cursorColor: Colors.green.shade800,
+                          decoration: const InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.black),
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(10),
+                                topRight: Radius.circular(10),
+                                bottomLeft: Radius.circular(10),
+                                bottomRight: Radius.circular(10),
+                              ),
+                            ),
+                          )),
+                      const Text(
+                        "Ruta:",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      FormBuilderDropdown(
+                        name: "routeId",
+                        items: getRoutes(),
+                        initialValue: selectedRouteId?.toString(),
+                        onChanged: (value) {
+                          setState(() {
+                            selectedRouteId = int.parse(value as String);
+                          });
+                        },
                         validator: FormBuilderValidators.compose([
                           FormBuilderValidators.required(
-                            errorText: "Ovo polje ne može bit prazno.",
+                            errorText: "Odaberite rutu.",
                           ),
                         ]),
-                        maxLines: 2,
-                        keyboardType: TextInputType.multiline,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(10),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const Text(
+                        "Količina kašnjenja u minutama:",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      FormBuilderTextField(
+                        name: 'delayAmountMinutes',
+                        validator: FormBuilderValidators.compose([
+                          FormBuilderValidators.required(
+                              errorText: "Ovo polje ne može bit prazno."),
+                          FormBuilderValidators.integer(
+                              errorText: "Format poštanskog broja: 1010"),
+                        ]),
                         cursorColor: Colors.green.shade800,
                         decoration: const InputDecoration(
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.black),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10),
-                              topRight: Radius.circular(10),
-                              bottomLeft: Radius.circular(10),
-                              bottomRight: Radius.circular(10),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(10),
                             ),
                           ),
                         ),
                       ),
-                      const SizedBox(height: 25),
                       const Text(
-                        "Datum kvara:",
+                        "Tip vozila:",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 15),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
                       ),
-                      const SizedBox(height: 5),
-                      GestureDetector(
-                        onTap: () => selectDate(context),
-                        child: AbsorbPointer(
-                            child: FormBuilderTextField(
-                                name: 'dateOfMalufunction',
-                                controller: _dateOfMalfunctionController,
-                                validator: FormBuilderValidators.compose([
-                                  FormBuilderValidators.required(
-                                    errorText: "Ovo polje ne može bit prazno.",
-                                  ),
-                                ]),
-                                cursorColor: Colors.green.shade800,
-                                decoration: const InputDecoration(
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.black),
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(10),
-                                    ),
-                                  ),
-                                ))),
-                      ),
-                      const SizedBox(height: 25),
-                      const Text(
-                        "Vozilo:",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 15),
-                      ),
+                      const SizedBox(height: 10),
                       FormBuilderDropdown(
-                        name: "vehicleIdId",
-                        items: getVehicle(),
-                        initialValue: selectedVehicleId?.toString(),
+                        name: "typeId",
+                        items: getVehicleType(),
+                        initialValue: selectedVehicleTypeId?.toString(),
                         onChanged: (value) {
                           setState(() {
-                            selectedVehicleId = int.parse(value as String);
+                            selectedVehicleTypeId = int.parse(value as String);
                           });
                         },
                         validator: FormBuilderValidators.compose([
                           FormBuilderValidators.required(
-                            errorText: "Odaberite vozilo.",
+                            errorText: "Odaberite tip vozila.",
                           ),
                         ]),
                         decoration: const InputDecoration(
@@ -198,48 +255,6 @@ class _MalfunctionAddScreenState extends State<MalfunctionAddScreen> {
                             ),
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 25),
-                      const Text(
-                        "Najbliža stanica gdje se desio kvar:",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 15),
-                      ),
-                      FormBuilderDropdown(
-                        name: "StationId",
-                        items: getStatione(),
-                        initialValue: selectedStationId?.toString(),
-                        onChanged: (value) {
-                          setState(() {
-                            selectedStationId = int.parse(value as String);
-                          });
-                        },
-                        validator: FormBuilderValidators.compose([
-                          FormBuilderValidators.required(
-                            errorText: "Odaberite stanicu.",
-                          ),
-                        ]),
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10),
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 25),
-                      Checkbox(
-                        value: isFixed,
-                        onChanged: (bool? value) {
-                          setState(() {
-                            isFixed = value ?? false;
-                          });
-                        },
-                      ),
-                      const Text(
-                        "Fixed",
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(height: 25),
                       Row(
@@ -252,18 +267,15 @@ class _MalfunctionAddScreenState extends State<MalfunctionAddScreen> {
                                   var request =
                                       Map.from(_formKey.currentState!.value);
 
-                                  request['dateOfMalufunction'] =
-                                      dateOfMalfunction?.toIso8601String();
-                                  request['fixed'] = isFixed;
-                                  request['VehicleId'] = selectedVehicleId;
-                                  request['StationId'] = selectedStationId;
+                                  request['typeId'] = selectedVehicleTypeId;
+                                  request['routeId'] = selectedRouteId;
 
                                   try {
                                     setState(() {
                                       isLoading = true;
                                     });
 
-                                    await malfunctionProvider.insert(request);
+                                    await delayProvider.insert(request);
 
                                     showDialog(
                                       context: context,

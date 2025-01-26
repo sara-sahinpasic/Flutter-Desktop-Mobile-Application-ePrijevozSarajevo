@@ -5,6 +5,7 @@ import 'package:eprijevoz_desktop/models/vehicle.dart';
 import 'package:eprijevoz_desktop/providers/manufacturer_provider.dart';
 import 'package:eprijevoz_desktop/providers/type_provider.dart';
 import 'package:eprijevoz_desktop/providers/vehicle_provider.dart';
+import 'package:eprijevoz_desktop/screens/delay/delay_list_screen.dart';
 import 'package:eprijevoz_desktop/screens/malfunction/malfunction_list_screen.dart';
 import 'package:eprijevoz_desktop/screens/manufacturer/manufacturer_lsit_screen.dart';
 import 'package:eprijevoz_desktop/screens/vehicle/vehicle_add_screen.dart';
@@ -271,6 +272,37 @@ class _VehicleListScreenState extends State<VehicleListScreen> {
                               const SizedBox(width: 5),
                               Text(
                                 "Sekcija kvarovi",
+                                style: TextStyle(
+                                  color: Colors.green.shade800,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  decoration: TextDecoration.underline,
+                                  decorationColor: Colors.green.shade800,
+                                  decorationThickness: 1,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        // delay
+                        TextButton(
+                          onPressed: () async {
+                            await Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => const DelaylistScreen(),
+                              ),
+                            );
+                            await refreshTable();
+                          },
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.arrow_forward,
+                                color: Colors.green.shade800,
+                              ),
+                              const SizedBox(width: 5),
+                              Text(
+                                "Sekcija kašnjenja",
                                 style: TextStyle(
                                   color: Colors.green.shade800,
                                   fontSize: 18,

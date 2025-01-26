@@ -30,8 +30,7 @@ builder.Services.AddScoped<IRecommenderService, RecommenderService>();
 builder.Services.AddTransient<IRabbitMQProducer, RabbitMQProducer>();
 //
 builder.Services.AddTransient<IMalfunctionService, MalfunctionService>();
-
-
+builder.Services.AddTransient<IDelayService, DelayService>();
 
 
 // State machine

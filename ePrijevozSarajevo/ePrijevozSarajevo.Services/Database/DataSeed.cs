@@ -499,6 +499,32 @@ namespace ePrijevozSarajevo.Services.Database
                      StationId = 3,
                  }
             );//14
+            modelBuilder.Entity<Delay>().HasData
+           (
+              new Delay()
+              {
+                 DelayId = 1,
+                 Reason="Gužva",
+                 RouteId = 1,
+                 DelayAmountMinutes = 30,
+                 TypeId = 1,
+              },
+               new Delay()
+               {
+                   DelayId = 2,
+                   Reason = "Udes",
+                   RouteId = 2,
+                   DelayAmountMinutes = 60,
+                   TypeId = 2,
+               }, new Delay()
+               {
+                   DelayId = 3,
+                   Reason = "Led",
+                   RouteId = 3,
+                   DelayAmountMinutes = 15,
+                   TypeId = 1,
+               }
+           );//15
 
         }
     }

@@ -22,6 +22,8 @@ namespace ePrijevozSarajevo.Services.Database
         public DbSet<Country> Countries { get; set; } = null!;
         //
         public DbSet<Malfunction> Malfunctions { get; set; } = null!;
+        public DbSet<Delay> Delays { get; set; } = null!;
+
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)

@@ -1,6 +1,7 @@
 import 'package:eprijevoz_desktop/providers/auth_provider.dart';
 import 'package:eprijevoz_desktop/providers/base_provider.dart';
 import 'package:eprijevoz_desktop/providers/country_provider.dart';
+import 'package:eprijevoz_desktop/providers/delay_provider.dart';
 import 'package:eprijevoz_desktop/providers/issuedTicket_provider.dart';
 import 'package:eprijevoz_desktop/providers/malfunction_provider.dart';
 import 'package:eprijevoz_desktop/providers/manufacturer_provider.dart';
@@ -14,7 +15,6 @@ import 'package:eprijevoz_desktop/providers/type_provider.dart';
 import 'package:eprijevoz_desktop/providers/userRole_provider.dart';
 import 'package:eprijevoz_desktop/providers/user_provider.dart';
 import 'package:eprijevoz_desktop/providers/vehicle_provider.dart';
-import 'package:eprijevoz_desktop/screens/forgot_password_screen.dart';
 import 'package:eprijevoz_desktop/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -62,6 +62,7 @@ void main() async {
       //
       ChangeNotifierProvider<MalfunctionProvider>(
           create: (_) => MalfunctionProvider()),
+      ChangeNotifierProvider<DelayProvider>(create: (_) => DelayProvider()),
     ],
     child: const MyApp(),
   ));
