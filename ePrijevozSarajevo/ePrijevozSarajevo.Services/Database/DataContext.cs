@@ -20,7 +20,6 @@ namespace ePrijevozSarajevo.Services.Database
         public DbSet<Manufacturer> Manufacturers { get; set; } = null!;
         public DbSet<Type> Types { get; set; } = null!;
         public DbSet<Country> Countries { get; set; } = null!;
-        //
         public DbSet<Malfunction> Malfunctions { get; set; } = null!;
         public DbSet<Delay> Delays { get; set; } = null!;
 
@@ -70,6 +69,18 @@ namespace ePrijevozSarajevo.Services.Database
                 .HasOne(v => v.Station)
                 .WithMany()
                 .HasForeignKey(v => v.StationId);
+
+            // Delay
+
+            modelBuilder.Entity<Delay>()
+               .HasOne(v => v.Route)
+               .WithMany()
+               .HasForeignKey(v => v.RouteId);
+
+            modelBuilder.Entity<Delay>()
+                .HasOne(v => v.Type)
+                .WithMany()
+                .HasForeignKey(v => v.TypeId);
 
 
             // Manufacturer
