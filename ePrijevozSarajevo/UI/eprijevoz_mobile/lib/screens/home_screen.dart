@@ -10,6 +10,7 @@ import 'package:eprijevoz_mobile/providers/route_provider.dart';
 import 'package:eprijevoz_mobile/providers/station_provider.dart';
 import 'package:eprijevoz_mobile/providers/type_provider.dart';
 import 'package:eprijevoz_mobile/providers/user_provider.dart';
+import 'package:eprijevoz_mobile/screens/moodTracker/frmMoodTracker30012025.dart';
 import 'package:flutter/material.dart' hide Route;
 import 'package:provider/provider.dart';
 import 'package:eprijevoz_mobile/models/type.dart';
@@ -214,6 +215,22 @@ class _HomePageState extends State<HomePage> {
                   ),
                   const SizedBox(
                     height: 25,
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) =>
+                              const frmMoodTracker30012025()));
+                    },
+                    child: const Text(
+                      "frmMoodTracker",
+                      style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          decorationColor: Colors.red,
+                          color: Color.fromARGB(255, 212, 16, 2),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15),
+                    ),
                   ),
                   const Text(
                     "Aktualna kašnjenja:",

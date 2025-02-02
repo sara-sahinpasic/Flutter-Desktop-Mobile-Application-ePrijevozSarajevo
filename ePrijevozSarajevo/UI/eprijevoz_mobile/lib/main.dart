@@ -4,6 +4,7 @@ import 'package:eprijevoz_mobile/providers/base_provider.dart';
 import 'package:eprijevoz_mobile/providers/country_provider.dart';
 import 'package:eprijevoz_mobile/providers/delay_provider.dart';
 import 'package:eprijevoz_mobile/providers/issuedTicket_provider.dart';
+import 'package:eprijevoz_mobile/providers/mood_tracker_provider.dart';
 import 'package:eprijevoz_mobile/providers/recommendation_provider.dart';
 import 'package:eprijevoz_mobile/providers/request_provider.dart';
 import 'package:eprijevoz_mobile/providers/role_provider.dart';
@@ -14,6 +15,7 @@ import 'package:eprijevoz_mobile/providers/ticket_provider.dart';
 import 'package:eprijevoz_mobile/providers/type_provider.dart';
 import 'package:eprijevoz_mobile/providers/user_provider.dart';
 import 'package:eprijevoz_mobile/providers/user_role_provider.dart';
+import 'package:eprijevoz_mobile/providers/vrijednost_raspolozenja_provider.dart';
 import 'package:eprijevoz_mobile/screens/profile/profile_newUser_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -43,6 +45,11 @@ void main() async {
       //
       ChangeNotifierProvider<DelayProvider>(create: (_) => DelayProvider()),
       ChangeNotifierProvider<TypeProvider>(create: (_) => TypeProvider()),
+      //
+      ChangeNotifierProvider<VrijednostRaspolozenjaProvider>(
+          create: (_) => VrijednostRaspolozenjaProvider()),
+      ChangeNotifierProvider<MoodTrackerProvider>(
+          create: (_) => MoodTrackerProvider()),
     ],
     child: const MyApp(),
   ));

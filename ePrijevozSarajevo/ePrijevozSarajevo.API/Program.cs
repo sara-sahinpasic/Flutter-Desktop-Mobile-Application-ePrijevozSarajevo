@@ -31,6 +31,10 @@ builder.Services.AddTransient<IRabbitMQProducer, RabbitMQProducer>();
 //
 builder.Services.AddTransient<IMalfunctionService, MalfunctionService>();
 builder.Services.AddTransient<IDelayService, DelayService>();
+//*********
+builder.Services.AddTransient<IVrijednostRaspolozenjaService, VrijednostRaspolozenjaService>();
+builder.Services.AddTransient<IMoodTrackerService, MoodTrackerService>();
+
 
 
 // State machine

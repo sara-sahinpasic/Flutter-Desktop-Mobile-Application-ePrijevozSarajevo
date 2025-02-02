@@ -499,11 +499,11 @@ namespace ePrijevozSarajevo.Services.Database
            (
               new Delay()
               {
-                 DelayId = 1,
-                 Reason="Gužva",
-                 RouteId = 1,
-                 DelayAmountMinutes = 30,
-                 TypeId = 1,
+                  DelayId = 1,
+                  Reason = "Gužva",
+                  RouteId = 1,
+                  DelayAmountMinutes = 30,
+                  TypeId = 1,
                   ModifiedDate = DateTime.Now,
 
               },
@@ -527,6 +527,61 @@ namespace ePrijevozSarajevo.Services.Database
 
                }
            );//15
+             //-------------
+            modelBuilder.Entity<VrijednostRaspolozenja>().HasData
+        (
+           new VrijednostRaspolozenja()
+           {
+               VrijednostRaspolozenjaId = 1,
+               Naziv = "Sretan"
+           },
+            new VrijednostRaspolozenja()
+            {
+                VrijednostRaspolozenjaId = 2,
+                Naziv = "Tuzan"
+            }, new VrijednostRaspolozenja()
+            {
+                VrijednostRaspolozenjaId = 3,
+                Naziv = "Pod stresom"
+            },
+             new VrijednostRaspolozenja()
+             {
+                 VrijednostRaspolozenjaId = 4,
+                 Naziv = "Uzbuđen"
+             }, new VrijednostRaspolozenja()
+             {
+                 VrijednostRaspolozenjaId = 5,
+                 Naziv = "Umoran"
+             }
+           );
+
+            modelBuilder.Entity<MoodTracker30012025>().HasData
+       (
+          new MoodTracker30012025()
+          {
+              MoodTracker30012025Id = 1,
+              UserId = 1,
+              VrijednostRaspolozenjaId = 1,
+              Opis = "Test",
+              DatumEvidencije = DateTime.Now,
+          },
+           new MoodTracker30012025()
+           {
+               MoodTracker30012025Id = 2,
+               UserId = 2,
+               VrijednostRaspolozenjaId = 2,
+               Opis = "Test",
+               DatumEvidencije = DateTime.Now,
+           }, new MoodTracker30012025()
+           {
+               MoodTracker30012025Id = 3,
+               UserId = 3,
+               VrijednostRaspolozenjaId = 3,
+               Opis = "Test",
+               DatumEvidencije = DateTime.Now,
+           }
+           );
+
 
         }
     }

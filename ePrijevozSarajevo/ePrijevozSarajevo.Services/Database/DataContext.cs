@@ -22,6 +22,11 @@ namespace ePrijevozSarajevo.Services.Database
         public DbSet<Country> Countries { get; set; } = null!;
         public DbSet<Malfunction> Malfunctions { get; set; } = null!;
         public DbSet<Delay> Delays { get; set; } = null!;
+        //
+        public DbSet<VrijednostRaspolozenja> VrijednostRaspolozenjas { get; set; } = null!;
+        public DbSet<MoodTracker30012025> MoodTracker30012025s { get; set; } = null!;
+
+
 
 
 
