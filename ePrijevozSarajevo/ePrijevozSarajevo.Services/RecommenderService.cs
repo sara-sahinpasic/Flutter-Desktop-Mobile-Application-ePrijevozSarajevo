@@ -136,7 +136,7 @@ namespace ePrijevozSarajevo.Services
             var allRoutes = GetAllRouteIdsAsync();
 
             var result = new List<Route>();
-            recommended.ForEach(r => result.Add(allRoutes.Result.First(route => route.RouteId == r)));
+            recommended.ForEach(r => result.Add(allRoutes.Result.First(route => route.RouteId == r))); //map route Id to Route object
 
             return _mapper.Map<List<Model.Route>>(result);
         }

@@ -36,7 +36,7 @@ namespace ePrijevozSarajevo.Services.Email
             message.Body = bodyPart;
             message.Subject = subject;
 
-            using SmtpClient client = new();
+            using SmtpClient client = new(); // auto dispose
 
             client.Connect(smtpServer, port, false);
             client.Authenticate(smtpUsername, smtpPassword);
