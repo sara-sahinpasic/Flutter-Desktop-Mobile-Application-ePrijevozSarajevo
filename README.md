@@ -1,4 +1,4 @@
-<h3>Flutter-Desktop-Mobile-Application-ePrijevozSarajevo</h3>
+<h3>Flutter - Desktop-Mobile Application: "ePrijevozSarajevo"</h3>
 <i>Seminar work - Software development 2 - Faculty of Information Technologies</i> </br>
 <i>Author: Sara Šahinpašić</i> </br>
 
