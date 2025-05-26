@@ -22,6 +22,10 @@ namespace ePrijevozSarajevo.Services.Database
         public DbSet<Country> Countries { get; set; } = null!;
         public DbSet<Malfunction> Malfunctions { get; set; } = null!;
         public DbSet<Delay> Delays { get; set; } = null!;
+        //
+        public DbSet<StatusRezervacije> StatusRezervacijes { get; set; } = null!;
+        public DbSet<RadniProstor> RadniProstors { get; set; } = null!;
+        public DbSet<RezervacijaProstora20022025> RezervacijaProstora20022025s { get; set; } = null!;
 
 
 
@@ -29,7 +33,7 @@ namespace ePrijevozSarajevo.Services.Database
         {
             if (!options.IsConfigured)
             {
-                options.UseSqlServer("Data Source=localhost; Initial Catalog=140261; user=sa; Password=ePrijevoz123!;Trusted_Connection=True;TrustServerCertificate=True");
+                options.UseSqlServer("Data Source=localhost; Initial Catalog=ispit_20022025; user=sa; Password=ePrijevoz123!;Trusted_Connection=True;TrustServerCertificate=True");
                 options.EnableSensitiveDataLogging();
             }
         }

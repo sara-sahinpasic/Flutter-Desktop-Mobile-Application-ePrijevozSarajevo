@@ -499,11 +499,11 @@ namespace ePrijevozSarajevo.Services.Database
            (
               new Delay()
               {
-                 DelayId = 1,
-                 Reason="Gužva",
-                 RouteId = 1,
-                 DelayAmountMinutes = 30,
-                 TypeId = 1,
+                  DelayId = 1,
+                  Reason = "Gužva",
+                  RouteId = 1,
+                  DelayAmountMinutes = 30,
+                  TypeId = 1,
                   ModifiedDate = DateTime.Now,
 
               },
@@ -527,6 +527,81 @@ namespace ePrijevozSarajevo.Services.Database
 
                }
            );//15
+             //
+            modelBuilder.Entity<StatusRezervacije>().HasData
+          (
+             new StatusRezervacije()
+             {
+                 StatusRezervacijeId = 1,
+                 Naziv = "Potvrđena"
+             },
+              new StatusRezervacije()
+              {
+                  StatusRezervacijeId = 2,
+                  Naziv = "Na čekanju"
+              },
+               new StatusRezervacije()
+               {
+                   StatusRezervacijeId = 3,
+                   Naziv = "Otkazana"
+               }
+             );
+            modelBuilder.Entity<RadniProstor>().HasData
+          (
+             new RadniProstor()
+             {
+                 RadniProstorId = 1,
+                 Aktivna = true,
+                 Kapacitet = 5,
+                 Oznaka = "RP1"
+             },
+               new RadniProstor()
+               {
+                   RadniProstorId = 2,
+                   Aktivna = true,
+                   Kapacitet = 10,
+                   Oznaka = "RP2"
+               }, new RadniProstor()
+               {
+                   RadniProstorId = 3,
+                   Aktivna = true,
+                   Kapacitet = 20,
+                   Oznaka = "RP3"
+               }
+               );
+            modelBuilder.Entity<RezervacijaProstora20022025>().HasData
+          (
+            new RezervacijaProstora20022025()
+            {
+                RezervacijaProstora20022025Id = 1,
+                RadniProstorId = 1,
+                StatusRezervacijeId = 1,
+                UserId = 1,
+                Napomena = "Test 1",
+                PocetakRezervacije = DateTime.Now,
+                TrajanjeRezervacije = DateTime.Now,
+            },
+              new RezervacijaProstora20022025()
+              {
+                  RezervacijaProstora20022025Id = 2,
+                  RadniProstorId = 2,
+                  StatusRezervacijeId = 2,
+                  UserId = 2,
+                  Napomena = "Test 2",
+                  PocetakRezervacije = DateTime.Now,
+                  TrajanjeRezervacije = DateTime.Now,
+              },
+              new RezervacijaProstora20022025()
+              {
+                  RezervacijaProstora20022025Id = 3,
+                  RadniProstorId = 3,
+                  StatusRezervacijeId = 3,
+                  UserId = 3,
+                  Napomena = "Test 3",
+                  PocetakRezervacije = DateTime.Now,
+                  TrajanjeRezervacije = DateTime.Now,
+              }
+             );
 
         }
     }

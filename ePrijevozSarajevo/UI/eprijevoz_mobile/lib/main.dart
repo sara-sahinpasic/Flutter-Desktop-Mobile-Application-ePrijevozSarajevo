@@ -4,12 +4,15 @@ import 'package:eprijevoz_mobile/providers/base_provider.dart';
 import 'package:eprijevoz_mobile/providers/country_provider.dart';
 import 'package:eprijevoz_mobile/providers/delay_provider.dart';
 import 'package:eprijevoz_mobile/providers/issuedTicket_provider.dart';
+import 'package:eprijevoz_mobile/providers/radni_prostor_provider.dart';
 import 'package:eprijevoz_mobile/providers/recommendation_provider.dart';
 import 'package:eprijevoz_mobile/providers/request_provider.dart';
+import 'package:eprijevoz_mobile/providers/rezervacija_prostora20022025_provider.dart';
 import 'package:eprijevoz_mobile/providers/role_provider.dart';
 import 'package:eprijevoz_mobile/providers/route_provider.dart';
 import 'package:eprijevoz_mobile/providers/station_provider.dart';
 import 'package:eprijevoz_mobile/providers/status_provider.dart';
+import 'package:eprijevoz_mobile/providers/status_rezervacije.dart';
 import 'package:eprijevoz_mobile/providers/ticket_provider.dart';
 import 'package:eprijevoz_mobile/providers/type_provider.dart';
 import 'package:eprijevoz_mobile/providers/user_provider.dart';
@@ -43,6 +46,13 @@ void main() async {
       //
       ChangeNotifierProvider<DelayProvider>(create: (_) => DelayProvider()),
       ChangeNotifierProvider<TypeProvider>(create: (_) => TypeProvider()),
+      //
+      ChangeNotifierProvider<StatusRezervacijeProvider>(
+          create: (_) => StatusRezervacijeProvider()),
+      ChangeNotifierProvider<RadniProstorProvider>(
+          create: (_) => RadniProstorProvider()),
+      ChangeNotifierProvider<RezervacijaProstora20022025Provider>(
+          create: (_) => RezervacijaProstora20022025Provider()),
     ],
     child: const MyApp(),
   ));

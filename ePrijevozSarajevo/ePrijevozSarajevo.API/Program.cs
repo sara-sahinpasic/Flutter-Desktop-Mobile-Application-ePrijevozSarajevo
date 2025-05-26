@@ -31,6 +31,11 @@ builder.Services.AddTransient<IRabbitMQProducer, RabbitMQProducer>();
 //
 builder.Services.AddTransient<IMalfunctionService, MalfunctionService>();
 builder.Services.AddTransient<IDelayService, DelayService>();
+//
+builder.Services.AddTransient<IStatusRezervacijeService, StatusRezervacijeService>();
+builder.Services.AddTransient<IRadniProstorService, RadniProstorService>();
+builder.Services.AddTransient<IRezervacijeProstoraService, RezervacijaProstoraService>();
+
 
 
 // State machine
