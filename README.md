@@ -2,6 +2,42 @@
 <i>Seminar work - Software development 2 - Faculty of Information Technologies</i> </br>
 <i>Author: Sara Šahinpašić</i> </br>
 
+## Description
+
+The cross-platform Flutter application designed to modernize public transport ticketing in the city of Sarajevo. 
+The project aims to digitalize and improve the experience for both passengers and administrators by enabling electronic ticket sales and streamlining public transport management.
+
+* **Digital ticket sales** for public transportation in Sarajevo
+* **Modernization of the city’s infrastructure**, aligning with smart mobility trends seen in major European cities
+* **Improved business operations** for the city’s public transport authority
+* **Easy access to route information** and up-to-date timetables
+* **Efficient organization of transport services**, including the addition and editing of routes
+* **Automated report generation** for analyzing system performance and identifying areas for improvement
+
+## 🛠 Technologies and Tools Used
+
+#### **Frontend (Flutter)**
+
+* Cross-platform development for **mobile and desktop**
+* Integration with **PayPal** for online ticket purchasing
+* Dynamic form handling, routing visualization, and real-time status updates
+* Interactive charts for **ticket sales and station statistics**
+
+#### **Backend (.NET 7.0 Web API)**
+
+* Developed using **ASP.NET Core 7.0**
+* **Entity Framework Core** (Code-First) with MS SQL for database design
+* **RESTful APIs** using standard methods (GET, POST, PUT, DELETE)
+* **RabbitMQ** for asynchronous event processing
+* Centralized exception handling and input validation
+
+---
+
+* Development in **Visual Studio 2022**, **Visual Studio Code** and **Android Studio**
+* All services are **Dockerized** 
+* Source control with **Git**
+
+
 ## Running the code
 - Clone the project `git clone https://github.com/sara-sahinpasic/Flutter-Desktop-Mobile-Application-ePrijevozSarajevo.git`
 - Navigate to repository root
