@@ -117,3 +117,36 @@ i.e. stop then start debugging again in Visual Studio or stop docker process and
 ## Note:
 - Please note that in order to insert a profile photo as user in mobile application (user profile update) you have to have some image file saved on emulator.
 - If You do not have any, You can i.e. open the preinstalled camera app on emulator and take a test picture or download a photo using the browser.
+
+
+## 📸 Application Overview (Screenshots)
+
+_These are just a few selected screenshots to help you quickly understand the core features and look of the application._
+
+## 🛠️ Admin (Desktop)
+<p float="left">
+  <img src="Screenshots//Desktop/Screenshot 2025-07-04 133603.png" width="850" />
+  <img src="Screenshots/Desktop/Screenshot 2025-07-04 133647.png" width="850" />
+  <img src="Screenshots/Desktop/Screenshot 2025-07-04 133717.png" width="850" />
+  <img src="Screenshots/Desktop/Screenshot 2025-07-04 133812.png" width="850" />
+  <img src="Screenshots/Desktop/Screenshot 2025-07-04 133940.png" width="850" />
+  <img src="Screenshots/Desktop/Screenshot 2025-07-04 134104.png" width="850" />
+  <img src="Screenshots/Desktop/Screenshot 2025-07-04 134214.png" width="850" />
+</p>
+
+## 👤 User (Mobile)
+<p float="left">
+<img src="Screenshots/Mobile/Screenshot 2025-07-04 135614.png" width="350" />
+<img src="Screenshots/Mobile/Screenshot 2025-07-04 135642.png" width="350" />
+<img src="Screenshots/Mobile/Screenshot 2025-07-04 135730.png" width="350" />
+<img src="Screenshots/Mobile/Screenshot 2025-07-04 135757.png" width="350" />
+<img src="Screenshots/Mobile/Screenshot 2025-07-04 135831.png" width="350" />
+<img src="Screenshots/Mobile/Screenshot 2025-07-04 135913.png" width="350" />
+<img src="Screenshots/Mobile/Screenshot 2025-07-04 135933.png" width="350" />
+<img src="Screenshots/Mobile/Screenshot 2025-07-04 140130.png" width="350" />
+<img src="Screenshots/Mobile/Screenshot 2025-07-04 140155.png" width="350" />
+<img src="Screenshots/Mobile/Screenshot 2025-07-04 140220.png" width="350" />
+<img src="Screenshots/Mobile/Screenshot 2025-07-04 140238.png" width="350" />
+<img src="Screenshots/Mobile/Screenshot 2025-07-04 140433.png" width="350" />
+</p>
+
